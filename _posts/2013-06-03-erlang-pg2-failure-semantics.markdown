@@ -281,6 +281,9 @@ themselves during the healing of a partition, the failure conditions
 during cluster membership and partitions appears to be straightforward,
 and deterministic.
 
+I'm hopeful that I didn't miss any obvious failure scenarios.  Feedback
+welcome and greatly appreciated!
+
 [webmachine]: http://github.com/basho/webmachine
 [riak_core]:  http://github.com/basho/riak_core
 [pg]:         http://erlang.org/doc/man/pg.html
