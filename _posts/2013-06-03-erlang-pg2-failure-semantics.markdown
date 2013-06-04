@@ -19,6 +19,18 @@ problems due to [race conditions][races] and [partitions][partitions], I
 set out to figure out exactly what the failure semantics of `pg2`
 actually are.
 
+# What is `pg2`?
+
+`pg2` is a distributed named process group registry, which has replaced
+the experimental process group registry [`pg`][pg].  One of the major
+departures from `pg` is that rather than being able to message a group
+of processes, `pg2` will only return a process listing, and messaging is
+left up to the user.  This drastically simplifies the domain, as the
+library no longer needs to worry about partial writes to the group, or
+failed message sends due to processes being located across a partition,
+before the Erlang distribution protocol determines the node is
+unreachable and times out the connection.
+
 # So, how does `pg2` work?
 
 First, we can register a process group on one node, and see the results
@@ -211,11 +223,13 @@ Here's the state after the partition is healed.
 # Conclusion
 
 While `pg2` has some interesting semantics regarding processes able to
-register themselves in the process group, the failure conditions during
-cluster membership and partitions appears to be straightforward, and
-deterministic.
+register themselves in the process group, and with groups resurrecting
+themselves during the healing of a partition, the failure conditions
+during cluster membership and partitions appears to be straightforward,
+and deterministic.
 
 [webmachine]: http://github.com/basho/webmachine
+[pg]:         http://erlang.org/doc/man/pg.html
 [pg2]:        http://erlang.org/doc/man/pg2.html
 [races]:      http://erlang.org/pipermail/erlang-questions/2008-April/034161.html
 [partitions]: http://erlang.org/pipermail/erlang-questions/2010-April/050992.html
