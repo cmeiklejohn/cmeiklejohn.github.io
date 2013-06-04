@@ -36,6 +36,9 @@ unreachable and times out the connection.
 First, we can register a process group on one node, and see the results
 on the clustered node.
 
+We'll run these operations in a [`riak_core`][riak_core] application,
+with two clustered nodes `riak_pg1`, `riak_pg2`.
+
 {% highlight erlang %}
 (riak_pg1@127.0.0.1)3> pg2:start().
 {ok,<0.496.0>}
@@ -43,6 +46,9 @@ on the clustered node.
 ok
 (riak_pg1@127.0.0.1)2>
 {% endhighlight %}
+
+Getting the members, then returns the membership list containing no
+processes, rather than throwing `{error, no_such_group}`.
 
 {% highlight erlang %}
 (riak_pg2@127.0.0.1)3> pg2:start().
@@ -172,7 +178,7 @@ When performing a `create` and `join` on either side of a partition, we
 can also observe that when the partition heals, the updates are
 performed correctly.
 
-Let's explore with a three node cluster.
+# What about `create` with a three node cluster?
 
 Here's the state before the partition is healed.
 
@@ -220,6 +226,53 @@ Here's the state after the partition is healed.
 [<0.445.0>,<13986.451.0>]
 {% endhighlight %}
 
+# What about `leave` with a three node cluster?
+
+{% highlight erlang %}
+(riak_pg1@127.0.0.1)3> pg2:join(group, self()).
+ok
+(riak_pg1@127.0.0.1)4> pg2:get_members(group).
+[<0.456.0>]
+{% endhighlight %}
+
+{% highlight erlang %}
+(riak_pg2@127.0.0.1)2> pg2:get_members(group).
+[<12230.456.0>]
+{% endhighlight %}
+
+{% highlight erlang %}
+(riak_pg3@127.0.0.1)2> pg2:get_members(group).
+[<12230.456.0>]
+{% endhighlight %}
+
+Then we leave during the partition, which can only happen on the node
+running the process.
+
+{% highlight erlang %}
+(riak_pg1@127.0.0.1)5> pg2:leave(group, self()).
+14:33:08.769 [error] ** Node 'riak_pg3@127.0.0.1' not responding **
+** Removing (timedout) connection **
+14:33:08.769 [error] ** Node 'riak_pg2@127.0.0.1' not responding **
+** Removing (timedout) connection **
+ok
+(riak_pg1@127.0.0.1)6> pg2:get_members(group).
+[]
+{% endhighlight %}
+
+And, we see that the updated state is propagated.
+
+{% highlight erlang %}
+(riak_pg2@127.0.0.1)3> pg2:get_members(group).
+[]
+(riak_pg2@127.0.0.1)4>
+{% endhighlight %}
+
+{% highlight erlang %}
+(riak_pg3@127.0.0.1)3> pg2:get_members(group).
+[]
+(riak_pg3@127.0.0.1)4>
+{% endhighlight %}
+
 # Conclusion
 
 While `pg2` has some interesting semantics regarding processes able to
@@ -229,6 +282,7 @@ during cluster membership and partitions appears to be straightforward,
 and deterministic.
 
 [webmachine]: http://github.com/basho/webmachine
+[riak_core]:  http://github.com/basho/riak_core
 [pg]:         http://erlang.org/doc/man/pg.html
 [pg2]:        http://erlang.org/doc/man/pg2.html
 [races]:      http://erlang.org/pipermail/erlang-questions/2008-April/034161.html
