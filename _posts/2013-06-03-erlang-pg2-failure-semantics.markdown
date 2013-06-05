@@ -91,6 +91,68 @@ ok
 (riak_pg1@127.0.0.1)30>
 {% endhighlight %}
 
+# First, how does `pg2` handle a node addition?
+
+First, register a group and add a process to it.
+
+{% highlight erlang %}
+(riak_pg1@127.0.0.1)2> pg2:create(group).
+ok
+(riak_pg1@127.0.0.1)3> pg2:join(group, self()).
+ok
+(riak_pg1@127.0.0.1)4> pg2:get_members(group).
+[<0.494.0>]
+{% endhighlight %}
+
+{% highlight erlang %}
+(riak_pg2@127.0.0.1)2> pg2:get_members(group).
+[<12230.494.0>]
+{% endhighlight %}
+
+Then, start a third node and register two groups, one with the same
+name, and one with a different name.
+
+{% highlight erlang %}
+(riak_pg3@127.0.0.1)3> pg2:create(group).
+ok
+(riak_pg3@127.0.0.1)4> pg2:create(group2).
+ok
+(riak_pg3@127.0.0.1)5> pg2:join(group, self()).
+ok
+(riak_pg3@127.0.0.1)6> pg2:join(group2, self()).
+ok
+(riak_pg3@127.0.0.1)7> pg2:get_members(group).
+[<0.445.0>]
+(riak_pg3@127.0.0.1)8> pg2:get_members(group2).
+[<0.445.0>]
+(riak_pg3@127.0.0.1)9>
+{% endhighlight %}
+
+Now, join the node to the cluster.
+
+{% highlight erlang %}
+(riak_pg1@127.0.0.1)5> pg2:get_members(group).
+[<12231.445.0>,<0.494.0>]
+(riak_pg1@127.0.0.1)6> pg2:get_members(group2).
+[<12231.445.0>]
+{% endhighlight %}
+
+{% highlight erlang %}
+(riak_pg2@127.0.0.1)3> pg2:get_members(group).
+[<12231.445.0>,<12230.494.0>]
+(riak_pg2@127.0.0.1)4> pg2:get_members(group2).
+[<12231.445.0>]
+{% endhighlight %}
+
+{% highlight erlang %}
+(riak_pg3@127.0.0.1)9> pg2:get_members(group).
+[<0.445.0>,<14219.494.0>]
+(riak_pg3@127.0.0.1)10> pg2:get_members(group2).
+[<0.445.0>]
+{% endhighlight %}
+
+Everything resolves nicely.
+
 # So, how does `pg2` handle a partition?
 
 {% highlight erlang %}
@@ -283,6 +345,9 @@ and deterministic.
 
 I'm hopeful that I didn't miss any obvious failure scenarios.  Feedback
 welcome and greatly appreciated!
+
+__Updated 2013-06-04:__ Added details on how node addition is handled in
+`pg2`.
 
 [webmachine]: http://github.com/basho/webmachine
 [riak_core]:  http://github.com/basho/riak_core
