@@ -343,6 +343,11 @@ tests across a maximum cluster size of three nodes, we've observed data
 loss, failure to handle dynamic membership, and timeout situtations due
 to deadlock and failed leader election.
 
+In conclusion, `gproc` seems to operate extremely well when used in a
+local environment, but any use of it in a distributed system, where you
+have dynamic cluster management and network partitions, appears to be
+non-deterministic due to its reliance on `gen_leader`.
+
 _Thanks to OJ Reeves and Heinz N. Gies for providing valuable feedback
 on this blog post._
 
