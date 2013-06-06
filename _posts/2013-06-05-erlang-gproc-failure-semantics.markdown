@@ -311,7 +311,18 @@ What?  What happened to the registered name?  Did the process die?
 (riak_pg1@127.0.0.1)11>
 {% endhighlight %}
 
-Nope.  But, data loss is also considered a possibility with [some of the
+Nope.  
+
+{% highlight erlang %}
+(riak_pg1@127.0.0.1)12> gproc:lookup_pids({n, g, riak_pg1}).
+[<0.513.0>]
+{% endhighlight %}
+
+But, it eventually returns.  This is the behaviour when the leader
+becomes unavailable and there is a period of time where there is no
+leader elected.
+
+Permanent data loss is also considered a possibility with [some of the
 data structures][loss], which is also mentioned in the [paper][epr].
 It's important to note that I couldn't trigger this type of behaviour
 with the non-unique property types.
@@ -331,6 +342,9 @@ correctly and guarantee termination.  Above, using a few small simulated
 tests across a maximum cluster size of three nodes, we've observed data
 loss, failure to handle dynamic membership, and timeout situtations due
 to deadlock and failed leader election.
+
+_Thanks to OJ Reeves and Heinz N. Gies for providing valuable feedback
+on this blog post._
 
 [epr]:       http://dl.acm.org/citation.cfm?id=1292520.1292522&coll=DL&dl=GUIDE&CFID=205201430&CFTOKEN=69071722
 [gproc]:     https://github.com/uwiger/gproc
