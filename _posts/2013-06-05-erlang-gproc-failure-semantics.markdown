@@ -83,6 +83,10 @@ Let's see this in action.  Starting with our same `riak_core` cluster of
 three nodes, we'll start the first two nodes and inspect the `gproc`
 state.
 
+Again, to explain the registration key: `group` is a term alias for the
+process, `p` represents a non-unique property, so we can tag multiple
+processes, and `g` means register locally.
+
 {% highlight erlang %}
 (riak_pg1@127.0.0.1)1> gproc:reg({p, g, group}).
 true
