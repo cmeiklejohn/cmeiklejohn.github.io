@@ -348,6 +348,8 @@ local environment, but any use of it in a distributed system, where you
 have dynamic cluster management and network partitions, appears to be
 non-deterministic due to its reliance on `gen_leader`.
 
+Feedback encouraged!
+
 _Thanks to OJ Reeves and Heinz N. Gies for providing valuable feedback
 on this blog post._
 
