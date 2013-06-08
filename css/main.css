@@ -48,6 +48,10 @@ ul.posts li {
   line-height: 1.75em;
 }
 
+code {
+  font-family: 'Inconsolata', sans-serif;
+}
+
 ul.posts span {
   color: #aaa;
   font-family: Monaco, "Courier New", monospace;
