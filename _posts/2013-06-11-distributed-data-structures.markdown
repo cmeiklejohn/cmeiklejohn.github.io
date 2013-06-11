@@ -162,7 +162,7 @@ Definition G_Counter_equal (c1 c2 : G_Counter) :=
   ClockMap.Equal c1 c2.
 {% endhighlight %}
 
-Finally, to compare, we can apply the comparsion function to the two
+Finally, to compare, we can apply the comparison function to the two
 maps of clocks, and then test equality against a map of true values of
 the same length, which will allow us to test of one map is a partial
 ordering of another map.
@@ -219,7 +219,7 @@ Qed.
 {% endhighlight %}
 
 Next, we can prove that the increment function monotonically advances
-the data structure by using our comparsion function between an
+the data structure by using our comparison function between an
 pre- and post-incremented data structure.  
 
 This proof gets a little bit more complex, having to prove facts about
@@ -247,7 +247,7 @@ Qed.
 
 Finally, we can prove that the merge operation monotonically advances
 the data structure, by again comparing the pre- and post-merged data
-structures.  Since our comparsion function operates over natual numbers,
+structures.  Since our comparison function operates over natual numbers,
 using the less than or equal to operator, we can simply destructure the
 merge operation, and apply a lemma showing that max and less than or
 equal to, preserve partial ordering.
