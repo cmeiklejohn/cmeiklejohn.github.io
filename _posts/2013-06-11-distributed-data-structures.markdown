@@ -12,7 +12,7 @@ Shapiro et. al. work in [A Comprehensive Study of Convergent and
 Commutative Replicated Data Types][shapiro].  The [video][talk] is
 finally available online and the source code is available on
 [GitHub][repo].  The repo also contains some basic modeling of some of
-Conway's work outlined in [Logic and Lattices is Distributed
+Conway's work outlined in [Logic and Lattices for Distributed
 Programming][conway].
 
 We'll briefly look at the grow-only counter, which is very similar to a
