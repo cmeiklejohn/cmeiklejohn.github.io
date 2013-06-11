@@ -174,7 +174,7 @@ Definition G_Counter_compare (c1 c2 : G_Counter) :=
     (ClockMap.map2 Clock_compare c1 c2) (ClockMap.map2 Clock_true c1 c2).
 {% endhighlight %}
 
-So, now we can begin provig aspects about `G-Counters`.
+So, now we can begin proving aspects about `G-Counters`.
 
 First, let's prove that merge is commutative.
 
@@ -285,6 +285,8 @@ it.  I hope to address both that, and `PN-Counters` in a subsequent blog
 post.
 
 Feedback is encouraged!
+
+# Qed.
 
 [basho]: http://basho.com
 [ricon]: http://ricon.io/archive/2013/east.html
