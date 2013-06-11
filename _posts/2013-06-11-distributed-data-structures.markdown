@@ -7,14 +7,13 @@ categories: coq
 
 A few weeks ago, I gave a lightning talk at [Basho's][basho] distributed
 systems conference in New York, [RICON|East][ricon] focused around the
-modeling and provability of two types of CRDT's as outlined in Shapiro
-et. al. work in [A Comprehensive Study of Convergent and Commutative
-Replicated Data Types][shapiro].  The [video][talk] is finally available
-online.
-
-The source code is available on [GitHub][repo] and also contains some
-basic modeling of some of Conway's work outlined in [Logic and Lattices
-is Distributed Programming][conway].
+modeling and provability of two types of CRDT's as outlined in the
+Shapiro et. al. work in [A Comprehensive Study of Convergent and
+Commutative Replicated Data Types][shapiro].  The [video][talk] is
+finally available online and the source code is available on
+[GitHub][repo].  The repo also contains some basic modeling of some of
+Conway's work outlined in [Logic and Lattices is Distributed
+Programming][conway].
 
 We'll briefly look at the grow-only counter, which is very similar to a
 vector clock.  Since understanding the clock data structure is required
@@ -276,6 +275,8 @@ Proof.
       rewrite leb_correct; auto.
 Qed.
 {% endhighlight %}
+
+Boom.
 
 # Conclusion
 
