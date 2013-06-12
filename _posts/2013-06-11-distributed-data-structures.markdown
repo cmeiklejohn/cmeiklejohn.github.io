@@ -15,6 +15,8 @@ finally available online and the source code is available on
 Conway's work outlined in [Logic and Lattices for Distributed
 Programming][conway].
 
+The [slides][slides] are also available.
+
 We'll briefly look at the grow-only counter, which is very similar to a
 vector clock.  Since understanding the clock data structure is required
 to begin proving facts about vectors of them, let's dig into clocks
@@ -287,8 +289,11 @@ post.
 
 Feedback is encouraged!
 
+__Updated 2013-06-11:__ Added link to slides.
+
 # Qed.
 
+[slides]: https://speakerdeck.com/cmeiklejohn/distributed-data-structures-in-coq
 [basho]: http://basho.com
 [ricon]: http://ricon.io/archive/2013/east.html
 [repo]: https://github.com/cmeiklejohn/distributed-data-structures
