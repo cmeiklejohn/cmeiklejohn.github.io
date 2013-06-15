@@ -13,9 +13,7 @@ Commutative Replicated Data Types][shapiro].  The [video][talk] is
 finally available online and the source code is available on
 [GitHub][repo].  The repo also contains some basic modeling of some of
 Conway's work outlined in [Logic and Lattices for Distributed
-Programming][conway].
-
-The [slides][slides] are also available.
+Programming][conway].  The [slides][slides] are also available.
 
 We'll briefly look at the grow-only counter, which is very similar to a
 vector clock.  Since understanding the clock data structure is required
@@ -291,7 +289,7 @@ Feedback is encouraged!
 
 __Updated 2013-06-11:__ Added link to slides.
 
-# Qed.
+Qed.
 
 [slides]: https://speakerdeck.com/cmeiklejohn/distributed-data-structures-in-coq
 [basho]: http://basho.com
