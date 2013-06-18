@@ -16,30 +16,9 @@ var svg = d3.select("#chart").append("svg")
 svg.append("rect")
     .attr("class", "background")
     .attr("width", width)
-    .attr("height", height)
-    .on("click", clicked);
+    .attr("height", height);
 
 var g = svg.append("g");
-
-var clicked = function(d) {
-  var x, y, k;
-
-  if (d && centered !== d) {
-    var centroid = path.centroid(d);
-    x = centroid[0];
-    y = centroid[1];
-    k = 4;
-    centered = d;
-  } else {
-    x = width / 2;
-    y = height / 2;
-    k = 1;
-    centered = null;
-  }
-
-  g.selectAll("path")
-      .classed("active", centered && function(d) { return d === centered; });
-};
 
 var ready = function(error, us, summer) {
   g.append("g")
@@ -49,9 +28,14 @@ var ready = function(error, us, summer) {
     .enter().append("path")
       .attr("d", path)
       .attr("class", function(d, i) {
-        console.log(d, i);
-      })
-      .on("click", clicked);
+        var visited = summer.indexOf(d.id);
+
+        if(visited > -1) {
+          return "active";
+        } else {
+          return "inactive";
+        }
+      });
 
   g.append("path")
       .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
