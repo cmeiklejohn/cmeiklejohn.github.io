@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Distributed data structures with Coq: PN-Counters"
-date:   2013-06-19 12:17:10
+date:   2013-06-20 10:17:10
 categories: coq
 ---
 
