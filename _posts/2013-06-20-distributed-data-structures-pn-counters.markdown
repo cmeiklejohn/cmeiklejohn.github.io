@@ -159,5 +159,8 @@ Qed.
 
 Qed.
 
+_View this story on [Hacker News][hn]._
+
 [repo]: https://github.com/cmeiklejohn/distributed-data-structures
 [previous]: http://christophermeiklejohn.com/coq/2013/06/11/distributed-data-structures.html
+[hn]: https://news.ycombinator.com/item?id=5913236

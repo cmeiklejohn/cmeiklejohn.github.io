@@ -349,9 +349,12 @@ welcome and greatly appreciated!
 __Updated 2013-06-04:__ Added details on how node addition is handled in
 `pg2`.
 
+_View this story on [Hacker News][hn]._
+
 [webmachine]: http://github.com/basho/webmachine
 [riak_core]:  http://github.com/basho/riak_core
 [pg]:         http://erlang.org/doc/man/pg.html
 [pg2]:        http://erlang.org/doc/man/pg2.html
 [races]:      http://erlang.org/pipermail/erlang-questions/2008-April/034161.html
 [partitions]: http://erlang.org/pipermail/erlang-questions/2010-April/050992.html
+[hn]:         https://news.ycombinator.com/item?id=5885987

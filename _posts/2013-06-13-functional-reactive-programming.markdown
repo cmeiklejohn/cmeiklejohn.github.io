@@ -25,6 +25,8 @@ reactive programming:
 
 Qed.
 
+_View this story on [Hacker News][hn]._
+
 [frp]: http://en.wikipedia.org/wiki/Functional_reactive_programming
 [video]: http://www.youtube.com/watch?v=ZOCCzDNsAtI
 [slides]: https://speakerdeck.com/cmeiklejohn/functional-reactive-programming
@@ -34,3 +36,4 @@ Qed.
 [flapjax]: https://github.com/brownplt/flapjax
 [javelin]: https://github.com/tailrecursion/javelin
 [rxjs]: https://github.com/Reactive-Extensions/RxJS
+[hn]: https://news.ycombinator.com/item?id=5883643

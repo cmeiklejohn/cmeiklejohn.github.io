@@ -291,6 +291,8 @@ __Updated 2013-06-11:__ Added link to slides.
 
 Qed.
 
+_View this story on [Hacker News][hn]._
+
 [slides]: https://speakerdeck.com/cmeiklejohn/distributed-data-structures-in-coq
 [basho]: http://basho.com
 [ricon]: http://ricon.io/archive/2013/east.html
@@ -298,3 +300,4 @@ Qed.
 [talk]: http://www.youtube.com/watch?v=3RJ24YSiKTI&t=36m15s
 [shapiro]: http://hal.upmc.fr/docs/00/55/55/88/PDF/techreport.pdf
 [conway]: http://db.cs.berkeley.edu/papers/UCB-lattice-tr.pdf
+[hn]:     https://news.ycombinator.com/item?id=5869317

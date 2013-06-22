@@ -353,6 +353,8 @@ Feedback encouraged!
 _Thanks to OJ Reeves and Heinz N. Gies for providing valuable feedback
 on this blog post._
 
+_View this story on [Hacker News][hn]._
+
 [epr]:       http://dl.acm.org/citation.cfm?id=1292520.1292522&coll=DL&dl=GUIDE&CFID=205201430&CFTOKEN=69071722
 [gproc]:     https://github.com/uwiger/gproc
 [previous]:  http://christophermeiklejohn.com/erlang/2013/06/03/erlang-pg2-failure-semantics.html
@@ -364,3 +366,4 @@ on this blog post._
 [leader]:    http://dl.acm.org/citation.cfm?id=1088368
 [deadlock]:  http://erlang.org/pipermail/erlang-questions/2012-July/067761.html
 [loss]:      http://erlang.org/pipermail/erlang-questions/2012-July/067749.html
+[hn]:        https://news.ycombinator.com/item?id=5876188
