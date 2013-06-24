@@ -2,7 +2,7 @@
 layout: post
 title:  "Distributed data structures with Coq: PN-Counters"
 date:   2013-06-20 10:17:10
-categories: coq
+categories: coq crdt
 ---
 
 Continuing my [previous][previous] post on proving properties about

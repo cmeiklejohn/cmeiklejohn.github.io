@@ -2,7 +2,7 @@
 layout: post
 title:  "Distributed data structures with Coq"
 date:   2013-06-11 12:17:10
-categories: coq
+categories: coq crdt
 ---
 
 A few weeks ago, I gave a lightning talk at [Basho's][basho] distributed
