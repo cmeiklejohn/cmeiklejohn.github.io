@@ -15,7 +15,6 @@ for applications which can tolerate this behaviour.
 [Riak PG][riak_pg] is not meant for production use, but more as an
 experiment in trying to model high availability process groups in Erlang
 without the use of coordinated global ETS transactions or consensus.
-election.
 
 _This work was mainly motivated by observed failures in both
 [gproc][gproc] and [pg2][pg2].  For more detailed information, see these
