@@ -141,6 +141,9 @@ processes for modeling computations and handling concurrency.
 
 The code for Riak PG is available on [GitHub][riak_pg].
 
+_View this story on [Hacker News][hn]._
+
+[hn]: https://news.ycombinator.com/item?id=5942370
 [riak_kv]: https://github.com/basho/riak_kv
 [gproc]: https://github.com/uwiger/gproc
 [pg2]: http://erlang.org/doc/man/pg2.html
