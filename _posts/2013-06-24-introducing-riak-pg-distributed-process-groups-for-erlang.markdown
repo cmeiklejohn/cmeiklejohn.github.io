@@ -108,7 +108,7 @@ merge(Replies) ->
 [Riak PG][riak_pg] leverages an Erlang implementation of these data
 types, called [Riak DT][riak_dt] that's being developed by [Sean
 Cribbs][seancribbs], [Russell Brown][russelldb], and [Sam
-Elliot][lenary] of Basho.
+Elliott][lenary] of Basho.
 
 # Garbage collection of the set
 
