@@ -2,7 +2,7 @@
 layout: post
 title:  "Flume-ng configuration with an HDFS sink"
 date:   2013-06-18 13:27:21 -0700
-categories:
+categories: flume hdfs
 ---
 
 I've been playing around with [`flume-ng`][flume-ng] and its
