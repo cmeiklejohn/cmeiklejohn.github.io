@@ -75,7 +75,7 @@ ok
 (riak_pg2@127.0.0.1)3>
 {% endhighlight %}
 
-`pg2` also, maybe counterintiutively, allows processes to join the group
+`pg2` also, maybe counterintuitively, allows processes to join the group
 multiple times, which is something to be aware of when leveraging `pg2`
 as a publish/subscribe mechanism.
 
@@ -195,7 +195,7 @@ And, once the node is restored the process returns.
 
 # So, how does this work?
 
-When a remote `pid` is registered, and it's state transferred to another
+When a remote `pid` is registered, and its state transferred to another
 node, the `pg2` registration system sets up an Erlang monitor to that
 node. When that node happens to become unavailable, processes located on
 remote nodes are removed from the process group.  When the node returns,
