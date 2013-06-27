@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Riak PG: Pruning terminated processes"
-date:   2013-06-28 19:39:45 -0700
+date:   2013-06-27 19:39:45 -0700
 categories: riak erlang crdt
 ---
 
