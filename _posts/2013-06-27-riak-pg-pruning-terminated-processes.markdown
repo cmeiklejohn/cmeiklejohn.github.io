@@ -72,7 +72,7 @@ hosting the process id is available, but the process is no longer alive.
 %% @doc If the node is connected, and the process is not alive, prune
 %%      it.
 prune_pid(Pid) when is_pid(Pid) ->
-    lists:member(node(Pid), nodes()) andalso is_process_alive(Pid).
+    lists:member(node(Pid), nodes()) andalso (is_process_alive(Pid) =:= false).
 {% endhighlight %}
 
 These changes can be seen [here][pr], in the following pull request.
