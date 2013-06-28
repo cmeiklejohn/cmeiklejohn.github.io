@@ -72,7 +72,8 @@ hosting the process id is available, but the process is no longer alive.
 %% @doc If the node is connected, and the process is not alive, prune
 %%      it.
 prune_pid(Pid) when is_pid(Pid) ->
-    lists:member(node(Pid), nodes()) andalso (is_process_alive(Pid) =:= false).
+    lists:member(node(Pid), nodes()) andalso
+      (is_process_alive(Pid) =:= false).
 {% endhighlight %}
 
 [blog]: http://christophermeiklejohn.com/erlang/riak/crdt/2013/06/24/introducing-riak-pg-distributed-process-groups-for-erlang.html
