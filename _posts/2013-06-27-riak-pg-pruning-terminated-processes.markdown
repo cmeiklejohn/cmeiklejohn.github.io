@@ -75,8 +75,5 @@ prune_pid(Pid) when is_pid(Pid) ->
     lists:member(node(Pid), nodes()) andalso (is_process_alive(Pid) =:= false).
 {% endhighlight %}
 
-These changes can be seen [here][pr], in the following pull request.
-
 [blog]: http://christophermeiklejohn.com/erlang/riak/crdt/2013/06/24/introducing-riak-pg-distributed-process-groups-for-erlang.html
 [riakpg]: https://github.com/cmeiklejohn/riak_pg
-[pr]: https://github.com/cmeiklejohn/riak_pg/pull/1
