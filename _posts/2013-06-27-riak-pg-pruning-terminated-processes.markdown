@@ -76,5 +76,7 @@ prune_pid(Pid) when is_pid(Pid) ->
       (is_process_alive(Pid) =:= false).
 {% endhighlight %}
 
+Qed.
+
 [blog]: http://christophermeiklejohn.com/erlang/riak/crdt/2013/06/24/introducing-riak-pg-distributed-process-groups-for-erlang.html
 [riakpg]: https://github.com/cmeiklejohn/riak_pg
