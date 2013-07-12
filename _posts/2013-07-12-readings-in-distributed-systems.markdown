@@ -75,7 +75,8 @@ case studies on problems in distributed programming.
   Sears - 2011
 * [MapReduce: Simplified Data Processing on Large Clusters][mapreduce] -
   Jeffrey Dean, Sanjay Ghemawat - 2004
-* [A Note On Distributed Computing][computing] - Samuel C. Kendall, Jim Waldo, Ann Wollrath, Geoff Wyant - 1994
+* [A Note On Distributed Computing][computing] - Samuel C. Kendall, Jim
+  Waldo, Ann Wollrath, Geoff Wyant - 1994
 
 #
 
@@ -83,6 +84,8 @@ case studies on problems in distributed programming.
 
 Implemented distributed systems.
 
+* [A History Of The Virtual Synchrony Replication Model][synchrony] -
+  Ken Birman - 2010
 * [Cassandra — A Decentralized Structured Storage System][cassandra] -
     Avinash Lakshman, Prashant Malik - 2009
 * [Dynamo: Amazon’s Highly Available Key-Value Store][dynamo] -
@@ -116,3 +119,4 @@ requests][pull] or leave comments!
 [crdt2]: http://hal.archives-ouvertes.fr/docs/00/39/79/81/PDF/RR-6956.pdf
 [mapreduce]: http://research.google.com/archive/mapreduce.html
 [cassandra]: http://www.cs.cornell.edu/projects/ladis2009/papers/lakshman-ladis2009.pdf
+[synchrony]: http://www.cs.cornell.edu/ken/History.pdf
