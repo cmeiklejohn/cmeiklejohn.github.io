@@ -37,6 +37,8 @@ operations across a set of replicas.
 
 * [HAT, not CAP: Highly Available Transactions][hat] - Peter Bailis,
   Alan Fekete, Ali Ghodsi, Joseph M. Hellerstein, Ion Stoica - 2013
+* [Harvest, Yield, and Scalable Tolerant Systems][harvest] - Armando
+  Fox, Eric A. Brewer - 1999
 * [Linearizability: A Correctness Condition for Concurrent
   Objects][linearizability] - Maurice P. Herlihy, Jeannette M. Wing -
   1990
@@ -100,3 +102,4 @@ requests][pull] or leave comments!
 [blooml]: http://db.cs.berkeley.edu/papers/UCB-lattice-tr.pdf
 [dedalus]: http://db.cs.berkeley.edu/papers/datalog2011-dedalus.pdf
 [clocks]: http://www.stanford.edu/class/cs240/readings/lamport.pdf
+[harvest]: http://lab.mscs.mu.edu/Dist2012/lectures/HarvestYield.pdf
