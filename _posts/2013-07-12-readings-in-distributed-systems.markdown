@@ -82,7 +82,7 @@ case studies on problems in distributed programming.
 
 ## Systems
 
-Implemented distributed systems.
+Implemented and theoretical distributed systems.
 
 * [A History Of The Virtual Synchrony Replication Model][synchrony] -
   Ken Birman - 2010
@@ -92,6 +92,8 @@ Implemented distributed systems.
     Giuseppe DeCandia, Deniz Hastorun, Madan Jampani, Gunavardhan
     Kakulapati, Avinash Lakshman, Alex Pilchin, Swaminathan
     Sivasubramanian, Peter Vosshall and Werner Vogels - 2007
+* [Stasis: Flexible Transactional Storage][stasis] - Russell Sears, Eric
+  Brewer - 2006
 
 #
 
@@ -120,3 +122,4 @@ requests][pull] or leave comments!
 [mapreduce]: http://research.google.com/archive/mapreduce.html
 [cassandra]: http://www.cs.cornell.edu/projects/ladis2009/papers/lakshman-ladis2009.pdf
 [synchrony]: http://www.cs.cornell.edu/ken/History.pdf
+[stasis]: http://www.cs.berkeley.edu/~sears/publications/Stasis-OSDI.pdf
