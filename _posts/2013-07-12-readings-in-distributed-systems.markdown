@@ -67,8 +67,14 @@ convergence to the correct value.
 Languages aimed towards disorderly distributed programming as well as
 case studies on problems in distributed programming.
 
-* [Logic and Lattices for Distributed Programming][blooml] - Neil Conway, William Marczak, Peter Alvaro, Joseph M. Hellerstein, David Maier - 2012
-* [Dedalus: Datalog in Time and Space][dedalus] - Peter Alvaro, William R. Marczak, Neil Conway, Joseph M. Hellerstein, David Maier, Russell Sears - 2011
+* [Logic and Lattices for Distributed Programming][blooml] - Neil
+  Conway, William Marczak, Peter Alvaro, Joseph M. Hellerstein, David
+  Maier - 2012
+* [Dedalus: Datalog in Time and Space][dedalus] - Peter Alvaro, William
+  R. Marczak, Neil Conway, Joseph M. Hellerstein, David Maier, Russell
+  Sears - 2011
+* [MapReduce: Simplified Data Processing on Large Clusters][mapreduce] -
+  Jeffrey Dean, Sanjay Ghemawat - 2004
 * [A Note On Distributed Computing][computing] - Samuel C. Kendall, Jim Waldo, Ann Wollrath, Geoff Wyant - 1994
 
 #
@@ -106,3 +112,4 @@ requests][pull] or leave comments!
 [clocks]: http://www.stanford.edu/class/cs240/readings/lamport.pdf
 [harvest]: http://lab.mscs.mu.edu/Dist2012/lectures/HarvestYield.pdf
 [crdt2]: http://hal.archives-ouvertes.fr/docs/00/39/79/81/PDF/RR-6956.pdf
+[mapreduce]: http://research.google.com/archive/mapreduce.html
