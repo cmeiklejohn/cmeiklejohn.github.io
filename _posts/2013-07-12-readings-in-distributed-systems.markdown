@@ -94,6 +94,8 @@ Implemented and theoretical distributed systems.
     Sivasubramanian, Peter Vosshall and Werner Vogels - 2007
 * [Stasis: Flexible Transactional Storage][stasis] - Russell Sears, Eric
   Brewer - 2006
+* [The Process Group Approach to Reliable Distributed Computing][isis] -
+  Ken Birman - 1993
 
 #
 
@@ -123,3 +125,4 @@ requests][pull] or leave comments!
 [cassandra]: http://www.cs.cornell.edu/projects/ladis2009/papers/lakshman-ladis2009.pdf
 [synchrony]: http://www.cs.cornell.edu/ken/History.pdf
 [stasis]: http://www.cs.berkeley.edu/~sears/publications/Stasis-OSDI.pdf
+[isis]: http://www.cs.cornell.edu/projects/spinglass/public_pdfs/Process%20Group%20Approach.pdf
