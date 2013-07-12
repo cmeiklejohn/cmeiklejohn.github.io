@@ -83,6 +83,8 @@ case studies on problems in distributed programming.
 
 Implemented distributed systems.
 
+* [Cassandra — A Decentralized Structured Storage System][cassandra] -
+    Avinash Lakshman, Prashant Malik - 2009
 * [Dynamo: Amazon’s Highly Available Key-Value Store][dynamo] -
     Giuseppe DeCandia, Deniz Hastorun, Madan Jampani, Gunavardhan
     Kakulapati, Avinash Lakshman, Alex Pilchin, Swaminathan
@@ -113,3 +115,4 @@ requests][pull] or leave comments!
 [harvest]: http://lab.mscs.mu.edu/Dist2012/lectures/HarvestYield.pdf
 [crdt2]: http://hal.archives-ouvertes.fr/docs/00/39/79/81/PDF/RR-6956.pdf
 [mapreduce]: http://research.google.com/archive/mapreduce.html
+[cassandra]: http://www.cs.cornell.edu/projects/ladis2009/papers/lakshman-ladis2009.pdf
