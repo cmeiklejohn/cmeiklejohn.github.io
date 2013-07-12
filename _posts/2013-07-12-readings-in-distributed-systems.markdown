@@ -57,6 +57,8 @@ convergence to the correct value.
     Zawirski - 2011
 * [A Commutative Replicated Data Type For Cooperative Editing][treedoc]
   - Nuno Preguica, Joan Manuel Marques, Marc Shapiro, Mihai Letia, 2009
+* [CRDTs: Consistency Without Concurrency Control][crdt2] - Mihai Letia,
+  Nuno Preguiça, Marc Shapiro - 2009
 
 #
 
@@ -103,3 +105,4 @@ requests][pull] or leave comments!
 [dedalus]: http://db.cs.berkeley.edu/papers/datalog2011-dedalus.pdf
 [clocks]: http://www.stanford.edu/class/cs240/readings/lamport.pdf
 [harvest]: http://lab.mscs.mu.edu/Dist2012/lectures/HarvestYield.pdf
+[crdt2]: http://hal.archives-ouvertes.fr/docs/00/39/79/81/PDF/RR-6956.pdf
