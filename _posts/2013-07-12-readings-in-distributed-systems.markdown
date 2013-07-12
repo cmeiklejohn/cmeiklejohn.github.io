@@ -40,6 +40,8 @@ operations across a set of replicas.
 * [Linearizability: A Correctness Condition for Concurrent
   Objects][linearizability] - Maurice P. Herlihy, Jeannette M. Wing -
   1990
+* [Time, Clocks, and the Ordering of Events in a Distributed
+  System][clocks] - Leslie Lamport - 1978
 
 #
 
@@ -97,3 +99,4 @@ requests][pull] or leave comments!
 [computing]: http://dl.acm.org/citation.cfm?id=974938
 [blooml]: http://db.cs.berkeley.edu/papers/UCB-lattice-tr.pdf
 [dedalus]: http://db.cs.berkeley.edu/papers/datalog2011-dedalus.pdf
+[clocks]: http://www.stanford.edu/class/cs240/readings/lamport.pdf
