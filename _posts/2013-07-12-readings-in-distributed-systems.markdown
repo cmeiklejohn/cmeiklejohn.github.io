@@ -35,6 +35,8 @@ The problems of establishing consensus in a distributed system.
 Types of consistency, and practical solutions to solving ensuring atomic
 operations across a set of replicas.
 
+* [Bolt-on Causal Consistency][bolt] - Peter Bailis, Ali Ghodsi, Joseph
+  M. Hellerstein, Ion Stoica - 2013
 * [HAT, not CAP: Highly Available Transactions][hat] - Peter Bailis,
   Alan Fekete, Ali Ghodsi, Joseph M. Hellerstein, Ion Stoica - 2013
 * [Brewer's Conjecture and the Feasibility of Consistent, Available,
@@ -130,3 +132,4 @@ requests][pull] or leave comments!
 [stasis]: http://www.cs.berkeley.edu/~sears/publications/Stasis-OSDI.pdf
 [isis]: http://www.cs.cornell.edu/projects/spinglass/public_pdfs/Process%20Group%20Approach.pdf
 [cap]: http://dl.acm.org/citation.cfm?id=564601
+[bolt]: http://www.bailis.org/talks/bolton-sigmod2013.pdf
