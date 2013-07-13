@@ -129,7 +129,7 @@ requests][pull] or leave comments!
 [mapreduce]: http://research.google.com/archive/mapreduce.html
 [cassandra]: http://www.cs.cornell.edu/projects/ladis2009/papers/lakshman-ladis2009.pdf
 [synchrony]: http://www.cs.cornell.edu/ken/History.pdf
-[stasis]: http://www.cs.berkeley.edu/~sears/publications/Stasis-OSDI.pdf
+[stasis]: http://dl.acm.org/citation.cfm?id=1298459
 [isis]: http://www.cs.cornell.edu/projects/spinglass/public_pdfs/Process%20Group%20Approach.pdf
 [cap]: http://dl.acm.org/citation.cfm?id=564601
 [bolt]: http://www.bailis.org/talks/bolton-sigmod2013.pdf
