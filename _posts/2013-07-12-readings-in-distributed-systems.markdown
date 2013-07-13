@@ -23,6 +23,8 @@ The problems of establishing consensus in a distributed system.
   Flavio P. Junqueira - 2008
 * [Paxos Made Live - An Engineering Perspective][paxoslive] -
     Tushar Deepak Chandra, Robert Griesemer, Joshua Redstone - 2007
+* [The Chubby Lock Service for Loosely-Coupled Distributed Systems][chubby] - 
+  Mike Burrows - 2006
 * [Paxos Made Simple][paxossimple] - Leslie Lamport - 2001
 * [Impossibility of Distributed Consensus with One Faulty Process][flp]
   - Michael Fischer, Nancy Lynch, Michael Patterson - 1985
@@ -137,3 +139,4 @@ requests][pull] or leave comments!
 [cap]: http://dl.acm.org/citation.cfm?id=564601
 [bolt]: http://www.bailis.org/talks/bolton-sigmod2013.pdf
 [bigtable]: http://research.google.com/archive/bigtable-osdi06.pdf
+[chubby]: http://research.google.com/archive/chubby-osdi06.pdf
