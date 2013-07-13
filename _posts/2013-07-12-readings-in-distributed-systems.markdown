@@ -99,6 +99,9 @@ Implemented and theoretical distributed systems.
     Sivasubramanian, Peter Vosshall and Werner Vogels - 2007
 * [Stasis: Flexible Transactional Storage][stasis] - Russell Sears, Eric
   Brewer - 2006
+* [Bigtable: A Distributed Storage System for Structured Data][bigtable] - 
+  Fay Chang, Jeffrey Dean, Sanjay Ghemawat, Wilson C. Hsieh, Deborah A. Wallach, Mike Burrows, 
+  Tushar Chandra, Andrew Fikes, and Robert E. Gruber - 2006
 * [The Process Group Approach to Reliable Distributed Computing][isis] -
   Ken Birman - 1993
 
@@ -133,3 +136,4 @@ requests][pull] or leave comments!
 [isis]: http://www.cs.cornell.edu/projects/spinglass/public_pdfs/Process%20Group%20Approach.pdf
 [cap]: http://dl.acm.org/citation.cfm?id=564601
 [bolt]: http://www.bailis.org/talks/bolton-sigmod2013.pdf
+[bigtable]: http://research.google.com/archive/bigtable-osdi06.pdf
