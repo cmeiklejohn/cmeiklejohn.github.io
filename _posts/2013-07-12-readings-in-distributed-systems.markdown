@@ -11,7 +11,14 @@ Inspired by a recent purchase of the [Red Book][redbook], which provides
 a curated list of important papers around database systems, I've decided
 to begin assembling a list of important papers in distributed systems.
 Similar to the Red Book, I've broken each group of papers out into a
-series of categories.
+series of categories, each highlighting a progression of related ideas
+over time focused in a specific area of research within the field.
+
+Keeping the tradition of the Red Book, I've included both papers which
+resulted in very successful systems and/or techniques, as well as papers
+which introduced a concept which was either immediately dismissed or
+proven incorrect.  This emphasizes the progression of ideas which lead
+to the development of these systems.
 
 ## Consensus
 
@@ -23,8 +30,8 @@ The problems of establishing consensus in a distributed system.
   Flavio P. Junqueira - 2008
 * [Paxos Made Live - An Engineering Perspective][paxoslive] -
     Tushar Deepak Chandra, Robert Griesemer, Joshua Redstone - 2007
-* [The Chubby Lock Service for Loosely-Coupled Distributed Systems][chubby] - 
-  Mike Burrows - 2006
+* [The Chubby Lock Service for Loosely-Coupled Distributed
+  Systems][chubby] - Mike Burrows - 2006
 * [Paxos Made Simple][paxossimple] - Leslie Lamport - 2001
 * [Impossibility of Distributed Consensus with One Faulty Process][flp]
   - Michael Fischer, Nancy Lynch, Michael Patterson - 1985
@@ -95,15 +102,16 @@ Implemented and theoretical distributed systems.
   Ken Birman - 2010
 * [Cassandra — A Decentralized Structured Storage System][cassandra] -
     Avinash Lakshman, Prashant Malik - 2009
-* [Dynamo: Amazon’s Highly Available Key-Value Store][dynamo] -
-    Giuseppe DeCandia, Deniz Hastorun, Madan Jampani, Gunavardhan
-    Kakulapati, Avinash Lakshman, Alex Pilchin, Swaminathan
-    Sivasubramanian, Peter Vosshall and Werner Vogels - 2007
+* [Dynamo: Amazon’s Highly Available Key-Value Store][dynamo] - Giuseppe
+  DeCandia, Deniz Hastorun, Madan Jampani, Gunavardhan Kakulapati,
+  Avinash Lakshman, Alex Pilchin, Swaminathan Sivasubramanian, Peter
+  Vosshall and Werner Vogels - 2007
 * [Stasis: Flexible Transactional Storage][stasis] - Russell Sears, Eric
   Brewer - 2006
-* [Bigtable: A Distributed Storage System for Structured Data][bigtable] - 
-  Fay Chang, Jeffrey Dean, Sanjay Ghemawat, Wilson C. Hsieh, Deborah A. Wallach, Mike Burrows, 
-  Tushar Chandra, Andrew Fikes, and Robert E. Gruber - 2006
+* [Bigtable: A Distributed Storage System for Structured Data][bigtable]
+  - Fay Chang, Jeffrey Dean, Sanjay Ghemawat, Wilson C. Hsieh, Deborah
+    A.  Wallach, Mike Burrows, Tushar Chandra, Andrew Fikes, and Robert
+    E.  Gruber - 2006
 * [The Process Group Approach to Reliable Distributed Computing][isis] -
   Ken Birman - 1993
 
