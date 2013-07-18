@@ -5,6 +5,9 @@ date:   2013-06-24 14:14:53 -0700
 categories: erlang riak crdt
 ---
 
+_This paper has been accepted and will be presented at [ACM SIGPLAN
+Erlang Workshop 13][sigplan]._
+
 [Riak PG][riak_pg] is prototype implementation of distributed process
 groups built on top of [Riak Core][riak_core].  Its main goals are to
 provide high availability and deterministic conflict resolution in the
@@ -157,3 +160,4 @@ _View this story on [Hacker News][hn]._
 [pg2blog]: http://christophermeiklejohn.com/erlang/2013/06/03/erlang-pg2-failure-semantics.html
 [optimized]: http://arxiv.org/abs/1210.3368
 [crdt]: http://hal.inria.fr/inria-00555588/
+[sigplan]: http://www.erlang.org/workshop/2013/
