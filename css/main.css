@@ -21,6 +21,10 @@ body {
 
 .youtube-player { display: block; margin: 0 auto; }
 
+blockquote {
+  margin-left: 25px;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-size: 100%; }
 
