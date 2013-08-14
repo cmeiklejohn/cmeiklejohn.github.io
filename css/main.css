@@ -14,7 +14,7 @@ html, body { height: 100%; }
 
 body {
   background-color: #FFF;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Droid Serif', serif;
   font-size: small;
   text-align: center;
 }
@@ -23,6 +23,24 @@ body {
 
 blockquote {
   margin-left: 25px;
+}
+
+ul {
+  margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+span.author {
+  color: #aaa;
+  display: block;
+}
+
+span.date {
+  color: #aaa;
+  display: block;
 }
 
 h1, h2, h3, h4, h5, h6 {

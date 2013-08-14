@@ -24,98 +24,115 @@ to the development of these systems.
 
 The problems of establishing consensus in a distributed system.
 
-* [In Search of an Understandable Consensus Algorithm][raft] -
-    Diego Ongaro, John Ousterhout - 2013
-* [A Simple Totally Ordered Broadcast Protocol][zab] - Benjamin Reed,
-  Flavio P. Junqueira - 2008
-* [Paxos Made Live - An Engineering Perspective][paxoslive] -
-    Tushar Deepak Chandra, Robert Griesemer, Joshua Redstone - 2007
-* [The Chubby Lock Service for Loosely-Coupled Distributed
-  Systems][chubby] - Mike Burrows - 2006
-* [Paxos Made Simple][paxossimple] - Leslie Lamport - 2001
+* [In Search of an Understandable Consensus Algorithm][raft]
+  <span class="author">Diego Ongaro, John Ousterhout</span>
+  <span class="date">2013</span>
+* [A Simple Totally Ordered Broadcast Protocol][zab]
+  <span class="author">Benjamin Reed, Flavio P. Junqueira</span>
+  <span class="date">2008</span>
+* [Paxos Made Live - An Engineering Perspective][paxoslive]
+  <span class="author">Tushar Deepak Chandra, Robert Griesemer, Joshua Redstone</span>
+  <span class="date">2007</span>
+* [The Chubby Lock Service for Loosely-Coupled Distributed Systems][chubby]
+  <span class="author">Mike Burrows</span>
+  <span class="date">2006</span>
+* [Paxos Made Simple][paxossimple]
+  <span class="author">Leslie Lamport</span>
+  <span class="date">2001</span>
 * [Impossibility of Distributed Consensus with One Faulty Process][flp]
-  - Michael Fischer, Nancy Lynch, Michael Patterson - 1985
-* [The Byzantine Generals Problem][generals] - Leslie Lamport - 1982
-
-#
+  <span class="author">Michael Fischer, Nancy Lynch, Michael Patterson</span>
+  <span class="date">1985</span>
+* [The Byzantine Generals Problem][generals]
+  <span class="author">Leslie Lamport</span>
+  <span class="date">1982</span>
 
 ## Consistency
 
 Types of consistency, and practical solutions to solving ensuring atomic
 operations across a set of replicas.
 
-* [Bolt-on Causal Consistency][bolt] - Peter Bailis, Ali Ghodsi, Joseph
-  M. Hellerstein, Ion Stoica - 2013
-* [HAT, not CAP: Highly Available Transactions][hat] - Peter Bailis,
-  Alan Fekete, Ali Ghodsi, Joseph M. Hellerstein, Ion Stoica - 2013
-* [Brewer's Conjecture and the Feasibility of Consistent, Available,
-  Partition-Tolerant Web Services][cap] - Seth Gilbert, Nancy Lynch -
-  2002
-* [Harvest, Yield, and Scalable Tolerant Systems][harvest] - Armando
-  Fox, Eric A. Brewer - 1999
-* [Linearizability: A Correctness Condition for Concurrent
-  Objects][linearizability] - Maurice P. Herlihy, Jeannette M. Wing -
-  1990
-* [Time, Clocks, and the Ordering of Events in a Distributed
-  System][clocks] - Leslie Lamport - 1978
-
-#
+* [Bolt-on Causal Consistency][bolt]
+  <span class="author">Peter Bailis, Ali Ghodsi, Joseph M. Hellerstein, Ion Stoica</span>
+  <span class="date">2013</span>
+* [HAT, not CAP: Highly Available Transactions][hat]
+  <span class="author">Peter Bailis, Alan Fekete, Ali Ghodsi, Joseph M. Hellerstein, Ion Stoica</span>
+  <span class="date">2013</span>
+* [Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services][cap]
+  <span class="author">Seth Gilbert, Nancy Lynch</span>
+  <span class="date">2002</span>
+* [Harvest, Yield, and Scalable Tolerant Systems][harvest]
+  <span class="author">Armando Fox, Eric A. Brewer</span>
+  <span class="date">1999</span>
+* [Linearizability: A Correctness Condition for Concurrent Objects][linearizability]
+  <span class="author">Maurice P. Herlihy, Jeannette M. Wing</span>
+  <span class="date">1990</span>
+* [Time, Clocks, and the Ordering of Events in a Distributed System][clocks]
+  <span class="author">Leslie Lamport</span>
+  <span class="date">1978</span>
 
 ## Conflict-free data structures
 
 Studies on data structures which do not require coordination to ensure
 convergence to the correct value.
 
-* [A Comprehensive Study of Convergent and Commutative Replicated Data
-    Types][crdt1] - Mark Shapiro, Nuno Preguiça, Carlos Baquero, Marek
-    Zawirski - 2011
+* [A Comprehensive Study of Convergent and Commutative Replicated Data Types][crdt1]
+  <span class="author">Mark Shapiro, Nuno Preguiça, Carlos Baquero, Marek Zawirski</span>
+  <span class="date">2011</span>
 * [A Commutative Replicated Data Type For Cooperative Editing][treedoc]
-  - Nuno Preguica, Joan Manuel Marques, Marc Shapiro, Mihai Letia, 2009
-* [CRDTs: Consistency Without Concurrency Control][crdt2] - Mihai Letia,
-  Nuno Preguiça, Marc Shapiro - 2009
-
-#
+  <span class="author">Nuno Preguica, Joan Manuel Marques, Marc Shapiro,
+  Mihai Letia</span>
+  <span class="date">2009</span>
+* [CRDTs: Consistency Without Concurrency Control][crdt2]
+  <span class="author">Mihai Letia, Nuno Preguiça, Marc Shapiro</span>
+  <span class="date">2009</span>
 
 ## Distributed programming
 
 Languages aimed towards disorderly distributed programming as well as
 case studies on problems in distributed programming.
 
-* [Logic and Lattices for Distributed Programming][blooml] - Neil
-  Conway, William Marczak, Peter Alvaro, Joseph M. Hellerstein, David
-  Maier - 2012
-* [Dedalus: Datalog in Time and Space][dedalus] - Peter Alvaro, William
-  R. Marczak, Neil Conway, Joseph M. Hellerstein, David Maier, Russell
-  Sears - 2011
-* [MapReduce: Simplified Data Processing on Large Clusters][mapreduce] -
-  Jeffrey Dean, Sanjay Ghemawat - 2004
-* [A Note On Distributed Computing][computing] - Samuel C. Kendall, Jim
-  Waldo, Ann Wollrath, Geoff Wyant - 1994
-
-#
+* [Logic and Lattices for Distributed Programming][blooml]
+  <span class="author">Neil Conway, William Marczak, Peter Alvaro,
+  Joseph M. Hellerstein, David Maier</span>
+  <span class="date">2012</span>
+* [Dedalus: Datalog in Time and Space][dedalus]
+  <span class="author">Peter Alvaro, William R. Marczak, Neil Conway,
+  Joseph M. Hellerstein, David Maier, Russell Sears</span>
+  <span class="date">2011</span>
+* [MapReduce: Simplified Data Processing on Large Clusters][mapreduce]
+  <span class="author">Jeffrey Dean, Sanjay Ghemawat</span>
+  <span class="date">2004</span>
+* [A Note On Distributed Computing][computing]
+  <span class="author">Samuel C. Kendall, Jim Waldo, Ann Wollrath, Geoff
+  Wyant</span>
+  <span class="date">1994</span>
 
 ## Systems
 
 Implemented and theoretical distributed systems.
 
-* [A History Of The Virtual Synchrony Replication Model][synchrony] -
-  Ken Birman - 2010
-* [Cassandra — A Decentralized Structured Storage System][cassandra] -
-    Avinash Lakshman, Prashant Malik - 2009
-* [Dynamo: Amazon’s Highly Available Key-Value Store][dynamo] - Giuseppe
-  DeCandia, Deniz Hastorun, Madan Jampani, Gunavardhan Kakulapati,
-  Avinash Lakshman, Alex Pilchin, Swaminathan Sivasubramanian, Peter
-  Vosshall and Werner Vogels - 2007
-* [Stasis: Flexible Transactional Storage][stasis] - Russell Sears, Eric
-  Brewer - 2006
+* [A History Of The Virtual Synchrony Replication Model][synchrony]
+  <span class="author">Ken Birman</span>
+  <span class="date">2010</span>
+* [Cassandra — A Decentralized Structured Storage System][cassandra]
+  <span class="author">Avinash Lakshman, Prashant Malik</span>
+  <span class="date">2009</span>
+* [Dynamo: Amazon’s Highly Available Key-Value Store][dynamo]
+  <span class="author">Giuseppe DeCandia, Deniz Hastorun, Madan Jampani,
+  Gunavardhan Kakulapati, Avinash Lakshman, Alex Pilchin, Swaminathan
+  Sivasubramanian, Peter Vosshall and Werner Vogels</span>
+  <span class="date">2007</span>
+* [Stasis: Flexible Transactional Storage][stasis]
+  <span class="author">Russell Sears, Eric Brewer</span>
+  <span class="date">2006</span>
 * [Bigtable: A Distributed Storage System for Structured Data][bigtable]
-  - Fay Chang, Jeffrey Dean, Sanjay Ghemawat, Wilson C. Hsieh, Deborah
-    A.  Wallach, Mike Burrows, Tushar Chandra, Andrew Fikes, and Robert
-    E.  Gruber - 2006
-* [The Process Group Approach to Reliable Distributed Computing][isis] -
-  Ken Birman - 1993
-
-#
+  <span class="author">Fay Chang, Jeffrey Dean, Sanjay Ghemawat, Wilson
+  C. Hsieh, Deborah A. Wallach, Mike Burrows, Tushar Chandra, Andrew
+  Fikes, and Robert E. Gruber</span>
+  <span class="date">2006</span>
+* [The Process Group Approach to Reliable Distributed Computing][isis]
+  <span class="author">Ken Birman</span>
+  <span class="date">1993</span>
 
 I'm hoping to make this into a living document, so please submit [pull
 requests][pull] or leave comments!
