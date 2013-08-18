@@ -14,8 +14,8 @@ html, body { height: 100%; }
 
 body {
   background-color: #FFF;
-  font-family: 'Droid Serif', serif;
-  font-size: small;
+  font-family: 'Lora', serif;
+  font-size: medium;
   text-align: center;
 }
 
@@ -74,6 +74,7 @@ ul.posts li {
 
 code {
   font-family: 'Inconsolata', sans-serif;
+  font-size: medium;
 }
 
 ul.posts span {
