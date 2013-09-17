@@ -130,6 +130,9 @@ Implemented and theoretical distributed systems.
   C. Hsieh, Deborah A. Wallach, Mike Burrows, Tushar Chandra, Andrew
   Fikes, and Robert E. Gruber</span>
   <span class="date">2006</span>
+* [The Google File System][gfs]
+  <span class="author">Sanjay Ghemawat, Howard Gobioff, and Shun-Tak Leung</span>
+  <span class="date">2003</span>
 * [The Process Group Approach to Reliable Distributed Computing][isis]
   <span class="author">Ken Birman</span>
   <span class="date">1993</span>
@@ -165,3 +168,4 @@ requests][pull] or leave comments!
 [bolt]: http://www.bailis.org/talks/bolton-sigmod2013.pdf
 [bigtable]: http://research.google.com/archive/bigtable-osdi06.pdf
 [chubby]: http://research.google.com/archive/chubby-osdi06.pdf
+[gfs]: http://research.google.com/archive/gfs.html
