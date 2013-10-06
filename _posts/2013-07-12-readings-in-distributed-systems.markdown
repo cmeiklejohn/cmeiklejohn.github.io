@@ -137,6 +137,16 @@ Implemented and theoretical distributed systems.
   <span class="author">Ken Birman</span>
   <span class="date">1993</span>
 
+## Books
+
+Overviews and details covering many of the above papers and concepts compiled into single resources.
+
+* [Distributed Systems: for fun and profit][distsys_fun-profit]
+  <span class="author">Mikito Takada</span>
+  <span class="date">2013</span>
+
+---
+
 I'm hoping to make this into a living document, so please submit [pull
 requests][pull] or leave comments!
 
@@ -169,3 +179,4 @@ requests][pull] or leave comments!
 [bigtable]: http://research.google.com/archive/bigtable-osdi06.pdf
 [chubby]: http://research.google.com/archive/chubby-osdi06.pdf
 [gfs]: http://research.google.com/archive/gfs.html
+[distsys_fun-profit]: http://book.mixu.net/distsys/
