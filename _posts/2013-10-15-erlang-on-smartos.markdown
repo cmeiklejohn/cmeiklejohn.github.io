@@ -22,9 +22,9 @@ There are a few interesting things here:
   the OpenSolaris derived systems, specifically OmniOS and SmartOS.  I
   build this release in the process of testing HiPE, so I've enabled
   both the HiPE application and native library compilation.
-* I've disabled the building of the jinterface application, because I
+* I've disabled the JInterface application, because I
   was running into problems with the generated Makefile.  See below.
-* I've also disabled building of the odbc application, because the
+* I've also disabled the ODBC application, because the
   freetds package in SmartOS, while providing the correct header files
   appears to be missing some of the runtime library dependencies needed.
 * Finally, I've manually specified the path to the correct OpenSSL
