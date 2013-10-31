@@ -173,7 +173,7 @@ requests][pull] or leave comments!
 [mapreduce]: http://research.google.com/archive/mapreduce.html
 [cassandra]: http://www.cs.cornell.edu/projects/ladis2009/papers/lakshman-ladis2009.pdf
 [synchrony]: http://www.cs.cornell.edu/ken/History.pdf
-[stasis]: http://dl.acm.org/citation.cfm?id=1298459
+[stasis]: http://www.cs.berkeley.edu/~brewer/sears-2006.pdf
 [isis]: http://www.cs.cornell.edu/projects/spinglass/public_pdfs/Process%20Group%20Approach.pdf
 [cap]: http://dl.acm.org/citation.cfm?id=564601
 [bigtable]: http://research.google.com/archive/bigtable-osdi06.pdf
