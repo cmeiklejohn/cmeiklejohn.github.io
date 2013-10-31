@@ -51,24 +51,24 @@ The problems of establishing consensus in a distributed system.
 Types of consistency, and practical solutions to solving ensuring atomic
 operations across a set of replicas.
 
-* [Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services][cap]
-  <span class="author">Seth Gilbert, Nancy Lynch</span>
-  <span class="date">2002</span>
-* [Time, Clocks, and the Ordering of Events in a Distributed System][clocks]
-  <span class="author">Leslie Lamport</span>
-  <span class="date">1978</span>
-* [Harvest, Yield, and Scalable Tolerant Systems][harvest]
-  <span class="author">Armando Fox, Eric A. Brewer</span>
-  <span class="date">1999</span>
-* [Optimistic Replication][optimistic]
-  <span class="author">Yasushi Saito and Marc Shapiro</span>
-  <span class="date">2005</span>
-* [Linearizability: A Correctness Condition for Concurrent Objects][linearizability]
-  <span class="author">Maurice P. Herlihy, Jeannette M. Wing</span>
-  <span class="date">1990</span>
 * [Highly Available Transactions: Virtues and Limitations][hat]
   <span class="author">Peter Bailis, Aaron Davidson, Alan Fekete, Ali Ghodsi, Joseph M. Hellerstein, Ion Stoica</span>
   <span class="date">2013</span>
+* [Optimistic Replication][optimistic]
+  <span class="author">Yasushi Saito and Marc Shapiro</span>
+  <span class="date">2005</span>
+* [Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services][cap]
+  <span class="author">Seth Gilbert, Nancy Lynch</span>
+  <span class="date">2002</span>
+* [Harvest, Yield, and Scalable Tolerant Systems][harvest]
+  <span class="author">Armando Fox, Eric A. Brewer</span>
+  <span class="date">1999</span>
+* [Linearizability: A Correctness Condition for Concurrent Objects][linearizability]
+  <span class="author">Maurice P. Herlihy, Jeannette M. Wing</span>
+  <span class="date">1990</span>
+* [Time, Clocks, and the Ordering of Events in a Distributed System][clocks]
+  <span class="author">Leslie Lamport</span>
+  <span class="date">1978</span>
 
 ## Conflict-free data structures
 
