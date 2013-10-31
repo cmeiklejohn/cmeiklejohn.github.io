@@ -137,6 +137,9 @@ Implemented and theoretical distributed systems.
 * [The Google File System][gfs]
   <span class="author">Sanjay Ghemawat, Howard Gobioff, and Shun-Tak Leung</span>
   <span class="date">2003</span>
+* [Cluster-Based Scalable Network Services][sns]
+  <span class="author">Armando Fox, Steven D. Gribble, Yatin Chawathe, Eric A. Brewer, Paul Gauthier</span>
+  <span class="date">1997</span>
 * [The Process Group Approach to Reliable Distributed Computing][isis]
   <span class="author">Ken Birman</span>
   <span class="date">1993</span>
@@ -185,3 +188,4 @@ requests][pull] or leave comments!
 [gfs]: http://research.google.com/archive/gfs.html
 [distsys_fun-profit]: http://book.mixu.net/distsys/
 [cap12]: http://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed
+[sns]: http://www.cs.berkeley.edu/%7Ebrewer/papers/TACC-sosp.pdf
