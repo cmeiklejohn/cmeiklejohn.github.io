@@ -51,24 +51,24 @@ The problems of establishing consensus in a distributed system.
 Types of consistency, and practical solutions to solving ensuring atomic
 operations across a set of replicas.
 
-* [Bolt-on Causal Consistency][bolt]
-  <span class="author">Peter Bailis, Ali Ghodsi, Joseph M. Hellerstein, Ion Stoica</span>
-  <span class="date">2013</span>
-* [HAT, not CAP: Highly Available Transactions][hat]
-  <span class="author">Peter Bailis, Alan Fekete, Ali Ghodsi, Joseph M. Hellerstein, Ion Stoica</span>
-  <span class="date">2013</span>
 * [Brewer's Conjecture and the Feasibility of Consistent, Available, Partition-Tolerant Web Services][cap]
   <span class="author">Seth Gilbert, Nancy Lynch</span>
   <span class="date">2002</span>
-* [Harvest, Yield, and Scalable Tolerant Systems][harvest]
-  <span class="author">Armando Fox, Eric A. Brewer</span>
-  <span class="date">1999</span>
-* [Linearizability: A Correctness Condition for Concurrent Objects][linearizability]
-  <span class="author">Maurice P. Herlihy, Jeannette M. Wing</span>
-  <span class="date">1990</span>
 * [Time, Clocks, and the Ordering of Events in a Distributed System][clocks]
   <span class="author">Leslie Lamport</span>
   <span class="date">1978</span>
+* [Harvest, Yield, and Scalable Tolerant Systems][harvest]
+  <span class="author">Armando Fox, Eric A. Brewer</span>
+  <span class="date">1999</span>
+* [Optimistic Replication][optimistic]
+  <span class="author">Yasushi Saito and Marc Shapiro</span>
+  <span class="date">2005</span>
+* [Linearizability: A Correctness Condition for Concurrent Objects][linearizability]
+  <span class="author">Maurice P. Herlihy, Jeannette M. Wing</span>
+  <span class="date">1990</span>
+* [Highly Available Transactions: Virtues and Limitations][hat]
+  <span class="author">Peter Bailis, Aaron Davidson, Alan Fekete, Ali Ghodsi, Joseph M. Hellerstein, Ion Stoica</span>
+  <span class="date">2013</span>
 
 ## Conflict-free data structures
 
@@ -151,12 +151,13 @@ I'm hoping to make this into a living document, so please submit [pull
 requests][pull] or leave comments!
 
 [pull]: https://github.com/cmeiklejohn/cmeiklejohn.github.io
+[optimistic]: http://www.ysaito.com/survey.pdf
 [redbook]: http://www.amazon.com/Readings-Database-Systems-Joseph-Hellerstein/dp/0262693143
 [raft]: https://ramcloud.stanford.edu/wiki/download/attachments/11370504/raft.pdf
 [paxoslive]: http://research.google.com/pubs/pub33002.html
 [dynamo]: http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf
 [crdt1]: http://hal.upmc.fr/docs/00/55/55/88/PDF/techreport.pdf
-[hat]: http://arxiv.org/pdf/1302.0309.pdf
+[hat]: http://www.bailis.org/papers/hat-vldb2014.pdf
 [linearizability]: http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf
 [paxossimple]: http://www.cs.utexas.edu/users/lorenzo/corsi/cs380d/past/03F/notes/paxos-simple.pdf
 [generals]: http://www.cs.cornell.edu/courses/cs614/2004sp/papers/lsp82.pdf
@@ -175,7 +176,6 @@ requests][pull] or leave comments!
 [stasis]: http://dl.acm.org/citation.cfm?id=1298459
 [isis]: http://www.cs.cornell.edu/projects/spinglass/public_pdfs/Process%20Group%20Approach.pdf
 [cap]: http://dl.acm.org/citation.cfm?id=564601
-[bolt]: http://www.bailis.org/talks/bolton-sigmod2013.pdf
 [bigtable]: http://research.google.com/archive/bigtable-osdi06.pdf
 [chubby]: http://research.google.com/archive/chubby-osdi06.pdf
 [gfs]: http://research.google.com/archive/gfs.html
