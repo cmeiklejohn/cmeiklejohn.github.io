@@ -51,9 +51,13 @@ The problems of establishing consensus in a distributed system.
 Types of consistency, and practical solutions to solving ensuring atomic
 operations across a set of replicas.
 
+
 * [Highly Available Transactions: Virtues and Limitations][hat]
   <span class="author">Peter Bailis, Aaron Davidson, Alan Fekete, Ali Ghodsi, Joseph M. Hellerstein, Ion Stoica</span>
   <span class="date">2013</span>
+* [CAP Twelve Years Later: How the "Rules" Have Changed][cap12]
+  <span class="author">Eric Brewer</span>
+  <span class="date">2012</span>
 * [Optimistic Replication][optimistic]
   <span class="author">Yasushi Saito and Marc Shapiro</span>
   <span class="date">2005</span>
@@ -180,3 +184,4 @@ requests][pull] or leave comments!
 [chubby]: http://research.google.com/archive/chubby-osdi06.pdf
 [gfs]: http://research.google.com/archive/gfs.html
 [distsys_fun-profit]: http://book.mixu.net/distsys/
+[cap12]: http://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed
