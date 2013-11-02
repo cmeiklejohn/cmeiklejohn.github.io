@@ -137,6 +137,12 @@ Implemented and theoretical distributed systems.
 * [The Google File System][gfs]
   <span class="author">Sanjay Ghemawat, Howard Gobioff, and Shun-Tak Leung</span>
   <span class="date">2003</span>
+* [Lessons from Giant-Scale Services][gss]
+  <span class="author">Eric A. Brewer</span>
+  <span class="date">2001</span>
+* [Towards Robust Distributed Systems][trds]
+  <span class="author">Eric A. Brewer</span>
+  <span class="date">2000</span>
 * [Cluster-Based Scalable Network Services][sns]
   <span class="author">Armando Fox, Steven D. Gribble, Yatin Chawathe, Eric A. Brewer, Paul Gauthier</span>
   <span class="date">1997</span>
@@ -195,3 +201,5 @@ requests][pull] or leave comments!
 [sns]: http://www.cs.berkeley.edu/%7Ebrewer/papers/TACC-sosp.pdf
 [progdist_foundational-approach]: http://www.amazon.com/Programming-Distributed-Computing-Systems-Foundational/dp/0262018985
 [intro_reilable-secure-dist-programming]: http://www.distributedprogramming.net/
+[gss]: http://www.cs.berkeley.edu/%7Ebrewer/papers/GiantScale-IEEE.pdf
+[trds]: http://www.cs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf
