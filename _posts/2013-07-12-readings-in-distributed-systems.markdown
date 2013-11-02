@@ -151,7 +151,15 @@ Overviews and details covering many of the above papers and concepts compiled in
 * [Distributed Systems: for fun and profit][distsys_fun-profit]
   <span class="author">Mikito Takada</span>
   <span class="date">2013</span>
-
+* [Programming Distributed Computing Systems: A Foundational Approach][progdist_foundational-approach]
+  <span class="author">Carlos A.Varela</span>
+  <span class="author">Gul Agha</span>
+  <span class="date">2013</span>
+* [Introduction to Reliable and Secure Distributed Programming][intro_reilable-secure-dist-programming]
+  <span class="author">Christian Cachin</span>
+  <span class="author">Rachid Guerraoui</span>
+  <span class="author">Luís Rodrigues</span>
+  <span class="date">2011</span>
 ---
 
 I'm hoping to make this into a living document, so please submit [pull
@@ -189,3 +197,5 @@ requests][pull] or leave comments!
 [distsys_fun-profit]: http://book.mixu.net/distsys/
 [cap12]: http://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed
 [sns]: http://www.cs.berkeley.edu/%7Ebrewer/papers/TACC-sosp.pdf
+[progdist_foundational-approach]: http://www.amazon.com/Programming-Distributed-Computing-Systems-Foundational/dp/0262018985 
+[intro_reilable-secure-dist-programming]: http://www.distributedprogramming.net/
