@@ -9,6 +9,8 @@ _This post outlines a bunch of experimental work I've completed to model
 data structures in Coq, leveraging Tim Carstens' [verlang][verlang]
 project to extract the data structures into executable Erlang._
 
+_Here's a link to the [first][first] post in this series._
+
 # Extending with timestamps
 
 Let us extend our existing model to carry timestamps, as the
@@ -344,3 +346,4 @@ In the next post, we'll look at how we begin integrating this with the
 [verlang]: https://github.com/tcarstens/verlang
 [riak_core]: https://github.com/basho/riak_core
 [hard]: http://basho.com/why-vector-clocks-are-hard/
+[first]: http://christophermeiklejohn.com/coq/erlang/2013/11/04/verified-vector-clocks-an-experience-report-part-1.html
