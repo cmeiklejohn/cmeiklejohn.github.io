@@ -207,6 +207,9 @@ Definition get_timestamp (actor : actor) (vclock : vclock) :=
 Now, to figure out how to implement the prune functionality, starting by
 examining the implementation of `prune` in Riak Core.
 
+For more information on why we have to prune, check out the classic
+["Why Vector Clocks Are Hard"][hard] article from the Basho blog.
+
 {% highlight erlang %}
 % @doc Possibly shrink the size of a vclock, depending on current age and size.
 -spec prune(V::vclock(), Now::integer(), BucketProps::term()) -> vclock().
@@ -340,3 +343,4 @@ In the next post, we'll look at how we begin integrating this with the
 
 [verlang]: https://github.com/tcarstens/verlang
 [riak_core]: https://github.com/basho/riak_core
+[hard]: http://basho.com/why-vector-clocks-are-hard/
