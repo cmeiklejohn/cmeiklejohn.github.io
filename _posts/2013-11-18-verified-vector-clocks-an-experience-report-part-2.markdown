@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Verified Vector Clocks: An Experience Report, Part 2"
-date:   2013-11-14 08:01:09 -0500
+date:   2013-11-18 22:01:09 -0500
 categories: coq erlang
 ---
 
@@ -288,6 +288,55 @@ prune_vclock1(V,Now,BProps,HeadTime) ->
 
 Then we repeat the entire process with the tail of the list, given that
 the head was prime for pruning.
+
+Now, we've run into a couple problems:
+
+* We have no way to access properties stored in buckets, or the
+  application environment in Riak.
+* We have no easy way to work with the pure Erlang structures in Coq.
+
+So, the approach we will take is implementing a prune function in Coq,
+which will take all of the environmental arguments explicitly, and then
+we will write a function in our Erlang module to bridge the gap between
+the data structures in Coq and in Erlang.
+
+Here's what our prune function looks like in Coq.
+
+{% highlight erlang %}
+Fixpoint prune'
+         (vclock : vclock)
+         (small large : nat)
+         (young old : timestamp) :=
+  match vclock with
+    | nil =>
+      vclock
+    | pair actor (pair count timestamp) :: clocks =>
+      match (ble_nat (length vclock) small) with 
+        | true => 
+          vclock
+        | false => 
+          match (ble_nat timestamp young) with
+            | true => 
+              vclock
+            | false => 
+              match (bgt_nat timestamp old) with
+                  | false => 
+                    vclock
+                  | true => 
+                    match (bgt_nat (length vclock) large) with
+                        | false =>
+                          vclock
+                        | true => 
+                          prune' clocks small large young old
+                    end
+              end
+          end
+      end
+  end.
+{% endhighlight %}
+
+In the next post, we'll look at how we begin integrating this with the
+`vclock` module in Riak Core.
 
 [verlang]: https://github.com/tcarstens/verlang
 [riak_core]: https://github.com/basho/riak_core
