@@ -109,7 +109,7 @@ Proof.
 Qed.
 {% endhighlight %}
 
-Boom.
+Moving along...
 
 # G-Counters
 
@@ -276,7 +276,7 @@ Proof.
 Qed.
 {% endhighlight %}
 
-Boom.
+There you have it.
 
 # Conclusion
 
