@@ -160,12 +160,12 @@ Overviews and details covering many of the above papers and concepts compiled in
 * [Programming Distributed Computing Systems: A Foundational Approach][progdist_foundational-approach]
   <span class="author">Carlos A.Varela, Gul Agha</span>
   <span class="date">2013</span>
-* [Introduction to Reliable and Secure Distributed Programming][intro_reilable-secure-dist-programming]
-  <span class="author">Christian Cachin, Rachid Guerraoui, Luís Rodrigues</span>
-  <span class="date">2011</span>
 * [Guide to Reliable Distributed Systems: Building High-Assurance Applications and Cloud-Hosted Services][guide-reliable-dist-systems]
   <span class="author">Ken Birman</span>
   <span class="date">2012</span>
+* [Introduction to Reliable and Secure Distributed Programming][intro_reilable-secure-dist-programming]
+  <span class="author">Christian Cachin, Rachid Guerraoui, Luís Rodrigues</span>
+  <span class="date">2011</span>
 
 I'm hoping to make this into a living document, so please submit [pull
 requests][pull] or leave comments!
