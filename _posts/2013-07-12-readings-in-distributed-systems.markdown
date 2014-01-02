@@ -160,9 +160,6 @@ Overviews and details covering many of the above papers and concepts compiled in
 * [Programming Distributed Computing Systems: A Foundational Approach][progdist_foundational-approach]
   <span class="author">Carlos A.Varela, Gul Agha</span>
   <span class="date">2013</span>
-* [Guide to Reliable Distributed Systems: Building High-Assurance Applications and Cloud-Hosted Services][guide_reliable_dist_systems]
-  <span class="author">Ken Birman</span>
-  <span class="date">2012</span>
 * [Introduction to Reliable and Secure Distributed Programming][intro_reilable-secure-dist-programming]
   <span class="author">Christian Cachin, Rachid Guerraoui, Luís Rodrigues</span>
   <span class="date">2011</span>
@@ -204,6 +201,5 @@ requests][pull] or leave comments!
 [sns]: http://www.cs.berkeley.edu/%7Ebrewer/papers/TACC-sosp.pdf
 [progdist_foundational-approach]: http://www.amazon.com/Programming-Distributed-Computing-Systems-Foundational/dp/0262018985
 [intro_reilable-secure-dist-programming]: http://www.distributedprogramming.net/
-[guide_reliable_dist_systems]: http://www.amazon.com/Guide-Reliable-Distributed-Systems-High-Assurance/dp/1447124154
 [gss]: http://www.cs.berkeley.edu/%7Ebrewer/papers/GiantScale-IEEE.pdf
 [trds]: http://www.cs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf
