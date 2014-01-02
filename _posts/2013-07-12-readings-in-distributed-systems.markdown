@@ -83,8 +83,7 @@ convergence to the correct value.
   <span class="author">Mark Shapiro, Nuno Preguiça, Carlos Baquero, Marek Zawirski</span>
   <span class="date">2011</span>
 * [A Commutative Replicated Data Type For Cooperative Editing][treedoc]
-  <span class="author">Nuno Preguica, Joan Manuel Marques, Marc Shapiro,
-  Mihai Letia</span>
+  <span class="author">Nuno Preguica, Joan Manuel Marques, Marc Shapiro, Mihai Letia</span>
   <span class="date">2009</span>
 * [CRDTs: Consistency Without Concurrency Control][crdt2]
   <span class="author">Mihai Letia, Nuno Preguiça, Marc Shapiro</span>
@@ -96,19 +95,16 @@ Languages aimed towards disorderly distributed programming as well as
 case studies on problems in distributed programming.
 
 * [Logic and Lattices for Distributed Programming][blooml]
-  <span class="author">Neil Conway, William Marczak, Peter Alvaro,
-  Joseph M. Hellerstein, David Maier</span>
+  <span class="author">Neil Conway, William Marczak, Peter Alvaro, Joseph M. Hellerstein, David Maier</span>
   <span class="date">2012</span>
 * [Dedalus: Datalog in Time and Space][dedalus]
-  <span class="author">Peter Alvaro, William R. Marczak, Neil Conway,
-  Joseph M. Hellerstein, David Maier, Russell Sears</span>
+  <span class="author">Peter Alvaro, William R. Marczak, Neil Conway, Joseph M. Hellerstein, David Maier, Russell Sears</span>
   <span class="date">2011</span>
 * [MapReduce: Simplified Data Processing on Large Clusters][mapreduce]
   <span class="author">Jeffrey Dean, Sanjay Ghemawat</span>
   <span class="date">2004</span>
 * [A Note On Distributed Computing][computing]
-  <span class="author">Samuel C. Kendall, Jim Waldo, Ann Wollrath, Geoff
-  Wyant</span>
+  <span class="author">Samuel C. Kendall, Jim Waldo, Ann Wollrath, Geoff Wyant</span>
   <span class="date">1994</span>
 
 ## Systems
@@ -122,17 +118,13 @@ Implemented and theoretical distributed systems.
   <span class="author">Avinash Lakshman, Prashant Malik</span>
   <span class="date">2009</span>
 * [Dynamo: Amazon’s Highly Available Key-Value Store][dynamo]
-  <span class="author">Giuseppe DeCandia, Deniz Hastorun, Madan Jampani,
-  Gunavardhan Kakulapati, Avinash Lakshman, Alex Pilchin, Swaminathan
-  Sivasubramanian, Peter Vosshall and Werner Vogels</span>
+  <span class="author">Giuseppe DeCandia, Deniz Hastorun, Madan Jampani, Gunavardhan Kakulapati, Avinash Lakshman, Alex Pilchin, Swaminathan Sivasubramanian, Peter Vosshall and Werner Vogels</span>
   <span class="date">2007</span>
 * [Stasis: Flexible Transactional Storage][stasis]
   <span class="author">Russell Sears, Eric Brewer</span>
   <span class="date">2006</span>
 * [Bigtable: A Distributed Storage System for Structured Data][bigtable]
-  <span class="author">Fay Chang, Jeffrey Dean, Sanjay Ghemawat, Wilson
-  C. Hsieh, Deborah A. Wallach, Mike Burrows, Tushar Chandra, Andrew
-  Fikes, and Robert E. Gruber</span>
+  <span class="author">Fay Chang, Jeffrey Dean, Sanjay Ghemawat, Wilson C. Hsieh, Deborah A. Wallach, Mike Burrows, Tushar Chandra, Andrew Fikes, and Robert E. Gruber</span>
   <span class="date">2006</span>
 * [The Google File System][gfs]
   <span class="author">Sanjay Ghemawat, Howard Gobioff, and Shun-Tak Leung</span>
