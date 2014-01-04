@@ -63,9 +63,9 @@ Online course materials related to linear logic.
 
 Related wikipedia entries and other websites.
 
-* [Linear logic](http://en.wikipedia.org/wiki/Linear_logic)
-* [Uniqueness type](http://en.wikipedia.org/wiki/Uniqueness_type)
-* [Substructural type system](http://en.wikipedia.org/wiki/Substructural_type_system)
+* [Linear logic, Wikipedia](http://en.wikipedia.org/wiki/Linear_logic)
+* [Uniqueness type, Wikipedia](http://en.wikipedia.org/wiki/Uniqueness_type)
+* [Substructural type system, Wikipedia](http://en.wikipedia.org/wiki/Substructural_type_system)
 * [Linear Logic, Stanford Encyclopedia of Philosophy](http://plato.stanford.edu/entries/logic-linear/)
 
 ## Languages
