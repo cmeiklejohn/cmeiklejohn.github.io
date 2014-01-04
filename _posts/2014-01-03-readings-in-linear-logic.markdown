@@ -33,9 +33,6 @@ Papers related directly to linear logic.
 * [Is there a use for linear logic?](http://homepages.inf.ed.ac.uk/wadler/papers/linearuse/linearuse.ps)
   <span class="author">Philip Wadler</span>
   <span class="date">1991</span>
-* [Linear types can change the world!](http://homepages.inf.ed.ac.uk/wadler/papers/linear/linear.ps)
-  <span class="author">Philip Wadler</span>
-  <span class="date">1990</span>
 
 ## Type Theory
 
@@ -47,6 +44,9 @@ Papers related to linear logic, specifically focusing on type theory.
 * [Call-by-name, call-by-value, call-by-need, and the linear lambda calculus](http://homepages.inf.ed.ac.uk/wadler/papers/linearcall/linearcall.ps)
   <span class="author">John Maraist, Martin Odersky, David Turner, Philip Wadler.</span>
   <span class="date">1995</span>
+* [Linear types can change the world!](http://homepages.inf.ed.ac.uk/wadler/papers/linear/linear.ps)
+  <span class="author">Philip Wadler</span>
+  <span class="date">1990</span>
 
 ## Courses
 
@@ -59,13 +59,14 @@ Online course materials related to linear logic.
   <span class="author">Frank Pfenning</span>
   <span class="date">2012</span>
 
-## Wikipedia
+## Wikipedia & Web
 
-Related wikipedia entries.
+Related wikipedia entries and other websites.
 
 * [Linear logic](http://en.wikipedia.org/wiki/Linear_logic)
 * [Uniqueness type](http://en.wikipedia.org/wiki/Uniqueness_type)
 * [Substructural type system](http://en.wikipedia.org/wiki/Substructural_type_system)
+* [Linear Logic, Stanford Encyclopedia of Philosophy](http://plato.stanford.edu/entries/logic-linear/)
 
 ## Languages
 
