@@ -15,6 +15,9 @@ Papers related directly to linear logic.
 * [Linear Logical Relations for Session-Based Concurrency](http://www.cs.cmu.edu/~btoninho/esop12.pdf)
   <span class="author">Jorge A. Perez, Luıs Caires, Frank Pfenning, Bernardo Toninho</span>
   <span class="date">2012</span>
+* [Cut Reduction in Linear Logic as Asynchronous Session-Typed Communication](http://www.cs.cmu.edu/~btoninho/async.pdf)
+  <span class="author">Henry DeYoung, Luís Caires, Frank Pfenning, Bernardo Toninho</span>
+  <span class="date">2009</span>
 * [Linear logic, monads, and the lambda calculus](http://homepages.inf.ed.ac.uk/wadler/papers/linearmonad/linearmonad.ps)
   <span class="author">Nick Benton, Philip Wadler</span>
   <span class="date">1996</span>
