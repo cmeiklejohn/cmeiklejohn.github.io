@@ -55,6 +55,9 @@ operations across a set of replicas.
 * [Highly Available Transactions: Virtues and Limitations][hat]
   <span class="author">Peter Bailis, Aaron Davidson, Alan Fekete, Ali Ghodsi, Joseph M. Hellerstein, Ion Stoica</span>
   <span class="date">2013</span>
+* [Consistency Tradeoffs in Modern Distributed Database System Design][pacelc]
+  <span class="author">Daniel J. Abadi</span>
+  <span class="date">2012</span>
 * [CAP Twelve Years Later: How the "Rules" Have Changed][cap12]
   <span class="author">Eric Brewer</span>
   <span class="date">2012</span>
@@ -162,6 +165,7 @@ Overviews and details covering many of the above papers and concepts compiled in
 I'm hoping to make this into a living document, so please submit [pull
 requests][pull] or leave comments!
 
+[pacelc]: http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf
 [pull]: https://github.com/cmeiklejohn/cmeiklejohn.github.io
 [optimistic]: http://www.ysaito.com/survey.pdf
 [redbook]: http://www.amazon.com/Readings-Database-Systems-Joseph-Hellerstein/dp/0262693143
