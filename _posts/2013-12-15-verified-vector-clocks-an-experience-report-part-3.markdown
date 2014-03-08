@@ -12,6 +12,11 @@ project to extract the data structures into executable Erlang._
 _Here's a link to the [first][first] and [second][second] posts in this
 series._
 
+_Updated March 8th, 2014: A full talk about this work was presented at Erlang
+Factory, San Francisco 2014.  Both the
+[slides](https://speakerdeck.com/cmeiklejohn/vector-clocks-in-coq-an-experience-report)
+and [video](https://www.youtube.com/watch?v=IINmkv4izVQ) are available._
+
 # Writing the wrapper
 
 Let us now look at writing the wrapper module that we will use to

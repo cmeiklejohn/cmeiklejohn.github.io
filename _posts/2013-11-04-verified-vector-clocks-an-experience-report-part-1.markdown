@@ -9,6 +9,11 @@ _This post outlines a bunch of experimental work I've completed to model
 data structures in Coq, leveraging Tim Carstens' [verlang][verlang]
 project to extract the data structures into executable Erlang._
 
+_Updated March 8th, 2014: A full talk about this work was presented at Erlang
+Factory, San Francisco 2014.  Both the
+[slides](https://speakerdeck.com/cmeiklejohn/vector-clocks-in-coq-an-experience-report)
+and [video](https://www.youtube.com/watch?v=IINmkv4izVQ) are available._
+
 # Modeling vector clocks
 
 Let us start by modeling vector clocks in Coq.  We will start by
@@ -321,3 +326,5 @@ did on this work at [RICON|West 2013][ricon]._
 [video]: http://ricon.io/west2013.html
 [vvclocks]: https://github.com/cmeiklejohn/vvclocks
 [ricon]: http://ricon.io
+[slides]: https://speakerdeck.com/cmeiklejohn/vector-clocks-in-coq-an-experience-report
+[presentation]: https://www.youtube.com/watch?v=IINmkv4izVQ
