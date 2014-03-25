@@ -70,6 +70,7 @@ Related wikipedia entries and other websites.
 * [Uniqueness type, Wikipedia](http://en.wikipedia.org/wiki/Uniqueness_type)
 * [Substructural type system, Wikipedia](http://en.wikipedia.org/wiki/Substructural_type_system)
 * [Linear Logic, Stanford Encyclopedia of Philosophy](http://plato.stanford.edu/entries/logic-linear/)
+* [Linear Datatypes in ATS, Chris Double](http://bluishcoder.co.nz/2011/02/27/linear-datatypes-in-ats.html)
 
 ## Languages
 
@@ -81,6 +82,8 @@ Languages which support linear type systems.
   <span class="author">University of Nottingham</span>
 * [Mercury](http://en.wikipedia.org/wiki/Mercury_(programming_language)
   <span class="author">University Of Melbourne</span>
+* [ATS](http://www.ats-lang.org/)
+  <span class="author">Hongwei Xi</span>
 
 I'm hoping to make this into a living document, so please submit [pull
 requests][pull] or leave comments!
