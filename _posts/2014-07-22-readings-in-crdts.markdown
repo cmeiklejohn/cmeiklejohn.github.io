@@ -168,6 +168,9 @@ Finally, for those of you who learn more by watching, here's some talks.
 * [Strange Loop 2012 - Eventually-Consistent Data Structures](http://www.infoq.com/presentations/CRDT)
   <span class="author">Sean Cribbs</span>
   <span class="date">2012</span>
+* [Strong Eventual Consistency and Conflict-free Replicated Data Types](http://research.microsoft.com/apps/video/default.aspx?id=153540&r=1)
+  <span class="author">Marc Shapiro</span>
+  <span class="date">2011</span>
 
 I'm hoping to make this into a living document, so please submit [pull
 requests][pull] or leave comments!
