@@ -159,6 +159,9 @@ when distributed.
 
 Finally, for those of you who learn more by watching, here's some talks.
 
+* [Berlin Buzzwords 2014 - Consistency without Consensus](https://www.youtube.com/watch?v=U6xLcIf1Qlw)
+  <span class="author">Peter Bourgon</span>
+  <span class="date">2014</span>
 * [EmberConf 2014 - Convergent/Divergent](https://www.youtube.com/watch?v=qyVNG7fnubQ)
   <span class="author">Christopher Meiklejohn</span>
   <span class="date">2014</span>
