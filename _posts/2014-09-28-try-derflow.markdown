@@ -43,8 +43,8 @@ implementation as well: one from the [Erlang User Conference
 Our second work, which is due to be presented at [LADIS Workshop
 '14][LADIS14] in October, expands the model to operate over bounded-join
 semilattices, while providing a threshold read operation on these
-variables to ensure determinism.  If you are know with the
-[LVars][LVars] work, this should sound very familiar.
+variables to ensure determinism.  If you know the [LVars][LVars] work,
+this should sound very familiar.
 
 In addition, we explore an alternative approach to executing programs --
 if the programs are guaranteed to be deterministic, why not replicate
