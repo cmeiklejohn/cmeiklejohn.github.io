@@ -64,7 +64,7 @@ is currently R16B02.
 First, clone and build `derflow`:
 
 {% highlight sh %}
-$ git clone git@github.com:SyncFree/derflow.git
+$ git clone git@github.com:cmeiklejohn/derflow.git
 $ cd derflow
 $ make
 {% endhighlight %}
