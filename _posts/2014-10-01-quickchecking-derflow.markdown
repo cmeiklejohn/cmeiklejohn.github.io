@@ -230,7 +230,7 @@ re-assign a already bound variable to a new value.
 postcondition(#state{store=Store},
               {call, ?MODULE, bind, [Id, V, _]}, error) ->
     case dict:find(Id, Store) of
-        {ok, #variable{type=Type, value=undefined}} ->
+        {ok, #variable{type=_Type, value=undefined}} ->
             false;
         {ok, #variable{type=Type, value=Value}} ->
             case derflow_ets:is_inflation(Type, Value, V) of
