@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Programming Models and the SyncFree Research Project, Part 1"
+title:  "SyncFree Consortium / Programming Models, Part 1: Try Derflow!"
 date:   2014-09-28 00:26:21 -0000
 categories: derflow erlang
 ---
