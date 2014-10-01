@@ -36,7 +36,7 @@ distributed store, which we can run our tests against.
 Building the model is straightforward: how can you model a variable
 store that is backed by `ets`?  We can use a `dict`!
 
-So, what are the invarients of our langauge?  Let's enumerate them.
+So, what are the invariants of our langauge?  Let's enumerate them.
 
 If you recall, our language provides operations over both
 single-assignment variables and lattices.  When operating with a
