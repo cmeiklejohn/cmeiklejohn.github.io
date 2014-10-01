@@ -250,6 +250,10 @@ This was just a very brief overview of how we began testing derflow
 using Erlang QuickCheck.  For a deeper view, please checkout our
 [test][derflow_ets_eqc] on GitHub.
 
+I'd love to hear about how I could clean this model up and make it
+easier to understand.  Please let me know, or send me a [pull
+request][derflow].
+
 Thanks!
 
 [derflow_ets_eqc]: https://github.com/cmeiklejohn/derflow/blob/master/test/derflow_ets_eqc.erl
