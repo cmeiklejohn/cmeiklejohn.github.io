@@ -245,8 +245,8 @@ True.
 # Conclusion
 
 This was just a very brief overview of how we began testing derflow
-using Erlang QuickCheck.  For a deeper view, please checkout our [test
-on github][derflow_ets_eqc].
+using Erlang QuickCheck.  For a deeper view, please checkout our [test]
+[derflow_ets_eqc] on GitHub.
 
 Thanks!
 
