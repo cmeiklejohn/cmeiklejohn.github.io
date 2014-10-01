@@ -226,17 +226,19 @@ re-assign a already bound variable to a new value.
 {% highlight erlang %}
 %% If a bind failed, that's only allowed if the variable is already
 %% bound or undefined.
+%%
 postcondition(#state{store=Store},
-              {call, ?MODULE, bind, [Id, Value, _]}, error) ->
+              {call, ?MODULE, bind, [Id, V, _]}, error) ->
     case dict:find(Id, Store) of
-        {ok, #variable{value=Value}} ->
-            %% Already bound to same value.
+        {ok, #variable{type=Type, value=undefined}} ->
             false;
-        {ok, _} ->
-            %% Bound, to different value.
-            true;
-        _ ->
-            false
+        {ok, #variable{type=Type, value=Value}} ->
+            case derflow_ets:is_inflation(Type, Value, V) of
+                true ->
+                    false;
+                false ->
+                    true
+            end
     end;
 {% endhighlight %}
 
