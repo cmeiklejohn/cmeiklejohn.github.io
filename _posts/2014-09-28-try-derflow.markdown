@@ -94,6 +94,10 @@ $ cd riak_test
 $ make
 {% endhighlight %}
 
+Once you have done that, make sure you copy the included
+`riak_test.config` file to `~/.riak_test.config` and update the paths
+referenced in the file.
+
 Running the tests is pretty simple:
 
 {% highlight sh %}
