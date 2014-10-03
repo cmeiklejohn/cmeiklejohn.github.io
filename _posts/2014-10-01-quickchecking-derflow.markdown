@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "SyncFree Consortium / Programming Models, Part 2: QuickChecking Derflow"
+title:  "SyncFree / Programming Models, Part 2: QuickChecking Derflow"
 date:   2014-10-01 10:20:10 -0500
 categories: derflow erlang
 ---
