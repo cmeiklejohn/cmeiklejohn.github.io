@@ -10,8 +10,7 @@ programming model for working with eventual consistency and
 conflict-free replicated data types.  We've been well on our way to that
 goal, influenced heavily by Peter Van Roy's [work on dataflow
 programming][CTMCP], by the [Bloom][Bloom] work at the University of
-California, Berkeley, as well as the [LVars][LVars] work at the
-Indiana University.
+California, Berkeley, as well as the [LVars][LVars] work at Indiana University.
 
 In this post, we aim to give a high level overview of our inspirations
 for the work, the general progress, links to videos, publications, and
