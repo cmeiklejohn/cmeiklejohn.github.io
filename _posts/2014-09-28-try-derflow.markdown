@@ -11,7 +11,7 @@ conflict-free replicated data types.  We've been well on our way to that
 goal, influenced heavily by Peter Van Roy's [work on dataflow
 programming][CTMCP], by the [Bloom][Bloom] work at the University of
 California, Berkeley, as well as the [LVars][LVars] work at the
-University of Indiana.
+Indiana University.
 
 In this post, we aim to give a high level overview of our inspirations
 for the work, the general progress, links to videos, publications, and
@@ -41,8 +41,8 @@ implementation as well: one from the [Erlang User Conference
 # Derflow, The Lattice Strikes Back
 
 Our second work, which is due to be presented at [LADIS Workshop
-'14][LADIS14] in October, expands the model to operate over bounded-join
-semilattices, while providing a threshold read operation on these
+'14][LADIS14] in October, expands the model to operate over bounded
+join-semilattices, while providing a threshold read operation on these
 variables to ensure determinism.  If you know the [LVars][LVars] work,
 this should sound very familiar.
 
