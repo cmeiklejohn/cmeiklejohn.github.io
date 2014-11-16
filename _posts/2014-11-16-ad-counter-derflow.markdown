@@ -128,7 +128,7 @@ G-Counter is only ever going to grow.
 
 ## Initializing servers
 
-Next, we initialize on server process per advertisement.  Here's what
+Next, we initialize one server process per advertisement.  Here's what
 that code looks like:
 
 {% highlight erlang %}
@@ -142,7 +142,7 @@ _Servers = lists:map(Server, Ads),
 {% endhighlight %}
 
 Each of these server processes performs a threshold `read` against the
-counter for the advertisement it's traking; this threshold `read`
+counter for the advertisement it's tracking; this threshold `read`
 operation will block, thereby suspending execution of the server process
 until the counter has reached at least 5.
 
