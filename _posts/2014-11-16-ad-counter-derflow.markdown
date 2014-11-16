@@ -99,6 +99,7 @@ client(Id, Ads) ->
             client(Id, Ads);
         view_ad ->
             %% Choose an advertisement to display.
+            %% Use hd() for simplicity of example.
             Ad = hd(Ads),
             lager:info("Displaying ad: ~p from client: ~p~n", [Ad, Id]),
 
