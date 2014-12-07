@@ -64,7 +64,7 @@ table {
 }
 
 @media screen and (max-device-width: 480px){
-  body { -webkit-text-size-adjust: 120%; }
+  body { -webkit-text-size-adjust: 100%; }
 }
 
 /*****************************************************************************/
