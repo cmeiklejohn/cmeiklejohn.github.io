@@ -149,7 +149,7 @@ until the counter has reached at least 5.
 
 {% highlight erlang %}
 %% @doc Server functions for the advertisement counter.  After 5 views,
-%       disable the advertisement.
+%%      disable the advertisement.
 server(Ad, Clients) ->
     lager:info("Server launched for ad: ~p", [Ad]),
     {ok, _, _} = derflow:read(Ad, 5),
