@@ -58,11 +58,6 @@ table {
   font: 100%;
 }
 
-.container {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
 @media screen and (max-device-width: 480px){
   body { -webkit-text-size-adjust: 100%; }
 }
@@ -101,6 +96,7 @@ ul.posts span {
   font-size: 100%;
   text-align: left;
   width: 42em;
+  padding: 10px;
   margin: 3em auto 3em;
   line-height: 1.5em;
 }
