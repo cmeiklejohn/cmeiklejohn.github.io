@@ -59,8 +59,8 @@ table {
 }
 
 .container {
-  padding-left: 10px;
-  padding-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 /*****************************************************************************/
@@ -85,7 +85,6 @@ code {
 ul.posts span {
   color: #aaa;
   font-family: 'Inconsolata', sans-serif;
-  font-size: 80%;
 }
 
 /*****************************************************************************/
@@ -97,7 +96,7 @@ ul.posts span {
 .site {
   font-size: 115%;
   text-align: justify;
-  width: 42em;
+  width: 40em;
   margin: 3em auto 2em;
   line-height: 1.5em;
 }
