@@ -5,6 +5,9 @@ title: Christopher Meiklejohn
 
 <div id="home">
   <h1>SyncFree</h1>
+  <p>Research related to the <a
+    href="http://syncfree.lip6.fr">SyncFree</a> project on large-scale
+  synchronization-free computation.</p>
   <ul class="posts">
     {% for post in site.posts %}
       {% if post.group == "SyncFree" %}
@@ -14,6 +17,7 @@ title: Christopher Meiklejohn
   </ul>
 
   <h1>Reading Lists</h1>
+  <p>Reading lists on computer science related topics.</p>
   <ul class="posts">
     {% for post in site.posts %}
       {% if post.group == "readings" %}
@@ -23,6 +27,8 @@ title: Christopher Meiklejohn
   </ul>
 
   <h1>Verified Vector Clocks</h1>
+  <p>Work towards creating a verified vector clock library in Coq,
+  exported to Erlang for use in Riak.</p>
   <ul class="posts">
     {% for post in site.posts %}
       {% if post.group == "vvclocks" %}
@@ -31,7 +37,8 @@ title: Christopher Meiklejohn
     {% endfor %}
   </ul>
 
-  <h1>Other</h1>
+  <h1>Uncategorized</h1>
+  <p>Various uncategorized blog posts.</p>
   <ul class="posts">
     {% for post in site.posts %}
       {% if post.group == nil %}
