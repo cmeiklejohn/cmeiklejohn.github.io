@@ -15,7 +15,6 @@ html, body { height: 100%; }
 body {
   background-color: #FFF;
   font-family: 'Lora', serif;
-  font-size: medium;
   text-align: center;
 }
 
@@ -94,6 +93,7 @@ ul.posts span {
 /*****************************************************************************/
 
 .site {
+  font-size: 115%;
   text-align: left;
   width: 40em;
   margin: 3em auto 2em;
