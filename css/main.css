@@ -59,8 +59,8 @@ table {
 }
 
 .container {
-  margin-left: 10px;
-  margin-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 /*****************************************************************************/
@@ -84,7 +84,7 @@ code {
 
 ul.posts span {
   color: #aaa;
-  font-family: Monaco, "Courier New", monospace;
+  font-family: 'Inconsolata', sans-serif;
   font-size: 80%;
 }
 
