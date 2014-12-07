@@ -98,10 +98,10 @@ ul.posts span {
 /*****************************************************************************/
 
 .site {
-  font-size: 115%;
+  font-size: 100%;
   text-align: left;
-  width: 40em;
-  margin: 3em auto 2em;
+  width: 42em;
+  margin: 3em auto 3em;
   line-height: 1.5em;
 }
 
