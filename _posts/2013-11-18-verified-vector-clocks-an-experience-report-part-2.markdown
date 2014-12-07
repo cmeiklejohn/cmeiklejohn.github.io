@@ -3,6 +3,7 @@ layout: post
 title:  "Verified Vector Clocks: An Experience Report, Part 2"
 date:   2013-11-18 22:01:09 -0500
 categories: coq erlang
+group: vvclocks
 ---
 
 _This post outlines a bunch of experimental work I've completed to model

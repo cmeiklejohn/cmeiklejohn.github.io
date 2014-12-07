@@ -3,6 +3,7 @@ layout: post
 title:  "Readings in conflict-free replicated data types"
 date:   2014-07-22 12:29:30 -0500
 categories: crdt
+group: readings
 ---
 
 _This is a work in progress post outlining research topics related to

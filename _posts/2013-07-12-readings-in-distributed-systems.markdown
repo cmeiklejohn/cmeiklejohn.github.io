@@ -3,6 +3,7 @@ layout: post
 title:  "Readings in distributed systems"
 date:   2013-07-12 12:00:35 -0400
 categories: distributed systems
+group: readings
 ---
 
 _This post is a work in progress._

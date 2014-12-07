@@ -3,6 +3,7 @@ layout: post
 title:  "Readings in linear logic"
 date:   2014-01-03 23:04:30 -0500
 categories: linear logic
+group: readings
 ---
 
 _This is a work in progress post outlining my research into linear logic

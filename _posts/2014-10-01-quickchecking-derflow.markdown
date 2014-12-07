@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "SyncFree / Programming Models, Part 2: QuickChecking Derflow"
+title:  "Programming Models, Part 2: QuickChecking Derflow"
 date:   2014-10-01 10:20:10 -0500
 categories: derflow erlang
+group:  SyncFree
 ---
 
 _As we discussed in our first [post][part1], [Derflow][derflow] is the

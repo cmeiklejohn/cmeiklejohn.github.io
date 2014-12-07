@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "SyncFree / Programming Models, Part 1: Try Derflow!"
+title:  "Programming Models, Part 1: Try Derflow!"
 date:   2014-09-28 00:26:21 -0000
 categories: derflow erlang
+group:  SyncFree
 ---
 
 One of the main goals of the [SyncFree][SyncFree] project is to build a
