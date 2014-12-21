@@ -1,0 +1,51 @@
+---
+layout: post
+title:  "Programming Models, Part 4: One Week in Louvain-la-Neuve"
+date:   2014-12-21 15:00:00 -0500
+categories: erlang lasp
+group:  SyncFree
+---
+
+_As we discussed in our first [post][part1], [Derflow][derflow] is the
+now former name of our distributed deterministic programming model that
+is the basis of our research into providing a more expressive way of
+working with CRDTs and eventual consistency._
+
+I've just returned from a one week vacation in Louvain-la-Neuve,
+Belgium, where I spent the week working with [Peter Van Roy][pvr] at
+[Université catholique de Louvain][ucl] on what was formally referred to
+as [Derflow][derflow].  It was an amazingly productive week where we had
+a chance to iterate on the model, prototype some new features, and fix a
+selection of bugs.
+
+# Highlights
+
+* We renamed the programming model.  Derflow wasn't the greatest name in
+  the world and was a product of focusing on the research over
+  marketing.  Inspired by Lisp, short for list processing, we've chosen
+  Lasp as the new name for Derflow, following the same pattern for
+  deriving the name: Lasp for lattice processing.
+* Pushed 59 commits, which resulted in over 6,000 additions and 4,000
+  removals, closing twelve GitHub issues.  This work can be viewed on
+  [GitHub][github].  This involved both new feature work and bug fixes.
+* Loïc Schils, a graduate student at UCL will be doing his master's
+  thesis, supervised by Peter and I, on our programming model and will
+  begin contributing to the project in January 2015.
+* Viet Bui, a graduate student at UCL, supervised by Peter and Manuel
+  Bravo, will be looking at doing explicit causality in our programming
+  model as well for his master's thesis.
+* Adrian Colyer highlighted our work on his [blog][blog].
+* Peter convinced me that [lightning has struck four times][lightning],
+  in the same place.
+
+It was an amazing week, and I can't wait to return in January.
+
+[part1]: http://christophermeiklejohn.com/derflow/erlang/2014/09/28/try-derflow.html
+[derflow]: https://github.com/cmeiklejohn/derflow
+[ricon]: https://www.youtube.com/watch?v=1KP_pxFhlVU
+[syncfree]: http://syncfree.lip6.fr
+[pvr]: http://www.info.ucl.ac.be/~pvr/cvvanroy.html
+[ucl]: http://www.uclouvain.be
+[github]: https://github.com/cmeiklejohn/lasp/pulse/monthly
+[lightning]: http://www.info.ucl.ac.be/~pvr/flopsPVRarticle.pdf
+[blog]: http://blog.acolyer.org/2014/12/19/derflow-distributed-deterministic-dataflow-programming-for-erlang/
