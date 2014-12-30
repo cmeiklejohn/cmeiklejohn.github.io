@@ -168,7 +168,7 @@ requests][pull] or leave comments!
 
 [pacelc]: http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf
 [pull]: https://github.com/cmeiklejohn/cmeiklejohn.github.io
-[optimistic]: http://www.ysaito.com/survey.pdf
+[optimistic]: http://pagesperso-systeme.lip6.fr/Marc.Shapiro/papers/Optimistic_Replication_Computing_Surveys_2005-03_cameraready.pdf
 [redbook]: http://www.amazon.com/Readings-Database-Systems-Joseph-Hellerstein/dp/0262693143
 [raft]: https://ramcloud.stanford.edu/wiki/download/attachments/11370504/raft.pdf
 [paxoslive]: http://research.google.com/pubs/pub33002.html
@@ -185,7 +185,7 @@ requests][pull] or leave comments!
 [blooml]: http://db.cs.berkeley.edu/papers/UCB-lattice-tr.pdf
 [dedalus]: http://db.cs.berkeley.edu/papers/datalog2011-dedalus.pdf
 [clocks]: http://www.stanford.edu/class/cs240/readings/lamport.pdf
-[harvest]: http://lab.mscs.mu.edu/Dist2012/lectures/HarvestYield.pdf
+[harvest]: http://radlab.cs.berkeley.edu/people/fox/static/pubs/pdf/c18.pdf
 [crdt2]: http://hal.archives-ouvertes.fr/docs/00/39/79/81/PDF/RR-6956.pdf
 [mapreduce]: http://research.google.com/archive/mapreduce.html
 [cassandra]: http://www.cs.cornell.edu/projects/ladis2009/papers/lakshman-ladis2009.pdf
