@@ -1,0 +1,114 @@
+---
+layout: post
+title:  "2014: A Year in Review"
+date:   2014-12-31 19:00:00 -0500
+categories: personal
+---
+
+With 2014 wrapping up and 2015 ahead of us, I find it important to look
+back on what happened over the course of the year and set goals for
+how I'd like my work to develop over the coming year.
+
+I'm not going to enumerate the events of the past year, because they've
+already been discussed in various sections of my blog.  I would like to
+take a moment to highlight some of my favorite experiences, along with
+those which I consider most valuable to my development as a researcher
+and engineer.
+
+# 2014; The Academic Edition
+
+For someone who's not actually a graduate student, I was involved in
+several academic events and research projects over the past year.
+Starting last January with my first ever trip to Louvain-la-Neuve to
+meet the SyncFree researchers -- I also ended this year with my second
+trip to Louvain-la-Neuve, working on designing a programming language
+for eventually consistent systems.
+
+Here's the highlights:
+
+* Starting in January of 2014, I became involved in the
+  [SyncFree][syncfree] research project on large-scale synchronization
+  free computation.
+* As part of our work on [Lasp][lasp], we published and spoke about our
+  programming model for eventually consistent systems.
+* I was able to attend the [Workshop on Database Consistency in the
+  Cloud][dbcloud] where, in addition to the great talks, attend the
+  Ph.D. defense of Masoud Saeida-Ardekani.
+* I was able to participate in research trips to Europe visiting
+  Kaiserslautern, Louvain-la-Neuve, Braga, Paris, and London.
+* I had the opportunity to spend a week with [Peter Van Roy][pvr] in
+  Louvain-la-Neuve working on the next iteration of our programming
+  language for eventually consistent systems.
+* I attended and presented at workshops associated with [Eurosys
+  '14][eurosys], [Middleware '14][middleware], [ICFP '14][icfp], and
+  [LADIS '14][ladis].
+
+Above all, however, have been the friendships that I've developed during
+the process of traveling to all of these locations; Specifically, João
+Leitão, Nuno Preguiça, Marc Shapiro, Peter Van Roy, Annette Bieniusa,
+Carlos Baquero, Paulo Sérgio Almeida, Carla Ferreira, Alejandro Tomsic,
+Manuel Bravo, Zhongmiao Li, Deepthi Akkoorath, Tyler Crain, and Mahsa
+Najafzadeh.
+
+# 2014; The Industry Edition
+
+It's no secret that it's been a tough year professionally.  I've seen
+many of my very close friends at Basho depart for other opportunities.
+That said, they've all gone on to do amazing things, and I'm extremely
+happy to have had the opportunity to work with them.
+
+Regardless, there were many great highlights:
+
+* [Riak 2.0][riak] shipped, with strong consistency, CRDTs, distributed
+  search with Yokozuna, and security.  This was a massive effort by all
+  members of the engineering team.
+* [RICON 2014][ricon] was held in Las Vegas this October and featured an
+  incredible lineup of talks.
+* Basho was well represented at both [Erlang User Conference][euc] and
+  [Erlang Factory][ef], discussing cutting-edge features in Riak.
+* Basho had an all-hands meeting in Estes Park, Colorado.
+* Additionally, I was able to spend time in Leeds, UK, discussing the
+  future of CRDTs with two of my favorite coworkers, Russell Brown and
+  Jon Meredith.
+
+# 2014; The Personal Edition
+
+Not much happened in my personal life, given I spent most of it
+traveling for my academic and industrial pursuits, but here are some
+highlights:
+
+* Continued [Think Distributed][tdistributed], a podcast I created
+  facilitating discussion on distributed systems topics.
+* Additionally, I moved to [Providence, RI][providence].
+* I gave three talks, of which I'm very proud: [EmberConf
+  2014][emberconf], [ReactConf 2014][react], and [NDC London 2014][ndc].
+* I travelled for over 250 days of the year, including locations such as
+  the following: London, Cambridge, Leeds, Paris, Strasbourg, Bordeaux,
+  Kaiserslautern, Frankfurt, Stockholm, Uppsala, Gothenberg, Braga,
+  Porto, Amsterdam, Brussels, Louvain-la-Neuve, Portland, San Francisco,
+  New York, and more!
+
+# In Conclusion
+
+2014's gone by faster than I can imagine, and while it's contained many
+moements of sadness, it's brought so much in terms of professional and
+personal development.  Here's to a great 2015 full of research and
+engineering!
+
+[euc]: http://www.erlang-factory.com/conference/EUC2014
+[ef]: http://www.erlang-factory.com
+[ricon]: http://ricon.io
+[riak]: https://github.com/basho/riak
+[ladis]: http://ladisworkshop.org
+[middleware]: http://2014.middleware-conference.org/program/program/
+[eurosys]: http://eurosys2014.vu.nl
+[icfp]: http://www.info.ucl.ac.be/~pvr/cvvanroy.html
+[pvr]: http://www.info.ucl.ac.be/~pvr/cvvanroy.html
+[syncfree]: http://syncfree.lip6.fr
+[lasp]: https://github.com/cmeiklejohn/lasp
+[dbcloud]: http://pagesperso-systeme.lip6.fr/Marc.Shapiro/workshop-2014-09-15+16/
+[tdistributed]: https://itunes.apple.com/us/podcast/think-distributed/id674648919?mt=2
+[providence]: http://www.providenceri.com
+[react]: https://speakerdeck.com/cmeiklejohn/eventually-consistent-computations
+[emberconf]: https://speakerdeck.com/cmeiklejohn/divergent
+[ndc]: https://speakerdeck.com/cmeiklejohn/building-applications-with-distributed-erlang
