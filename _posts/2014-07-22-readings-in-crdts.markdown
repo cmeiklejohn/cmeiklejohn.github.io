@@ -160,6 +160,12 @@ when distributed.
 
 Finally, for those of you who learn more by watching, here's some talks.
 
+* [Eventually Consistent Computation with CRDTs](https://www.youtube.com/watch?v=8_z9-iRiSZw)
+  <span class="author">Christopher S. Meiklejohn</span>
+  <span class="date">2014</span>
+* [SyncFree: Large-Scale Computation Without Synchronization](https://www.youtube.com/watch?v=1KP_pxFhlVU)
+  <span class="author">Annette Bieniusa and Christopher S. Meiklejohn</span>
+  <span class="date">2014</span>
 * [Berlin Buzzwords 2014 - Consistency without Consensus](https://www.youtube.com/watch?v=U6xLcIf1Qlw)
   <span class="author">Peter Bourgon</span>
   <span class="date">2014</span>
