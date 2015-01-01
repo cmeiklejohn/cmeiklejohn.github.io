@@ -79,7 +79,6 @@ highlights:
 
 * Continued [Think Distributed][tdistributed], a podcast I created
   facilitating discussion on distributed systems topics.
-* Additionally, I moved to [Providence, RI][providence].
 * I gave three talks, of which I'm very proud: [EmberConf
   2014][emberconf], [ReactConf 2014][react], and [NDC London 2014][ndc].
 * I travelled for over 250 days of the year, including locations such as
@@ -87,6 +86,7 @@ highlights:
   Kaiserslautern, Frankfurt, Stockholm, Uppsala, Gothenberg, Braga,
   Porto, Amsterdam, Brussels, Louvain-la-Neuve, Portland, San Francisco,
   New York, and more!
+* I moved to [Providence, RI][providence].
 
 # In Conclusion
 
