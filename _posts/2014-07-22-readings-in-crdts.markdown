@@ -166,6 +166,9 @@ Finally, for those of you who learn more by watching, here's some talks.
 * [SyncFree: Large-Scale Computation Without Synchronization](https://www.youtube.com/watch?v=1KP_pxFhlVU)
   <span class="author">Annette Bieniusa and Christopher S. Meiklejohn</span>
   <span class="date">2014</span>
+* [Designing for Partition Tolerance with CRDTs](https://www.youtube.com/watch?v=y_ewFP-lgyM)
+  <span class="author">Carlos Baquero</span>
+  <span class="date">2014</span>
 * [Berlin Buzzwords 2014 - Consistency without Consensus](https://www.youtube.com/watch?v=U6xLcIf1Qlw)
   <span class="author">Peter Bourgon</span>
   <span class="date">2014</span>
