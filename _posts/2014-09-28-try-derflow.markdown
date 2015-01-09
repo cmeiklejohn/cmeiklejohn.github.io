@@ -6,6 +6,10 @@ categories: derflow erlang
 group:  SyncFree
 ---
 
+_Updated January 9th, 2015: Derflow has since been renamed to Lasp,
+which is open source on [GitHub][lasp].  For more information
+surrounding the name change, see this [post][name]._
+
 One of the main goals of the [SyncFree][SyncFree] project is to build a
 programming model for working with eventual consistency and
 conflict-free replicated data types.  We've been well on our way to that
@@ -131,3 +135,5 @@ prototype.  I'd love to hear your feedback.
 [Ozma]: http://dl.acm.org/citation.cfm?id=2489841
 [IVars]: http://hackage.haskell.org/package/monad-par-0.3.4.4/docs/Control-Monad-Par.html
 [CTMCP]: http://www.info.ucl.ac.be/~pvr/book.html
+[name]: /erlang/lasp/2014/12/21/lasp.html
+[lasp]: https://github.com/cmeiklejohn/lasp

@@ -6,6 +6,10 @@ categories: derflow erlang
 group:  SyncFree
 ---
 
+_Updated January 9th, 2015: Derflow has since been renamed to Lasp,
+which is open source on [GitHub][lasp].  For more information
+surrounding the name change, see this [post][name]._
+
 _As we discussed in our first [post][part1], [Derflow][derflow] is the
 name of our distributed deterministic programming model that is the
 basis of our research into providing a more expressive way of working
@@ -265,3 +269,5 @@ Thanks!
 [ec_eqc]: https://github.com/basho/riak_kv/blob/develop/test/ec_eqc.erl
 [put_fsm_eqc]: https://github.com/basho/riak_kv/blob/develop/test/put_fsm_eqc.erl
 [derflow_ets]: https://github.com/cmeiklejohn/derflow/blob/master/src/derflow_ets.erl
+[name]: /erlang/lasp/2014/12/21/lasp.html
+[lasp]: https://github.com/cmeiklejohn/lasp
