@@ -244,8 +244,6 @@ Thanks for reading.
 
 # Resources
 
-The code for this example can be found on [GitHub][counter].
-
 _If you're interested in this research and would like to discuss further
 or assist, feel free to contact me using the details in the footer._
 
@@ -255,6 +253,5 @@ Bieniusa and myself at RICON 2014 in Las Vegas._
 
 [part1]: http://christophermeiklejohn.com/derflow/erlang/2014/09/28/try-derflow.html
 [derflow]: https://github.com/cmeiklejohn/derflow
-[counter]: https://github.com/cmeiklejohn/derflow/blob/e6449b1d3b410bab284b95e478ed534dd8d204a3/riak_test/derflow_adcounter_test.erl
 [ricon]: https://www.youtube.com/watch?v=1KP_pxFhlVU
 [syncfree]: http://syncfree.lip6.fr
