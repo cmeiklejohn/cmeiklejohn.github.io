@@ -274,7 +274,7 @@ In this post, we introduced a few new concepts:
   advancing in a lattice defined by the data type of the object being
   read.  This ensures that we never read an earlier value and our
   programs evolve monotonically.
-* Using the observed-remove set in Lasp to support concurrency
+* Using the observed-remove set in Lasp to build richer applications.
 
 Additionally, we alleviated the following problems in our previous
 example:
