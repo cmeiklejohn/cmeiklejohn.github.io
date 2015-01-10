@@ -51,7 +51,7 @@ To initialize our application, we begin by performing four main tasks:
 * Initialize a process for each server who will be tracking ads
 * Simulate a bunch of advertisements being viewed
 
-## Createing advertisement counters
+## Creating advertisement counters
 
 We model each advertisement counter as a grow-only counter (G-Counter).
 We use the grow-only counter provided by the `riak_dt` library, the
