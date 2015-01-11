@@ -233,11 +233,11 @@ Let's compare divergence with both approaches:
 
 {% highlight erlang %}
 Gathering totals...
-Advertisements: <<110,53,13,91,199,31,77,58,182,249,60,178,202,211,89,243>> impressions: 21
-Advertisements: <<168,68,91,50,208,71,65,25,150,112,253,136,180,119,19,155>> impressions: 20
-Advertisements: <<204,96,55,64,234,28,72,69,135,52,240,26,111,45,53,188>> impressions: 20
-Advertisements: <<45,233,202,246,10,43,69,227,143,26,191,102,16,172,96,69>> impressions: 20
-Advertisements: <<212,97,51,81,130,124,78,25,166,119,199,202,168,187,115,66>> impressions: 19
+<<110,53,13,91,199,31,77,58,182,249,60,178,202,211,89,243>> impressions: 21
+<<168,68,91,50,208,71,65,25,150,112,253,136,180,119,19,155>> impressions: 20
+<<204,96,55,64,234,28,72,69,135,52,240,26,111,45,53,188>> impressions: 20
+<<45,233,202,246,10,43,69,227,143,26,191,102,16,172,96,69>> impressions: 20
+<<212,97,51,81,130,124,78,25,166,119,199,202,168,187,115,66>> impressions: 19
 {% endhighlight %}
 
 With our original ad counter, because the advertisement removal messages
@@ -248,11 +248,11 @@ introduced.
 
 {% highlight erlang %}
 Gathering totals...
-Advertisements: <<208,159,75,41,9,151,70,107,182,210,180,66,247,132,211,14>> impressions: 5
-Advertisements: <<195,43,172,108,73,61,67,190,140,7,109,243,209,246,5,162>> impressions: 5
-Advertisements: <<50,181,254,178,117,171,66,174,153,199,160,145,159,98,225,150>> impressions: 5
-Advertisements: <<29,35,74,153,33,176,66,193,189,68,180,224,73,78,95,53>> impressions: 10
-Advertisements: <<152,192,71,228,61,171,77,132,137,223,207,108,112,142,160,168>> impressions: 5
+<<208,159,75,41,9,151,70,107,182,210,180,66,247,132,211,14>> impressions: 5
+<<195,43,172,108,73,61,67,190,140,7,109,243,209,246,5,162>> impressions: 5
+<<50,181,254,178,117,171,66,174,153,199,160,145,159,98,225,150>> impressions: 5
+<<29,35,74,153,33,176,66,193,189,68,180,224,73,78,95,53>> impressions: 10
+<<152,192,71,228,61,171,77,132,137,223,207,108,112,142,160,168>> impressions: 5
 {% endhighlight %}
 
 Obviously, reading directly from the variable store each time cuts down
