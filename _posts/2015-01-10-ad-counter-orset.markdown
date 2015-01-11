@@ -21,8 +21,8 @@ series.
 In this post, we look at an alternative method for tracking the list of
 active advertisements: a replicated data structure which supports an
 arbitrary number of concurrent addition and removal operations to
-elements in a set.  This data structure is called the Observed-Removed
-set (OR-set), and was originally described by Shapiro et al. in ["A
+elements in a set.  This data structure is called the Observed-Remove
+set (OR-set), and was originally formalized by Shapiro et al. in ["A
 Comprehensive Study of Convergent and Commutative Replicated Data
 Types"][shapiro].
 
@@ -139,7 +139,7 @@ read_.  A monotonic read operation takes an previously observed value
 in the provided data type's lattice and blocks until the variable's
 current value is an _inflation_ of the previous.
 
-_For simplicity, think the less-than-or-equal-to relationship over
+_For simplicity, think the greater-than-or-equal-to relationship over
 natural numbers; we want to ensure we never view the value 1 if we have
 already observed the value 2._
 
