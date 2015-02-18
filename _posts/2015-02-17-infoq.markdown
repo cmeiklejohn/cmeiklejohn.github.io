@@ -1,0 +1,26 @@
+---
+layout: post
+title:  "Highly Distributed Computations Without Synchronization"
+date:   2015-02-17 20:15:00 -0500
+categories: lasp erlang
+group: SyncFree
+---
+
+_As we discussed in our first [post][part1], [Lasp][lasp] is the name of
+our distributed deterministic programming model that is the basis of our
+research into providing a more expressive way of working with CRDTs and
+eventual consistency._
+
+My work on [Lasp][lasp] was featured on [InfoQ][infoq] today in an article
+titled: [Highly Distributed Computations Without Synchronization][article].
+
+In this article, we motivate the design of Lasp, and explore one
+possible design of our eventually consistent advertisement counter.
+
+I also enourage you to follow along on [GitHub][lasp] if you're
+interested in learning more!
+
+[article]: http://www.infoq.com/articles/Highly-Distributed-Computations-Without-Synchronization
+[lasp]: https://github.com/cmeiklejohn/lasp
+[part1]: http://christophermeiklejohn.com/derflow/erlang/2014/09/28/try-derflow.html
+[infoq]: http://www.infoq.com
