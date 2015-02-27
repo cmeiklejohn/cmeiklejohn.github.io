@@ -1,0 +1,26 @@
+---
+layout: post
+title:  "Seminars on Lasp in March, 2015"
+date:   2015-02-27 10:50:00 -0500
+categories: lasp erlang
+group: SyncFree
+---
+
+_As we discussed in our first [post][part1], [Lasp][lasp] is the name of
+our distributed deterministic programming model that is the basis of our
+research into providing a more expressive way of working with CRDTs and
+eventual consistency._
+
+[Peter Van Roy][pvr] will be discussing our work on [Lasp][lasp] at two
+seminars this month.  If you're around, you should check them out!
+
+* Lasp: a language for eventually consistent distributed programming
+  with CRDTs at [KTH][kth] on March 5th.
+* Lasp: a language for eventually consistent distributed programming
+  with CRDTs at [IST][ist] on March 13th.
+
+[kth]: https://www.kth.se/en/ict/forskning/programvaruteknik-och-datorsystem/seminarier/seminar-2015-03-05-1.547027
+[lasp]: https://github.com/cmeiklejohn/lasp
+[part1]: http://christophermeiklejohn.com/derflow/erlang/2014/09/28/try-derflow.html
+[pvr]: https://www.info.ucl.ac.be/~pvr/cvvanroy.html
+[ist]: http://tecnico.ulisboa.pt/en/
