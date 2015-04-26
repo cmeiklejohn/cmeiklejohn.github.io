@@ -28,7 +28,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
 <div id="post">
   <h1>Orleans: Distributed Virtual Actors for Programmability and Scalability<br />
     <em>Philip A. Bernstein, Sergey Bykov, Allan Geller, Cabriel Kliot, Jorgen Thelin</em><br />
-    Microsoft Research
+    Microsoft Research; Technical Report <a href="http://research.microsoft.com/apps/pubs/default.aspx?id=210931">MSR-TR-2014-41</a>
   </h1>
   <p>Here's an in-progress comparison of the Orleans work by Microsoft,
   a virtual actor system for large-scale distributed programming, with
@@ -56,10 +56,34 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       <p>The Orleans programming model introduces the novel abstraction
       of virtual actors that solves a number of the complex distributed
       systems problems, such as reliability and distributed resource
-      management, liberat- ing the developers from dealing with those
+      management, liberating the developers from dealing with those
       concerns. At the same time, the Orleans runtime enables
       applications to attain high performance, reliability and
       scalability.</p>
+    </td>
+    <td>
+      <p>The Erlang programming language is a dynamically-typed,
+      functional, single-assignment, garbage-collected, language with
+      eager evaluation.  The concurrency model supported by Erlang is
+      the actor model: concurrency is supported by lightweight processes
+      that communicated through shared-nothing asynchronous message
+      passing.</p>
+      <p>The programming model focused on in this paper features a novel
+      abstraction called the "virtual actor"; this abstraction can be
+      seen as an abstraction over the "simple_one_for_one" supervisor
+      model where workers are dynamically created to perform a talk with
+      one main difference: in the Orleans model, actors are instantiated
+      on demand and destroyed when they are not in use; instantiated
+      actors, or <b><em>activations</em></b>, are responsible for
+      processing work, as routed to them by the runtime system, in
+      serial.  These actors are known as <b><em>stateless
+          workers</em></b>.</p>
+      <p>Orleans also supports a <b><em>single activation</em></b>
+      worker that can only exist once.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <p>This paper presents the design principles behind Orleans and
       demonstrates how Orleans achieves a simple programming model that
       meets these goals. We describe how Orleans simplified the
@@ -69,7 +93,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       <h3>1. Introduction</h3>
       <p>Building interactive services that are scalable and reliable is
       hard. Interactivity imposes strict constraints on availability and
-      latency, as that directly impacts end- used experience. To support
+      latency, as that directly impacts end-user experience. To support
       a large number of concurrent user sessions, high throughput is
       essential.</p>
       <p>The traditional three-tier architecture with stateless
@@ -198,6 +222,13 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       production and synthetic benchmarks. Section 6 compares Orleans to
       other actor frameworks and the early prototype of Orleans reported
       in [5]. Section 7 is the conclusion.</p>
+    </td>
+    <td>
+      <p>TODO</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <h3>2. Programming Model</h3>
       <p>This section describes the Orleans programming model and
       provides code examples from the Halo 4 Presence service (described
@@ -213,11 +244,25 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       do not share memory. Thus, two actors can interact only by sending
       messages.</p>
       <p>Virtualization of actors in Orleans has four facets:</p>
+    </td>
+    <td>
+      <p>TODO</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <p><b>1. Perpetual existence:</b> actors are purely logical
       entities that always exist, virtually. An actor cannot be
       explicitly created or destroyed and its virtual existence is
       unaffected by the failure of a server that executes it. Since
       actors always exist, they are always addressable.</p>
+    </td>
+    <td>
+      <p>TODO</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <p><b>2. Automatic instantiation:</b> Orleans’ runtime
       automatically creates in-memory instances of an actor called
       <b><em>activations</em></b>. At any point in time an actor may
@@ -236,6 +281,13 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       part of runtime resource management. When doing so Orleans invokes
       the DeactivateAsync method, which gives the actor an opportunity
       to perform a cleanup operation.</p>
+    </td>
+    <td>
+      <p>TODO</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <p><b>3. Location transparency:</b> an actor may be instantiated
       in different locations at different times, and sometimes might not
       have a physical location at all. An application interacting with
@@ -327,6 +379,11 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       programming and maximizes throughput by allowing immediate
       pipelining of requests to actors without waiting to bind or to
       resolve a service endpoint.</p>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
       <h3>2.4 Promises</h3>
       <p>Actors interact by sending asynchronous messages. As in most
       modern distributed systems programming models, these message
@@ -335,8 +392,540 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       <b><em>promise</em></b> for a future result, rather than blocking
       until the result is returned. Promises allow for concurrency
       without requiring explicit thread management.</p>
+      <p>Promises have a three-state lifecycle. Initially, a promise is
+      <b><em>unresolved</em></b>; it represents the expectation of
+      receiving a result at some future time. When the result is
+      received, the promise becomes <b><em>fulfilled</em></b> and the
+      result becomes the value of the promise. If an error occurs,
+      either in the calculation of the result or in the communication,
+      the promise becomes <b><em>broken.</em></b></p>
+      <p>Promises are exposed as instances of the class
+      System.Threading.Tasks.Task&lt;T&gt; that represents the eventual value
+      of a specified type or of the class System.Threading.Tasks.Task
+      that represents a completion promise corresponding to void
+      methods.</p>
+      <p>The main way to use a promise is to schedule a
+      <b><em>closure</em></b> (or <b><em>continuation</em></b>) to
+      execute when the promise is resolved. Closures are usually
+      implicitly scheduled by using the await C# keyword on a promise.
+      In the example below the compiler does stack ripping and
+      transforms the code after ‘await’ into a closure that executes
+      after the promise is resolved. Thus, the developer writes code,
+      including error handling, that executes asynchronously but looks
+      sequential and hence more natural.</p>
+    </td>
+    <td>
+      <p>TODO</p>
     </td>
   </tr>
+  <tr>
+    <td>
+      <h3>2.5 Turns</h3>
+      <p>Actor activations are single threaded and do work in chunks,
+      called <b><em>turns</em></b>. An activation executes one turn at a
+      time. A turn can be a method invocation or a closure executed on
+      resolution of a promise. While Orleans may execute turns of
+      different activations in parallel, each activation always executes
+      one turn at a time.</p>
+      <p>The turn-based asynchronous execution model allows for
+      interleaving of turns for multiple requests to the same
+      activation. Since reasoning about interleaved execution of
+      multiple requests is challenging, Orleans by default avoids such
+      interleaving by waiting for an activation to finish processing one
+      request before dispatching the next one. Thus, an activation does
+      not receive a new request until all promises created during the
+      processing of the current request have been resolved and all of
+      their associated closures executed. To override this default
+      behavior, an actor class may be marked with the [Reentrant]
+      attribute. This indicates that an activation of that class may be
+      given another request to process in between turns of a previous
+      request, e.g. while waiting for a pending IO operation. Execution
+      of turns of both requests is still guaranteed to be single
+      threaded, so the activation is still executing one turn at a time.
+      But turns belonging to different requests of a reentrant actor may
+      be freely interleaved.</p>
+    </td>
+    <td>
+      <p>TODO</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>2.6 Persistence</h3>
+      <p>The execution of actor requests may modify the actor state,
+      which may or may not be persistent. Orleans provides a facility to
+      simplify persistence management. An actor class can declare a
+      property bag interface that represents the actor state that should
+      be persisted. The runtime then provides each actor of that type
+      with a state object that implements that interface and exposes
+      methods for persisting and refreshing the state.</p>
+      <p>It is up to the application logic when to checkpoint an actor’s
+      persistent state. For example, it can do so when each application
+      request is completed, or periodically based on a timer or based on
+      the number of requests processed since the last checkpoint.</p>
+      <p>The interaction with the underlying storage is implemented via
+      <b><em>persistence providers</em></b>, which serve as adaptors for
+      specific storage systems: SQL database, column store, blob store,
+      etc.</p>
+    </td>
+    <td>
+      <p>No such mechanism exists today in Riak Core or Erlang.</p>
+      <p>While Erlang has shared data structures that can be persisted,
+      such as dets, these data structures are managed by a separate
+      process responsible for processing messages related to the storage
+      and retrieval of objects.  All of this is left to the application
+      developer.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>2.7 Timers and Reminders</h3>
+      <p>There are two kinds of timer facilities in Orleans. Transient
+      timers closely mimic the .NET timer interface but provide single
+      threading execution guarantees. They are created local to an actor
+      activation, and disappear when the actor is deactivated.</p>
+      <p>A reminder is a timer that fires whether or not the actor is
+      active. Thus, it transcends the actor activation that created it,
+      and continues to operate until explicitly deleted. If a reminder
+      fires when its actor is not activated, a new activation is
+      automatically created to process the reminder message, just like
+      any other message sent to that actor. Reminders are reliable
+      persistent timers that produce messages for actors that created
+      them while allowing the runtime to reclaim system resources by
+      deactivating those actors, if necessary, in between reminder
+      ticks. Reminders follow the conceptual model of virtual actors
+      that eternally exist in the system and are activated in memory
+      only as needed to process incoming requests. Reminders are a
+      useful facility to execute infrequent periodic work despite
+      failures and without the need to pin an actor’s activation in
+      memory forever.</p>
+    </td>
+    <td>
+      <p>TODO</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>3. Runtime Implementation</h3>
+      <p>In this section, we describe the general architecture of the
+      runtime, highlight key design choices and their rationale. Our
+      guiding principle is to enable a simple programming model without
+      sacrificing performance.</p>
+    </td>
+    <td>
+      <p>TODO</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>3.1 Overview</h3>
+      <p>Orleans runs on a cluster of servers in a datacenter, each
+      running a container process that creates and hosts actor
+      activations. A server has three key subsystems: Messaging,
+      Hosting, and Execution. The messaging subsystem connects each pair
+      of servers with a single TCP connection and uses a set of
+      communication threads to multiplex messages between actors hosted
+      on those servers over open connections. The hosting subsystem
+      decides where to place activations and manages their lifecycle.
+      The execution subsystem runs actors’ application code on a set of
+      compute threads with the single-threaded and reentrancy
+      guarantees.</p>
+      <p>When an actor calls another actor, Execution converts the
+      method call into a message and passes it to Messaging along with
+      the identity of the target actor. Messaging consults with Hosting
+      to determine the target server to send the message to. Hosting
+      maintains a distributed directory to keep track of all actor
+      activations in the cluster. It either finds an existing activation
+      of the target actor or picks a server to create a new activation
+      of it. Messaging then serializes the message and sends it to the
+      already opened socket to the destination server. On the receiving
+      end, the call parameters are deserialized and marshaled into a set
+      of strongly-typed objects and passed to Execution, which schedules
+      it for invocation. If the actor is busy processing a previous
+      invocation, the request is queued until that request’s execution
+      is completed. If the receiving server is instructed to create a
+      new activation, it registers the actor in the directory and then
+      creates a local in-memory instance of it. The single- activation
+      guarantees are provided by the directory.</p>
+      <p>Hosting is also responsible for locally managing resources in
+      the server. If an actor is idle for a configurable time or the
+      server experiences memory pressure, the runtime automatically
+      deactivates it and reclaims its system resources. This simple
+      strategy for local resource management is enabled by actor
+      virtuali- zation. An unused actor can be deactivated and reclaim-
+      ed independently and locally on any server because it can later be
+      transparently re-activated. This approach does not require
+      complicated distributed garbage collection protocols which involve
+      tracking all physical references to an actor before it can be
+      reclaimed.</p>
+    </td>
+    <td>
+      <p>TODO</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>3.2 Distributed Directory</h3>
+      <p>Many distributed systems use deterministic placement to avoid
+      maintaining an explicit directory of the location of each
+      component, by consistent hashing or range-based partitioning.
+      Orleans allows completely flexible placement, keeping the location
+      of each actor in a distributed directory. This allows the runtime
+      more freedom in managing system resources by placing and moving
+      actors as the load on the system changes.</p>
+      <p>The Orleans directory is implemented as a one-hop distributed
+      hash table (DHT) [17]. Each server in the cluster holds a
+      partition of the directory, and actors are assigned to the
+      partitions using consistent hashing. Each record in the directory
+      maps an actor id to the location(s) of its activations. When a new
+      activation is created, a registration request is sent to the
+      appropriate directory partition. Similarly, when an activation is
+      deactivated, a request is sent to the partition to unregister the
+      activation. The single-activation constraint is enforced by the
+      directory: if a registration request is received for a single-
+      activation actor that already has an activation registered, the
+      new registration is rejected, and the address of the existing
+      activation is returned with the rejection.</p>
+      <p>Using a distributed directory for placement and routing implies an
+      additional hop for every message, to find out the physical
+      location of a target actor. Therefore, Orleans maintains a large
+      local cache on every server with recently resolved
+      actor-to-activation mappings. Each cache entry for a
+      single-activation actor is about 80 bytes. This allows us to
+      comfortably cache millions of entries on typical production
+      servers. We have found in production that the cache has a very
+      high hit ratio and is effective enough to eliminate almost
+      completely the need for an extra hop on every message.</p>
+    </td>
+    <td>
+      <p>TODO</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>3.3 Strong Isolation</h3>
+      <p>Actors in Orleans do not share state and are isolated from each
+      other. The only way that actors can communicate is by sending
+      messages, which are exposed as method calls on an actor reference.
+      In this respect, Orleans follows the standard actor paradigm. In
+      addition, method-call arguments and the return value are deep
+      copied synchronously between actor calls, even if the two actors
+      happen to reside on the same machine, to guarantee immutability of
+      the sent data.</p>
+      <p>To reduce the cost of deep copying, Orleans uses two
+      complementary approaches. First, an application can specify that
+      it will not mutate an argument by using a markup generic wrapping
+      class Immutable<T> in the actor method signature. This tells the
+      runtime it is safe not to copy the argument. This is very useful
+      for pass- through functional style scenarios, when the actor code
+      never mutates the arguments. An example of such functionality is
+      the Router actor in the Halo 4 presence service (Section 4.1),
+      which performs decompression of the passed data blob without
+      storing or mutating it. For the cases where the actual copy has to
+      happen, Orleans uses a highly optimized copying module that is
+      part of the serialization subsystem (Section 3.7 below).</p>
+    </td>
+    <td>
+      <p>TODO</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>3.4 Asynchrony</h3>
+      <p>Orleans imposes an asynchronous programming style, using
+      promises to represent future results. All calls to actor methods
+      are asynchronous; the results must be of type Task or Task<T> to
+      indicate that they will be resolved later. The asynchronous
+      programming model introduced in .NET 4.5, based on the async and
+      await keywords, greatly simplifies code to handle promises.</p>
+      <p>Orleans’ pervasive use of asynchrony is important for the
+      simplicity and scalability of applications. Pre- venting
+      application code from holding a thread while waiting for a result
+      ensures that system throughput is minimally impacted by the cost
+      of remote requests. In our tests, increased distribution leads to
+      higher latency due to more off-box calls, but has almost no impact
+      on throughput in a communication-intensive application.</p>
+    </td>
+    <td>
+      <p>TODO</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>3.5 Single-Threading</h3>
+      <p>Orleans ensures that at most one thread runs at a time within
+      each activation. Thus, activation state is never accessed by
+      multiple threads simultaneously, so race conditions are impossible
+      and locks and other synchro- nization primitives are unnecessary.
+      This guarantee is provided by the execution subsystem without
+      creating per-activation threads. While single-threading does limit
+      performance of individual activations, the parallelism across many
+      activations handling different requests is more than sufficient to
+      efficiently use the available CPU resources, and actually leads to
+      better overall system responsiveness and throughput.</p>
+    </td>
+    <td>
+      <p>TODO</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>3.6 Cooperative Multitasking</h3>
+      <p>Orleans schedules application turns using cooperative
+      multitasking. That means that once started, an applica- tion turn
+      runs to completion, without interruption. The Orleans scheduler
+      uses a small number of compute threads that it controls, usually
+      equal to the number of CPU cores, to execute all application actor
+      code.</p>
+      <p>To support tens of thousands to millions of actors on a server,
+      preemptive multitasking with a thread for each activation would
+      require more threads than modern hardware and operating systems
+      can sustain. Even if the number of threads did not exceed the
+      practical limit, the performance of preemptive multitasking at
+      thousands of threads is known to be bad due to the overhead of
+      context switches and lost cache locality. By using only
+      cooperative multitasking, Orleans can efficiently run a large
+      number of activations on a small number of threads. Cooperative
+      multitasking also allows Orleans applications to run at very high
+      CPU utilization. We have run load tests with full saturation of 25
+      servers for many days at 90+% CPU utilization without any
+      instability.</p>
+      <p>A weakness of cooperative multitasking is that a poorly behaved
+      component can take up an entire pro- cessor, degrading the
+      performance of other components. For Orleans, this is not a major
+      concern since all of the actors are owned by the same developers.
+      (Orleans is not currently intended for a multi-tenant
+      environment.) Orleans does provide monitoring and notification for
+      long-running turns to help troubleshooting, but we have generally
+      not seen this as a problem in production.</p>
+    </td>
+    <td>
+      <p>TODO</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>3.7 Serialization</h3>
+      <p>Marshaling complex objects into a byte stream and later
+      recreating the objects is a core part of any distributed system.
+      While this process is hidden from application developers, its
+      efficiency can greatly affect overall system performance.
+      Serialization packages such as Protocol Buffers [12] offer
+      excellent performance at the cost of limiting the types of objects
+      that may be passed. Many serializers do not support dynamic types
+      or arbitrary polymorphism, and many do not support object identity
+      (so that two pointers to the same object still point to the same
+      object after deserialization). The standard .NET binary supports
+      any type marked with the [Serializable] attribute, but is slow and
+      may create very large representations.</p>
+      <p>For better programmability, Orleans allows any data type and
+      maintains object identity through the serializer. Structs, arrays,
+      fully polymorphic and generic objects can be used. We balance this
+      flexibility with a highly- optimized serialization subsystem that
+      is competitive with the best ones available on “standard” types.
+      We achieve this by automatically generating custom serialization
+      code at compile time, with hand-crafted code for common types such
+      as .NET collections. The serialized representation is compact and
+      carries a minimal amount of dynamic type information.</p>
+    </td>
+    <td>
+      <p>TODO</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>3.8 Reliability</h3>
+      <p>Orleans manages all aspects of reliability automatically,
+      relieving the programmer from the need to explicitly do so. The
+      only aspect that is not managed by Orleans is an actor’s
+      persistent state: this part is left for the developer.</p>
+      <p>The Orleans runtime has a built-in membership mechanism for
+      managing servers. Servers automatically detect failures via
+      periodic heartbeats and reach an agreement on the membership view.
+      For a short period of time after a failure, membership views on
+      different servers may diverge, but it is guaranteed that
+      eventually all servers will learn about the failed server and have
+      identical membership views. The convergence time depends on the
+      failure detection settings. The production services that use
+      Orleans are configured to detect failures and converge on cluster
+      membership within 30 to 60 seconds. In addition, if a server was
+      declared dead by the membership service, it will shut itself down
+      even if the failure was just a temporary network issue.</p>
+      <p>When a server fails, all activations on that server are lost.
+      The directory information on the failed server is lost if
+      directory partitions are not replicated. Once the surviving
+      servers learn about the failure, they scan their directory
+      partitions and local directory caches and purge entries for
+      activations located on the failed server. Since actors are
+      virtual, no actor fails when a server fails. Instead, the next
+      request to an actor whose activation was on the failed server
+      causes a new activation to be created on a surviving server. The
+      virtual nature of the actors allows the lifespan of an individual
+      actor to be com- pletely decoupled from the lifespan of the
+      hosting server.</p>
+      <p>A server failure may or may not lose an actors’ state on that
+      server. Orleans does not impose a checkpointing strategy. It is up
+      to the application to decide what actor state needs to be
+      checkpointed and how often. For example, an actor may perform a
+      checkpoint after every update to its in-memory state, or may
+      perform a check- point and wait for its acknowledgment before
+      returning success to its caller. Such an actor never loses its
+      state when a server fails and is rehydrated with its last
+      checkpointed state when reactivated on a different server.
+      However, such rigorous checkpointing may be too expensive, too
+      slow or simply unnecessary for some actors. For example, an actor
+      that represents a device, such as a cellphone, sensor, or game
+      console, may be a mere cache of the device’s state that the device
+      periodically updates by sending messages to its actor. There is no
+      need to checkpoint such an actor. When a server fails, it will be
+      reactivated on a different server and its state will be
+      reconstructed from data sent later by the device. Another popular
+      strategy, if the application can afford to infrequently lose small
+      updates to the state, is to checkpoint actor state periodically at
+      a fixed time interval. This flexibility in checkpointing policy,
+      coupled with the ability to use different backend storage
+      providers, allows developers to reach the desired tradeoff between
+      reliability and performance of the application.</p>
+      <p>There are situations where the directory information used to
+      route a message is incorrect. For instance, the local cache may be
+      stale and have a record for an activation that no longer exists,
+      or a request to unregister an activation may have failed. Orleans
+      does not require the directory information used by message routing
+      to be perfectly accurate. If a message is misdirected, the
+      recipient either reroutes the message to the correct location or
+      returns the message to the sender for rerouting. In either case,
+      both the sender and receiver take steps to correct the inaccuracy
+      by flushing a local cache entry or by updating the distributed
+      directory entry for the actor. If the directory has lost track of
+      an existing activation, new requests to that actor will result in
+      a new activation being created, and the old activation will
+      eventually be deactivated.</p>
+    </td>
+    <td>
+      <p>TODO</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>3.9 Eventual Consistency</h3>
+      <p>In failure-free times, Orleans guarantees that an actor only
+      has a single activation. However, when failures occur, this is
+      only guaranteed eventually.</p>
+      <p>Membership is in flux after a server has failed but before its
+      failure has been communicated to all survivors. During this
+      period, a register-activation request may be misrouted if the
+      sender has a stale membership view. The target of the register
+      request will reroute the request if it is not the proper owner of
+      the directory partition in its view. However, it may be that two
+      activations of the same actor are registered in two different
+      directory partitions, resulting in two activations of a single-
+      activation actor. In this case, once the membership has settled,
+      one of the activations is dropped from the directory and a
+      message is sent to its server to deactivate it.</p>
+      <p>We made this tradeoff in favor of availability over consistency
+      to ensure that applications can make progress even when membership
+      is in flux. For most applications this “eventual single
+      activation” semantics has been sufficient, as the situation is
+      rare. If it is insufficient, the application can rely on
+      external persistent storage to provide stronger data consistency.
+      We have found that relying on recovery and reconciliation in this
+      way is simpler, more robust, and performs better than trying to
+      maintain absolute accuracy in the directory and strict coherence
+      in the local directory caches.</p>
+    </td>
+    <td>
+      <p>In the event of network partitions, failures,
+      <b><em>single-activation</em></b> actors may exist more than once,
+      instantiated on each side of the partition.  In Erlang, a similar
+      problem is seen with facilities like pg2, global, gproc, and
+      mnesia.  Clustered instances of the Erlang runtime system assume a
+      node is no longer online after the heartbeat message times out.
+      This means that under partitions, groups of nodes can make
+      progress independently; for instance, the global registry gproc
+      will allow concurrent writes to the same data item on either side
+      of the partition, and when the partition is healed, won't know
+      automatically how to resolve the conflicts.</p>
+      <p>Orleans allows progress to be made independently and ensures
+      that once partitions have healed, the system will return to the
+      correct state; however, it's unclear what happens to any state
+      maintained locally.  Consider the case where two activations exist
+      of a single-activation actor that progress independently during a
+      partition: once the network stabilizes and Orleans deactivates one
+      of the activation, how is possibly divergent state resolved?</p>
+      <p>These examples are all related to membership and visibility:
+      under dynamic membership transitions, network partitions, and
+      other network-related failures, knowledge regarding the correct
+      location to route a request to or of failed nodes may be out of
+      date.</p>
+      <p>The alternative solution they propose that relies on external
+      storage seems to allude to an external coordination service such
+      as Chubby.  Alternative solutions could be to allow single
+      activation actors to only exist on the majority side of a
+      partition, or using convergent data structures to ensure
+      deterministic resolution when the network partition heals.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>3.10 Messaging Guarantees</h3>
+      <p>Orleans provides at-least-once message delivery, by resending
+      messages that were not acknowledged after a configurable timeout.
+      Exactly-once semantics could be added by persisting the
+      identifiers of delivered messages, but we felt that the cost would
+      be prohibitive and most applications do not need it. This can
+      still be implemented at the application level.</p>
+      <p>General wisdom in distributed systems says that maintaining a
+      FIFO order between messages is cheap and highly desirable. The
+      price is just a sequence number on the sender and in the message
+      header and a queue on the receiver. Our original implementation
+      followed that pattern, guaranteeing that messages sent from actor
+      A to actor B were delivered to B in order, regardless of failures.
+      This approach however does not scale well in applications with a
+      large number of actors. The per-actor-pair state totals
+      n<sup>2</sup> sequence numbers and queues. This is too much state
+      to maintain efficiently. Moreover, we found that FIFO message
+      ordering is not required for most request-response applications.
+      Developers can easily express logical data and control
+      dependencies in code by a handshake, issuing a next call to an
+      actor only after receiving a reply to the previous call. If the
+      application does not care about the ordering of two calls, it
+      issues them in parallel.</p>
+    </td>
+    <td>
+      <p>Distributed Erlang provides an at-most-once guarantee, wherein
+      messages are delivered in order between pairwise processes.
+      However, in the event of failures and the connection channel is
+      dropped and re-established between two nodes, some prefix of
+      messages that were acknowledged as sent by the sender may not be
+      delivered to the receipient.  This differs from the delivery
+      guarantees that Orleans provides, where ordering of messages from
+      actor A to actor B are not guaranteed in FIFO order.</p>
+      <p>While this ordering is guaranteed by the runtime system, the
+      Erlang community generally frowns on building applications that
+      reply on message ordering between processes.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>4. Applications</h3>
+      <p>[omitted]</p>
+      <h3>5. Performance</h3>
+      <p>[omitted]</p>
+      <h3>6. Related Work</h3>
+      <p>[omitted]</p>
+      <h3>7. Conclusion</h3>
+      <p>[omitted]</p>
+      <h3>8. References</h3>
+      <p>[omitted]</p>
+    </td>
+    <td></td>
+  </tr>
+  <!--
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  -->
 </table>
 
 <br />
