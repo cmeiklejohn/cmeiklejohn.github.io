@@ -1,0 +1,342 @@
+---
+layout: default
+title: Orleans, Distributed Virtual Actors for Programming and Scalability Comparison
+---
+
+<style type="text/css">
+  .container {
+    border: 1px solid green;
+  }
+  .site {
+    min-width: 1024px;
+  }
+  table {
+    width: 1024px;
+    border-collapse: collapse;
+  }
+  td {
+    border: 1px solid black;
+    width: 50%;
+    padding: 10px;
+    vertical-align: top;
+  }
+  pre {
+    display: inline;
+  }
+  </style>
+
+<div id="post">
+  <h1>Orleans: Distributed Virtual Actors for Programmability and Scalability<br />
+    <em>Philip A. Bernstein, Sergey Bykov, Allan Geller, Cabriel Kliot, Jorgen Thelin</em><br />
+    Microsoft Research
+  </h1>
+  <p>Here's an in-progress comparison of the Orleans work by Microsoft,
+  a virtual actor system for large-scale distributed programming, with
+  Erlang and Basho's distributed programming abstraction, Riak Core.</p>
+  <p>If I've got anything wrong, I kindly ask to you open a <a
+    href="https://github.com/cmeiklejohn/cmeiklejohn.github.io">pull
+    request.</a>  Thanks!</p>
+</div>
+
+<table style="border: 1px solid black">
+  <tr>
+    <td><h3>Orleans</h3></td>
+    <td><h3>Comparisons to Erlang and Riak Core</h3></td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Abstract</h3>
+      <p>High-scale interactive services demand high throughput with low
+      latency and high availability, difficult goals to meet with the
+      traditional stateless 3-tier architecture. The actor model makes
+      it natural to build a stateful middle tier and achieve the
+      required performance. However, the popular actor model platforms
+      still pass many distributed systems problems to the
+      developers.</p>
+      <p>The Orleans programming model introduces the novel abstraction
+      of virtual actors that solves a number of the complex distributed
+      systems problems, such as reliability and distributed resource
+      management, liberat- ing the developers from dealing with those
+      concerns. At the same time, the Orleans runtime enables
+      applications to attain high performance, reliability and
+      scalability.</p>
+      <p>This paper presents the design principles behind Orleans and
+      demonstrates how Orleans achieves a simple programming model that
+      meets these goals. We describe how Orleans simplified the
+      development of several scalable production applications on Windows
+      Azure, and report on the performance of those production
+      systems.</p>
+      <h3>1. Introduction</h3>
+      <p>Building interactive services that are scalable and reliable is
+      hard. Interactivity imposes strict constraints on availability and
+      latency, as that directly impacts end- used experience. To support
+      a large number of concurrent user sessions, high throughput is
+      essential.</p>
+      <p>The traditional three-tier architecture with stateless
+      front-ends, stateless middle tier and a storage layer has limited
+      scalability due to latency and throughput limits of the storage
+      layer that has to be consulted for every request. A caching layer
+      is often added between the middle tier and storage to improve
+      performance [9][14] [19]. However, a cache loses most of the
+      concurrency and semantic guarantees of the underlying storage
+      layer. To prevent inconsistencies caused by concurrent updates to
+      a cached item, the application or cache manager has to implement a
+      concurrency control protocol [11]. With or without cache, a
+      stateless middle tier does not provide data locality since it uses
+      the data shipping paradigm: for every request, data is sent from
+      storage or cache to the middle tier server that is processing the
+      request. The advent of social graphs where a single request may
+      touch many entities connected dynamically with multi-hop
+      relationships makes it even more challenging to satisfy required
+      application-level semantics and consistency on a cache with fast
+      response for interactive access.</p>
+      <p>The actor model offers an appealing solution to these
+      challenges by relying on the function shipping paradigm. Actors
+      allow building a stateful middle tier that has the performance
+      benefits of a cache with data locality and the semantic and
+      consistency benefits of encapsulated entities via
+      application-specific operations. In addition, actors make it easy
+      to implement horizontal, “social”, relations between entities in
+      the middle tier.</p>
+      <p>Another view of distributed systems programmabil- ity is
+      through the lens of the object-oriented program- ming (OOP)
+      paradigm. While OOP is an intuitive way to model complex systems,
+      it has been marginalized by the popular service-oriented
+      architecture (SOA). One can still benefit from OOP when
+      implementing service components. However, at the system level,
+      developers have to think in terms of loosely-coupled partitioned
+      services, which often do not match the application’s conceptual
+      objects. This has contributed to the difficulty of building
+      distributed systems by mainstream developers. The actor model
+      brings OOP back to the system level with actors appearing to
+      developers very much like the familiar model of interacting
+      objects.</p>
+      <p>Actor platforms such as Erlang [3] and Akka [2] are a step
+      forward in simplifying distributed system programming. However,
+      they still burden developers with many distributed system
+      complexities because of the relatively low level of provided
+      abstractions and system services. The key challenges are the need
+      to manage the lifecycle of actors in the application code and deal
+      with inherent distributed races, the responsibility to handle
+      failures and recovery of actors, the placement of actors, and thus
+      distributed resource management. To build a correct solution to
+      such problems in the application, the developer must be a
+      distributed systems expert.</p>
+      <p>To avoid these complexities, we built the Orleans programming
+      model and runtime, which raises the level of the actor
+      abstraction. Orleans targets developers who are not distributed
+      system experts, although our expert customers have found it
+      attractive too. It is actor-based, but differs from existing
+      actor-based platforms by treating actors as virtual entities, not
+      as physical ones. First, an Orleans actor always exists,
+      virtually. It cannot be explicitly created or destroyed. Its
+      existence transcends the lifetime of any of its in-memory
+      instantiations, and thus transcends the lifetime of any particular
+      server. Second, Orleans actors are automatically instantiated: if
+      there is no in-memory instance of an actor, a message sent to the
+      actor causes a new instance to be created on an available server.
+      An unused actor instance is automatically reclaimed as part of
+      runtime resource management. An actor never fails: if a server S
+      crashes, the next message sent to an actor A that was running on S
+      causes Orleans to automatically re-instantiate A on another
+      server, eliminating the need for applications to supervise and
+      explicitly re-create failed actors. Third, the location of the
+      actor instance is transparent to the application code, which
+      greatly simplifies programming. And fourth, Orleans can
+      automatically create multiple instances of the same stateless
+      actor, seamlessly scaling out hot actors.<p>
+      <p>Overall, Orleans gives developers a virtual “actor space” that,
+      analogous to virtual memory, allows them to invoke any actor in
+      the system, whether or not it is present in memory. Virtualization
+      relies on indirection that maps from virtual actors to their
+      physical instantia- tions that are currently running. This level
+      of indirection provides the runtime with the opportunity to solve
+      many hard distributed systems problems that must otherwise be
+      addressed by the developer, such as actor placement and load
+      balancing, deactivation of unused actors, and actor recovery after
+      server failures, which are notoriously difficult for them to get
+      right. Thus, the virtual actor approach significantly simplifies
+      the programming model while allowing the runtime to balance load
+      and recover from failures transparently.</p>
+      <p>The runtime supports indirection via a distributed directory.
+      Orleans minimizes the runtime cost of indirection by using local
+      caches that map from actor identity to its current physical
+      location. This strategy has proven to be very efficient. We
+      typically see cache hit rates of well over 90% in our production
+      services.</p>
+      <p>Orleans has been used to build multiple production services
+      currently running on the Microsoft Windows Azure cloud, including
+      the back-end services for some popular games. This enabled us to
+      validate the scalability and reliability of production
+      applications written using Orleans, and adjust its model and
+      implementation based on this feedback. It also enabled us to
+      verify, at least anecdotally, that the Orleans programming model
+      leads to significantly increased programmer productivity.</p>
+      <p>While the Orleans programming model is appropriate for many
+      applications, certain patterns do not fit Orleans well. One such
+      pattern is an application that intermixes frequent bulk operations
+      on many entities with operations on individual entities. Isolation
+      of actors makes such bulk operations more expensive than
+      operations on shared memory data structures. The virtual actor
+      model can degrade if the number of actors in the system is
+      extremely large (billions) and there is no temporal locality.
+      Orleans does not yet support cross- actor transactions, so
+      applications that require this feature outside of the database
+      system are not suitable.</p>
+      <p>In summary, the main contributions of this paper are (a) a
+      novel virtual actor abstraction that enables a simplified
+      programming model; (b) an efficient and scalable implementation of
+      the distributed actor model that eliminates some programming
+      complexities of traditional actor frameworks with a good level of
+      performance and scalability; and (c) detailed measure- ments and a
+      description of our production experience.</p>
+      <p>The outline of the paper is as follows. In Section 2, we
+      introduce the Orleans programming model. Section 3 describes the
+      runtime, with a focus on how the virtual actor model enables
+      scalability and reliability. Section 4 discusses how Orleans is
+      used in practice, and Section 5 presents measurements on both
+      production and synthetic benchmarks. Section 6 compares Orleans to
+      other actor frameworks and the early prototype of Orleans reported
+      in [5]. Section 7 is the conclusion.</p>
+      <h3>2. Programming Model</h3>
+      <p>This section describes the Orleans programming model and
+      provides code examples from the Halo 4 Presence service (described
+      further in Section 4.1).</p>
+      <h3>2.1 Virtual Actors</h3>
+      <p>The Orleans programming model is based on the .NET Framework
+      4.5 [10]. Actors are the basic building blocks of Orleans
+      applications and are the units of isolation and distribution.
+      Every actor has a unique identity, composed of its type and
+      primary key (a 128-bit GUID). An actor encapsulates behavior and
+      mutable state, like any object. Its state can be stored using a
+      built-in persistence facility. Actors are isolated, that is, they
+      do not share memory. Thus, two actors can interact only by sending
+      messages.</p>
+      <p>Virtualization of actors in Orleans has four facets:</p>
+      <p><b>1. Perpetual existence:</b> actors are purely logical
+      entities that always exist, virtually. An actor cannot be
+      explicitly created or destroyed and its virtual existence is
+      unaffected by the failure of a server that executes it. Since
+      actors always exist, they are always addressable.</p>
+      <p><b>2. Automatic instantiation:</b> Orleans’ runtime
+      automatically creates in-memory instances of an actor called
+      <b><em>activations</em></b>. At any point in time an actor may
+      have zero or more activations. An actor will not be instantiated
+      if there are no requests pending for it.  When a new request is
+      sent to an actor that is currently not instantiated, the Orleans
+      runtime automatically creates an activation by picking a server,
+      instantiating on that server the .NET object that implements the
+      actor, and invoking its ActivateAsync method for initialization.
+      If the server where an actor currently is instantiated fails, the
+      runtime will automatically re-instantiate it on a new server on
+      its next invocation. This means that Orleans has no need for
+      supervision trees as in Erlang [3] and Akka [2], where the
+      application is responsible for re- creating a failed actor. An
+      unused actor’s in-memory instance is automatically reclaimed as
+      part of runtime resource management. When doing so Orleans invokes
+      the DeactivateAsync method, which gives the actor an opportunity
+      to perform a cleanup operation.</p>
+      <p><b>3. Location transparency:</b> an actor may be instantiated
+      in different locations at different times, and sometimes might not
+      have a physical location at all. An application interacting with
+      an actor or running within an actor does not know the actor’s
+      physical location. This is similar to virtual memory, where a
+      given logical memory page may be mapped to a variety of physical
+      addresses over time, and may at times be “paged out” and not
+      mapped to any physical address. Just as an operating system pages
+      in a memory page from disk automatically, the Orleans runtime
+      automatically instantiates a non-instantiated actor upon a new
+      request.</p>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      <p><b>4. Automatic scale out:</b> Currently, Orleans supports two
+      activation modes for actor types: <b><em>single
+          activation</em></b> mode (default), in which only one
+      simultaneous activation of an actor is allowed, and
+      <b><em>stateless worker</em></b> mode, in which many independent
+      activations of an actor are created automatically by Orleans
+      on-demand (up to a limit) to increase throughput. “Independent”
+      implies that there is no state reconciliation between different
+      activations of the same actor.  Therefore, the <em>stateless
+        worker</em> mode is appropriate for actors with immutable or no
+      state, such as an actor that acts as a
+      read-only cache.</p>
+      <p>Making actors virtual entities, rather than physical ones, has
+      a significant impact on the Orleans programming model and
+      implementation. Automatic activation, location transparency and
+      perpetual existence greatly simplify the programming model since
+      they remove from the application the need to explicitly activate
+      or deactivate an actor, as well as supervise its lifecycle, and
+      re-create it on failures.</p>
+    </td>
+    <td>
+      <p>While Erlang actors can be viewed as <b><em>single
+          activation</em></b> at some conceptual level, for instance,
+      each process is uniquely started by the system, uniquely
+      addressable by a given process identifier, and can each register
+      uniquely locally or globally under a chose name, the
+      "simple_one_for_one" pattern is a close analogy
+      for the <b><em>stateless worker</em></b> pattern: a supervisor is
+      responsible for dynamically starting a given number of processes
+      that perform one task before terminating and do not register under
+      a unique name with the process registry.</p>
+      <p>However, a difference in the Orleans model is that the
+      <b><em>stateless workers</em></b> are long-lived and service
+      multiple requests.  For example, work from Basho on two
+      Erlang-based libraries, sidejob and poolboy, has shown that
+      pre-allocating a bounded number of processes that are long lived
+      to serve requests, having any process be able to spawn these,
+      and not route requests through a supervisor, result in better
+      throughput and latency, given the removal of process management
+      from the critical path.</p>
+      <p>A good example of the <b><em>single activation</em></b> pattern
+      in Riak Core would be the claimant; one claimant exists at a given
+      time for the cluster and is responsible for coordinating
+      cluster changes, such as the addition and removal of a given
+      node.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>2.2 Actor Interfaces</h3>
+      <p>Actors interact with each other through methods and properties
+      declared as part of their strongly-typed interfaces. All methods
+      and properties of an actor interface are required to be
+      asynchronous; that is, their return types must be promises (see
+      Section 2.4).</p>
+      <h3>2.3 Actor References</h3>
+      <p>An actor reference is a strongly-typed virtual actor proxy that
+      allows other actors, as well as non-actor code, to invoke methods
+      and properties on it. An actor reference can be obtained by
+      calling the GetActor method of the factory class, which Orleans
+      automatically generates at compile time, and specifying the
+      actor’s primary key. A reference may also be received from a
+      remote method or property return. An actor reference can be passed
+      as an input argument to actor method calls.</p>
+      <p>Actor references are virtual. An actor reference does not
+      expose to the programmer any location information of the target
+      actor. It also does not have a notion of binding. In a traditional
+      RPC model (such as Java RMI, CORBA, or WCF) the programmer needs
+      to explicitly bind the virtual reference to the service, usually
+      via an external registry or location service. In Orleans, actor
+      references are created locally by the sender and can immediately
+      be used without a bind or register step. This simplifies
+      programming and maximizes throughput by allowing immediate
+      pipelining of requests to actors without waiting to bind or to
+      resolve a service endpoint.</p>
+      <h3>2.4 Promises</h3>
+      <p>Actors interact by sending asynchronous messages. As in most
+      modern distributed systems programming models, these message
+      exchanges are exposed as method calls. However, unlike traditional
+      models, Orleans method calls return immediately with a
+      <b><em>promise</em></b> for a future result, rather than blocking
+      until the result is returned. Promises allow for concurrency
+      without requiring explicit thread management.</p>
+    </td>
+  </tr>
+</table>
+
+<br />
