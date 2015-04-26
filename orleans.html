@@ -3,28 +3,6 @@ layout: default
 title: Orleans, Distributed Virtual Actors for Programming and Scalability Comparison
 ---
 
-<style type="text/css">
-  .container {
-    border: 1px solid green;
-  }
-  .site {
-    min-width: 1024px;
-  }
-  table {
-    width: 1024px;
-    border-collapse: collapse;
-  }
-  td {
-    border: 1px solid black;
-    width: 50%;
-    padding: 10px;
-    vertical-align: top;
-  }
-  pre {
-    display: inline;
-  }
-  </style>
-
 <div id="post">
   <h1>Orleans: Distributed Virtual Actors for Programmability and Scalability<br />
     <em>Philip A. Bernstein, Sergey Bykov, Allan Geller, Cabriel Kliot, Jorgen Thelin</em><br />
@@ -122,8 +100,8 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       application-specific operations. In addition, actors make it easy
       to implement horizontal, “social”, relations between entities in
       the middle tier.</p>
-      <p>Another view of distributed systems programmabil- ity is
-      through the lens of the object-oriented program- ming (OOP)
+      <p>Another view of distributed systems programmability is
+      through the lens of the object-oriented programming (OOP)
       paradigm. While OOP is an intuitive way to model complex systems,
       it has been marginalized by the popular service-oriented
       architecture (SOA). One can still benefit from OOP when
@@ -146,6 +124,18 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       distributed resource management. To build a correct solution to
       such problems in the application, the developer must be a
       distributed systems expert.</p>
+    </td>
+    <td>
+      <p>Orleans is specifically trying to provide higher-level
+      abstractions than Erlang and Akka so application developers do not
+      need to think about distribution, load-balancing, actor-placement,
+      and cluster management.</p>
+      <p>Both Akka Cluster and Riak Core provide higher-level
+      abstractions as well.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <p>To avoid these complexities, we built the Orleans programming
       model and runtime, which raises the level of the actor
       abstraction. Orleans targets developers who are not distributed
@@ -168,12 +158,12 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       actor instance is transparent to the application code, which
       greatly simplifies programming. And fourth, Orleans can
       automatically create multiple instances of the same stateless
-      actor, seamlessly scaling out hot actors.<p>
+      actor, seamlessly scaling out hot actors.</p>
       <p>Overall, Orleans gives developers a virtual “actor space” that,
       analogous to virtual memory, allows them to invoke any actor in
       the system, whether or not it is present in memory. Virtualization
       relies on indirection that maps from virtual actors to their
-      physical instantia- tions that are currently running. This level
+      physical instantiations that are currently running. This level
       of indirection provides the runtime with the opportunity to solve
       many hard distributed systems problems that must otherwise be
       addressed by the developer, such as actor placement and load
@@ -188,6 +178,24 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       location. This strategy has proven to be very efficient. We
       typically see cache hit rates of well over 90% in our production
       services.</p>
+    </td>
+    <td>
+      <p>Orleans specifically focuses on providing a runtime where
+      developers do not have to think about load balancing, placement,
+      and failure recovery.</p>
+      <p>While Erlang/OTP doesn't provide many of these things natively,
+      and mostly provides lower-level building blocks, Riak Core
+      provides a higher-level abstraction for distributing work over a
+      cluster of nodes with support for load balancing and dynamic
+      membership.</p>
+      <p>Riak Core uses an epidemic gossip protocol to distribute
+      membership information across the cluster, allowing any node
+      service any request and route it to the correct node in one
+      hop.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <p>Orleans has been used to build multiple production services
       currently running on the Microsoft Windows Azure cloud, including
       the back-end services for some popular games. This enabled us to
@@ -204,7 +212,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       operations on shared memory data structures. The virtual actor
       model can degrade if the number of actors in the system is
       extremely large (billions) and there is no temporal locality.
-      Orleans does not yet support cross- actor transactions, so
+      Orleans does not yet support cross-actor transactions, so
       applications that require this feature outside of the database
       system are not suitable.</p>
       <p>In summary, the main contributions of this paper are (a) a
@@ -224,7 +232,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       in [5]. Section 7 is the conclusion.</p>
     </td>
     <td>
-      <p>TODO</p>
+      <p></p>
     </td>
   </tr>
   <tr>
@@ -244,13 +252,6 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       do not share memory. Thus, two actors can interact only by sending
       messages.</p>
       <p>Virtualization of actors in Orleans has four facets:</p>
-    </td>
-    <td>
-      <p>TODO</p>
-    </td>
-  </tr>
-  <tr>
-    <td>
       <p><b>1. Perpetual existence:</b> actors are purely logical
       entities that always exist, virtually. An actor cannot be
       explicitly created or destroyed and its virtual existence is
@@ -258,7 +259,22 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       actors always exist, they are always addressable.</p>
     </td>
     <td>
-      <p>TODO</p>
+      <p>Virtual actors in Orleans exist at an abstraction layer over
+      Erlang-style actors: in Erlang actors refer to a very specific
+      instance of a process executing a function in the runtime system,
+      in Orleans, they are a logical unit of computation, of which many
+      instantiations can exist of.</p>
+      <p>For example, in Erlang we might create a gen_fsm for opening a
+      door lock with a keycode.  We would have a supervisor launch a
+      process for each in-progress door-unlocking as requests came in,
+      and this supervisor would launch these processes locally.  It
+      could also forward to a remote node's supevisor to have it started
+      on a different node.</p>
+      <p>(To be clear: Erlang allows you to start a process on a remote
+      node, but Erlang does not allow you supervise a process on another
+      node; this is the reason we'd have to forward to a remote
+      supervisor via message to have it properly started on the remote
+      node.)</p>
     </td>
   </tr>
   <tr>
@@ -283,7 +299,34 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       to perform a cleanup operation.</p>
     </td>
     <td>
-      <p>TODO</p>
+      <p>Automatic instantiation appears to be an abstraction that
+      eliminates the need for instantiating actors through supervisors
+      across a series of nodes and balancing requests across these
+      instantiations.</p>
+      <p>The authors seem to indicate that supervision trees are not
+      required with this model because the application is no longer
+      responsible for recreating the failed actor.  However, I feel this
+      misses a couple critical points:</p>
+      <p>First, in the Orleans model a method invocation triggers
+      processing by an actor.  If an appropriate activation exists, it
+      handles the request, if not, it instantiates a new activation.
+      However, if that actor fails, the method invocation is provided a
+      failure continuation that is responsible for error handling.  This
+      is different than the Erlang model of failure with supervision
+      trees: under the one_for_one or simple_one_for_one strategy, the
+      actor will be re-created and re-process with the arguments from
+      the initial invocation.</p>
+      <p>Second, in the Erlang model supervision trees also serve to
+      enforce a instantiation order for initial startup and when
+      restarting processes during failure conditions.  (Generally
+      speaking, this order is topological sort of the process dependency
+      tree.)  It is unclear if forcing a particular instantiation order
+      would ever be required in the Orleans model.</p>
+      <p>Given model Erlang actors exist for a brief period to perform
+      processing of a defined unit of work, automatic reclamation of
+      unused actors is not usually a concern.  Some process pools, such
+      as poolboy, provided as external libraries, provide a similar
+      abstraction.</p>
     </td>
   </tr>
   <tr>
@@ -300,7 +343,28 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       automatically instantiates a non-instantiated actor upon a new
       request.</p>
     </td>
-    <td></td>
+    <td>
+      <p>While something like this does not exist in Erlang, Riak Core
+      provides an abstraction over where resources are located in the
+      network.</p>
+      <p>For example, in Riak Core you might specify you want to
+      process data item X with module Y; module Y will spawn a process a
+      a given node for processing this request if it's not already
+      running (this is similar to the single activation actors in
+      Orleans).</p>
+      <p>However, it's up to the user to provide the system a "partition
+      key." for a given data item.  This "partition key" is used to
+      determine how to distribute load evenly for the number of nodes
+      and predictably route all requests for a given item to the right
+      node from any node by one hop.  The reason for this abstraction is
+      that Riak Core is data-centric: it assumes that data will be
+      stored uniformly across the cluster and computation will be pushed
+      to the data, using a technique such as function shipping.</p>
+      <p>Given many of the computations that occur in Orleans are
+      stateless workers, it's of greater importance to either locate
+      coordinating activations together and distribute across the
+      cluster in a way to minimize hotspots.</p>
+    </td>
   </tr>
   <tr>
     <td>
@@ -359,6 +423,18 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       and properties of an actor interface are required to be
       asynchronous; that is, their return types must be promises (see
       Section 2.4).</p>
+    </td>
+    <td>
+      <p>Erlang's processes execution functions that are dynamically
+      typed.</p>
+      <p>Erlang currently has no mechanism for ensuring that a process
+      will be able to respond to all messages it may receive; a static
+      analysis tool is provided by Erlang, but only cursory analysis is
+      supported using user-supplied annotations.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <h3>2.3 Actor References</h3>
       <p>An actor reference is a strongly-typed virtual actor proxy that
       allows other actors, as well as non-actor code, to invoke methods
@@ -379,11 +455,29 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       programming and maximizes throughput by allowing immediate
       pipelining of requests to actors without waiting to bind or to
       resolve a service endpoint.</p>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>
+    </td>
+    <td>
+      <p>Both Erlang and Riak Core provide the ability to to obtain a
+      reference to a given instance of an actor.  In Erlang, this is a
+      process identifier that can be operated on as if it's local:
+      while it's possible to idenitfy the node that a given process is
+      executing on, it's not recomended to base any specific logic on
+      this behavior (unless building an abstraction such as Riak Core
+      or Orleans!)</p>
+      <p>In Riak Core, the design tries to enforce that all messages
+      to a given actor are routed through the proxy process
+      responsible for routing and remotely starting up an actor on a
+      node when it's not initialized yet.  This is to facilitate
+      services such as dynamic membership: if the cluster topology is
+      changing and actors are moving between nodes while the system is
+      under operation, the proxy process is responsible for using
+      the updated membership to route the request accordingly.  This
+      is an example of an instantiation of an actor transcending its
+      process identifier as the system restructures itself.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <h3>2.4 Promises</h3>
       <p>Actors interact by sending asynchronous messages. As in most
       modern distributed systems programming models, these message
@@ -415,7 +509,23 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       sequential and hence more natural.</p>
     </td>
     <td>
-      <p>TODO</p>
+      <p>Erlang's processes communicate through message passing;
+      processes can either send messages to another process by process
+      identifier or name, if the destination process happens to be registered
+      through the process registry.  Asynchrounous message passing
+      occurs whether the destination process is running locally on the
+      same node, or running remotely.</p>
+      <p>If a process wishes to explicitly wait for a response to a
+      message it has sent, it uses a rceieve operation to block on an
+      incoming message that matches a given pattern (using functional
+      pattern matching, seen in languages like Erlang and Haskell.)</p>
+      <p>In the event of a failure of the remote node, a process may
+      wait forever for a message, so timeouts and monitors usually used
+      to ensure processes terminate.</p>
+      <p>The Orleans model could be mimicked in Erlang through the
+      combined use of sending a message and blocking on a receive
+      condition representing the success or failure of the
+      operation.</p>
     </td>
   </tr>
   <tr>
@@ -446,7 +556,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       be freely interleaved.</p>
     </td>
     <td>
-      <p>TODO</p>
+      <p></p>
     </td>
   </tr>
   <tr>
@@ -501,7 +611,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       memory forever.</p>
     </td>
     <td>
-      <p>TODO</p>
+      <p></p>
     </td>
   </tr>
   <tr>
@@ -513,7 +623,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       sacrificing performance.</p>
     </td>
     <td>
-      <p>TODO</p>
+      <p></p>
     </td>
   </tr>
   <tr>
@@ -560,7 +670,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       reclaimed.</p>
     </td>
     <td>
-      <p>TODO</p>
+      <p></p>
     </td>
   </tr>
   <tr>
@@ -598,7 +708,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       completely the need for an extra hop on every message.</p>
     </td>
     <td>
-      <p>TODO</p>
+      <p></p>
     </td>
   </tr>
   <tr>
@@ -626,7 +736,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       part of the serialization subsystem (Section 3.7 below).</p>
     </td>
     <td>
-      <p>TODO</p>
+      <p></p>
     </td>
   </tr>
   <tr>
@@ -647,7 +757,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       on throughput in a communication-intensive application.</p>
     </td>
     <td>
-      <p>TODO</p>
+      <p></p>
     </td>
   </tr>
   <tr>
@@ -665,7 +775,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       better overall system responsiveness and throughput.</p>
     </td>
     <td>
-      <p>TODO</p>
+      <p></p>
     </td>
   </tr>
   <tr>
@@ -700,7 +810,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       not seen this as a problem in production.</p>
     </td>
     <td>
-      <p>TODO</p>
+      <p></p>
     </td>
   </tr>
   <tr>
@@ -729,7 +839,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       carries a minimal amount of dynamic type information.</p>
     </td>
     <td>
-      <p>TODO</p>
+      <p></p>
     </td>
   </tr>
   <tr>
@@ -802,7 +912,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       eventually be deactivated.</p>
     </td>
     <td>
-      <p>TODO</p>
+      <p></p>
     </td>
   </tr>
   <tr>
@@ -905,27 +1015,19 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       reply on message ordering between processes.</p>
     </td>
   </tr>
-  <tr>
-    <td>
-      <h3>4. Applications</h3>
-      <p>[omitted]</p>
-      <h3>5. Performance</h3>
-      <p>[omitted]</p>
-      <h3>6. Related Work</h3>
-      <p>[omitted]</p>
-      <h3>7. Conclusion</h3>
-      <p>[omitted]</p>
-      <h3>8. References</h3>
-      <p>[omitted]</p>
-    </td>
-    <td></td>
-  </tr>
-  <!--
-  <tr>
-    <td></td>
-    <td></td>
-  </tr>
-  -->
 </table>
 
 <br />
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'christophermeiklejohn';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
