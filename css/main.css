@@ -95,7 +95,7 @@ ul.posts span {
 .site {
   font-size: 100%;
   text-align: left;
-  width: 42em;
+  width: 65em;
   padding: 10px;
   margin: 3em auto 3em;
   line-height: 1.5em;
@@ -195,4 +195,15 @@ ul.posts span {
 
 #post pre.terminal code {
   background-color: #333;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid black;
+  width: 50%;
+  padding: 10px;
+  vertical-align: top;
 }
