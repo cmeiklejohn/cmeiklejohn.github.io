@@ -556,7 +556,23 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       be freely interleaved.</p>
     </td>
     <td>
-      <p></p>
+      <p>Similarly, in Erlang each process, which represents an actor,
+      executes in serial; this is the same for the abstractions that
+      Erlang/OTP provides to simplify concurrent programs (gen_server,
+      gen_fsm, gen_event, ...)</p>
+      <p>In a similar fashion, abstractions such as the gen_server,
+      which is built on top of a tail-recursive Erlang process, supports
+      interleaving.  Given all messages are sent asynchronously, an
+      Erlang process does not need to reply to each message, and if it
+      decides to, it can at any point.</p>
+      <p>Given the properties of the Erlang programming language,
+      single-assignment, functional, message passing by copying, and
+      per-process heaps, it is not necessary to label code as reentrant.
+      (One notable exception here would be NIFs in Erlang, where
+      preemption may cause a problem with shared resources.)</p>
+      <p>A note on synchronous calls to gen_server's: all calls are
+      asynchronous, but synchronous calls immediately block for a
+      response message with a given timeout.)</p>
     </td>
   </tr>
   <tr>
@@ -611,7 +627,13 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       memory forever.</p>
     </td>
     <td>
-      <p></p>
+      <p>Erlang provides a way to schedule a message to be sent in the
+      future, but this mechanism relies on a process explicitly
+      performing the scheduling.</p>
+      <p>While this mechanism could be used to start another process,
+      for example, another actor that should do periodic processing,
+      the operation is much lower level than the operations provided by
+      Orleans.</p>
     </td>
   </tr>
   <tr>
@@ -623,7 +645,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       sacrificing performance.</p>
     </td>
     <td>
-      <p></p>
+      <p>&nbsp;</p>
     </td>
   </tr>
   <tr>
@@ -662,7 +684,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       server experiences memory pressure, the runtime automatically
       deactivates it and reclaims its system resources. This simple
       strategy for local resource management is enabled by actor
-      virtuali- zation. An unused actor can be deactivated and reclaim-
+      virtualization. An unused actor can be deactivated and reclaim-
       ed independently and locally on any server because it can later be
       transparently re-activated. This approach does not require
       complicated distributed garbage collection protocols which involve
@@ -670,7 +692,31 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       reclaimed.</p>
     </td>
     <td>
-      <p></p>
+      <p>Both Erlang and Riak Core run in a cluster of nodes.  Each
+      share a similar topolgy: one TCP connection is established between
+      all pairs of nodes in the system and traffic is multiplexed across
+      that connection for all actors communicating between those
+      nodes.</p>
+      <p>Placement of processes in Erlang is done manually.  Distributed
+      Erlang allows application developers to spawn a process on any
+      node in the system.  The procoess terminates once it has finished
+      executing.</p>
+      <p>Riak Core provides an abstraction on top of Distributed Erlang:
+      given some work that you'd like to have performed, referred to as
+      a virtual node, use a user-specified key to route it to a given
+      node in the cluster where it will be performed.  In Riak Core, the
+      runtime system takes care of partitioning this space evenly across
+      the cluster and provides mechanisms for transitioning the system
+      live when nodes are added or removed.</p>
+      <p>For instance, you could have a cluster of nodes responsible for
+      storing data; this cluster ideally wants to evenly partition the
+      storage across all nodes.  In this case, actors on each node are
+      used to service requests for data they locally manage and the
+      runtime system routes a message to the appropriate actor given a
+      route key.</p>
+      <p>This differs from the model in Orleans, because activations are
+      automatically created and terminated as cluster demand varies over
+      time.</p>
     </td>
   </tr>
   <tr>
