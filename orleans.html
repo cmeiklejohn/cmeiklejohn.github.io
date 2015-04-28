@@ -220,7 +220,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       programming model; (b) an efficient and scalable implementation of
       the distributed actor model that eliminates some programming
       complexities of traditional actor frameworks with a good level of
-      performance and scalability; and (c) detailed measure- ments and a
+      performance and scalability; and (c) detailed measurements and a
       description of our production experience.</p>
       <p>The outline of the paper is as follows. In Section 2, we
       introduce the Orleans programming model. Section 3 describes the
@@ -292,7 +292,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       runtime will automatically re-instantiate it on a new server on
       its next invocation. This means that Orleans has no need for
       supervision trees as in Erlang [3] and Akka [2], where the
-      application is responsible for re- creating a failed actor. An
+      application is responsible for recreating a failed actor. An
       unused actor’s in-memory instance is automatically reclaimed as
       part of runtime resource management. When doing so Orleans invokes
       the DeactivateAsync method, which gives the actor an opportunity
@@ -677,7 +677,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       invocation, the request is queued until that request’s execution
       is completed. If the receiving server is instructed to create a
       new activation, it registers the actor in the directory and then
-      creates a local in-memory instance of it. The single- activation
+      creates a local in-memory instance of it. The single-activation
       guarantees are provided by the directory.</p>
       <p>Hosting is also responsible for locally managing resources in
       the server. If an actor is idle for a configurable time or the
@@ -742,8 +742,8 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       activation actor that already has an activation registered, the
       new registration is rejected, and the address of the existing
       activation is returned with the rejection.</p>
-      <p>Using a distributed directory for placement and routing implies an
-      additional hop for every message, to find out the physical
+      <p>Using a distributed directory for placement and routing implies
+      an additional hop for every message, to find out the physical
       location of a target actor. Therefore, Orleans maintains a large
       local cache on every server with recently resolved
       actor-to-activation mappings. Each cache entry for a
@@ -754,7 +754,22 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       completely the need for an extra hop on every message.</p>
     </td>
     <td>
-      <p></p>
+      <p>Process placement in Erlang is explicit.</p>
+      <p>Riak Core, which is heavily inspired by DeCandia et al. work on
+      <a href="http://dl.acm.org/citation.cfm?id=1294281">Amazon's
+        Dynamo</a> system, uses consistent hashing and hash-space
+      partitioning.  Cluster state and membership information is
+      disseminated to all nodes in the cluster via an epidemic broadcast
+      protocol.  While Riak Core does not have direct support for
+      replication of data, most systems implemented on Riak Core, such
+      as Riak itelf, replicate data to a number of adjacent partitions
+      using a majority quorum system approach.</p>
+      <p>In Riak Core, consistent hashing guarantees deterministic
+      placement, so each node can independently know where to route
+      information without consulting any other nodes.  However, under
+      failure conditions, stale membership information may cause a
+      message to be routed to a node that has failed.  This scenario can
+      also occur with Orleans and a stale local cache.</p>
     </td>
   </tr>
   <tr>
@@ -771,18 +786,26 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       <p>To reduce the cost of deep copying, Orleans uses two
       complementary approaches. First, an application can specify that
       it will not mutate an argument by using a markup generic wrapping
-      class Immutable<T> in the actor method signature. This tells the
-      runtime it is safe not to copy the argument. This is very useful
-      for pass- through functional style scenarios, when the actor code
-      never mutates the arguments. An example of such functionality is
-      the Router actor in the Halo 4 presence service (Section 4.1),
+      class Immutable&lt;T&gt; in the actor method signature. This tells
+      the runtime it is safe not to copy the argument. This is very
+      useful for pass-through functional style scenarios, when the actor
+      code never mutates the arguments. An example of such functionality
+      is the Router actor in the Halo 4 presence service (Section 4.1),
       which performs decompression of the passed data blob without
       storing or mutating it. For the cases where the actual copy has to
       happen, Orleans uses a highly optimized copying module that is
       part of the serialization subsystem (Section 3.7 below).</p>
     </td>
     <td>
-      <p></p>
+      <p>Erlang is a single-assignment, functional language with process
+      isolation.  Erlang processes have independent heaps and all
+      message passing is performed by copying.</p>
+      <p>(Notable exceptions: Erlang uses a shared binary heap for
+      binary objects that are over 64 bytes in size; when performing
+      pattern matching on binaries, sub-binaries may contain references
+      to their parent; the shared binary heap uses a GC mechanism that
+      performs reference counting on the number of processes that have a
+      reference to it on their local heap.)</p>
     </td>
   </tr>
   <tr>
@@ -790,12 +813,13 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       <h3>3.4 Asynchrony</h3>
       <p>Orleans imposes an asynchronous programming style, using
       promises to represent future results. All calls to actor methods
-      are asynchronous; the results must be of type Task or Task<T> to
-      indicate that they will be resolved later. The asynchronous
-      programming model introduced in .NET 4.5, based on the async and
-      await keywords, greatly simplifies code to handle promises.</p>
+      are asynchronous; the results must be of type Task or
+      Task&lt;T&gt; to indicate that they will be resolved later. The
+      asynchronous programming model introduced in .NET 4.5, based on
+      the async and await keywords, greatly simplifies code to handle
+      promises.</p>
       <p>Orleans’ pervasive use of asynchrony is important for the
-      simplicity and scalability of applications. Pre- venting
+      simplicity and scalability of applications. Preventing
       application code from holding a thread while waiting for a result
       ensures that system throughput is minimally impacted by the cost
       of remote requests. In our tests, increased distribution leads to
@@ -803,7 +827,9 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       on throughput in a communication-intensive application.</p>
     </td>
     <td>
-      <p></p>
+      <p>Erlang uses asynchronous message passing: actors send other
+      actors messges and can optionally wait for a response using the
+      Erlang "receive" operation.</p>
     </td>
   </tr>
   <tr>
@@ -812,7 +838,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       <p>Orleans ensures that at most one thread runs at a time within
       each activation. Thus, activation state is never accessed by
       multiple threads simultaneously, so race conditions are impossible
-      and locks and other synchro- nization primitives are unnecessary.
+      and locks and other synchronization primitives are unnecessary.
       This guarantee is provided by the execution subsystem without
       creating per-activation threads. While single-threading does limit
       performance of individual activations, the parallelism across many
@@ -821,14 +847,15 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       better overall system responsiveness and throughput.</p>
     </td>
     <td>
-      <p></p>
+      <p>Erlang processes process each received message in serial, in
+      the order that they are received.</p>
     </td>
   </tr>
   <tr>
     <td>
       <h3>3.6 Cooperative Multitasking</h3>
       <p>Orleans schedules application turns using cooperative
-      multitasking. That means that once started, an applica- tion turn
+      multitasking. That means that once started, an application turn
       runs to completion, without interruption. The Orleans scheduler
       uses a small number of compute threads that it controls, usually
       equal to the number of CPU cores, to execute all application actor
@@ -847,7 +874,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       servers for many days at 90+% CPU utilization without any
       instability.</p>
       <p>A weakness of cooperative multitasking is that a poorly behaved
-      component can take up an entire pro- cessor, degrading the
+      component can take up an entire processor, degrading the
       performance of other components. For Orleans, this is not a major
       concern since all of the actors are owned by the same developers.
       (Orleans is not currently intended for a multi-tenant
@@ -856,7 +883,14 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       not seen this as a problem in production.</p>
     </td>
     <td>
-      <p></p>
+      <p>The Erlang runtime system performs preemptive multitasking.
+      Each operation in Erlang counts for a number of reductions and
+      processes are descheduled after a given number of reductions.
+      (The use of the term "reduction" here goes back to the original
+      implementation of Erlang on Prolog.) </p>
+      <p>Erlang processes are executed on a number of schedulers:
+      normally, one scheduler is allocated for eah CPU core, but this is
+      customizable at runtime.</p>
     </td>
   </tr>
   <tr>
@@ -877,7 +911,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       <p>For better programmability, Orleans allows any data type and
       maintains object identity through the serializer. Structs, arrays,
       fully polymorphic and generic objects can be used. We balance this
-      flexibility with a highly- optimized serialization subsystem that
+      flexibility with a highly-optimized serialization subsystem that
       is competitive with the best ones available on “standard” types.
       We achieve this by automatically generating custom serialization
       code at compile time, with hand-crafted code for common types such
@@ -885,7 +919,11 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       carries a minimal amount of dynamic type information.</p>
     </td>
     <td>
-      <p></p>
+      <p>Distributed Erlang uses Erlang's <a
+        href="http://erlang.org/doc/apps/erts/erl_ext_dist.html">External
+        Term Format</a> for data serialization between nodes.  Given the
+      fixed number of types in Erlang, it is not necessary to create a
+      specification for external formats used by the application.</p>
     </td>
   </tr>
   <tr>
@@ -917,14 +955,14 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       request to an actor whose activation was on the failed server
       causes a new activation to be created on a surviving server. The
       virtual nature of the actors allows the lifespan of an individual
-      actor to be com- pletely decoupled from the lifespan of the
+      actor to be completely decoupled from the lifespan of the
       hosting server.</p>
       <p>A server failure may or may not lose an actors’ state on that
       server. Orleans does not impose a checkpointing strategy. It is up
       to the application to decide what actor state needs to be
       checkpointed and how often. For example, an actor may perform a
       checkpoint after every update to its in-memory state, or may
-      perform a check- point and wait for its acknowledgment before
+      perform a check-point and wait for its acknowledgment before
       returning success to its caller. Such an actor never loses its
       state when a server fails and is rehydrated with its last
       checkpointed state when reactivated on a different server.
@@ -958,7 +996,27 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       eventually be deactivated.</p>
     </td>
     <td>
-      <p></p>
+      <p>Failures in Erlang are also detected through a heartbeat
+      mechanism; once a failure is detected, the node is considered no
+      longer part of the cluster.  Riak Core provides an abstraction on
+      top of this to distinguish nodes that are down from nodes that are
+      no longer members of the cluster, using the heartbeat message as a
+      detector of temporarily failed nodes.</p>
+      <p>Cluster membership information in Riak is disseminated through
+      a epidemic broadcast protocol.  This protocol is responsible for
+      broadcasting current cluster state periodically and membership
+      changes which are performed by an elected leader, called the
+      claimant.</p>
+      <p>When a server fails, any process executing there is lost.
+      Subsequent messages, if specified, will be routed to a "fallback"
+      node by Riak Core, which is the first online adjacent node in the
+      cluster.</p>
+      <p>Typically with Riak Core, majority quorum systems are used to
+      ensure that all updates and operations are replicated to adjacent
+      partitions; this ensures that in the event of a tolerable level of
+      failures the system is still able to make progress.</p>
+      <p>Neither Erlang or Riak Core contain checkpointing or
+      persistence: this is left up to the application developer.</p>
     </td>
   </tr>
   <tr>
