@@ -44,12 +44,12 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       functional, single-assignment, garbage-collected, language with
       eager evaluation.  The concurrency model supported by Erlang is
       the actor model: concurrency is supported by lightweight processes
-      that communicated through shared-nothing asynchronous message
+      that communicate through shared-nothing asynchronous message
       passing.</p>
       <p>The programming model focused on in this paper features a novel
       abstraction called the "virtual actor"; this abstraction can be
       seen as an abstraction over the "simple_one_for_one" supervisor
-      model where workers are dynamically created to perform a talk with
+      model where workers are dynamically created to perform a task with
       one main difference: in the Orleans model, actors are instantiated
       on demand and destroyed when they are not in use; instantiated
       actors, or <b><em>activations</em></b>, are responsible for
@@ -268,7 +268,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       door lock with a keycode.  We would have a supervisor launch a
       process for each in-progress door-unlocking as requests came in,
       and this supervisor would launch these processes locally.  It
-      could also forward to a remote node's supevisor to have it started
+      could also forward to a remote node's supervisor to have it started
       on a different node.</p>
       <p>(To be clear: Erlang allows you to start a process on a remote
       node, but Erlang does not allow you supervise a process on another
@@ -364,6 +364,9 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       stateless workers, it's of greater importance to either locate
       coordinating activations together and distribute across the
       cluster in a way to minimize hotspots.</p>
+      <p>In the comparison of Section 2.3, we discuss Riak Core's
+      routing mechanism that provides an alternative form of location
+      transparency.</p>
     </td>
   </tr>
   <tr>
@@ -526,6 +529,17 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       combined use of sending a message and blocking on a receive
       condition representing the success or failure of the
       operation.</p>
+      <p>That said, the Erlang/OTP abstractions for concurrent
+      programming: gen_server, gen_fsm, gen_event, and their distributed
+      versions provided by Riak Core: riak_core_vnode, provide a solid
+      foundation to build applications with.  Each of these components
+      can be instantiated a number of times, process messages as they
+      arrive in serial, and can choose whether or not they want to send
+      a message as a reply.  These abstractions are modeled as
+      tail-recursive processes that thread their state through each
+      execution: messages arrive, modify local state, replies are
+      possibly sent (now, or schedule for the future!), and new state is
+      generated.</p>
     </td>
   </tr>
   <tr>
@@ -556,10 +570,10 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       be freely interleaved.</p>
     </td>
     <td>
-      <p>Similarly, in Erlang each process, which represents an actor,
-      executes in serial; this is the same for the abstractions that
-      Erlang/OTP provides to simplify concurrent programs (gen_server,
-      gen_fsm, gen_event, ...)</p>
+      <p>Similarly, in Erlang each process, (which represents an actor
+      in the system) executes in serial.  This is the same for the
+      abstractions that Erlang/OTP provides to simplify concurrent
+      programs (gen_server, gen_fsm, gen_event, ...)</p>
       <p>In a similar fashion, abstractions such as the gen_server,
       which is built on top of a tail-recursive Erlang process, supports
       interleaving.  Given all messages are sent asynchronously, an
@@ -567,12 +581,8 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       decides to, it can at any point.</p>
       <p>Given the properties of the Erlang programming language,
       single-assignment, functional, message passing by copying, and
-      per-process heaps, it is not necessary to label code as reentrant.
-      (One notable exception here would be NIFs in Erlang, where
-      preemption may cause a problem with shared resources.)</p>
-      <p>A note on synchronous calls to gen_server's: all calls are
-      asynchronous, but synchronous calls immediately block for a
-      response message with a given timeout.)</p>
+      per-process heaps, it is not necessary to label code as
+      reentrant.</p>
     </td>
   </tr>
   <tr>
@@ -693,10 +703,10 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
     </td>
     <td>
       <p>Both Erlang and Riak Core run in a cluster of nodes.  Each
-      share a similar topolgy: one TCP connection is established between
-      all pairs of nodes in the system and traffic is multiplexed across
-      that connection for all actors communicating between those
-      nodes.</p>
+      share a similar topology: one TCP connection is established
+      between all pairs of nodes in the system and traffic is
+      multiplexed across that connection for all actors communicating
+      between those nodes.</p>
       <p>Placement of processes in Erlang is done manually.  Distributed
       Erlang allows application developers to spawn a process on any
       node in the system.  The procoess terminates once it has finished
@@ -828,7 +838,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
     </td>
     <td>
       <p>Erlang uses asynchronous message passing: actors send other
-      actors messges and can optionally wait for a response using the
+      actors messages and can optionally wait for a response using the
       Erlang "receive" operation.</p>
     </td>
   </tr>
@@ -848,7 +858,9 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
     </td>
     <td>
       <p>Erlang processes process each received message in serial, in
-      the order that they are received.</p>
+      the order that they are "received"; the "receive" primitive can
+      select messages out of the process mailbox in order, or in a user
+      specified order through the use of selective receive.</p>
     </td>
   </tr>
   <tr>
@@ -1073,10 +1085,14 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
       date.</p>
       <p>The alternative solution they propose that relies on external
       storage seems to allude to an external coordination service such
-      as Chubby.  Alternative solutions could be to allow single
-      activation actors to only exist on the majority side of a
-      partition, or using convergent data structures to ensure
+      as Chubby (or Riak Ensemble).  Alternative solutions could be to
+      allow single activation actors to only exist on the majority side
+      of a partition, or using convergent data structures to ensure
       deterministic resolution when the network partition heals.</p>
+      <p>For an interesting solution to the problem of resolving
+      concurrent updates deterministically in an eventually consistent
+      system, see <a href="/crdt/2014/07/22/readings-in-crdts.html">my
+        other post on CRDTs.</a></p>
     </td>
   </tr>
   <tr>
@@ -1108,15 +1124,12 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
     <td>
       <p>Distributed Erlang provides an at-most-once guarantee, wherein
       messages are delivered in order between pairwise processes.
-      However, in the event of failures and the connection channel is
-      dropped and re-established between two nodes, some prefix of
-      messages that were acknowledged as sent by the sender may not be
-      delivered to the receipient.  This differs from the delivery
-      guarantees that Orleans provides, where ordering of messages from
-      actor A to actor B are not guaranteed in FIFO order.</p>
-      <p>While this ordering is guaranteed by the runtime system, the
-      Erlang community generally frowns on building applications that
-      reply on message ordering between processes.</p>
+      However, if the connection channel is re-established between two
+      nodes, some prefix of messages that were acknowledged as sent by
+      the sender may never be delivered to the recipient.  This differs
+      from the delivery guarantees that Orleans provides, where ordering
+      of messages from actor A to actor B are not guaranteed in FIFO
+      order.</p>
     </td>
   </tr>
 </table>
