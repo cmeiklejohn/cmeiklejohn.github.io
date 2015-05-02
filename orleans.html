@@ -1082,7 +1082,7 @@ title: Orleans, Distributed Virtual Actors for Programming and Scalability Compa
   <tr>
     <td>
       <h3>3.10 Messaging Guarantees</h3>
-      <p>Orleans provides at-least-once message delivery, by resending
+      <p>Orleans provides at-most-once message delivery, by resending
       messages that were not acknowledged after a configurable timeout.
       Exactly-once semantics could be added by persisting the
       identifiers of delivered messages, but we felt that the cost would
