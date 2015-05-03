@@ -1100,9 +1100,16 @@ categories: papers
   <tr>
     <td>
       <h3>3.10 Messaging Guarantees</h3>
-      <p>Orleans provides at-most-once message delivery, by resending
-      messages that were not acknowledged after a configurable timeout.
-      Exactly-once semantics could be added by persisting the
+      <p>
+      By default Orleans provides at-most-once message delivery. In
+      addition, only if configured to do resends, Orleans will resend
+      messages that were not acknowledged after a configurable timeout,
+      thus providing at least once message delivery.  <em>(This section
+      amended by the author after the paper was published.  For more
+      information, see <a
+      href="https://github.com/cmeiklejohn/cmeiklejohn.github.io/issues/14">this
+      issue on GitHub.</a>)</em> Exactly-once semantics could be added by
+      persisting the
       identifiers of delivered messages, but we felt that the cost would
       be prohibitive and most applications do not need it. This can
       still be implemented at the application level.</p>
