@@ -468,8 +468,7 @@ categories: papers
       process identifier that can be operated on as if it's local:
       while it's possible to idenitfy the node that a given process is
       executing on, it's not recomended to base any specific logic on
-      this behavior (unless building an abstraction such as Riak Core
-      or Orleans!)</p>
+      this behavior.</p>
       <p>In Riak Core, the design tries to enforce that all messages
       to a given actor are routed through the proxy process
       responsible for routing and remotely starting up an actor on a
