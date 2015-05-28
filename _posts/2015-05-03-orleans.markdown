@@ -317,7 +317,8 @@ categories: papers
       is different than the Erlang model of failure with supervision
       trees: under the one_for_one or simple_one_for_one strategy, the
       actor will be re-created and re-process with the arguments from
-      the initial invocation.</p>
+      the initial invocation. (Orleans does support retries on failed
+      calls; this is configurable behaviour, but defaults to zero.)</p>
       <p>Second, in the Erlang model supervision trees also serve to
       enforce a instantiation order for initial startup and when
       restarting processes during failure conditions.  (Generally
