@@ -133,7 +133,10 @@ categories: papers
       need to think about distribution, load-balancing, actor-placement,
       and cluster management.</p>
       <p>Both Akka Cluster and Riak Core provide higher-level
-      abstractions as well.</p>
+      abstractions as well that solve similar problems: Riak Core and
+      Akka Cluster both focus on distribution and cluster management but
+      leave actor-placement and load-balancing across actors up to the
+      developer.</p>
     </td>
   </tr>
   <tr>
