@@ -4,6 +4,14 @@ title: Christopher Meiklejohn
 ---
 
 <div id="home">
+  <h1>Newest</h1>
+  <p>Most recent blog posts.</p>
+  <ul class="new posts">
+    {% for post in site.posts limit:5 %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+
   <h1>SyncFree / Lasp</h1>
   <p>Research related to the <a
     href="http://syncfree.lip6.fr">SyncFree</a> project on large-scale
@@ -37,8 +45,8 @@ title: Christopher Meiklejohn
     {% endfor %}
   </ul>
 
-  <h1>Uncategorized</h1>
-  <p>Various uncategorized blog posts.</p>
+  <h1>General</h1>
+  <p>Various blog posts.</p>
   <ul class="posts">
     {% for post in site.posts %}
       {% if post.group == nil %}

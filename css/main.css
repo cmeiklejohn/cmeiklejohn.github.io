@@ -97,7 +97,7 @@ ul.posts span {
   text-align: left;
   width: 65em;
   padding: 0px 10px 10px 10px;
-  margin: 1em auto 1em;
+  margin: 3em auto 3em;
   line-height: 1.5em;
 }
 
@@ -133,7 +133,7 @@ ul.posts span {
 }
 
 .site .footer {
-  font-size: 80%;
+  font-size: 90%;
   border-top: 4px solid #eee;
   margin-top: 2em;
   overflow: hidden;
@@ -212,14 +212,19 @@ td {
 }
 
 .site .footer .contact .bio {
-  margin-top: -10px;
   width: 1040px;
 }
 
 .site .footer .contact .photo {
+  margin-top: 20px;
   width: 200px;
   border: 1px solid black;
   float: left;
   margin-right: 20px;
-  margin-bottom: 1em;
+  margin-bottom: 3em;
+}
+
+.new {
+  padding-bottom: 30px;
+  border-bottom: 4px solid #eee;
 }
