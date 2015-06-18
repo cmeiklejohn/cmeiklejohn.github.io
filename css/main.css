@@ -134,7 +134,6 @@ ul.posts span {
 
 .site .footer {
   font-size: 80%;
-  color: #666;
   border-top: 4px solid #eee;
   margin-top: 2em;
   overflow: hidden;
@@ -206,4 +205,20 @@ td {
   width: 50%;
   padding: 10px;
   vertical-align: top;
+}
+
+.site .footer {
+  padding-top: 20px;
+}
+
+.site .footer .contact .bio {
+  margin-top: -10px;
+  width: 1040px;
+}
+
+.site .footer .contact .photo {
+  width: 200px;
+  border: 1px solid black;
+  float: left;
+  margin-right: 20px;
 }
