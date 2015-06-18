@@ -96,8 +96,8 @@ ul.posts span {
   font-size: 100%;
   text-align: left;
   width: 65em;
-  padding: 10px;
-  margin: 3em auto 3em;
+  padding: 0px 10px 10px 10px;
+  margin: 1em auto 1em;
   line-height: 1.5em;
 }
 
@@ -221,4 +221,5 @@ td {
   border: 1px solid black;
   float: left;
   margin-right: 20px;
+  margin-bottom: 1em;
 }
