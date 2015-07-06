@@ -81,7 +81,7 @@ Languages which support linear type systems.
   <span class="author">Mozilla Research</span>
 * [LinearML](https://github.com/pikatchu/LinearML)
   <span class="author">University of Nottingham</span>
-* [Mercury](http://en.wikipedia.org/wiki/Mercury_(programming_language)
+* [Mercury](http://en.wikipedia.org/wiki/Mercury_(programming_language))
   <span class="author">University Of Melbourne</span>
 * [ATS](http://www.ats-lang.org/)
   <span class="author">Hongwei Xi</span>
