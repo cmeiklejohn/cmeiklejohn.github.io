@@ -17,14 +17,6 @@ Starting as a Ruby and JavaScript engineer when first hired at Basho, I had to t
 
 I'm truly grateful for my time at Basho.
 
-As of August 17th, 2015, I'll be starting at Machine Zone and moving to San
-Francisco until February 2016 to work their core platform.
-
-As of February 2016, I've been offered a fellowship from the European
-Union and I'm going to go do a Ph.D. with Peter Van Roy at the
-Universitie catholique de Louvain in Beligum and turn Lasp into a real
-programming language.
-
 # Lessons
 
 The biggest thing I'd like to emphasize after all of my time at Basho is
