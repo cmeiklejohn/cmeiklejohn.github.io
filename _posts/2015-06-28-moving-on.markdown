@@ -1,0 +1,46 @@
+---
+layout: post
+title:  "Moving On"
+date:   2015-06-28 00:00:00 -0500
+categories: lasp
+---
+
+After three and a half years at [Basho](http://basho.com),
+I've decided to move on.
+
+Leaving a job that you love and have been very successful with over many
+years is always a very difficult thing to do.  However, there comes a
+point where in order to continue to grow you must make a drastic
+change and reinvent yourself.
+
+Starting as a Ruby and JavaScript engineer when first hired at Basho, I had to the opportunity to grow as a [conference speaker](http://christophermeiklejohn.com/videos.html), [travel the world](http://christophermeiklejohn.com/personal/2015/01/01/year.html), [have original research published](http://christophermeiklejohn.com/publications.html), work on an international [research project](https://syncfree.lip6.fr), and become an [accomplished distributed systems](https://github.com/basho/riak) engineer.
+
+I'm truly grateful for my time at Basho.
+
+I'm happy to announce that I've been offered a fellowship from the
+European Union and I'm going to go to a Ph.D. with Peter Van Roy at the
+Universitie catholique de Louvain in Beligum and turn Lasp into a real
+programming language.
+
+# Lessons
+
+The biggest thing I'd like to emphasize after all of my time at Basho is
+that *you can do whatever you want to*.
+
+When I started at Basho I was hired as a JavaScript engineer.  I didn't
+know what a distributed system was, I didn't know what concurrency was,
+didn't know what parallelism was, didn't know what mutexes were.  I
+learned it all on the job *because I wanted to*.
+
+I was never asked to be in SyncFree.  I found out there was a meetup in
+Belgium in January and I bought my own plane ticket and took vacation
+time.
+
+I dropped out of undergrad around 4 times.  I dropped out of graduate
+school around 3 times.  Brown University told me I would never be a
+graduate student given my "lack of undergraduate research."
+
+I hustled as hard as I can, I independently published papers, I worked
+my ass off to do what *I believed in.*
+
+You can do this.  I'm not special; I just worked hard and so can you!
