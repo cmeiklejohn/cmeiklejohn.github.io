@@ -17,8 +17,11 @@ Starting as a Ruby and JavaScript engineer when first hired at Basho, I had to t
 
 I'm truly grateful for my time at Basho.
 
-I'm happy to announce that I've been offered a fellowship from the
-European Union and I'm going to go to a Ph.D. with Peter Van Roy at the
+As of August 17th, 2015, I'll be starting at Machine Zone and moving to San
+Francisco until February 2016 to develop their core platform.
+
+As of February 2016, I've been offered a fellowship from the European
+Union and I'm going to go do a Ph.D. with Peter Van Roy at the
 Universitie catholique de Louvain in Beligum and turn Lasp into a real
 programming language.
 
@@ -44,3 +47,6 @@ I hustled as hard as I can, I independently published papers, I worked
 my ass off to do what *I believed in.*
 
 You can do this.  I'm not special; I just worked hard and so can you!
+
+I leave you with a quote from Tyler Durden in Fight Club that inspires
+me: "You decide your own level of involvement."
