@@ -1,0 +1,23 @@
+---
+layout: post
+title:  "Moving On, Part 2: Ph.D."
+date:   2015-08-01 00:00:00 -0500
+categories: lasp
+---
+
+_This post is a continuation of my first post about [leaving Basho Technologies](http://christophermeiklejohn.com/lasp/2015/06/28/moving-on.html) after almost 4 years._
+
+It has been quite a long time in the making, but I'm finally happy to
+annouce that I am the recipient of a [Erasmus Mundus](http://emjd-dc.eu)
+fellowship in their Joint Doctorate in Distribute Computing program.  I
+will be pursuing a full-time Ph.D., with my thesis devoted to developing
+the [Lasp programming language](https://lasp-lang.org) for distributed
+computing with the goals of simplifying deterministic, distributed, edge
+computation.
+
+Starting in February 2016, I will be moving to Belgium to begin my first
+year of studies at the [Université catholique de
+Louvain](https://www.uclouvain.be/index.html) supervised by [Peter Van
+Roy](https://www.info.ucl.ac.be/~pvr/) followed by a second year in
+Lisbon at [IST](http://tecnico.ulisboa.pt/en/) supervised by [Luís
+Rodrigues](http://www.gsd.inesc-id.pt/~ler/).
