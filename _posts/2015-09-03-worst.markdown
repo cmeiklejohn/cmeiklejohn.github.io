@@ -29,8 +29,8 @@ work.
 
 In summary, I propose an alternative to “Hanlon’s Razor”:
 
-“Never attribute to malice, that which is adequately explained by a lack of
-exhaustive search to the researcher.”
+“Never attribute to malice to that which is adequately explained by a
+lack of exhaustive search to the researcher.”
 
 We’re all human and we make mistakes whether we know it or not.  But, let us
 all give each other a chance and never draw judgements without having a
