@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "Meiklejohn's Razor"
+date:   2015-09-03 00:00:00 -0500
+categories: lasp
+---
+
+Research is difficult.  It is very difficult to know all of the possible work
+that might be an influence that you were not aware of; it is literally
+impossible to know every possible influential work that you have build you work
+upon without spending hours upon hours working through citations on related
+work.
+
+In summary, I propose an alternative to “Hanlon’s Razor”:
+
+“Never attribute to malice, that which is adequately explained by a
+lack of exhaustive search to the researcher.”
+
+We’re all human and we make mistakes whether we know it or not.  But, let us
+all give each other a chance and never draw judgements without having a
+conversation and know where we are coming from.
