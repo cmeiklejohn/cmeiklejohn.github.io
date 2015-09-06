@@ -6,7 +6,9 @@ categories: lasp
 ---
 
 The worst moment in my professional career happened to me a couple years
-ago.  I had submitted a paper to a conference I was invited to submit
+ago.
+
+I had submitted a paper to a conference I was invited to submit
 to, and resulting from it a colleague of mine suggested that the only
 reason that I had been accepted was because my company had sponsored the
 event.  Following from that, I was moved to another part of the project
