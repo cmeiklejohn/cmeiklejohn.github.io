@@ -160,6 +160,9 @@ when distributed.
 
 Finally, for those of you who learn more by watching, here's some talks.
 
+* [CRDT: Datatype for the Apocalypse](http://confreaks.tv/videos/elixirconf2015-crdt-datatype-for-the-apocalypse)
+  <span class="author">Alexander Songe</span>
+  <span class="date">2015</span>
 * [Eventually Consistent Computation with CRDTs](https://www.youtube.com/watch?v=8_z9-iRiSZw)
   <span class="author">Christopher S. Meiklejohn</span>
   <span class="date">2014</span>
