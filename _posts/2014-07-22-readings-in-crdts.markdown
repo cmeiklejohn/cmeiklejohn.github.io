@@ -86,6 +86,9 @@ historical purposes.
 
 Various insights into developing on, and using, CRDTs in systems.
 
+* [Collaborative offline web applications using conflict-free replicated data types](http://dl.acm.org/citation.cfm?id=2745952)
+  <span class="author">Santiago J. Castiñeira and Annette Bieniusa</span>
+  <span class="date">2015</span>
 * [On the composability of the Riak DT map: expanding from embedded to multi-key structures](http://dl.acm.org/citation.cfm?doid=2596631.2596635)
   <span class="author">Christopher Meiklejohn</span>
   <span class="date">2014</span>
@@ -137,12 +140,22 @@ applications.
   <span class="author">Christopher Meiklejohn</span>
   <span class="date">2014</span>
 
-# Related
+# Computations
 
-Related works; specifically programming languages which leverage
-techniques related to lattices and order theory to provide determinism
-when distributed.
+Computing with CRDTs.
 
+* [Selective Hearing: An Approach to Distributed, Eventually Consistent Edge Computation](http://christophermeiklejohn.com/publications/wpsds-2015-preprint.pdf)
+  <span class="author">Christopher S. Meiklejohn and Peter Van Roy</span>
+  <span class="date">2015</span>
+* [Lasp: A Language for Distributed, Coordination-Free Programming](http://dl.acm.org/citation.cfm?id=2790525)
+  <span class="author">Christopher S. Meiklejohn and Peter Van Roy</span>
+  <span class="date">2015</span>
+* [Lasp: A Language for Distributed, Eventually Consistent Computations with CRDTs](http://dl.acm.org/citation.cfm?id=2745954)
+  <span class="author">Christopher S. Meiklejohn and Peter Van Roy</span>
+  <span class="date">2015</span>
+* [A Study of CRDTs that do Computations](http://dl.acm.org/citation.cfm?id=2745948)
+  <span class="author">David Navalho, Sérgio Duarte, Nuno Preguiça</span>
+  <span class="date">2015</span>
 * [Joining Forces: Toward a Unified Account of LVars and Convergent Replicated Data Types](https://www.cs.indiana.edu/~lkuper/papers/joining-wodet14.pdf)
   <span class="author">Lindsey Kuper, Ryan R. Newton</span>
   <span class="date">2014</span>
@@ -160,6 +173,9 @@ when distributed.
 
 Finally, for those of you who learn more by watching, here's some talks.
 
+* [Distributed, Eventually Consistent Computations](https://www.youtube.com/watch?v=lsKaNDj4TrE)
+  <span class="author">Christopher Meiklejohn</span>
+  <span class="date">2015</span>
 * [CRDT: Datatype for the Apocalypse](http://confreaks.tv/videos/elixirconf2015-crdt-datatype-for-the-apocalypse)
   <span class="author">Alexander Songe</span>
   <span class="date">2015</span>
