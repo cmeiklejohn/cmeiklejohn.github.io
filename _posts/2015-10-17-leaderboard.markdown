@@ -193,7 +193,7 @@ wait_for_events(Count, NumEvents, MaxValue0) ->
     end.
 {% endhighlight %}
 
-To execute our simulation, we do the following:
+To execute our simulation, we do the following.
 
 {% highlight erlang %}
 test() ->
