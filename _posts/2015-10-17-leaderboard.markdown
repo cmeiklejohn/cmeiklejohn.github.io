@@ -77,10 +77,10 @@ clients(Runner, LeaderboardId, Leaderboard) ->
     lists:map(SpawnFun, lists:seq(1, ?NUM_CLIENTS)).
 {% endhighlight %}
 
-Each client is modeled as an Erlang process that loops receiving
-incoming messages until they receive a terminate message and shut down.
-This process is responsible for handling two types of messages, and
-periodically synchronizing their state back to the server.
+Each client is modeled as an Erlang process that recursively processes
+incoming messages until it receives a terminate message and subsequently
+shuts down.  This process is responsible for handling two types of
+messages and periodically synchronizing their state back to the server.
 
 In a practical setting, you would probably want to synchronize state as
 long as connectivity was available, and only perform periodic
