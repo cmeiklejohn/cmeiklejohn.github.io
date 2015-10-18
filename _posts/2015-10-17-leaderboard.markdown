@@ -65,7 +65,8 @@ initialized with four pieces of data:
 * The process identifier of the simulator, so the clients can report to
   the simulator about what actions they are performing.
 * A globally unique identifier for each client, as some CRDTs require
-  that clients can be uniquely identified.
+  that clients can be uniquely identified.  We assume the top-K
+  leaderboard uses this identifier as the name of the client.
 * An identifier for the Lasp runtime to know how to talk to the
   canonical version of the leaderboard.
 * An initial copy of the leaderboard.
