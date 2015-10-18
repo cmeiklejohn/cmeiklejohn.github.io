@@ -230,8 +230,8 @@ test() ->
 {% endhighlight %}
 
 We launch our clients, initialize the simulation, ensure we wait for
-all events to be processed and finally assert that the final value when
-the system reaches quiescence is correct!
+all events to be processed and finally assert that the value, when
+the system reaches quiescence, is correct!
 
 ## Code Mesh 2015
 
