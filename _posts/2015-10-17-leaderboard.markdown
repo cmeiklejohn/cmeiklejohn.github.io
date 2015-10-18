@@ -99,7 +99,7 @@ This could be performed to only synchronize if state has changed; but
 we've kept it simple for the example.
 
 {% highlight erlang %}
-%% @doc Client process; standard recurisve looping server.
+%% @doc Client process.
 client(Runner, Id, LeaderboardId, Leaderboard0) ->
     receive
         {complete_game, Score} ->
@@ -130,8 +130,10 @@ client(Runner, Id, LeaderboardId, Leaderboard0) ->
     end.
 {% endhighlight %}
 
-Each client locally updates its copy of the leader board using the API
-provided by the top-K CRDT.
+Each client locally updates its copy of the leaderboard using the API
+provided by the top-K CRDT: the clients identifer is used as their name
+in the leaderboard and the leaderboard is updated with the score from
+the completed game.
 
 ## Simulator
 
