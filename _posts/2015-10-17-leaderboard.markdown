@@ -52,9 +52,10 @@ Computations"](http://dl.acm.org/citation.cfm?id=2745948).
 The [design of this
 CRDT](https://github.com/lasp-lang/lasp/blob/master/src/lasp_top_k_var.erl)
 ensures that update operations and merge operations preserve the top-K
-entries by value, arbitrating on lexicographical order of keys.  (Keep in
-mind, this implemention is just a prototype to explore the design space,
-and should not be used in production!)
+entries by value, arbitrating on lexicographical order of keys.  For
+this application, we assume 1 for the value of K.  (Keep in mind, this
+implemention is just a prototype to explore the design space, and should
+not be used in production!)
 
 ## Initialize client processes
 
