@@ -33,7 +33,7 @@ If network connectivity between the two systems is interrupted at the time of th
 
 If we choose the weak consistency model that affords us higher availability, we need to address the problem of concurrent modifications to shared state.  In our previous example, how do we decide to resolve the concurrent seat bookings: who "wins" the seat?
 
-What ever method we choose, the decision must be deterministic if we want to ensure that all copies of the shared state arrive at the same value once all of the updates have been delivered in the system.  Ideally these [conflict resolution functions](http://dl.acm.org/citation.cfm?id=224070) should be tolerant to message reordering and message duplication [Shapiro et al](http://hal.upmc.fr/inria-00555588/document) to ensure correct execution on an unreliable, asynchronous network.
+What ever method we choose, the decision must be deterministic if we want to ensure that all copies of the shared state arrive at the same value once all of the updates have been delivered in the system.  Ideally these [conflict resolution functions](http://dl.acm.org/citation.cfm?id=224070) should be tolerant to message reordering and message duplication ([Shapiro et al](http://hal.upmc.fr/inria-00555588/document)) to ensure correct execution on an unreliable, asynchronous network.
 
 ## The World is Eventually Consistent
 There is a reason that eventual consistency keeps coming up: it is fundamentally part of how systems in the real world operate.  Let us consider a few examples.
