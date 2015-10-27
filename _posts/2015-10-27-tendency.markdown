@@ -95,6 +95,8 @@ In emerging countries, there still exist a number of devices that transmit data 
 
 The future is in our hands.  Can we build computational abstractions that allow devices to communicate peer-to-peer, acknowledging the true source of truth for a particular piece of information and scale to the amount of information that exists, not only between all computers in a planetary-scale distributed system, but all entities in the universe.
 
+I welcome your feedback!
+
 ## Acknowledgement
 Thanks to John Muellerleile for helping me initially develop this idea and Colin Barrett, Michael R. Bernstein, Sean Cribbs, Chas Emerick, Scott Lystig Fritchie, Caitie McCaffrey, Tom Santero, Justin Sheehy, and Jordan West for their feedback.
 
