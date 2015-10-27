@@ -104,6 +104,6 @@ Thanks to John Muellerleile for helping me initially develop this idea and Colin
 
 [1] Additionally, latency is also a concern here.  Specifically, how can we guarantee that the system can service a request during a bounded amount of time.
 
-[2] We acknowledge that the idea of common knowledge in a distributed system can only be established a priori [Halpern and Moses](https://www.cs.cornell.edu/home/halpern/papers/common_knowledge.pdf) and that knowledge can only grow asymptotic to common knowledge monotonically to the number of messages exchanged between members of the system.
+[2] We acknowledge that the idea of common knowledge in a distributed system can only be established a priori ([Halpern and Moses](https://www.cs.cornell.edu/home/halpern/papers/common_knowledge.pdf)) and that knowledge can only grow asymptotic to common knowledge monotonically to the number of messages exchanged between members of the system.
 
 [3] To be fair, even in these single data center designs, we still have to reason about stale information because we replicate data within the data center for higher availability and fault-tolerance.
