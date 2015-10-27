@@ -100,6 +100,8 @@ I welcome your feedback!
 ## Acknowledgement
 Thanks to John Muellerleile for helping me initially develop this idea and Colin Barrett, Michael R. Bernstein, Sean Cribbs, Chas Emerick, Scott Lystig Fritchie, Caitie McCaffrey, Tom Santero, Justin Sheehy, and Jordan West for their feedback.
 
+## References
+
 [1] Additionally, latency is also a concern here.  Specifically, how can we guarantee that the system can service a request during a bounded amount of time.
 
 [2] We acknowledge that the idea of common knowledge in a distributed system can only be established a priori [Halpern and Moses](https://www.cs.cornell.edu/home/halpern/papers/common_knowledge.pdf) and that knowledge can only grow asymptotic to common knowledge monotonically to the number of messages exchanged between members of the system.
