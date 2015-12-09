@@ -524,7 +524,7 @@ categories: papers
       occurs whether the destination process is running locally on the
       same node, or running remotely.</p>
       <p>If a process wishes to explicitly wait for a response to a
-      message it has sent, it uses a rceieve operation to block on an
+      message it has sent, it uses a receive operation to block on an
       incoming message that matches a given pattern (using functional
       pattern matching, seen in languages like Erlang and Haskell.)</p>
       <p>In the event of a failure of the remote node, a process may
@@ -714,7 +714,7 @@ categories: papers
       between those nodes.</p>
       <p>Placement of processes in Erlang is done manually.  Distributed
       Erlang allows application developers to spawn a process on any
-      node in the system.  The procoess terminates once it has finished
+      node in the system.  The process terminates once it has finished
       executing.</p>
       <p>Riak Core provides an abstraction on top of Distributed Erlang:
       given some work that you'd like to have performed, referred to as
@@ -906,7 +906,7 @@ categories: papers
       (The use of the term "reduction" here goes back to the original
       implementation of Erlang on Prolog.) </p>
       <p>Erlang processes are executed on a number of schedulers:
-      normally, one scheduler is allocated for eah CPU core, but this is
+      normally, one scheduler is allocated for each CPU core, but this is
       customizable at runtime.</p>
     </td>
   </tr>
