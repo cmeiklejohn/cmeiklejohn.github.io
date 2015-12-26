@@ -1,0 +1,94 @@
+---
+layout: post
+title:  "2015: A Year in Review"
+date:   2015-12-31 19:00:00 -0500
+categories: personal
+---
+
+With 2015 wrapping up and 2016 ahead of us, I find it important to look
+back on what happened over the course of the year and set goals for
+how I'd like my work to develop over the coming year.
+
+I'm not going to enumerate the events of the past year, because they've
+already been discussed in various sections of my blog.  I would like to
+take a moment to highlight some of my favorite experiences, along with
+those which I consider most valuable to my development as a researcher
+and engineer.
+
+When I [did this last year][lastyear], I differentiated between events
+in my personal life, academic life, and industry life.  I am not going
+to do that this year, as I feel that while I may have done less overall
+most of the accomplishments that I'm most proud of this year are focused
+around a central theme: my Ph.D. thesis work, declarative edge
+computation, functional programming, and a little project I've been
+involved in called Lasp.
+
+Here we go.
+
+* I was the recipient of a [fellowship][emjd] in the Erasmus Mundus Joint
+  Doctorate program in Distributed Computing and will begin my Ph.D. in
+  2016 co-advised by [Peter Van Roy][pvr] and [Rodrigo Rodrigues][rr], with an
+  amazing committee featuring [Peter Alvaro][palvaro] and [Seif
+  Haridi][sh].
+* I was lucky enough to be able to speak about my work on [Lasp][lasp]
+  at some major events such as [Erlang Factory 2015][erlang-factory-2015],
+  [Strange Loop 2015][strangeloop-2015], [Code Mesh 2015][codemesh-2015],
+  [RICON 2015][ricon-2015] and [GOTO Chicago 2015][goto-2015].
+* I made a [draft][thesis-proposal] of my thesis proposal available and
+  published an article on how [databases may be the wrong abstraction as
+  we move towards edge computation][tendency].
+* I participated on the [Eurosys 2015][eurosys-2015], [DEBS
+  2015][debs-2015] and [Erlang Workshop 2015][erlang-workshop-2015]
+  program committees.
+* Following from my [Papers We Love talk in 2014][papers-we-love-2014],
+  I achieved a Papers We Love "hat trick" with two talks in 2015: one in
+  [Paris][papers-we-love-2015-paris] and one in [San
+  Francisco][papers-we-love-2015-sf].
+* I had my first conference publication with Lasp at [PPDP
+  2015][ppdp-2015].
+* Lasp also appeared at [PaPoC 2015][papoc-2015], [W-PSDS
+  2015][w-psds-2015], [Erlang Workshop 2015][erlang-workshop-2015]
+  and will appear at [OBT 2016][obt-2016] and
+  [EdgeCom 2016][edgecom-2016] in January.
+* I travelled to Paris and Berlin to speak about [Riak][bobkonf2015-riak] and
+  [Webmachine][bobkonf2015-webmachine].
+* I [left Basho][left-basho] and started working at [Machine Zone][machinezone].
+* I moved to San Francisco, CA.
+
+Goals for the next year?  It boils down to two major professional goals:
+
+* Survive a move to Belgium.
+* Successfully change from a 15 year career in industry to a student in
+  academic in a Ph.D. programme.
+
+Wish me luck!
+
+[eurosys-2015]: http://eurosys2015.labri.fr/
+[erlang-workshop-2015]: http://www.erlang.org/workshop/2015/
+[ppdp-2015]: http://costa.ls.fi.upm.es/ppdp15/
+[lastyear]: https://christophermeiklejohn.com/personal/2015/01/01/year.html
+[emjd]: http://emjd-dc.eu/
+[pvr]: https://www.info.ucl.ac.be/~pvr/cvvanroy.html
+[rr]: https://www.mpi-sws.org/~rodrigo/
+[palvaro]: http://people.ucsc.edu/~palvaro/
+[sh]: https://www.sics.se/~seif/
+[bobkonf2015-webmachine]: https://speakerdeck.com/cmeiklejohn/functional-web-apps-with-webmachine-1
+[bobkonf2015-riak]: https://speakerdeck.com/cmeiklejohn/introduction-to-riak
+[strangeloop-2015]: https://speakerdeck.com/cmeiklejohn/distributed-eventually-consistent-computations-1
+[erlang-factory-2015]: https://speakerdeck.com/cmeiklejohn/distributed-eventually-consistent-computations
+[ricon-2015]: https://speakerdeck.com/cmeiklejohn/declarative-distributed-edge-computation
+[codemesh-2015]: https://speakerdeck.com/cmeiklejohn/coordination-free-designs-for-mobile-gaming
+[goto-2015]: https://speakerdeck.com/cmeiklejohn/coordination-free-computations
+[papers-we-love-2014]: https://github.com/papers-we-love/papers-we-love/issues/166
+[papers-we-love-2015-sf]: http://www.meetup.com/papers-we-love-too/events/224178870/
+[papers-we-love-2015-paris]: http://www.meetup.com/Papers-We-Love-Paris/events/223984856/
+[papoc-2015]: http://papoc.di.uminho.pt/
+[w-psds-2015]: http://wpsds.lsd.di.uminho.pt/2015/
+[edgecom-2016]: http://edgecom.hevs.ch/
+[obt-2016]: http://conf.researchr.org/track/OBT-2016/OBT-2016-talks
+[left-basho]: https://christophermeiklejohn.com/lasp/2015/06/28/moving-on.html
+[machinezone]: https://www.machinezone.com/
+[lasp]: https://github.com/lasp-lang/lasp
+[thesis-proposal]: https://christophermeiklejohn.com/lasp/erlang/2015/11/01/thesis-proposal.html
+[tendency]: https://christophermeiklejohn.com/lasp/erlang/2015/10/27/tendency.html
+[debs-2015]: http://www.debs2015.org/
