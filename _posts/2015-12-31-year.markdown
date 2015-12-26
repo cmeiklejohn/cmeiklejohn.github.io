@@ -44,6 +44,8 @@ Here we go.
   I achieved a Papers We Love "hat trick" with two talks in 2015: one in
   [Paris][papers-we-love-2015-paris] and one in [San
   Francisco][papers-we-love-2015-sf].
+* I was featured on the [Functional Geekery][geekery] podcast talking
+  about Lasp and functional programming.
 * I had my first conference publication with Lasp at [PPDP
   2015][ppdp-2015].
 * Lasp also appeared at [PaPoC 2015][papoc-2015], [W-PSDS
@@ -63,6 +65,7 @@ Goals for the next year?  It boils down to two major professional goals:
 
 Wish me luck!
 
+[geekery]: https://www.functionalgeekery.com/episode-32-christopher-meiklejohn/
 [eurosys-2015]: http://eurosys2015.labri.fr/
 [erlang-workshop-2015]: http://www.erlang.org/workshop/2015/
 [ppdp-2015]: http://costa.ls.fi.upm.es/ppdp15/
