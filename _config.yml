@@ -1,5 +1,5 @@
 name: Christopher Meiklejohn
 description: Christopher Meiklejohn
 url: http://christophermeiklejohn.com
-highlighter: true
+highlighter: rouge
 exclude: [vendor]
