@@ -2,3 +2,4 @@ name: Christopher Meiklejohn
 description: The blog of Christopher Meiklejohn
 url: http://christophermeiklejohn.com
 highlighter: true
+exclude: [vendor]
