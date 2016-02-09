@@ -1,3 +1,3 @@
-source :rubygems
+source 'https://rubygems.org'
 
-gem 'jekyll'
+gem 'jekyll', :require => 3.0
