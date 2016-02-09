@@ -17,7 +17,7 @@ locally, with `flume-ng` version `1.2.0` or above.
 In this example, the name of our agent is just `agent`.  First, let's
 define a channel for `agent` named `memory-channel` of type `memory`.
 
-{% highlight apache %}
+{% highlight conf %}
 # Define a memory channel on agent called memory-channel.
 agent.channels.memory-channel.type = memory
 {% endhighlight %}
@@ -26,7 +26,7 @@ Next, let's configure a source for `agent`, called `tail-source`, which
 watches the `system.log` file.  Let us also assign it to the
 `memory-channel`.
 
-{% highlight apache %}
+{% highlight conf %}
 # Define a source on agent and connect to channel memory-channel.
 agent.sources.tail-source.type = exec
 agent.sources.tail-source.command = tail -F /var/log/system.log
@@ -37,7 +37,7 @@ Now, configure two sinks: logger and `HDFS`.  Then, we specify the path
 to the name node for `HDFS`, pointing to the output path of where we
 want the files stored.
 
-{% highlight apache %}
+{% highlight conf %}
 # Define a sink that outputs to logger.
 agent.sinks.log-sink.channel = memory-channel
 agent.sinks.log-sink.type = logger
@@ -51,7 +51,7 @@ agent.sinks.hdfs-sink.hdfs.fileType = DataStream
 
 Then, we configure the agent's channels, sources and sinks.
 
-{% highlight apache %}
+{% highlight conf %}
 # Finally, activate.
 agent.channels = memory-channel
 agent.sources = tail-source
