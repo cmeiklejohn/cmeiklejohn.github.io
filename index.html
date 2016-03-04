@@ -12,6 +12,16 @@ title: Christopher Meiklejohn
     {% endfor %}
   </ul>
 
+  <h1>Programming Models and Languages for Distributed Computing</h1>
+  <p>Series of posts on programming models and languages for distributed computing.</p>
+  <ul class="posts">
+    {% for post in site.posts %}
+      {% if post.group == "pl" %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
   <h1>SyncFree / Lasp</h1>
   <p>Research related to the <a
     href="http://syncfree.lip6.fr">SyncFree</a> project on large-scale
