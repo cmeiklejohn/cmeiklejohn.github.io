@@ -231,6 +231,7 @@ td {
 
 .citation {
   font-style: italic;
+  background-color: yellow;
 }
 
 .citation::before {
