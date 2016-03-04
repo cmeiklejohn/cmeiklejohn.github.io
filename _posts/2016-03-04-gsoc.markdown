@@ -1,0 +1,34 @@
+---
+layout: post
+title:  "Lasp and the Google Summer of Code 2016"
+date:   2016-03-03 19:00:00 -0500
+categories: pl
+group: pl
+---
+
+We are pleased to announce that the [BEAM
+Community](https://summerofcode.withgoogle.com/organizations/5748418722922496/)
+has been accepted into the 2016 Google Summer of Code.
+
+That means you can submit a project proposal to help develop the
+[Lasp](https://lasp-lang.org) programming language for distributed
+computing, mentored by me!
+
+There's plenty of work to do, and I'd be happy to take on eager students
+looking to help build the future of distributed computation.  Some of
+the ideas we're looking include the following, but are not limited to:
+
+* Partial evaluation, or how we can optimize programs based on access
+  patterns between distrubuted data items.
+* Optimization of CRDTs, or how we can leverage state of the art techniques
+  in CRDT to reduce the amount of state transmission on the wire.
+* Large-scale simulation, or how we can simulate large edge networks and
+  the language implemented across them.
+* Compilers, syntax, semantics!
+* More!
+
+Make sure you will be eligible to the project before writing your
+proposal. Details are available on the [GSOC 2016
+FAQ](https://developers.google.com/open-source/gsoc/faq#students).
+Please reach out to me via
+[email](mailto:christopher.meiklejohn@gmail.com) for more information!
