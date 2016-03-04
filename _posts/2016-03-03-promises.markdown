@@ -62,3 +62,4 @@ group: pl
 <li id="fn1"><p>Promises also provide a way for stream composition, where processes read values from one or more streams once they are <em>ready</em>, fulfilling placeholder <em>blocked</em> promises in other streams. One classic implementation of stream composition using <em>promises</em> is the Sieve of Eratosthenes.<a href="#fnref1">↩</a></p></li>
 </ol>
 </div>
+
