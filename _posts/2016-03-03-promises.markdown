@@ -6,6 +6,8 @@ categories: pl
 group: pl
 ---
 
+_This is one post in a series about programming models and languages for distributed computing that I'm writing as part of my [history of distributed programming techniques](https://github.com/cmeiklejohn/PMLDC)._
+
 <h2 id="relevant-reading">Relevant Reading</h2>
 <ul>
 <li><p><em>Promises: linguistic support for efficient asynchronous procedure calls in distributed systems</em>, Liskov and Shrira, PLDI 1988 <span class="citation">Liskov and Shrira (1988)</span>.</p></li>
