@@ -51,7 +51,7 @@ generating function in Erlang.
 We will begin by modeling the clock itself as product of products,
 essentially a triple as a product is formed like the following:
 
-{% highlight coq %}
+{% highlight erlang %}
 Inductive prod (A B:Type) : Type :=
   pair : A -> B -> prod A B.
 
@@ -63,7 +63,7 @@ Inductive prod (A B:Type) : Type :=
 
 See the implementation below:
 
-{% highlight coq %}
+{% highlight erlang %}
 (** Type definitions for actors, counts and timestamps. *)
 Definition actor := nat.
 Definition count := nat.
@@ -79,7 +79,7 @@ Definition vclock := (list clock)%type.
 Let us now add some functions for handling the incrementing and
 initializing of values:
 
-{% highlight coq %}
+{% highlight erlang %}
 (** Function to initialize a timestamp with the default value. *)
 Definition init_timestamp := O.
 
@@ -95,7 +95,7 @@ Definition incr_count (count : count) := S count.
 
 Let us now update our functions to increment the timestamp accordingly:
 
-{% highlight coq %}
+{% highlight erlang %}
 (** Increment a vector clock. *)
 Definition increment (actor : actor) (vclock : vclock) :=
   match find (find' actor) vclock with
@@ -201,7 +201,7 @@ Definition get_counter (actor : actor) (vclock : vclock) :=
 
 Finally, let us add a function to return the timestamps:
 
-{% highlight coq %}
+{% highlight erlang %}
 (** Return current timestamp of an actor in a vector clock. *)
 Definition get_timestamp (actor : actor) (vclock : vclock) :=
   match find (find' actor) vclock with
