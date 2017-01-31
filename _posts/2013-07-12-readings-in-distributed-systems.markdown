@@ -180,7 +180,7 @@ requests][pull] or leave comments!
 [generals]: http://www.cs.cornell.edu/courses/cs614/2004sp/papers/lsp82.pdf
 [flp]: http://macs.citadel.edu/rudolphg/csci604/ImpossibilityofConsensus.pdf
 [treedoc]: http://hal.inria.fr/docs/00/44/59/75/PDF/icdcs09-treedoc.pdf
-[zab]: http://labs.yahoo.com/files/ladis08.pdf
+[zab]: https://pdfs.semanticscholar.org/f333/798a4bd5b415c6aa7c24ad1719d82de03163.pdf
 [computing]: http://dl.acm.org/citation.cfm?id=974938
 [blooml]: http://db.cs.berkeley.edu/papers/UCB-lattice-tr.pdf
 [dedalus]: http://db.cs.berkeley.edu/papers/datalog2011-dedalus.pdf
