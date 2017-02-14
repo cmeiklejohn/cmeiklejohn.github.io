@@ -168,7 +168,7 @@ requests][pull] or leave comments!
 
 [pacelc]: http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf
 [pull]: https://github.com/cmeiklejohn/cmeiklejohn.github.io
-[optimistic]: http://pagesperso-systeme.lip6.fr/Marc.Shapiro/papers/Optimistic_Replication_Computing_Surveys_2005-03_cameraready.pdf
+[optimistic]: https://pdfs.semanticscholar.org/40c4/7420fdda6b715430153437ac77d62d1da6d8.pdf
 [redbook]: http://www.amazon.com/Readings-Database-Systems-Joseph-Hellerstein/dp/0262693143
 [raft]: https://ramcloud.stanford.edu/wiki/download/attachments/11370504/raft.pdf
 [paxoslive]: http://research.google.com/pubs/pub33002.html
