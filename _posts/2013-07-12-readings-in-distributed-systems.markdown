@@ -167,7 +167,7 @@ I'm hoping to make this into a living document, so please submit [pull
 requests][pull] or leave comments!
 
 [pacelc]: http://cs-www.cs.yale.edu/homes/dna/papers/abadi-pacelc.pdf
-[pull]: https://github.com/cmeiklejohn/cmeiklejohn.github.io
+[pull]: https://github.com/cmeiklejohn/cmeiklejohn.github.io/blob/master/_posts/2013-07-12-readings-in-distributed-systems.markdown?
 [optimistic]: http://pagesperso-systeme.lip6.fr/Marc.Shapiro/papers/Optimistic_Replication_Computing_Surveys_2005-03_cameraready.pdf
 [redbook]: http://www.amazon.com/Readings-Database-Systems-Joseph-Hellerstein/dp/0262693143
 [raft]: https://ramcloud.stanford.edu/wiki/download/attachments/11370504/raft.pdf
