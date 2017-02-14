@@ -184,7 +184,7 @@ requests][pull] or leave comments!
 [computing]: http://dl.acm.org/citation.cfm?id=974938
 [blooml]: http://db.cs.berkeley.edu/papers/UCB-lattice-tr.pdf
 [dedalus]: http://db.cs.berkeley.edu/papers/datalog2011-dedalus.pdf
-[clocks]: http://www.stanford.edu/class/cs240/readings/lamport.pdf
+[clocks]: http://lamport.azurewebsites.net/pubs/time-clocks.pdf
 [harvest]: http://radlab.cs.berkeley.edu/people/fox/static/pubs/pdf/c18.pdf
 [crdt2]: http://hal.archives-ouvertes.fr/docs/00/39/79/81/PDF/RR-6956.pdf
 [mapreduce]: http://research.google.com/archive/mapreduce.html
@@ -192,7 +192,7 @@ requests][pull] or leave comments!
 [synchrony]: http://www.cs.cornell.edu/ken/History.pdf
 [stasis]: http://www.cs.berkeley.edu/~brewer/sears-2006.pdf
 [isis]: http://www.cs.cornell.edu/projects/spinglass/public_pdfs/Process%20Group%20Approach.pdf
-[cap]: http://dl.acm.org/citation.cfm?id=564601
+[cap]: http://www.glassbeam.com/sites/all/themes/glassbeam/images/blog/10.1.1.67.6951.pdf
 [bigtable]: http://research.google.com/archive/bigtable-osdi06.pdf
 [chubby]: http://research.google.com/archive/chubby-osdi06.pdf
 [gfs]: http://research.google.com/archive/gfs.html
