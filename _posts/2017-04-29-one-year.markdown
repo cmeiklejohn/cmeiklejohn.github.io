@@ -2,8 +2,8 @@
 layout: post
 title:  "Reflections on One Year of Grad School"
 date:   2017-04-29 09:00:00 -0000
-categories: pl
-group: pl
+categories: life
+group: life
 ---
 
 As of March 28th, 2017, I've been a gradudate student for one year at
