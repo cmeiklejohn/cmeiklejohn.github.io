@@ -1,0 +1,170 @@
+---
+layout: post
+title:  "Reflections on One Year of Grad School"
+date:   2017-04-29 09:00:00 -0000
+categories: pl
+group: pl
+---
+
+As of March 28th, 2017, I've been a gradudate student for one year at
+the Universite catholique de Louvain, funded by a fellowship from the
+Erasmus Mundus Joint Doctorate program in the European Union.  They love
+promotion of their program, and therefore I decided to write a post on
+my experience of the program so far.
+
+Arriving a year ago from San Francisco was a difficult process.  I quit
+my job at Basho in August 2015 and was supposed to head to Belgium as
+soon as I finished.  I didn't, because of interesting circumstances that
+I didn't realize, and I'll outline those here.
+
+I took a job at a company in San Francisco as a temporary assignment --
+they knew I would only be there for few months before I obtained my visa
+for Belgium -- and subsequently moved immediately to San Francisco from
+Paris, where I had been living for a few months at the end of my time at
+Basho, given they were a remote company.
+
+I was both excited, and naive.
+
+Given I was hoping to leave after a few months, I arranged to stay in an
+Airbnb in the Tenderloin when I arrived, and then find an apartment that
+would house me until I was able to get a visa.  This ended up being a
+much longer process than originally imagined.
+
+Once I arrived, I soon began working on visa.  I'd soon come to learn
+that I didn't need an entry visa into Belgium because I'm a US citizen,
+but I began the process of getting the visa as instructed by the
+university.
+
+## Getting the visa
+
+Getting the visa ended up being a complicated process.  I arranged to
+see a doctor in SF on Russian Hill who does immigration exams and went
+through a rudimentary examination.  The form he was instructed to fill
+out, that I printed from the Belgian consulates website looked so fake
+that he didn't believe the form was real at first.  He then went to the
+website himself and found out that the form was, in fact, a real form
+and proceeded to fill it out and gave it to me.  I took this form to a
+notary in SF to get it notarized, and they didn't accept it; they needed
+the doctor to sign it.  I told the doctor this and then arranged to have
+the form notarized; they scheduled an appointment and then visited the
+notary.
+
+This also wasn't enough.  I later found out that I needed the form
+designated from an international notary (keep in mind, this form states
+that I didn't have tuberculosis) and I'd have to repeat the process.  I
+took the form to an international notary, who was mobile and wasn't
+there when I arrived in the office, and later had to schedule an
+appointment.  I was then informed that this form needed to go to
+Sacremento, that's the only place where the officiant was, and I'd have
+to supply an overnight postage prepaid to get it the next day.
+
+[So far, we've spend $500, given FBI fingerprints, overnight background
+checks, and a medical report that wasn't covered under insurance.]
+
+I finally received this information after a few days and then set off to
+schedule a single day flight to Los Angeles so I could visit the Belgian
+consulate and retrieve my visa.
+
+Meanwhile, I've had to try to get an apartment in SF for a temporary
+stay, and before I found a friend to put me up, I ended up staying at an
+Airbnb at 24th and Mission at a whopping $2,200 a month for a private
+room.
+
+I make it to LA, head to the consulate, have the forms signed, provide
+the information needed for them to get me the visa back to SF via
+overnight mail, and receive my visa in the following days.
+
+[Total expenditure on the visa: $1500]
+
+Once I received the visa, I receive an email from my advisor stating
+that if I'm not in Belgium to sign the forms by March 28th, I forfeit my
+fellowship.  I'm about to book a trip to Belgium, waiting for a response
+from my advisor that states I can only be reimbursed for the travel to
+Belgium and not prepaid, even though I had a travel allowance, when the
+Begian airport is attacked.  I have three days to book a ticket to de
+Gaulle, travel to Belgium by train, and make it there with one day to
+spare.  I arrive and find out I don't have to physically sign anything,
+and check into my apartment.
+
+Meanwhile, I had quit my short-term job and was told that given I didn't
+stay a year I would forfeit all of my stock options and have to repay my
+relocation benefits, even though they knew before I started I wouldn't
+be there for more than a year because I was going to grad school; so
+much for reading the contracts in depth, apparently I'm not lucid
+enough.
+
+[More on this, my job completely changed 4 days after I started and I
+went from researcher to software engineer.]
+
+My first year at the university was decent.  Let's look at what hapened
+during this year.
+
+* I spent over 200 days at affiliated universities and conferences, and
+  wasn't at my home university; this was nice, because I'm living in a
+  shared dorm with a shared bathroom and private shower.
+* I attended EuroSys, ICFP, ECOOP, and various other academic events.
+* I assisted in organizing Curry On.
+* I started the PMLDC workshop at ECOOP on distributed programming.
+* I co-chaired the Code Mesh conference.
+* I visited Cambridge, Braga, Oxford, IMDEA, and other universities on
+  research visits.
+* I spoke at Percona, Erlang User Conference, Erlang Factory, CRAFT
+  Conference, numerous Papers We Love meetups, GOTO London, GOTO Chicago
+* I was a subreviewer for CloudCom, and shadow PC for EuroSys
+* I TA'd two courses; one on Cloud Computing and one on Distributed
+  Algorithms
+* I mentored two students in the Google Summer of Code, one of which
+  presented a paper based on his work at AGERE! 2016
+* I performed a large scale evaluation of Lasp for the SyncFree project
+  and ran a live demo of our research prototype at the final review at
+  the European Commission
+* I scaled Lasp to 1024+ nodes, challenged the design of distributed
+  Erlang and showe higher scalability in Erlang than ever demonstrated
+  before.
+* I was the recipient of a Microsoft Research internship in Redmond this
+  summer.
+
+It's been a whirlwind year, but I'm still not happy.  Why is that?
+
+* I haven't published enough papers.
+* Erasmus does not provide enough money or time for student.  The salary
+  is good, but the costs involved in obtaining visa's, moving and
+  relocating every year is a pain.
+* Relocating every year is counterproductive, as much as it's supposed
+  to faciliate and support integration in the European Union.
+* I'm the only person in my lab, I sit alone and work alone.  This is
+  why I need to travel to do anything collaborative with my coworkers.
+* Moving takes a toll; it distracts from research, and cuts into your
+  time.
+* Is three years enough for a Ph.D.?
+
+Now, those are all academic complaints, but let's talk about more
+practical complaints as an international student in Europe:
+
+* I haven't been able to defer my loans from my undergradudate studies
+  yet.  This is a problem because the payment is over 1/2 of my rent as
+  a Ph.D. student.
+* Required travel and expenses have left me, at times, with over 3,0000
+  euros of outstanding expenses.  It has taken the university over 12
+  months to reimburse me for these expenses.
+* Having to move every year means that you need to find an apartment
+  every year.  I've had problems where Portugal landlords haven't
+  responded, even yet, to my requests, and I haven't been able to secure
+  my apartment, which is required to get a visa.
+* Expedited passport renewals in the US are expensive -- I've paid over
+  $400 for this -- and required for me to maintain my student status.
+* Belgian income, even if tax-free, is taxed in the United States, if
+  you are a citizen: the double taxation agreement only works on taxes
+  paid -- if you're tax free, you don't pay taxes and therefore don't
+  get any benefits.
+* Working alone and moving from lab to lab sucks.  It's impossible to
+  have a community and feel like you have a support system when you move
+  every year.  While the European Commission might think you are
+  promoting integration by moving people from country to country, what
+  it is not doing is making it so people can have good working
+  relationships and be healthy.
+
+My time has been wonderful, but I somtimes wonder what it would be like
+if the environment was more conducive to ensuring, first-class, that
+Ph.D. students had the time and resources to perform good research
+without feeling like they were running against the clock.
