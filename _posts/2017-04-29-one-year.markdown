@@ -38,9 +38,9 @@ university.
 ## Getting the visa
 
 Getting the visa ended up being a complicated process.  I arranged to
-see a doctor in SF on Russian Hill who does immigration exams and went
+see a doctor in SF on Russian Hill, who does immigration exams and went
 through a rudimentary examination.  The form he was instructed to fill
-out, that I printed from the Belgian consulates website looked so fake
+out, that I printed from the Belgian consulates website, looked so fake
 that he didn't believe the form was real at first.  He then went to the
 website himself and found out that the form was, in fact, a real form
 and proceeded to fill it out and gave it to me.  I took this form to a
@@ -68,33 +68,34 @@ consulate and retrieve my visa.
 Meanwhile, I've had to try to get an apartment in SF for a temporary
 stay, and before I found a friend to put me up, I ended up staying at an
 Airbnb at 24th and Mission at a whopping $2,200 a month for a private
-room.
+room; I couldn't find a cheaper place because I couldn't commit to more
+than week-by-week given my awaiting-on-a-visa status.
 
-I make it to LA, head to the consulate, have the forms signed, provide
+I make it to LA, head to the consulate, and have the forms signed provide
 the information needed for them to get me the visa back to SF via
-overnight mail, and receive my visa in the following days.
+overnight mail, and receive my visa two days later.
 
-[Total expenditure on the visa: $1500]
+[Total expenditure on the visa: $1,500]
 
 Once I received the visa, I receive an email from my advisor stating
 that if I'm not in Belgium to sign the forms by March 28th, I forfeit my
 fellowship.  I'm about to book a trip to Belgium, waiting for a response
 from my advisor that states I can only be reimbursed for the travel to
 Belgium and not prepaid, even though I had a travel allowance, when the
-Begian airport is attacked.  I have three days to book a ticket to de
-Gaulle, travel to Belgium by train, and make it there with one day to
-spare.  I arrive and find out I don't have to physically sign anything,
-and check into my apartment.
+Begian airport is attacked by terrorists.  I have three days to book a
+ticket to de Gaulle, travel to Belgium by train, and make it there with
+one day to spare.  I arrive and find out I don't have to physically sign
+anything after all, and check into my university flat.
 
 Meanwhile, I had quit my short-term job and was told that given I didn't
-stay a year I would forfeit all of my stock options and have to repay my
+stay a year, I would forfeit all of my stock options and have to repay my
 relocation benefits, even though they knew before I started I wouldn't
 be there for more than a year because I was going to grad school; so
-much for reading the contracts in depth, apparently I'm not lucid
+much for reading the contracts in depth: apparently I'm not lucid
 enough.
 
-[More on this, my job completely changed 4 days after I started and I
-went from researcher to software engineer.]
+[More on this another time: my job completely changed 4 days after I
+started; and I went from researcher to software engineer.]
 
 ## The First Year
 
@@ -103,41 +104,46 @@ during this year.
 
 * I spent over 200 days at affiliated universities and conferences, and
   wasn't at my home university; this was nice, because I'm living in a
-  shared dorm with a shared bathroom and private shower.
-* I attended EuroSys, ICFP, ECOOP, and various other academic events.
-* I assisted in organizing Curry On.
-* I started the PMLDC workshop at ECOOP on distributed programming.
-* I co-chaired the Code Mesh conference.
+  shared dorm with a shared bathroom and private shower;
+* I attended EuroSys, ICFP, ECOOP, and various other academic events;
+* I assisted in organizing Curry On;
+* I started the PMLDC workshop at ECOOP on distributed programming;
+* I co-chaired the Code Mesh conference;
 * I visited Cambridge, Braga, Oxford, IMDEA, and other universities on
-  research visits.
+  research visits;
 * I spoke at Percona, Erlang User Conference, Erlang Factory, CRAFT
-  Conference, numerous Papers We Love meetups, GOTO London, GOTO Chicago
-* I was a subreviewer for CloudCom, and shadow PC for EuroSys
+  Conference, numerous Papers We Love meetups, GOTO London, GOTO
+  Chicago;
+* I was a subreviewer for CloudCom, and shadow PC for EuroSys;
 * I TA'd two courses; one on Cloud Computing and one on Distributed
-  Algorithms
+  Algorithms;
 * I mentored two students in the Google Summer of Code, one of which
-  presented a paper based on his work at AGERE! 2016
+  presented a paper based on his work at AGERE! 2016;
 * I performed a large scale evaluation of Lasp for the SyncFree project
   and ran a live demo of our research prototype at the final review at
-  the European Commission
+  the European Commission;
 * I scaled Lasp to 1024+ nodes, challenged the design of distributed
   Erlang and showe higher scalability in Erlang than ever demonstrated
-  before.
+  before;
 * I was the recipient of a Microsoft Research internship in Redmond this
-  summer.
+  summer;
+* Our Lasp prototype is used by one company and the supporting
+  infrastructure is used by another.
 
-It's been a whirlwind year, but I'm still not happy.  Why is that?
+It's been a whirlwind year, but I'm still feeling stressed out, overwhelmed, and upset.  Why is that?
 
-* I haven't published enough papers.
+* I haven't published enough papers; we tried to publish a few things
+  related to our work but spend the better part of the year doing an
+  evaluation for the EU that totaled at over 9,900+ euros;
 * Erasmus does not provide enough money or time for student.  The salary
   is good, but the costs involved in obtaining visa's, moving and
-  relocating every year is a pain.
+  relocating every year is a pain;
 * Relocating every year is counterproductive, as much as it's supposed
-  to faciliate and support integration in the European Union.
+  to faciliate and support integration in the European Union;
 * I'm the only person in my lab, I sit alone and work alone.  This is
   why I need to travel to do anything collaborative with my coworkers.
 * Moving takes a toll; it distracts from research, and cuts into your
-  time.
+  time;
 * Is three years enough for a Ph.D.?
 
 Now, those are all academic complaints, but let's talk about more
@@ -145,20 +151,20 @@ practical complaints as an international student in Europe:
 
 * I haven't been able to defer my loans from my undergradudate studies
   yet.  This is a problem because the payment is over 1/2 of my rent as
-  a Ph.D. student.
+  a Ph.D. student;
 * Required travel and expenses have left me, at times, with over 3,0000
   euros of outstanding expenses.  It has taken the university over 12
-  months to reimburse me for these expenses.
+  months to reimburse me for these expenses;
 * Having to move every year means that you need to find an apartment
   every year.  I've had problems where Portugal landlords haven't
   responded, even yet, to my requests, and I haven't been able to secure
-  my apartment, which is required to get a visa.
+  my apartment, which is required to get a visa;
 * Expedited passport renewals in the US are expensive -- I've paid over
   $400 for this -- and required for me to maintain my student status.
 * Belgian income, even if tax-free, is taxed in the United States, if
   you are a citizen: the double taxation agreement only works on taxes
   paid -- if you're tax free, you don't pay taxes and therefore don't
-  get any benefits.
+  get any benefits;
 * Working alone and moving from lab to lab sucks.  It's impossible to
   have a community and feel like you have a support system when you move
   every year.  While the European Commission might think you are
