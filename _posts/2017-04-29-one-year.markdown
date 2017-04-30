@@ -26,67 +26,35 @@ Given that I thought I was leaving San Francisco in a few short months, I arrang
 
 Once I arrived, I began working on obtaining a visa for Belgium.  **It's actually unclear if this visa was actually needed** as it's mainly required for entry only if your country doesn't participate in the visa waiver program, but when I went to obtain my resident card, I was not required to show it to any one in my commune, nor did I need to have the visa renewed when it expired this March.  Alas, I followed the university's instructions.
 
-## Getting the visa
+## Getting the Visa
 
 Getting the visa ended up being a complicated process.  I arranged to
-see a doctor in SF on Russian Hill, who does immigration exams and went
-through a rudimentary examination.  The form he was instructed to fill
-out, that I printed from the Belgian consulates website, looked so fake
-that he didn't believe the form was real at first.  He then went to the
-website himself and found out that the form was, in fact, a real form
-and proceeded to fill it out and gave it to me.  I took this form to a
-notary in SF to get it notarized, and they didn't accept it; they needed
-the doctor to sign it.  I told the doctor this and then arranged to have
-the form notarized; they scheduled an appointment and then visited the
-notary.
+see a doctor in SF on Russian Hill who does immigration exams and went
+through a rudimentary physical examination.  The form he was instructed to fill out, that I printed from the Belgian consulate's website, looked so fake that he didn't believe the form was real at first.  He then went to the website himself and found out that the form was, in fact, a real form and proceeded to fill it out and gave it to me.  I took this form to a notary in SF to get it notarized, and they didn't accept it; they needed the doctor to sign it.  I told the doctor this and then arranged to have the form notarized; they scheduled an appointment and then were visited the notary who obtained the signed forms.
 
-This also wasn't enough.  I later found out that I needed the form
-designated from an international notary (keep in mind, this form states
-that I didn't have tuberculosis) and I'd have to repeat the process.  I
-took the form to an international notary, who was mobile and wasn't
-there when I arrived in the office, and later had to schedule an
-appointment.  I was then informed that this form needed to go to
-Sacramento, that's the only place where the officiant was, and I'd have
-to supply an overnight postage prepaid to get it the next day.
+This also wasn't enough.  I later found out that I needed the form designated from an international notary (keep in mind, this form states that I didn't have tuberculosis or the plague) and I'd have to repeat the process.  I took the form to an international notary, who was mobile and wasn't there when I arrived in the office, and later had to schedule an appointment.  I was then informed that this form needed to go to Sacramento, that's the only place where the officiant was, and I'd have to supply an overnight postage prepaid, or have the courier drive there themselves to pick it up, as I didn't have a car, if I needed to get it in the following days.
 
 [So far, we've spend $500, given FBI fingerprints, overnight background
 checks, and a medical report that wasn't covered under insurance.]
 
-I finally received this information after a few days and then set off to
-schedule a single day flight to Los Angeles so I could visit the Belgian
-consulate and retrieve my visa.
+I received the notarized report a few days later and schedule a single day flight to Los Angeles to visit the Belgian consulate to apply for the visa.  I arrived in Los Angeles about 4 hours before my appointment, which had to be scheduled 72 hours in advance [I had schedule the appointment before receiving the notarized forms, in the hope they would arrive in time -- the first time I did this they didn't and I had to cancel my appointment with the consulate.]
 
-Meanwhile, I've had to try to get an apartment in SF for a temporary
-stay, and before I found a friend to put me up, I ended up staying at an
-Airbnb at 24th and Mission at a whopping $2,200 a month for a private
-room; I couldn't find a cheaper place because I couldn't commit to more
-than week-by-week given my awaiting-on-a-visa status.
+The Belgian consulate was extremely nice -- there was no one there when I arrived early and said I would wait, so they saw me immediately, didn't care that I had not provided enough copies of one of the forms and had incorrectly filled out a section of another and I was out of there within 25 minutes.  They said I would receive the visa back the following day, and that they would send it overnight postage, which I provided to them when I arrived.
 
-I make it to LA, head to the consulate, and have the forms signed provide
-the information needed for them to get me the visa back to SF via
-overnight mail, and receive my visa two days later.
+In the mean time, I've been moving from apartment to apartment, saying week by week in private rooms in different neighborhoods: the Tenderloin (~$1,800/mo), 24th and Potrero ($2,400/mo), etc.  I eventually ended up leaving my suitcase at work instead of moving it from location to location and bringing clothes home in a smaller bag.  Eventually, I landed a place to stay where I no longer needed to move.  
 
-[Total expenditure on the visa: $1,500]
+I tried looking for something more longer-term or a sublet, but I either received no response, they didn't want someone with such a short-time frame, or someone who was traveling quite a bit for conferences and to obtain the visa.  One of the places I stayed with Airbnb, the renter was extremely irritated [for some reason, in that I just wasn't there or coming and going too often] that I was traveling a bunch: I was gone for a trip to Sweden for a conference, and then a conference in Las Vegas, both to present work-in-progress or peer-reviewed published work.
 
-Once I received the visa, I receive an email from my advisor stating
-that if I'm not in Belgium to sign the forms by March 28th, I forfeit my
-fellowship.  I'm about to book a trip to Belgium, waiting for a response
-from my advisor that states I can only be reimbursed for the travel to
-Belgium and not prepaid, even though I had a travel allowance, when the
-Brussels airport is attacked by terrorists.  I have three days to book a
-ticket to de Gaulle, travel to Belgium by train, and make it there with
-one day to spare.  I arrive and find out I don't have to physically sign
-anything after all, and check into my university flat.
+[Total expenditure on the visa: roughly $1,500, with flights, exams, and paperwork.]
+
+The day after I receive my visa, I receive an email from my advisor stating that if I'm not in Belgium to sign the forms by March 28th, I forfeit my fellowship.  I'm about to book a trip to Belgium, waiting for a response from my advisor that states I can only be reimbursed for the travel to Belgium and not prepaid even though I'm provided with a "moving" allowance, when the Brussels airport is attacked by terrorists.
+
+I have three days to book a ticket to Charles de Gaulle, travel to Belgium by train, and make it there with one day to spare.  I arrive and find out I don't have to physically sign anything after all, and check into my university flat.
 
 Meanwhile, I had quit my short-term job and was told that given I didn't
 stay a year, I would forfeit all of my stock options and have to repay my
 relocation benefits, even though they knew before I started I wouldn't
-be there for more than a year because I was going to grad school; so
-much for reading the contracts in depth: apparently I'm not lucid
-enough.
-
-[More on this another time: my job completely changed 4 days after I
-started; and I went from researcher to software engineer.]
+be there for more than a year because I was going to grad school.  We ended up coming to an agreement around this, but this is what I get for not being more diligent with reading employment contracts.
 
 ## The First Year
 
