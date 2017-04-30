@@ -6,11 +6,9 @@ categories: life
 group: life
 ---
 
-As of March 28th, 2017, I've been a gradudate student for one year at
-the Universite catholique de Louvain, funded by a fellowship from the
-Erasmus Mundus Joint Doctorate program in the European Union.  They love
-promotion of their program, and therefore I decided to write a post on
-my experience of the program so far.
+As of March 28th, 2017, I've been a graduate student for one year at
+the Université catholique de Louvain, funded by a fellowship from the
+Erasmus Mundus Joint Doctorate program in the European Union.
 
 Arriving a year ago from San Francisco was a difficult process.  I quit
 my job at Basho in August 2015 and was supposed to head to Belgium as
@@ -99,7 +97,7 @@ started; and I went from researcher to software engineer.]
 
 ## The First Year
 
-My first year at the university was decent.  Let's look at what hapened
+My first year at the university was decent.  Let's look at what happened
 during this year.
 
 * I spent over 200 days at affiliated universities and conferences, and
@@ -123,7 +121,7 @@ during this year.
   and ran a live demo of our research prototype at the final review at
   the European Commission;
 * I scaled Lasp to 1024+ nodes, challenged the design of distributed
-  Erlang and showe higher scalability in Erlang than ever demonstrated
+  Erlang and showed higher scalability in Erlang than ever demonstrated
   before;
 * I was the recipient of a Microsoft Research internship in Redmond this
   summer;
@@ -149,7 +147,7 @@ It's been a whirlwind year, but I'm still feeling stressed out, overwhelmed, and
 Now, those are all academic complaints, but let's talk about more
 practical complaints as an international student in Europe:
 
-* I haven't been able to defer my loans from my undergradudate studies
+* I haven't been able to defer my loans from my undergraduate studies
   yet.  This is a problem because the payment is over 1/2 of my rent as
   a Ph.D. student;
 * Required travel and expenses have left me, at times, with over 3,000
@@ -172,7 +170,7 @@ practical complaints as an international student in Europe:
   it is not doing is making it so people can have good working
   relationships and be healthy.
 
-My time has been wonderful, but I somtimes wonder what it would be like
+My time has been wonderful, but I sometimes wonder what it would be like
 if the environment was more conducive to ensuring, first-class, that
 Ph.D. students had the time and resources to perform good research
 without feeling like they were running against the clock.
