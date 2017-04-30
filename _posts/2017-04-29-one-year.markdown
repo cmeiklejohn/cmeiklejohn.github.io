@@ -51,10 +51,7 @@ The day after I receive my visa, I receive an email from my advisor stating that
 
 I have three days to book a ticket to Charles de Gaulle, travel to Belgium by train, and make it there with one day to spare.  I arrive and find out I don't have to physically sign anything after all, and check into my university flat.
 
-Meanwhile, I had quit my short-term job and was told that given I didn't
-stay a year, I would forfeit all of my stock options and have to repay my
-relocation benefits, even though they knew before I started I wouldn't
-be there for more than a year because I was going to grad school.  We ended up coming to an agreement around this, but this is what I get for not being more diligent with reading employment contracts.
+Meanwhile, I had quit my short-term job and was told that given I didn't stay a year, I would forfeit all of my stock options and have to repay my relocation benefits, even though they knew before I started I wouldn't be there for more than a year because I was going to grad school.  We ended up coming to an agreement around this, but this is what I get for not being more diligent with reading employment contracts.
 
 ## The First Year
 
@@ -62,14 +59,12 @@ My first year at the university was decent.  Let's look at what happened
 during this year.
 
 * I spent over 200 days at affiliated universities and conferences, and
-  wasn't at my home university; this was nice, because I'm living in a
-  shared dorm with a shared bathroom and private shower;
+  wasn't at my home university;
 * I attended EuroSys, ICFP, ECOOP, and various other academic events;
 * I assisted in organizing Curry On;
 * I started the PMLDC workshop at ECOOP on distributed programming;
 * I co-chaired the Code Mesh conference;
-* I visited Cambridge, Braga, Oxford, IMDEA, and other universities on
-  research visits;
+* I visited Cambridge, Kent, Minho, Oxford, IMDEA, and other universities on research visits;
 * I spoke at Percona, Erlang User Conference, Erlang Factory, CRAFT
   Conference, numerous Papers We Love meetups, GOTO London, GOTO
   Chicago;
@@ -80,7 +75,7 @@ during this year.
   presented a paper based on his work at AGERE! 2016;
 * I performed a large scale evaluation of Lasp for the SyncFree project
   and ran a live demo of our research prototype at the final review at
-  the European Commission;
+  the European Commission [scary!];
 * I scaled Lasp to 1024+ nodes, challenged the design of distributed
   Erlang and showed higher scalability in Erlang than ever demonstrated
   before;
@@ -94,13 +89,12 @@ It's been a whirlwind year, but I'm still feeling stressed out, overwhelmed, and
 * I haven't published enough papers; we tried to publish a few things
   related to our work but spend the better part of the year doing an
   evaluation for the EU that totaled at over 9,900+ euros;
-* Erasmus does not provide enough money or time for student.  The salary
+* Erasmus does not provide enough money nor time for student.  The salary
   is good, but the costs involved in obtaining visa's, moving and
-  relocating every year is a pain;
+  relocating every year is a pain.  In fact, I basically have spent two months out of the year dealing with logistics around moving to Belgium and moving to Portugal and will have to repeat this process in another year;
 * Relocating every year is counterproductive, as much as it's supposed
   to facilitate and support integration in the European Union;
-* I'm the only person in my lab, I sit alone and work alone.  This is
-  why I need to travel to do anything collaborative with my coworkers.
+* I'm the only person in my lab, I sit alone and work alone.  In fact, there were multiple times this year where I was supposed to have a lab mate, but they were put into other offices instead.  This is why I prefer to travel to do anything collaborative with my coworkers.
 * Moving takes a toll; it distracts from research, and cuts into your
   time;
 * Is three years enough for a Ph.D.?  The funding that is provided only covers three years, but it seems that most of the students in my lab have needed at least a fourth, and have had to find additional funding for it.
@@ -111,15 +105,13 @@ practical complaints as an international student in Europe:
 * I haven't been able to defer my loans from my undergraduate studies
   yet.  This is a problem because the payment is over 1/2 of my rent as
   a Ph.D. student;
-* Required travel and expenses have left me, at times, with over 3,000
-  euros of outstanding expenses.  It has taken the university over 12
-  months to reimburse me for these expenses;
+* Required travel and expenses have left me, at times, with over 3,000   euros of outstanding expenses.  It has taken the university, at times, over 12 months to reimburse me for these expenses;
 * Having to move every year means that you need to find an apartment
   every year.  I've had problems where Portugal landlords haven't
   responded, even yet, to my requests, and I haven't been able to secure
-  my apartment, which is required to get a visa;
+  my apartment, which is required to get a visa and resident card;
 * Expedited passport renewals in the US are expensive -- I've paid over
-  $400 for this -- and required for me to maintain my student status;
+  $400 for this -- and required for me to maintain my student status at return to the university from abroad;
 * Belgian income, even if tax-free, is taxed in the United States, if
   you are a citizen: the double taxation agreement only works on taxes
   paid -- if you're tax free, you don't pay taxes and therefore don't
