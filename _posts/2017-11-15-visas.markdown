@@ -6,6 +6,8 @@ categories: life
 group: life
 ---
 
+I was asked to write up my experiences doing a Ph.D. abroad and the process of obtaining the required documents needed to study abroad.  The [first post](http://christophermeiklejohn.com/life/2017/04/29/one-year.html) is here, and this is a follow up on year two of my mobility.
+
 I left for my internship at Microsoft Research in March, but in the proess of doing that I had to pack up my apartment in Belgium and get ready for a return to Lisbon.  For those that haven't been following along, I'm in a "mobile" Ph.D. program that requires me spend at least one year at each of my institutions: Universite catholique de Louvain in Louvain-la-Neuve, Belgium and Instituto Superior Technico in Lisbon, Portugal.
 
 This arrangement is curious, because it requires quite a bit of logistics to pull off correctly given that you have to move multiple times throughout a program, which requires both finding a place to live and getting the appropriate visa's that allow you to stay in the country as a resident.
