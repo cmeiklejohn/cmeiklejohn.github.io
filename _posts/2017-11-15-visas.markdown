@@ -1,0 +1,63 @@
+---
+layout: post
+title:  "Visas, Ph.D., Year 2"
+date:   2017-11-15 09:00:00 -0000
+categories: life
+group: life
+---
+
+I left for my internship at Microsoft Research in March, but in the proess of doing that I had to pack up my apartment in Belgium and get ready for a return to Lisbon.  For those that haven't been following along, I'm in a "mobile" Ph.D. program that requires me spend at least one year at each of my institutions: Universite catholique de Louvain in Louvain-la-Neuve, Belgium and Instituto Superior Technico in Lisbon, Portugal.
+
+This arrangement is curious, because it requires quite a bit of logistics to pull off correctly given that you have to move multiple times throughout a program, which requires both finding a place to live and getting the appropriate visa's that allow you to stay in the country as a resident.
+
+# The Apartment
+
+My initial problems started with finding a place to live.  Given I had started on an off cycle in the academic year, finding a place was a bit more difficult than originally imagined.  After securing one place, I found the owners of the apartment failing to respond to me after a few months while I was living in Washington.  Eventually they responded, a month before I was supposed to arrive, notifying me that the apartment had been given away because I had failed to provide payment that was needed to secure the place: not only had they never informed me of this, when I inquired for more details, they told me that it was clearly stated in the contract (somewhere around page 6, section 12) to which I had failed to read, and subsequently lost the apartment.  I was thankful to have an advisor in Portugal who knew a landlord who was renting a place that would be available after I arrived, and I would find temporary accomidations until it was ready for me to move in.
+
+# The Visa, Part 1
+
+Upon returning to Portugal on August 27th, as my Belgian residence was expiring on October 31st, 2017, I set out to immediately renew my residence, so I could remain in Europe.  (Technically, a Schengen visa with residence status, class D, granted by Belgium as a host.)  I started the process immediately, and only have received my updated Belgian residence as of yesterday, November 14th, 2017.
+
+The initial problems started in Portugal: Portugal requires I'm enrolled in the University before I can apply for the residence, which means that I need to have a certain number of medical exams and vaccinations, of which they haven't been clear about.  Not only is the Portuguese residence application appointments delayed for three months because of an influx of refugees, but, the university was unsure how to actually enroll me, because they mostly deal with students who already have Schengen visas.  
+
+Further complicating matters, I found out that I also needed to re-enroll in Belgium to maintain student status, and have an updated residence there, because while I'm technically residing and working at the university in Portugal, I'm still paid my Belgian Ph.D. stipend, from the Belgian university, to my Belgian bank account. 
+
+# Banks
+
+As an American residing in Belgium, banks don't like giving you accounts because it's extra work for them: they are required by the US government to report all of your financials per US law so you are properly taxed.  When I first arrived in Belgium, my account with BNP Paribas Fortis was deactivated twice: both times where my tax form that was required to be sent to the US was "lost" and they locked out my money, leaving me in Belgium with no money for weeks at a time.  When your residence expires, you are also shut off, so maintaining a residence is key.  
+
+In terms of the double taxation agreement with Belgium and the United States: the US will not tax you on every dollar paid to a foreign government on income.  Now, here's the problem: my Ph.D. is tax free, therefore, I pay no taxes in Belgium, which means, I technically paid $0 USD to Belgium in taxes, which means, that on my Ph.D. stipend, I paid the full taxation that the US allowed.  Because I started my Ph.D. in March, and contracted in SF the months leading up to it, I was pushed into a much higher tax bracket and subsequently had to pay taxes on part of my tax free Ph.D. stipend to the US gonvernment.
+
+# The Visa, Part 2
+
+So, I went to Belgium to renew my residence.  
+
+Now, if you aren't familiar with the Belgian residence permit process, I'll outline it here.
+
+* You get a housing contract;
+* You go to the commune to register, within two weeks, and a police officer will then come to your apartment sometime in the next 7 days, where you get to pick morning or night, and you have to wait there for them to verify you live there;
+* With this form, you can go to the commune with your enrollment, proof of salary, passport, photo, and 22,50 EUR, to register;
+* You are then mailed a code within the next 14 days to that address;
+* You return to the commune with that code, type it into a computer, and receive your residence card, only for as long as your salary period.
+
+I started on an off-year, which means that my salary, because the university only cuts proof of salary forms every academic year, expires every 6 months.  So, I need to renew my residence every 6 months.  Thankfully, this last time my advisor was able to get form vouching for the following year that I was able to use for a 1 year residence extension.
+
+Now, I start by getting a new enrollment.  However, I immediately run into problems:
+
+* I can't enroll without a residence card extended for the period of the academic year;
+* I can't get a residence card without an enrollment.
+
+Deadlock.
+
+Two weeks pass, and the university is able to "conditionally" enroll me enough to get the form needed to get the residence.  But, now I need a house where I can receive the letter.  Therefore, I have to get a residence in Belgium to complete the residence extension process.  This means, that:
+
+* I have a residence in both countries (that, I'm paying for.)
+* Meanwhile, my temporary housing changes and I need to move out while I'm in Belgium, but I can't leave, so I have to have someone move my stuff from one apartment to the other in Lisbon.
+
+My residence is set to expire October 31st, and it's October 27th and I haven't got the updated residence yet.  I talk to the immigration services and they instruct me that I must leave the Schengen area for 24 hours on October 31, and re-enter the Schengen as a tourist on my US passport to stay legally in Europe.  On October 28th, I file the paperwork and receive the Annexe 15, which gives me a 45 day extension to stay in the Schengen Area (but, only entering Schengen at Belgium, not any other Schengen border crossing) and finally receive the residence card in Louvain-la-Neuve yesterday.
+
+# The Visa, Part 3
+
+It's been three months on the road, living in Belgium (and various other places where I've had to speak at conferences or collaborate with peers) since I've been home to Lisbon.  I have an apartment that I've never seen or lived in, that I hope to return to soon, and then I begin the process of the medical examinations, vaccinations, and paperwork needed to get enrolled at the university and become a resident of Portugal.  I've spent well over 4,000 EUR these past few months, living out of a single suitcase in various AirBnB's and hotels.  
+
+Unfortunately, the university has provided little support, and most of the process has been left to me.  Not just me, but co-workers from China and other non-Schengen countries have gone through the same.  I hope that in the future, student will be assisted in the Erasmus programme, which seems to assume at this point that most students are coming from countries with Schengen visas.  Three years of funding for a Ph.D. is not enough, when you lose months to process.
