@@ -62,6 +62,9 @@ operations across a set of replicas.
 * [CAP Twelve Years Later: How the "Rules" Have Changed][cap12]
   <span class="author">Eric Brewer</span>
   <span class="date">2012</span>
+* [Calvin: Fast Distributed Transactions for Partitioned Database Systems][calvin]
+  <span class="author">Alexander Thomson, Thaddeus Diamond, Shu-Chun Weng, Kun Ren, Philip Shao, Daniel J. Abadi</span>
+  <span class="date">2012</span>
 * [Optimistic Replication][optimistic]
   <span class="author">Yasushi Saito and Marc Shapiro</span>
   <span class="date">2005</span>
@@ -115,6 +118,12 @@ case studies on problems in distributed programming.
 
 Implemented and theoretical distributed systems.
 
+* [Spanner: Google’s Globally-Distributed Database][spanner]
+  <span class="author">James C. Corbett, Jeffrey Dean, Michael Epstein, Andrew Fikes, Christopher Frost, JJ Furman,Sanjay Ghemawat, Andrey Gubarev, Christopher Heiser, Peter Hochschild, Wilson Hsieh,Sebastian Kanthak, Eugene Kogan, Hongyi Li, Alexander Lloyd, Sergey Melnik, David Mwaura,David Nagle, Sean Quinlan, Rajesh Rao, Lindsay Rolig, Yasushi Saito, Michal Szymaniak,Christopher Taylor, Ruth Wang, Dale Woodford</span>
+  <span class="date">2012</span>
+* [ZooKeeper: Wait-free coordination for Internet-scale systems][zookeeper]
+  <span class="author">Patrick Hunt, Mahadev Konar, Flavio P. Junqueira, Benjamin Reed</span>
+  <span class="date">2010</span>
 * [A History Of The Virtual Synchrony Replication Model][synchrony]
   <span class="author">Ken Birman</span>
   <span class="date">2010</span>
@@ -204,3 +213,6 @@ requests][pull] or leave comments!
 [guide_reliable_dist_systems]: http://www.amazon.com/Guide-Reliable-Distributed-Systems-High-Assurance/dp/1447124154
 [gss]: http://www.cs.berkeley.edu/%7Ebrewer/papers/GiantScale-IEEE.pdf
 [trds]: http://www.cs.berkeley.edu/~brewer/cs262b-2004/PODC-keynote.pdf
+[spanner]: https://static.googleusercontent.com/media/research.google.com/en//archive/spanner-osdi2012.pdf
+[zookeeper]: https://www.usenix.org/legacy/event/usenix10/tech/full_papers/Hunt.pdf
+[calvin]: http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf
