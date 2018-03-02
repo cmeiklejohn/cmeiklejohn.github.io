@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Distinguishing Lasp from BloomL: Programming System vs. Programming Model"
+title:  "Distinguishing Lasp from Bloom<sup>L</sup>: Programming System vs. Programming Model"
 date:   2018-03-02 09:00:00 -0000
 categories: lasp
 group: syncfree
