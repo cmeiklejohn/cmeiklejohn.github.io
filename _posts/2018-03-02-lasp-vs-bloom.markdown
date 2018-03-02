@@ -3,7 +3,7 @@ layout: post
 title:  "Distinguishing Lasp from BloomL: Programming System vs. Programming Model"
 date:   2018-03-02 09:00:00 -0000
 categories: lasp
-group: lasp
+group: syncfree
 ---
 
 This week, I participated in [Dagstuhl Seminar 18091, "Data Consistency in Distributed Systems: Algorithms, Programs, and Databases"](https://www.dagstuhl.de/en/program/calendar/semhp/?semnr=18091) where I presented some in progress work on making it easier to program with both the Lasp and Bloom<sup>L</sup> distributed programming systems.  During my presentation, I drew comparisons between Lasp and Bloom<sup>L</sup> systems, focusing mainly on the data types and operational semantics.  What became evident after my presentation, however, was that from a programming model and operational semantics perspective the systems are very similar, and Bloom<sup>L</sup> actually contains many notable features that Lasp does not have.  Given that, I've decided to type up my thoughts on how these systems differ and how these systems are similar, from a holistic perspective.
