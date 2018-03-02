@@ -30,4 +30,4 @@ Lasp's communication layer is powered by Partisan, our system for supporting nod
 
 Lasp also comes with deployment support, via a system called Sprinter, that supports cluster deployments on Apache Mesos, Kubernetes-based systems like Google Cloud Platform, and Docker Compose, making it easy to deploy and manage at scale.
 
-Lasp isn't just a programming model, it's what I like to call a programming system for distributed applications, like systems like Argus were in the 80s.  We're actively growing the performance of the system, along with features, and language expressivity.  Stay tuned for the coming months, where we plan to release a number of new features.
+Lasp isn't just a programming model, it's what I like to call a programming system for distributed applications, as distributed systems in the 80's were: [Emerald](http://christophermeiklejohn.com/pl/2016/03/05/emerald.html) and [Argus](http://christophermeiklejohn.com/pl/2016/08/08/argus.html).  We're actively growing the performance of the system, along with features, and language expressivity.  Stay tuned for the coming months, where we plan to release a number of new features.
