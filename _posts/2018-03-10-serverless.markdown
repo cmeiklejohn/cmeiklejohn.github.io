@@ -39,16 +39,9 @@ To start with, I forked Jesse Schoch's AWS elixir-on-lambda project
 
 The way exlam works is the following:
 
-An AWS Lambda compatible Node.JS 4.3 project wraps an installation of the
-Erlang Virtual Machine and a relx-generated release of an Erlang / Elixir
-project. This is bundled into a zip file and deployed to AWS Lambda using the
-Lambda command line interface.
+* An AWS Lambda compatible Node.JS 4.3 project wraps an installation of the Erlang Virtual Machine and a relx-generated release of an Erlang / Elixir project. This is bundled into a zip file and deployed to AWS Lambda using the Lambda command line interface.
 
-On deployment, or initial launch of the Lambda container, the file is
-unzipped into a temporary directory, and the the Node.JS application invoked.
-This Node.JS project then uses child_process to launch the Erlang virtual
-machine and issue a request to the container through a HTTP interface exposed
-by the Elixir application, once launched.
+* On deployment, or initial launch of the Lambda container, the file is unzipped into a temporary directory, and the the Node.JS application invoked. This Node.JS project then uses child_process to launch the Erlang virtual machine and issue a request to the container through a HTTP interface exposed by the Elixir application, once launched.
 
 # Exlam Modifications
 
@@ -83,17 +76,17 @@ As part of our work on scaling Distributed Erlang, I've built a replacement
 system named Partisan that can support different cluster topologies and
 different network transports for allowing actor messaging between Erlang
 nodes. Out of the box, Partisan supports a variety of different transport
-mechanisms (libp2p, gen_tcp) and different network topologies (client-server,
-unstructured overlays with partial views, spanning trees, etc.) I decided
-that I could use Partisan to provide my transport for message passing between
-nodes.
+mechanisms (`libp2p`, `gen_tcp`) and different network topologies
+(client-server, unstructured overlays with partial views, spanning trees,
+etc.) I decided that I could use Partisan to provide my transport for message
+passing between nodes.
 
 However, when running in the AWS Lambda environment, processes do not have
 the ability to bind ports, and so I needed another transport for message
 passing between the various instances that were running to enable them to
 communicate with one another. To faciliate this, I wrote a AMQP backend for
 Partisan that allows me to have each Lambda instance connect to a message
-broker and use thse outgoing TCP connections for bidirectional communication
+broker and use these outgoing TCP connections for bidirectional communication
 between each of the nodes in the system. As each node comes online, it
 registers a locally generated name into a membership data structure, stored
 as a CRDT, that is gossiped between all peers in the system.
@@ -157,6 +150,14 @@ increases -- in fact, most of our latest experiments have been done in Google
 Cloud Platform using Container Engine to ease the difficulty of running
 experiments.
 
+Rough calculations, in terms of costs for operation:
+
+* Assume a N replicated database, invoked once every 30 seconds: $0.0000002 * N * 
+2880 * 30 = $0.017N/month
+* One-way messaging costs between nodes for anti-entropy: $0.00000040 * N * 2880 * 30 = $0.00115N/month
+* One-way messaging costs between nodes for membership: $0.00000040 * N * 2880 * 30 = $0.00115N/month
+
 One notable thing that came out of this Rube Goldberg machine is that you can
 get extremely far running infrastructure on the free tier alone, and that if
 you're clever enough, you can bend Lambda to do some very interesting things.
+
