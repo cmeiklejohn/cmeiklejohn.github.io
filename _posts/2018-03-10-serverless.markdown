@@ -152,8 +152,7 @@ experiments.
 
 Rough calculations, in terms of costs for operation:
 
-* Assume a N replicated database, invoked once every 30 seconds: $0.0000002 * N * 
-2880 * 30 = $0.017N/month
+* Assume a N replicated database, invoked once every 30 seconds: \$0.0000002 * N * 2880 * 30 = \$0.017N/month
 * One-way messaging costs between nodes for anti-entropy: $0.00000040 * N * 2880 * 30 = $0.00115N/month
 * One-way messaging costs between nodes for membership: $0.00000040 * N * 2880 * 30 = $0.00115N/month
 
