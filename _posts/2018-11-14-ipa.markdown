@@ -1,0 +1,44 @@
+---
+layout: post
+title:  "Inconsistent, Performance-bound, Approximate (IPA)"
+date:   2018-11-14 00:00:00 -0000
+categories: pl
+group: pl
+---
+
+_This is one post in a series about programming models and languages for distributed computing that I'm writing as part of my [history of distributed programming techniques](https://github.com/cmeiklejohn/PMLDC)._
+
+<h2 id="relevant-reading">Relevant Reading</h2>
+<ul>
+<li><p><em>Diciplined Inconsistency with Consistency Types</em>, Holt et al., SoCC 2016 <span class="citation">Holt et al. (2016)</span></p></li>
+<li><p><em>Extending eventually consistent cloud databases for enforcing numeric invariants</em>, Balegas et al., 15 <span class="citation">Balegas et al. (2015)</span>.</p></li>
+</ul>
+<h2 id="commentary">Commentary</h2>
+<p>Motivated by applications that wish to exploit availability for low latency where possible, but not sacrifice correctness, Holt <em>et al.</em> propose a new way of writing applications with mixed consistency that is tied closely to the application itself. The approach, named <em>Inconsistent, Performance-bound, Approximate (IPA)</em> presents a methodology that present three main contributions: <em>consistency safety</em>, <em>consistency types</em>, and <em>error-bounded consistency.</em></p>
+<p>Starting with annotated abstract data types (ADT) in user applications, the approach roughly breaks down as follows:</p>
+<ul>
+<li><p><em>Consistency safety:</em> Based on annotated ADTs, consistency safety prevents data that results from weakly consistent operations from flowing into strongly consistent operations. Simply put, if you have a Counter ADT and the read operation is annotated as a “inconsistent“ operation, you cannot use this value as the value for a “consistent” insert operation on a Set ADT.</p></li>
+<li><p><em>Consistency types:</em> A type system for statically ensuring these properties as compile time. Simply put, type safety implies the aforementioned <em>consistency safety.</em></p></li>
+<li><p><em>Error-bounded Consistency:</em> Based on the current system load, return values using weak consistency, while ensuring values stay within some numeric error bound. Simply put, we can ask the system to provide a value that is within a particular error, or the most accurate value that is available within a certain latency profile.</p></li>
+</ul>
+<p>IPA uses ADTs and their methods as the target of their annotations. Policies come in two flavors: <em>static</em>, where a value can be classified as either <em>Consistent(Strong)</em> or <em>Consistent(Weak)</em>; and dynamic, where values can be classified as <em>LatencyBound(x)</em> or <em>ErrorTolerance(x%)</em> to provide more granular, application specific consistent requirements.</p>
+<p>Each method and ADT yields values of a particular type, based on the consistency policy. To use an example from the paper, a read operation on a Counter ADT under the <em>Consistency(Strong</em>) policy would yield a <em>Consistent[Int]</em>, whereas a read operation on a Counter ADT under the <em>Consistency(Weak)</em> policy would yield a <em>Inconsistent[Int]</em>. Furthermore, under the <em>LatencyBound(...)</em> policy, it would return a <em>Rushed[Int]</em> and under the <em>ErrorTolerance(...)</em> policy, it would return a <em>Interval[Int]</em>.</p>
+<p>These types form a lattice for a parameterized result type <span class="math inline"><em>T</em></span> where <span class="math inline">⊤ = <em>C</em><em>o</em><em>n</em><em>s</em><em>i</em><em>s</em><em>t</em><em>e</em><em>n</em><em>t</em>[<em>T</em>]</span>, <span class="math inline">⊥ = <em>I</em><em>n</em><em>c</em><em>o</em><em>n</em><em>s</em><em>i</em><em>s</em><em>t</em><em>e</em><em>n</em><em>t</em>[<em>T</em>]</span> with a number of data store and error-bounded specific types, incomparable, lie between <span class="math inline">⊤</span> and <span class="math inline">⊥</span>: <span class="math inline">⊥ ≤  <em>U</em><em>s</em><em>e</em><em>r</em><em>D</em><em>e</em><em>f</em><em>i</em><em>n</em><em>e</em><em>d</em> ≤ ⊤<em>w</em><em>h</em><em>e</em><em>r</em><em>e</em> <em>U</em><em>s</em><em>e</em><em>r</em><em>D</em><em>e</em><em>f</em><em>i</em><em>n</em><em>e</em><em>d</em> = {<em>I</em><em>n</em><em>t</em><em>e</em><em>r</em><em>v</em><em>a</em><em>l</em><em>[</em><em>T</em><em>]</em>,  <em>R</em><em>u</em><em>s</em><em>h</em><em>e</em><em>d</em><em>[</em><em>T</em><em>]</em>,  <em>L</em><em>o</em><em>c</em><em>a</em><em>l</em><em>Q</em><em>u</em><em>o</em><em>r</em><em>u</em><em>m</em><em>[</em><em>T</em><em>]</em>,  ...}</span>.</p>
+<p>Rushed types represent values returned within a latency bound. It can be seen as a disjoint sum of all possible consistency values and pattern matching can be used to take action based on the returned type. The authors propose and demonstrate an optimization to prevent load introduced by parallel requests, by using reservoir sampling to make requests based on the consistency model that’s historically more likely to return a value within the specified bound.</p>
+<p>Interval types allow the system to return a value within a particular error tolerance. Using an example from the paper, only return size of a set within a particular error tolerance (think: 5% on a 100 element set that just had an element inserted, would return intervals containing 101, such as [95, 105], [100, 107]). These policies are enforced using an escrow system, where reservations to perform operations are allocated and transferred between different replicas, ensuring a value stays within a particular bound.</p>
+<p>It would have been nice to see more on how the implementation works, as some of the mechanics remain unclear. For example, the system has no way to ensure that an annotated example actually returns values that match the specified consistency model.</p>
+<p>If we consider the case of the Counter ADT again: it is possible to achieve strongly consistency with Cassandra (their backing data store of choice) by two mechanisms, with very different latency profiles:</p>
+<ul>
+<li><p>Read and write using quorums (QUORUM);</p></li>
+<li><p>Read against a single node (ONE), but ensure that writes go to all nodes (ALL).</p></li>
+</ul>
+<p>Yet another example of where the methodology becomes unclear is around enforcing latency bounds. Given the user has the choice on how they aim to meet the consistency policy specified on a data type by selecting the appropriate data store operations, is the user responsible for specifying the code to run the requests for values under different consistency models in parallel? The previous concern would indicate so, but the demonstrating examples in the paper seems to show the user issuing single read operations against the store.</p>
+<p>The IPA system is realized on top of the Scala programming language, with an associated middleware component for managing reservations, and can be run on top of any backing data store that supports per-object or per-operation consistency levels. The paper contains a thorough evaluation and links to related and future work.</p>
+<div id="refs" class="references">
+<div id="ref-balegas2015extending">
+<p>Balegas, Valter, Diogo Serra, Sergio Duarte, Carla Ferreira, Rodrigo Rodrigues, Nuno Preguiça, Marc Shapiro, and Mahsa Najafzadeh. 2015. “Extending Eventually Consistent Cloud Databases for Enforcing Numeric Invariants.” <em>ArXiv Preprint ArXiv:1503.09052</em>.</p>
+</div>
+<div id="ref-holt2016disciplined">
+<p>Holt, Brandon, James Bornholt, Irene Zhang, Dan Ports, Mark Oskin, and Luis Ceze. 2016. “Disciplined Inconsistency with Consistency Types.” In <em>Proceedings of the Seventh ACM Symposium on Cloud Computing</em>, 279–93. ACM.</p>
+</div>
+</div>
