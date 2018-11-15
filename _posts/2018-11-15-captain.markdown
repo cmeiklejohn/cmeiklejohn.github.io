@@ -1,0 +1,34 @@
+---
+layout: post
+title:  "A CAPable Distributed Programming Model"
+date:   2018-11-15 00:00:00 -0000
+categories: pl
+group: pl
+---
+
+_This is one post in a series about programming models and languages for distributed computing that I'm writing as part of my [history of distributed programming techniques](https://github.com/cmeiklejohn/PMLDC)._
+
+<h2 id="relevant-reading">Relevant Reading</h2>
+<ul>
+<li><p><em>Diciplined Inconsistency with Consistency Types</em>, Holt et al., SoCC 2016 <span class="citation">Holt et al. (2016)</span></p></li>
+<li><p><em>On the Design of Distributed Programming Models</em>, Meiklejohn PMLDC 2017 <span class="citation">Meiklejohn (2017)</span>.</p></li>
+<li><p><em>A CAPable Distributed Programming Model</em>, Myter, Scholliers, De Meuter, Onward! 2018 <span class="citation">Myter, Scholliers, and De Meuter (2018)</span></p></li>
+</ul>
+<h2 id="commentary">Commentary</h2>
+<p>Building on previous work from Holt and Meiklejohn, this paper further explores the idea around allowing programmers to specify individual components of their system as either strongly consistent or weakly consistent. Why do you want some components to be weakly consistent? Well, performance and availability, of course!</p>
+<p>By now, it should be clear that a system cannot simultaneously achieve both AP and CP as described by the CAP conjecture and later proof of the CAP theorem. For practitioners, this means they have to make a choice in their application: either coordinate for each operation in their application to ensure a total order over all events in the system, thereby keeping a concurrent application correct under distribution but face issues of latency and availability under failure; or, avoid coordination and risk sacrificing application correctness under network partitions and failure. Holt <em>et al.</em> work on the previously discussed IPA system admits this, and allows developers to optimize their application using a type system that allows programmers to exploit weak consistency, with the protection of a type system to ensure consistent values (CP) are not overridden or influenced by inconsistent values (AP), allowing the models to be mixed in the same application. In their system, <em>type safety implies consistency safety.</em> They realize this through a novel programming model, type system and middleware layer designed to run on top of data stores that support <em>configurable consistency models.</em></p>
+<p>The authors propose a new programming model that also attempts to bridge the AP-CP programming gap in programming models today. CAPtain introduces new main programming abstractions: <em>availables</em>, or data types that can always be operated on through a local copy, and <em>consistents</em>, data types that always coordinate for every operation. As it should be obvious, <em>availables</em> map directly to the AP aspect of the CAP theorem; whereas <em>consistents</em> map directly to the CP aspect of the CAP theorem.</p>
+<p>As with Holt’s work, CAPtain ensures that values from <em>availables</em> cannot be used with objects or methods that are <em>consistents</em> without explicit promotion from the application developer. Holt’s work uses an explicit <em>endorse</em> operation to move types up the lattice from <em>Inconsistent</em> to <em>Consistent</em>; CAPtain provides two new primitives, <em>thaw</em> and <em>freeze</em>. Thaw can be used to create an available from a consistent: a local copy is created at each replica from the current value; freeze performs the opposite, by creating a new consistent object using consensus from an available.</p>
+<p>In CAPtain, nodes use the Global Sequence Protocol from Burckhardt <em>et al.</em> for sequencing of updates to consistents. Each object in the system, whether an available or consistent, has a master node that is used to sequence updates. Updates to consistents are placed in a tentative queue, and eventually sequenced by the master; updates to availables are performed locally and lazily sequenced. Consistents block until this sequencing is completed and all nodes agree; availables can proceed while synchornization occurs in the background. CAPtain’s mechanism for operating on remote references to consistents located at a different node is based on previous work on <em>far-references</em> from the AmbientTalk system.</p>
+<p>CAPTain is available on GitHub at <a href="http://github.com/myter/CAPtain" class="uri">http://github.com/myter/CAPtain</a>.</p>
+<div id="refs" class="references">
+<div id="ref-holt2016disciplined">
+<p>Holt, Brandon, James Bornholt, Irene Zhang, Dan Ports, Mark Oskin, and Luis Ceze. 2016. “Disciplined Inconsistency with Consistency Types.” In <em>Proceedings of the Seventh ACM Symposium on Cloud Computing</em>, 279–93. ACM.</p>
+</div>
+<div id="ref-meiklejohn2017design">
+<p>Meiklejohn, Christopher S. 2017. “On the Design of Distributed Programming Models.” In <em>Proceedings of the Programming Models and Languages for Distributed Computing</em>, 1. ACM.</p>
+</div>
+<div id="ref-myter2018capable">
+<p>Myter, Florian, Christophe Scholliers, and Wolfgang De Meuter. 2018. “A CAPable Distributed Programming Model.” In <em>Proceedings of the 2018 ACM SIGPLAN International Symposium on New Ideas, New Paradigms, and Reflections on Programming and Software</em>, 88–98. ACM.</p>
+</div>
+</div>
