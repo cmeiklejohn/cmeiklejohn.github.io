@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "AMBROSIA: Providing Performant Virtual Resiliency for Distributed Applications"
+title:  "High performance, exactly-once, failure oblivious distributed programming with Ambrosia"
 date:   2018-12-15 00:00:00 -0000
 categories: pl
 group: pl
