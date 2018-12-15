@@ -95,10 +95,14 @@ ul.posts span {
 .site {
   font-size: 100%;
   text-align: left;
-  width: 65em;
+  max-width: 65em;
   padding: 0px 10px 10px 10px;
   margin: 3em auto 3em;
   line-height: 1.5em;
+}
+
+.site .header {
+  margin-bottom: 2rem;
 }
 
 .site .header a {
@@ -108,7 +112,7 @@ ul.posts span {
 
 .site .header h1.title {
   display: inline-block;
-  margin-bottom: 2em;
+  margin-bottom: 0;
 }
 
 .site .header h1.title a {
