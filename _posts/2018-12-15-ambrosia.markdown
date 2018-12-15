@@ -8,7 +8,6 @@ group: pl
 
 _This is one post in a series about programming models and languages for distributed computing that I'm writing as part of my [history of distributed programming techniques](https://github.com/cmeiklejohn/PMLDC)._
 
-
 <h2 id="relevant-reading">Relevant Reading</h2>
 <ul>
 <li><p><em>Trill: A high-performance incremental query processor for diverse analytics</em>, Chandramouli et al., VLDB 2014 <span class="citation">Chandramouli et al. (2014)</span></p></li>
@@ -40,14 +39,20 @@ _This is one post in a series about programming models and languages for distrib
 <p>The intuition is the following: all of the messages are durably logged as they are sent and received by participants in the system – these messages are the request and response pairs of RPC messages made between processes in the distributed system. If the callee of an RPC happens to fail, the request is replayed until acknowledged by the callee to the caller, after processing.</p>
 <p>The log must be durable – and replicated for the system to remain highly-available – this can be done using something like Azure Files, or any other high-performance durable distributed log. For example, Azure Premium Managed Disks (used in the experimental evaluation) offer extremely fast replicated, durable writes at up to 60MB/second.</p>
 <p>To reduce the size of the log, periodically a checkpoint is taken – the log position and the application state together – which reduces the amount of the log that needs to be replayed under failure, and reclaims space. These logs are transmitted to active standby instances that also process the log and are ready to take over under failure. Each of these standby instances races to lock the log to determine who is the leader – or the active node.</p>
-<p>The trick to enabling all of this is ensuring the deterministic replayability of the application code: under failure, when standby nodes take over and replay the log, this log may be replayed an arbitrary amount of times before the system recovers. <strong>Therefore, application code must be deterministic: under replay, the same requests must be made and the same responses generated.</strong></p>
-<p>In Ambrosia, these processes that never die are referred to as “immmortals”.</p>
+<p>In Ambrosia, these processes that recover transparently and logically never die are referred to as “immmortals”.</p>
+<p>The trick to enabling all of this is ensuring the deterministic replayability of the application code: under failure, when standby nodes take over and replay the log, this log may be replayed an arbitrary amount of times before the system recovers.</p>
+<p><strong>Therefore, application code must be deterministic: under replay, the same requests must be made and the same responses generated.</strong></p>
 <h3 id="impulses">Impulses</h3>
 <p>One of the challenges around this is related to events that are inherently nondeterministic.</p>
 <p>For instance, what happens if application code needs to talk to external storage or interact with the clock, interact with the user, etc?</p>
 <p>Ambrosia provides a novel technique here called impulses: nondeterministic actions are “determinized” by first inserting their effect into their own log (effectively, a self RPC) before acting on them. In the case of retrieving the current time, Ambrosia can log a self-RPC that access the clock and stores the result of accessing the clock. Under replay, if a value has been stored, it will reuse that value, if not (because of a crash prior to completion), it will use at-least-once to replay the command and log the resulting value which would be used under future replays and replication to active standbys.</p>
 <h3 id="application-programming-interface">Application Programming Interface</h3>
-<p>Ambrosia is designed to be language-agnostic: Ambrosia communicates with the client application through two components: a.) an Ambrosia language-specific binding for executing application logic that coordinates writes to the log and b.) an instance of the Common Runtime for Application (CRA) infrastructure, that maps logical nodes to physical nodes in the network and performs all connection maintenance and lifecycle management. The client application communicates directly with the Ambrosia language-specific binding by serializing state for Ambrosia to perform checkpointing and for processing RPCs sequentially, and in batches, as they are delivered from the network.</p>
+<p>Ambrosia is designed to be language-agnostic.</p>
+<p>Immortals in Ambrosia are composed of two components:</p>
+<ul>
+<li><p>The Immortal Coordinator: infrastucture built on top of Microsoft’s open-source CRA framework which virtualizes communication between nodes, ensuring that under recovery of a failed immortal, all required connections are reconnected at the new location of the immortal.</p></li>
+<li><p>A language-specific Ambrosia binding and application code, responsible for delivering messages to the application, checkpointing, recovery replay, and log writing. Application code that binds to the Ambrosia language-specific binding must only adhere the following contract: execution of the same messages in the same order, given some initial state must yield the same final state and the same outgoing messages in the same order.</p></li>
+</ul>
 <h3 id="high-performance">High Performance</h3>
 <p>To achieve high performance, a combination of adaptive batching – which ensures low latency under both light and heavy workloads is used for message transmission between nodes. These batches are accumulated in buffers that are concurrently written to and flushed using a shared buffer pool – both techniques seen in high-performance systems such as Trill and Quill. Batch commit is used to deliver applications to both the log and application for processing from the system itself to keep latency low.</p>
 <p>We refer the interested reader to the paper for the full experimental evaluation, but we can say the results are amazing: 12.7X improvement compared to gRPC, despite gRPC having no failure protection mechanism and 100x improvement in cost per unit served compared to stateless compute using serverless and existing exactly-once strategies.</p>
