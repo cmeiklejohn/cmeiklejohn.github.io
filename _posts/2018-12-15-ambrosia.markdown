@@ -1,0 +1,47 @@
+---
+layout: post
+title:  "AMBROSIA: Providing Performant Virtual Resiliency for Distributed Applications"
+date:   2018-12-15 00:00:00 -0000
+categories: pl
+group: pl
+---
+
+_This is one post in a series about programming models and languages for distributed computing that I'm writing as part of my [history of distributed programming techniques](https://github.com/cmeiklejohn/PMLDC)._
+
+
+<h2 id="relevant-reading">Relevant Reading</h2>
+<ul>
+<li><p><em>Ambrosia: Providing Performant Virtual Resiliency for Distributed Applications</em>, Goldstein et al., MS-TR 2018 <span class="citation">(<span class="citeproc-not-found" data-reference-id="a-m-b-r-o-s-i-a-providing-performant-virtual-resiliency-for-distributed-applications"><strong>???</strong></span>)</span></p></li>
+</ul>
+<h2 id="commentary">Commentary</h2>
+<p>Given, for the majority of industry programmers, distributed programming is the new normal, dealing with failure in application code has become an inevitable part of building cloud services and mobile applications.</p>
+<p>However, even in the simplest case of a distributed counter application with a single client and server, dealing with failures can be challenging. This forces the developers of these applications to have to consider all possible failure conditions: client crash prior to issuing request; after issuing request but before response; server crashing after receiving request but before sending response; etc. This leads to application logic having to have complex failure handling code that’s usually ad-hoc and error prone.</p>
+<p>At least in the world of data processing, systems such as Spark, have spent a significant amount of time working to hide the complexities of failure from the application developer with much success. Despite this, there’s still no solution that’s both performant and isolates the developer from failure for general distributed programming.</p>
+<h3 id="cloud-services-today">Cloud Services Today</h3>
+<blockquote>
+<p>“While it is possible to build fully resilient distributed applications with today’s cloud development tools, application writers don’t usually fully implement this guarantee, due to the impression that such an implementation would be difficult to code and perform badly.”</p>
+</blockquote>
+<p>Many cloud service designs today rely on durable queues, such as Event Hub or Kafka. These queues are typically processed using serverless, stateless services such as Azure Functions or Amazon Lambda (or, services running in Docker containers through Kubernetes.)</p>
+<p>The typical way requests are processed are:</p>
+<ul>
+<li><p>Events are logged as they are received by the client.</p></li>
+<li><p>Functions, because they are stateless must retrieve application state from storage, process the event, and store durable state back in storage.</p></li>
+<li><p>Sequence numbers are used to deduplicate messages and recover from partial failure that leaves the system in an inconsistent state.</p></li>
+</ul>
+<p>This technique is expensive, as it requires many round-trips to storage and requires code for dealing with the deduplication of messages, idempotent processing of these messages, and recovering from partial failure. The combination of at-least-once delivery with idempotent processing achieves application “exactly-once” semantics, even under failure.</p>
+<h3 id="virtual-resiliency">Virtual Resiliency</h3>
+<p>The technique behind Ambrosia is called “virtual resiliency”.</p>
+<blockquote>
+<p>“Virtual resiliency - a mechanism in a (possibly distributed) programming and execution environment, typically employing a log, which exploits the replayably deterministic nature and serializilbility of an application to automatically mask failure.”</p>
+</blockquote>
+<p>The intuition is the following: all of the messages are durably logged as they are sent and received by participants in the system – these messages are the request and response pairs of RPC messages made between processes in the distributed system. If the callee happens to fail, the request is replayed until acknowledged by the system. To reduce the size of the log, periodically a checkpoint is taken – the log position and the application state – which reduces the amount of the log that needs to be replayed under failure, and reclaims space. These logs are transmitted to active standby’s that also process the log and are ready to take over under failure.</p>
+<p>The trick to enabling all of this is ensuring the deterministic replayability of the application code: under failure, when standby nodes take over and replay the log, this log may be replayed an arbitrary amount of times before the system recovers. Therefore, application code must be deterministic: under replay, the same events must happen, in the same order.</p>
+<h3 id="impulses">Impulses</h3>
+<p>One of the challenges around this is related to events that are inherently nondeterministic. For instance, what happens if application code needs to talk to external storage or interact with the timer?</p>
+<p>Ambrosia provides a novel technique here called impulses: nondeterministic actions are “determinized” by first inserting their effect into their own log (effectively, a self RPC) before acting on them. In the case of retrieving the current time, Ambrosia can log a self-RPC that access the clock and stores the result of accessing the clock. Under replay, if a value has been stored, it will reuse that value, if not (because of a crash prior to completion), it will use at-least-once to replay the command and log the resulting value which would be used under future replays and replication to active standbys.</p>
+<h2 id="high-performance">High Performance</h2>
+<p>To achieve high performance, a combination of adaptive batching – which ensures low latency under both light and heavy workloads is used for message transmission between nodes. These batches are accumulated in buffers that are concurrently written to and flushed using a shared buffer pool – both techniques seen in high-performance systems such as Trill and Quill. Batch commit is used to deliver applications to both the log and application for processing from the system itself to keep latency low.</p>
+<p>We refer the interested reader to the paper for the full experimental evaluation, but we can say the results are amazing: 12.7X improvement compared to gRPC, despite gRPC having no failure protection mechanism and 100x improvement in cost per unit served compared to stateless compute using serverless and existing exactly-once strategies.</p>
+<div id="refs" class="references">
+
+</div>
