@@ -6,7 +6,7 @@ categories: erlang lasp
 group: SyncFree
 ---
 
-_The below article contains MathJax figures that are rendered with JavaScript.  If you can't see them in your browser (Edge, etc.), please try using Google Chrome or Apple Safari._
+_This article contains MathJax figures that are rendered with JavaScript.  If you can't see them in your browser (Edge, etc.), please try using Google Chrome or Apple Safari._
 
 <h1 id="riak">Riak</h1>
 <p>Around 2013, Riak was at the forefront of <a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">Conflict-Free Replicated Data Type (CRDT)</a> development with the engineers at Basho Technologies working hard to integrate efficient, usable CRDTs from the academic literature. Basho had a collaboration with the researchers in the SyncFree Consortium, authors of the original CRDT work and actively researching new CRDT designs and their applicability in industry use cases presented by both Rovio Entertainment (creator of Angry Birds, participant in the SyncFree Consortium) and Riot Games (creator of League of Legends, long time Riak user.) On the Basho side driving the effort was <a href="https://twitter.com/russelldb">Russell Brown</a>, working with <a href="https://twitter.com/seancribbs">Sean Cribbs</a>, <a href="https://twitter.com/lenary">Sam Elliott</a> and myself.</p>
