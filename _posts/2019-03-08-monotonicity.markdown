@@ -17,10 +17,10 @@ group: SyncFree
 
 <script type="text/tikz">
 \begin{tikzpicture}
-    \node (top) at (0, 0) { $\{ (1, \{ a \}, \{ \}) \}$ };
+    \node (bot) at (0, -4) { $\{ (1, \{ a \}, \{ \}) \}$ };
     \node (left) at (-4, -2) { $\{ (1, \{ a \}, \{ a \}) \}$ };
     \node (right) at (4, -2) { $\{ (1, \{ a \}, \{ \}), (2, \{ b \}, \{ \}) \}$ };
-    \node (bot) at (0, -4) { $\{ (1, \{ a \}, \{ a \}), (2, \{ b \}, \{ \}) \}$ };
+    \node (top) at (0, 0) { $\{ (1, \{ a \}, \{ a \}), (2, \{ b \}, \{ \}) \}$ };
     \draw [] (top) -- (left);
     \draw [] (top) -- (right);
     \draw [] (left) -- (bot);
@@ -32,10 +32,10 @@ group: SyncFree
 
 <script type="text/tikz">
 \begin{tikzpicture}
-    \node (top) at (0, 0) { $\{ (1, \{ a \}, \{ \}) \}$ };
+    \node (bot) at (0, -4) { $\{ (1, \{ a \}, \{ \}) \}$ };
     \node (left) at (-4, -2) { $\{ (1, \{ a \}, \{ a \}) \}$ };
     \node (right) at (4, -2) { $\{ (1, \{ a, b \}, \{ \}) \}$ };
-    \node (bot) at (0, -4) { $\{ (1, \{ a, b \}, \{ a \}) \}$ };
+    \node (top) at (0, 0) { $\{ (1, \{ a, b \}, \{ a \}) \}$ };
     \draw [] (top) -- (left);
     \draw [] (top) -- (right);
     \draw [] (left) -- (bot);
@@ -54,10 +54,10 @@ group: SyncFree
 
 <script type="text/tikz">
 \begin{tikzpicture}
-    \node (top) at (0, 0) { $([1, 0], \{ ([1, 0], a)\} )$ };
+    \node (bot) at (0, -4) { $([1, 0], \{ ([1, 0], a)\} )$ };
     \node (left) at (-4, -2) { $([1, 0], \{ \} )$ };
     \node (right) at (4, -2) { $([1, 1], \{ ([1, 0], a), ([1, 1], b)\} )$ };
-    \node (bot) at (0, -4) { $([1, 1], \{ ([1, 1], b)\} )$ };
+    \node (top) at (0, 0) { $([1, 1], \{ ([1, 1], b)\} )$ };
     \draw [] (top) -- (left);
     \draw [] (top) -- (right);
     \draw [] (left) -- (bot);
@@ -77,10 +77,10 @@ group: SyncFree
 
 <script type="text/tikz">
 \begin{tikzpicture}
-    \node (top) at (0, 0) { $([1, 0], \{ ([1, 0], a)\} )$ };
+    \node (bot) at (0, -4) { $([1, 0], \{ ([1, 0], a)\} )$ };
     \node (left) at (-4, -2) { $([1, 0], \{ \} )$ };
     \node (right) at (4, -2) { $([1, 1], \{ ([1, 0], a), ([1, 1], b)\} )$ };
-    \node (bot) at (0, -4) { $([1, 1], \{ ([1, 1], b)\} )$ };
+    \node (top) at (0, 0) { $([1, 1], \{ ([1, 1], b)\} )$ };
     \draw [] (top) -- (left);
     \draw [] (top) -- (right);
     \draw [] (left) -- (bot);
