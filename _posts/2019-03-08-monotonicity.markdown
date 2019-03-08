@@ -88,7 +88,7 @@ group: SyncFree
 \end{tikzpicture}
 </script>
 
-<p>This bug was reported by a user of Riak on GitHub and has quite interesting effects on a real system. Since a set with a deleted element will always be ordered before the set with the element present, the merge operation will never accept the object with the removed elements as its clock will always be dominated by the set with the elements present – in effect, <em>the system will believe it’s converged, without agreement from all replicas – and some nodes will never observe the removals because the operation will be ignored.</em></p>
+<p><a href="https://github.com/basho/riak_dt/pull/79">This bug was reported by a user of Riak on GitHub and subsequently rolledback</a> and has quite interesting effects on a real system. Since a set with a deleted element will always be ordered before the set with the element present, the merge operation will never accept the object with the removed elements as its clock will always be dominated by the set with the elements present – in effect, <em>the system will believe it’s converged, without agreement from all replicas – and some nodes will never observe the removals because the operation will be ignored.</em></p>
 
 <h1 id="towards-safer-crdts-and-monotonic-programming">Towards Safer CRDTs (and Monotonic Programming!)</h1>
 
