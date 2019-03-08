@@ -16,12 +16,17 @@ group: SyncFree
 <p>We start with a set where the element <span class="math inline">1</span> exists in the set because it was added with logical token <span class="math inline"><em>a</em></span>. We then diverge by having two replicas perform different updates: on the left, the element <span class="math inline">1</span> is removed; on the right, the element <span class="math inline">2</span> is added concurrently with token <span class="math inline"><em>b</em></span>. After the merge, which takes the pairwise union of the add token and remove token sets, <span class="math inline">2</span> remains in the set, where <span class="math inline">1</span> is removed because its only add token <span class="math inline"><em>a</em></span> has been deleted. Active elements in the set are determined by identifying elements whose add token set is a strict superset of it’s removals.</p>
 
 <script type="text/tikz">
-  \begin{tikzpicture}
-    \draw (0,0) circle (1in);
-  \end{tikzpicture}
+\begin{tikzpicture}
+    \node (top) at (0, 0) { $\{ (1, \{ a \}, \{ \}) \}$ };
+    \node (left) at (-4, -2) { $\{ (1, \{ a \}, \{ a \}) \}$ };
+    \node (right) at (4, -2) { $\{ (1, \{ a \}, \{ \}), (2, \{ b \}, \{ \}) \}$ };
+    \node (bot) at (0, -4) { $\{ (1, \{ a \}, \{ a \}), (2, \{ b \}, \{ \}) \}$ };
+    \draw [] (top) -- (left);
+    \draw [] (top) -- (right);
+    \draw [] (left) -- (bot);
+    \draw [] (right) -- (bot);
+\end{tikzpicture}
 </script>
-
-<p>(top) at (0, 0) <span> <span class="math inline">{(1, {<em>a</em>},{})}</span> </span>; (left) at (-4, -2) <span> <span class="math inline">{(1, {<em>a</em>},{<em>a</em>})}</span> </span>; (right) at (4, -2) <span> <span class="math inline">{(1, {<em>a</em>},{}),(2, {<em>b</em>},{})}</span> </span>; (bot) at (0, -4) <span> <span class="math inline">{(1, {<em>a</em>},{<em>a</em>}), (2, {<em>b</em>},{})}</span> </span>; (top) – (left); (top) – (right); (left) – (bot); (right) – (bot);</p>
 
 <p>Under concurrent removals, the set favors additions for the outcome of the merge. Here we show an example where concurrent additions and removals arbitrate towards addition.</p>
 
