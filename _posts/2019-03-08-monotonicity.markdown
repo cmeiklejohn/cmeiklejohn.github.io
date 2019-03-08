@@ -15,7 +15,7 @@ group: SyncFree
 <p>To discuss the design of the <em>Observed-Remove Set Without Tombstones</em>, let us first look at how the <em>Observed-Remove Set</em> works. For each element we insert into the set, we associate it with a unique token, and then when removing an element, we mark the add tokens that we observed as removed. When two replicas each perform different operations, we take the union of the add token set and remove tokens set.</p>
 <p>We start with a set where the element <span class="math inline">1</span> exists in the set because it was added with logical token <span class="math inline"><em>a</em></span>. We then diverge by having two replicas perform different updates: on the left, the element <span class="math inline">1</span> is removed; on the right, the element <span class="math inline">2</span> is added concurrently with token <span class="math inline"><em>b</em></span>. After the merge, which takes the pairwise union of the add token and remove token sets, <span class="math inline">2</span> remains in the set, where <span class="math inline">1</span> is removed because its only add token <span class="math inline"><em>a</em></span> has been deleted. Active elements in the set are determined by identifying elements whose add token set is a strict superset of it’s removals.</p>
 
-<img src="/img/orset-1.jpg">
+<img src="/img/orset-1.jpg" style="margin: 0 auto; width: 50%;">
 
 <p>Under concurrent removals, the set favors additions for the outcome of the merge. Here we show an example where concurrent additions and removals arbitrate towards addition.</p>
 
