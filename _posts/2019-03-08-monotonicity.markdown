@@ -53,7 +53,6 @@ group: SyncFree
 <p>When the merge happens, a three-way merge is computed. We first (i.) merge the payloads; then, (ii.) we take the elements from the right that are not dominated by the left’s clock; finally, (iii.) we take the elements from the left, that are not dominated by the right’s clock. To determine the active elements in the set, the projection of the second element of each elements tuple can be used.</p>
 
 <script type="text/tikz">
-\begin{center}
 \begin{tikzpicture}
     \node (top) at (0, 0) { $([1, 0], \{ ([1, 0], a)\} )$ };
     \node (left) at (-4, -2) { $([1, 0], \{ \} )$ };
@@ -64,7 +63,6 @@ group: SyncFree
     \draw [] (left) -- (bot);
     \draw [] (right) -- (bot);
 \end{tikzpicture}
-\end{center}
 </script>
 
 <p>This results in the same outcome as described above in the <em>Observed-Remove Set</em> example. However, this design is clearly significantly less expensive in storage.</p>
