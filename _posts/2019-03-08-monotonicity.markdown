@@ -30,7 +30,18 @@ group: SyncFree
 
 <p>Under concurrent removals, the set favors additions for the outcome of the merge. Here we show an example where concurrent additions and removals arbitrate towards addition.</p>
 
-<p>(top) at (0, 0) <span> <span class="math inline">{(1, {<em>a</em>},{})}</span> </span>; (left) at (-4, -2) <span> <span class="math inline">{(1, {<em>a</em>},{<em>a</em>})}</span> </span>; (right) at (4, -2) <span> <span class="math inline">{(1, {<em>a</em>, <em>b</em>},{})}</span> </span>; (bot) at (0, -4) <span> <span class="math inline">{(1, {<em>a</em>, <em>b</em>},{<em>a</em>})}</span> </span>; (top) – (left); (top) – (right); (left) – (bot); (right) – (bot);</p>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \node (top) at (0, 0) { $\{ (1, \{ a \}, \{ \}) \}$ };
+    \node (left) at (-4, -2) { $\{ (1, \{ a \}, \{ a \}) \}$ };
+    \node (right) at (4, -2) { $\{ (1, \{ a, b \}, \{ \}) \}$ };
+    \node (bot) at (0, -4) { $\{ (1, \{ a, b \}, \{ a \}) \}$ };
+    \draw [] (top) -- (left);
+    \draw [] (top) -- (right);
+    \draw [] (left) -- (bot);
+    \draw [] (right) -- (bot);
+\end{tikzpicture}
+</script>
 
 <p>As it should be clear, this design is incredibly expensive, because a set with effectively no elements can take quite a large space to represent safely.</p>
 <h1 id="the-observed-remove-without-tombstones-set">The Observed-Remove Without Tombstones Set</h1>
@@ -41,7 +52,20 @@ group: SyncFree
 <p>We see this below. We start with vector <span class="math inline">[1, 0]</span> that indicates that the first actor has performed one action. In the payload, the pair <span class="math inline">([1, 0],<em>a</em>)</span> shows that at logical time <span class="math inline">[1, 0]</span> the element <span class="math inline"><em>a</em></span> was added to the set. If the second replica performs an update operation, it increments the vector and adds the new object to the payload. Concurrently, if the first replica removes the element <span class="math inline"><em>a</em></span>, it drops the payload without advancing the clock: the clock serves as a compact representation of the causal history that says, combined with the payload, “yes, I saw this object in the past, but I don’t have it anymore, so I witnessed it’s removal.”</p>
 <p>When the merge happens, a three-way merge is computed. We first (i.) merge the payloads; then, (ii.) we take the elements from the right that are not dominated by the left’s clock; finally, (iii.) we take the elements from the left, that are not dominated by the right’s clock. To determine the active elements in the set, the projection of the second element of each elements tuple can be used.</p>
 
-<p>(top) at (0, 0) <span> <span class="math inline">([1, 0],{([1, 0],<em>a</em>)})</span> </span>; (left) at (-4, -2) <span> <span class="math inline">([1, 0],{})</span> </span>; (right) at (4, -2) <span> <span class="math inline">([1, 1],{([1, 0],<em>a</em>),([1, 1],<em>b</em>)})</span> </span>; (bot) at (0, -4) <span> <span class="math inline">([1, 1],{([1, 1],<em>b</em>)})</span> </span>; (top) – (left); (top) – (right); (left) – (bot); (right) – (bot);</p>
+<script type="text/tikz">
+\begin{center}
+\begin{tikzpicture}
+    \node (top) at (0, 0) { $([1, 0], \{ ([1, 0], a)\} )$ };
+    \node (left) at (-4, -2) { $([1, 0], \{ \} )$ };
+    \node (right) at (4, -2) { $([1, 1], \{ ([1, 0], a), ([1, 1], b)\} )$ };
+    \node (bot) at (0, -4) { $([1, 1], \{ ([1, 1], b)\} )$ };
+    \draw [] (top) -- (left);
+    \draw [] (top) -- (right);
+    \draw [] (left) -- (bot);
+    \draw [] (right) -- (bot);
+\end{tikzpicture}
+\end{center}
+</script>
 
 <p>This results in the same outcome as described above in the <em>Observed-Remove Set</em> example. However, this design is clearly significantly less expensive in storage.</p>
 <h1 id="object-merging-in-riak">Object Merging in Riak</h1>
@@ -53,7 +77,18 @@ group: SyncFree
 <p>Merging is very expensive – especially, if for each read, write, and replica repair performed on the database, we must traverse the entire data structure and perform a three-way merge, as is the case with the <em>Observed-Remove Set Without Tombstones.</em> In an attempt to optimize the cost of merging, a change was made to the implementation to skip the merge procedure if the object currently stored had a clock that was greater than an incoming object on the network during the anti-entropy replica repair process. This methodology works for merging normal Riak objects – where each write at a replica ensures the clock is monotonically advancing – but does not work with the <em>Observed-Remove Set Without Tombstones.</em> Let us see why.</p>
 <p>If we revisit our previous example, we can see that in the case of a removal – occurring with the first replica on the left, the <em>clock is not advanced under a removal.</em> Therefore, the ordering relation of the lattice states that a clock with a given payload object is ordered <em>before</em> a clock with that element not present in the payload. In short, <em>with the optimized set representation, checking the clock alone is not sufficient for knowing whether or not a merge should occur.</em></p>
 
-<p>(top) at (0, 0) <span> <span class="math inline">([1, 0],{([1, 0],<em>a</em>)})</span> </span>; (left) at (-4, -2) <span> <span class="math inline">([1, 0],{})</span> </span>; (right) at (4, -2) <span> <span class="math inline">([1, 1],{([1, 0],<em>a</em>),([1, 1],<em>b</em>)})</span> </span>; (bot) at (0, -4) <span> <span class="math inline">([1, 1],{([1, 1],<em>b</em>)})</span> </span>; (top) – (left); (top) – (right); (left) – (bot); (right) – (bot);</p>
+<script type="text/tikz">
+\begin{tikzpicture}
+    \node (top) at (0, 0) { $([1, 0], \{ ([1, 0], a)\} )$ };
+    \node (left) at (-4, -2) { $([1, 0], \{ \} )$ };
+    \node (right) at (4, -2) { $([1, 1], \{ ([1, 0], a), ([1, 1], b)\} )$ };
+    \node (bot) at (0, -4) { $([1, 1], \{ ([1, 1], b)\} )$ };
+    \draw [] (top) -- (left);
+    \draw [] (top) -- (right);
+    \draw [] (left) -- (bot);
+    \draw [] (right) -- (bot);
+\end{tikzpicture}
+</script>
 
 <p>This bug was reported by a user of Riak on GitHub and has quite interesting effects on a real system. Since a set with a deleted element will always be ordered before the set with the element present, the merge operation will never accept the object with the removed elements as its clock will always be dominated by the set with the elements present – in effect, <em>the system will believe it’s converged, without agreement from all replicas – and some nodes will never observe the removals because the operation will be ignored.</em></p>
 <h1 id="towards-safer-crdts-and-monotonic-programming">Towards Safer CRDTs (and Monotonic Programming!)</h1>
