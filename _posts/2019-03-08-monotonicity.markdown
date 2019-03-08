@@ -77,7 +77,6 @@ group: SyncFree
 <p>Merging is very expensive – especially, if for each read, write, and replica repair performed on the database, we must traverse the entire data structure and perform a three-way merge, as is the case with the <em>Observed-Remove Set Without Tombstones.</em> In an attempt to optimize the cost of merging, a change was made to the implementation to skip the merge procedure if the object currently stored had a clock that was greater than an incoming object on the network during the anti-entropy replica repair process. This methodology works for merging normal Riak objects – where each write at a replica ensures the clock is monotonically advancing – but does not work with the <em>Observed-Remove Set Without Tombstones.</em> Let us see why.</p>
 <p>If we revisit our previous example, we can see that in the case of a removal – occurring with the first replica on the left, the <em>clock is not advanced under a removal.</em> Therefore, the ordering relation of the lattice states that a clock with a given payload object is ordered <em>before</em> a clock with that element not present in the payload. In short, <em>with the optimized set representation, checking the clock alone is not sufficient for knowing whether or not a merge should occur.</em></p>
 
-<div style="margin: 0 auto; width 300px; border: 1px solid black;">
 <script type="text/tikz">
 \begin{tikzpicture}
     \node (top) at (0, 0) { $([1, 0], \{ ([1, 0], a)\} )$ };
@@ -90,7 +89,6 @@ group: SyncFree
     \draw [] (right) -- (bot);
 \end{tikzpicture}
 </script>
-</div>
 
 <p>This bug was reported by a user of Riak on GitHub and has quite interesting effects on a real system. Since a set with a deleted element will always be ordered before the set with the element present, the merge operation will never accept the object with the removed elements as its clock will always be dominated by the set with the elements present – in effect, <em>the system will believe it’s converged, without agreement from all replicas – and some nodes will never observe the removals because the operation will be ignored.</em></p>
 <h1 id="towards-safer-crdts-and-monotonic-programming">Towards Safer CRDTs (and Monotonic Programming!)</h1>
