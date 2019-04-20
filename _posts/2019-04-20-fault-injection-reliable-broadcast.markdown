@@ -385,7 +385,7 @@ It is clear that *anti-entropy* is more resilient to message omission and crash 
 How can we reduce the latency of a broadcast?
 
 ### Attempt #3: Demers *et al.*'s Rumor-Mongering
-Demers *et al.*'s *rumor-mongering* protocol is designed around the theory of epidemics.  In their protocol design, messages are sent to their recipients immediately, but continuously re-forwarded until each node has seen the message ``enough'' times: this being a factor of the level of resilience the system desires based on the theory.  For our implementation of the protocol, we re-f   orward messages until each node has seen the message at least once.
+Demers *et al.*'s *rumor-mongering* protocol is designed around the theory of epidemics.  In their protocol design, messages are sent to their recipients immediately, but continuously re-forwarded until each node has seen the message "enough" times: this being a factor of the level of resilience the system desires based on the theory.  For our implementation of the protocol, we re-forward messages until each node has seen the message at least once.
 
 We build upon the *direct mail* implementation from earlier, using parts from our *anti-entropy* implementation.  We alter our original broadcast to include the origin node in the message.  We also choose to only send this message to a random subset of our peers.
 
