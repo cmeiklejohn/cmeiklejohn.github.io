@@ -192,6 +192,8 @@ postcondition result: false; command: prop_partisan_reliable_broadcast:check_mai
 Counterexample held and replayed...
 {% endhighlight %}
 
+Cool, it replayed the example.
+
 ### Resolution: Acknowledgements defeat Finite Omission Faults
 Omission faults are problematic when using protocols that only transmit messages once.  In this case, a network partition causes messages to be omitted between two participants, resulting in two messages that never get delivered to one of the nodes in the cluster.
 
