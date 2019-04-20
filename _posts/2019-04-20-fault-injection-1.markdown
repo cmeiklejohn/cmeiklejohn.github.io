@@ -9,11 +9,11 @@ group: Partisan
 ## Testing Asynchrononous Protocols: Reliable Broadcast
 To demonstrate constructing a protocol based on identifying counterexamples and refining the implementation based on these counterexamples, we are going to consider the case of implementing a protocol that should achieve reliable broadcast.  
 
-The protocols we are going to consider are well documented and in their original presentation by Demers *et al.* are presented as refinements for both (a.) efficiency and (b.) reliability. The first protocol, \textit{direct mail} is the simplest protocol that tries to achieve reliable broadcast but fails to achieve this under both membership changes, general message omissions, and crash failures.  The second protocol we consider is \textit{anti-entropy}, a protocol that is extremely resilient to failure, but relies on pairwise exchange of all messages that are received to ensure reliable broadcast.  The final protocol we consider is \textit{rumor-mongering}, a protocol that attempts to achieve reliable broadcast by using techniques from both direct mail and anti-entropy -- direct mail for its efficiency and anti-entropy for its resilience.
+The protocols we are going to consider are well documented and in their original presentation by Demers *et al.* are presented as refinements for both (a.) efficiency and (b.) reliability. The first protocol, *direct mail* is the simplest protocol that tries to achieve reliable broadcast but fails to achieve this under both membership changes, general message omissions, and crash failures.  The second protocol we consider is *anti-entropy*, a protocol that is extremely resilient to failure, but relies on pairwise exchange of all messages that are received to ensure reliable broadcast.  The final protocol we consider is *rumor-mongering*, a protocol that attempts to achieve reliable broadcast by using techniques from both direct mail and anti-entropy -- direct mail for its efficiency and anti-entropy for its resilience.
 
 ### Attempt #1: Demers _et al._'s Direct Mail
 
-We start by creating a process for the direct mail protocol implementation.  This implementation will support two calls \mintinline{erlang}{broadcast}, for sending a message, and \mintinline{erlang}{update}, for updating the membership received from the \Name\ system for when view changes occur.  For state at each node, we will track the currently known membership, so we don't have to look it up every time we want to make a broadcast.
+We start by creating a process for the direct mail protocol implementation.  This implementation will support two calls ```broadcast```, for sending a message, and ```update```, for updating the membership received from the Partisan system for when view changes occur.  For state at each node, we will track the currently known membership, so we don't have to look it up every time we want to make a broadcast.
 
 {% highlight erlang %}
 -export([broadcast/2,
@@ -48,18 +48,16 @@ membership(Membership) ->
     lists:usort(Membership).
 {% endhighlight %}
 
-The direct mail protocol states that for each messages we want to broadcast, we first deliver the message to ourselves and then to all of the other members in the cluster, as determined by the known membership.  We can do this by implementing a callback for \mintinline{erlang}{broadcast} that uses the cluster's local view of the membership and then forwards a message to every node in that view.
+The direct mail protocol states that for each messages we want to broadcast, we first deliver the message to ourselves and then to all of the other members in the cluster, as determined by the known membership.  We can do this by implementing a callback for ```broadcast``` that uses the cluster's local view of the membership and then forwards a message to every node in that view.
 
 Our broadcast function is implemented as follows: 
 
-\begin{enumerate}
-    \item We take a named process identifier at the destination that the message will be forwarded to.
-    \item We derive a unique, deterministic, identifier and payload for the message.
-    \item For each known member in the cluster, we forward the message to that node.
-    \item We use local storage to keep track of the transmitted messages.
-\end{enumerate}
+* We take a named process identifier at the destination that the message will be forwarded to.
+* We derive a unique, deterministic, identifier and payload for the message.
+* For each known member in the cluster, we forward the message to that node.
+* We use local storage to keep track of the transmitted messages.
 
-\begin{minted}{erlang}
+{% highlight erlang %}
 %% @doc Handle an outgoing broadcast message.
 handle_cast({broadcast, ServerRef, Message},
             #state{membership=Membership}=State) ->
@@ -84,11 +82,11 @@ handle_cast({broadcast, ServerRef, Message},
     end, membership(Membership) -- [MyNode]),
 
     {noreply, State};
-\end{minted}
+{% endhighlight %}
 
 Now, we need to define how messages should be handled upon receipt by the other nodes in the cluster.  We implement a handler for incoming messages, that pattern matches on the body of the message and takes action accordingly.  In this example, when a message is received by a node, we forward to the destination process using the supplied process identifier, if we have not seen the message yet; otherwise, we drop the message without further processing.
 
-\begin{minted}{erlang}
+{% highlight erlang %}
 %% @doc Incoming messages.
 handle_info({broadcast, Id, ServerRef, Message}, State) ->
     case ets:lookup(?MODULE, Id) of
@@ -105,20 +103,18 @@ handle_info({broadcast, Id, ServerRef, Message}, State) ->
     end,
 
     {noreply, State};
-\end{minted}
+{% endhighlight %}
 
 With that, the direct mail protocol implementation is finished.  However, by now, the reader should be suspicious of this protocol: there is no built in redundancy for message omissions, membership changes or crash failures.
 
-To test these bugs, we use \Name's built-in testing infrastructure.  We start by using the provided \textit{reliable broadcast} model, which takes an input model and states that every transmitted message should be received by all non-crashed nodes in the cluster.
+To test these bugs, we use Partisan's built-in testing infrastructure.  We start by using the provided *reliable broadcast* model, which takes an input model and states that every transmitted message should be received by all non-crashed nodes in the cluster.
 
 The reliable broadcast model provides two possible commands for test generation of a application developer supplied broadcast implementation.
 
-\begin{enumerate}
-    \item \textbf{Broadcast.} A \mintinline{erlang}{broadcast} function that, given a node identifier, a message to broadcast, and a destination process identifier, transmits the message.  Application developers who implement their own broadcast protocol  are expected to provide a \mintinline{erlang}{broadcast} function of their own.  The destination process and its identifier will be provided automatically by the test harness and passed to this call.
-    \item \textbf{Assertion.} A \mintinline{erlang}{check_mailbox} function that, given a node identifier and a set of expected messages, performs and assertion to verify that all of the expected received messages are there.  This function uses the spawned destination process to accumulate and perform assertions on messages.
-\end{enumerate}
+* **Broadcast:** A ```broadcast``` function that, given a node identifier, a message to broadcast, and a destination process identifier, transmits the message.  Application developers who implement their own broadcast protocol  are expected to provide a ```broadcast``` function of their own.  The destination process and its identifier will be provided automatically by the test harness and passed to this call.
+* **Assertion:** A ```check_mailbox``` function that, given a node identifier and a set of expected messages, performs and assertion to verify that all of the expected received messages are there.  This function uses the spawned destination process to accumulate and perform assertions on messages.
 
-Now specified, \Name's testing infrastructure will automatically generate random schedules of commands and at each command, insert that the postconditions from each command return true.  \Name's commands are selected from the following types of commands:
+Now specified, Partisan's testing infrastructure will automatically generate random schedules of commands and at each command, insert that the postconditions from each command return true.  Partisan's commands are selected from the following types of commands:
 
 * **Membership Commands:**  Maintaining a minimum number of nodes in the cluster, Partisan will perform random join and leave operations for a number of additional nodes.  This ensures that application behavior remains correct under cluster transitions.
     
@@ -160,12 +156,12 @@ node_3@GS18227 => node_2@GS18227: {forward_message,demers_direct_mail,{broadcast
 node_2@GS18227 <- node_3@GS18227: {forward_message,demers_direct_mail,{broadcast,{node_3@GS18227,4},receiver,{354,node_3,-19}}}
 node_3@GS18227 => node_4@GS18227: {forward_message,demers_direct_mail,{broadcast,{node_3@GS18227,4},receiver,{354,node_3,-19}}}
 node_4@GS18227 <- node_3@GS18227: {forward_message,demers_direct_mail,{broadcast,{node_3@GS18227,4},receiver,{354,node_3,-19}}}
-node_3@GS18227 => node_5@GS18227: |\colorbox{yellow}{DROPPED}| {broadcast,{node_3@GS18227,4},receiver,{354,node_3,-19}}
+node_3@GS18227 => node_5@GS18227: DROPPED {broadcast,{node_3@GS18227,4},receiver,{354,node_3,-19}}
 {% endhighlight %}
 
 We see from the trace that Partisan has introduced several failures randomly throughout the execution.  Here we see the send omission from *node_3* to *node_5*.
 
-\subsubsection{Identifying and Replaying the Fault}
+### Identifying and Replaying the Fault
 We can see from the assertion that *node_5* is missing two messages from *node_3*.  Examining the message trace, it is clear that the send omission failure that prohibited *node_3* from sending to *node_5* caused the two message omissions resulting in the failure; therefore, reliable broadcast cannot be satisfied under this fault model.
 
 We can replay our fault using Partisan's deterministic testing replay behavior.  This will use the previous trace and command schedule to run the same set of commands and enforce the message delivery order using barriers to ensure deterministic replay of messages on the network.
