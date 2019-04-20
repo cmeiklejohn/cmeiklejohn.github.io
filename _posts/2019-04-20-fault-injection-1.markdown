@@ -9,7 +9,7 @@ group: Partisan
 ## Testing Asynchrononous Protocols: Reliable Broadcast
 To demonstrate constructing a protocol based on identifying counterexamples and refining the implementation based on these counterexamples, we are going to consider the case of implementing a protocol that should achieve reliable broadcast.  
 
-The protocols we are going to consider are well documented and in their original presentation~\footnote{These protocols were formally presented in~\cite{Demers:1987:EAR:41840.41841} but originally used by the Clearinghouse~\cite{Oppen:1983:CDA:357436.357439} system.} by Demers \textit{et al.}~\cite{Demers:1987:EAR:41840.41841} are presented as refinements for both (a.) efficiency and (b.) reliability. The first protocol, \textit{direct mail} is the simplest protocol that tries to achieve reliable broadcast but fails to achieve this under both membership changes, general message omissions, and crash failures.  The second protocol we consider is \textit{anti-entropy}, a protocol that is extremely resilient to failure, but relies on pairwise exchange of all messages that are received to ensure reliable broadcast.  The final protocol we consider is \textit{rumor-mongering}, a protocol that attempts to achieve reliable broadcast by using techniques from both direct mail and anti-entropy -- direct mail for its efficiency and anti-entropy for its resilience.
+The protocols we are going to consider are well documented and in their original presentation by Demers *et al.* are presented as refinements for both (a.) efficiency and (b.) reliability. The first protocol, \textit{direct mail} is the simplest protocol that tries to achieve reliable broadcast but fails to achieve this under both membership changes, general message omissions, and crash failures.  The second protocol we consider is \textit{anti-entropy}, a protocol that is extremely resilient to failure, but relies on pairwise exchange of all messages that are received to ensure reliable broadcast.  The final protocol we consider is \textit{rumor-mongering}, a protocol that attempts to achieve reliable broadcast by using techniques from both direct mail and anti-entropy -- direct mail for its efficiency and anti-entropy for its resilience.
 
 ### Attempt #1: Demers _et al._'s Direct Mail
 
@@ -122,7 +122,7 @@ Now specified, \Name's testing infrastructure will automatically generate random
 
 * **Membership Commands:**  Maintaining a minimum number of nodes in the cluster, Partisan will perform random join and leave operations for a number of additional nodes.  This ensures that application behavior remains correct under cluster transitions.
     
-* **Fault Commands:**  Given a fault model, introduce a number of faults, including, but not limited to, __stop__ failures, __crash__ failures, __send-omission__ failures, __receive-omission__ failures, __general omission__ failures, and __arbitrary__ failures.  Failures will only be introduced given a failure tolerance level, specified by the application developer.
+* **Fault Commands:**  Given a fault model, introduce a number of faults, including, but not limited to, *stop* failures, *crash* failures, *send-omission* failures, *receive-omission* failures, *general omission* failures, and *arbitrary* failures.  Failures will only be introduced given a failure tolerance level, specified by the application developer.
 
 * **Model Commands:** These commands are the model specific commands that drive application behavior.  In the case we are discussing, these are the commands from the reliable broadcast model.
 
@@ -135,7 +135,7 @@ We can do this simply by running the following command:
 $ FAULT_INJECTION=true bin/counterexample-find.sh
 {% endhighlight %}
 
-We find our first counterexample!  After several schedule tests and commands, our counterexample looks as follows.  Partisan produces the full execution trace in the output, but we retain only the most important parts for our explanation here.  We see that __node_5__ is missing two messages in the mailbox assertion.  
+We find our first counterexample!  After several schedule tests and commands, our counterexample looks as follows.  Partisan produces the full execution trace in the output, but we retain only the most important parts for our explanation here.  We see that *node_5* is missing two messages in the mailbox assertion.  
 
 {% highlight erlang %}
 verifying mailbox at node node_5:
@@ -163,10 +163,10 @@ node_4@GS18227 <- node_3@GS18227: {forward_message,demers_direct_mail,{broadcast
 node_3@GS18227 => node_5@GS18227: |\colorbox{yellow}{DROPPED}| {broadcast,{node_3@GS18227,4},receiver,{354,node_3,-19}}
 {% endhighlight %}
 
-We see from the trace that Partisan has introduced several failures randomly throughout the execution.  Here we see the send omission from __node_3__ to __node_5__.
+We see from the trace that Partisan has introduced several failures randomly throughout the execution.  Here we see the send omission from *node_3* to *node_5*.
 
 \subsubsection{Identifying and Replaying the Fault}
-We can see from the assertion that __node_5__ is missing two messages from __node_3__.  Examining the message trace, it is clear that the send omission failure that prohibited __node_3__ from sending to __node_5__ caused the two message omissions resulting in the failure; therefore, reliable broadcast cannot be satisfied under this fault model.
+We can see from the assertion that *node_5* is missing two messages from *node_3*.  Examining the message trace, it is clear that the send omission failure that prohibited *node_3* from sending to *node_5* caused the two message omissions resulting in the failure; therefore, reliable broadcast cannot be satisfied under this fault model.
 
 We can replay our fault using Partisan's deterministic testing replay behavior.  This will use the previous trace and command schedule to run the same set of commands and enforce the message delivery order using barriers to ensure deterministic replay of messages on the network.
 
