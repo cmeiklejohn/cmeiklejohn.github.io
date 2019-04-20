@@ -2,7 +2,7 @@
 layout: post
 title:  "Fault-Injection with Demers' Direct Mail Protocol"
 date:   2019-04-20 00:00:00 -0000
-categories: erlang lasp
+categories: erlang partisan
 group: Partisan
 ---
 
