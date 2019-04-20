@@ -293,7 +293,7 @@ schedule_anti_entropy() ->
 
 When our timer fires, we perform the following actions: (a.) transmit our messages as *push* messages and (b.) reschedule the timer.
 
-{% highlight sh %}
+{% highlight erlang %}
 handle_info(antientropy, #state{membership=Membership}=State) ->
     Manager = manager(),
     MyNode = partisan_peer_service_manager:mynode(),
@@ -318,7 +318,7 @@ handle_info(antientropy, #state{membership=Membership}=State) ->
 
 When another node receives a *push*, we respond with a *pull* message containing our messages after we have incorporated the incoming messages into our state.
 
-{% highlight sh %}
+{% highlight erlang %}
 handle_info({push, FromNode, TheirMessages}, State) ->
     Manager = manager(),
     MyNode = partisan_peer_service_manager:mynode(),
