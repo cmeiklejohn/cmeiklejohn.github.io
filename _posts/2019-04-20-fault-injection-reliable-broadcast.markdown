@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Fault-Injection with Demers' Direct Mail Protocol"
+title:  "Using Fault-Injection to Evolve a Reliable Broadcast Protocol"
 date:   2019-04-20 00:00:00 -0000
 categories: erlang partisan
 group: Partisan
@@ -268,20 +268,182 @@ $ SCHEDULER=finite_fault FAULT_INJECTION=true bin/counterexample-find.sh
 
 Running this, we quickly identify another counterexample.  This counterexample demonstrates that with finite faults enabled, it is sufficient to have a node partitioned during a send, those sends are kept outstanding and retransmitted for the duration of the experiment, but the node is crashed prior to receiving an acknowledgement of that send.  This relates to the case of a faulty node that transmits a message and does not receive an acknowledgement before ultimately crashing.
 
-### What's next?
+### Attempt #2: Demers *et al.*'s Anti-Entropy
+Demers *et al.*'s *anti-entropy* performs pairwise exchanges of messages to synchronize two replicas.  It was originally designed for replica repair in the Clearinghouse system.  In *anti-entropy*, nodes can operate in a possible three modes: (a.) *pull*, where one node requests the contents of another; (b.) *push*, where one node pushes its data store contents to another, or (c.) *push-pull*, where a two-way exchange is performed.
 
-In the next post, we will look at both the *anti-entropy* and *rumor-mongering* protocols, and applying testing to those protocols as well.
+In a modern implementation of this algorithm, nodes would exchange either checksums or message identifiers that would be used to identify difference between data objects -- this would result in transmission of only these data objects.  In our implementation, for simplicity and to demonstrate the protocol, we will transmit the entire contents of the database at each exchange.  For our implementation, we use the *push-pull* algorithm, which is the most widely used implementation of *rumor-mongering* today.
 
+Since our implementation of anti-entropy is quite different from our implementation of direct mail, let us spend time to walk through it.  We will assume the same top-level API containing the ```broadcast``` and ```check_mailbox``` functions.
 
+Let us look at the initializer.  We are sure to initiate a callback that will schedule the periodic exchanges.
 
+{% highlight erlang %}
+%% Schedule anti-entropy.
+schedule_anti_entropy(),
+{% endhighlight %}
 
+Here is our periodic function.
 
+{% highlight erlang %}
+%% @private
+schedule_anti_entropy() ->
+    Interval = 1000,
+    erlang:send_after(Interval, ?MODULE, antientropy).
+{% endhighlight %}
 
+When our timer fires, we perform the following actions: (a.) transmit our messages as *push* messages and (b.) reschedule the timer.
 
+{% highlight sh %}
+handle_info(antientropy, #state{membership=Membership}=State) ->
+    Manager = manager(),
+    MyNode = partisan_peer_service_manager:mynode(),
 
+    %% Get all of our messages.
+    OurMessages = ets:foldl(fun({Id, Message}, Acc) ->
+        Acc ++ [{Id, Message}] 
+    end, [], ?MODULE),
 
+    %% Forward to random subset of peers.
+    AntiEntropyMembers = select_random_sublist(membership(Membership), ?GOSSIP_FANOUT),
 
+    lists:foreach(fun(N) ->
+        Manager:forward_message(N, ?GOSSIP_CHANNEL, ?MODULE, {push, MyNode, OurMessages}, [])
+    end, AntiEntropyMembers -- [MyNode]),
 
+    %% Reschedule.
+    schedule_anti_entropy(),
 
+    {noreply, State};
+{% endhighlight %}
 
+When another node receives a *push*, we respond with a *pull* message containing our messages after we have incorporated the incoming messages into our state.
 
+{% highlight sh %}
+handle_info({push, FromNode, TheirMessages}, State) ->
+    Manager = manager(),
+    MyNode = partisan_peer_service_manager:mynode(),
+
+    %% Encorporate their messages and process them if we didn't see them.
+    lists:foreach(fun({Id, {ServerRef, Message}}) ->
+        case ets:lookup(?MODULE, Id) of
+            [] ->
+                %% Forward to process.
+                partisan_util:process_forward(ServerRef, Message),
+
+                %% Store.
+                true = ets:insert(?MODULE, {Id, {ServerRef, Message}}),
+
+                ok;
+            _ ->
+                ok
+        end
+    end, TheirMessages),
+
+    %% Get all of our messages.
+    OurMessages = ets:foldl(fun({Id, {ServerRef, Message}}, Acc) ->
+        Acc ++ [{Id, {ServerRef, Message}}] 
+    end, [], ?MODULE),
+
+    %% Forward message back to sender.
+    lager:info("~p: sending messages to node ~p", [node(), FromNode]),
+    Manager:forward_message(FromNode, ?GOSSIP_CHANNEL, ?MODULE, {pull, MyNode, OurMessages}, []),
+
+    {noreply, State}
+{% endhighlight %}
+
+Now, to handle the *pull* message, we process the incoming messages and store them.
+
+{% highlight erlang %}
+handle_info({pull, _FromNode, Messages}, State) ->
+    %% Process all incoming.
+    lists:foreach(fun({Id, {ServerRef, Message}}) ->
+        case ets:lookup(?MODULE, Id) of
+            [] ->
+                %% Forward to process.
+                partisan_util:process_forward(ServerRef, Message),
+
+                %% Store.
+                true = ets:insert(?MODULE, {Id, {ServerRef, Message}}),
+
+                ok;
+            _ ->
+                ok
+        end
+    end, Messages),
+
+    {noreply, State};   
+{% endhighlight %}
+
+Now, our implementation is complete.  We can use same failure model as before to identify a further counterexample.
+
+{% highlight sh %}
+$ SCHEDULER=finite_fault FAULT_INJECTION=true bin/counterexample-find.sh
+{% endhighlight %}
+
+It is clear that *anti-entropy* is more resilient to message omission and crash failures.  A given message has a higher probability of reaching a node by transmitting that message to a peer prior to its crash; therefore, ensuring that a message will ultimately be received at its final recipient through the transitivity of a anti-entropy process.  However, our original model fails because of the time it takes for this to happen.  
+
+How can we reduce the latency of a broadcast?
+
+### Attempt #3: Demers *et al.*'s Rumor-Mongering
+Demers *et al.*'s *rumor-mongering* protocol is designed around the theory of epidemics.  In their protocol design, messages are sent to their recipients immediately, but continuously re-forwarded until each node has seen the message ``enough'' times: this being a factor of the level of resilience the system desires based on the theory.  For our implementation of the protocol, we re-f   orward messages until each node has seen the message at least once.
+
+We build upon the *direct mail* implementation from earlier, using parts from our *anti-entropy* implementation.  We alter our original broadcast to include the origin node in the message.  We also choose to only send this message to a random subset of our peers.
+
+{% highlight erlang %}
+%% Forward to random subset of peers.
+AntiEntropyMembers = select_random_sublist(membership(Membership), ?GOSSIP_FANOUT),
+
+lists:foreach(fun(N) ->
+    Manager:forward_message(N, 
+                            ?GOSSIP_CHANNEL, 
+                            ?MODULE, 
+                            {broadcast, Id, ServerRef, Message, MyNode}, 
+                            [])
+end, AntiEntropyMembers -- [MyNode]),
+{% endhighlight %}
+
+Next, we modify the behavior when we receive a message.  If we receive a message that we have not seen before, we forward it to a random subset of our peers, excluding the peer that we received the message from.
+
+{% highlight erlang %}
+handle_info({broadcast, Id, ServerRef, Message, FromNode}, 
+            #state{membership=Membership}=State) ->
+    case ets:lookup(?MODULE, Id) of
+        [] ->
+            %% Forward to process.
+            partisan_util:process_forward(ServerRef, Message),
+
+            %% Store.
+            true = ets:insert(?MODULE, {Id, Message}),
+
+            %% Forward to our peers.
+            Manager = manager(),
+            MyNode = partisan_peer_service_manager:mynode(),
+
+            %% Forward to random subset of peers: except ourselves and where we got it from.
+            AntiEntropyMembers = select_random_sublist(membership(Membership), ?GOSSIP_FANOUT),
+
+            lists:foreach(fun(N) ->
+                Manager:forward_message(N, 
+                                        ?GOSSIP_CHANNEL, 
+                                        ?MODULE, 
+                                        {broadcast, Id, ServerRef, Message, MyNode}, 
+                                        [])
+            end, AntiEntropyMembers -- [MyNode, FromNode]),
+
+            ok;
+        _ ->
+            ok
+    end,
+
+    {noreply, State};
+{% endhighlight %}
+
+Now, our implementation is complete.  We can run this new implementation under the same failure model.
+
+{% highlight sh %}
+$ SCHEDULER=finite_fault FAULT_INJECTION=true bin/counterexample-find.sh
+{% endhighlight %}
+
+However, we still run into issues.  With a purely asynchronous send from the source with a network partition, the message may ultimately be delayed to its final destination because of message omission failures.  
+
+This implementation, while still yielding a counterexample, is the most robust implementation of reliable broadcast we have seen yet, as it minimizes the latency for each send while optimizing *fanout* in an attempt to achieve reliable broadcast.  The only way to achieve a stronger guarantee is to rely on some form of *consensus*.
