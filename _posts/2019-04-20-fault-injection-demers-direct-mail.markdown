@@ -6,7 +6,7 @@ categories: erlang lasp
 group: Partisan
 ---
 
-*This is the first article in a series about building reliable fault-tolerant protocols with [Partisan](http://partisan.cloud), our high-performance, distributed runtime for the Erlang programming language.  As part of this project, we will start with some pretty simple protocols and show how our system will guide you in adjusting the protocol for fault-tolerance issues.*
+*This is the first article in a series about building reliable fault-tolerant applications with [Partisan](http://partisan.cloud), our high-performance, distributed runtime for the Erlang programming language.  As part of this project, we will start with some pretty simple protocols and show how our system will guide you in adjusting the protocol for fault-tolerance issues.*
 
 ## Testing Asynchrononous Protocols: Reliable Broadcast
 To demonstrate constructing a protocol based on identifying counterexamples and refining the implementation based on these counterexamples, we are going to consider the case of implementing a protocol that should achieve reliable broadcast.  
