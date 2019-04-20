@@ -12,6 +12,16 @@ title: Christopher Meiklejohn
     {% endfor %}
   </ul>
 
+  <h1>Partisan</h1>
+  <p>Building the next generation of high-performance, fault-tolerant distributed runtimes.</p>
+  <ul class="posts">
+    {% for post in site.posts %}
+      {% if post.group == "Partisan" %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
   <h1>Programming Models and Languages for Distributed Computing</h1>
   <p>Work in progress <a
     href="https://github.com/cmeiklejohn/PMLDC">seminar curriculum</a> on distributed computing and programming languages.</p>
