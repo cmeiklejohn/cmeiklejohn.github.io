@@ -323,7 +323,7 @@ handle_info({push, FromNode, TheirMessages}, State) ->
     Manager = manager(),
     MyNode = partisan_peer_service_manager:mynode(),
 
-    %% Encorporate their messages and process them if we didn't see them.
+    %% Encorporate their messages and process them if we did not see them.
     lists:foreach(fun({Id, {ServerRef, Message}}) ->
         case ets:lookup(?MODULE, Id) of
             [] ->
