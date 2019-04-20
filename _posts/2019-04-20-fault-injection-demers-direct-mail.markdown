@@ -6,7 +6,7 @@ categories: erlang lasp
 group: Partisan
 ---
 
-*This is the first article in a series about building reliable fault-tolerant protocols with [Partisan](http://partisan.cloud), our high-performance, distributed runtime for the Erlang programming language.*
+*This is the first article in a series about building reliable fault-tolerant protocols with [Partisan](http://partisan.cloud), our high-performance, distributed runtime for the Erlang programming language.  As part of this project, we will start with some pretty simple protocols and show how our system will guide you in adjusting the protocol for fault-tolerance issues.*
 
 ## Testing Asynchrononous Protocols: Reliable Broadcast
 To demonstrate constructing a protocol based on identifying counterexamples and refining the implementation based on these counterexamples, we are going to consider the case of implementing a protocol that should achieve reliable broadcast.  
@@ -215,3 +215,71 @@ end, membership(Membership) -- [MyNode]),
 {% endhighlight %}
 
 By adding message acknowledgements to the direct mail protocol, which performs only a single message transmission for each peer, we can ensure that we are able to recover from message omission failures if and when the network partition heals and omission faults stop occurring.  This is provided by the reliable unicast mechanism in Partisan that will retransmit and de-duplicate messages based on message identifier, as shown above using the ```[{ack, true}]``` option.
+
+### Counterexample #2: Unresolved Omission Faults
+However, we quickly discover through random testing that this may not be enough if the network partition does not heal.  Consider the following execution where the network partition does not recover -- the continuous retransmission results in more omitted messages.
+
+Here's another generated test that fails, due to unresolved message omissions.
+
+{% highlight erlang %}
+verifying mailbox at node_2:
+=> sent: [{19,node_1,-3},{22,node_4,6},{27,node_1,-3}]
+=> received: [{19,node_1,-3},{27,node_1,-3}]
+
+verification of mailbox at node_2 failed!
+=> missing: [{22,node_4,6}]
+=> received: [{19,node_1,-3},{27,node_1,-3}]
+
+postcondition result: false; command: prop_partisan_reliable_broadcast:check_mailbox([node_2])
+{% endhighlight %}
+
+Here's the resulting trace, showing that even retranmission of dropped messages is only sufficient if the partition heals.
+
+{% highlight erlang %}
+node_4@parrhesia => node_2@parrhesia: DROPPED {broadcast,{node_4@parrhesia,2},receiver,{22,node_4,6}}
+node_1@parrhesia => node_2@parrhesia: {forward_message,node_1@parrhesia,{undefined,[{node_1@parrhesia,4}]},demers_direct_mail,{broadcast,{node_1@parrhesia,3},receiver,{27,node_1,-3}}}
+node_4@parrhesia => node_3@parrhesia: {forward_message,node_4@parrhesia,{undefined,[{node_4@parrhesia,3}]},demers_direct_mail,{broadcast,{node_4@parrhesia,2},receiver,{22,node_4,6}}}
+node_1@parrhesia => node_3@parrhesia: {forward_message,node_1@parrhesia,{undefined,[{node_1@parrhesia,5}]},demers_direct_mail,{broadcast,{node_1@parrhesia,3},receiver,{27,node_1,-3}}}
+node_1@parrhesia => node_4@parrhesia: {forward_message,node_1@parrhesia,{undefined,[{node_1@parrhesia,6}]},demers_direct_mail,{broadcast,{node_1@parrhesia,3},receiver,{27,node_1,-3}}}
+node_4@parrhesia => node_2@parrhesia: DROPPED {broadcast,{node_4@parrhesia,2},receiver,{22,node_4,6}}
+node_4@parrhesia => node_2@parrhesia: DROPPED {broadcast,{node_4@parrhesia,2},receiver,{22,node_4,6}}
+node_4@parrhesia => node_2@parrhesia: DROPPED {broadcast,{node_4@parrhesia,2},receiver,{22,node_4,6}}
+node_4@parrhesia => node_2@parrhesia: DROPPED {broadcast,{node_4@parrhesia,2},receiver,{22,node_4,6}}
+node_4@parrhesia => node_2@parrhesia: DROPPED {broadcast,{node_4@parrhesia,2},receiver,{22,node_4,6}}
+node_2 leaving command: [check_mailbox,node_2]
+{% endhighlight %}
+
+While a valid counterexample, it is unrealistic as this test demonstrates that an assertion fails only due to the fact that the partition is not resolved.
+
+To resolve this, we will consider an alternative scheduler for Partisan that assumes that partitions heal in finite time.  We will not discuss the details of this scheduler here, but we will demonstrate its usage in testing.
+
+### Counterexample #3: Crash Failures
+Assuming that the system will only suffer from network partitions of finite length, we soon discover that the acknowledgement mechanism is not enough when the system has to also consider the possibility of crash failures.  If we consider the case where a node has buffered a message and is retransmitting that message, a crash of the transmitting node will prevent the message from ever being delivered to the destination.
+
+In short *acknowledgements* are sufficient for being resilient against *general-omission* failures with the direct mail protocol.  However, acknowledgements are not sufficient for being robust against crash failures of the node with the omission fault.  
+
+To demonstrate this, we will use the *finite fault* scheduler for Partisan, which ensures that faults only exist for a finite time during the execution, resolving the faults by either crashing the faulted nodes or healing them, before performing a final assertion.
+
+We demonstrate the usage of the finite fault scheduler here:
+
+{% highlight sh %}
+$ SCHEDULER=finite_fault FAULT_INJECTION=true bin/counterexample-find.sh
+{% endhighlight %}
+
+Running this, we quickly identify another counterexample.  This counterexample demonstrates that with finite faults enabled, it is sufficient to have a node partitioned during a send, those sends are kept outstanding and retransmitted for the duration of the experiment, but the node is crashed prior to receiving an acknowledgement of that send.  This relates to the case of a faulty node that transmits a message and does not receive an acknowledgement before ultimately crashing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
