@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Fault-injection with Demers' Direct Mail protocol."
+title:  "Fault-Injection with Demers' Direct Mail Protocol"
 date:   2019-04-20 00:00:00 -0000
 categories: erlang lasp
 group: Partisan
