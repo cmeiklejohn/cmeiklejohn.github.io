@@ -268,7 +268,9 @@ $ SCHEDULER=finite_fault FAULT_INJECTION=true bin/counterexample-find.sh
 
 Running this, we quickly identify another counterexample.  This counterexample demonstrates that with finite faults enabled, it is sufficient to have a node partitioned during a send, those sends are kept outstanding and retransmitted for the duration of the experiment, but the node is crashed prior to receiving an acknowledgement of that send.  This relates to the case of a faulty node that transmits a message and does not receive an acknowledgement before ultimately crashing.
 
+### What's next?
 
+In the next post, we will look at both the *anti-entropy* and *rumor-mongering* protocols, and applying testing to those protocols as well.
 
 
 
