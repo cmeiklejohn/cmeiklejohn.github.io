@@ -191,3 +191,23 @@ postcondition result: false; command: prop_partisan_reliable_broadcast:check_mai
 
 Counterexample held and replayed...
 {% endhighlight %}
+
+### Resolution: Acknowledgements defeat Finite Omission Faults
+Omission faults are problematic when using protocols that only transmit messages once.  In this case, a network partition causes messages to be omitted between two participants, resulting in two messages that never get delivered to one of the nodes in the cluster.
+
+One solution to the problem is to use message acknowledgements.  We can use a modified Partisan call when transmitting messages to ensure that we continue to redeliver messages until the remote node acknowledges them.  That ensure that when a partition is resolved, these messages will eventually be delivered and we will be able to fulfill reliable broadcast.
+
+Here, we provide an example where we modify our call for message forwarding to ask for message acknowledgements.  This call specifies that this message needs to be acknowledged by using the ```{ack, true}``` tuple as an optional argument.
+
+{% highlight erlang %}
+%% Forward messages.
+lists:foreach(fun(N) ->
+     Manager:forward_message(N, 
+                             ?GOSSIP_CHANNEL, 
+                             ?MODULE, 
+                             {broadcast, Id, ServerRef, Message}, 
+                             [{ack, |\colorbox{yellow}{true}|}])
+end, membership(Membership) -- [MyNode]),
+{% endhighlight %}
+
+By adding message acknowledgements to the direct mail protocol, which performs only a single message transmission for each peer, we can ensure that we are able to recover from message omission failures if and when the network partition heals and omission faults stop occurring.  This is provided by the reliable unicast mechanism in Partisan that will retransmit and de-duplicate messages based on message identifier, as shown above using the ```[{ack, true}]``` option.
