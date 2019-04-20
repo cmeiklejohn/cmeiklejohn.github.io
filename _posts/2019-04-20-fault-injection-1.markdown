@@ -208,7 +208,7 @@ lists:foreach(fun(N) ->
                              ?GOSSIP_CHANNEL, 
                              ?MODULE, 
                              {broadcast, Id, ServerRef, Message}, 
-                             [{ack, |\colorbox{yellow}{true}|}])
+                             [{ack, true}])
 end, membership(Membership) -- [MyNode]),
 {% endhighlight %}
 
