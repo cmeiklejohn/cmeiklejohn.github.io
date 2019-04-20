@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  ""
+title:  "Fault-injection with Demers' Direct Mail protocol."
 date:   2019-04-20 00:00:00 -0000
 categories: erlang lasp
 group: Partisan
@@ -120,26 +120,24 @@ The reliable broadcast model provides two possible commands for test generation 
 
 Now specified, \Name's testing infrastructure will automatically generate random schedules of commands and at each command, insert that the postconditions from each command return true.  \Name's commands are selected from the following types of commands:
 
-\begin{itemize}
-    \item \textbf{Membership Commands.}  Maintaining a minimum number of nodes in the cluster, \Name\ will perform random join and leave operations for a number of additional nodes.  This ensures that application behavior remains correct under cluster transitions.
+* **Membership Commands:**  Maintaining a minimum number of nodes in the cluster, Partisan will perform random join and leave operations for a number of additional nodes.  This ensures that application behavior remains correct under cluster transitions.
     
-    \item \textbf{Fault Commands.}  Given a fault model, introduce a number of faults, including, but not limited to, \textit{stop} failures, \textit{crash} failures, \textit{send-omission} failures, \textit{receive-omission} failures, \textit{general omission} failures, and \textit{arbitrary}\footnote{Arbitrary is the more general term for Byzantine faults.} failures.  Failures will only be introduced given a failure tolerance level, specified by the application developer.
+* **Fault Commands:**  Given a fault model, introduce a number of faults, including, but not limited to, __stop__ failures, __crash__ failures, __send-omission__ failures, __receive-omission__ failures, __general omission__ failures, and __arbitrary__ failures.  Failures will only be introduced given a failure tolerance level, specified by the application developer.
 
-    \item \textbf{Model Commands.} These commands are the model specific commands that drive application behavior.  In the case we are discussing, these are the commands from the reliable broadcast model.
-\end{itemize}
+* **Model Commands:** These commands are the model specific commands that drive application behavior.  In the case we are discussing, these are the commands from the reliable broadcast model.
 
-\subsection{Counterexample \#1: Omission Faults}
-Let us start by testing the model under omissions faults -- typically observed during network partitions.  We start by running \Name's fault injector to find a counterexample with a failure tolerance of $1$\footnote{1 is the default value for fault tolerance, more commonly referred t as $f$.} simultaneous failure.  
+### Counterexample #1: Omission Faults
+Let us start by testing the model under omissions faults -- typically observed during network partitions.  We start by running Partisan's fault injector to find a counterexample with a failure tolerance of 1 simultaneous failure.  
 
 We can do this simply by running the following command:
 
-\begin{minted}{bash}
+{% highlight sh %}
 $ FAULT_INJECTION=true bin/counterexample-find.sh
-\end{minted}
+{% endhighlight %}
 
-We find our first counterexample!  After several schedule tests and commands, our counterexample looks as follows.  \Name\ produces the full execution trace in the output, but we retain only the most important parts for our explanation here.  We see that \textit{node\textunderscore5} is missing two messages in the mailbox assertion.  
+We find our first counterexample!  After several schedule tests and commands, our counterexample looks as follows.  Partisan produces the full execution trace in the output, but we retain only the most important parts for our explanation here.  We see that __node_5__ is missing two messages in the mailbox assertion.  
 
-\begin{minted}[escapeinside=||]{erlang}
+{% highlight erlang %}
 verifying mailbox at node node_5:
 => sent: [{298,node_3,-8},{320,node_4,-27},{334,node_4,8},{343,node_2,25},{346,node_3,-6},{350,node_1,-38},{354,node_3,-19}], 
 => received: [{298,node_3,-8},{320,node_4,-27},{334,node_4,8},{343,node_2,25},{350,node_1,-38}]
@@ -149,7 +147,7 @@ verification of mailbox at node_5 failed!
 => received: [{298,node_3,-8},{320,node_4,-27},{334,node_4,8},{343,node_2,25},{350,node_1,-38}]
 
 postcondition result: false; command: prop_partisan_reliable_broadcast:check_mailbox([node_5])
-\end{minted}
+{% endhighlight %}
 
 If we look at an excerpt of the message trace of the execution, we see the following:
 
