@@ -12,6 +12,16 @@ title: Christopher Meiklejohn
     {% endfor %}
   </ul>
 
+  <h1>Stateful Serverless</h1>
+  <p>Building statefull serverless solutions.</p>
+  <ul class="posts">
+    {% for post in site.posts %}
+      {% if post.group == "Serverless" %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
   <h1>Partisan</h1>
   <p>Building the next generation of high-performance, fault-tolerant distributed runtimes.</p>
   <ul class="posts">
