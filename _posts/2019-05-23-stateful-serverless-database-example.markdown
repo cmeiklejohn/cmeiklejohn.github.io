@@ -51,8 +51,6 @@ else if(req.Method == HttpMethod.Put)
 
 With each of these requests, the ```WaitForCompletionOrCreateCheckStatusResponseAsync``` call will wait the maximum amount of time for the request to finish, and if the request hasn't finished, will return a URL containing the location to poll waiting for completion.
 
-We will also create a class ```WriteOperation``` to represent a write in the system and to encapsulate the value we want to write along with the key.  Here is the implementation of that class, which is straightforward, and used as part of the PUT operation.
-
 ```c#
 public class WriteOperation
 {
@@ -67,6 +65,8 @@ public class WriteOperation
     }
 }
 ```
+
+We will also create a class ```WriteOperation``` to represent a write in the system and to encapsulate the value we want to write along with the key.  Here is the implementation of that class, which is straightforward, and used as part of the PUT operation.
 
 ## Orchestrations
 
