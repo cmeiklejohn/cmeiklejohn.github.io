@@ -70,7 +70,9 @@ With each of these requests, the ```WaitForCompletionOrCreateCheckStatusResponse
 
 ## Orchestrations
 
-Now, we have to implement our two orchestrations: the GET orchestration, ```Database_GET_Orchestrator```, and the PUT orchestration, ```Database_PUT_Orchestrator```.  Implementation is fairly straightforward.
+Now, we have to implement our two orchestrations: the GET orchestration, ```Database_GET_Orchestrator```, and the PUT orchestration, ```Database_PUT_Orchestrator```.  Implementation of these orchestrations is fairly straightforward.
+
+The GET orchestrator simply retrieves the current value of the key.  To access the argument passed to the GET orchestration, we use the ```context.GetInput<T>()``` method on the ```DurableOrchestrationContext``` object passed into the orchestration.  Using this key, we can construct an identifier that references the unique entity for the key.  Finally, the orchestration will perform a call to the GET orchestration with the entity id and the operation to perform represented as text: "get".
 
 ```c#
 [FunctionName("Database_GET_Orchestrator")]
