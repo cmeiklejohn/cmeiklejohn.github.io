@@ -101,3 +101,31 @@ public static async Task<string> DatabasePutOrchestratorAsync(
 ```
 
 ...
+
+## Durable Entities
+
+...
+
+```c#
+[FunctionName("Register")]
+public static void Register(
+    [EntityTrigger] IDurableEntityContext ctx)
+{
+    string currentValue = ctx.GetState<string>();
+
+    switch (ctx.OperationName)
+    {
+        case "set":
+            string operand = ctx.GetInput<string>();
+            currentValue = operand;
+            ctx.SetState(currentValue);
+            ctx.Return(currentValue);
+            break;
+        case "get":
+            ctx.Return(currentValue);
+            break;
+    }
+}
+```
+
+...
