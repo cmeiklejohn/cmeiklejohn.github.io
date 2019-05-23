@@ -72,7 +72,9 @@ With each of these requests, the ```WaitForCompletionOrCreateCheckStatusResponse
 
 Now, we have to implement our two orchestrations: the GET orchestration, ```Database_GET_Orchestrator```, and the PUT orchestration, ```Database_PUT_Orchestrator```.  Implementation of these orchestrations is fairly straightforward.
 
-The GET orchestrator simply retrieves the current value of the key.  To access the argument passed to the GET orchestration, we use the ```context.GetInput<T>()``` method on the ```DurableOrchestrationContext``` object passed into the orchestration.  Using this key, we can construct an identifier that references the unique entity for the key.  Finally, the orchestration will perform a call to the GET orchestration with the entity id and the operation to perform represented as text: "get".
+The GET orchestrator simply retrieves the current value of the key.  To access the argument passed to the GET orchestration, we use the ```context.GetInput<T>()``` method on the ```DurableOrchestrationContext``` object passed into the orchestration.  Using this key, we can construct an identifier that references the unique entity for the key.  Finally, the orchestration will perform a call to the GET orchestration with the entity id and the operation to perform represented as text: ```get```.  
+
+```CallEntityAsync<T>``` is a blocking call where the caller waits for a response from the invoked function.  To make a function invocation without waiting for the response, ```SignalEntityAsync``` can be used.
 
 ```c#
 [FunctionName("Database_GET_Orchestrator")]
