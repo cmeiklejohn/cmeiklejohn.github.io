@@ -12,7 +12,7 @@ group: Serverless
 
 ## Handling the Request
 
-We first define a function ```Database_HttpStart```, that accepts either GET or PUT requests at a URL ```Database/KEY```.  This function will respond to HTTP GET and PUT events to the URL.
+We first define a function ```Database_HttpStart```, that accepts either GET or PUT requests at a URL ```Database/KEY```.  This function will respond to HTTP GET and PUT events to the URL.  GET requests are used to retrieve the current value for a key; PUT operations, with a given payload, will store a value for a key in the database.
 
 ```c#
 [FunctionName("Database_HttpStart")]
