@@ -10,6 +10,36 @@ group: Serverless
 
 ...
 
+## Durable Entities
+
+Durable Entities allow us to model stateful serverless functions.  Durable entities are represented using a unique identifier, called the entity id, persist their state automatically across function executions, ensure that only a single invocation can execute at a given time, and have execution that is indivisible.  If an entity, given it's entity identifier doesn't exist, it's created on demand.  If you are familiar with Microsoft Orleans, durable entities look a lot like virtual actors.
+
+To model our database, we will create a durable entity called ```Register```.  ```Register``` will support 
+
+```c#
+[FunctionName("Register")]
+public static void Register(
+    [EntityTrigger] IDurableEntityContext ctx)
+{
+    string currentValue = ctx.GetState<string>();
+
+    switch (ctx.OperationName)
+    {
+        case "set":
+            string operand = ctx.GetInput<string>();
+            currentValue = operand;
+            ctx.SetState(currentValue);
+            ctx.Return(currentValue);
+            break;
+        case "get":
+            ctx.Return(currentValue);
+            break;
+    }
+}
+```
+
+...
+
 ## Handling the Request
 
 We first define a function ```Database_HttpStart```, that accepts either GET or PUT requests at a URL ```Database/KEY```.  This function will respond to HTTP GET and PUT events to the URL.  GET requests are used to retrieve the current value for a key; PUT operations, with a given payload, will store a value for a key in the database.
@@ -105,31 +135,5 @@ public static async Task<string> DatabasePutOrchestratorAsync(
 ```
 
 With that, our orchestration is complete and ready to be run.
-
-## Durable Entities
-
-...
-
-```c#
-[FunctionName("Register")]
-public static void Register(
-    [EntityTrigger] IDurableEntityContext ctx)
-{
-    string currentValue = ctx.GetState<string>();
-
-    switch (ctx.OperationName)
-    {
-        case "set":
-            string operand = ctx.GetInput<string>();
-            currentValue = operand;
-            ctx.SetState(currentValue);
-            ctx.Return(currentValue);
-            break;
-        case "get":
-            ctx.Return(currentValue);
-            break;
-    }
-}
-```
 
 ...
