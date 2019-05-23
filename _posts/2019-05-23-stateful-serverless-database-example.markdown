@@ -23,7 +23,7 @@ public static async Task<HttpResponseMessage> HttpStart(
     ILogger log)
 ```
 
-If the request is a GET, we start a new orchestration using the ```DurableOrchestrationClient``` that will run the ```Database_GET_Orchestrator``` function.  We supply the key for the register we want to update, taking the key from the URL.
+If the request is a GET, we start a new orchestration using the ```DurableOrchestrationClient``` that will run the ```Database_GET_Orchestrator``` function.  We supply the key for the register we want to update, taking the key from the URL.  Durable orchestrations are guaranteed to complete -- their execution will be durably logged and replayed until successful.  Under failure, re-execution will ensure that any intermediate results are persisted and used during the replay.
 
 ```c#
 // GET request
