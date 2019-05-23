@@ -2,7 +2,7 @@
 layout: post
 title:  "Introduction to Stateful Serverless: key-value database with Azure Durable Entities"
 date:   2019-05-23 00:00:00 -0000
-categories: serverlesss
+categories: serverless
 group: Serverless
 ---
 
@@ -38,9 +38,9 @@ public static void Register(
 }
 ```
 
-When an entity is invoked, it is supplied with a context object, ```DurableEntityContext``` that can be used to retrieve state, mutate state, and return a value to the caller of the function.  In our example, when the Register is invoked, we use the ```ctx.GetState<T>()``` call to return the current state.  
+When an entity is invoked, it is supplied with a context object, ```DurableEntityContext``` that can be used to retrieve state, mutate state, and return a value to the caller of the function.  In our example, when the Register is invoked, we use the ```ctx.GetState<T>()``` call to return the current state for the entity.  If the operation is a get, we can immediately return this value to the user with ```ctx.Return()```.
 
-...
+With the set operation, we first use the ```ctx.GetInput<T>()``` function to retrieve the input to the ```Register``` entity -- the functions arguments.  Once we have this value, we use ```ctx.SetState()``` to set the current value and finally ```ctx.Return()``` to return the value to the caller.
 
 ## Handling the Request
 
