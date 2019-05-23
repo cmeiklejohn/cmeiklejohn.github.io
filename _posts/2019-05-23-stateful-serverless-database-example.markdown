@@ -146,10 +146,9 @@ With that, our orchestration is complete and ready to be run.
 
 We can build the application with ```dotnet build``` and then run the local functions evnrionment using ```func host start```.
 
-
-```
 The simulator kicks up and we're ready to go:
 
+```
 > Executing task: func host start <
 
 
