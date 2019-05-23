@@ -50,3 +50,37 @@ else if(req.Method == HttpMethod.Put)
 ```
 
 With each of these requests, the ```WaitForCompletionOrCreateCheckStatusResponseAsync``` call will wait the maximum amount of time for the request to finish, and if the request hasn't finished, will return a URL containing the location to poll waiting for completion.
+
+## Orchestrations
+
+...
+
+```c#
+[FunctionName("Database_GET_Orchestrator")]
+public static async Task<string> DatabaseGetOrchestratorAsync(
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
+{
+    var key = context.GetInput<string>();
+
+    EntityId id = new EntityId(nameof(Register), key);
+
+    return await context.CallEntityAsync<string>(id, "get");
+}
+```
+
+...
+
+```c#
+[FunctionName("Database_PUT_Orchestrator")]
+public static async Task<string> DatabasePutOrchestratorAsync(
+    [OrchestrationTrigger] IDurableOrchestrationContext context)
+{
+    var operation = context.GetInput<WriteOperation>();
+
+    EntityId id = new EntityId(nameof(Register), operation.Key);
+
+    return await context.CallEntityAsync<string>(id, "set", operation.Value);
+}
+```
+
+...
