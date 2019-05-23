@@ -67,7 +67,7 @@ If the request is a GET, we start a new orchestration using the ```DurableOrches
 // GET request
 if (req.Method == HttpMethod.Get)
 {
-    instanceId = await starter.StartNewAsync(nameof(Database_GET_Orchestrator), key);
+    instanceId = await starter.StartNewAsync("Database_GET_Orchestrator", key);
     log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
     return await starter.WaitForCompletionOrCreateCheckStatusResponseAsync(req, instanceId, System.TimeSpan.MaxValue);
 }
@@ -81,7 +81,7 @@ else if(req.Method == HttpMethod.Put)
 {
     var content = req.Content;
     string value = content.ReadAsStringAsync().Result;
-    instanceId = await starter.StartNewAsync(nameof("Database_PUT_Orchestrator"), new WriteOperation(key, value));
+    instanceId = await starter.StartNewAsync("Database_PUT_Orchestrator", new WriteOperation(key, value));
     log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
     return await starter.WaitForCompletionOrCreateCheckStatusResponseAsync(req, instanceId, System.TimeSpan.MaxValue);
 }
