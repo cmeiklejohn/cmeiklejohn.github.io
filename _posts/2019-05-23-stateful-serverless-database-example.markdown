@@ -89,7 +89,7 @@ public static async Task<string> DatabaseGetOrchestratorAsync(
 }
 ```
 
-...
+Similarly, the PUT orchestration is also straightforward.  Using ```context.GetInput<T>```, we retrieve the ```WriteOperation``` object that was provided by the caller of the orchestration, construct the entity id, and perform the async call to the set operation -- here, we provide the value that should be stored by the entity.
 
 ```c#
 [FunctionName("Database_PUT_Orchestrator")]
