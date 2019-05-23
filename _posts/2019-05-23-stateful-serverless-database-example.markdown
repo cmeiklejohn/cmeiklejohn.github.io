@@ -104,7 +104,7 @@ public static async Task<string> DatabasePutOrchestratorAsync(
 }
 ```
 
-...
+With that, our orchestration is complete and ready to be run.
 
 ## Durable Entities
 
