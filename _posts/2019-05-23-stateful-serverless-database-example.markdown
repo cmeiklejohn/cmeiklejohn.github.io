@@ -8,9 +8,13 @@ group: Serverless
 
 ## Introduction
 
+__You can find the code for this example on [GitHub](https://github.com/cmeiklejohn/DurableFunctionDatabase)__
+
 As part of my internship at Microsoft Research during the Summer of 2018, Sebastian Burckhardt and I did a lot of research investigating what types of applications were not possible, or extremely difficult to build with serverless infrastructures, how serverless could be extended to make use of state and how to achieve coordination when building upon serverless -- coordination being required to solve some types of problems.  We spent an entire summer building a prototype implementation of what types of applications could be built with these extensions called the [Reactive Machine](http://www.reactivemachine.org), with Sebastian building the front-end language and myself writing the backend runtime system.  After the summer came to a close, we open-sourced our implementation and wrote up some documentation on how it works.
 
 At [Microsoft Build 2019](https://www.microsoft.com/en-us/build) this year, Durable Entities -- the product of serveral months of work with Sebastian embedded in the Azure Functions team, was announced.  Durable Entities, an extension that's in alpha release to the Durable Functions programming model, allows functions to retain state across function invocations where only a single instance is guaranteed to exist at a single point in time.  Now that I'm back at Microsoft for the summer, I've decided to write a few small applications using the framework to try it out.
+
+To introduce you to durable entities, I'm going to walk through building a small key-value store that allows users to read and write objects over the web, implemented with durable functions and durable entities.
 
 ## Durable Entities
 
@@ -140,4 +144,110 @@ public static async Task<string> DatabasePutOrchestratorAsync(
 
 With that, our orchestration is complete and ready to be run.
 
-...
+We can build the application with ```dotnet build``` and then run the local functions evnrionment using ```func host start```.
+
+
+```
+The simulator kicks up and we're ready to go:
+
+> Executing task: func host start <
+
+
+                  %%%%%%
+                 %%%%%%
+            @   %%%%%%    @
+          @@   %%%%%%      @@
+       @@@    %%%%%%%%%%%    @@@
+     @@      %%%%%%%%%%        @@
+       @@         %%%%       @@
+         @@      %%%       @@
+           @@    %%      @@
+                %%
+                %
+
+Azure Functions Core Tools (2.7.1158 Commit hash: f2d2a2816e038165826c7409c6d10c0527e8955b)
+Function Runtime Version: 2.0.12438.0
+SKipping 'FUNCTIONS_CORETOOLS_ENVIRONMENT' because value is null
+[5/23/2019 10:30:21 PM] Starting Rpc Initialization Service.
+[5/23/2019 10:30:21 PM] Initializing RpcServer
+[5/23/2019 10:30:21 PM] Building host: startup suppressed:False, configuration suppressed: False
+[5/23/2019 10:30:25 PM] Initializing extension with the following settings: Initializing extension with the following settings:
+[5/23/2019 10:30:25 PM] HubName:SampleHubVS, StorageProvider: { AzureStorage: { ConnectionStringName: , PartitionCount: 4, ControlQueueBatchSize: 32, ControlQueueVisibilityTimeout: 00:05:00, WorkItemQueueVisibilityTimeout: 00:05:00, TrackingStoreConnectionStringName: , MaxQueuePollingInterval: 00:00:30,  },  }, MaxConcurrentActivityFunctions: 40, MaxConcurrentOrchestratorFunctions: 40, ExtendedSessionsEnabled: False, EventGridTopicEndpoint: , NotificationUrl: http://localhost:7071/runtime/webhooks/durabletask, LogReplayEvents: False. InstanceId: . Function: . HubName: SampleHubVS. AppName: . SlotName: . ExtensionVersion: 2.0.0. SequenceNumber: 0.
+[5/23/2019 10:30:25 PM] Initializing Host.
+[5/23/2019 10:30:25 PM] Host initialization: ConsecutiveErrors=0, StartupCount=1
+[5/23/2019 10:30:25 PM] LoggerFilterOptions
+[5/23/2019 10:30:25 PM] {
+[5/23/2019 10:30:25 PM]   "MinLevel": "None",
+[5/23/2019 10:30:25 PM]   "Rules": [
+[5/23/2019 10:30:25 PM]     {
+[5/23/2019 10:30:25 PM]       "ProviderName": null,
+[5/23/2019 10:30:25 PM]       "CategoryName": null,
+[5/23/2019 10:30:25 PM]       "LogLevel": null,
+[5/23/2019 10:30:25 PM]       "Filter": "<AddFilter>b__0"
+[5/23/2019 10:30:25 PM]     },
+[5/23/2019 10:30:25 PM]     {
+[5/23/2019 10:30:25 PM]       "ProviderName": "Microsoft.Azure.WebJobs.Script.WebHost.Diagnostics.SystemLoggerProvider",
+[5/23/2019 10:30:25 PM]       "CategoryName": null,
+[5/23/2019 10:30:25 PM]       "LogLevel": "None",
+[5/23/2019 10:30:25 PM]       "Filter": null
+[5/23/2019 10:30:25 PM]     },
+[5/23/2019 10:30:25 PM]     {
+[5/23/2019 10:30:25 PM]       "ProviderName": "Microsoft.Azure.WebJobs.Script.WebHost.Diagnostics.SystemLoggerProvider",
+[5/23/2019 10:30:25 PM]       "CategoryName": null,
+[5/23/2019 10:30:25 PM]       "LogLevel": null,
+[5/23/2019 10:30:25 PM]       "Filter": "<AddFilter>b__0"
+[5/23/2019 10:30:25 PM]     }
+[5/23/2019 10:30:25 PM]   ]
+[5/23/2019 10:30:25 PM] }
+[5/23/2019 10:30:25 PM] FunctionResultAggregatorOptions
+[5/23/2019 10:30:25 PM] {
+[5/23/2019 10:30:25 PM]   "BatchSize": 1000,
+[5/23/2019 10:30:25 PM]   "FlushTimeout": "00:00:30",
+[5/23/2019 10:30:25 PM]   "IsEnabled": true
+[5/23/2019 10:30:25 PM] }
+[5/23/2019 10:30:25 PM] SingletonOptions
+[5/23/2019 10:30:25 PM] {
+[5/23/2019 10:30:25 PM]   "LockPeriod": "00:00:15",
+[5/23/2019 10:30:25 PM]   "ListenerLockPeriod": "00:00:15",
+[5/23/2019 10:30:25 PM]   "LockAcquisitionTimeout": "10675199.02:48:05.4775807",
+[5/23/2019 10:30:25 PM]   "LockAcquisitionPollingInterval": "00:00:05",
+[5/23/2019 10:30:25 PM]   "ListenerLockRecoveryPollingInterval": "00:01:00"
+[5/23/2019 10:30:25 PM] }
+[5/23/2019 10:30:25 PM] Starting JobHost
+[5/23/2019 10:30:25 PM] Starting Host (HostId=minintovaolh3-255252354, InstanceId=6ac82daa-5bef-41ee-94ef-fcfd19e46539, Version=2.0.12438.0, ProcessId=17940, AppDomainId=1, InDebugMode=False, InDiagnosticMode=False, FunctionsExtensionVersion=)
+[5/23/2019 10:30:25 PM] Loading functions metadata
+[5/23/2019 10:30:26 PM] 4 functions loaded
+[5/23/2019 10:30:26 PM] WorkerRuntime: dotnet. Will shutdown other standby channels
+[5/23/2019 10:30:27 PM] Generating 4 job function(s)
+[5/23/2019 10:30:27 PM] Found the following functions:
+[5/23/2019 10:30:27 PM] DurableFunctionDatabase.Database.DatabaseGetOrchestratorAsync
+[5/23/2019 10:30:27 PM] DurableFunctionDatabase.Database.HttpStart
+[5/23/2019 10:30:27 PM] DurableFunctionDatabase.Database.DatabasePutOrchestratorAsync
+[5/23/2019 10:30:27 PM] DurableFunctionDatabase.Database.Register
+[5/23/2019 10:30:27 PM]
+[5/23/2019 10:30:27 PM] Host initialized (1589ms)
+[5/23/2019 10:30:27 PM] Starting task hub worker. InstanceId: . Function: . HubName: SampleHubVS. AppName: . SlotName: . ExtensionVersion: 2.0.0. SequenceNumber: 1.
+[5/23/2019 10:30:29 PM] Host started (3850ms)
+[5/23/2019 10:30:30 PM] Job host started
+Hosting environment: Production
+Content root path: C:\Users\t-chme\source\repos\DurableFunctionDatabase\DurableFunctionDatabase\bin\Debug\netcoreapp2.1
+Now listening on: http://0.0.0.0:7071
+Application started. Press Ctrl+C to shut down.
+
+Http Functions:
+
+        Database_HttpStart: [GET,PUT] http://localhost:7071/Database/{key}
+
+[5/23/2019 10:30:35 PM] Host lock lease acquired by instance ID '000000000000000000000000F4A07733'.
+```
+
+Let's write some data!
+
+```
+$ curl -X PUT -d "my-value" http://localhost:7071/Database/1
+"my-value"
+$ curl -X GET http://localhost:7071/Database/1
+"my-value"
+```
+
+Yeah!
