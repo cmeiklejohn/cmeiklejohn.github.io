@@ -8,7 +8,7 @@ group: Serverless
 
 ## Introduction
 
-_You can find the code for this example on [GitHub](https://github.com/cmeiklejohn/DurableFunctionDatabase)_
+_You can find the code for this example on [GitHub](https://github.com/cmeiklejohn/DurableFunctionDatabase)._
 
 As part of my internship at Microsoft Research during the Summer of 2018, Sebastian Burckhardt and I did a lot of research investigating what types of applications were not possible, or extremely difficult to build with serverless infrastructures, how serverless could be extended to make use of state and how to achieve coordination when building upon serverless -- coordination being required to solve some types of problems.  We spent an entire summer building a prototype implementation of what types of applications could be built with these extensions called the [Reactive Machine](http://www.reactive-machine.org), with Sebastian building the front-end language and myself writing the backend runtime system.  After the summer came to a close, we open-sourced our implementation and wrote up some documentation on how it works.
 
