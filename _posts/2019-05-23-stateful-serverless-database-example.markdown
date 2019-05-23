@@ -49,7 +49,7 @@ else if(req.Method == HttpMethod.Put)
 }
 ```
 
-With each of these requests, the ```WaitForCompletionOrCreateCheckStatusResponseAsync``` call will wait the maximum amount of time for the request to finish, and if the request hasn't finished, will return a URL containing the location to poll waiting for completion.
+With each of these requests, the ```WaitForCompletionOrCreateCheckStatusResponseAsync``` call will wait the maximum amount of time for the request to finish, and if the request hasn't finished, will return a URL containing the location to poll waiting for completion.  If you prefer to poll, ```await starter.CreateCheckStatusResponseAsync``` will return a response to the user containing the poll URL.  Again, since durable functions are guaranteed to execute, clients can poll the URL continuously until the operation completes.
 
 ```c#
 public class WriteOperation
