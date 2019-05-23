@@ -12,7 +12,7 @@ group: Serverless
 
 ## Durable Entities
 
-Durable Entities allow us to model stateful serverless functions.  Durable entities are represented using a unique identifier, called the entity id, persist their state automatically across function executions, ensure that only a single invocation can execute at a given time, and have execution that is indivisible.  If an entity, given it's entity identifier doesn't exist, it's created on demand.  If you are familiar with Microsoft Orleans, durable entities look a lot like virtual actors.
+Durable Entities allow us to model stateful serverless functions.  Durable entities are represented using a unique identifier, called the entity id, persist their state automatically across function executions, ensure that only a single invocation can execute at a given time, and have execution that is indivisible.  If an entity, given it's entity identifier doesn't exist, it's created on demand.  If you are familiar with [Microsoft Orleans](https://dotnet.github.io/orleans/), durable entities look a lot like virtual actors.
 
 To model our database, we will create a durable entity called ```Register```.  ```Register``` will support two operations: get, to return the current value of the register, and set to set the contents of the register.  With set, once we update the register, we will return the value back to the user.
 
