@@ -29,13 +29,13 @@ If the request is a GET, we start a new orchestration using the ```DurableOrches
 // GET request
 if (req.Method == HttpMethod.Get)
 {
-    instanceId = await starter.StartNewAsync("Database_GET_Orchestrator", key);
+    instanceId = await starter.StartNewAsync(nameof(Database_GET_Orchestrator), key);
     log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
     return await starter.WaitForCompletionOrCreateCheckStatusResponseAsync(req, instanceId, System.TimeSpan.MaxValue);
 }
 ```
 
-If the request is a PUT, we start a new orchestration using the ```DurableOrchestrationClient``` that will run the ```Database_PUT_Orchestrator``` function.  We supply both the key for the register we want to update, taking the key from the URL, and also the value we want to write, taken from the PUT data.
+If the request is a PUT, we start a new orchestration using the ```DurableOrchestrationClient``` that will run the ```Database_PUT_Orchestrator``` function.  We supply both the key for the register we want to update, taking the key from the URL, and also the value we want to write, taken from the PUT data.  
 
 ```c#
 // PUT request
@@ -43,13 +43,13 @@ else if(req.Method == HttpMethod.Put)
 {
     var content = req.Content;
     string value = content.ReadAsStringAsync().Result;
-    instanceId = await starter.StartNewAsync("Database_PUT_Orchestrator", new WriteOperation(key, value));
+    instanceId = await starter.StartNewAsync(nameof("Database_PUT_Orchestrator"), new WriteOperation(key, value));
     log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
     return await starter.WaitForCompletionOrCreateCheckStatusResponseAsync(req, instanceId, System.TimeSpan.MaxValue);
 }
 ```
 
-With each of these requests, the ```WaitForCompletionOrCreateCheckStatusResponseAsync``` call will wait the maximum amount of time for the request to finish, and if the request hasn't finished, will return a URL containing the location to poll waiting for completion.  If you prefer to poll, ```await starter.CreateCheckStatusResponseAsync``` will return a response to the user containing the poll URL.  Again, since durable functions are guaranteed to execute, clients can poll the URL continuously until the operation completes.
+We wrap both the key and value into a ```WriteOperation``` object to pass them to the orchestration as input data -- only a single value may be supplied as input to the orchestration.  We include the implementation below.
 
 ```c#
 public class WriteOperation
@@ -66,11 +66,11 @@ public class WriteOperation
 }
 ```
 
-We will also create a class ```WriteOperation``` to represent a write in the system and to encapsulate the value we want to write along with the key.  Here is the implementation of that class, which is straightforward, and used as part of the PUT operation.
+With each of these requests, the ```WaitForCompletionOrCreateCheckStatusResponseAsync``` call will wait the maximum amount of time for the request to finish, and if the request hasn't finished, will return a URL containing the location to poll waiting for completion.  If you prefer to poll, ```await starter.CreateCheckStatusResponseAsync``` will return a response to the user containing the poll URL.  Again, since durable functions are guaranteed to execute, clients can poll the URL continuously until the operation completes.
 
 ## Orchestrations
 
-...
+Now, we have to implement our two orchestrations: the GET orchestration, ```Database_GET_Orchestrator```, and the PUT orchestration, ```Database_PUT_Orchestrator```.  Implementation is fairly straightforward.
 
 ```c#
 [FunctionName("Database_GET_Orchestrator")]
