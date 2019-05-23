@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  ""
+title:  "Building a single-register database with Azure Durable Entities"
 date:   2019-05-23 00:00:00 -0000
 categories: serverlesss
 group: Serverless
