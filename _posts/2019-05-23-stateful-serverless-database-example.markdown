@@ -16,9 +16,6 @@ public static async Task<HttpResponseMessage> HttpStart(
 ```
 
 ```c#
-{
-    string instanceId;
-
     // GET request
     if (req.Method == HttpMethod.Get)
     {
@@ -26,7 +23,9 @@ public static async Task<HttpResponseMessage> HttpStart(
         log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
         return await starter.WaitForCompletionOrCreateCheckStatusResponseAsync(req, instanceId, System.TimeSpan.MaxValue);
     }
+```
 
+```c#
     // POST request
     else if(req.Method == HttpMethod.Post)
     {
@@ -36,11 +35,12 @@ public static async Task<HttpResponseMessage> HttpStart(
         log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
         return await starter.WaitForCompletionOrCreateCheckStatusResponseAsync(req, instanceId, System.TimeSpan.MaxValue);
     }
+```
 
+```c#
     // Otherwise.
     else
     {
         return req.CreateResponse(System.Net.HttpStatusCode.BadRequest);
     }
-}
 ```
