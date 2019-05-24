@@ -6,9 +6,9 @@ categories: serverless
 group: Serverless
 ---
 
-## Introduction
-
 _You can find the code for this example on [GitHub](https://github.com/cmeiklejohn/DurableFunctionDatabase).  Azure Durable Entities are currently in preview release and available to use today through the NuGet prerelease package 2.0.0-alpha._
+
+## Introduction
 
 As part of my internship at Microsoft Research during the Summer of 2018, [Sebastian Burckhardt](https://www.microsoft.com/en-us/research/people/sburckha/) and I did a lot of research investigating what types of applications were not possible, or extremely difficult, to build with existing serverless infrastructures, how serverless could be extended to make use of state and how to achieve coordination when building upon serverless -- coordination being required to solve certain types of problems.  We spent an entire summer building a prototype implementation of a new programming model that would enable these applications both easily and efficiently.
 
