@@ -257,6 +257,8 @@ public static async Task<HttpResponseMessage> PerformTransfer(
 }
 ```
 
+Good!
+
 ## Critical Sections
 
 Now, let's build the ```Transfer``` orchestration.  In our orchestration, we use the ```context.LockAsync()``` operation within a ```using``` block to take out locks on the objects we are about to perform the operations on.  We start by waiting for the lock to be acquired, checking the balance from the account we wish to transfer the amount from making sure we will not violate the non-negative balance invariant, and then if there are available funds in the correct amount, proceed with performing the transfer.
