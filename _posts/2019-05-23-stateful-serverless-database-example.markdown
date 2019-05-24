@@ -8,11 +8,11 @@ group: Serverless
 
 ## Introduction
 
-_You can find the code for this example on [GitHub](https://github.com/cmeiklejohn/DurableFunctionDatabase)._
+_You can find the code for this example on [GitHub](https://github.com/cmeiklejohn/DurableFunctionDatabase).  Azure Durable Entities are currently in preview release and available to use today through the NuGet prerelease package 2.0.0-alpha._
 
-As part of my internship at Microsoft Research during the Summer of 2018, Sebastian Burckhardt and I did a lot of research investigating what types of applications were not possible, or extremely difficult to build with serverless infrastructures, how serverless could be extended to make use of state and how to achieve coordination when building upon serverless -- coordination being required to solve some types of problems.  We spent an entire summer building a prototype implementation of what types of applications could be built with these extensions called the [Reactive Machine](http://www.reactive-machine.org), with Sebastian building the frontend language and myself writing the backend runtime system.  After the summer came to a close, we open-sourced our implementation and wrote up some documentation on how it works.
+As part of my internship at Microsoft Research during the Summer of 2018, [Sebastian Burckhardt](https://www.microsoft.com/en-us/research/people/sburckha/) and I did a lot of research investigating what types of applications were not possible, or extremely difficult, to build with existing serverless infrastructures, how serverless could be extended to make use of state and how to achieve coordination when building upon serverless -- coordination being required to solve certain types of problems.  We spent an entire summer building a prototype implementation of a new language and compiler that would enable these applications both easily and efficiently called the [Reactive Machine](http://www.reactive-machine.org). After the summer came to a close, we open-sourced our implementation and wrote up some documentation on how it works.
 
-At [Microsoft Build 2019](https://mybuild.techcommunity.microsoft.com/sessions/77334?source=sessions#top-anchor) this year, Durable Entities -- the product of serveral months of work with Sebastian embedded in the Azure Functions team, was announced.  Durable Entities, an extension that's in alpha release to the Durable Functions programming model, allows functions to retain state across function invocations where only a single instance is guaranteed to exist at a single point in time.  Now that I'm back at Microsoft for the summer, I've decided to write a few small applications using the framework to try it out.
+Fast forward to [Microsoft Build 2019](https://mybuild.techcommunity.microsoft.com/sessions/77334?source=sessions#top-anchor), Durable Entities -- the product of serveral months of work by the Azure Functions team and Sebastian building upon these ideas -- was announced.  Durable Entities, an extension that's in alpha release to the Durable Functions programming model, allows functions to retain state across function invocations where only a single instance is guaranteed to exist at a single point in time.  Now that I'm back at Microsoft for the summer, I've decided to write a few small applications using the framework to try it out.
 
 To introduce you to durable entities, I'm going to walk through building a small key-value store that allows users to read and write objects over the web, implemented with durable functions and durable entities.
 
@@ -250,3 +250,5 @@ $ curl -X GET http://localhost:7071/Database/1
 ```
 
 Yeah!
+
+Now, we didn't even get to the best part -- locks.  We will cover that in the next post, stay tuned!
