@@ -293,4 +293,16 @@ public static async Task<bool> Transfer(
 }
 ```
 
-The locks and critical section allow us to coordinate between multiple invocations of functions: something, that is not possible in existing functions frameworks without using storage manually as a coordination point.
+The locks and critical section allow us to coordinate between multiple invocations of functions: something, that is not possible in existing functions frameworks without using storage explicitly in your function code as a coordination mechanism.  
+
+Critical sections are possible because orchestrations are guaranteed to execute to completion and because Entities act in serial.  To ensure global progress, critical sections impose the following restrictions:
+
+* No nesting of critical sections to prevent deadlocks arising from lock acquisition order.
+* Critical sections cannot invoke orchestrations, only operations on Durable Entities.
+* Critical sections can only invoke operations on locked entities -- calls to unlocked entities will throw.
+* Parallel calls can only be invoked on different entities -- calls to the same entity in parallel are prevented to ensure a sequential order of call and response.
+* One way messages, signals, can only be made to unlocked entities.
+
+## Conclusion
+
+All in all, critical sections bring incredible power to serverless applications that enable building rich, stateful applications not previous possible.  Check out the 2.0.0-alpha release of Durable Functions and feel free to reach out to me if you have any questions!
