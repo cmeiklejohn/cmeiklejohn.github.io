@@ -251,4 +251,4 @@ $ curl -X GET http://localhost:7071/Database/1
 
 Yeah!
 
-Now, we didn't even get to the best part -- locks.  We will cover that in the next post, stay tuned!
+Now, we didn't even get to the best part -- [critical sections](http://christophermeiklejohn.com/serverless/2019/05/25/stateful-serverless-bank-example.html).
