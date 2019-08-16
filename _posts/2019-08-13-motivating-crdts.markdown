@@ -3,7 +3,7 @@ layout: post
 title:  "Motivating CRDTs for the Edge"
 date:   2019-08-13 00:00:00 -0000
 categories: crdts
-group: macrometa
+group: Macrometa
 ---
 
 

@@ -3,7 +3,7 @@ layout: post
 title:  "Implementing Coordination Free Convergence of Data for Edge Computing"
 date:   2019-08-16 00:00:00 -0000
 categories: crdts
-group: macrometa
+group: Macrometa
 ---
 
 
