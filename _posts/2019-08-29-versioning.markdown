@@ -5,9 +5,7 @@ date:   2019-08-29 00:00:00 -0000
 categories: riak erlang
 ---
 
-## Introduction
-
-...
+Dealing with multiple versions of the same software deployed in a distributed system is challenging: nowadays, we think of it as schema evolution, versioned APIs, and IDLs.  Let's talk about the challenges from the Erlang perspective.
 
 ## Erlang
 
