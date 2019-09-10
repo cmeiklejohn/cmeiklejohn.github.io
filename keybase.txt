@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/cmeiklejohn
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://christophermeiklejohn.com
+  * I am cmeiklejohn (https://keybase.io/cmeiklejohn) on keybase.
+  * I have a public key ASAbjNbPtSzfJWtdZBFbQD4LnTdhOB1PJ1UA-bGk6l4FHAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01201b8cd6cfb52cdf256b5d64115b403e0b9d3761381d4f275500f9b1a4ea5e051c0a",
+      "host": "keybase.io",
+      "kid": "01201b8cd6cfb52cdf256b5d64115b403e0b9d3761381d4f275500f9b1a4ea5e051c0a",
+      "uid": "b1aa8a6b1efb0911cfae7441089ab300",
+      "username": "cmeiklejohn"
+    },
+    "merkle_root": {
+      "ctime": 1568129613,
+      "hash": "aafb22089d8e45f64d7889ab3fe72f68837c830a580179bcda99b004905aae87bbe53927e0a7bced19545c50a8d6241a271e64f50d6c1f4cbf7abd3590092944",
+      "hash_meta": "0e902f8f0b68c8fe1874edab40677d2bfd43bf4b1807d093217f8914e282f6b0",
+      "seqno": 6444517
+    },
+    "service": {
+      "entropy": "AYYlEv4tuL/DD2JDfg7WH7LV",
+      "hostname": "christophermeiklejohn.com",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "4.4.1"
+  },
+  "ctime": 1568129617,
+  "expire_in": 504576000,
+  "prev": "d7c4f2c0bf3abc414b2613a6f44ab9f6bcce61c0fc8461399bf6cd4bc3967c78",
+  "seqno": 12,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgG4zWz7Us3yVrXWQRW0A+C503YTgdTydVAPmxpOpeBRwKp3BheWxvYWTESpcCDMQg18TywL86vEFLJhOm9Eq59rzOYcD8hGE5m/bNS8OWfHjEIIzAXiwUDznSsQNbA+u5aLEBPAZPvweSI5uCKJM3muAsAgHCo3NpZ8RA+tttAfN5F6kkKIL4IN2FX3JrJT4QwHpfClIhxXVQ1u/AOdOf6Jz8VvU/chXjKMLUV2am81TniL7c03nHV2+aAqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIPTJIqHURkTDinVjPn69khVCJtw0leGjlBuUCIqnLKcRo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/cmeiklejohn
+
+==================================================================
