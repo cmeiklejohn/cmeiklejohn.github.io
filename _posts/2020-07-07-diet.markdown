@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "A Undigested Bit of Beef"
+title:  "A Undigested Bit of Beef: Part 1"
 date:   2020-07-07 00:00:00 -0000
 categories:
 ---
