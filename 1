@@ -1,0 +1,26 @@
+Typot 
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is up to date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   _posts/2020-07-07-diet.markdown
+#
+# ------------------------ >8 ------------------------
+# Do not modify or remove the line above.
+# Everything below it will be ignored.
+diff --git a/_posts/2020-07-07-diet.markdown b/_posts/2020-07-07-diet.markdown
+index 406937e..818646b 100644
+--- a/_posts/2020-07-07-diet.markdown
++++ b/_posts/2020-07-07-diet.markdown
+@@ -11,7 +11,7 @@ SyncFree project which brought me to many different cities -- all cities where u
+ researchers out to a fun night at a fancy restaurant in whatever city we happened to be in for that meeting.  I soon became obsessed
+ with the foodie culture.  
+ 
+-In 2015, while working remote for Basho Technologies from Rhode Island, but living in Paris in Montmarte, I became obsessed.  During that 
++In 2015, while was working remote for Basho Technologies from Rhode Island -- actually living in Paris in Montmarte  --I became obsessed.  During that 
+ time I dine with friends and colleagues at all the top restaurants, Le 52, Le Arpege, Le Chateaubraind, etc., burning all of the available 
+ cash that I had at the time; I couldn't get enough.  I quit my industry job as a programmer and thought, shit, I could move to Paris, 
+ do a Ph.D. over the next three years, and then become (possibly a post-doc and then) a professor here.  I had prelimimnary talks with CNRS 
