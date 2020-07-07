@@ -1,0 +1,44 @@
+---
+layout: post
+title:  "A Undigested Bit of Beef"
+date:   2020-07-07 00:00:00 -0000
+categories:
+---
+
+Before starting my Ph.D., I became a bit of a foodie.  I was working as a reasearch engineer at Basho Technologies on the 
+SyncFree project which brought me to many different cities -- all cities where univerities who were participating in our program were in 
+-- but, that was not my first time to Europe.  During this time, we always planned a night out where we would take all of the
+researchers out to a fun night at a fancy restaurant in whatever city we happened to be in for that meeting.  I soon became obsessed
+with the foodie culture.  
+
+In 2015, while working remote for Basho Technologies from Rhode Island, but living in Paris in Montmarte, I became obsessed.  During that 
+time I dine with friends and colleagues at all the top restaurants, Le 52, Le Arpege, Le Chateaubraind, etc., burning all of the available 
+cash that I had at the time; I couldn't get enough.  I quit my industry job as a programmer and thought, shit, I could move to Paris, 
+do a Ph.D. over the next three years, and then become (possibly a post-doc and then) a professor here.  I had prelimimnary talks with CNRS 
+and INRIA and set the plans in motion.
+
+Well, that didn't work out, because starting my Ph.D. in Paris would require a Master's, which I didn't have.  INRIA told me that they would,
+in part with Universite Pierre and Marie Curie (UPMC), grant me a complimentary master's if I could pass a preliminary exam, which was 
+partially in French -- my French was cafe French, far from fluent -- so I declined.  I instead opted for joining one of 
+the universities that was part of our research consortium that would get me my European Ph.D. and allow me to progress further.  This is a
+much longer story, by landed me in Brussels with a year in Lisbon, before I would have my Ph.D.
+
+In Belgium, I spent hours upon hours deep in Belgium culture -- by this, I mean, drinking intense beer, eating waffles every time I was at the 
+train station, eating pasta, moules fretes, and sandwichches doused in andalouse sauce.  Meanwhile, I was living in a small dorm, by myself,
+not realizing that my insane depression and long hours of work were tied to my diet.  I ate a ton of dairy, as the Phildelphia sandwich
+(cream cheese on bread with smoked salmon) I ate frequently was a known a problem -- I was lactose intolerant before I arrived -- but I took
+some dairy pills and just shrugged it off.  
+
+I feel into a deep depression.  I ended up quitting my Ph.D. (for the firs ttime.)
+
+It wasn't until I returned to the United States for my first internship at Microsoft that I realized what was happening.  I was sick all the time.  
+I mean, I was sick all of the time in Belgium, but I just assumed that Ph.D. students worked hard and that's what you get for 
+working so hard.  That wasn't it.
+
+I spent days trying to figure out my diet: I ate the same thing for weeks on end, removing an item at the time.  Why was I so sick?  Why was going to the bathroom such a a chore? 
+I had the same Italian sandwich every single day: removed the cheese, nope; removed the sauce, nope; removed the mayo; nope.  I did this until I got to
+the bread: welp, we got something here, this is a problem.  An entire year of being sick: it's gluten.  No wonder I had depression, sick every single day, 
+hating my Ph.D., hating everything, an angry person, it was gluten.  I was eating bread and pasta and drinking a few pints of beer every single 
+day for over a year before I knew it was a problem.
+
+I cut it out, that was great, until....
