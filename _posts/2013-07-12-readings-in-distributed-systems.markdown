@@ -179,7 +179,7 @@ requests][pull] or leave comments!
 [pull]: https://github.com/cmeiklejohn/cmeiklejohn.github.io/blob/master/_posts/2013-07-12-readings-in-distributed-systems.markdown?
 [optimistic]: https://pdfs.semanticscholar.org/40c4/7420fdda6b715430153437ac77d62d1da6d8.pdf
 [redbook]: http://www.amazon.com/Readings-Database-Systems-Joseph-Hellerstein/dp/0262693143
-[raft]: https://ramcloud.stanford.edu/wiki/download/attachments/11370504/raft.pdf
+[raft]: https://raft.github.io/raft.pdf
 [paxoslive]: http://research.google.com/pubs/pub33002.html
 [dynamo]: http://www.read.seas.harvard.edu/~kohler/class/cs239-w08/decandia07dynamo.pdf
 [crdt1]: http://hal.upmc.fr/docs/00/55/55/88/PDF/techreport.pdf
