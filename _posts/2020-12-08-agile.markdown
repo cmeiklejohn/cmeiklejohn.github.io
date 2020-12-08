@@ -58,8 +58,8 @@ As you can see, the product backlog is purposely designed to introduce potential
 Then, I assigned a time table for the 50 minute slot and how the time should be broken down.  I include it below.
 
 | Time | Activity |
-| 00 | Class arrives, introduction, split into recitation groups. | 
 | --- | :-: |
+| 00 | Class arrives, introduction, split into recitation groups. | 
 |    | *Start* |
 |    | *Sprint 1* |
 | 05 | Sprint planning (decide how much to do) |
