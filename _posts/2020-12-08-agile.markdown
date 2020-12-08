@@ -101,7 +101,7 @@ So, what did we learn after four recitations of this in the Fall 2020 semester, 
 
 Here's a final result:
 
-<img src="/img/goldilocks.png" style="width: 100%">
+<img src="/img/goldilocks.png" style="width: 100%; border: 1px solid black;">
 
 ## Conclusion
 
