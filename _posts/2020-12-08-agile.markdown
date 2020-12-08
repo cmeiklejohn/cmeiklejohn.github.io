@@ -77,6 +77,8 @@ Then, I assigned a time table for the 50 minute slot and how the time should be 
 | 47 | 1-minute presentations to the class of the completed work |
 | 50 | End |
 
+There we go.  So, let's look at what we learned, shall we?
+
 ## Learnings
 
 So, what did we learn after four recitations of this in the Fall 2020 semester, running this purely online?
