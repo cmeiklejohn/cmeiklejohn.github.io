@@ -1,0 +1,107 @@
+---
+layout: post
+title:  "Agile: In a COVID-19 world"
+date:   2020-12-08 00:00:00 -0000
+categories: teaching
+---
+
+## Intro
+
+As part of the curriculum of Carnegie Mellon University's 17-313 Foundations of Software Engineering, we teach agile development.  To aide in reinforcing the material, we typically teach a recitation based on a common agile introductory activity where students build paper airplanes in groups, in class.  
+
+The recitation roughtly works as follows:
+
+1. First, students in the class are randomly broken into groups of four or so students.
+2. Each group is presented with 5 paper airplane designs of varying difficulty (from easy to quite complicated.) 
+
+The teams are provided a few minutes to review the designs before we start the agile simulation.  In this simulation, each team is randomly given, by the product owner (the instructor) a design, and is told to build as many planes as they can in 2 minutes.  Students then "plan" for the sprint, by providing an estimate of how many planes they can build, with the information that I, the instructor, will review the planes at the end of the sprint, test them to see if they fly, and accept each plane that works.  The team at the end of two sprints is the "best" team that wins nothing by the bragging rights of the recitation.
+
+It goes as you would expect.
+
+First, most teams decide that each team member will build a number of planes and offers up their number.  They add them up and that's how many planes they are going to build.  It's usually in the 10 - 20 per student, being overly optimistic.  During the sprint, we observe one of two behaviors:
+
+1. Students freak out about underdelivering and speed up delivering the proper number of planes, but almost none of them fly, and we accept about 3 - 4 per team; or, 
+2. Students focus on quality, and deliver only 3 - 4 per team.  
+
+Typically, students then use the second sprint to adjust.  Most switch to a Henry Ford-style assembly line at that point and switch to pipelining development based on who understands what part of the design along with massively reducing their estimates.  All of this is based on a retrospective they hold before the next sprint.   Most, if not all groups, deliver much closer to expectation, which a much higher yield of accepted planes the second time around.
+
+However, we live in COVID-times, where recitations in the second half of the semester are held remote.  
+
+So, what can we do the simulate the same type of learning in the online environment?
+
+## Goldilocks Story as the Agile Prompt
+
+This year, we tried something different.  Adapting material from Mark Levison about running a comic-book creation activity to teach agile, we set out to teach agile using the same comic-book story, but completely online.  Mark runs a cool activity where students of agile are taught to learn agile by building a comic book version of the Goldilocks and the Three Bears story on paper in his classes, but I decided it would be fun to try to do it in the online format, using Google Slides, by building a one-page emoji-based comic.  This idea was influenced by the fact that I had observed our students enjoyed reacting and telling stories in class using just emoji -- as well as the fact that writing a story with pure emoji was both a fun challenge and a way to bring students creativity into the classroom.  
+
+We started by prompting students two days ahead of the recitation to revisit (or visit for the first time) the story of Goldilocks and the Three Bears.  
+
+When students came to recitation, depending on the size of the online class in Zoom, we would split into multiple teams (if > 4, multiple teams; if not, a single team.)  I would serve as the product owner, presenting students with the product backlog, in priority order.
+
+### Product Backlog
+
+The product backlog consisted of the following:
+
+1.	As a child I can see colorful emoji depictions of the characters so that I can understand the story without having to read it. 
+2.	As a child I can count the characters and items so that I can develop my counting skills. 
+3.	As a sponsor I can showcase my advertisement for home security so that parents will contact me for our services. 
+4.	As a parent I can read the story to my child so that I do not have to make up the words. 
+5.	As a child I can do a fun activity so that I will enjoy this book for a long time. 
+6.	As a parent I would be able to download and the story so I can have it available for my child when I do not have an internet connection. 
+7.	As a sponsor I can see my PSA about being kind to animals so that the next generation will improve on the last. 
+8.	As a parent I can learn about the authors so that I can find more emoji comics written by them.
+
+As you can see, the product backlog is purposely designed to introduce potential problematic points.  First, several of the low priority tasks are of low complexity: adding PSAs, links to downloads, and credits.  These serve as tasks that seem easy to add in a single sprint, but would cause the product to be developed in a order that didn't match the organization's expectations.  Next, you'll notice that one task (task 5) is purposely ambiguous, that may result in work being performed where it may be rejected by the product owner if it wasn't properly reviewed first.  Finally, we provided a small one sentence summary stating that it should be a single page comic that used emoji.
+
+### Time Table
+
+Then, I assigned a time table for the 50 minute slot and how the time should be broken down.  I include it below.
+
+| 00 | Class arrives, introduction, split into recitation groups. | 
+| --- | :-: |
+|    | *Start* |
+|    | *Sprint 1* |
+| 05 | Sprint planning (decide how much to do) |
+| 08 | Day 1, Sprint 1 (work) |
+| 13 | Daily Scrum (what did you do, what will you do, obstacles) |
+| 15 | Day 2, Sprint 1 (work) |
+| 20 | Sprint review and demo by each team to product owner |
+| 25 | Sprint retrospective |
+|    | *Sprint 2*  |
+| 30 | Sprint planning (decide how much to do) |
+| 33 | Day 1, Sprint 2 (work) |
+| 38 | Daily Scrum (what did you do, what will you do, obstacles) |
+| 40 | Day 2, Sprint 2 (work) |
+| 45 | Sprint retrospective | 
+|    | *Final Review*
+| 47 | 1-minute presentations to the class of the completed work |
+| 50 | End |
+
+## Learnings
+
+So, what did we learn after four recitations of this in the Fall 2020 semester, running this purely online?
+
+1. So, just as expected the first sprint is a bit haphazard.  Students just all pick an item to work on, typically each student picks a single item in the backlog to work on themselves and if they decide to work on a single item, they typically have overlap and don't coordinate at all.  To be expected.
+
+2. In order to make it seem like they accomplished something, students often pick any item in the backlog where they seemingly can make progress.  All students picked the first item in the backlog, which was the core story, but always had a memeber (or two) pick an item from the second half of the backlog that was short and could be accomplished quickly (e.g., PSA, advertisement, credit.)  None of the students asked the product owner if choosing a lower priority item was OK and during the review we told them that we would prefer a completed story without words with an advertisement (the first 3 items in the list) over having a story with words or a PSA, reinforcing they should contact the product owner about working items in the backlog out of a specific priority order.
+
+3. Some students made a document outlining their expectations before the sprint started during planning.  Many overestimated and didn't care and acknowledged it, some students modified the backlog directly before the review meeting to alter the items they said they were going to work on before the product owner came for review.  We know this because we were observing their work area during the activity. 
+
+4. Most teams didn't complete items they selected for the first sprint because they took too long.  They continued them into the next sprint and adjusted their expectations accordingly.
+
+5. Some teams didn't read clearly that the activity should be a "one-page comic" and made multiple page slideshows.  The sprint review was used to reject this story and have them correct in the next sprint.
+
+6.  Almost all teams were more accurate with estimations on the next sprint.  They also made adjustments; one team asked about finding an emoji keyboard for Windows since they were copying and pasting from an emoji website.  
+
+7. Once teams were hyperfocused on the product backlog, didn't think about obvious issues such as adding a title to their comic that were left off the backlog explicitly.  (This was common in the first two recitations, but less common in the latter two.)
+
+8. Finally, the daily sprint didn't work.  5 minutes is just too short of a time to for students to get anything productive done when adding emoji to a Google Slide.  For the second two (of the four) recitations, I cut this completely and had them work straight through as they were working together live in a video chat on Zoom.
+
+Here's a final result:
+
+![Goldilocks](Goldilocks.png)
+
+## Conclusion
+
+All in all, our class made seriously good comics this year and I am super impressed.  I'm hoping you can learn what we did to make your agile teaching in a COVID world better in the future!
+
+This is one way to teach agile in the COVID-19 world through Zoom.  I'm sure their are others.  What are yours?  I'd love to hear more!
