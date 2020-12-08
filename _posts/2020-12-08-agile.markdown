@@ -98,7 +98,7 @@ So, what did we learn after four recitations of this in the Fall 2020 semester, 
 
 Here's a final result:
 
-![Goldilocks](Goldilocks.png)
+<img src="/img/goldilocks.png">
 
 ## Conclusion
 
