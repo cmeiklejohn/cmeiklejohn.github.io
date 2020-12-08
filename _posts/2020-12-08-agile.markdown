@@ -8,7 +8,7 @@ group: teaching
 
 ## Intro
 
-As part of the curriculum of Carnegie Mellon University's 17-313 Foundations of Software Engineering, we teach agile development.  To aide in reinforcing the material, we typically teach a recitation based on a common agile introductory activity where students build paper airplanes in groups, in class.  
+As part of the curriculum of Carnegie Mellon University's [17-313](http://cmu-313.github.io) Foundations of Software Engineering, we teach agile development.  To aide in reinforcing the material, we typically teach a recitation based on a common agile introductory activity where students build paper airplanes in groups, in class.  
 
 The recitation roughtly works as follows:
 
