@@ -3,6 +3,7 @@ layout: post
 title:  "Agile: In a COVID-19 world"
 date:   2020-12-08 00:00:00 -0000
 categories: teaching
+group: teaching
 ---
 
 ## Intro
