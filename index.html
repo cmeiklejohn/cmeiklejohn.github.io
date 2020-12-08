@@ -12,6 +12,16 @@ title: Christopher Meiklejohn
     {% endfor %}
   </ul>
 
+  <h1>Teaching</h1>
+  <p>Articles I've written about teaching.</p>
+  <ul class="posts">
+    {% for post in site.posts %}
+      {% if post.group == "teaching" %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
   <h1>Macrometa</h1>
   <p>Articles I've written for the Macrometa blog.</p>
   <ul class="posts">
