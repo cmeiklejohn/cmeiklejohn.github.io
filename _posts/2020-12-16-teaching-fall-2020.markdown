@@ -1,0 +1,69 @@
+---
+layout: post
+title:  "COVID-19 Teaching Experience: 17-313 Foundations of Software Engineering"
+date:   2020-12-16 00:00:00 -0000
+categories: teaching
+group: teaching
+---
+
+As part of my Ph.D. program in Software Engineering in the [Institute for Software Research](https://www.isri.cmu.edu/) at [Carnegie Mellon University](http://cmu.edu), I have to serve as a Teaching Assistant twice throughout the duration of the program.  Normally, the department requests that you serve as TA in two different classes, but under special circumstances you can TA the same course twice if you take on more responsibility in your second term.  These responsibilities effectively move you from a more traditional TA role, where you mainly hold recitation and correct assignments, to include giving lectures and be involved with part of the course delivery and design.  
+
+## Background
+
+My first time TA'ing was for [17-313 Foundations of Software Engineering](http://cmu-313.github.io), co-instructed by [Claire Le Goues](https://clairelegoues.com) and [Michael Hilton](https://www.cs.cmu.edu/~mhilton/), in the Fall 2019 semester.  I was selected for this TA role based on my industry experience (for those of you that don't know, I worked many a job from 1998 - 2015 before leaving to pursue my Ph.D.) and since I was taking two courses that semester, used the TA to fill the remainder of the time while putting research off for most of the semester.  The class was sized around 32 student and it was held on campus with two recitation sections that I taught myself.  As part of this, I also delivered a single lecture on Chaos Engineering and had Tammy Butow (from Gremlin) come and give a short guest lecture to reinforce the lecture material and prepare students for an in-person class recitation on using Gremlin to put chaos into practice with the code they had been working with all semester.
+
+In Spring 2020, I took CS Pedagogy at CMU, a course that is co-instructed by Michael and Charlie Garrod designed specifically for students interested in teaching.  This was a fantastic course that is only offered occasionally (and, highly recommended!) where we learned how to properly design and deliver lectures over the course of 12 weeks.  During this period, I perfected a lecture, along with several active learning activities, on Lamport and vector clocks, that I delivered as part of my final project.  However, I wanted to put into practice what I had learned in this class, so I inquired about participating in an extended TA of 17-313 where I could serve in the role as co-instructor instead of just a normal TA.  
+
+I was approved and it would be set that I would serve in this role for the Fall 2020 semester, in a format that none of us were prepared for: remote and hybrid learning in a quarantine setting.
+
+## 17-313 Redux, Fall 2020
+
+Fall 2020 brought a number of changes and along with these changes came challenges.
+
+### Logistical Challenges 
+
+* First, 17-313 had doubled it's enrollment and had a waitlist. Istead of around 30 students, we'd have 60.  
+* Next, students would be participating in the course mostly online and we would be lecturing on Zoom.  
+* There wasn't going to be another TA besides myself, because getting TA's in a semester where many students were taking the semester off was difficult for every class at CMU.  
+* Students who didn't travel back to Pittsburgh after the summer break would be participating remotely from wherever they were: some were in different timezones in the US, some all over the world: we had students in Africa, Singapore, and China.
+* We would have four recitation sections.  The first would be on campus, in person, in a socially distanced setting.  The second would be hybrid, where I would Zoom from the classroom and students could come to class or participate online, and finally the final two would be completely online.  These would have to be recorded and spread over the week in between and across lectures for that week (of which, we had two.)
+
+It was scary.  First off, we're a software engineering course.  This entire course isn't designed around writing software, it's designed to help students learn process, collaboration, team management, the software development lifecycle, etc.  Most of our lectures involved group-based active learning activities.  Many, an overwhelming majority, of our recitation activities relied on close group work.  We'd have to make some changes.  
+
+It would be new, it would be difficult, it would be challenging.
+
+In the section below, I'm going to briefly outline what I'm specifically proud of this semester and some of the things we learned when running this course online.
+
+### Technical Challenges
+
+We face technical challenges every year and none of these were new because of COVID-19.  However, debugging and dealing with them asynchronously was challenging in many respects.
+
+Our course is designed around using Docker to run some code in a Linux environment and every semester this is a problem with Microsoft Windows.  In Fall 2019, most of the problems we ran into were around students with Mac's that were too old (or running too outdated of an OS) to use Docker or Windows machines where Docker ran pitifully slow because of the emulation required to run Docker inside of a VirtualBox VM without hardware support (as, most of our students do NOT have Windows Professional, which was required for Hyper-V.)  In Fall 2020, we had new Docker problems where WSL2 had gone GA about 14 days before the semester, docker-machine was no longer a supported option, and students had to spent the first week upgrading Windows to a release that supported WSL2-native Docker.  
+
+Outside of issues of just running Docker, this issue that [I had been tracking for a year](https://github.com/microsoft/WSL/issues/4166)  as I was an early WSL2 adopted on the development Insiders channel, on memory being reclaimed by WSL2 and not being released was a huge problem for students, who had to repeatedely restart WSL2 when they ran out of memory in Windows using Docker.  Further exacerbating that issue, students who had Windows Home with either 6 or 8GB of memory on their own laptops, sometimes could not even build their own Docker containers before running out of memory, leaving us with few options to help them.  Finally, several students just did not have enough disk space available.  Within the first two weeks, I spent hours a day Zoom'ing with students on screensharing to debug at least 15 or more unique environments students had trying to get them in a place where they had a working Docker configuration to be able to run the single container required for the course.
+
+### Recitation Challenges
+
+Recitation sections also posed their own set of challenges.  I outline some of the things we learned below.
+
+* We had to rethink how every recitation would work to ensure it worked in both a socially-distanced classroom as well as in a Zoom-based classroom.  We decided on the following.  First, for recitations that were purely in Zoom, we'd use breakout rooms.  However, in the classroom, students were instructed about how close they could have their desks to one another using indicators on the floor; therefore, we would have these students use a Zoom breakout room for screensharing or collaborate through a shared Google doc.  In Zoom, we'd used random assignment for breakout rooms; in the classroom, we'd use a 60 person classroom, adjusted for 20 students, to group students together based on their location in the classroom -- opposite sides -- so they could have actual discussions verbally.  Whereas smaller breakout rooms seemed to work for many activities on Zoom better, larger groups worked much better in the classroom.  Finally, since you don't have the classroom to overhear how groups are working together, I needed a mechanism to gauge group progress: in Zoom, I would need to constantly move breakout room to breakout room to see how people were working, but given the delay required to switch rooms in Zoom, this was less than ideal.
+
+* One thing we tried during lecture and recitation, was to have students collaborate on building design documents, etc. on shared Google Docs.  This worked well at first, but we soon learned that smaller breakout rooms didn't work well: 60 students in a collaborative Google slide deck would cause Google to report that there were too many users on the same document and disable editing.  This got better once we moved to larger documents.
+
+* Some of our recitation activities relied on students working together in the classroom to build something physical (or, do physical collaboration.)  One of these was our agile activity that typically involves building paper airplanes.  I completely rewrote that recitation to work in an asynchrous format that I talked about at length in a [previous post](http://christophermeiklejohn.com/teaching/2020/12/08/agile.html).
+
+* For both lectures and recitations, we learned that students would mostly arrive with cameras and mics off.  We quickly learned that students would enable them in smaller breakout rooms, and therefore pushed to use breakout rooms with active learning activities early in both recitation and lecture: students would always return with cameras on and be more willing to talk afterwards, since they would turn them on in the breakout.  For the smaller recitations (2-4 people), students would immediately turn their cameras on, which seems to indicate that students are less comfortable in the larger groups.
+
+* Recitation sizes, arguably the most challenging aspect of running recitations in this format.  For each recitation, we had roughly 10-15 students scheduled.  However, the numbers throughout the semester varied greatly.  First, students were able to choose which recitation they attended and since they were recorded, they could also attend asynchronously.  This made week-to-week predictions of the attendence difficult.  One observation was that the students in the in-person section were relatively stable: the students who came, always came (even, when the in-person recitation section went fully remote from in-person after the Thanksgiving break, per CMU policy.)  The other recitations would flucutate between either almost all students to the smallest number I ever had in a section, two students.  This made it especially difficult for any activity that relied on a group.  Therefore, for every activity that worked well in a group, I would have to also be prepared for two alternatives: first, would it work with only a single group if I didn't have enough students for two groups with at least three students and second, could I make it work if I only had two students or, gasp, a single student?  I'm happy to report that this planning paid off and even when, in the final recitation on the final day of the semester of the final week of the class and only two students arrived, we did in fact, make it work.
+
+* Remembering students names when they don't turn on their camera and speak is difficult, unless you're very good with multitasking and watching the Zoom window while demoing code or lecturing.  It's also surprisingly difficult to remember students names when everyone is wearing a mask.
+
+### Personal Accomplishments
+
+I'm particularly proud of what we were able to do under these circumstances this semester and I absolutely have Claire and Michael to thank for it.  They have been amazing mentors, who have indulged me in my desire to get involved in teaching undergraduates at CMU over the past two years.  I want to highlight a couple things that I am particularly proud of this semester.
+
+* I was able to rework many of the recitations this semester to work in the remote, in-person, hybrid format, which included completely rewriting a few of the recitations into new activities that I think worked particularly well.
+* I delivered four lectures: one on machine learning and it's implications for software engineering created by Michael and Christian; a chaos engineering lecture I wrote last year and revised this year to include the state-of-the-art, a revamped microservices lecture based on material I had gathered over the past couple years, and a completely rewritten lecture on DevOps.  Each of these lectures contained clearly defined learning goals and sometimes new active learning activities.  (One such active learning activity I was particularly proud of was a bingo game during our microservices lecture where students decomposed a monolith into individual services, that the students particularly liked and requested more activities of the same type.)
+* Finally, and completely in jest, I was tasked with live coding a feature in a Rails app by Claire that I was quite successful at, despite not having programmed Ruby/Rails since around 2012, in order to demonstrate to students how to navigate an unfamiliar code base as part of a lecture on code archaeology. :)
+
+All in all, a good start to the 2020-2021 year.
