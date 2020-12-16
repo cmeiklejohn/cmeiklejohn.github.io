@@ -22,6 +22,8 @@ Fall 2020 brought a number of changes and along with these changes came challeng
 
 ### Logistical Challenges 
 
+This year, we faced a number of new challenges around logistics:
+
 * First, 17-313 had doubled it's enrollment and had a waitlist. Istead of around 30 students, we'd have 60.  
 * Next, students would be participating in the course mostly online and we would be lecturing on Zoom.  
 * There wasn't going to be another TA besides myself, because getting TA's in a semester where many students were taking the semester off was difficult for every class at CMU.  
