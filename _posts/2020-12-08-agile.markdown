@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Agile: In a COVID-19 world"
+title:  "COVID-19 Teaching Experience: Agile"
 date:   2020-12-08 00:00:00 -0000
 categories: teaching
 group: teaching
@@ -15,7 +15,7 @@ The recitation roughtly works as follows:
 1. First, students in the class are randomly broken into groups of four or so students.
 2. Each group is presented with 5 paper airplane designs of varying difficulty (from easy to quite complicated.) 
 
-The teams are provided a few minutes to review the designs before we start the agile simulation.  In this simulation, each team is randomly given, by the product owner (the instructor) a design, and is told to build as many planes as they can in 2 minutes.  Students then "plan" for the sprint, by providing an estimate of how many planes they can build, with the information that I, the instructor, will review the planes at the end of the sprint, test them to see if they fly, and accept each plane that works.  The team at the end of two sprints is the "best" team that wins nothing by the bragging rights of the recitation.
+The teams are provided a few minutes to review the designs before we start the agile simulation.  In this simulation, each team is randomly given, by the product owner (the instructor) a design, and is told to build as many planes as they can in 2 minutes.  Students then "plan" for the sprint, by providing an estimate of how many planes they can build, with the information that I, the instructor, will review the planes at the end of the sprint, test them to see if they fly, and accept each plane that works.  The team at the end of two sprints is the "best" team that wins nothing but the bragging rights of the recitation.
 
 It goes as you would expect.
 
