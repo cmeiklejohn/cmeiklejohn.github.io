@@ -12,7 +12,7 @@ When building [Partisan](http://github.com/lasp-lang/partisan), our high-perform
 
 ## Processes
 
-One of the first challenges we had was dealing with process identifiers contained in messages sent between nodes.
+One of the first challenges we had was dealing with process identifiers contained in messages sent between different nodes.
 
 Process identifiers, when using Distributed Erlang, are tricky business.  
 
