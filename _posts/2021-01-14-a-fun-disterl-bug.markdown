@@ -48,14 +48,16 @@ But, this example program instructs the developer to specify the actor as the lo
 
 What happens is the following process.  The data structure at the end of each line is list data structure that is close to, not exactly, the internal representation of the vector clock, minus the metadata.
 
-* Node A, process 0.1.0 updates the CRDT which updates the payload and the vector clock. `[ (0.1.0, 1) ]`
-* Node B, process 0.2.0 updates the CRDT which updates the payload and the vector clock. `[ (0.2.0, 1) ]`
-* They synchronize, which rewrites the vector clock to remove the local process identifiers and the merges the CRDTs and the vector clocks.  This produces a vector clock of `[ ((A, 0.1.0), 1), ((B, 0.1.0), 1) ]`
-* Node A updates again, updates the clock using it's local identifier.  `[ ((A, 0.1.0), 1), ((B, 0.1.0), 1),  (0.1.0, 1) ]`
-* B does the same. `[ ((A, 0.1.0), 1), ((B, 0.1.0), 1),  (0.1.0, 1), (0.2.0, 1) ]`
-* They synchronize and perform the rewrite, the vector clocks are merged. `[ ((A, 0.1.0), 1), ((B, 0.1.0), 1),  ((A, 0.1.0), 1), ((B, 0.2.0), 1) ]`
+* Node A, process 0.1.0 updates the CRDT which updates the payload and the vector clock. `[(0.1.0, 1)]`
+* Node B, process 0.2.0 updates the CRDT which updates the payload and the vector clock. `[(0.2.0, 1)]`
+* They synchronize, which rewrites the vector clock to remove the local process identifiers and the merges the CRDTs and the vector clocks.  This produces a vector clock of `[((A, 0.1.0), 1), ((B, 0.1.0), 1)]`
+* Node A updates again, updates the clock using it's local identifier.  `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  (0.1.0, 1)]`
+* B does the same. `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  (0.1.0, 1), (0.2.0, 1)]`
+* They synchronize and perform the rewrite, the vector clocks are merged. `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  ((A, 0.1.0), 1), ((B, 0.2.0), 1)]`
 * This repeats until the system runs out of memory because the vector clocks get too large and the Erlang node crashes.
 
-Now, the user doesn't notice this memory problem, only that the clock appears to be the same.  But, the user never looks at the clock really, because it's an internal implementation used to speed up synchronization.  This is because, if you have a dictionary that has multiple entries for the same key, when you read the dictionary -- rather than look at it's internal representation -- you'll just see two values, `(A, 0.1.0)` points to 1 and `(B, 0.1.0)` points to 1.
+Now, the user doesn't notice this memory problem, only that the clock appears to be the same.  But, the user never looks at the clock really, because it's an internal implementation used to speed up synchronization.  This is because, if you have a dictionary that has multiple entries for the same key, when you read the dictionary -- rather than look at it's internal representation -- you'll just see two values, `(A, 0.1.0)` points to `1` and `(B, 0.1.0)` points to `1`.
+
+## The Fix
 
 Therefore, the bugfix that was pushed in the latest version of Lasp prohibits the use of process identifiers or references in the vector clock or CRDT payload itself.  This is because you can actually break convergence if you happened to include a process identifier as part of the payload of a CRDT.  We didn't put this restriction on the actual data type itself, because that behavior is fine if you're using a CRDT in a normal Distributed Erlang cluster, it's only the combination with Partisan and Lasp where it becomes an issue.
