@@ -54,15 +54,20 @@ First iteration.
 
 * Node A, process `0.1.0` updates the CRDT which updates the payload and the vector clock. `[(0.1.0, 1)]`
 * Node B, process `0.2.0` updates the CRDT which updates the payload and the vector clock. `[(0.2.0, 1)]`
-* They synchronize, which rewrites the vector clock to remove the local process identifiers and the merges the CRDTs and the vector clocks.  This produces a vector clock of `[((A, 0.1.0), 1), ((B, 0.1.0), 1)]`
+* They synchronize, which rewrites the vector clocks as it's transmitted between nodes because it contains a local, relative process identifier to remove it and then merges both the CRDT payload and the vector clock.  This produces a vector clock of `[((A, 0.1.0), 1), ((B, 0.1.0), 1)]` after the merge.
 
 Second iteration.
 
 * Node A updates again, updates the clock using it's local identifier.  `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  (0.1.0, 1)]`
 * B does the same. `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  (0.2.0, 1)]`
-* They synchronize and perform the rewrite, the vector clocks are merged. `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  ((A, 0.1.0), 1), ((B, 0.2.0), 1)]`
+* They synchronize and perform the rewrite during message transmission again, the vector clocks are merged again. `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  ((A, 0.1.0), 1), ((B, 0.2.0), 1)]`a
 
-Xth iteration.
+At this point we have two problems: 
+
+* The data structure isn't valid; there shouldn't be duplicated keys, but we have them because we manipulated the internal representation in a way that the dictionary API wouldn't normally allow.
+* The vector clock value is wrong.
+
+Finally, the Xth iteration.
 
 * This repeats until the system runs out of memory because the vector clocks get too large and the Erlang node crashes.
 
