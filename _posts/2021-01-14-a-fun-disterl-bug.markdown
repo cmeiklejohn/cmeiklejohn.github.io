@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Weekend Report: Erlang's Process Identifiers and My Weekend Bug Hunting"
+title:  "Erlang's Process Identifiers and My Weekend Bug Hunting"
 date:   2021-01-14 00:00:00 -0000
 categories: erlang partisan lasp
 group: Partisan
