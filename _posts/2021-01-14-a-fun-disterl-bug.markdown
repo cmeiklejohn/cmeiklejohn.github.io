@@ -24,7 +24,7 @@ Process identifiers, when using Distributed Erlang, are tricky business.
 
 This "rewriting" of process identifiers happens during serialization/deserialization.  In fact, you can convert these to Erlang binaries and convert them back, or write into memory or whatever you want, and as long as the process by that identifier is there, whether it's a reference to a local or remote process, it will all just work.  If not, you'll get the worst error in the history of Erlang: the dreaded, completely ambiguous `badarg` on deserialization.
 
-This can get even more crazy: could node A get `0.25.0` to node B outside of distributed Erlang and then deserialize it and have it reference the wrong process? Sure, why not!
+This can get even more crazy: could node A get `0.25.0` to node B somehow outside of Distributed Erlang where the rewriting happens and end up with a reference the wrong process? Sure, why not!
 
 (You also can do this pretty easily manually with the `pid(0,25,0)` operation, which allows you to generate a process identifier from integers.)
 
