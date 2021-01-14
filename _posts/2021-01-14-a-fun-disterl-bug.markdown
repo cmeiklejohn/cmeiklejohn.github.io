@@ -64,7 +64,7 @@ Second iteration.
 
 At this point we have two problems: 
 
-* The data structure isn't valid; there shouldn't be duplicated keys, but we have them because we manipulated the internal representation in a way that the dictionary API wouldn't normally allow.
+* The data structure isn't valid; there shouldn't be duplicated keys, but we have them because we manipulated the internal representation in a way that the dictionary API wouldn't normally allow.  This is no problem for Erlang though, it will just read the value for the *first* key it finds when determining what's in the dictionary.
 * The vector clock value is wrong.
 
 Finally, the Xth iteration.
