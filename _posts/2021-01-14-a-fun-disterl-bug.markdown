@@ -18,7 +18,7 @@ Process identifiers, when using Distributed Erlang, are tricky business.
 
 * Process identifiers are relative.  For example, a process identifier `0.25.0` is a process on the local machine; we know this because the first position in the process id is a 0.  This refers to process 25 on the local node.  
 
-* If I send this process identifier in a message to another machine, that process will display as `X.25.0`; in this case, the X will be the position in the connection list of the node that the identifier came from.  This means that `0.25.0` on machine A and machine B refers to two different processes.  
+* If I send this local process identifier `0.25.0` in a message to another machine, it will be received at the other machine as `X.25.0`; in this case, the X will be the position in the connection list of the node that the identifier came from.  This means that `0.25.0` on machine A and machine B refers to two different processes.  
 
 * It gets even more complicated: if A sends a local process identifier to B and B then forwards to C and C isn't connected to A yet?  A will be connected to C in order to properly name the process identifier.  If this can't happen, the process will crash.
 
