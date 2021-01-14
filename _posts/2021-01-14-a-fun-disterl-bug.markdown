@@ -22,11 +22,11 @@ Process identifiers, when using Distributed Erlang, are tricky business.
 
 * It gets even more complicated: if A sends a local process identifier to B and B then forwards to C and C isn't connected to A yet?  A will be connected to C in order to properly name the process identifier.  If this can't happen, the process will crash.
 
-This "rewriting" of process identifiers happens during serialization/deserialization.  In fact, you can write a process identifier out into a binary file on disk, copy that file to another machine, and then deserialize it there, and as long as this process all works, you won't get a `badarg` when attempting to deserialize.  
+This "rewriting" of process identifiers happens during serialization/deserialization.  In fact, you can convert these to Erlang binaries and convert them back, or write into memory or whatever you want, and as long as the process by that identifier is there, whether it's a reference to a local or remote process, it will all just work.  If not, you'll get the worst error in the history of Erlang: the dreaded, completely ambiguous `badarg`, on deserialization.
 
-This can get even more crazy: could node A write out `0.25.0` to disk and node B read from disk and have the process identifier reference the wrong process?  Yes, you can definitely do this.  
+This can get even more crazy: could node A get `0.25.0` to node B outside of distributed Erlang and then deserialize it and have it reference the wrong process? Sure, why not!
 
-(You also can do this with the `pid(0,25,0)` operation, as well.)
+(You also can do this pretty easily manually with the `pid(0,25,0)` operation, which allows you to generate a process identifier from integers.)
 
 ## Partisan and Process Identifiers
 
