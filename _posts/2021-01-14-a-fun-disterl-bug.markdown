@@ -56,13 +56,13 @@ First iteration.
 
 * Node A, process `0.1.0` updates the CRDT which updates the payload and the vector clock. `[(0.1.0, 1)]`
 * Node B, process `0.2.0` updates the CRDT which updates the payload and the vector clock. `[(0.2.0, 1)]`
-* They synchronize, which rewrites the vector clocks as it's transmitted between nodes because it contains a local, relative process identifier to remove it and then merges both the CRDT payload and the vector clock.  This produces a vector clock of `[((A, 0.1.0), 1), ((B, 0.1.0), 1)]` after the merge.
+* They synchronize, which rewrites the vector clocks as it's transmitted between nodes because it contains a local, relative process identifier to remove it and then merges both the CRDT payload and the vector clock.  This produces a vector clock of `[((A, 0.1.0), 1), ((B, 0.2.0), 1)]` after the merge.
 
 Second iteration.
 
-* Node A updates again, updates the clock using it's local identifier.  `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  (0.1.0, 1)]`
-* B does the same. `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  (0.2.0, 1)]`
-* They synchronize and perform the rewrite during message transmission again, the vector clocks are merged again. `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  ((A, 0.1.0), 1), ((B, 0.2.0), 1)]`
+* Node A updates again, updates the clock using it's local identifier.  `[((A, 0.1.0), 1), ((B, 0.2.0), 1),  (0.1.0, 1)]`
+* B does the same. `[((A, 0.1.0), 1), ((B, 0.2.0), 1),  (0.2.0, 1)]`
+* They synchronize and perform the rewrite during message transmission again, the vector clocks are merged again. `[((A, 0.1.0), 1), ((B, 0.2.0), 1),  ((A, 0.1.0), 1), ((B, 0.2.0), 1)]`
 
 At this point we have two problems: 
 
