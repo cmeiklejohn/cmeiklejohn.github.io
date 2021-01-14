@@ -44,16 +44,26 @@ In Lasp, the API for interacting with CRDTs allows users to specify an operation
 
 Now, the example application in the Lasp README instructs users to setup a two node cluster, perform two concurrent updates on each of the nodes, and then synchronize them, and read the resulting object to demonstrate how data synchronization works and CRDTs resolve conflicting updates.  You can run this program in a loop to see concurrent, conflicting, updates being applied and see them automatically resolve.
 
-But, this example program instructs the developer to specify the actor as the local process identifier!  Oh no.
+But, this example program instructs the developer to specify the actor as the local process identifier!  That's not going to be good.
 
-What happens is the following process.  The data structure at the end of each line is list data structure that is close to, not exactly, the internal representation of the vector clock, minus the metadata.
+## Example
+
+Here's the problematic execution.  The data structure at the end of each line is list data structure that is close to, not exactly, the internal representation of the vector clock, minus the metadata.
+
+First iteration.
 
 * Node A, process `0.1.0` updates the CRDT which updates the payload and the vector clock. `[(0.1.0, 1)]`
 * Node B, process `0.2.0` updates the CRDT which updates the payload and the vector clock. `[(0.2.0, 1)]`
 * They synchronize, which rewrites the vector clock to remove the local process identifiers and the merges the CRDTs and the vector clocks.  This produces a vector clock of `[((A, 0.1.0), 1), ((B, 0.1.0), 1)]`
+
+Second iteration.
+
 * Node A updates again, updates the clock using it's local identifier.  `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  (0.1.0, 1)]`
-* B does the same. `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  (0.1.0, 1), (0.2.0, 1)]`
+* B does the same. `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  (0.2.0, 1)]`
 * They synchronize and perform the rewrite, the vector clocks are merged. `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  ((A, 0.1.0), 1), ((B, 0.2.0), 1)]`
+
+X iteration.
+
 * This repeats until the system runs out of memory because the vector clocks get too large and the Erlang node crashes.
 
 Now, the user doesn't notice this memory problem, only that the clock appears to be the same.  But, the user never looks at the clock really, because it's an internal implementation used to speed up synchronization.  This is because, if you have a dictionary that has multiple entries for the same key, when you read the dictionary -- rather than look at it's internal representation -- you'll just see two values, `(A, 0.1.0)` points to `1` and `(B, 0.1.0)` points to `1`.
