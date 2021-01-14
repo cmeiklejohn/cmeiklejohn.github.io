@@ -32,7 +32,7 @@ This can get even more crazy: could node A write out `0.25.0` to disk and node B
 
 Partisan supports alternative transport layers that are not based on Distributed Erlang.  For example, it allows you to run over AMQP, or any of our custom, highly-scalable, TCP transports.  This is a problem, because you cannot deserialize a process identifier for a node that isn't connected with Distributed Erlang. 
 
-To solve this problem, we integrated a pid rewriting mechanism in Partisan that would automatically rewrite process identifiers into a format that conainted information about where the process was running and it's local identifier name there.  We then added an additional API into the system that would support messaging with these identifiers regardless of if the nodes were directly connected or whether or not the message needed to use a proxy node to deliver it.
+To solve this problem, we integrated a pid rewriting mechanism in Partisan that would automatically rewrite process identifiers into a format that contained information about where the process was running and it's local identifier name there.  We then added an additional API into the system that would support messaging with these identifiers regardless of if the nodes were directly connected or whether or not the message needed to use a proxy node to deliver it.
 
 ## The Bug
 
