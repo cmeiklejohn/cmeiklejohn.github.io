@@ -60,7 +60,7 @@ Second iteration.
 
 * Node A updates again, updates the clock using it's local identifier.  `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  (0.1.0, 1)]`
 * B does the same. `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  (0.2.0, 1)]`
-* They synchronize and perform the rewrite during message transmission again, the vector clocks are merged again. `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  ((A, 0.1.0), 1), ((B, 0.2.0), 1)]`a
+* They synchronize and perform the rewrite during message transmission again, the vector clocks are merged again. `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  ((A, 0.1.0), 1), ((B, 0.2.0), 1)]`
 
 At this point we have two problems: 
 
