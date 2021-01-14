@@ -62,7 +62,7 @@ Second iteration.
 * B does the same. `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  (0.2.0, 1)]`
 * They synchronize and perform the rewrite, the vector clocks are merged. `[((A, 0.1.0), 1), ((B, 0.1.0), 1),  ((A, 0.1.0), 1), ((B, 0.2.0), 1)]`
 
-X iteration.
+Xth iteration.
 
 * This repeats until the system runs out of memory because the vector clocks get too large and the Erlang node crashes.
 
