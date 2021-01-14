@@ -36,7 +36,9 @@ To solve this problem, we integrated a pid rewriting mechanism in Partisan that 
 
 ## The Bug
 
-My first Ph.D. work is a programming model for distributed programming, [Lasp](http://github.com/lasp-lang/lasp).  It contains a database inside that uses CRDTs for object storage and provides automatic synchronization.  Partisan is the transport layer that Lasp uses for synchronizing this database.   Each object in Lasp is identified by a key that is placed in local storage and it's associated value is a CRDT payload along with a vector clock that's used for fast object comparison to avoid running the expensive CRDT merge when receiving an object during syncronization that is known to be old.  
+My first Ph.D. work is a programming model for distributed programming, [Lasp](http://github.com/lasp-lang/lasp).  
+
+Lasp contains a database inside that uses CRDTs for object storage and provides automatic synchronization.  Partisan is the transport layer that Lasp uses for synchronizing this database.   Each object in Lasp is identified by a key that is placed in local storage and it's associated value is a CRDT payload along with a vector clock that's used for fast object comparison to avoid running the expensive CRDT merge when receiving an object during syncronization that is known to be old.  
 
 In Lasp, the API for interacting with CRDTs allows users to specify an operation to perform on the CRDT as well as the "actor"'s name, which is the unique identifier used by the node performing the update that is used in order to detect concurrent operations.  The vector clock is an Erlang dictionary, which is represented as an Erlang term containing some metadata and an embedded list of key-value pairs.
 
@@ -44,7 +46,7 @@ Now, the example application in the Lasp README instructs users to setup a two n
 
 But, this example program instructs the developer to specify the actor as the local process identifier!  Oh no.
 
-So, what happens is the following:
+What happens is the following process.  The datastructure at the end of each line is the value of the vector clock.
 
 * Node A, process 0.1.0 updates the CRDT which updates the payload and the vector clock. { 0.1.0 => 1 }
 * Node B, process 0.2.0 updates the CRDT which updates the payload and the vector clock. { 0.2.0 => 1 }
