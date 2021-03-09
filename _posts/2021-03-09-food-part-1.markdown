@@ -216,7 +216,7 @@ If I can't find a substitute for every possible ingredient -- gluten-free altern
 To get the recipes, I take them in the command line and use a HTTP library to get them.  For example, if I wanted to have my favorite meal when I lived in Europe, the croque monsieur:
 
 ```
-$ clear; python3 food.py https://www.foodnetwork.com/recipes/ina-garten/croque-monsieur-recipe-1916523e`
+$ clear; python3 food.py https://www.foodnetwork.com/recipes/ina-garten/croque-monsieur-recipe-1916523e
 ```
 
 My script would tell me:
