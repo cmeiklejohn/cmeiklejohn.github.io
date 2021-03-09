@@ -120,7 +120,7 @@ weird as diet I need to adjust to.
 
 ## Programming My Way Out
 
-I made a joke on Twitter earlier today that I would need a Prolog program to
+I [made a joke on Twitter earlier today](https://twitter.com/cmeik/status/1369121879559200774) that I would need a Prolog program to
 come up with something that I could actually eat and after a discussion with
 a friend, I thought, surely this is a constraint program and really, for a
 recipe to work for me, it just had to be satisfiable, right?
