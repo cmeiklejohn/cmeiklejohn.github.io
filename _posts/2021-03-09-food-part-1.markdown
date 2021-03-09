@@ -55,9 +55,9 @@ me regardless of how careful I was. In fact, the coronovirus quarantine had
 been a blessing, as now I know that every time I feel sick, it's because of something *I* did: it's all my fault. Not to be disgusting,
 but anyone who's dealing with these issues knows that it's an alternating
 cycle of a week of constipation and then two to three days of horrific
-diarrhea combined with massive weight flucuations -- I've been tracking it
-with a IoT scale and see variations from the days where I fuck up (eating
-wise) of around 9 - 10 pounds where I feel *so shitty* that just the thought
+diarrhea combined with massive weight flucuations: I've recently been tracking these flucuations
+with a IoT scale and see variations from the days where I fuck up by eating something I shouldn't
+where my weight varies between 10 pounds where I feel *so shitty* that just the thought
 of putting on pants, that I know will not fit properly if at all that day,
 makes me seek cover on the couch in sweatpants and hide under a blanket
 watching Law and Order reruns. In many ways, the coronavirus quarantine has
