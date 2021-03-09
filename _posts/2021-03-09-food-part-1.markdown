@@ -95,9 +95,7 @@ The way I saw it previously, is pretty easy to comprehend from an avoidance stra
 * Dairy is easy: food is pretty well labeled for milk, etc.  
 * Gluten is a bit harder, because it hides behind certain names (I didn't write a post about finding out my toothpaste had gluten this summer -- I should.) However, after a year of being really dilligent with that and not buying anything that dosen't explicitly say "gluten free" on the label -- things have improved dramatically.  
 
-However, that's obviously not the whole story for me now: IBS requires I avoid gluten and onion, and since I don't feel well still, I still need to go further.
-
-Now, I need to do another eliminiation diet and the list of foods is *35* items long; obviously I'll start the elimination diet with the ones at the top of the list.  Sounds easy?  It's not.  I'm sure many of you just pickup foods without even thinking: yeah, I don't do that.  Honestly, food shopping and preparation for the week and checking items is more stressful than programming for me now -- in jest, I'd say implementing Paxos is easier for me at this point.
+However, that's obviously not the whole story for me now: IBS requires I avoid gluten and onion, and since I don't feel well still, I still need to go further.  Therefore, I need to do another eliminiation diet and the list of foods is *35* items long; obviously I'll start the elimination diet with the ones at the top of the list.  Sounds easy?  It's not.  I'm sure many of you just pickup foods without even thinking: yeah, I don't do that.  Honestly, food shopping and preparation for the week and checking items is more stressful than programming for me now -- in jest, I'd say implementing Paxos is easier for me at this point.
 
 But, the question is -- what the hell do I actually eat?
 
