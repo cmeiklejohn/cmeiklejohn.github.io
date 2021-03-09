@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Debugging my Issues with Food: Part 1"
+title:  "Food: A Bittersweet Affair"
 date:   2021-03-09 00:00:00 -0000
 categories: food
 group: food
@@ -100,4 +100,150 @@ But, the question is -- what the hell do I actually eat?
 
 ## Recipes
 
-...
+At the start of the coronavirus quarantine, I spent a lot of time buying and
+reading cookbooks. I picked cuisines that minimized on dairy (due to
+availability or regional restrictions, etc.) and gluten (for similar
+reasons.) I bought vegan cookbooks -- but had to skip the soy and gluten, I
+bought vegetarian cookbooks and adjusted accordingly. I bought gluten-free
+baking cookbooks. I adapted as many recipes I could using alternate
+ingredients to cook them soy-free, garlic-free, onion-free, and gluten-free.
+This seemed to work well for me, but I'd never have anyone over because I'm
+pretty sure that the food was tasteless -- at this point food is merely
+something that I cook because I *have* to eat to survive. (In many ways, this
+makes me quite sad because I did spend most of my money eating out because I
+loved travel and food -- but, I digress.) 
+
+This doesn't work anymore. There's no way to adapt recipes that require eggs
+as a core ingredient at this point -- there's no cookbook that fits this
+weird as diet I need to adjust to.
+
+## Programming My Way Out
+
+I made a joke on Twitter earlier today that I would need a Prolog program to
+come up with something that I could actually eat and after a discussion with
+a friend, I thought, surely this is a constraint program and really, for a
+recipe to work for me, it just had to be satisfiable, right?
+
+I spent a bit of time trying to figure out how to encode this into Z3, but 
+knowing that my last attempt to do any serious string work with Z3 failed 
+horrifically, I thought, well, surely I could write a little bit of Python to
+solve the problme.
+
+So, let's look at a good first attempt -- written at 11 PM in a moment of 
+desperation, maybe?
+
+First, we encode the foods we can't have.  I broke mine down into a few different
+categories.  For example, I have a category of foods that I know will trigger an autoimmune response:
+
+```
+food_autoimmune_response = {
+    "wheat": {}, 
+    "rye": {}, 
+    "all-purpose flour": { "subs": ["all-purpose gluten free flour" ] },
+    "barley": {}, 
+    "gluten": {}, 
+    "bread": { "subs": [ "dairy-free, egg-free, soy-free, gluten-free bread" ] }, 
+    "sourdough": {}
+}
+```
+
+I use a map for each food and then a key to indiciate a list of possible substitutions.  For example, I know that 
+I can use an all-purpose gluten-free flour to substitute for a regular all-purpose flour; similiarly, I know that 
+I can use a dairy-free, egg-free, soy-free, gluten-free bread to replace a bread in a recipe that calls for 
+sandwich or sourdough bread.
+
+I do the same for other foods, for example, my known food intolerances:
+
+```
+food_intolerances = {
+    "parmesan": {}, 
+    "yogurt": {}, 
+    "butter": {}, 
+    "dairy": {}, 
+    "cheese": {}, 
+    "sour cream": {},
+    "milk": {}, 
+    "cottage cheese": {}
+}
+```
+
+Here, I haven't filled out the substitutions yet.  Mainly, because my normal substitutions for parmesan and sour cream both contain soy, which I just found out I have to cut out with my new elimination diet.
+
+Next, I use a list to accumlate the items that match in the recipe.  I put this in a function, cause I have several different lists: autoimmune responses, intolerances, class 3 sensitivites, class 2, etc.  
+
+```
+def check_item(item, recipe, list):
+    print("=> " + item)
+
+    matcher = re.compile(r'\b%s\b' % item, re.IGNORECASE)
+
+    if matcher.search(recipe):
+        list.append(item)
+```
+
+This way, I can run it for all of the lists dynamically.  I use word boundaries on the regexp to avoid matching 'Fryer' when looking for recipes with 'rye' as an ingredient.
+
+I run this for each list, like so:
+
+```
+print("Checking items that trigger an autoimmune response: ")
+print("")
+for item in food_autoimmune_response:
+    check_item(item, recipe, food_autoimmune_response_found)
+print("")
+```
+
+Once that's done, I iterate each list looking for items for which there are no substitutes:
+
+```
+def print_results(list, found_list):
+    for item in found_list:
+        if 'subs' in list[item]:
+            print("Found: " + item + "; however, possible substituions: " + str(list[item]['subs']))
+        else:
+            print("Found: " + item + "; no subs.")
+            fatal = 1
+
+print("Autoimmune response triggering ingredients:")
+print("")
+print_results(food_autoimmune_response, food_autoimmune_response_found)
+print("")
+```
+
+If I can't find a substitute for every possible ingredient -- gluten-free alternatives for gluten-containing items, other acidic items for citrus I can't consume, dairy alternatives, I fail the entire thing by setting the fatal value to 1.  Then, at the end I print out that this recipe isn't good.
+
+To get the recipes, I take them in the command line and use a HTTP library to get them.  For example, if I wanted to have my favorite meal when I lived in Europe, the croque monsieur:
+
+```
+$ clear; python3 food.py https://www.foodnetwork.com/recipes/ina-garten/croque-monsieur-recipe-1916523e`
+```
+
+My script would tell me:
+
+```
+================ Results ==================
+
+Autoimmune response triggering ingredients:
+
+Found: bread; however, possible substituions: ['dairy-free, egg-free, soy-free, gluten-free bread']
+
+Intolerances:
+
+Found: parmesan; no subs.
+Found: butter; no subs.
+Found: cheese; no subs.
+Found: milk; no subs.
+```
+
+Now, I could find substitues for parmesan, butter, cheese, and milk, but at this point I haven't found good alterantives for milk (all alternatives use cashew, soy, coconut, or almond, which I can't have); butter (vegany buttery sticks might work, but haven't verified soy content), cheese (Daiya might work, have to recheck with new sensitivies) nor parmesan (all known replacements use soy or almond.)
+
+## Future Work
+
+Now, this seems great, but it's not all perfect.  I found a number of problems with this after I made it:
+
+* Most recipe pages display advertisements, cause of course.  This means that any advertisement, that advertises a recipe that contains a name with an offending ingredient will be disqualified by my script.  I have no clue what I could even possibly do to address this, since we all know ads rule the entire internet.
+* I need to manually input alternatives for every single food sensitivity that I have.  Not a huge deal, I'm gonna have to figure this out anyway.
+
+We'll just have to see what the future brings. 
+
+Thanks for reading.
