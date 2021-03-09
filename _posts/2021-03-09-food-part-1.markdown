@@ -163,7 +163,7 @@ food_intolerances = {
     "dairy": {}, 
     "cheese": {}, 
     "sour cream": {},
-    "milk": {}, 
+    "milk": { "subs": [ "oat milk" ] }
     "cottage cheese": {}
 }
 ```
@@ -233,10 +233,10 @@ Intolerances:
 Found: parmesan; no subs.
 Found: butter; no subs.
 Found: cheese; no subs.
-Found: milk; no subs.
+Found: milk; however, possible substituions: ['oat milk'] 
 ```
 
-Now, I could find substitues for parmesan, butter, cheese, and milk, but at this point I haven't found good alterantives for milk (all alternatives use cashew, soy, coconut, or almond, which I can't have); butter (vegany buttery sticks might work, but haven't verified soy content), cheese (Daiya might work, have to recheck with new sensitivies) nor parmesan (all known replacements use soy or almond.)
+Now, I could find substitues for parmesan, butter, cheese, and milk, but at this point I haven't found good alterantives for milk (all alternatives use cashew, soy, coconut, or almond, which I can't have -- with the exception of oat milk, which I haven't cooked with); butter (vegany buttery sticks might work, but haven't verified soy content), cheese (Daiya might work, have to recheck with new sensitivies) nor parmesan (all known replacements use soy or almond.)
 
 ## Future Work
 
