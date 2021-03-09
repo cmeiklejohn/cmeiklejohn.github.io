@@ -12,6 +12,16 @@ title: Christopher Meiklejohn
     {% endfor %}
   </ul>
 
+  <h1>Food</h1>
+  <p>Articles I've written about food allergies, intolerances, recipes and general food horror.</p>
+  <ul class="posts">
+    {% for post in site.posts %}
+      {% if post.group == "food" %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
   <h1>Teaching</h1>
   <p>Articles I've written about teaching.</p>
   <ul class="posts">

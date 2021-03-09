@@ -1,0 +1,103 @@
+---
+layout: post
+title:  "Debugging my Issues with Food: Part 1"
+date:   2021-03-09 00:00:00 -0000
+categories: food
+group: food
+---
+
+## Background
+
+I've [written about this before](http://christophermeiklejohn.com/personal/2018/04/19/celiac.html),
+but for those who haven't seen those posts, I've had nothing short of a
+barrage of issues surrounding food and gastrointenstinal issues since I
+started my Ph.D., which has drastically -- I'm not joking, quite drastically
+-- altered my life in quite a few ways.
+
+The major problems started around the time I turned 35 -- shortly after I
+started my Ph.D. program -- with what seemed to be a intolerance to lactose
+and ended up actually being celiac disease. It took me quite a while to
+realize what was actually happening after seeing a number of doctors, being
+unable to go to work when I was interning at Microsoft Research that summer,
+and resulting in some horrific levels of depression -- all from eating food
+and drink, to put it simply. Further exacerbating the issue was that I was
+living in Belgium at the time on a strict diet of waffles in the morning,
+baguettes at lunch, baguettes at dinner, and lots and lots of beer for
+dessert -- hey, I was in Belgium!
+
+It took me a long time to get into a rhythm that worked for me. When I say a
+long time, I mean, it wasn't until the start of the coronavirus quarantine
+(March 2020, over two years after I realized I couldn't handle gluten) to get
+into the rhythm of things. I constantly took risks -- eating out, where I got
+burned by shared fryolators, cross-contaminated work stations, etc. It wasn't
+really until the quarantine -- where, I worked an internship remotely -- that
+I was able to actually afford cookware (keep in mind, I moved to Belgium and
+back with almost nothing -- my apartment was empty at the start of the
+quarantine) and had the time to sit down and actually learn to cook meals. To
+this end, I used all of the available money I had to buy more cookware, buy
+food, and take cooking classes.
+
+However, I was still sick. Still, no matter what I cooked, I was still
+bothered by what I was cooking. After hours of talking to people, cutting out
+item by item, learning about the IBS symptoms I was experiencing, and running
+through the low-FODMAP elimination diet -- most likely culprit since many
+with celiac disease develop IBS -- turns out, yup, I couldn't have onion,
+garlic, or any alliums. I cut them all out and I've been free of garlic and
+onion -- a very sad, sad life, in many ways -- since at least May of 2020.
+
+## Present Days
+
+Until about late November, I thought I was feeling pretty good. 
+
+I was feeling significanly better than I had been previously. But, I knew
+something was still off. I was still getting sympotoms of something bothering
+me no matter how careful I was -- in many ways coronovirus quarantine has
+been a blessing, because now, I know that every time I feel sick, well I'm
+sick because of something *I* did, it's all my fault. Not to be disgusting,
+but anyone who's dealing with these issues knows that it's an alternating
+cycle of a week of constipation and then two to three days of horrific
+diarrhea combined with massive weight flucuations -- I've been tracking it
+with a IoT scale and see variations from the days where I fuck up (eating
+wise) of around 9 - 10 pounds where I feel *so shitty* that just the thought
+of putting on pants, that I know will not fit properly if at all that day,
+makes me seek cover on the couch in sweatpants and hide under a blanket
+watching Law and Order reruns. In many ways, the coronavirus quarantine has
+been a blessing for this as well: thankfully, we all are living our best
+lives behind computer screens that disguise our sweatpants addictions.
+
+Recently, I decided I needed to get blood tested for food sensitivites
+because I knew something that I was eating was bothering me. I had
+suspicions: mornings that followed the days where I ate peanut butter were
+very bad; raw almonds made me 16-year-old-just-smoked-a-bowl nervous, mustard occasionally gave me like
+i-about-to-present-at-a-major-systems-conference level anxiety, and my latest
+quarantine comfort food -- early evening cashewmilk ice cream during the
+Celtics basketball game -- gave me levels of heartburn and indigestion that
+kept me up all night resulting in not being able to work at all the following
+morning.
+
+My test results showed lots of new food sensitivities:
+
+* class 3, the worst immune response was a list of foods that I knew would be bad: cow's milk, cashews, and egg -- egg, unexpected, considering I eat them every single morning and egg is in all of the gluten-free bread I eat.
+* class 2: cinnamon, almond, mustard, soy.
+* class 1: apple, asparagus, banana, beef, bell pepper, walnut, carrot, coconut, eggplant, ginger, pea, kelp, lamb, lima beans, mozzarella, orange, peanut, pineapple, tuna, mushroom, white potato
+
+I figured, well, OK.  I'll figure something out this week on how to address this.
+
+However, as I was finished lunch today, as I was trying to figure out what the hell I'm going to do about the diet, I sat back down at the computer and felt sluggish, tired, barely able to focus.  I thought about what I had eaten: gluten-free bread made with egg, mayo, peppers, and an apple, and potato chips.  No wonder I felt like shit, and now I'm gonna have to lay down for a few hours, work late, and probably wake up late.
+
+## Where do we go?
+
+I try really hard to not let this situtation bother me: I try to say to myself, well, this is the hand that was dealt to you, play it, but it's depressing and difficult: it's really difficult to have to examine, check, and think through every item you eat when it comes to breakfast, lunch, and dinner.  It's even harder when the list is so long that you can't even keep it in your head: it's just *too much stuff* that I have to print out a list of things to check for. 
+
+* Dairy is easy: food is pretty well labeled for milk, etc.  
+* Gluten is a bit harder, because it hides behind certain names (I didn't write a post about finding out my toothpaste had gluten this summer -- I should.) However, after a year of being really dilligent with that and not buying anything that dosen't explicitly say "gluten free" on the label -- things have improved dramatically.  
+
+However, that's obviously not the whole story since I don't feel well still.
+
+Now I need to do another eliminiation diet, and the list of foods is *35* items long; obviously I'll start the elimination diet with the ones at the top of the list.  Sounds easy?  It's not.  I'm sure many of you just pickup foods without even thinking: yeah, I don't do that.  Honestly, food shopping and preparation for the week and checking items is more stressful than programming for me now -- in jest, I'd say implementing Paxos is easier for me at this point.
+
+But, the question is -- what the hell do I actually eat?
+
+## Recipes
+
+...
