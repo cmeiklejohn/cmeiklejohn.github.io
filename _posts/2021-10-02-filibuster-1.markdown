@@ -6,8 +6,6 @@ categories: filibuster
 group: filibuster
 ---
 
-# Announcing Filibuster: Part 1, Corpus
-
 In a few days, we will be releasing the prototype implementation of Service-level Fault Injection Testing (accepted to [ACM SoCC '21](https://acmsocc.org/2021/)), called Filibuster, as open-source on GitHub.  Service-level Fault Injection Testing is a new technique for the resilience testing of microservice applications, during development or in continuous integration environments.  Filibuster was developed by the Composable Systems Lab, part of the Institute for Software Research, at Carnegie Mellon University, by me, Andrea Estrada, Yiwen Song, Heather Miller, and Rohan Padhye.
 
 Over the next week or so, leading up to the open-source release, I'm going to write a series of blog posts that describe what exactly Filibuster is, how it can be used to identify bugs, and then walk through identifying an example bug in an application using Filibuster.  But, before we get into that, I want to take a little time to talk about the challenges of doing research in the area of microservice resilience testing.
