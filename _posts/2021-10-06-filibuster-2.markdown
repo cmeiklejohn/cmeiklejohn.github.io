@@ -20,7 +20,7 @@ write specifications in a specific specification language. This decision is key,
 as it seamlessly integrates our approach into developers’ existing development
 environments and toolchains.
 
-As we described in our first blog post, we specifically target the types of
+As we described in [our first blog post on Filibuster](http://christophermeiklejohn.com/filibuster/2021/10/02/filibuster-1.html), we specifically target the types of
 resilience issues that are able to be identified during development, in the
 local development environment, with traditional mocking techniques.   As
 far as a methodology for fault injection, we build on observations made by
