@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Announcing Filibuster: Part 2, Service-level Fault Injection Testing"
+title:  "Announcing Filibuster: Part 2, Technique: Service-level Fault Injection Testing"
 date:   2021-10-06 00:00:00 -0000
 categories: filibuster
 group: filibuster
