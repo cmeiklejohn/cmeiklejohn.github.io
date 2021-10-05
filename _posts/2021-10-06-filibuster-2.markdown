@@ -38,7 +38,7 @@ C before returning a response back to the caller.  At each step of communication
 Service A, B, and C's server and client libraries communicates with a centralized testing server in order
 to know when remote calls are made, where they are terminated, what they return, and whether or not to inject a fault.
 
-![Filibuster Architecture](../img/filibuster-architecture.jpg)
+![Filibuster Architecture](/img/filibuster-architecture.jpg)
 
 ## Core Observations
 
@@ -61,7 +61,7 @@ SFIT starts by executing this initial fault-free execution, and at each point wh
 
 To understand how this works, consider the reproduction of part of the Audible service taken from our survey.  We'll assume for now that the calling library can only throw two possible errors: a `ConnectionError` for all services and a `Timeout` where a timeout has been specified at the callsite.
 
-![Audible Architecture](../img/audible-architecture.jpg)
+![Audible Architecture](/img/audible-architecture.jpg)
 
 In this example, the request from our functional test originates at the Audible App. The first request issued is to the Content Delivery Engine which can fail with a Timeout or ConnectionError. We add two executions on the stack of executions to explore and continue executing the test.  
 
@@ -107,7 +107,7 @@ Finally, at the end of execution, SFIT aggregates coverage reports across all ex
 
 The following is a coverage report for a simple microservice cinema application we adapted from a microservice tutorial written by RedHat.  The functional test we started with only exercised the golden path: all services reponded without failure.  SFIT was able to close the gap and generate the tests for all possible failure paths; we highlight the automatically generated coverage in yellow.
 
-![Filibuster improved coverage](../img/filibuster-coverage.png)
+![Filibuster improved coverage](/img/filibuster-coverage.png)
 
 # Conclusion
 
