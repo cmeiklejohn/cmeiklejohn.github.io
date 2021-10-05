@@ -111,6 +111,14 @@ The following is a coverage report for a simple microservice cinema application 
 
 # Conclusion
 
-In this post, we provided an overview of our new fault injection technique for improving resilience of microservice applications named Service-level Fault Injection Testing.  After reading this, you might be left with a few questions, for instance: how does it actually work in code?  Surely you generate too many tests for this to perform well at scale?  How can I get my hands on the code?  Stay locked in by following us [@FilibusterFault](http://www.twitter.com/FilibusterFault) on Twitter to know when our next post will be available.
+In this post, we provided an overview of our new fault injection technique for improving resilience of microservice applications named Service-level Fault Injection Testing.  After reading this, you might be left with a few questions, for instance: 
+
+* How does it actually work in code?  
+* Surely you generate too many tests for this to perform well at scale?  
+* How can I get my hands on the code?  
+
+We're going to answer each and every one of those questions throughout this week.  
+
+Stay locked in by following us [@FilibusterFault](http://www.twitter.com/FilibusterFault) on Twitter to know when our next post will be available.
 
 _In our next post, we'll look at how to actually use Filibuster, our prototype implementation of Service-level Fault Injection, to test a real application using code samples.  In our fourth post, we'll look at algorithmic improvements we can use to reduce test case redundancy and make our system perform at scale._
