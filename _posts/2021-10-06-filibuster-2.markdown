@@ -107,7 +107,7 @@ Finally, at the end of execution, SFIT aggregates coverage reports across all ex
 
 The following is a coverage report for a simple microservice cinema application we adapted from a microservice tutorial written by RedHat.  The functional test we started with only exercised the golden path: all services reponded without failure.  SFIT was able to close the gap and generate the tests for all possible failure paths; we highlight the automatically generated coverage in yellow.
 
-<img src="/img/filibuster-coverage.png" width="300">
+<img src="/img/filibuster-coverage.png" width="600">
 
 # Conclusion
 
