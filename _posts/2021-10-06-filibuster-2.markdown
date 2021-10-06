@@ -18,7 +18,7 @@ In this post, we will discuss our technique for identifying resilience bugs in
 microservice applications, called Service-level Fault Injection Testing (SFIT).
 SFIT takes a developer-first approach, integrating fault injection testing into
 the development process as early as possible without requiring developers to
-write specifications in a specific specification language. This decision is key,
+write specifications in a dedicated formal language. This decision is key,
 as it seamlessly integrates our approach into developers’ existing development
 environments and toolchains.
 
