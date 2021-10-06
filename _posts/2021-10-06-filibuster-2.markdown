@@ -10,7 +10,9 @@ _This is the second post in a series of posts on our upcoming ACM SoCC '21
 paper, "Service-level Fault Injection Testing" leading up to the open-source
 release of our prototype implementation, Filibuster.  In our previous post, we
 talked about the challenges of doing resilience engineering research on
-microservices due to the lack of an application corpus._
+microservices due to the lack of an application corpus and proposed a new
+application corpus, from a survey of work on chaos engineering, for future
+researchers of resilience engineering_
 
 In this post, we will discuss our technique for identifying resilience bugs in
 microservice applications, called Service-level Fault Injection Testing (SFIT).
