@@ -32,7 +32,7 @@ implementation is concerned, we follow in the path of systems like [LFI (2009)](
 focusing on library-level fault injection through method or function
 interposition.
 
-The architecture of Filibuster, a prototype implementation of SFIT, is shown
+The architecture of Filibuster, the prototype implementation of SFIT, is shown
 below.  In this architectural diagram, we see an example where Service A talks to B, and B talks to
 C before returning a response back to the caller.  At each step of communication, interposition placed at 
 Service A, B, and C's server and client libraries communicates with a centralized testing server in order
@@ -42,7 +42,7 @@ to know when remote calls are made, where they are terminated, what they return,
 
 ## Core Observations
 
-SFIT builds on three key observations made about how microservice applications
+SFIT builds on three key observations we made about how microservice applications
 are being developed today:
 
 * __Microservices developed in isolation__.  Microservice architectures are typically adopted when teams need to facilitate rapid growth, thereby breaking the team into smaller groups that develop individual services that adhere to a contract. This contract typically requires that two or more teams meet and agree to an API between the services that they manage. Therefore, individual team members typically do not understand the state or internals of services outside of their control well enough to write a detailed specification of the application to automatically verify it with a model checker.
@@ -51,9 +51,14 @@ are being developed today:
 
 * __Functional tests are the gold standard.__  In lieu of writing specifications, developers write multiple end-to-end functional tests that verify application behavior. Therefore, de-velopers already believe that the investment in end-to-end testing is worthwhile, and we believe any successful fault injection approach should start there.
 
+As we will show, SFIT, as a technique, exploits these three key observations.
+
 ## Approach
 
-SFIT, as a technique, is based on these three key observations about how microservices are being developed today.  For simplicity of presentation, we make two assumptions: services communicate over HTTP, which is not a limiting factor of our design as our prototype already supports GRPC-based services, and that a single functional test exercises all application behavior. In practice, applications will have an entire suite of functional tests to cover all application behavior and SFIT will leverage all of them.
+Let's look at how SFIT, starting from a single passing fault-free functional test, can be used 
+to generate the additional tests needed to ensure resilience.
+
+For simplicity of presentation, we make two assumptions: services communicate over HTTP, which is not a limiting factor of our design as our prototype already supports GRPC-based services, and that a single functional test exercises all application behavior. In practice, applications will have an entire suite of functional tests to cover all application behavior and SFIT will leverage all of them.
 
 SFIT starts with a passing end-to-end functional test written by the application developer that exercises some behavior under some fault-free scenario and asserts the correct outcome.  We assume that this test is already passing and all logical errors have been ruled out -- with the exception of logical errors contained in failure handling code that is not currently being exercised by this test. 
 
