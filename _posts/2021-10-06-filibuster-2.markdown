@@ -27,7 +27,7 @@ resilience issues that are able to be identified during development, in the
 local development environment, with traditional mocking techniques.   As
 far as a methodology for fault injection, we build on observations made by
 systems as early as [Ferrari (1995)](https://ieeexplore.ieee.org/document/364536/): 
-that lower-level faults -- from hardware faults to
+lower-level faults -- from hardware faults to
 operating system faults -- can be tested in the application layer by triggering
 the coorresponding application-level manifestation of that fault.  As far as
 implementation is concerned, we follow in the path of systems like [LFI (2009)](https://ieeexplore.ieee.org/document/5270313) and [AFEX (2012)](https://dl.acm.org/doi/abs/10.1145/2168836.2168865)
@@ -111,7 +111,7 @@ As developers will be starting with a functional test that assumes no failures, 
 
 To do this, we provide a helper module for writing conditional assertions. This helper lets the developer write a conditional statement such as _if a fault was injected on Service A_ and place appropriate assertions on what the behavior of the system should be under failure. Developers will add these conditional assertions into the existing functional test. We do not believe this to be an intrusive process, as the manual approach (using mocks) would require test duplication, each with custom assertions. For a similar reason, we avoid static test generation and favor a dynamic approach where large numbers of tests do not need to be consistently regenerated during software development.
 
-We imagine a typical workflow as the following. Developers start with a passing functional test and SFIT begins injecting faults. As faults are injected, the functional test will fail with assertion errors. Using the helper, developers will write an conditional assertion to capture desired failure behavior. An example of one such assertion for the Audible application might say __if a fault was injected on the stats service, the service should still play the audiobook.__ From there, the developer can use counterexample replay the previous failing test to validate these newly added assertions.
+We imagine a typical workflow as the following. Developers start with a passing functional test and SFIT begins injecting faults. As faults are injected, the functional test will fail with assertion errors. Using the helper, developers will write an conditional assertion to capture desired failure behavior. An example of one such assertion for the Audible application might say __if a fault was injected on the stats service, the service should still play the audiobook.__ From there, the developer can use the counterexample to replay the previous failing test to validate these newly added assertions.
 
 ### Improved Coverage
 
