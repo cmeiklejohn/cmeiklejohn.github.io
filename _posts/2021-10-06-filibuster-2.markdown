@@ -66,6 +66,9 @@ SFIT starts with a passing end-to-end functional test written by the application
 
 SFIT starts by executing this initial fault-free execution, and at each point where we reach a location where remote communication occurs to another service, an additional test execution is scheduled for each way that the calling service's communication library can fail: if you're familiar with a system like [SAGE (2008)](https://patricegodefroid.github.io/public_psfiles/ndss2008.pdf), this will sound similiar to the mechanism SAGE uses to schedule all possible alternative executions based on negating all conjuncts of the current path condition.  For example, if Service A goes to communicate with Service B, and we know the library that Service A uses to communicate with Service B can raise a `ConnectionError` or `Timeout`, we know that we need to execute the test two more times: one to explore what happens when that call throws each of the two possible exceptions.  This results in a depth-first search of the fault space, starting from the root service.
 
+In order to reset the state in between each test execution, we either provide SFIT with a script 
+that can be used to reset service state -- through some sort of soft-restart -- or SFIT will restart the services in between each test execution.
+
 ### Audible Example
 
 For a more detailed example, consider the reproduction of part of the Audible service taken from our survey.  We'll assume for now that the calling library can only throw two possible errors: a `ConnectionError` for all services and a `Timeout` where a timeout has been specified at the callsite.
