@@ -64,9 +64,11 @@ For simplicity of presentation, we make two assumptions: services communicate ov
 
 SFIT starts with a passing end-to-end functional test written by the application developer that exercises some behavior under some fault-free scenario and asserts the correct outcome.  We assume that this test is already passing and all logical errors have been ruled out -- with the exception of logical errors contained in failure handling code that is not currently being exercised by this test. 
 
-SFIT starts by executing this initial fault-free execution, and at each point where we reach a location where remote communication occurs to another service, an additional test execution is scheduled for each way that the calling service's communication library can fail: if you're familiar with a system like [SAGE (2008)](https://patricegodefroid.github.io/public_psfiles/ndss2008.pdf), this will sound similiar to the mechanism SAGE uses to schedule all possible alternative executions based on negating all conjuncts of the current path condition.
+SFIT starts by executing this initial fault-free execution, and at each point where we reach a location where remote communication occurs to another service, an additional test execution is scheduled for each way that the calling service's communication library can fail: if you're familiar with a system like [SAGE (2008)](https://patricegodefroid.github.io/public_psfiles/ndss2008.pdf), this will sound similiar to the mechanism SAGE uses to schedule all possible alternative executions based on negating all conjuncts of the current path condition.  For example, if Service A goes to communicate with Service B, and we know the library that Service A uses to communicate with Service B can raise a `ConnectionError` or `Timeout`, we know that we need to execute the test two more times: one to explore what happens when that call throws each of the two possible exceptions.  This results in a depth-first search of the fault space, starting from the root service.
 
-To understand how this works, consider the reproduction of part of the Audible service taken from our survey.  We'll assume for now that the calling library can only throw two possible errors: a `ConnectionError` for all services and a `Timeout` where a timeout has been specified at the callsite.
+### Audible Example
+
+For a more detailed example, consider the reproduction of part of the Audible service taken from our survey.  We'll assume for now that the calling library can only throw two possible errors: a `ConnectionError` for all services and a `Timeout` where a timeout has been specified at the callsite.
 
 <img src="/img/audible-architecture.png" width="600">
 
