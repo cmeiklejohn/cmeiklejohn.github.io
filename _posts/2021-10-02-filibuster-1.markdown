@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Announcing Filibuster: Part 1, Corpus"
+title:  "Researching Microservice Resilience: Lack of Corpora"
 date:   2021-10-02 00:00:00 -0000
 categories: filibuster
 group: filibuster
