@@ -23,6 +23,8 @@ In this tutorial, you will:
 3. Use Filibuster to find the bug.
 4. Fix the bug and verify resilience with Filibuster in your local, development environment.
 
+Let's get started.
+
 ## Building the services.
 
 Let's start by first implementing our services.
