@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Finding Resilience Issues with Filibuter: A Tutorial"
+title:  "Finding Resilience Issues with Filibuster: A Tutorial"
 date:   2021-10-08 00:00:00 -0000
 categories: filibuster
 group: filibuster
