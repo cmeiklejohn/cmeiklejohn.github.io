@@ -10,7 +10,7 @@ _This is the third post in a series of posts on our upcoming ACM SoCC '21 paper,
 "Service-level Fault Injection Testing" leading up to the open-source release of our prototype implementation, Filibuster.  In our [first post](http://christophermeiklejohn.com/filibuster/2021/10/02/filibuster-1.html), we talked about the challenges of doing resilience engineering research on microservice architectures due to the lack of an application corpus; in our [second post](http://christophermeiklejohn.com/filibuster/2021/10/06/filibuster-2.html), we detailed our approach called Service-level Fault Injection Testing, or SFIT._
 
 In this post, we're going to look at how we can use Filibuster to test a small microservice application composed of three 
-services.  We *highly recommend* you read our [previous post]() that describes how precisely Service-level Fault 
+services.  We *highly recommend* you read our [previous post](http://christophermeiklejohn.com/filibuster/2021/10/06/filibuster-2.html) that describes how precisely Service-level Fault 
 Injection works: it's critical to understand the methodology before seeing it applied using our prototype implementation
 called Filibuster.
 
