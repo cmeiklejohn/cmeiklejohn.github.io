@@ -27,7 +27,9 @@ Let's get started.
 
 ## Building the services.
 
-Let's start by first implementing our services.
+Let's start by first implementing our services.  These will be standard Python microservices, 
+implemented with Flask, with one minor modification: we've added additional instrumentation lines
+at the top of each service so Filibuster can monitor the remote calls both sent and received by these services.
 
 ### Creating the `baz` service.
 
@@ -46,10 +48,10 @@ app = Flask(__name__)
 sys.path.append(os.path.dirname(examples_path))
 
 from filibuster.instrumentation.requests import RequestsInstrumentor as FilibusterRequestsInstrumentor
-FilibusterRequestsInstrumentor().instrument(service_name="baz", filibuster_url=filibuster.instrumentation.DEFAULT_FILIBUSTER_URL))
+FilibusterRequestsInstrumentor().instrument(service_name="baz")
 
 from filibuster.instrumentation.flask import FlaskInstrumentor as FilibusterFlaskInstrumentor
-FilibusterFlaskInstrumentor().instrument_app(app, service_name="baz", filibuster_url=filibuster.instrumentation.DEFAULT_FILIBUSTER_URL))
+FilibusterFlaskInstrumentor().instrument_app(app, service_name="baz")
 
 @app.route("/health-check", methods=['GET'])
 def baz_health_check():
@@ -67,15 +69,19 @@ Note the instrumentation code under ``## Instrument using filibuster``:
 
 ```python
 from filibuster.instrumentation.requests import RequestsInstrumentor as FilibusterRequestsInstrumentor
-FilibusterRequestsInstrumentor().instrument(service_name="baz", filibuster_url=filibuster.instrumentation.DEFAULT_FILIBUSTER_URL))
+FilibusterRequestsInstrumentor().instrument(service_name="baz")
 
 from filibuster.instrumentation.flask import FlaskInstrumentor as FilibusterFlaskInstrumentor
-FilibusterFlaskInstrumentor().instrument_app(app, service_name="baz", filibuster_url=filibuster.instrumentation.DEFAULT_FILIBUSTER_URL))
+FilibusterFlaskInstrumentor().instrument_app(app, service_name="baz")
 ```
 
 Each service you create will need to include this code, with ``service_name`` updated accordingly. This instrumentation 
 code allows Filibuster to instrument both ``flask`` and ``requests``, which in turn allows Filibuster to test
 different fault combinations.
+
+These are actually forks of the standard opentelemetry instrumentation for Python: the only change 
+that you have to make if you are already using these, is change the source of the import and 
+annotate the service name.
 
 ### Creating the `bar` service.
 
@@ -95,10 +101,10 @@ app = Flask(__name__)
 sys.path.append(os.path.dirname(examples_path))
 
 from filibuster.instrumentation.requests import RequestsInstrumentor as FilibusterRequestsInstrumentor
-FilibusterRequestsInstrumentor().instrument(service_name="bar", filibuster_url=filibuster.instrumentation.DEFAULT_FILIBUSTER_URL))
+FilibusterRequestsInstrumentor().instrument(service_name="bar")
 
 from filibuster.instrumentation.flask import FlaskInstrumentor as FilibusterFlaskInstrumentor
-FilibusterFlaskInstrumentor().instrument_app(app, service_name="bar", filibuster_url=filibuster.instrumentation.DEFAULT_FILIBUSTER_URL))
+FilibusterFlaskInstrumentor().instrument_app(app, service_name="bar")
 
 @app.route("/health-check", methods=['GET'])
 def bar_health_check():
@@ -122,6 +128,8 @@ if __name__ == "__main__":
     app.run(port=5001, host="0.0.0.0")
 ```
 
+Finall, our last service.
+
 ### Creating the `foo` service.
 
 In ``filibuster-tutorial/service/foo/foo/app.py``, add the following code.
@@ -140,10 +148,10 @@ app = Flask(__name__)
 sys.path.append(os.path.dirname(examples_path))
 
 from filibuster.instrumentation.requests import RequestsInstrumentor as FilibusterRequestsInstrumentor
-FilibusterRequestsInstrumentor().instrument(service_name="foo", filibuster_url=filibuster.instrumentation.DEFAULT_FILIBUSTER_URL))
+FilibusterRequestsInstrumentor().instrument(service_name="foo")
 
 from filibuster.instrumentation.flask import FlaskInstrumentor as FilibusterFlaskInstrumentor
-FilibusterFlaskInstrumentor().instrument_app(app, service_name="foo", filibuster_url=filibuster.instrumentation.DEFAULT_FILIBUSTER_URL))
+FilibusterFlaskInstrumentor().instrument_app(app, service_name="foo")
 
 @app.route("/health-check", methods=['GET'])
 def foo_health_check():
@@ -164,6 +172,8 @@ def foo():
 if __name__ == "__main__":
     app.run(port=5000, host="0.0.0.0"))
 ```
+
+We're done!  Now, let's write a functional test.
 
 ### Functional Test
 
@@ -307,6 +317,8 @@ If we want to re-run that precise test, we can using the counterexample that Fil
 ```shell
 filibuster --functional-test ./functional/test_foo_bar_baz.py --counterexample-file counterexample.json
 ```
+
+Counterexample reproduced!
 
 ## Modify our Functional Test
 
@@ -491,9 +503,11 @@ From here, you can provide the analysis file directly to the Filibuster tool.
 filibuster --functional-test ./functional/test_foo_bar_baz.py --analysis-file analysis.json
 ```
 
+Nice!
+
 ## Conclusion
 
 That was a short introduction to using Filibuster on an example application to find resilience bugs.  With our upcoming
 release of Filibuster, we will release full documentation on our tool, an example corpus and this tutorial.
 
-_In our next post, we'll look at algorithmic improvements we can use to reduce test case redundancy and make our system perform at scale._
+_In our next post, we'll look at algorithmic improvements we can use to reduce test case redundancy and make our system perform at scale.  Special thanks to Andrea Estrada for writing the first version of this tutorial._
