@@ -45,8 +45,6 @@ app = Flask(__name__)
 
 ## Instrument using filibuster
 
-sys.path.append(os.path.dirname(examples_path))
-
 from filibuster.instrumentation.requests import RequestsInstrumentor as FilibusterRequestsInstrumentor
 FilibusterRequestsInstrumentor().instrument(service_name="baz")
 
@@ -98,8 +96,6 @@ app = Flask(__name__)
 
 ## Instrument using filibuster
 
-sys.path.append(os.path.dirname(examples_path))
-
 from filibuster.instrumentation.requests import RequestsInstrumentor as FilibusterRequestsInstrumentor
 FilibusterRequestsInstrumentor().instrument(service_name="bar")
 
@@ -144,8 +140,6 @@ import sys
 app = Flask(__name__)
 
 ## Instrument using filibuster
-
-sys.path.append(os.path.dirname(examples_path))
 
 from filibuster.instrumentation.requests import RequestsInstrumentor as FilibusterRequestsInstrumentor
 FilibusterRequestsInstrumentor().instrument(service_name="foo")
