@@ -208,8 +208,7 @@ chmod 755 functionaal/test_foo_bar_baz.py
 ./functional/test_foo_bar_baz.py
 ```
 
-At this point, your test should pass.  If it doesn't, please make sure your services were implemented correctly as
-described above, and that you have started the services using the ``local-start`` make target.
+At this point, the test should pass, but, did we properly account for the ways that our services' dependencies can fail?
 
 ## Finding the Bug
 
