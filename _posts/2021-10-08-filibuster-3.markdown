@@ -503,4 +503,6 @@ Nice!
 That was a short introduction to using Filibuster on an example application to find resilience bugs.  With our upcoming
 release of Filibuster, we will release full documentation on our tool, an example corpus and this tutorial.
 
+Stay locked in by following us [@FilibusterFault](http://www.twitter.com/FilibusterFault) on Twitter to know when our next post will be available.
+
 _In our next post, we'll look at algorithmic improvements we can use to reduce test case redundancy and make our system perform at scale.  Special thanks to Andrea Estrada for writing the first version of this tutorial._
