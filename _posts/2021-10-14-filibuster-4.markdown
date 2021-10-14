@@ -82,7 +82,7 @@ Great.
 
 ## Failure Permutations
 
-Now, we're left asking *what tests does Filibuster actually need to run, while performing resilience testing?**
+Now, we're left asking *what tests does Filibuster actually need to run, while performing resilience testing?*
 
 ### First Principle: Tolerance to Failure of Single Service
 
