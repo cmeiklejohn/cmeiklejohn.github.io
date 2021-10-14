@@ -45,6 +45,8 @@ def test_functional_load_drivers_page():
     assert result.status_code == 200
 ```
 
+This test only assumes a fault-free execution and doesn't consider, or specify, what the application behavior should be, under fault.
+
 ### Applying Filibuster
 
 We test this application using Filibuster, which causes us to make the first modification when Service D fails from fault injection.
@@ -122,7 +124,7 @@ Here's the intution behind dynamic reduction:
 3. We have already tested all of the possible failures (and success) outcomes from Service B, as directly observable by Service A.
 4. From these known outcomes, we *already know* what the outcome of this test will be from outcomes we have already observed.
 
-*Now, it is important to note that we know this information based on the following assumptions we place on the functional test being executed: a.) service responses, as part of this single functional test execution, are fixed; b.) service outcomes are not dependendent on previous failures; and c.) the functional test is free from observable nondeterminism, either scheduling or data nondeterminism.  Therefore, dynamic reduction is not sound in general.*
+*Now, it is important to note that we know this information based on the following assumptions we place on the functional test being executed: a.) service responses, as part of this single functional test execution, are fixed; b.) service outcomes are not dependendent on previous failures; and c.) the functional test is free from observable nondeterminism, either scheduling or data nondeterminism.  In short, dynamic reduction is not sound in general, but only with these assumptions.*
 
 <img src="/img/filibuster-dr-6.png" width="600">
 
