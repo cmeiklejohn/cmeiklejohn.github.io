@@ -39,7 +39,7 @@ We start with a functional test that looks like the following:
 
 ```python
 def test_functional_load_drivers_page():
-    username = "cmeiklejohn”
+    username = "cmeiklejohn"
     uri = "http://api-server/drivers/{}".format(username))
     result = requests.get(uri)
     assert result.status_code == 200
@@ -51,7 +51,7 @@ We test this application using Filibuster, which causes us to make the first mod
 
 ```python
 def test_functional_load_drivers_page():
-    username = "cmeiklejohn”
+    username = "cmeiklejohn"
     uri = "http://api-server/drivers/{}".format(username))
     result = requests.get(uri)
     if filibuster.assertions.was_fault_injected():
@@ -64,7 +64,7 @@ Then, we make another modification when Filibuster executes the test where Servi
 
 ```python
 def test_functional_load_drivers_page():
-    username = "cmeiklejohn”
+    username = "cmeiklejohn"
     uri = "http://api-server/drivers/{}".format(username))
     result = requests.get(uri)
     if filibuster.assertions.was_fault_injected():
