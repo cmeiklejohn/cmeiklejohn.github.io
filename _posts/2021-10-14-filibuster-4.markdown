@@ -150,7 +150,7 @@ In fact, while this component of Netflix doesn't share the desired structure to 
 
 <img src="/img/netflix-topology.png" width="600">
 
-If you're interested in learning more about dynamic reduction, you should check out our [ACM SoCC '21 presentation](https://www.youtube.com/watch?v=pyYh-vNspAI) and [preprint](http://christophermeiklejohn.com/publications/filibuster-socc-2021.pdf) where we talk in more detail about it.
+If you're interested in learning more about dynamic reduction, stay tuned for our upcoming ACM SoCC '21 presentation and paper where we talk about it in detail.
 
 ## Conclusion
 
