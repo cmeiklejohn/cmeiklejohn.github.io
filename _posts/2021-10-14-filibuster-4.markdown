@@ -7,7 +7,11 @@ group: filibuster
 ---
 
 _This is the fourth post in a series of posts on our upcoming ACM SoCC '21 paper, 
-"Service-level Fault Injection Testing" leading up to the open-source release of our prototype implementation, Filibuster.  In our [first post](http://christophermeiklejohn.com/filibuster/2021/10/02/filibuster-1.html), we talked about the challenges of doing resilience engineering research on microservice architectures due to the lack of an application corpus; in our [second post](http://christophermeiklejohn.com/filibuster/2021/10/06/filibuster-2.html), we detailed our approach called Service-level Fault Injection Testing, or SFIT._
+"Service-level Fault Injection Testing" leading up to the open-source release of our prototype implementation, Filibuster._
+
+* _In our [first post](http://christophermeiklejohn.com/filibuster/2021/10/02/filibuster-1.html), we talked about the challenges of doing resilience engineering research on microservice architectures due to the lack of an application corpus._
+* _In our [second post](http://christophermeiklejohn.com/filibuster/2021/10/06/filibuster-2.html), we detailed our approach called Service-level Fault Injection Testing, or SFIT._
+* _In our [third post](http://christophermeiklejohn.com/filibuster/2021/10/08/filibuster-3.html), we walked through using our tool to identify bugs in a sample application written in Python._
 
 In this post, we're going to look at how Filibuster can take advantage of certain properties of microservice architectures to reduce testing overhead: key to running resilience tests in development or CI before code ships to production.
 
