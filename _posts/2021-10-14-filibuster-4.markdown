@@ -82,8 +82,6 @@ Great.
 
 Now, we're left asking *what tests does Filibuster actually need to run?*
 
-Let's think through the problem.
-
 ### First Principle: Tolerance to Failure of Single Service
 
 We know that we need to, at a minimum, test tolerance to a single failure of one of each service's dependencies.  Let's use the ride sharing example to understand what we mean.
@@ -132,11 +130,17 @@ The property that we exploit here, we refer to as __service encapsulation__: the
 
 However, this optimization relies on the fact that service implementations return error codes that are conditional on the behavior of their dependencies and do not encode the failure into a response that is considered successful.  As an example, if Service B returned a successful response to Service A that contained a boolean indicating whether or not Service E responded to it's request successfully, then this optimization would not be sound (as stated above, it is *not* generally sound.)  We believe that this type of design where errors are encoded through error responses in failures is very important: *it enables compositional reasoning that can directly reduce testing overhead.*
 
+## Audible vs. Netflix
+
+As part of our [corpus creation](http://christophermeiklejohn.com/filibuster/2021/10/02/filibuster-1.html), we recreated part of Audible and Netflix's infrastructure from information we gethered by watching publicly available talks on their uses of chaos engineering: a super accurate reimplementation of each service isn't extremely important here, because the more interesting, general point, is the graph structure.
+
 <img src="/img/filibuster-dr-7.png" width="600">
 
 You can see this benefit in the recreation of Audible's infrastructure for our corpus.  In this example, to generate all of the possible tests required for full coverage of two possible call site exceptions and a number of service-specific error codes that are returned, we had to generate *69* tests, but only needed to execute *31* of these tests: service encapsulation can be exploited as the Audible Download Service and Content Delivery Servies hide the failures of their components from the rest of the application.  
 
 __Deeper, microservice graphs, enables compositional reasoning through service encapsulation.__
+
+<img src="/img/filibuster-dr-8.png" width="600">
 
 Graphs that grow wider, rather than deeper, do not benefit from these types of optimization.  Here's a recreation of the Netflix homepage loading process in our corpus.  Here, there's a large fanout from a single service where a number of fallbacks are specified.  As we demonstrated above, we need to test *all of the combinations to ensure that there doesn't exist application code conditional on some set of failures.*  Therefore, we are left with a combinatorial explosion: we have to generate 1,606 tests and can only remove 3 of those tests through dynamic reduction (resulting in 1,603 executed tests.)
 
