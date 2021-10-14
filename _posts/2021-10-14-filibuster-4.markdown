@@ -15,7 +15,7 @@ _This is the fourth post in a series of posts on our upcoming ACM SoCC '21 paper
 
 In this post, we're going to look at how Filibuster can take advantage of certain properties of microservice architectures to reduce testing overhead: key to running resilience tests in development or CI before code ships to production.
 
-We *highly recommend* you read our [second post](http://christophermeiklejohn.com/filibuster/2021/10/06/filibuster-2.html) that describes how precisely Service-level Fault Injection works: it's critical to understand the methodology before understanding how we apply optimizations for test case reduction.
+We *highly recommend* you read our [second post](http://christophermeiklejohn.com/filibuster/2021/10/06/filibuster-2.html) that describes how precisely Service-level Fault Injection works: it's critical to understand the methodology before understanding how we apply optimizations for test case reduction.  Remember, Filibuster only focuses on application-level faults: where a failure of a dependency is surfaced in the application as an exception or response indicating failure.
 
 ## Example: Ride Sharing
 
@@ -82,7 +82,7 @@ Great.
 
 ## Failure Permutations
 
-Now, we're left asking *what tests does Filibuster actually need to run?*
+Now, we're left asking *what tests does Filibuster actually need to run, while performing resilience testing?**
 
 ### First Principle: Tolerance to Failure of Single Service
 
