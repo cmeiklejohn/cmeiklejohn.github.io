@@ -41,8 +41,8 @@ We start with a functional test that looks like the following:
 def test_functional_load_drivers_page():
     username = "cmeiklejohn"
     uri = "http://api-server/drivers/{}".format(username))
-    result = requests.get(uri)
-    assert result.status_code == 200
+    result = requests.get(uri)
+    assert result.status_code == 200
 ```
 
 ### Applying Filibuster
@@ -53,11 +53,11 @@ We test this application using Filibuster, which causes us to make the first mod
 def test_functional_load_drivers_page():
     username = "cmeiklejohn"
     uri = "http://api-server/drivers/{}".format(username))
-    result = requests.get(uri)
-    if filibuster.assertions.was_fault_injected():
-        assert result.status_code == 503
-    else:
-        assert result.status_code == 200
+    result = requests.get(uri)
+    if filibuster.assertions.was_fault_injected():
+        assert result.status_code == 503
+    else:
+       assert result.status_code == 200
 ```
 
 Then, we make another modification when Filibuster executes the test where Service B fails.
@@ -66,14 +66,14 @@ Then, we make another modification when Filibuster executes the test where Servi
 def test_functional_load_drivers_page():
     username = "cmeiklejohn"
     uri = "http://api-server/drivers/{}".format(username))
-    result = requests.get(uri)
-    if filibuster.assertions.was_fault_injected():
-        if filibuster.assertions.was_fault_injected_on("payments"):
-            assert result.status_code == 200
-        else:
-            assert result.status_code == 503
-    else:
-        assert result.status_code == 200
+    result = requests.get(uri)
+    if filibuster.assertions.was_fault_injected():
+        if filibuster.assertions.was_fault_injected_on("payments"):
+            assert result.status_code == 200
+        else:
+            assert result.status_code == 503
+    else:
+        assert result.status_code == 200
 ```
 
 Great.
@@ -138,7 +138,7 @@ As part of our [corpus creation](http://christophermeiklejohn.com/filibuster/202
 
 You can see this benefit in the recreation of Audible's infrastructure for our corpus.  In this example, to generate all of the possible tests required for full coverage of two possible call site exceptions and a number of service-specific error codes that are returned, we had to generate *69* tests, but only needed to execute *31* of these tests: service encapsulation can be exploited as the Audible Download Service and Content Delivery Servies hide the failures of their components from the rest of the application.  
 
-__Deeper, microservice graphs, enables compositional reasoning through service encapsulation.__
+__Deeper, microservice graphs, enables compositional testing through service encapsulation.__
 
 Graphs that grow wider, rather than deeper, do not benefit from these types of optimizations.  
 
