@@ -140,9 +140,15 @@ You can see this benefit in the recreation of Audible's infrastructure for our c
 
 __Deeper, microservice graphs, enables compositional reasoning through service encapsulation.__
 
+Graphs that grow wider, rather than deeper, do not benefit from these types of optimizations.  
+
 <img src="/img/filibuster-dr-8.png" width="600">
 
-Graphs that grow wider, rather than deeper, do not benefit from these types of optimization.  Here's a recreation of the Netflix homepage loading process in our corpus.  Here, there's a large fanout from a single service where a number of fallbacks are specified.  As we demonstrated above, we need to test *all of the combinations to ensure that there doesn't exist application code conditional on some set of failures.*  Therefore, we are left with a combinatorial explosion: we have to generate 1,606 tests and can only remove 3 of those tests through dynamic reduction (resulting in 1,603 executed tests.)
+To contrast, this is a recreation of the Netflix homepage loading process in our corpus.  Here, there's a large fanout from a single service where a number of fallbacks are specified.  As we demonstrated above, we need to test *all of the combinations to ensure that there doesn't exist application code conditional on some set of failures.*  Therefore, we are left with a combinatorial explosion: we have to generate 1,606 tests and can only remove 3 of those tests through dynamic reduction (resulting in 1,603 executed tests.)
+
+In fact, while this component of Netflix doesn't share the desired structure to take advantage of this compositional testing, the larger Netflix graph does (seen below): a property that we believe holds for most microservice applications as evidenced by our Audible example, the Netflix example, and an example service graph we saw from Expedia as part of our corpus construction.
+
+<img src="/img/netflix-topology.png" width="600">
 
 If you're interested in learning more about dynamic reduction, you should check out our [ACM SoCC '21 presentation](https://www.youtube.com/watch?v=pyYh-vNspAI) and [preprint](http://christophermeiklejohn.com/publications/filibuster-socc-2021.pdf) where we talk in more detail about it.
 
