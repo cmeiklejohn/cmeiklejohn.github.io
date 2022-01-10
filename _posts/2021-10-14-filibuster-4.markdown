@@ -159,3 +159,4 @@ If you're interested in learning more about dynamic reduction, stay tuned for ou
 This was a short introduction to an optimization for service-level fault injection testing with Filibuster, called dynamic reduction, that reduces the overhead of resilience testing in the local development environment.  With our upcoming release of Filibuster, we will release full documentation on our tool, an example corpus and this tutorial.
 
 Stay locked in by following us [@FilibusterFault](http://www.twitter.com/FilibusterFault) on Twitter to know when our next post will be available.
+
