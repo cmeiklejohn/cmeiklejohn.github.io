@@ -30,7 +30,7 @@ After hours upon hours of watching talks, reading articles, and reading the
 excellent [Chaos Engineering book](https://www.oreilly.com/library/view/chaos-engineering/9781492043850/)
 from O'Reilly Media, I've identified at least three distinct techniques that
 seem to fall under the umbrella term Chaos Engineering or Resilience Engineering
-(which is sometimes used quite loosely, as it has origins in a real science).
+(which is sometimes used quite loosely, as it has origins in a real science.)
 
 For reference, you can find all three of these techniques mentioned in the Chaos Engineering book, under that umbrella term, but I'll do my best to highlight the differences.
 
