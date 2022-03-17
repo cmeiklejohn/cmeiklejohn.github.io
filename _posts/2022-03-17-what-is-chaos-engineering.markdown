@@ -105,7 +105,7 @@ In the case of the Bookmarks example, let's consider that we have fallback code 
 
 Even further, not everyone is Netflix or shares a similar business model.  What if you are an organization that can't do testing in production: food delivery, ride sharing, etc?   What if you need to test a critical healthcare system?  What if you need to test critical healthcare equipment?  What if you work on government systems?  University systems?  Even booking hotels?  Not every business is Netflix and not every business has a low-risk monthly subscription that customers won't cancel immediately (or, go to a competitor) on the first sign of trouble.  
 
-As one of the companies I spent studying for a long time was Expedia, what would a metric for hotels even be?  Reservations per day?  What happens during COVID-19 when no one is travelling?  Can we just not do chaos experiments during that period?
+As one of the companies I spent studying for a long time was Expedia, what would a metric for hotels even be?  Reservations per day (_this was actually a class assignment I gave out during a lecture on chaos engineering in [Carnegie Mellon's Foundations of Software Engineering Course in 2021](http://cmu-313.github.io)?  What happens during COVID-19 when no one is travelling?  Can we just not do chaos experiments during that period?
 
 _Sure, there is always staging.  We acknowledge that, but staging fits clearly into the robustness category and not the metric category, since we assume that there is little traffic to test in staging using an actual metric._
 
