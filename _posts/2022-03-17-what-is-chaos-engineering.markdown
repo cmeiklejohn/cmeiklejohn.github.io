@@ -124,4 +124,3 @@ So, why aren't we testing this behavior in development, long before we get to ou
 Second, there is value in running experiments in production to determine the impact of our choices in handling errors.  But, that should be long after we have decided to handle the error, when we are trying to evaluate our different choices in handling errors.  It feels that these things should be decoupled; we shouldn't be using chaos engineering as the only outlet for testing both the way we recover from errors -- along with whether or not our choices in handling those errors are correct.
 
 So, I leave you with this question: what exactly _is_ chaos engineering?
-
