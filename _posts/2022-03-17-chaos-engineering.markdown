@@ -10,8 +10,6 @@ _I originally wrote this post on February 19th, 2021, when I was doing the
 initial research that would turn into my automated resilience verification tool
 [Filibuster](http://filibuster.cloud)._
 
-## The Question of Chaos Engineering
-
 Over the past few months, I've spent quite a bit of my free time both reading
 and watching everything I can get my hands on that 
  is somehow related to Chaos Engineering to try to figure out what it actually is.  
