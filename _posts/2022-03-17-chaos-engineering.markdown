@@ -43,3 +43,19 @@ For reference, you can find all three of these techniques mentioned in the Chaos
 _At this point, I would be remiss in failing to mention that our tool, Filibuster, is a very specific application-level fault injection tool that advances the state-of-the-art in academic microservice testing.  You can find our SoCC '21 paper [here](http://christophermeiklejohn.com/publications/filibuster-socc-2021.pdf)._
 
 These techniques are evolutions of one another: Game Days originated in the early 2000s (2004), Chaos Engineering came into the public eye around the late 2000s (2007) and application-level fault injection is the newest kid on the block, with most of these systems being invented in the past few years.  
+
+For this article, I want to investigate Chaos Engineering, specifically.
+
+## Chaos Engineering
+
+So, what does Netflix say Chaos Engineering is?
+
+Chaos Engineering, as described by the Principles of Chaos Engineering website and the co-authored O'Reilly Media book from Netflix, follows a process that is roughy equivalent to what you probably remember from high-school science.  
+
+It breaks down like the following, taken directly from the [Principles of Chaos Engineering website](https://principlesofchaos.org/):
+
+1. Start by defining 'steady state' as some measurable output of a system that indicates normal behavior.
+2. Hypothesize that this steady state will continue in both the control group and the experimental group.
+3. Introduce variables that reflect real world events like servers that crash, hard drives that malfunction, network connections that are severed, etc.
+4. Try to disprove the hypothesis by looking for a difference in steady state between the control group and the experimental group.
+
