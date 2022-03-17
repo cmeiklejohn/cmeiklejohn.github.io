@@ -50,7 +50,7 @@ So, what does Netflix say Chaos Engineering is?
 
 Chaos Engineering, as described by the Principles of Chaos Engineering website and the co-authored O'Reilly Media book from Netflix, follows a process that is roughy equivalent to what you probably remember from high-school science.  
 
-It breaks down like the following, taken directly from the [Principles of Chaos Engineering website](https://principlesofchaos.org/):
+It breaks down like the following, taken directly from the Principles of Chaos Engineering website:
 
 1. Start by defining 'steady state' as some measurable output of a system that indicates normal behavior.
 2. Hypothesize that this steady state will continue in both the control group and the experimental group.
@@ -72,7 +72,7 @@ There are a few things important in this type of experimental design:
 
 ## Example: Netflix
 
-In many of the talks from Netflix, we see the [same motivating example](https://www.infoq.com/presentations/rethinking-chaos-engineering/) presented many times.  I'll reproduce it here.
+In many of the talks from Netflix, we see the [same motivating example](https://www.infoq.com/presentations/rethinking-chaos-engineering) presented many times.  I'll reproduce it here.
 
 Netflix's AppBoot process is the process of loading the Netflix homepage on a device that has a Netflix app.  This process involves your device communicating with a Netflix API server, that then communicates with different microservices to load each row of content in your homepage.  This consists of loading content from My List, your Bookmarks --- which are your last played location within in progress movies or TV shows --- your personal Recommendations, what's trending, and so forth.  
 
