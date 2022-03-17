@@ -70,6 +70,8 @@ There are a few things important in this type of experimental design:
 3. We must know the types of real-world events to introduce.  Many chaos engineering talks from folks in industry discuss that we can discover the ['unknown-unknowns'](https://en.wikipedia.org/wiki/There_are_known_knowns) by fault-injection: but the entire premise of this style of fault-injection means that we know the types of events that can occur and therefore evaluate their impact which is unknown (this, would actually be a known-unknown: we know the faults that might occur, but do not know their relevance or impact just yet.)
 4. Finally, and probably the most important, we don't run experiments on things we know will affect the metric negatively.  In Netflix's case, we belive an outage of the bookmarks service (a non-critical service) shouldn't affect viewing of Netflix streams; but, we know that if all of our authentication services are down or video assets are unavailable due to a global outage, well, we don't need to run those experiments in production.
 
+So.
+
 ## Example: Netflix
 
 In many of the talks from Netflix, we see the [same motivating example](https://www.infoq.com/presentations/rethinking-chaos-engineering) presented many times.  I'll reproduce it here.
