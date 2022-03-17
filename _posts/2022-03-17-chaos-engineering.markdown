@@ -8,7 +8,9 @@ group: filibuster
 
 _I originally wrote this post on February 19th, 2021, when I was doing the
 initial research that would turn into my automated resilience verification tool
-[Filibuster](http://filibuster.cloud)._
+[Filibuster](http://filibuster.cloud).  You can find my entire series of blog posts 
+on Filibuster starting [here](http://christophermeiklejohn.com/filibuster/2021/10/02/filibuster-1.html)
+and you can find our paper [here](http://christophermeiklejohn.com/publications/filibuster-socc-2021.pdf)._
 
 Over the past few months, I've spent quite a bit of my free time both reading
 and watching everything I can get my hands on that 
