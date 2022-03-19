@@ -133,7 +133,7 @@ Our core observation is the following:
 
 Testing complexity increases as we move towards the upper right quadrant.  As we move in that direction, we need to, not only run our application in a cloud environment, but also inject faults *in that environment.*  This is the place where chaos engineering is typically focused, injection of faults in the production environment. However, based on our research, the majority of bugs discovered fall into either the quadrants below the x-axis, faults that should be identified well before applications are deployed into production, or in the left-most quadrants, where misconfigurations should be detected before production and/or tested in a staging environment under load.
 
-It seems that when latent software defects are not identified in the local environment and then result in outages, they *naturally appear* to fall into the upper-right quadrant: application failures that result in capacity overloads *actually originate* from the lower-right quadrant as simple application errors that could have been detected through more rigorous software testing before deployment and become more serious outages under incorrect cloud configurations in the upper-left quadrant.
+It seems that when latent software defects are not identified in the local environment and then subsequently result in outages, they *naturally appear* to fall into the upper-right quadrant.  However, application failures that result in capacity overloads *actually originate* from the lower-right quadrant as simple software defects that could have been detected through more rigorous software testing before deployment and become more serious outages under incorrect cloud configurations in the upper-left quadrant.
 
 ## Takeaways
 
