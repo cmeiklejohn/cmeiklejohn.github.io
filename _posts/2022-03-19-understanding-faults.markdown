@@ -88,7 +88,7 @@ As a specific example, Expedia tested a simple fallback pattern where, when one 
 
 One example that was particularly interesting was Audible.  The Audible example is quite complicated and involves a number of services in delivering an audiobook to an end user.
 
-<img src="/img/audible.png" width="600">
+<img src="/img/audible.png" width="800">
 
 In this example, when a user requests an audiobook using the Audible app, it first issues a request to the Content Delivery Engine to find the URL of the Content Delivery Service that contains the audiobook assets; we can think of this as a primitive sharding layer that is used to support scalability.  Once the Audible app retrieves this URL, it issues a request to the specified Content Delivery Service.
 
