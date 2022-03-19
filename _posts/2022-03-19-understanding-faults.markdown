@@ -6,6 +6,9 @@ categories: filibuster
 group: filibuster
 ---
 
+_In this blog post, we are reporting on results from May 2020, that were used in the original development of the first
+Filibuster prototype._
+
 # Fault Taxonomy
 
 Before my automated resilience testing tool, **[Filibuster](http://filibuster.cloud)**, was targeted at the resilience testing of microservice applications, it was targeted at the testing of distributed protocols, while in the development phase.
