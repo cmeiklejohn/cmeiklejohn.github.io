@@ -38,7 +38,7 @@ This process was rather ad-hoc: I had not taken a qualitative nor quantitative m
 
 *(Note to future Ph.D. students: take a research methods course earlier, it will help you later on!  If you are at Carnegie Mellon University, I highly recommend Laura Dabbish’s class on Advanced Research Methods in HCII.)*
 
-For the following discussions, we assume that readers are familiar with [chaos engineering:](https://christophermeiklejohn.com/filibuster/2022/03/17/what-is-chaos-engineering.html)
+For the following discussions, we assume that readers are familiar with [chaos engineering.](https://christophermeiklejohn.com/filibuster/2022/03/17/what-is-chaos-engineering.html)
 
 ### Coding
 
