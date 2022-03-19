@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Understanding why Resilience Faults Occur"
+title:  "Understanding why Resilience Faults in Microservice Applications Occur"
 date:   2022-03-19 00:00:00 -0000
 categories: filibuster
 group: filibuster
