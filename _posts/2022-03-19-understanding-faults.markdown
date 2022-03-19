@@ -96,7 +96,7 @@ Once the Audible Download Service completes it work, the Content Delivery Servic
 
 In this example — a real outage reported by Audible, the asset metadata is unavailable either because of developer error or a race condition.  As a result of this, a latent bug in the Content Delivery Service that doesn’t expect the content to be unavailable if the assets are available, causes an error to be propagated back to the end user.  The mobile application, not expecting this error code to ever occurs then presents a generic error to the user after retrying the request a number of times, and, after presenting a generic error to the user, causes them to hit the retry button.  This influx of retries causes all of Audible to fail: the system incurs an outage.  In this case, a number of software bugs — all detectable through traditional unit, integration, and functional testing, causes the system to overload and exhaust the available compute capacity in the cloud.  Thus, a resulting outage.  
 
-### Taxonomy
+### Resilience Fault Taxonomy
 
 When we look at this example, and the other examples that we surveyed, we can identify there are two major concerns for the developers of microservice applications.  First, *anticipation of application errors*: ensuring the application contains code error handling for all possible errors.  Second, *ensuring proper behavior and scalability of resilience countermeasures: the methods that we take to contain unexpected, untested failures when they occur.*  
 
