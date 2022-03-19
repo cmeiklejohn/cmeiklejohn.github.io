@@ -82,7 +82,7 @@ In general, many bugs that are identified using chaos engineering — a techniqu
 
 As a specific example, Expedia tested a simple fallback pattern where, when one dependent service is unavailable and returns an error, another service is contacted instead afterwards.  There is no need to run this experiment in production by terminating servers in production: a simple test that mocks the response of the dependent service and returns a failure is sufficient.  However, more complicated, and more interesting, examples exist.
 
-### Audible
+### Example: Audible
 
 One example that was particularly interesting was Audible.  The Audible example is quite complicated and involves a number of services in delivering an audiobook to an end user.
 
