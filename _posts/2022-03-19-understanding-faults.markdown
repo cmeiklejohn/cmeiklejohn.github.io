@@ -14,11 +14,11 @@ The first version of Filibuster grew out of my previous Ph.D. work, Partisan.  P
 
 While our technique identified known faults in 2PC, CTP, and 3PC faster than the state-of-the-art, it required cumbersome annotations on message handlers: while these annotations could be automatically generated using static analysis with academic actor languages due to the high-level message handlers they use; these annotations had to be manually written commonplace actor languages, like Akka and Erlang.  Since Partisan was implemented in Erlang, this posed some problems.  It made it almost impossible to compete with existing fault injection approaches taken by distributed model checkers (e.g., CMC, SAMC, FlyMC) that relied on more general space-reduction techniques. (e.g., DPOR, symmetry reduction.).  Furthermore, the lack of an actual application corpus due to the limited use of Erlang posed real problems when performing an academic evaluation.
 
-**We decided to take a step back: we’d focus on microservice applications instead.**  
+_We decided to take a step back: we’d focus on microservice applications instead._
 
 We decided to refocus Filibuster on microservice applications with a brand new implementation, implemented in Python based on the observation that a potential Pittsburgh-area company used Python, with hopes of evaluation on their application.  That didn’t pan out as we expected, so we resorted to an evaluation on a different corpus of student applications, which ultimately posed a number of different problems: they didn’t represent the types of industrial microservice applications that are really being built, of which our tool was designed for.
 
-**We decided to take a further, larger step back.**
+_We decided to take a further, larger step back._
 
 Our first approach was to identify existing open-source microservice applications, use their source code revision system and issue tracker to identify any previous resolved resilience bugs, reintroduce them, and then try to automatically find them using the new version of Filibuster.  However, these applications simply do not exist in the open-source ecosystem.  All that do exist, are tutorial applications showing how to write microservice applications.  These applications do not contain bugs.  
 
