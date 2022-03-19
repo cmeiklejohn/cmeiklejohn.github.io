@@ -113,6 +113,8 @@ We represent this as four quadrants, bifurcated by abstraction layer and whether
 3. Our application may be missing error handling code for possible errors: error codes we do not expect from external services, error codes we fail to handle from our own services through malfunctioning endpoints, by way of software defects, or services that are unavailable.
 4. Our application may contain incorrect or unscalable error handling code.  In this case, an error causes the application or service to take a code path designed for error handling, but that error handling path may introduce additional load on the system causing the system, or some number of the application’s services, to fail.
 
+Ok, so what is the theory.
+
 ### Theory of Resilience Testing
 
 Why does the taxonomy matter?  It matters, because each quadrant needs to be addressed by a separate testing methodology, with separate tools, and separate techniques.
