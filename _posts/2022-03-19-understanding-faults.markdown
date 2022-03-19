@@ -88,7 +88,7 @@ As a specific example, Expedia tested a simple fallback pattern where, when one 
 
 One example that was particularly interesting was Audible.  The Audible example is quite complicated and involves a number of services in delivering an audiobook to an end user.
 
-![Audible Example](img/audible.png)
+![Audible Example](/img/audible.png)
 
 In this example, when a user requests an audiobook using the Audible app, it first issues a request to the Content Delivery Engine to find the URL of the Content Delivery Service that contains the audiobook assets; we can think of this as a primitive sharding layer that is used to support scalability.  Once the Audible app retrieves this URL, it issues a request to the specified Content Delivery Service.
 
@@ -104,7 +104,7 @@ When we look at this example, and the other examples that we surveyed, we can id
 
 We diagram this relationship below:
 
-![Types in Taxonomy](img/types-of-taxonomy.png)
+![Types in Taxonomy](/img/types-of-taxonomy.png)
 
 We represent this as four quadrants, bifurcated by abstraction layer and whether or not resilience countermeasures are present.  
 
@@ -119,7 +119,7 @@ Why does the taxonomy matter?  It matters, because each quadrant needs to be add
 
 We can represent this as follows, by reimagining the same graph with different axes:
 
-![Taxonomy](img/taxonomy.png)
+![Taxonomy](/img/taxonomy.png)
 
 In this example, we have modified the abscissa to represent where the analysis needs to be performed; for the ordinate, we have modified it to represent whether or not we can identify the problem in a local environment or in the cloud.
 
