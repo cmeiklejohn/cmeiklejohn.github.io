@@ -98,7 +98,7 @@ In this example — a real outage reported by Audible, the asset metadata is una
 
 ### Resilience Fault Taxonomy
 
-When we look at this example, and the other examples that we surveyed, we can identify there are two major concerns for the developers of microservice applications.  First, *anticipation of application errors*: ensuring the application contains code error handling for all possible errors.  Second, *ensuring proper behavior and scalability of resilience countermeasures: the methods that we take to contain unexpected, untested failures when they occur.*  
+When we look at this example, and the other examples that we surveyed, we can identify there are two major concerns for the developers of microservice applications.  First, *anticipation of application errors*: ensuring the application contains code error handling for all possible errors.  Second, *ensuring proper behavior and scalability of resilience countermeasures:* the methods that we take to contain unexpected, untested failures when they occur.  
 
 We diagram this relationship below:
 
