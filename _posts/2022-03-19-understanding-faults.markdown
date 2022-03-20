@@ -9,47 +9,78 @@ group: filibuster
 _In this blog post, I present results from May 2020, that were used during the development of 
 [Filibuster](http://filibuster.cloud)._
 
-# Fault Taxonomy
+Before my automated resilience testing tool,
+**[Filibuster](http://filibuster.cloud)**, was targeted at the resilience
+testing of microservice applications, it was targeted at the testing of
+distributed protocols while they were in the development phase.  I referred to this process as 
+_Resilience Driven Development_, whereby, faults would be introduced during development of the 
+protocol and force developers to adapt the protocol accordingly in real-time. 
 
-Before my automated resilience testing tool, **[Filibuster](http://filibuster.cloud)**, was targeted at the resilience testing of microservice applications, it was targeted at the testing of distributed protocols, while in the development phase.
+The first version of Filibuster grew out of my previous Ph.D. work, [Partisan](https://github.com/lasp-lang/partisan).  Partisan was an alternative distributed runtime for Erlang designed specifically for high-performance, large-scale distributed Erlang clusters.  After I developed, benchmarked, and released Partisan as open-source, I made the observation that once you control the distributed runtime and all message transmission, you could inject faults before, during, and after processing of messages through message omission, message duplication, and message transformation.  To facilitate this, I provided general _hooks_ within Partisan, where existing 
+testing tools could hook into before, during, and after message processing to perform arbitrary 
+transformations.  Along with this, I made sure that Partisan fixed the order of message transmission
+to facilitate deterministic replay when developers identified counterexamples.  For demonstration purposes, I wired this up to Erlang QuickCheck/PropEr to test eventual consistency in a small application.  I talked about this at [Code BEAM SF 2019.](https://www.youtube.com/watch?v=KrwhOkiifQ8)
 
-The first version of Filibuster grew out of my previous Ph.D. work, Partisan.  Partisan was a high-performance distributed runtime that was designed for actor-languages. (e.g., Erlang)  Based on  the observation that once you controlled the distributed runtime you could inject faults before, during, and after the processing of messages — as well as control the order of message transmission to determinize one aspect of the distributed execution — well, fault injection to detect problems follows naturally.  At the time, this seemed a novel observation; it wasn’t, in fact the authors of ORCHESTRA made a similar observation about distributed applications in [1996](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.6485&rep=rep1&type=pdf).  *(The embarrassing fact regarding this is that the second author on this paper is the current president of Carnegie Mellon University, where I am a current Ph.D. student.).* 
+At the time, this observation seemed novel.  It wasn't; in fact, the authors of ORCHESTRA made a similar observation in [1996](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.6485&rep=rep1&type=pdf).  Furthering my embarassment, the second author on the ORCHESTRA paper happens to be the current predisent of Carnegie Mellon University, where I am currently a Ph.D. student.
 
-While our technique identified known faults in 2PC, CTP, and 3PC faster than the state-of-the-art, it required cumbersome annotations on message handlers: while these annotations could be automatically generated using static analysis with academic actor languages due to the high-level message handlers they use; these annotations had to be manually written commonplace actor languages, like Akka and Erlang.  Since Partisan was implemented in Erlang, this posed some problems.  It made it almost impossible to compete with existing fault injection approaches taken by distributed model checkers (e.g., CMC, SAMC, FlyMC) that relied on more general space-reduction techniques. (e.g., DPOR, symmetry reduction.).  Furthermore, the lack of an actual application corpus due to the limited use of Erlang posed real problems when performing an academic evaluation.
+While my technique identified known faults in 2PC, CTP, and 3PC faster than the state-of-the-art, it required that message handlers be annotated with cumbersome annotations.
+While these annotations could be automatically generated using static analysis when the programs were written with academic actor langauges that used high-level message handlers, these annotations had to be manually written with commonplace actor languages, like Akka and Erlang.
+Since Partisan was implemented in Erlang, this posed some problems.
+First, it made it almost impossible to compete with existing fault injection approaches used by distributed model checkers (e.g., CMC, SAMC, FlyMC, MoDist) that provided some form automatic instrumentation and had general state space reduction techniques (e.g., DPOR, symmetry reduction.)
+Furthermore, the lack of an actual application corpus posed real problems when trying to perform an academic evaluation: there just simply are not enough distributed programs written in Erlang.
 
-_We decided to take a step back: we’d focus on microservice applications instead._
+_It was time to take a step back: can we choose a different domain where analysis might be simpler?_
 
-We decided to refocus Filibuster on microservice applications with a brand new implementation, implemented in Python based on the observation that a potential Pittsburgh-area company used Python, with hopes of evaluation on their application.  That didn’t pan out as we expected, so we resorted to an evaluation on a different corpus of student applications, which ultimately posed a number of different problems: they didn’t represent the types of industrial microservice applications that are really being built, of which our tool was designed for.
+I decided to refocus Filibuster on microservice applications.  Based on a potential collaboration with a Pittsburgh-area company that used Python for building their microservice applications, my new implementation was focused on microservices, implemented using Flask, in Python.
+Unfortunately, the collaboration did not pan out, so I resorted to an evaluation based on student applications.  
+This posed a number of problems as well, with the major problem being that these student applications did not represent the types of applications that are being written in industry.
 
-_We decided to take a further, larger step back._
+_It was time to take a larger step back._
 
-Our first approach was to identify existing open-source microservice applications, use their source code revision system and issue tracker to identify any previous resolved resilience bugs, reintroduce them, and then try to automatically find them using the new version of Filibuster.  However, these applications simply do not exist in the open-source ecosystem.  All that do exist, are tutorial applications showing how to write microservice applications.  These applications do not contain bugs.  
+The first approach that I tried was to identify existing open-source microservice applications on GitHub, use GitHub's revision system and issue tracker to identify any previously resolved resilience bugs, reintroduce those bugs, and then try to identify them using the new version of Filibuster.  
+However, these applications simply do not exist in the open-source ecosystem.  
+The ones that do exist are mostly tutorial applications that demonstrate how to properly write microservice applications; as one might imagine, these applications typically, and should not, contain bugs.
 
-Next, we decided to take the tutorial applications and introduce resilience bugs: this approach has been taken in several papers, [as recent as SoCC ‘21](https://dl.acm.org/doi/abs/10.1145/3472883.3486986), where our first paper on Filibuster appeared.  However, most postmortems that discuss resilience issues that resulted in real outages do not contain information about the root cause.   This made reproduction of realistic bugs difficult.
+Next, I decided to take the tutorial applications and introduce resilience bugs.  This is not a novel approach, in fact, it has been taken by several papers [as recent as SoCC ‘21](https://dl.acm.org/doi/abs/10.1145/3472883.3486986), coincidentally, where our first paper on Filibuster was published.  One problem with this approach is finding the bugs: most open source discussions of bugs in postmortems or other incident reports rarely discuss the root causes of outages.  This made the identification and retrofitting of existing applications with realistic bugs difficult, if impossible.
 
-We also tried to use academic bug corpora.  Bug corpora used for automated program repair, harvested from GitHub, do not contain microservice applications.  On the other hand, a recent academic paper who’s primary contribution is a corpora of microservice applications containing bugs contains *no bugs related to the microservice architecture itself* but only bugs that would exist in any monolithic web application.
+I also tried to use academic bug corpora.  Bug corpora used for automatic program repair, for example,
+are typically constructed by harvesting programs from GitHub. These suffer from the same problem that we encountered: open-source microservice applications simply do not exist.  Another possible avenue, a recent academic paper whose primary contribution is a corpora of microservice application bugs contains *no bugs related to the microservice architecture itself*, but contains only bugs that would exist in any monolithic web application.
 
-If you’re interested, I’ve written at length about how it is difficult to do research in this area in a [previous blog post](https://christophermeiklejohn.com/filibuster/2021/10/02/filibuster-1.html), a topic I believe is a ripe research area but limited by access to real applications.
+I've written at length about these problems in a [previous blog post on the lack of a bug corpus](https://christophermeiklejohn.com/filibuster/2021/10/02/filibuster-1.html).  These problems make research, into an area that I personally believe is incredibly important, quite difficult.  
+
+_In this post, I am going to discuss a small research study that I performed between August 2020 and December 2020, in order to identify the types of resilience issues that companies experience and the methods that they use to go about identifying them._ 
+
+## Overview
+
+If you have read my [previous blog post on corpus construction](https://christophermeiklejohn.com/filibuster/2021/10/02/filibuster-1.html), you will know that in order to solve this problem I started by scouring the internet for everything I could find on chaos engineering and resilience engineering.  This served as a starting point for my work -- I figured if I want to find discussion of resilience bugs and methods used to identify them, I should start by looking for discussion of the most commonly used methods to identify them today.  I identified a combined 77 resources -- the majority consisting of presentations from industry conferences (e.g., ChaosConf, AWS re:Invent) with a small number of blog posts.  After reducing this list to 50 presentations, by eliminating duplicate presentations given at multiple conferences, presentations that contained only an overview of chaos engineering techniques, and presentations that were merely marketing for chaos engineering products, I settled on a list of 50 presentations that we used in our paper on Filibuster.  This list of 50 presentations accounted for 32 different companies of all sizes in all sectors, including, but not limited to large tech firms (e.g., Microsoft, Amazon, Google), big box retailers (e.g., Walmart, Target), finanial institutions (e.g., JPMC, HSBC), and media and telecommunications companies (e.g., Conde Nast, media dpg, and Netflix.) 
+If you are interested in the full list with direct links to each presentation, it is available from [our paper](https://christophermeiklejohn.com/publications/filibuster-socc-2021.pdf).
+
+For our published paper on Filibuster, the list was reduced even further.  Here, the focus was only on presentations that met one of the following criteria:
+
+* Was a microservice application that contained a resilience bug discussed in enough detail that we would recreate the application in a lab setting and identify the bug?
+* Was a microservice application where a chaos experiment was run in order to identify bugs discussed in enough detail that we could recreate the application in a lab setting and identify the bug through functional testing with fault injection?
+
+This left only four: Audible, Expedia, Mailchimp, and Netflix.  We recreated these examples, identified bugs with Filibuster, and [released a public research corpus](https://github.com/filibuster-testing/filibuster-corpus) for researchers that had the same problem as us: lack of a corpus. 
+
+_In this blog post, I am going to discuss results that were not included in our paper on Filibuster and that I do not intend to publish._
+
+So, why talk about it then?  While there is not a lot of evidence to make strong claims -- for all of the reasons that I outlined above -- I do believe that sharing this preliminary information is useful in starting a conversation about resilience and how we go about testing for it in microservice applications.  I think that this information is useful for framing how we think about resilience and I hope for two possible outcomes:
+
+1. That an open discussion around these issues will cause developers to think differently about how they test for application resilience instead of just resorting to chaos engineering, which might not be [the most appropriate technique, as discussed in a previous blog post.](https://christophermeiklejohn.com/filibuster/2022/03/17/what-is-chaos-engineering.html)
+
+2. That this will inspire sharing of information with researchers so that academics can work on relevant problems around industrial microservice application resilience.  Without knowing details of bugs, application structure, and the like, academic research on microservice resilience will be non-existent or significantly behind the times.
+
+Without further ado, let's get into the details.
 
 ## Methods
 
-If you have read my [previous blog post](https://christophermeiklejohn.com/filibuster/2021/10/02/filibuster-1.html), you will know that in order to solve this problem I watched 77 presentations from industrial conferences and blog posts on the use of chaos engineering to identify *the types of resilience issues that companies experience and how they go about identifying them.*  I performed this research from August 2020 to December of 2020, the Fall 2020 semester at Carnegie Mellon University.
-
-For this research, I aggregated all of these results and constructed a taxonomy of what I found.  This was performed using what could be seen as a combination of the techniques from multiple case study analysis and grounded theory: note taking was performed during observation of the videos, open coding performed using these notes, and axial coding performed to aggregate these codes into categories using constant comparison.  From these categories, we then identified the core categories: the main causes of resilience issues and the main techniques used to identify them.  From there, we identified a theory about the existing testing techniques that could be used in order to address each category.   
-
-This process was rather ad-hoc: I had not taken a qualitative nor quantitative methods course at the time I performed this research, so there are many places where we veered from these approaches based on what “felt” right.  We do not intend to publish this research for this very reason; we also do not plan to publish due to the limited number of observations we were able to make.
-
-*(Note to future Ph.D. students: take a research methods course earlier, it will help you later on!  If you are at Carnegie Mellon University, I highly recommend Laura Dabbish’s class on Advanced Research Methods in HCII.)*
-
-For the following discussions, we assume that readers are familiar with [chaos engineering.](https://christophermeiklejohn.com/filibuster/2022/03/17/what-is-chaos-engineering.html)
+_My original analysis was extremely ad-hoc.  At the time of this analysis, I had not taken a qualitative nor quantative methods course.  I am currently taking one right now and recommend all early-stage researchers to not put it off for more exciting courses, and front-load it to become better researchers, as I wish I had.  In fact, if you are at Carnegie Mellon University, I highly recommend Laura Dabbish's class on Advanced Research Methods in HCII.  Therefore, I will frame things using the terminology of grounded theory and case study analysis; however, I did not know what these were at the time and the process was done based on a "what feels right at the time" style._
 
 ### Coding
 
-For this research, I watched all 77 presentations on my sofa using Chromecast.  For each presentation, I took notes related to application structure, testing procedures, resilience bugs, the processes used to identify resilience bugs, discussion of bug resolution techniques, and future directions.  I also noted several quotes during this observation, if I felt they were related to resilience.  
+For this study, I watched all 77 presentations.  For each presentation, I took notes related to application structure, testing procedures, resilience bugs discussed, the processes each organization used to identify reislience bugs, discussion of bug resolution techniques, and directions for future work.  I noted several quotations from developers during this observation; this information was recorded in a shared Google document.
 
-From here, we performed an *extremely ad-hoc version of axial coding*, a technique that I did not know existed when we performed this analysis.  It took the following form.  First, I disregarded any discussions of organizational structure, method, processes, or certain technologies that were not related to resilience.  
-
-Based on my review of notes through an ad-hoc derivation of the constant comparative method, I identified that the following categories as the *core categories*, and present them here as questions used when analyzing my notes: 
+From here, I disregarded any discussions of organizational structure, methods or processes and technologies specific to that organization.  From there, I identified what I thought were the core concepts or categories.  I present them here as motivating questions that were used when analyzing my notes.
 
 1. **Experiments.**
 Did the presenter talk about an actual chaos experiment they ran to identify a bug?
@@ -58,30 +89,32 @@ Did the presenter talk about a resilience bug they observed or discovered (not b
 3. **Resilience Patterns.**
 Did the presenter talk about a pattern (*e.g.,* circuit breaker, etc.) that they used to improve resilience of their application?
 4. **Application Structure.**
-Did the presenter talk about an architectural pattern in a microservice application? 
+Did the presenter talk about an architectural pattern in a microservice application?
 
-From here, I further refined sub-category of *resilience bugs* using the constant comparative method:
+From here, I further refined the sub-category of resilience bugs, based on the first analysis:
 
 1. Bug in application code.
 2. Bug in cloud service misconfiguration.
 3. Bug could have been identified using a mock, if written.
 4. Bug occurred in infrastructure, but was triggered by bug in the application.
 
-From here, I created another sub-category of resilience bugs using the constant comparative method, keeping in mind that individual items can belong to multiple categories:
+I also created another sub-category of resilience bugs, based on the first analysis:
 
 1. Bugs that could have been identified using traditional testing techniques involving mocks.
 2. Bugs that could *not* have been identified using traditional testing techniques involving mocks.
 
-Then, I created a sub-category of experiments using the constant comparative method, keeping in mind that individual items can belong to multiple categories:
+Then, I created a sub-category of experiments, based on the first analysis.  Reader should keep in mind that items from each presentation can belong to one or more categories in a multiple-inheritance style of analysis:
 
 1. Experiments that revealed bugs that could have been identified using traditional techniques involving mocks.
 2. Experiments that revealed bugs that could *not* have been identified using traditional techniques involving mocks.
 
-From here, selective coding was used to understand the relationship between, and develop a theory of, the classes of resilience bugs that companies experience and the techniques that are required to identify them.
+From here, I tried to understand the relationship between the coded concepts and develop a theory about what testing methods need to be used where in order to identify different classes of resilience bugs.
 
-## Theory
+For the reader who is well versed in research methods, this analysis is similar to using the constant comparative method from grounded theory when performing open, axial, and selective coding.
 
-In general, many bugs that are identified using chaos engineering — a technique that was popularized by Netflix to test their service where faults are introduced in the live, production environment on real customers and the application’s behavior under fault is observed — could be identified earlier using more traditional unit, integration, and functional tests in a local, development environment.  
+## The Preliminary Theory
+
+In general, many bugs that occur in software and are are identified using chaos engineering — a technique that was popularized by Netflix to test their service where faults are introduced in the live, production environment on real customers and the application’s behavior under fault is observed — could have been identified earlier using more traditional unit, integration, and functional tests in a local, development environment.  However, this would require more effort on the part of the individual developer, as they are required to: identify the faults that can occur at that location, write mocks to simulate those faults, and then write the required tests with assertions.  This insight served as the basis of my [Service-level Fault Injection Testing](https://www.youtube.com/watch?v=pyYh-vNspAI) technique, which combines static analysis, test generation, and functional testing.
 
 As a specific example, Expedia tested a simple fallback pattern where, when one dependent service is unavailable and returns an error, another service is contacted instead afterwards.  There is no need to run this experiment in production by terminating servers in production: a simple test that mocks the response of the dependent service and returns a failure is sufficient.  However, more complicated, and more interesting, examples exist.
 
@@ -101,7 +134,10 @@ In this example — a real outage reported by Audible, the asset metadata is una
 
 ### Resilience Fault Taxonomy
 
-When we look at this example, and the other examples that we surveyed, we can identify there are two major concerns for the developers of microservice applications.  First, *anticipation of application errors*: ensuring the application contains code error handling for all possible errors.  Second, *ensuring proper behavior and scalability of resilience countermeasures:* the methods that we take to contain unexpected, untested failures when they occur.  
+When we look at this example, and the other examples from our study, we can identify there are two major concerns for the developers of microservice applications:  
+
+1. First, *anticipation and handling of application errors*: ensuring the application contains code error handling for all possible errors.  
+2. Second, *ensuring proper behavior and scalability of resilience countermeasures:* the methods that we take to contain unexpected, untested failures when they occur.  
 
 We diagram this relationship below:
 
@@ -109,14 +145,14 @@ We diagram this relationship below:
 
 We represent this as four quadrants, bifurcated by abstraction layer and whether or not resilience countermeasures are present.  
 
-1. Failures might occur because our system fails to handle expected load.  For example, we may be missing a security policy or auto-scaling rule that is required for operation inducing external faults to our application.  These external faults may trigger latent, internal faults in our application.
-2. Failures might occur because our infrastructure configurations are wrong.  For example, we might fail to configure auto-scaling rules or concurrent execution limits for serverless functions; this may cause our application to experience an external fault (e.g., concurrent execution limit exceeded.) These external faults may trigger latent, internal faults in our application.
-3. Our application may be missing error handling code for possible errors: error codes we do not expect from external services, error codes we fail to handle from our own services through malfunctioning endpoints, by way of software defects, or services that are unavailable.
-4. Our application may contain incorrect or unscalable error handling code.  In this case, an error causes the application or service to take a code path designed for error handling, but that error handling path may introduce additional load on the system causing the system, or some number of the application’s services, to fail.
+1. _Infrastructure: Missing Scalability Configuration_: Failures might occur because our system fails to handle expected load.  For example, we may be missing a security policy or auto-scaling rule that is required for operation inducing external faults to our application.  These external faults may trigger latent, internal faults in our application.
+2. _Infrastructure: Unscalable Configuration_: Failures might occur because our infrastructure configurations are wrong.  For example, we might fail to configure auto-scaling rules or concurrent execution limits for serverless functions; this may cause our application to experience an external fault (e.g., concurrent execution limit exceeded.) These external faults may trigger latent, internal faults in our application.  
+3. _Application: Missing or Incorrect Error Handling Code_: Our application may be missing or contain incorrect error handling code for possible errors: error codes we do not expect from external services, error codes we fail to handle from our own services through malfunctioning endpoints, by way of software defects, or services that are unavailable.
+4. _Application: Unscalable Error Handling Code_: Our application may contain unscalable error handling code.  In this case, an error causes the application or service to take a code path designed for error handling, but that error handling path may introduce additional load on the system causing the system, or some number of the application’s services, to fail.
 
 Ok, so what is the theory?
 
-### Theory of Resilience Testing
+### Theory of Resilience Testing Methods
 
 Why does the taxonomy matter?  It matters, because each quadrant needs to be addressed by a separate testing methodology, with separate tools, and separate techniques.
 
@@ -126,9 +162,9 @@ We can represent this as follows, by reimagining the same graph with different a
 
 In this example, we have modified the abscissa to represent where the analysis needs to be performed; for the ordinate, we have modified it to represent whether or not we can identify the problem in a local environment or in the cloud.
 
-When it comes to missing configurations, these can be detected locally in a development environment.  In fact, missing configurations for cloud services can easily be detected through static analysis: missing application error handling code can *sometimes* be detected statically, but most definitely detected dynamically, *especially and most notably using fault-injection approaches like Filibuster.* 
+When it comes to missing configurations, these can be detected locally in a development environment.  In fact, missing configurations for cloud services can easily be detected through static analysis.  On the other hand, missing or inorrect application error handling code can *sometimes* be detected statically, but most definitely detected dynamically, *especially and most notably using fault-injection approaches like Filibuster.* 
 
-However, when it comes to the problems of cloud configuration things change.  Incorrect or unscalable cloud configurations, where auto-scaling rules or concurrent execution limits are incorrect, can only be detected in the cloud environment: we do not have this cloud runtime available locally (e.g., AWS, GCP) to detect these issues, even if we used a load generator.  Since there is no way to run these services locally using those configurations, the only way to identify these issues is to run those configurations in the actual cloud environment under either actual or synthetic load.  We note that Azure has made some movement in this area by allowing them to run their serverless runtime environment locally.
+However, when it comes to the problems of cloud configuration things change.  Incorrect or unscalable cloud configurations, where auto-scaling rules or concurrent execution limits are incorrect, can only be detected in the cloud environment: we do not have this cloud runtime available locally (e.g., AWS, GCP) to detect these issues, even if we used a load generator.  Since there is no way to run these services locally using those configurations, the only way to identify these issues is to run those configurations in the actual cloud environment under either actual or synthetic load. In fact, we may need to inject infrastructure-level faults to do proper testing; for example, inducing instance failures to trigger an instance restart rule to fire.  We note that Azure has made some movement in this area by allowing them to run their serverless runtime environment locally.
 
 When it comes to incorrect, or unscalable cloud configurations, that only cause faults under a latent application fault, these failures must be tested in the cloud environment *when we can induce faults.*  While chaos engineering can identify a number of these faults when they occur in the infrastructure -- through failed instances or blackholed DNS -- all of these failures surface themselves as errors or exceptions *in the application,* which indicates that we should inject these failures in a cloud environment to identify them, in the application where they can be explicitly controlled and exercised.
 
@@ -136,7 +172,7 @@ Our core observation is the following:
 
 Testing complexity increases as we move towards the upper right quadrant.  As we move in that direction, we need to, not only run our application in a cloud environment, but also inject faults *in that environment.*  This is the place where chaos engineering is typically focused, injection of faults in the production environment. However, based on our research, the majority of bugs discovered fall into either the quadrants below the x-axis, faults that should be identified well before applications are deployed into production, or in the left-most quadrants, where misconfigurations should be detected before production and/or tested in a staging environment under load.
 
-It seems that when latent software defects are not identified in the local environment and then subsequently result in outages, they *naturally appear* to fall into the upper-right quadrant.  However, application failures that result in capacity overloads *actually originate* from the lower-right quadrant as simple software defects that could have been detected through more rigorous software testing before deployment and become more serious outages under incorrect cloud configurations in the upper-left quadrant.
+It seems that when latent software defects are not identified in the local environment and then subsequently result in outages, they *naturally appear* to fall into the upper-right quadrant.  However, application failures that result in capacity overloads *actually originate* from the lower-right quadrant as simple software defects that could have been detected through more rigorous software testing before deployment and become more serious outages under incorrect cloud configurations from the upper-left quadrant.
 
 ## Takeaways
 
@@ -146,4 +182,15 @@ What are the takeaways?
 2. Application-level problems, such as the problems in the Audible example, can result in outages if left unhandled and then propagate to the infrastructure-level.  Therefore, try to eliminate as many problems as possible through local testing and then use testing in the cloud, under load with principled fault injection to determine if the system reacts to failures under load correctly.
 3. Infrastructure-level misconfigurations should be detected statically, if possible, using configuration validation tools.  Verifying these configurations should be done using load testing tools, based on expected load.
 
-If you're interested in this work, consider applying to Carnegie Mellon University or reach out to me for more information!
+If you find this work interesting, [please reach out](http://twitter.com/cmeik).  I'd love to hear more about application designs, failures, outages, and anything related to microservice resilience.
+
+<!--
+## Theory
+
+
+
+
+
+
+
+If you're interested in this work, consider applying to Carnegie Mellon University or reach out to me for more information! --> 
