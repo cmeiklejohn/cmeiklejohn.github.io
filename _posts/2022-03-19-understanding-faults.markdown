@@ -6,8 +6,7 @@ categories: filibuster
 group: filibuster
 ---
 
-_In this blog post, we are reporting on results from May 2020, that were used in the original development of the first
-Filibuster prototype._
+_In this blog post, I present results from May 2020, that were used in the original development of the first [Filibuster](http://filibuster.cloud) prototype._
 
 # Fault Taxonomy
 
