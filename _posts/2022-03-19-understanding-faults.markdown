@@ -173,13 +173,16 @@ _Testing complexity increases as we move towards the upper-right quadrant._
 
 As we move towards that direction, we need to run the applications in a cloud environment combined with principled fault injection.  For simple infrastruture-level faults, this can be as simple as crashing a service.  For application-level faults, more advanced techniques are required.  For instance, causing a particular service to fail with a particular GRPC response code that then causes the invokers of that service perform more expensive, alternate work.  
 
-_Chaos engineering, a technique that works well for the upper-right quadarant, is commonly used for identifying issues across all quadrants._
+_Chaos engineering, a technique that works well for the upper-right quadarant, is commonly used for identifying issues across all quadrants.  It is sufficient, but not necessary._
 
-Chaos engineering is the hammer and all four quadrants look like nails.  It
-works because is operates at such a low, fundamental level.  While it is
-sufficient, it is not stricly necessary for identifying all resilience issues.
+To understand this, we use a small example.  Consider the case where Service A takes a dependency on Service B.  
 
-Consider the case where service A takes a dependency on Service B.  If A fails to handle the unavailability of B, or does not handle its failure properly, we should detect that locally.  That lives in the lower-right quadrant.  However, if upon experiencing a failure of Service B, Service A invokes a more expensive code path that, under load, crashes because of incorrect service provisioning or resource exhaustion, that's the upper-right.  Therefore, you should identify these problems using a tiered approach: first, identify the lower-right issues locally, during development, and then identify the upper-right issues once deployed into the cloud environment.
+* If A fails to handle the unavailability of B, or does not handle its failure properly, we should detect that locally.  That lives in the lower-right quadrant.  
+* However, if upon experiencing a failure of Service B, Service A invokes a more expensive code path that, under load, crashes because of incorrect service provisioning or resource exhaustion, that's the upper-right.  
+
+Therefore, you should identify these problems using a tiered approach: first, identify the lower-right issues locally, during development, and then identify the upper-right issues once deployed into the cloud environment.
+
+Chaos engineering is the hammer and all four quadrants look like nails.  It works because is operates at such a low, fundamental level.  While it is sufficient, it is not stricly necessary, for identifying these classes of resilience issues.
 
 ## Takeaways
 
