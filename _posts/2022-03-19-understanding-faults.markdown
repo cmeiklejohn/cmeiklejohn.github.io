@@ -21,7 +21,7 @@ testing tools could hook into before, during, and after message processing to pe
 transformations.  Along with this, I made sure that Partisan fixed the order of message transmission
 to facilitate deterministic replay when developers identified counterexamples.  For demonstration purposes, I wired this up to Erlang QuickCheck/PropEr to test eventual consistency in a small application.  I talked about this at [Code BEAM SF 2019.](https://www.youtube.com/watch?v=KrwhOkiifQ8)
 
-At the time, this observation seemed novel.  It wasn't; in fact, the authors of ORCHESTRA made a similar observation in [1996](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.6485&rep=rep1&type=pdf).  Furthering my embarassment, the second author on the ORCHESTRA paper happens to be the current predisent of Carnegie Mellon University, where I am currently a Ph.D. student.
+At the time, this observation seemed novel.  It wasn't; in fact, the authors of ORCHESTRA made a similar observation in [1996](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.6485&rep=rep1&type=pdf).  Furthering my embarassment, the second author on the ORCHESTRA paper happens to be the current president of Carnegie Mellon University, where I am currently a Ph.D. student.
 
 While my technique identified known faults in 2PC, CTP, and 3PC faster than the state-of-the-art, it required that message handlers be annotated with cumbersome annotations.
 While these annotations could be automatically generated using static analysis when the programs were written with academic actor langauges that used high-level message handlers, these annotations had to be manually written with commonplace actor languages, like Akka and Erlang.
