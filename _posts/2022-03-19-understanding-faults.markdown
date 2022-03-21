@@ -180,9 +180,7 @@ To understand this, we use a small example.  Consider the case where Service A t
 * If A fails to handle the unavailability of B, or does not handle its failure properly, we should detect that locally.  That lives in the lower-right quadrant.  
 * However, if upon experiencing a failure of Service B, Service A invokes a more expensive code path that, under load, crashes because of incorrect service provisioning or resource exhaustion, that's the upper-right.  
 
-Therefore, you should identify these problems using a tiered approach: first, identify the lower-right issues locally, during development, and then identify the upper-right issues once deployed into the cloud environment.
-
-Chaos engineering is the hammer and all four quadrants look like nails.  It works because is operates at such a low, fundamental level.  While it is sufficient, it is not stricly necessary, for identifying these classes of resilience issues.
+Chaos engineering is the hammer and all four quadrants look like nails.  It works because is operates at such a low, fundamental level.  While it is sufficient, it is not stricly necessary, for identifying these classes of resilience issues.  Instead of resorting to chaos engineering for identifying all resilience issues, a multi-lvel testing approach should be used in order to identify failure to handle errors first, ensure proper handling of errors, before testing these error handling and resilience countermeasures in the cloud environment.
 
 ## Takeaways
 
