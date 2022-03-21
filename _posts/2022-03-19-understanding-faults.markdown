@@ -167,11 +167,15 @@ When it comes to incorrect, or unscalable cloud configurations, that only cause 
 
 ## Core Observation
 
-Testing complexity increases as we move towards the upper right quadrant.  As we move towards that direction, we need to run the applications in a cloud environment combined with principled fault injection.  For simple infrastruture-level faults, this can be as simple as crashing a service.  For application-level faults, more advanced techniques are required: for instance, causing a particular service to fail with a particular GRPC response code that causes any invoking services to perform more expensive, alternative work.  
+_Testing complexity increases as we move towards the upper right quadrant._
 
-Chaos engineering, is typically targeted at the upper right quadrant: cause failures in production randomly in order to try to identify any and all issues.  But, many of these issues stem from issues in other quadrants.  
+As we move towards that direction, we need to run the applications in a cloud environment combined with principled fault injection.  For simple infrastruture-level faults, this can be as simple as crashing a service.  For application-level faults, more advanced techniques are required: for instance, causing a particular service to fail with a particular GRPC response code that causes any invoking services to perform more expensive, alternative work.  
 
-To be explicitly clear with an example of this: if one service takes a dependency on another service and doesn't handle it's failure properly: that should be detected locally and lives in the lower-right.  If, upon observing that failure, the invoking service invokes a more expensive code path that, under load crashes because the system is not provisioned properly: that's the upper-right.  To identify these problems using the proper testing strategy, you first start by testing the lower-right quadrant prior to deployment and move to the upper-right quadrant once it is deployed in a cloud environment.  We observed that *both* of these types of issues are being detected through chaos engineering, where it is not stricly necessary.
+_Chaos engineering, is typically targeted at the upper right quadrant: cause failures in production randomly in order to try to identify any and all resilience issues.  But, many of these issues originate from issues in other quadrants._
+
+To be explicitly clear with an example of this: if one service takes a dependency on another service and doesn't handle it's failure properly: that should be detected locally and lives in the lower-right.  If, upon observing that failure, the invoking service invokes a more expensive code path that, under load crashes because the system is not provisioned properly: that's the upper-right.  To identify these problems using the proper testing strategy, you first start by testing the lower-right quadrant prior to deployment and move to the upper-right quadrant once it is deployed in a cloud environment.  
+
+We observed that *both* of these types of issues are being detected through chaos engineering, where it is not stricly necessary.
 
 ## Takeaways
 
