@@ -32,14 +32,11 @@ Furthermore, the lack of an actual application corpus posed real problems when t
 _It was time to take a step back: can we choose a different domain where analysis might be simpler?_
 
 I decided to refocus Filibuster on microservice applications.  Based on a potential collaboration with a Pittsburgh-area company that used Python for building their microservice applications, my new implementation was focused on microservices, implemented using Flask, in Python.
-Unfortunately, the collaboration did not pan out, so I resorted to an evaluation based on student applications.  
-This posed a number of problems as well, with the major problem being that these student applications did not represent the types of applications that are being written in industry.
+Unfortunately, the collaboration did not pan out, so I resorted to an evaluation based on student applications.  This posed a number of problems as well, with the major problem being that these student applications did not represent the types of applications that are being written in industry.
 
 _It was time to take a larger step back._
 
-The first approach that I tried was to identify existing open-source microservice applications on GitHub, use GitHub's revision system and issue tracker to identify any previously resolved resilience bugs, reintroduce those bugs, and then try to identify them using the new version of Filibuster.  
-However, these applications simply do not exist in the open-source ecosystem.  
-The ones that do exist are mostly tutorial applications that demonstrate how to properly write microservice applications; as one might imagine, these applications typically, and should not, contain bugs.
+The first approach that I tried was to identify existing open-source microservice applications on GitHub, use GitHub's revision system and issue tracker to identify any previously resolved resilience bugs, reintroduce those bugs, and then try to identify them using the new version of Filibuster.  However, these applications simply do not exist in the open-source ecosystem.  The ones that do exist are mostly tutorial applications that demonstrate how to properly write microservice applications; as one might imagine, these applications typically, and should not, contain bugs.
 
 Next, I decided to take the tutorial applications and introduce resilience bugs.  This is not a novel approach, in fact, it has been taken by several papers [as recent as SoCC ‘21](https://dl.acm.org/doi/abs/10.1145/3472883.3486986), coincidentally, where our first paper on Filibuster was published.  One problem with this approach is finding the bugs: most open source discussions of bugs in postmortems or other incident reports rarely discuss the root causes of outages.  This made the identification and retrofitting of existing applications with realistic bugs difficult, if impossible.
 
