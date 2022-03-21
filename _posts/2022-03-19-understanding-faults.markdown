@@ -151,7 +151,7 @@ Ok, so what is the theory?
 
 ### Theory of Resilience Testing Methods
 
-Why does the taxonomy matter?  It matters, because each quadrant needs to be addressed by a separate testing methodology, with separate tools, and separate techniques.
+Why does the taxonomy matter?  It matters, because each quadrant needs to be addressed by a separate testing methodology with separate tools, at a different point in the software engineering lifecycle.
 
 We can represent this as follows, by reimagining the same graph with different axes:
 
