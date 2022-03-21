@@ -175,6 +175,10 @@ As we move towards that direction, we need to run the applications in a cloud en
 
 _Chaos engineering, a technique that works well for the upper-right quadarant, is commonly used for identifying issues across all quadrants._
 
+Chaos engineering is the hammer and all four quadrants look like nails.  It
+works because is operates at such a low, fundamental level.  While it is
+sufficient, it is not stricly necessary for identifying all resilience issues.
+
 Consider the case where service A takes a dependency on Service B.  If A fails to handle the unavailability of B, or does not handle its failure properly, we should detect that locally.  That lives in the lower-right quadrant.  However, if upon experiencing a failure of Service B, Service A invokes a more expensive code path that, under load, crashes because of incorrect service provisioning or resource exhaustion, that's the upper-right.  Therefore, you should identify these problems using a tiered approach: first, identify the lower-right issues locally, during development, and then identify the upper-right issues once deployed into the cloud environment.
 
 ## Takeaways
@@ -186,14 +190,3 @@ What are the takeaways?
 3. Infrastructure-level misconfigurations should be detected statically, if possible, using configuration validation tools.  Verifying these configurations should be done using load testing tools, based on expected load, in the actual cloud environment.
 
 If you find this work interesting, [please reach out](http://twitter.com/cmeik).  I'd love to hear more about application designs, failures, outages, and anything related to microservice resilience.
-
-<!--
-## Theory
-
-
-
-
-
-
-
-If you're interested in this work, consider applying to Carnegie Mellon University or reach out to me for more information! --> 
