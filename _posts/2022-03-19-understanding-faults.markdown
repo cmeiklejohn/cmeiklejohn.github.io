@@ -9,6 +9,8 @@ group: filibuster
 _In this blog post, I present results from May 2021, that were used during the development of 
 [Filibuster](http://filibuster.cloud)._
 
+_Update 2022-03-20: Based on some feedback, I realized the section on core observations was not perfectly clear.  I revised that section and corrected a number of spelling and grammatical issues._
+
 Before my automated resilience testing tool,
 **[Filibuster](http://filibuster.cloud)**, was targeted at the resilience
 testing of microservice applications, it was targeted at the testing of
