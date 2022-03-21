@@ -6,7 +6,7 @@ categories: filibuster
 group: filibuster
 ---
 
-_In this blog post, I present results from May 2020, that were used during the development of 
+_In this blog post, I present results from May 2021, that were used during the development of 
 [Filibuster](http://filibuster.cloud)._
 
 Before my automated resilience testing tool,
