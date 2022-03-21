@@ -181,7 +181,7 @@ What are the takeaways?
 
 1. Failures can occur because of both infrastructure and application-level problems.  Therefore, a multi-level testing approach is necessary to address both.
 2. Application-level problems, such as the problems in the Audible example, can result in outages if left unhandled and then propagate to the infrastructure-level.  Therefore, try to eliminate as many problems as possible through local testing and then use testing in the cloud, under load with principled fault injection to determine if the system reacts to failures under load correctly.
-3. Infrastructure-level misconfigurations should be detected statically, if possible, using configuration validation tools.  Verifying these configurations should be done using load testing tools, based on expected load.
+3. Infrastructure-level misconfigurations should be detected statically, if possible, using configuration validation tools.  Verifying these configurations should be done using load testing tools, based on expected load, in the actual cloud environment.
 
 If you find this work interesting, [please reach out](http://twitter.com/cmeik).  I'd love to hear more about application designs, failures, outages, and anything related to microservice resilience.
 
