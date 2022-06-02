@@ -60,3 +60,9 @@ Once the bookings service receives this GET request, it takes the following step
 3. For each booking date for that particular user, retrieve the movie identifiers. The movie identifiers are unique to each movie.
 4. Return a JSON object containing the movie identifiers associated with each booking date for the user.
 
+After the users service has received a response from the bookings service, it contacts the movies service and retrieves the movie data associated with each movie identifier. Then, the movies service retrieves the movie data from Redis and returns the data to the users service, which then returns the data to the user.
+
+## Testing The Bookings API
+
+
+TODO
