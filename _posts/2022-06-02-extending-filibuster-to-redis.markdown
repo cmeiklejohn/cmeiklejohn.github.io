@@ -44,7 +44,7 @@ These services allow the user to retrieve user information, book movies, retriev
 While this application exposes several different REST APIs, one important API allows users to retrieve their movie bookings. 
 Starting with a request from the client to the users service, the application makes several GET requests to retrieve their bookings, as shown by the diagram below:
 
-<img src="/img/eunice-cinema-example.png" width="800">
+<img src="/img/eunice-cinema-example.png" width="600">
 
 ## Retrieve Bookings
 
