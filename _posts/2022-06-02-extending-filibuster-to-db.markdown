@@ -189,9 +189,28 @@ It completes this entire process in only 9.1 seconds, allowing developers to tes
 
 # Conclusions and Future Work
 
+When we started this work, we had two questions: 
 
+1. Can Filibuster be expanded to support database calls? 
+2. How would this new support for database calls change the way the Filibuster tool interacts with microservice applications? 
 
+After building our Redis prototype, we can now begin to answer them.
 
+As demonstrated by the example above, we are, for the most part, able to extend Filibuster to accommodate database calls. 
+While our first prototype of this in Filibuster uses Python’s Redis library, our early results indicate that extending Filibuster to more languages and database implementations is a promising direction for future work. 
+Thus, the answer to our first question is _yes, we can expand Filibuster to support database calls._
 
+While this prototype demonstrated that many of the design decisions made in Filibuster itself were correct, we also discovered several ways where we believe we need to modify Filibuster to support further, in-depth testing of database clients.  One specific way is simulating different types of failures – not spurious faults – in Redis, based on the Redis method that is being called. We demonstrate this using an example below.
 
-TODO
+With respect to HTTP RPCs, whenever we want to inject a failure that doesn’t cause an exception, we can simply return an HTTP response back to the caller containing the associated status code to indicate failure. This is similar to GRPC as well: a single GRPC return type is provided and a status field set indicating the type of failure. However, with Redis, different return types are used depending on the Redis API used.
+
+For example, the `hget` method, which gets the value of a hash field, may return a different type of value than the `sismember` method, which determines whether a given value is a member of a set. 
+The `hget` method can return strings, integers, or `None`, whereas the `sismember` method returns only 0 or 1 depending on whether the value is or is not a member of a set. 
+If the user calls `redis.hget(id)`, and the id does not exist in the database, then Redis will simply return `None`. 
+However, if the user had instead called `redis.sismember(set_name, id)` for an id that didn't exist, then the response would be `0` (_i.e.,_ `False`). 
+Since what constitutes a failed response varies based on the Redis method called, we are exploring different ways Filibuster can simulate those failures. 
+In doing so, we can expand the way the Filibuster tool interacts with microservice applications.
+
+Through this work, we have extended Filibuster to support Python's Redis library. 
+In doing so, we have learned that it is feasible for Filibuster to be successfully extended to more languages and database implementations. 
+At the same time, we raised interesting new questions and have found new directions for the Filibuster tool to grow in.
