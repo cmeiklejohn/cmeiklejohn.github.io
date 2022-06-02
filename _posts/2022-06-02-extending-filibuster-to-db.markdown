@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Extending Fiibuster to Test Redis"
+title:  "Extending Filibuster to Test Redis"
 date:   2022-06-02 00:00:00 -0000
 categories: filibuster
 group: filibuster
@@ -28,6 +28,8 @@ We started this work with two interesting questions:
 
 1. Could Filibuster be expanded to support database calls?
 2. How would this new support for database calls change the way the Filibuster tool interacts with microservice applications?
+
+Let's work with an example.
  
 # Example: Cinema Microservice Application
 
@@ -41,8 +43,6 @@ These services allow the user to retrieve user information, book movies, retriev
 
 While this application exposes several different REST APIs, one important API allows users to retrieve their movie bookings. 
 Starting with a request from the client to the users service, the application makes several GET requests to retrieve their bookings, as shown by the diagram below:
-
-Let's work with an example.
 
 <img src="/img/eunice-cinema-example.png" width="800">
 
@@ -76,6 +76,14 @@ In this case, since the only errors we expect are a 404 Not Found or a 503 Servi
 
 We excerpt the test below:
 
+```python
+bookings_endpoint = "{}/users/{}/bookings".format(helper.get_service_url('users'), 'chris_rivers')
+users_bookings = requests.get(bookings_endpoint, timeout=helper.get_timeout('bookings'))
+if users_bookings.status_code == 200:
+    assert users_bookings.json() == {'20151201': [{'rating': '8.8','title': 'Creed','uri': '/movies/267eedb8-0f5d-42d5-8f43-72426b9fb3e6'}]}
+else:
+    assert was_fault_injected() and users_bookings.status_code in [404, 503]
+```
 
 
 
