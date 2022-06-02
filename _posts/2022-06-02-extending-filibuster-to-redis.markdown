@@ -164,9 +164,6 @@ filibuster --functional-test ./functional/test_user_bookings.py
 From our output, reproduced below, we can now see that everything passes.
 
 ```bash
-[FILIBUSTER] [INFO]: ========================================================
-[FILIBUSTER] [INFO]: 
-[FILIBUSTER] [INFO]: 
 [FILIBUSTER] [INFO]: Number of tests attempted: 52
 [FILIBUSTER] [INFO]: Number of test executions ran: 52
 [FILIBUSTER] [INFO]: Test executions pruned with only dynamic pruning: 21
