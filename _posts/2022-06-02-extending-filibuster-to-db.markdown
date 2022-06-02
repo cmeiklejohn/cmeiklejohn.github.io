@@ -86,14 +86,13 @@ else:
     assert was_fault_injected() and users_bookings.status_code in [404, 503]
 ```
 
-To run Filibuster with our functional test, we can run the following command.  
-This will inject HTTP exceptions at each RPC site.
+To run Filibuster with our functional test, we can run the following command which will inject HTTP exceptions at each RPC call site.
 
 ```bash
 filibuster --functional-test ./functional/test_user_bookings.py
 ```
 
-OK.
+Now, let's test our application's resilience to Redis failures.
 
 ## Testing Calls to Redis
 
