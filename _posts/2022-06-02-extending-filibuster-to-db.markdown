@@ -42,5 +42,21 @@ These services allow the user to retrieve user information, book movies, retriev
 While this application exposes several different REST APIs, one important API allows users to retrieve their movie bookings. 
 Starting with a request from the client to the users service, the application makes several GET requests to retrieve their bookings, as shown by the diagram below:
 
+Let's work with an example.
+
 <img src="/img/eunice-cinema-example.png" width="800">
+
+## Retrieve Bookings
+
+First, the users service makes a call to Redis to check if the username exists in the database. 
+If the user does not exist, then the users service will return a 404 Not Found. 
+If the Redis call returns a successful response, then the users service will contact the bookings service and request the data associated with the given username.
+
+Once the bookings service receives this GET request, it takes the following steps:
+
+1. Check that the username exists in the bookings database via Redis call.  If the username doesn’t exist, then the bookings service will return a 404.  
+   1. When the users service receives this response, it returns a 404 back to the user.
+2. If this call is successful, retrieve the dates on which the user has booked a movie from Redis. 
+3. For each booking date for that particular user, retrieve the movie identifiers. The movie identifiers are unique to each movie.
+4. Return a JSON object containing the movie identifiers associated with each booking date for the user.
 
