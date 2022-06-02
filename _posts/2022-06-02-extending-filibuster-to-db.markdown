@@ -35,3 +35,12 @@ To explore what a design for database fault injection might look like, we decide
 The Filibuster application corpus contains several example microservice applications, some of which are reproduced from industry to demonstrate different request patterns. 
 Request patterns that are exemplified by the corpus range from retries on failure, to fallback requests, to using default responses on failure, as well as the different types of ways requests can be structured and nested.
 
+The example we chose to expand was one of the Filibuster corpus’ cinema examples. 
+It consists of four services: users, bookings, showtimes, and movies. 
+These services allow the user to retrieve user information, book movies, retrieve showtime information, and perform other actions one might expect from a cinema site.
+
+While this application exposes several different REST APIs, one important API allows users to retrieve their movie bookings. 
+Starting with a request from the client to the users service, the application makes several GET requests to retrieve their bookings, as shown by the diagram below:
+
+<img src="/img/eunice-cinema-example.png" width="800">
+
