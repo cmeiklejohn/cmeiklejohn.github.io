@@ -6,7 +6,7 @@ categories: filibuster
 group: filibuster
 ---
 
-TODO
+_This blog post was written by Eunice Chen, an undergraduate student who contributed to the Filibuster research project this Spring.  Eunice did an excellent job extending Filibuster with a prototype of Redis support.  She recently gradudated and we will miss her!  Congrats, Eunice!_
 
 # Summary
 
