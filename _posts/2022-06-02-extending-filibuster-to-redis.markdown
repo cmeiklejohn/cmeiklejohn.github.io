@@ -149,9 +149,7 @@ Counterexamples allow the developer to rerun the specific generated (and failed)
 To use the counterexample to rerun a failed test, we supply it to the Filibuster command as follows:
 
 ```bash
-filibuster \\
-	--functional-test ./functional/test_user_bookings.py \\
-    --counterexample-file counterexample.json
+filibuster --functional-test ./functional/test_user_bookings.py --counterexample-file counterexample.json
 ```
 
 Once run, we see that the test now passes the previously failing test.  
