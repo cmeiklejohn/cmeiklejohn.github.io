@@ -86,6 +86,112 @@ else:
     assert was_fault_injected() and users_bookings.status_code in [404, 503]
 ```
 
+To run Filibuster with our functional test, we can run the following command.  
+This will inject HTTP exceptions at each RPC site.
+
+```bash
+filibuster --functional-test ./functional/test_user_bookings.py
+```
+
+OK.
+
+## Testing Calls to Redis
+
+For Filibuster to inject faults at each Redis call site, we need to expand the list of faults that Filibuster uses for fault injection.  
+To do that, we modify Filibuster to inject connection errors, timeout errors, and response errors for calls that are made using the `execute_command` primitive.
+
+Below is the additional Filibuster configuration containing these new faults:
+
+```python
+"python.redis": {
+   "pattern": "redis\\.execute\\_command",
+   "exceptions": [
+     {
+       "name": "redis.exceptions.ConnectionError"
+     },
+     {
+       "name": "redis.exceptions.TimeoutError"
+     },
+     {
+       "name": "redis.exceptions.ResponseError"
+     }
+   ]
+  }
+```
+
+Once we modify the list of faults that Filibuster uses for fault injection to include Redis, we can rerun our Filibuster command from before. 
+Filibuster will systematically inject these Redis errors (along with the HTTP RPC faults) one by one, then in combinations, while repeatedly executing our functional test. 
+
+For example, in one test, Filibuster might inject a `ConnectionError` exception when the user retrieves the user metadata. 
+In another test, it may try to inject a `TimeoutError` exception when the bookings service retrieves booking dates and a `ResponseError` exception when the bookings services retrieves movie identifiers. 
+Filibuster will test all possible combinations of these errors in the different services until the fault space is exhausted.
+
+Because the application does not handle any Redis exceptions, the application returns a 500 Internal Service Error. 
+Instead of altering our functional test to allow for a 500 Internal Server Error, we want the service to return a 424 Failed Dependency if one of the dependencies, in this case Redis, is down. 
+
+```python
+try:
+    booking_ids = r.hgetall(user_id)
+except redis.exceptions.RedisError as e:
+       print(e)
+       raise FailedDependency
+```
+
+Before, our test asserted that if the call failed, then the fault was intentional and the HTTP status matched the expected status. 
+We change our test to expect a 424 response code in addition to a 404 error:
+
+```python
+else:
+       assert was_fault_injected() and users_bookings.status_code in [404, 503, 424]
+```
+
+When the test execution fails, Filibuster generates a counterexample file that contains the specific fault(s) that caused the failure. 
+Counterexamples allow the developer to rerun the specific generated (and failed) test and attach an interactive debugger. 
+To use the counterexample to rerun a failed test, we supply it to the Filibuster command as follows:
+
+```bash
+filibuster \\
+	--functional-test ./functional/test_user_bookings.py \\
+    --counterexample-file counterexample.json
+```
+
+Once run, we see that the test now passes the previously failing test.  
+Therefore, we know that we have fixed this particular bug.
+
+Finally, we can run Filibuster again and test for the whole default set of failures as well:
+
+```bash
+filibuster --functional-test ./functional/test_user_bookings.py
+```
+
+From our output, reproduced below, we can now see that everything passes.
+
+```bash
+[FILIBUSTER] [INFO]: ========================================================
+[FILIBUSTER] [INFO]: 
+[FILIBUSTER] [INFO]: 
+[FILIBUSTER] [INFO]: Number of tests attempted: 52
+[FILIBUSTER] [INFO]: Number of test executions ran: 52
+[FILIBUSTER] [INFO]: Test executions pruned with only dynamic pruning: 21
+[FILIBUSTER] [INFO]: Total tests: 73
+[FILIBUSTER] [INFO]: 
+[FILIBUSTER] [INFO]: Time elapsed: 9.103456020355225 seconds.
+```
+
+Because Filibuster exhausts the failure space and everything now passes, we know that the application behaves exactly as specified by the functional test. 
+Specifically, we know that the endpoint returns the correct data (in the case of a 200 OK response), or that its failure behavior matches the expected behavior (i.e. a 404, 503, or 424 response). 
+In either case, because we have correctly handled any exceptions that may arise, we can verify that the application does not fail in unexpected ways when one of the services it depends on fails.
+
+For this example, Filibuster ran 73 tests: 72 generated tests from the original test plus the original test itself. 
+Without Filibuster, developers would have to write 72 tests manually in order to exhaust the fault space. 
+However, Filibuster does this automatically. In doing so, it is able to prune 19 redundant tests (for more information on how this is done, see [this post](https://christophermeiklejohn.com/filibuster/2021/10/14/filibuster-4.html). 
+It completes this entire process in only 9.1 seconds, allowing developers to test their code quickly.
+
+# Conclusions and Future Work
+
+
+
+
 
 
 TODO
