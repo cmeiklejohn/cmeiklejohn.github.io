@@ -178,7 +178,7 @@ In either case, because we have correctly handled any exceptions that may arise,
 
 For this example, Filibuster ran 73 tests: 72 generated tests from the original test plus the original test itself. 
 Without Filibuster, developers would have to write 72 tests manually in order to exhaust the fault space. 
-However, Filibuster does this automatically. In doing so, it is able to prune 19 redundant tests (for more information on how this is done, see [this post](https://christophermeiklejohn.com/filibuster/2021/10/14/filibuster-4.html). 
+However, Filibuster does this automatically. In doing so, it is able to prune 19 redundant tests (for more information on how this is done, see [this post](https://christophermeiklejohn.com/filibuster/2021/10/14/filibuster-4.html)). 
 It completes this entire process in only 9.1 seconds, allowing developers to test their code quickly.
 
 # Conclusions and Future Work
