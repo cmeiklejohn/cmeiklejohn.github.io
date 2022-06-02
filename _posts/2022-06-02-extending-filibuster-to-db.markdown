@@ -64,5 +64,19 @@ After the users service has received a response from the bookings service, it co
 
 ## Testing The Bookings API
 
+To test this endpoint, we make a request to the users service that will retrieve a particular user's bookings, which corresponds to the endpoint `users/{username}/bookings`. 
+In our test, we look for the bookings associated with `chris_rivers`, so we make a call to the endpoint `users/chris_rivers/bookings`.
+
+We start with the basic functional test behavior that would exist prior to our adaptation for HTTP RPC fault injection.  
+Our test asserts that if the response code from this call is 200 OK, which indicates success, the data returned matches the data associated with the `chris_rivers` user. 
+
+To handle the cases where Filibuster has injected faults for the HTTP RPCs, we add conditional code to account for behavior under failure.  
+In the case where an RPC fails, our test asks Filibuster to verify whether it injected a fault, _i.e.,_ that the fault was intentional — this is done using the `was_fault_injected()` conditional. Our test asserts that if the RPC failed, Filibuster did actually inject a fault and the HTTP status matches the expected status when the call fails. 
+In this case, since the only errors we expect are a 404 Not Found or a 503 Service Unavailable, we assert that the status code must be 404 or 503.  
+
+We excerpt the test below:
+
+
+
 
 TODO
