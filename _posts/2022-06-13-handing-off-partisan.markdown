@@ -10,8 +10,7 @@ I’m happy to announce that I am handing off maintenance of [Partisan](https://
 
 Alejandro has done tremendous work on Partisan over the last two years: from fixing bugs, feature enhancement to performance improvements.
 
-Alejandro has also brought Partisan to places that, as a PhD student who works mostly in a lab, never imagined:  
-LO/JACK LATAM, the lost vehicle recovery service, since 2019, has been using Partisan as part of its Magenta Platform, tracking 300k vehicles, 10k devices, receiving over 30M GPS transmissions each day!
+Alejandro has also brought Partisan to places that, as a PhD student who works mostly in a lab, never imagined:  LO/JACK LATAM, the lost vehicle recovery service, since 2019, has been using Partisan as part of its Magenta Platform, tracking 300k vehicles, 10k devices, receiving over 30M GPS transmissions each day!
 
 At LO/JACK LATAM, Leapsight uses Partisan as a foundational component for:
 
