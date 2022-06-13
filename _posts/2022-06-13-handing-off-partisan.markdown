@@ -6,7 +6,7 @@ categories: erlang partisan
 group: partisan
 ---
 
-I’m happy to announce that I am handing off maintenance of [Partisan](https://github.com/lasp-lang/partisan), the distributed runtime system I built as part of my Ph.D., to [Alejandro Ramallo](https://github.com/aramallo/partisan) at Leapsight.
+I’m happy to announce that I am handing off maintenance of [Partisan](https://github.com/lasp-lang/partisan), the distributed runtime system I built as part of my Ph.D. (and my first paper published at CMU!), to [Alejandro Ramallo](https://github.com/aramallo/partisan) at Leapsight.
 
 Alejandro has done tremendous work on Partisan over the last two years: from fixing bugs, feature enhancement to performance improvements.
 
