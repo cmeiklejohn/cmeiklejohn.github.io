@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Handing off Partisan"
+title:  "Handing off Maintenance of Partisan"
 date:   2022-06-13 00:00:00 -0000
 categories: erlang partisan 
 group: partisan
