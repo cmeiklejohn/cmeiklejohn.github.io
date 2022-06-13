@@ -9,7 +9,7 @@ I recently gave a talk at [Chicago Erlang Factory Lite][efl] on
 migrating an application from Ruby to Erlang.  The video and slides are
 both available now, so enjoy!
 
-<iframe class="youtube-player" width="480" height="360"
+<iframe class="youtube-player" width="560" height="315"
 src="//www.youtube.com/embed/N_qJTgcvUxI" frameborder="1"> </iframe>
 
 Here's a link to the [slides][slides].
