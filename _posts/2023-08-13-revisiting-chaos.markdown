@@ -10,7 +10,7 @@ _This addresses comments from LinkedIn on my previous blog post called [Chaos En
 
 Last week, I took a bit of heat for my post on chaos engineering for couple reasons. I wanted to comment on them here.
 
----
+### Commentary
 
 First, I said chaos engineering was random. First off, in my post, the context I was referring to was the initial incarnation of chaos engineering a la "chaos monkey" with my textual reference to 2007.  The initial chaos monkey was random in its instance termination. In retrospect, I should have been more precise. I was referring to this specifically because I had recently had seen many posts about using _this specific style_ of chaos engineering on LinkedIn under this hashtag.
 
@@ -20,7 +20,7 @@ And, let me tell you, microservices issue a *lot* of RPCs and developers are con
 
 Second, I'm aware of the history of resilience engineering. I think it's useful for making sure that on-call works properly, fail-over of AZ/region/DCs work, people get paged, whatever. I don't disagree with any of that; in fact, I've cited Jesse's papers, Google's papers and talks, etc. all with high recommendations in my own papers and lectures that I've given on the topic at CMU.
 
----
+### Disagreements
 
 What I *do* disagree with is using chaos engineering in place of isolated functional software testing. More specifically, I shouldn't be turning a server or availability zone off to make sure that the RPCs I am issuing from a different service in a different availability zone handle a Connection Error Exception: I can easily do that in the code. In the way I see it, you are issuing RPCs (library call) and it's your duty to test your application for what happens when those RPCs fail (exceptions), just like any other library call you'd test. If developer's use RPCs like ordinary library calls, they should be tested like library calls.
 
