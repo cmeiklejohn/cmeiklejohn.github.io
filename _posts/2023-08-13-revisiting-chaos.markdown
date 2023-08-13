@@ -12,7 +12,7 @@ Last week, I took a bit of heat for my post on chaos engineering for couple reas
 
 ---
 
-First, I said chaos engineering was random. First off, in my post, the context I was referring to was the initial incarnation of chaos engineering a la "chaos monkey" with my textual reference to 2007.  The initial chaos monkey was random in its instance termination. In retrospect, I should have been more precise. I was referring to this specifically because I had recently saw many posts about using chaos monkey on LinkedIn.
+First, I said chaos engineering was random. First off, in my post, the context I was referring to was the initial incarnation of chaos engineering a la "chaos monkey" with my textual reference to 2007.  The initial chaos monkey was random in its instance termination. In retrospect, I should have been more precise. I was referring to this specifically because I had recently had seen many posts about using _this specific style_ of chaos engineering on LinkedIn under this hashtag.
 
 However, when it comes to random exploration, I was using it to draw a distinction from systematic exhaustive exploration: what I've (personally) found is that talking to people about what could fail and designing experiments around it isn't nearly as useful as a systematic exploration of all RPC that a service (or services) execute. Often, the weak point is an RPC or dependency that the developer doesn't remember is being called as part of some process. Hence, I prefer using the computers to figure out what to do and have them do it automatically.
 
