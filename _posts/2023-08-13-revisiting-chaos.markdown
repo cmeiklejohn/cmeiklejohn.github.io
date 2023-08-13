@@ -12,13 +12,13 @@ Last week, I took a bit of heat for my post on chaos engineering for couple reas
 
 ---
 
-1.) I said chaos engineering was random. First off, in my post, the context I was referring to was the initial incarnation of chaos engineering a la "chaos monkey" with my textual reference to 2007.  The initial chaos monkey was random in its instance termination. In retrospect, I should have been more precise. I was referring to this specifically because I had recently saw many posts about using chaos monkey on LinkedIn.
+First, I said chaos engineering was random. First off, in my post, the context I was referring to was the initial incarnation of chaos engineering a la "chaos monkey" with my textual reference to 2007.  The initial chaos monkey was random in its instance termination. In retrospect, I should have been more precise. I was referring to this specifically because I had recently saw many posts about using chaos monkey on LinkedIn.
 
 However, when it comes to random exploration, I was using it to draw a distinction from systematic exhaustive exploration: what I've (personally) found is that talking to people about what could fail and designing experiments around it isn't nearly as useful as a systematic exploration of all RPC that a service (or services) execute. Often, the weak point is an RPC or dependency that the developer doesn't remember is being called as part of some process. Hence, I prefer using the computers to figure out what to do and have them do it automatically.
 
 And, let me tell you, microservices issue a *lot* of RPCs and developers are consistently surprised: "Oh, I forgot we were calling that service."
 
-2.) I'm aware of the history of resilience engineering. I think it's useful for making sure that on-call works properly, fail-over of AZ/region/DCs work, people get paged, whatever. I don't disagree with any of that; in fact, I've cited Jesse's papers, Google's papers and talks, etc. all with high recommendations in my own papers and lectures that I've given on the topic at CMU.
+Second, I'm aware of the history of resilience engineering. I think it's useful for making sure that on-call works properly, fail-over of AZ/region/DCs work, people get paged, whatever. I don't disagree with any of that; in fact, I've cited Jesse's papers, Google's papers and talks, etc. all with high recommendations in my own papers and lectures that I've given on the topic at CMU.
 
 ---
 
