@@ -8,7 +8,7 @@ group: short
 
 _This addresses comments from LinkedIn on my previous blog post called [Chaos Engineering or Software Testing?](https://christophermeiklejohn.com/filibuster/2023/08/10/chaos-engineering.html)_
 
-Last week, I took a bit of heat for my post on chaos engineering for couple reasons. First, that I didn't actually understand what chaos engineering was and thought the technique was purely random. Second, that I failed to misunderstand that it has a long history in the field of resilience engineering.
+Last week, I took a bit of heat for my post on chaos engineering for couple reasons. First, it was said that I didn't actually understand what chaos engineering was and thought the technique was purely random. Second, it was said that I failed to understand that chaos engineering has a long history in the field of resilience engineering.
 
 ### Commentary
 
