@@ -29,3 +29,5 @@ To be clear: I'm not saying this is the only testing that you do, it's just one 
 (Waldo is going to want to murder me, but this the reality. Thankfully, there are tools for testing RPCs for failures, timeouts, high latency, etc.)
 
 You don't use chaos engineering to randomly delete files to see if your application code handles a File Not Found exception, do you?
+
+_For those interested: learn more about [chaos engineering and why I don't think chaos engineering is a good substitute for software testing](https://christophermeiklejohn.com/filibuster/2022/03/17/what-is-chaos-engineering.html)._

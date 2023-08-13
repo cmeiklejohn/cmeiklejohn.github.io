@@ -27,3 +27,5 @@ Compositional reasoning: it's how we reason about programs that we write.
 We test something to determine its behavior, and then we test components that use those components under the behavior we identified.
 
 Only when we know how everything should work do we run the end to end test of the system where we test all of the components working together. We have an assumption about what will happen: our test is used to possibly invalidate that assumption.
+
+_For those interested: learn more about [chaos engineering and why I don't think chaos engineering is a good substitute for software testing](https://christophermeiklejohn.com/filibuster/2022/03/17/what-is-chaos-engineering.html)._
