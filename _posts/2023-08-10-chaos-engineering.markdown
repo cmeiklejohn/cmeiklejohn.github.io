@@ -6,7 +6,7 @@ categories: filibuster
 group: short
 ---
 
-Recently, I've seen a lot of posts under the #chaosengineering hash tag on LinkedIn --- Netflix style --- and as someone who has been researching resilience in software for 5 years as part of my Ph.D., I thought I would provide my thoughts.
+Recently, I've seen a lot of posts under the #chaosengineering hashtag on LinkedIn on Netflix-style _chaos engineering_ and as someone who has been researching resilience in software for 5 years as part of my Ph.D., I thought I would provide my thoughts.
 
 First, we need to keep things in context. When Netflix was first moving to the cloud and "inventing" chaos engineering, EC2 was unreliable and instances would be reclaimed, fail, or otherwise disappear. Therefore, they wanted to be able to tolerate this. This is key behind their "inject realistic faults" philosophy.
 
