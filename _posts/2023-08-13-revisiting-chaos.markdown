@@ -26,7 +26,7 @@ What I *do* disagree with is using chaos engineering in place of isolated functi
 
 To be clear: I'm not saying this is the only testing that you do, it's just one step along a path. Learn what things return when they are failing and return errors; then, figure out what the larger system impact is: compositional testing and reasoning. No use injecting a fault in production when your code doesn't (correctly) handle errors without first finding out your code doesn't have a (correct) error handler.
 
-(Waldo is going to want to murder me, but this the reality. Thankfully, there are tools for testing RPCs for failures, timeouts, high latency, etc.)
+(Waldo is going to want to murder me, but this the reality. Thankfully, there are [tools](http://filibuster.cloud) for testing RPCs for failures, timeouts, high latency, etc.)
 
 You don't use chaos engineering to randomly delete files to see if your application code handles a File Not Found exception, do you?
 
