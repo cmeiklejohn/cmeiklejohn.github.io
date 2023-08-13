@@ -6,7 +6,7 @@ categories: filibuster
 group: short
 ---
 
-__This addresses comments from LinkedIn on my previous blog post called "Chaos Engineering or Software Testing?"__
+_This addresses comments from LinkedIn on my previous blog post called [Chaos Engineering or Software Testing?](https://christophermeiklejohn.com/filibuster/2023/08/10/chaos-engineering.html)_
 
 Last week, I took a bit of heat for my post on chaos engineering for couple reasons. I wanted to comment on them here.
 
