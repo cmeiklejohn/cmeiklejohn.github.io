@@ -18,7 +18,7 @@ However, when it comes to random exploration, I was using it to draw a distincti
 
 And, let me tell you, microservices issue a *lot* of RPCs and developers are consistently surprised: "Oh, I forgot we were calling that service."
 
-Second, I'm aware of the history of resilience engineering. I think it's useful for making sure that on-call works properly, fail-over of AZ/region/DCs work, people get paged, whatever. I don't disagree with any of that; in fact, I've cited Jesse's papers, Google's papers and talks, etc. all with high recommendations in my own papers and lectures that I've given on the topic at CMU.
+Second, [I'm aware of the history of resilience engineering.](https://christophermeiklejohn.com/filibuster/2022/03/17/what-is-chaos-engineering.html) I think it's useful for making sure that on-call works properly, fail-over of AZ/region/DCs work, people get paged, whatever. I don't disagree with any of that; in fact, I've cited Jesse's papers, Google's papers and talks, etc. all with high recommendations in my own papers and lectures that I've given on the topic at CMU.
 
 ### Disagreements
 
