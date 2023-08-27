@@ -93,7 +93,7 @@ __Our first paper on what is currently called [Filibuster](http://filibuster.clo
 
 In my perpsective, this is when _my Ph.D. actually started_: the first Filibuster paper at SoCC '21.
 
-From this point forward, it's been a whirwind experience, which I've blogged about in detail:
+From this point forward, it's been a whirlwind experience, which I've blogged about in detail:
 
 * Filibuster's results led to some [industry adoption](https://doordash.engineering/2022/04/25/using-fault-injection-testing-to-improve-doordash-reliability/) and sponsorship of future development;
 * Filibuster was completely reimplemented in Java and adapted to handle GRPC;
