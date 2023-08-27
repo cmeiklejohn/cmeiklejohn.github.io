@@ -127,18 +127,18 @@ First, I did not work on exactly what I thought I would, and therefore my Ph.D. 
 
 So, _for me_, it makes sense, but it _was not the thing I signed up to do and wasn't what I set out to do._  This wasn't a dealbreaker for me --- I feel like I discovered my true calling --- but, it's something that happend.
 
-When it comes to the negatives of the Ph.D., they are quite clear:
+When it comes to the _negatives_ of the Ph.D., they are quite clear:
 
 * I literally started my life over with nothing but a suitcase upon returning to United States in Pittsbugh, at 36 years old.
 * I was a Senior Software Engineer in 2015 and forfeitted a potentially (lucrative) tech salary for almost 8 years to live as a grad student.  Given this --- and if I ever wanted to be a professor full-time that lived in a city --- it's highly unlikely I'll ever be able to make any substantial purchases in my life: for example, real estate.
 * The stress during my Ph.D. was so high, that I developed an autoimmune disorder (e.g., celiac disease, lactose intolerance, IBS) that severly limits my ability to travel.
 
-The impact of these negatives are quite clear:
+The _impact of these negatives_ on my goals are quite clear:
 
 * I've given up my dreams of being a professor in France: it's just too late with too many restrictions.
 * I no longer travel to conferences and visit universities, the things that I enjoyed most as a researcher.
 
-In contrast, the positives:
+In contrast, the _positives_:
 
 * I was able to travel the world for a brief period as a researcher with minimal responsibility, which resulted in some great experiences, great friendships, and broadening of the mind.
 * Most importantly, I got to spent several years of my life working on a problem that I thought was extremely interesting and, which for a short-time, was my entire world.  I examined the problem completely, and contributed what I thought was a solution to it.  It was all me, and it's something I can always look back on and be proud of.  Whether or not it's forgoteen is up to time, but I know that I did everything that I could to investigate the problem.
