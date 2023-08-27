@@ -1,0 +1,142 @@
+---
+layout: post
+title:  "Reflecting on 10 years of Blogging, Research, and a (very) long Ph.D."
+date:   2023-08-28 00:00:00 -0000
+categories: filibuster
+---
+
+June 03, 2023 marks 10 years since I started this blog: it's sort of mind blowing, honestly.  
+
+When I go back and look at my old posts on my blog, well, it's quite fitting that my *first blog post* was on fault injection and fault tolerance, because that's the topic that ultimately became my Ph.D. research, of which I've been focused on since 2015, but really since, 2018.  
+
+Since creation of this blog, I've been lucky to have _many_ of these posts make the front page of Hacker News and Lobsters, which at minimum encouraged me to keep going.  The visibility has been instrumental to my career, despite the (sometimes) negative comments, but, wow... what a ride it has been.
+
+But, perhaps most interestingly (to me), is that the genesis of this blog was at the exact moment that I first ventured into research.  When I started my dream in 2013, my goal was to work at Microsoft Research with Sebastian Burckhardt.  When I started my Ph.D., in 2015, my goal was to be a professor in France.  In 2018, I thought I might be a professor in the US.  Now, I just don't know: shit, 10 years is a long, long time.
+
+In some ways, it is fitting that this 10 year mark corresponds with the year that I will (ideally) defend my Ph.D. at Carnegie Mellon University.
+
+### Act 1: The Inticement of Research
+
+I started this blog as a Software Engineer at Basho Technologies, a no-defunct distributed system company primarily focused on writing a fault-tolerant, highly scalabile distributed database in Erlang.  At Basho at the time, I was a JavaScript developer building the UX for the distributed database, Riak.  I barely knew Erlang --- only enough to maintain a job where I had to produce JSON from Erlang to build the UX for Riak --- and, barely knew JavaScript.  However, I was not new to programming: I had been a software engineer and systems engineer, and even a software engineering manager, for many years before this.  But, when I became a manager, I decided it wasn't for me and I wanted to be a programmer again and restarted my career -- the term IC didn't really exist at this time.  I slowly moved from being primarily a TCL programmer for web applications (ArsDigita represent) to a Ruby programmer, to finally, a JavaScript developer.
+
+I really knew nothing of distributed systems at the time.  I didn't read my first distributed systems paper until 2012.
+
+However, by 2013, I was very interested in Erlang and distributed systems and through merely playing around in my spare time, wandered into the area of fault injection and fault tolerance.  My [first](https://christophermeiklejohn.com/erlang/2013/06/03/erlang-pg2-failure-semantics.html) and [second](https://christophermeiklejohn.com/erlang/2013/06/05/erlang-gproc-failure-semantics.html) blog posts were specifically on this very topic.  I did not know at all what I was doing -- as I've said numerous times in the past, writing is a way for me to understand something and I write specifically to help clarify my own thinking on a topic.
+
+In 2013, I decided I wanted to start grad school to _really_ learn about a programming topic, as as I was living in Rhode Island, reached out to Brown University, where some members of my family had atteneded.  They wanted nothing to do with me for several reasons: a.) I didn't have a degree in CS, because I got one in IT part-time at Northeastern University after getting an associates' degree at the Community College of Rhode Island; and b.) I had no research experience.  I was told "no research potential" by one prominant faulty member, which reminded me of Zappa's infamous "no commercial potential" response.  Finally, after reaching out to a professor at Brown based on a paper he published that I had reimplemented for fun, I got permission to enroll in courses as a "special student."
+
+A "special student" means a couple different things.  First, that you have to carry around a bright pink slip to all of your courses on the first day of classes begging to be admitted to the professor of the class, as you are not a degree student.  Second, that you have to pay your own way --- at the time, $6k a course.  I doubled down, got my slips signed, and blew a family inheritance to take my courses.  I took a database seminar (not knowing what a semniar was) and a programming language course with Coq (not knowing what Coq or programming language's really were, outside of writing programs.)
+
+I got lucky in that both of my projects were decent.  In fact, I dicussed at RICON, the distributed systems conference in 2013, my work on writing CRDT proofs --- really, really, awful trivial proofs, but the first person to actually _try_ writing proofs for CRDTs --- and it seemingly got me noticed by many people in the field.  I was in!
+
+In 2014, Basho established a research consortium with a number of universities in the European Union to work on the development of CRDTs for use inside of Riak.  I wasn't invited, but several of my friends were.  One January evening, lying in bed with the flu in my parents spare bedroom a few days after Christmas, I asked a colleague where they were going in Europe in a nondescript manner.  When I found out, I applied for a Delta credit card, bought a flight, booked an AirBnb and just showed up there myself and said "hey, I'm with Basho."  From then on, I became involed in the research project.  
+
+I got to work on various CRDT related research projects, ultimately building a new programming model and (partially) overseeing the development of a database called Floppystore, which became a database called Antidote DB.  I talked at a bunch of conferences, collaborated with many different folks, and dissapointed with my job during the decline of Basho --- I was working on testing, which ultimately becamse my Ph.D. --- decided to quit my job and do a Ph.D. once I published my first research paper.  
+
+At that point, it was on.  I literally donated all of my belongings that I had accumulated at 30 years old to charity, and with only a single suitcase and carry-on, moved to San Francisco for several months to work a contract job on formal verification, which I knew nothing about, and then when finished proceeded to move to Europe for my Ph.D.  
+
+Things were looking up.
+
+### Act 2: The First Attempt at Research
+
+Living in Europe had always been a dream of mine, ever since spending much of my Information Technology degree at Northeastern studying French film, literature, and having spent much time there with a former partner of mine.  I loved it and fully embraced the lifestyle: it honestly felt like an absolute dream.  I spent weekends in various different cities, traveled to 20+ different universities giving talks on CRDTs, Erlang, and distributed systems and met some of the people that I will call friends for the rest of my life.
+
+However, my research progress was awful.  This wasn't to say that I wasn't doing research: I was writing code, building prototypes, showing off example applications, performing evaluations, etc.  In fact, when we finally presented our project results, I was one of the key presenters at our project review meeting in Brussels at the European Commission.  We had built a lot of software and it worked well, and it worked well at scale.  But, from the point of view of doing a Ph.D., I just felt stuck.  Perhaps my heart wasn't in CRDTs anymore: as it would seem, it wasn't and I completely abandoned it.
+
+Thankfully, I got an internship at Microsoft Research in Redmond, primarily thanks to my previous work on Erlang and actor systems.  This work, over the summer, is work that ultimately lead to the transactional semantics in Orleans, but it was a rough start.  When arriving at Microsoft, I didn't know what to do.  I wasn't used to the culture of _extremely, minimal supervision_ and spent the first month just drinking coffee and reading papers.  I didn't know transactions, I didn't know how they worked, I didn't know the names of all of the properties of isolation or whatever.
+
+Phil Berstein, however, was an incredible mentor.  He pointed me in the direections of the right papers, gave me his own copy of his book on transactions, and upon going home each night, I would sit and read as much as I could.  I started by benchmarking transactions, and each day as I learned more and more, I got better at figuring out how things worked, what each thing was called, and what each thing meant.  I absorbed every paper Phil even mentioned in passing, and tried to learn as much as I could.  I thought things were looking up and I was starting to feel more at home in my skin.  
+
+However, I was sick every single day of the week.  Horribly sick, every morning and spending each evening sick.
+
+I thought at first it was stress, but each day it because increasingly worse: I couldn't stay out of the bathroom.  Finally, after visiting several doctors and performing a number of experiments myself each day, I figured it out: I could no longer eat bread.  I lived in Europe, and I couldn't eat bread anymore without getting horribly sick.  
+
+When my internship ended, it was time to return to Europe, but a condition of my Ph.D. grant (Erasmus) was that I had to switch universities every year and have two different Ph.D. advisors, so I returned to Belgium and after a few months headed off to Lisbon.  In Lisbon, I fared less well -- I knew French, but didn't know Portuguese, and I also had to communicate to everyone that I couldn't have dairy or gluten anymore.  Complicating this, my Ph.D. advisor in Lisbon wanted me to work on a different project than my Ph.D. advisor in Belgium did.  I was lost, between conflicting responsibilities from different advisors, while sick, in a place where I didn't speak the language.  I hobbled along for almost a year --- completely lost, depressed, sick, alone, and otherwise miserable --- and was lucky enough to be invited back to Microsoft Research.
+
+At Microsoft Research this year, I was mentored by Sebastian Burckhardt, who was involved in our previous project as well and who has become a close friend of mine.  Sebastian, who I had known for a long time because he was extremely critical of my CRDT work years earlier, is an incredible human.  Just a fantastic mentor, great person, who helped me to grow in a number of ways.  Here, we took the ideas we developed in Orleans and built the first version of stateful serverless, which we open sourced at the time, and became Durable Entities on Azure.  Not only this, but Sebastian introduced me to Jonathan Goldstein at Microsoft, where I got to work with cutting edge database systems and help define part of that systems API.  I was eating gluten-free, things were great, and I was flying high.
+
+But, on return to Europe, I was miserable.  Back in the same place, with no direction, no clear end to the Ph.D., despite being in year 3 of my 3 year funding, and sick once again from being able to properly control my diet in the foreign land.  I spent a few months there, and upon returning to the United States, quit my Ph.D., via email, from a bar on Massachusetts Avenue in Cambridge in Massachusetts while watching a Boston Celtics game on the television.  I left all of my belongings, outside of what I could carry in a suitcase, in my apartment in Portugal, which my landlord claimed as payment for the security deposit.  I was lucky enough, that I had already accepted an offer for a return to Microsoft Research that summer, depsite having just quit my Ph.D.
+
+Upon return to Microsoft, things were great.  I corrected my diet, was living a place where I could control cross-contimation by not sharing a kitchen with other students, had a car to grocery shop, and was doing quite well.  However, from the research perspective, I was making less progress.  I was working on effects systems and capturing nondeterminism and built two different versions of the system -- one research with strong guarantees and one practical with fewer guranteees, which both worked --- but no one seemed particularily impressed.  I felt like I was doing very pratical useful work, but my research presentations were under-atteneded and no one seemed to really care.  I still felt lost.
+
+Not knowing what to do with what remained of my career, I was lucky enough to get enrolled at Northeastern University as Ph.D. student under Heather Miller, who I had known from many moon ago when she was a grad student and I was an industry participant at a PL summer school in Oregon.  However, by the time I finished up at Microsoft, she had left Northeastern and was on her way to Pittsburgh, PA, at Carnegie Mellon University.
+
+Carnegie Mellon was a bit of an upgrade from a European university in Belgium and, especially for someone who Brown University considered had "no research potential."  And, it showed.  My first semester, I failed out of one of my courses and landed in the hospital for a full week: overwork, stress, and an improper diet had caused my pancreas to go into overdrive and I was at risk for pancreas failure.  However, with some rest, a course correction at CMU, things got back to normal and I was passing courses and doing good research.  I ended up taking my work on building an evaluation framework for our SyncFree work three years prior and turning it into a top-tier conference paper at USENIX ATC my first year at CMU.  Things were looking up, but I had absolutely no direction how to proceed.  This was soon to change.
+
+### Act 3: The Redemption
+
+In late 2018, I started playing around with the idea of fault injection as my previous paper had been on a distributed runtime: control the runtime, you can inject faults in the runtime --- it seemed only natural.  I built several example applications, adapted blockchain applications, distributed databases, all to use this fault injection framework, but it was simply too rudimentary.  I couldn't compete with any technique that used model checking and the same year I tried to publish, someone came out with something far more advanced for Erlang.  But, the idea stuck with me and I kept on it.  Instead, I thought, rather than try to target concurrency where so many peope are working, why not target microservices instead?  
+
+I decided to write proposal for the work.  I wrote a Microsoft Research Fellowship Proposal in early 2019 that started like the following:
+
+<img src="/img/msr-1.png" style="width: 100%">
+
+Rejected.
+
+I was dissappointed, but I was lucky enough to get an internship at Amazon in Automated Reasoning working on S3 to do concurrency testing and model checking that same week, so it mitigated the blow of rejection.  
+
+However, once returning from that internship, I was still left in a place of uncertainty.  It wasn't until I randomly took a program analysis course that I realized my true love of programming is reasoning about, and verifying program correctness.
+
+So, I decided to reimplement my fault injection methodology in Python and was lucky enough to have students reach out to help me as part of an undergraduate research inititive.  I started late '19, my students helped out in late '20, and we submitted early '21 for the May deadline of SoCC '21.
+
+Our first paper on what is currently called _Filibuster_ got in, first shot.   
+
+In my perpsective, this is when _my Ph.D. actually started_: the first Filibuster paper at SoCC '21.
+
+From this point forward, it's been a whirwind experience, which I've blogged about in detail.
+
+* Filibuster's results led to some [industry adoption by DoorDash](https://doordash.engineering/2022/04/25/using-fault-injection-testing-to-improve-doordash-reliability/) and sponsorship of future development;
+* Filibuster was completely reimplemented in Java and adapted to handle GRPC;
+* Filibuster's work led to a published paper at SoCC '22 on circuit breaker usage for fault tolerance in '22;
+* Filibuster developed an integrated experience in Java with JUnit integration and IntelliJ plugin integration in '23;
+* Filibuster has been the focus of multiple students undergraduate research projects;
+* Filibuster is the subject of an upcoming master's thesis on fault injection for database calls; and
+* developers are actually starting to use Filibuster.
+
+Today, Filibuster looks like this.  
+
+<img src="/img/filibuster-overview.png" style="width: 100%">
+
+It's not quite the same as my proposal, which was quite aspirational, but it works on real application code and finds real bugs through it's integrated fault injection development experience.
+
+It's come a long way.
+
+### Epilogue
+
+I think a lot about whether my Ph.D. experience was worth it or not as it slowly comes to a close.
+
+When it comes to the negatives, they are quite clear:
+
+* I literally started my life over with nothing but a suitcase upon returning to United States in Pittsbugh, at 36 years old.
+* I was a Senior Software Engineer in 2015 and forfeitted a tech salary for almost 8 years to live as a grad student.  Given this --- and if I ever wanted to be a professor in a city full-time --- it's highly unlikely I'll ever be able to make any substantial purchases in my life: for example, real estate.
+* The stress during my Ph.D. was so high, that I developed an autoimmune disorder (e.g., celiac disease, lactose intolerance, IBS) that severly limits my ability to travel.
+
+The impact of these negatives are quite clear:
+
+* I've given up my dreams of being a professor in France: it's just too late with too many restrictions.
+* I no longer travel to conferences and visit universities, the things that I enjoyed most as a researcher.
+
+In contrast, the positives:
+
+* I was able to travel the world for a brief period as a researcher with minimal responsibility, which resulted in some great experiences, great friendships, and broadening of the mind.
+* Most importantly, I got to spent several years of my life working on a problem that I thought was extremely interesting and, whichf for a short-time, was my entire world.  I made progress, and hopefully, someone in the future will care about the work that I've done.
+
+What a fucking journey.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
