@@ -107,9 +107,9 @@ Today, Filibuster looks like this.
 
 <img src="/img/filibuster-overview.png" style="width: 100%">
 
-It's not quite the same as my proposal, which was quite aspirational, but it works on real application code and finds real bugs through it's integrated fault injection development experience.
+It's not quite the same as my MSR proposal --- which was quite aspirational and covered type checking, fault injection and more --- but what we have is significantly more focused, as necessary for a Ph.D., and works on real application code and finds real bugs through it's integrated fault injection development experience.
 
-It's come a long way and I have to thank my colleagues at CMU, colleagues at DoorDash, and advisor for the motivation and support that was required to push it forward.
+It's come a long way and I have to thank my colleagues at CMU, colleagues at DoorDash, and my advisor Heather for the motivation and support that was required to push it forward.
 
 ### Epilogue
 
