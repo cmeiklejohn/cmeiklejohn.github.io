@@ -94,7 +94,7 @@ From this point forward, it's been a whirwind experience, which I've blogged abo
 
 * Filibuster's results led to some [industry adoption](https://doordash.engineering/2022/04/25/using-fault-injection-testing-to-improve-doordash-reliability/) and sponsorship of future development;
 * Filibuster was completely reimplemented in Java and adapted to handle GRPC;
-* Filibuster's work led to a join published paper at SoCC '22 with DoorDash on circuit breaker usage for fault tolerance in '22;
+* Filibuster's work led to a [joint published paper at SoCC '22 with DoorDash](https://christophermeiklejohn.com/publications/socc2022-preprint.pdf) on circuit breaker usage for fault tolerance in '22;
 * Filibuster now provides an integrated development experience in Java with JUnit integration and IntelliJ plugin integration in '23;
 * Filibuster has been the focus of multiple students undergraduate research projects;
 * Filibuster is the subject of an upcoming master's thesis on fault injection for database calls; and
