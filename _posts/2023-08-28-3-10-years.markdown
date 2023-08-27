@@ -110,9 +110,11 @@ It's come a long way and I have to thank my colleagues at CMU, colleagues at Doo
 
 ### Epilogue
 
-I think a lot about whether my Ph.D. experience was worth it or not as it slowly comes to a close.
+I think a lot about whether my Ph.D. experience was worth it or not as it slowly comes to a close.  
 
-When it comes to the negatives, they are quite clear:
+First, I did not work exactly what I thought I would and what I thought my Ph.D would be.  I started in CRDTs, I left that area and moved to program analysis and testing.  This made sense for me, but only in retrospect: I had done testing for years before moving to Basho, and did distributed systems testing at Basho.  It was a thing I was good at, and as my initial blog post shows, it was where this entire blog started before I even started my Ph.D.  So, it makes sense, but it _was not the thing I signed up to do and wasn't what I set out to do._  This wasn't a big thing for me --- I feel like I discovered my true calling --- but, it's something that happend.
+
+When it comes to the negatives of the Ph.D., they are quite clear:
 
 * I literally started my life over with nothing but a suitcase upon returning to United States in Pittsbugh, at 36 years old.
 * I was a Senior Software Engineer in 2015 and forfeitted a tech salary for almost 8 years to live as a grad student.  Given this --- and if I ever wanted to be a professor in a city full-time --- it's highly unlikely I'll ever be able to make any substantial purchases in my life: for example, real estate.
