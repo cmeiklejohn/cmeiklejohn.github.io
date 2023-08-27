@@ -15,7 +15,7 @@ But, perhaps most interestingly (to me), is that the genesis of this blog was at
 
 In some ways, it is fitting that this 10 year mark corresponds with the year that I will (ideally) defend my Ph.D. at Carnegie Mellon University.
 
-### Act 1: The Inticement of Research
+### The Inticement of Research
 
 I started this blog as a Software Engineer at Basho Technologies, a no-defunct distributed system company primarily focused on writing a fault-tolerant, highly scalabile distributed database in Erlang.  At Basho at the time, I was a JavaScript developer building the UX for the distributed database, Riak.  I barely knew Erlang --- only enough to maintain a job where I had to produce JSON from Erlang to build the UX for Riak --- and, barely knew JavaScript.  However, I was not new to programming: I had been a software engineer and systems engineer, and even a software engineering manager, for many years before this.  But, when I became a manager, I decided it wasn't for me and I wanted to be a programmer again and restarted my career -- the term IC didn't really exist at this time.  I slowly moved from being primarily a TCL programmer for web applications (ArsDigita represent) to a Ruby programmer, to finally, a JavaScript developer.
 
@@ -37,7 +37,7 @@ At that point, it was on.  I literally donated all of my belongings that I had a
 
 Things were looking up.
 
-### Act 2: The First Attempt at Research
+### The First Attempt at Research
 
 Living in Europe had always been a dream of mine, ever since spending much of my Information Technology degree at Northeastern studying French film, literature, and having spent much time there with a former partner of mine.  I loved it and fully embraced the lifestyle: it honestly felt like an absolute dream.  I spent weekends in various different cities, traveled to 20+ different universities giving talks on CRDTs, Erlang, and distributed systems and met some of the people that I will call friends for the rest of my life.
 
@@ -63,7 +63,7 @@ Not knowing what to do with what remained of my career, I was lucky enough to ge
 
 Carnegie Mellon was a bit of an upgrade from a European university in Belgium and, especially for someone who Brown University considered had "no research potential."  And, it showed.  My first semester, I failed out of one of my courses and landed in the hospital for a full week: overwork, stress, and an improper diet had caused my pancreas to go into overdrive and I was at risk for pancreas failure.  However, with some rest, a course correction at CMU, things got back to normal and I was passing courses and doing good research.  I ended up taking my work on building an evaluation framework for our SyncFree work three years prior and turning it into a top-tier conference paper at USENIX ATC my first year at CMU.  Things were looking up, but I had absolutely no direction how to proceed.  This was soon to change.
 
-### Act 3: The Redemption
+### The Redemption
 
 In late 2018, I started playing around with the idea of fault injection as my previous paper had been on a distributed runtime: control the runtime, you can inject faults in the runtime --- it seemed only natural.  I built several example applications, adapted blockchain applications, distributed databases, all to use this fault injection framework, but it was simply too rudimentary.  I couldn't compete with any technique that used model checking and the same year I tried to publish, someone came out with something far more advanced for Erlang.  But, the idea stuck with me and I kept on it.  Instead, I thought, rather than try to target concurrency where so many peope are working, why not target microservices instead?  
 
