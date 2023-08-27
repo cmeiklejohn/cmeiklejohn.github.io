@@ -39,7 +39,9 @@ Things were looking up.
 
 ### The First Attempt at Research
 
-Living in Europe had always been a dream of mine, ever since spending much of my Information Technology degree at Northeastern studying French film, French literature, and having spent much time in Paris with a former romatic partner of mine who was born there.  I loved the culture, the city, and fully embraced the lifestyle: it honestly felt like an absolute _dream_.  There was no place I would ever want to live.  My Ph.D., was nothing short of wonderful experiences: I spent weekends in various different cities, traveled to 20+ different universities giving talks on CRDTs, Erlang, and distributed systems, and met some of the most friendly and welcomining people that I will call friends for the rest of my life.
+Living in Europe had always been a dream of mine, ever since spending much of my Information Technology degree at Northeastern studying French film, French literature, and having spent much time in Paris with a former romatic partner of mine who was born there.  I loved the culture, the city, and fully embraced the lifestyle: it honestly felt like an absolute _dream_.  There is no place else I would ever want to spend the rest of my life.  
+
+My Ph.D., was nothing short of wonderful experiences: I spent weekends in various different cities, traveled to 20+ different universities giving talks on CRDTs, Erlang, and distributed systems, and met some of the most friendly and welcomining people that I will call friends for the rest of my life.
 
 However, my research progress was awful.  This wasn't to say that I wasn't doing research: I was writing code, building prototypes, showing off example applications, performing evaluations, etc.  In fact, when we finally presented our project results, I was one of the key presenters at our project review meeting in Brussels for the European Commission.  We had built a lot of software and it worked well, and it worked well at scale.  But, from the point of view of doing a Ph.D., I just felt stuck.  Perhaps my heart wasn't in CRDTs anymore: as it would seem, it wasn't and I completely abandoned it.
 
