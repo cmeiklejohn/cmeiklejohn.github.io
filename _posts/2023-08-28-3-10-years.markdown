@@ -67,7 +67,7 @@ My first semester, I failed out of one of my courses and landed in the hospital 
 ### The Redemption
 
 In late 2018, I started playing around with the idea of fault injection. 
-My previous paper, Partian, had been focused on building a distributed runtime: my thinking was that if you control the runtime, you can inject faults any of the communication that is performed by the runtime.  It seemed the clear natural extension of the Partian work, and would be a good second (of 3) piece of my Ph.D. thesis.
+My previous paper, Partisan, had been focused on building a distributed runtime: my thinking was that if you control the runtime, you can inject faults any of the communication that is performed by the runtime.  It seemed the clear natural extension of the Partian work, and would be a good second (of 3) piece of my Ph.D. thesis.
 
 So, to demonstrate, I built several example applications, adapted blockchain applications and distributed databases, all to use this fault injection framework.  However, it was simply too rudimentary to find bugs.  I just couldn't compete with any technique that used model checking with advanced heuristics and the same year I tried to publish my work which was rejected, someone came out with something far more advanced for Erlang.  
 
