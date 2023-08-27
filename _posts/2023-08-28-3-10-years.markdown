@@ -126,7 +126,7 @@ So, _for me_, it makes sense, but it _was not the thing I signed up to do and wa
 When it comes to the negatives of the Ph.D., they are quite clear:
 
 * I literally started my life over with nothing but a suitcase upon returning to United States in Pittsbugh, at 36 years old.
-* I was a Senior Software Engineer in 2015 and forfeitted a tech salary for almost 8 years to live as a grad student.  Given this --- and if I ever wanted to be a professor in a city full-time --- it's highly unlikely I'll ever be able to make any substantial purchases in my life: for example, real estate.
+* I was a Senior Software Engineer in 2015 and forfeitted a potentially (lucrative) tech salary for almost 8 years to live as a grad student.  Given this --- and if I ever wanted to be a professor full-time that lived in a city --- it's highly unlikely I'll ever be able to make any substantial purchases in my life: for example, real estate.
 * The stress during my Ph.D. was so high, that I developed an autoimmune disorder (e.g., celiac disease, lactose intolerance, IBS) that severly limits my ability to travel.
 
 The impact of these negatives are quite clear:
@@ -137,9 +137,14 @@ The impact of these negatives are quite clear:
 In contrast, the positives:
 
 * I was able to travel the world for a brief period as a researcher with minimal responsibility, which resulted in some great experiences, great friendships, and broadening of the mind.
-* Most importantly, I got to spent several years of my life working on a problem that I thought was extremely interesting and, whichf for a short-time, was my entire world.  I made progress, and hopefully, someone in the future will care about the work that I've done.
+* Most importantly, I got to spent several years of my life working on a problem that I thought was extremely interesting and, which for a short-time, was my entire world.  I examined the problem completely, and contributed what I thought was a solution to it.  It was all me, and it's something I can always look back on and be proud of.  Whether or not it's forgoteen is up to time, but I know that I did everything that I could to investigate the problem.
 
-What a fucking journey.
+What a fucking journey, that's all I can say.
+
+<img src="/img/trey.gif" style="width: 100%">
+
+_...waiting for the time when I can finally say, this has all been wonderful but now I'm on my way..._ - Phish
+
 
 
 
