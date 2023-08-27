@@ -11,7 +11,7 @@ When I go back and look at my old posts on my blog, well, it's quite fitting tha
 
 Since creation of this blog, I've been lucky to have _many_ of these posts make the front page of Hacker News and Lobsters, which at minimum encouraged me to keep going.  The visibility has been instrumental to my career, despite the (sometimes) negative comments, but, wow... what a ride it has been.
 
-But, perhaps most interestingly (to me), is that the genesis of this blog was at the exact moment that I first ventured into research.  When I started my dream in 2013, my goal was to work at Microsoft Research with Sebastian Burckhardt.  When I started my Ph.D., in 2015, my goal was to be a professor in France.  In 2018, I thought I might be a professor in the US.  Now, I just don't know: shit, 10 years is a long, long time.
+But, perhaps what is most interesting to me, is that the genesis of this blog was at the exact moment that I first ventured into research.  When I started my dream in 2013, my goal was to work at Microsoft Research.  When I started my Ph.D. in 2015, my goal was to be a professor in France.  In 2018, I thought I might be a teaching professor in the US.  Things change: shit, it's 10 years!
 
 In some ways, it is fitting that this 10 year mark corresponds with the year that I will (ideally) defend my Ph.D. at Carnegie Mellon University.
 
