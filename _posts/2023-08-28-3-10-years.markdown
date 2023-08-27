@@ -65,30 +65,37 @@ My first semester, I failed out of one of my courses and landed in the hospital 
 
 ### The Redemption
 
-In late 2018, I started playing around with the idea of fault injection as my previous paper had been on a distributed runtime: control the runtime, you can inject faults in the runtime --- it seemed only natural.  I built several example applications, adapted blockchain applications, distributed databases, all to use this fault injection framework, but it was simply too rudimentary.  I couldn't compete with any technique that used model checking and the same year I tried to publish, someone came out with something far more advanced for Erlang.  But, the idea stuck with me and I kept on it.  Instead, I thought, rather than try to target concurrency where so many peope are working, why not target microservices instead?  
+In late 2018, I started playing around with the idea of fault injection. 
+My previous paper, Partian, had been focused on building a distributed runtime: my thinking was that if you control the runtime, you can inject faults any of the communication that is performed by the runtime.  It seemed the clear natural extension. 
 
-I decided to write proposal for the work.  I wrote a Microsoft Research Fellowship Proposal in early 2019 that started like the following:
+So, to demonstrate, I built several example applications, adapted blockchain applications and distributed databases, all to use this fault injection framework.  However, it was simply too rudimentary to find bugs.  I just couldn't compete with any technique that used model checking with advanced heuristics and the same year I tried to publish my work which was rejected, someone came out with something far more advanced for Erlang.  
+
+But, this idea stuck with me and I kept on working it.  Instead, I thought, rather than try to target concurrency bugs, where so many existing researchers are working, why not target microservice bugs, where no one is working instead?  
+
+I decided to write proposal for the work.  
+
+I wrote a Microsoft Research Fellowship Proposal in early 2019 that started like the following:
 
 <img src="/img/msr-1.png" style="width: 100%">
 
 Rejected.
 
-I was dissappointed, but I was lucky enough to get an internship at Amazon in Automated Reasoning working on S3 to do concurrency testing and model checking that same week, so it mitigated the blow of rejection.  
+I was dissappointed, but I was lucky enough to get an internship at Amazon in Automated Reasoning working on S3 to do concurrency testing and model checking that same week, so it mitigated the blow of yet another rejection.  
 
-However, once returning from that internship, I was still left in a place of uncertainty.  It wasn't until I randomly took a program analysis course that I realized my true love of programming is reasoning about, and verifying program correctness.
+However, once returning from that internship, I was still left in a place of uncertainty.  It wasn't until I randomly took a program analysis course that I realized my true love of programming is _reasoning about, and verifying, program correctness._  This was, without a doubt, the one course I took that changed the course of my Ph.D.
 
-So, I decided to reimplement my fault injection methodology in Python and was lucky enough to have students reach out to help me as part of an undergraduate research inititive.  I started late '19, my students helped out in late '20, and we submitted early '21 for the May deadline of SoCC '21.
+So, I decided to reimplement my fault injection strategy in Python for use on microservice applications written in Python (this was done based on a potential user, who never materialized) and was lucky enough to also have students reach out to help me as part of an undergraduate research inititive while I was doing the work.  I started the work late '19 and the students helped out in late '20: we submitted early '21 for the May deadline of SoCC '21.
 
 Our first paper on what is currently called _Filibuster_ got in, first shot.   
 
 In my perpsective, this is when _my Ph.D. actually started_: the first Filibuster paper at SoCC '21.
 
-From this point forward, it's been a whirwind experience, which I've blogged about in detail.
+From this point forward, it's been a whirwind experience, which I've blogged about in detail:
 
 * Filibuster's results led to some [industry adoption by DoorDash](https://doordash.engineering/2022/04/25/using-fault-injection-testing-to-improve-doordash-reliability/) and sponsorship of future development;
 * Filibuster was completely reimplemented in Java and adapted to handle GRPC;
-* Filibuster's work led to a published paper at SoCC '22 on circuit breaker usage for fault tolerance in '22;
-* Filibuster developed an integrated experience in Java with JUnit integration and IntelliJ plugin integration in '23;
+* Filibuster's work led to a join published paper at SoCC '22 with DoorDash on circuit breaker usage for fault tolerance in '22;
+* Filibuster now provides an integrated development experience in Java with JUnit integration and IntelliJ plugin integration in '23;
 * Filibuster has been the focus of multiple students undergraduate research projects;
 * Filibuster is the subject of an upcoming master's thesis on fault injection for database calls; and
 * developers are actually starting to use Filibuster.
@@ -99,7 +106,7 @@ Today, Filibuster looks like this.
 
 It's not quite the same as my proposal, which was quite aspirational, but it works on real application code and finds real bugs through it's integrated fault injection development experience.
 
-It's come a long way.
+It's come a long way and I have to thank my colleagues at CMU, colleagues at DoorDash, and advisor for the motivation and support that was required to push it forward.
 
 ### Epilogue
 
