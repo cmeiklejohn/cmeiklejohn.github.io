@@ -24,4 +24,4 @@ But, perhaps I want to verify *if all of my Tier 2 dependencies fail*, the syste
 
 Since sending the user an email is done using a Tier 2 service, I can easily implement a filter that states that I do not want to inject faults on any Tier 2 services, and that the email service is a Tier 2 service.  Then, when I run Filibuster, I will only inject faults on Tier 2 services and any failure of my test indicates that it is not tolerant to a Tier 2 service failure: it returned failure, when the system should have been tolerant to that failure.
 
-<img src="/img/filibuster-service-tiers.png">
+<img src="/img/filibuster-service-tiers.png" style="width: 100%">
