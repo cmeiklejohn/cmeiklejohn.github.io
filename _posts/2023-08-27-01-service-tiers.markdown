@@ -26,4 +26,4 @@ Since sending the user an email is done using a Tier 2 service, I can easily imp
 
 <img src="/img/filibuster-service-tiers.png" style="width: 100%">
 
-Now, my test passes without any modifications as expected: my code is tolerant to the failure of any downstream dependency that is a service tier > 1!
+Now, my test passes without any modifications as expected: my code is tolerant to the failure of any downstream dependency that is a service tier that is greater than 1!
