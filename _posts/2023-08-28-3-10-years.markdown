@@ -81,9 +81,11 @@ I wrote a Microsoft Research Fellowship Proposal in early 2019 that started like
 
 ❌ Rejected.
 
-I was dissappointed, but I was lucky enough to get an internship at Amazon in Automated Reasoning working on S3 to do concurrency testing and model checking that same week, so it mitigated the blow of yet another rejection.  
+I was dissappointed, but I was lucky enough to get an internship at Amazon in Automated Reasoning working on S3 to do concurrency testing and model checking that same week, so it mitigated the blow of yet (another of many) rejection.  
 
-However, once returning from that internship, I was still left in a place of uncertainty.  It wasn't until I randomly took a program analysis course that I realized my true love of programming is _reasoning about, and verifying, program correctness._  This was, without a doubt, the one course I took that changed the course of my Ph.D.
+However, once returning from my Amazon internship, I was still left in a place of uncertainty with my own work: I should have been done with my Ph.D. already!  
+
+It wasn't until I randomly took a program analysis course that I realized my true love of programming is _reasoning about, and verifying, program correctness._  This was, without a doubt, the one course I took that changed the course of my Ph.D.
 
 So, I decided to reimplement my fault injection strategy in Python for use on microservice applications written in Python (this was done based on a potential user, who never materialized) and was lucky enough to also have students reach out to help me as part of an undergraduate research inititive while I was doing the work.  I started the work late '19 and the students helped out in late '20: we submitted early '21 for the May deadline of SoCC '21.
 
