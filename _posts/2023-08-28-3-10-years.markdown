@@ -89,7 +89,7 @@ It wasn't until I randomly took a program analysis course that I realized my tru
 
 So, I decided to reimplement my fault injection strategy in Python for use on microservice applications written in Python (this was done based on a potential user, who never materialized) and was lucky enough to also have students reach out to help me as part of an undergraduate research inititive while I was doing the work.  I started the work late '19 and the students helped out in late '20: we submitted early '21 for the May deadline of SoCC '21.
 
-Our first paper on what is currently called [Filibuster](http://filibuster.cloud) got in, first shot.   
+__Our first paper on what is currently called [Filibuster](http://filibuster.cloud) got in, first shot.__
 
 In my perpsective, this is when _my Ph.D. actually started_: the first Filibuster paper at SoCC '21.
 
