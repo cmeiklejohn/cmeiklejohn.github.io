@@ -7,7 +7,7 @@ categories: filibuster
 
 June 03, 2023 marks 10 years since I started this blog: it's sort of mind blowing, honestly.  
 
-When I go back and look at my old posts on my blog, well, it's quite fitting that my *first blog post* was on fault injection and fault tolerance, because that's the topic that ultimately became my Ph.D. research, of which I've been focused on since 2015, but really since, 2018.  
+When I go back and look at my old posts on my blog, well, it's quite fitting that my *first blog post* was on fault injection and fault tolerance, because that's the topic that ultimately became my Ph.D. research, of which I've been focused on since 2015... but really since 2018.  
 
 Since creation of this blog, I've been lucky to have _many_ of these posts make the front page of Hacker News and Lobsters, which at minimum encouraged me to keep going.  The visibility has been instrumental to my career, despite the (sometimes) negative comments, but, wow... what a ride it has been.
 
