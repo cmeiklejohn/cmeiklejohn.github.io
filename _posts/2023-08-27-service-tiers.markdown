@@ -8,7 +8,7 @@ group: short
 
 Many microservice applications classify their dependencies into different [Service Tiers](https://thenewstack.io/how-service-tiers-can-help-to-avoid-microservices-disasters/).  Perhaps your developers are working on a Tier 1 service and want to make sure that they are tolerant to any failure of Tier 2+ failures.  How can they do that?
 
-Well, if they've written a functional test that can be run with Filibuster, you can use a new feature of Filibuster called [_fault injection filters_](https://github.com/filibuster-testing/filibuster-java-instrumentation/blob/main/src/main/java/cloud/filibuster/junit/filters/FilibusterFaultInjectionFilter.java).  Fault injection filters allow you to arbitrarily implement filter functions that are provided with the invoked RPC service, method, and arguments to conditionally prevent fault injection.  For example, by implementing a filter that allows faults for any downstream services with a tier greater than your service.
+Well, if they've written a functional test that can be run with Filibuster, you can use a new feature of Filibuster called [_fault injection filters_](https://github.com/filibuster-testing/filibuster-java-instrumentation/blob/main/src/main/java/cloud/filibuster/junit/filters/FilibusterFaultInjectionFilter.java).  Fault injection filters allow you to arbitrarily implement filter functions that are provided with the invoked RPC method to conditionally prevent fault injection.  For example, by implementing a filter that allows faults for any downstream services with a tier greater than your service.
 
 Here, we have a simple purchase method executed by an Order Service.  It issues 7 downstream RPCs: 
 
