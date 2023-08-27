@@ -103,7 +103,7 @@ From this point forward, it's been a whirlwind experience, which I've blogged ab
 * Filibuster is the subject of an upcoming master's thesis on fault injection for database calls; and
 * developers are actually starting to use Filibuster.
 
-Today, Filibuster looks like this.  
+Today, Filibuster looks like this:  
 
 <img src="/img/filibuster-overview.png" style="width: 100%">
 
