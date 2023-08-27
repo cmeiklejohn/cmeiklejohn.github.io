@@ -71,9 +71,9 @@ My previous paper, Partisan, had been focused on building a distributed runtime:
 
 So, to demonstrate, I built several example applications, adapted blockchain applications and distributed databases, all to use this fault injection framework.  I even implemented 3 different transaction protocols based on my previous work at Microsoft Rsearch.  However, my work was just too simplistic to find bugs.  I just couldn't compete with any technique that used model checking, with advanced heuristics, and the very same year that I tried to publish my work --- which was rejected --- another researcher came out with something far more advanced for Erlang that found significantly more bugs.
 
-But, this fault injection idea stuck with me and I kept on working it.  Instead, I thought, rather than try to target concurrency bugs, where so many existing researchers are working, why not target microservice bugs, where no one is working instead?  
+But, this fault injection idea stuck with me and I kept on working it.  Instead, I thought, rather than try to target the identification of concurrency bugs where so many existing researchers are focused, why not try to target microservice bugs, where no one is working and publishing, instead?  
 
-I decided to write proposal for the work.  
+I decided to write proposal for this work and other work that fit into my broad vision of how microservice software should be developed.
 
 I wrote a Microsoft Research Fellowship Proposal in early 2019 that started like the following:
 
