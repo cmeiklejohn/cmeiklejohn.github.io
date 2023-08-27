@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "Nested RPCs with Filibuster's UX"
+date:   2023-08-27 02:00:00 -0000
+categories: filibuster
+group: short
+---
+
+I recently cleaned up Filibuster's UX to display nested RPCs a bit clearer.  Now, it will indicate using an arrow when RPCs are the result of other RPCs to dependent, transitive, downstream services.
+
+<img src="/img/filibuster-nested-rpcs.png" style="width: 100%">
