@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Filibuster 2.0: Developer Tooling as a Childhood Dream"
-date:   2023-08-30 10:00:00 -0000
+date:   2023-08-30 11:00:00 -0000
 group:  filibuster-2
 categories: filibuster
 ---
