@@ -3,7 +3,7 @@ layout: post
 title:  "Filibuster 2.0: Byzantine Fault Injection with Arbitrary Faults"
 date:   2023-09-07 08:00:00 -0000
 categories: filibuster
-group: filibuster
+group:  filibuster-2
 ---
 
 Ever wanted to just throw all sort of values at your database and see what happens to your application? Filibuster's byzantine fault injector can take an arbitrary "value transformer" that looks like a functional fold, that allows you to come up with new fault injection scenarios as you inject faults!

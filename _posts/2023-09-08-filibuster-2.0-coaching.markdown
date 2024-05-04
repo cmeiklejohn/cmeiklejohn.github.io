@@ -2,8 +2,8 @@
 layout: post
 title:  "Filibuster 2.0: Coaching UI"
 date:   2023-09-08 08:00:00 -0000
+group:  filibuster-2
 categories: filibuster
-group: filibuster
 ---
 
 Your developers are writing functional tests for their microservice and, when RPCs fail, they throw exceptions. Do they test the cases where it throws? Do they have tests for it?
