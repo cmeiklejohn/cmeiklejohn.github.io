@@ -2,6 +2,7 @@
 layout: post
 title:  "Filibuster 2.0: Microservice Linter, Multiple Invocations to the Same RPC Method"
 date:   2023-09-05 08:00:00 -0000
+group:  filibuster-2
 categories: filibuster
 ---
 
