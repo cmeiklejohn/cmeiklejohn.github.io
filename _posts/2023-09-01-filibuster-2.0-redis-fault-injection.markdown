@@ -2,8 +2,8 @@
 layout: post
 title:  "Filibuster 2.0: Redis Fault Injection"
 date:   2023-09-01 10:00:00 -0000
+group:  filibuster-2
 categories: filibuster
-group: filibuster
 ---
 
 Ever wanted to test your microservice application against Redis failures? Filibuster 2.0 supports injecting faults against Redis, PostgreSQL, CockroachDB, and DynamoDB.
