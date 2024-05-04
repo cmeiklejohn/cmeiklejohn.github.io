@@ -3,6 +3,7 @@ layout: post
 title:  "Reflecting on 10 years of Blogging, Research, and a (very) long Ph.D."
 date:   2023-08-27 08:00:00 -0000
 categories: filibuster
+group: filibuster
 ---
 
 June 03, 2023 marks _10 years_ since I started my blog, and, it's sort of mind blowing, honestly.  
