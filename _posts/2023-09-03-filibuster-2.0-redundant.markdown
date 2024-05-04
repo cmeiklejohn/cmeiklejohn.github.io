@@ -2,6 +2,7 @@
 layout: post
 title:  "Filibuster 2.0: Microservice Linter, Redundant RPCs"
 date:   2023-09-03 08:00:00 -0000
+group:  filibuster-2
 categories: filibuster
 ---
 
