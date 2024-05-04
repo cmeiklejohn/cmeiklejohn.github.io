@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  "Filibuster 2.0: Developer Tooling as a Childhood Dream"
-date:   2023-08-29 10:00:00 -0000
+date:   2023-08-30 10:00:00 -0000
 categories: filibuster
-group: filibuster
+group: filibuster-2
 ---
 
 My favorite part of my Ph.D. thesis work has to be the UX/UI tool that I wrote for helping write and debug microservice resilience tests.  It's just so cool --- I'm realizing a childhood dream of building developer tooling ever since my high school days, when I was so excited to unwrap my first copy of Visual Studio.

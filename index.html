@@ -28,6 +28,16 @@ title: Christopher Meiklejohn
     <li><span>25 Apr 2022</span> <a href="https://doordash.engineering/2022/04/25/using-fault-injection-testing-to-improve-doordash-reliability/">Using Fault Injection Testing to Improve DoorDash Reliability</a></li>
   </ul>
 
+  <h1>Filibuster 2.0 Features</h1>
+  <p>Short posts about new features in Filibuster 2.0, the next major release of <b>Filibuster.</b></p>
+  <ul class="posts">
+    {% for post in site.posts %}
+      {% if post.group == "filibuster-2" %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
   <h1>Service-level Fault Injection Testing</h1>
   <p>Articles I've written about Service-level Fault Injection Testing and <b>Filibuster.</b></p>
   <ul class="posts">
