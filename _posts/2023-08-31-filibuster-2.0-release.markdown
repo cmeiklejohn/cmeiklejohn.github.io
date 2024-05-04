@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Filibuster 2.0: Developer Tooling as a Childhood Dream"
+title:  "Filibuster 2.0: Introducing the new version of Filibuster"
 date:   2023-08-31 10:00:00 -0000
 categories: filibuster
-group: filibuster
+group:  filibuster-2
 ---
 
 🎉 Happy to announce the 2.0 release of Filibuster (for JVM languages!) 🎉
