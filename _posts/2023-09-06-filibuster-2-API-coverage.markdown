@@ -3,6 +3,7 @@ layout: post
 title:  "Filibuster 2.0: Computing API coverage of a Microservice Application"
 date:   2023-09-06 08:00:00 -0000
 categories: filibuster
+group: filibuster
 ---
 
 About two months ago I started prototyping this feature for visualizing API coverage in a microservice application through automated instrumentation: see where you have functional testing coverage, how many functional tests, and where you're applying fault injection to determine the impact of those changes.
