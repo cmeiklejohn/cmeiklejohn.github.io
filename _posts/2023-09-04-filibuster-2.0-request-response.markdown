@@ -2,6 +2,7 @@
 layout: post
 title:  "Filibuster 2.0: Microservice Linter, Requests become part of a Response"
 date:   2023-09-04 08:00:00 -0000
+group:  filibuster-2
 categories: filibuster
 ---
 
