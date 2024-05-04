@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  "Filibuster 2.0: Healthcheck your Functional Test Suite with API Coverage"
-date:   2023-09-02 08:00:00 -0000
+date:   2023-09-02 09:00:00 -0000
+group:  filibuster-2
 categories: filibuster
-group: filibuster
 ---
 
 Pushed out a new prototype Filibuster feature tonight: 🎉 use Filibuster's IntelliJ plugin to get a "health check" of your microservice's functional test suite. 🎉 
