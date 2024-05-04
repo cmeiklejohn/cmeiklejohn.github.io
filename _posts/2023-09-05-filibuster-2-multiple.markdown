@@ -10,24 +10,3 @@ You can also use Filibuster's dynamic analysis linter to find microservice smell
 Here's one: invoking multiple RPCs to the same service because you can't send them all together! This leaves you at risk for partial side-effects being applied: refactor your API to let developers supply all inputs and write data to your database transactionally!!!
 
 <img src="/img/1691311807950.jpeg" style="width: 100%">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-~

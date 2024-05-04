@@ -14,24 +14,3 @@ Good ideas happen at the same time, I suppose!
 (e.g., Mattern and Fidge both independently coming up with the idea for vector clocks the very same year.)
 
 <img src="/img/1692932473188.jpeg" style="width: 100%">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-~
