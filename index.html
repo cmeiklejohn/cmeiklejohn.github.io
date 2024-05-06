@@ -7,7 +7,7 @@ title: Christopher Meiklejohn
   <h1>Newest</h1>
   <p>Most recent blog posts.</p>
   <ul class="new posts">
-    {% for post in site.posts limit:10 %}
+    {% for post in site.posts limit:25 %}
       <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
   </ul>
