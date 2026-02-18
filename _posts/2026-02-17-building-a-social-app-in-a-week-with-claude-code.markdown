@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "I Built a Social App in Five Days with Claude Code"
+title:  "I Built a Social App in a Week with Claude Code"
 date:   2026-02-17 08:00:00 -0000
 group: ai
 categories: ai claude
@@ -12,7 +12,9 @@ I know this because Anthropic generates a weekly usage report for Claude Code, a
 
 What I was building: a private social app for my close-knit group of friends. We share live recordings of bands — Phish, Grateful Dead, that world — favorite films, books, and which upcoming shows we plan to catch this summer. Think a tiny, invite-only corner of the internet for people who care deeply about live music and want somewhere to talk about it with people they actually know. Live chat between people couch-touring and people in the pit is coming next.
 
-The app is live. My friends are using it. It runs on Go with a server-driven UI architecture, and it ships as native iOS and Android apps. I built all of it in five days with Claude Code, and I want to tell you what that actually felt like.
+The app is live. My friends are using it. It runs on Go with a server-driven UI architecture, and it ships as native iOS and Android apps. I built all of it in a week with Claude Code, and I want to tell you what that actually felt like.
+
+The entire first version was built at night, in bed, on an 11" iPad, using the Claude Code app connected to an empty GitHub repo. I didn't touch a computer. Claude scaffolded the backend, wired up the database, built the frontend, and I deployed the whole thing to Railway — all from the iPad. It wasn't until late in the second day that I moved to a laptop, mostly because the screen real estate was starting to feel limiting. The code itself didn't care.
 
 <img src="/img/zabriskie-screenshot-1.png" style="width: 100%">
 
@@ -43,6 +45,16 @@ iOS and Android apps, both submitted to their respective stores within the same 
 Claude's ability to hold a large multi-file change in mind — a database migration, a new API handler, a frontend component, and a mobile layout fix, all in one coherent session — is where it earns everything. When the scope is clear and the pattern is known, it moves at a speed that doesn't feel real.
 
 Only 2 of my 27 sessions fully achieved what I set out to do. That number sounds damning until you consider that 27 sessions in six days shipped something real that people are using. The sessions that failed were almost always the same shape: open-ended, no clear stopping point, debugging something visual or stateful where Claude had no feedback loop and I had too much patience for wrong approaches. The sessions that worked were tight — one known thing, done correctly, then stop.
+
+---
+
+The insights report also came with recommendations, and they're worth passing on.
+
+The biggest one: hooks. Claude Code supports post-edit hooks — shell commands that fire automatically after files are changed. The report suggested wiring one up to restart the Go backend after any `.go` file edit, which would have eliminated the single most recurring waste of time in the entire project. I haven't set it up yet. I'm going to.
+
+The report also suggested adding explicit guardrails to `CLAUDE.md` — the project instruction file Claude reads at the start of every session. Things like: after any backend code change, always restart the server before testing. Never run migrations or deploy fixes without explicit user approval. When the user tells you a layer is working, stop investigating that layer. Limit yourself to two attempts at a single approach — if it hasn't worked twice, step back and explain what you've learned before trying again. Most of these I'd arrived at the hard way over the course of the week. Having them written down from the start would have saved days.
+
+The other recommendation was about session discipline. Five of my sessions were completely lost to context limits — the conversation grew too long, `/compact` failed to recover it, and nothing got done. The fix is obvious in retrospect: end each session at a natural stopping point, write a brief summary of state, start fresh. The sessions where I shipped something were the tight ones. I kept ignoring that signal.
 
 ---
 
