@@ -6,9 +6,9 @@ group: ai
 categories: ai claude
 ---
 
-Most of my messages went out between midnight and 6am.
+I spent the better part of a week building a social app with Anthropic's Claude Code. Most of that work happened late at night, sometimes past 2am, iterating on features until I had something worth sharing with friends.
 
-I know this because Anthropic generates a weekly insights report for Claude Code, and mine arrived looking like a police blotter: 384 messages, 27 sessions, 168 files touched, six days. I was responding at a median of 29 seconds — barely reading the output before firing back. The report described my style as "reactive and corrective rather than spec-driven," which is a polite way of saying I was moving too fast and fixing things as they broke.
+Anthropic generates a weekly insights report for Claude Code users. Mine told an interesting story: 384 messages, 27 sessions, 168 files touched, six days. A median response time of 29 seconds — I was barely reading the output before firing back. They described my style as "reactive and corrective rather than spec-driven," which is accurate. I was moving fast, fixing things as they broke, and learning what worked along the way.
 
 What I was building: a private social app for my close-knit group of friends. We share live recordings of bands — Phish, Grateful Dead, that world — favorite films, books, and which upcoming shows we plan to catch this summer. Think a tiny, invite-only corner of the internet for people who care deeply about live music and want somewhere to talk about it with people they actually know. Live chat between people couch-touring and people in the pit is coming next.
 
