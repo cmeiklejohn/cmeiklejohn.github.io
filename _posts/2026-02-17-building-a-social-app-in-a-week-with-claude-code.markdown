@@ -42,11 +42,11 @@ I eventually had to encode explicit rules: when you add a new backend API, test 
 
 iOS and Android apps, both in TestFlight and ready for Android testing within the same week. End-to-end push notifications wired to every interaction. An AI-powered feature that surfaces what your friends are collectively into right now. An invite management system, automated build scripts, 107 database migrations, user engagement charts, a changelog that notifies users when something new ships.
 
-<img src="/img/zabriskie-screenshot-2.png" style="width: 100%">
-
-<img src="/img/zabriskie-screenshot-3.png" style="width: 100%">
-
-<img src="/img/zabriskie-screenshot-4.png" style="width: 100%">
+<div style="display: flex; gap: 12px; align-items: flex-start;">
+  <img src="/img/zabriskie-screenshot-2.png" style="width: 33%;">
+  <img src="/img/zabriskie-screenshot-3.png" style="width: 33%;">
+  <img src="/img/zabriskie-screenshot-4.png" style="width: 33%;">
+</div>
 
 Claude's ability to hold a large multi-file change in mind — a database migration, a new API handler, a frontend component, and a mobile layout fix, all in one coherent session — is where it earns everything. When the scope is clear and the pattern is known, it moves at a speed that doesn't feel real.
 
