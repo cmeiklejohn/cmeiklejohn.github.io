@@ -14,7 +14,7 @@ What I was building: a private social app for my close-knit group of friends. We
 
 The app is live. My friends are using it. It runs on Go with a server-driven UI architecture, and it ships as native iOS and Android apps. I built all of it in a week with Claude Code, and I want to tell you what that actually felt like.
 
-The entire first version was built at night, in bed, on an 11" iPad, using the Claude Code app connected to an empty GitHub repo. I didn't touch a computer. Claude scaffolded the backend, wired up the database, built the frontend, and I deployed the whole thing to Railway — all from the iPad. It wasn't until late in the second day that I moved to a laptop, mostly because the screen real estate was starting to feel limiting. The code itself didn't care.
+The entire first version was built at night, in bed, on an 11" iPad, using the Claude Code app connected to an empty GitHub repo. I didn't touch a computer. Within a few hours I had a working app — login, a feed, posting — deployed and running on Railway. From there the scope crept in the right direction: Spotify integration so you could search and attach albums and tracks directly, setlist.fm integration to pull real show data — venues, dates, and actual setlists as they're posted after each night — and let people mark which dates they were attending. The bones were there fast; making it feel like something worth actually using took longer. Claude scaffolded the backend, wired up the database, built the frontend, and I shipped it without leaving bed. It wasn't until late in the second day that I moved to a laptop, mostly because the screen real estate was starting to feel limiting. The code itself didn't care.
 
 <img src="/img/zabriskie-screenshot-1.png" style="width: 100%">
 
