@@ -69,3 +69,7 @@ The report called my style "ambitious" and noted I "tolerate high friction from 
 You're not writing code with Claude Code. You're steering. The gap between those two things is where all the frustration lives, and also where all the speed comes from. When you accept that you're the judgment layer — deciding when to redirect, when to stop, when a fix is making things worse — the tool becomes something genuinely extraordinary.
 
 Spring tour is coming. The app is ready.
+
+---
+
+*Postscript: while writing this blog post, the same pattern bit me again. The app was deploying fine on Railway with a simple nixpacks build. While fixing an unrelated feature, I added a healthcheck to the config as a drive-by change — unnecessary, but it seemed harmless. Later, switching to a Dockerfile build to bake in an environment variable caused the build to take longer than nixpacks, so the healthcheck started timing out before the service was ready. Deployments failed. Rather than identifying the healthcheck as the culprit, five successive commits changed the port, the builder, the start command, and the Dockerfile in various combinations. None of it worked, because the real problem was never diagnosed. The entire chain of failures traced back to one unnecessary line added while working on something else entirely. Some things don't change.*
