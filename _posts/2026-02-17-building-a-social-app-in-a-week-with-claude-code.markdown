@@ -40,7 +40,13 @@ The migration also exposed a pattern that would recur throughout the project: Cl
 
 I eventually had to encode explicit rules: when you add a new backend API, test it with curl before touching the frontend. When you wire up a frontend call, verify the route actually exists. When a form submits, confirm every parameter arrives at the backend. The quality improved significantly once those guardrails were in writing.
 
-iOS and Android apps, both submitted to their respective stores within the same week. End-to-end push notifications wired to every interaction. An AI-powered feature that surfaces what your friends are collectively into right now. An invite management system, automated build scripts, 107 database migrations, user engagement charts, a changelog that notifies users when something new ships.
+iOS and Android apps, both in TestFlight and ready for Android testing within the same week. End-to-end push notifications wired to every interaction. An AI-powered feature that surfaces what your friends are collectively into right now. An invite management system, automated build scripts, 107 database migrations, user engagement charts, a changelog that notifies users when something new ships.
+
+<img src="/img/zabriskie-screenshot-2.png" style="width: 100%">
+
+<img src="/img/zabriskie-screenshot-3.png" style="width: 100%">
+
+<img src="/img/zabriskie-screenshot-4.png" style="width: 100%">
 
 Claude's ability to hold a large multi-file change in mind — a database migration, a new API handler, a frontend component, and a mobile layout fix, all in one coherent session — is where it earns everything. When the scope is clear and the pattern is known, it moves at a speed that doesn't feel real.
 
@@ -54,7 +60,7 @@ The biggest one: hooks. Claude Code supports post-edit hooks — shell commands 
 
 The report also suggested adding explicit guardrails to `CLAUDE.md` — the project instruction file Claude reads at the start of every session. Things like: after any backend code change, always restart the server before testing. Never run migrations or deploy fixes without explicit user approval. When the user tells you a layer is working, stop investigating that layer. Limit yourself to two attempts at a single approach — if it hasn't worked twice, step back and explain what you've learned before trying again. Most of these I'd arrived at the hard way over the course of the week. Having them written down from the start would have saved days.
 
-The other recommendation was about session discipline. Five of my sessions were completely lost to context limits — the conversation grew too long, `/compact` failed to recover it, and nothing got done. The fix is obvious in retrospect: end each session at a natural stopping point, write a brief summary of state, start fresh. The sessions where I shipped something were the tight ones. I kept ignoring that signal.
+The other recommendation was about session discipline. Five of my sessions were completely lost to context limits — the conversation grew too long, and when I tried to recover with `/compact`, it just returned "failed to compact" and left me stranded mid-task with no way forward except closing Claude and starting over from scratch. Losing context mid-session, mid-thought, mid-fix, with no handoff and no summary, is a particular kind of frustrating. The fix is obvious in retrospect: end each session at a natural stopping point, write a brief summary of state, start fresh. The sessions where I shipped something were the tight ones. I kept ignoring that signal.
 
 ---
 
