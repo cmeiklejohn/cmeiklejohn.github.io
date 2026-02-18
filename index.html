@@ -12,6 +12,16 @@ title: Christopher Meiklejohn
     {% endfor %}
   </ul>
 
+  <h1>AI</h1>
+  <p>Writing about AI tools, workflows, and building with large language models.</p>
+  <ul class="posts">
+    {% for post in site.posts %}
+      {% if post.group == "ai" %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
   <h1>Short Posts, Thoughts, Reflections</h1>
   <p>Reflections I've had on building research software, industrial software development, in the context of my Ph.D. research.</p>
   <ul class="posts">
