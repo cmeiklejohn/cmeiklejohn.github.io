@@ -10,7 +10,7 @@ Peter Van Roy and I just published a retrospective at [PPDP '25](https://dl.acm.
 
 ### What Lasp Was
 
-Lasp was a programming model built on top of Conflict-Free Replicated Data Types (CRDTs). The core idea was simple: if you structure your distributed computation around data types that are guaranteed to converge — regardless of the order in which updates arrive, regardless of network partitions — you can eliminate most of the coordination overhead that makes distributed systems so hard to build and reason about.
+Lasp was a programming model built on top of Conflict-Free Replicated Data Types (CRDTs). The core idea was simple: coordination makes distributed systems easy to reason about, but it's expensive — it limits availability, introduces latency, and creates failure modes. Lasp's goal was to give developers a programming model that was just as easy to reason about, but without the coordination, by structuring distributed computation around data types that are guaranteed to converge regardless of the order in which updates arrive or whether the network partitions. The result: better reliability and availability, without sacrificing the developer's ability to think clearly about what their program does.
 
 The CAP theorem had been the backdrop for a lot of the distributed systems conversation in that era. CRDTs offered a path toward availability and partition-tolerance without sacrificing convergence, but their use was still mostly ad hoc. Lasp tried to give that a principled, declarative home: a functional programming model where eventual consistency wasn't something you bolted on, but the default assumption.
 
