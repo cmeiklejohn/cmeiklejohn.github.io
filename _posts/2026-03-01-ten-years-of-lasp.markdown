@@ -38,7 +38,7 @@ The retrospective paper covers quite a bit of follow-on academic work that I fou
 
 The work Matthew Weidner and Heather Miller and I published together on composing op-based CRDTs with semidirect products also grew directly out of the Lasp model. That paper, published at ICFP in 2020, is something I'm quietly proud of — it's one of the more mathematically interesting things I've worked on.
 
-The PPDP program committee awarded the original Lasp paper their 2025 retrospective award, which is what prompted the retrospective paper in the first place. It is a bit surreal to receive a recognition like that for work that started, essentially, as a research project I threw myself into while working at Basho with no particular expectation that anyone outside the SyncFree project would care.
+The PPDP program committee selected the original Lasp paper as the most influential paper of the past decade — the PPDP 2025 10-year award — which is what prompted the retrospective paper in the first place. It is a bit surreal to receive a recognition like that for work that started, essentially, as a research project I threw myself into while working at Basho with no particular expectation that anyone outside the SyncFree project would care.
 
 ### Why It Still Matters
 
