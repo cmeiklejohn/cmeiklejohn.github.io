@@ -83,6 +83,36 @@ This is the same agent that was told to write tests for every new behavior. It w
 
 ---
 
+Then Claude took the site down.
+
+I didn't trust the test suite anymore. 154 tests and zero coverage of the core flow — what else was missing? So I asked Claude to set up code coverage instrumentation for the E2E tests. Build the Go binary with `-cover`, run the Playwright suite, generate an HTML report showing which backend handlers are actually being exercised. I wanted receipts.
+
+Claude built it. It worked. The coverage report showed 42% handler coverage with 263 functions at 0%. Good data. And even that — the act of trying to verify Claude's work — Claude managed to fuck up.
+
+But Claude didn't put the coverage tooling in a separate script and leave it there. It also added a coverage flush endpoint — `POST /debug/coverage/flush` — directly to `main.go`, the production server binary. That endpoint imported `runtime/coverage`, a Go standard library package that calls `WriteMetaDir()` and `WriteCountersDir()`. Those functions panic if the binary wasn't compiled with `-cover`. Production binaries are not compiled with `-cover`. The binary panicked on startup. The site went down.
+
+The fix was three lines: delete the import, delete the endpoint, move the flush logic to the coverage script where it belonged. I pushed it in under a minute once I understood what happened. But the site was unreachable until Railway picked up the new commit and redeployed, and I couldn't force a faster deploy because the health checks were failing on the crashing binary.
+
+The irony is almost too neat. Claude was asked to measure test coverage — to find out what *wasn't* being tested — and in doing so, shipped code that wasn't tested to production. The coverage endpoint itself was never tested. Not by the 154 existing E2E tests. Not by the new tests Claude was writing. Not by a quick `go build && ./binary` sanity check without the `-cover` flag. The code existed to answer the question "what are we not testing?" and the answer included itself.
+
+This is the `runtime/coverage` import in production `main.go`, the one that crashed the site:
+
+```go
+import (
+    "runtime/coverage"  // panics if binary not built with -cover
+)
+
+// POST /debug/coverage/flush — flush coverage data
+mux.HandleFunc("POST /debug/coverage/flush", func(w http.ResponseWriter, r *http.Request) {
+    coverage.WriteMetaDir(coverDir)     // panic
+    coverage.WriteCountersDir(coverDir) // panic
+})
+```
+
+Dev-only code, in the production binary, with no guard, no build tag, no conditional. Just a direct import of a package that explodes outside its intended context. Claude didn't even think about it. It was writing coverage tooling, so it put the coverage code where the rest of the server code lives. The concept of "this code should only exist in a specific build configuration" didn't occur to it.
+
+---
+
 I want to be clear about what's happening here, because I think it's easy to read this as "AI is bad at testing" and miss the more interesting point.
 
 Claude is excellent at writing tests. The 154 tests it wrote are real, useful, and they catch real regressions. The Playwright infrastructure is solid. The test helpers are clean. The coverage of side features is thorough. When Claude writes tests, they work.
@@ -95,4 +125,4 @@ The fix is obvious: test the core flow. Test it first. Test it before you test a
 
 ---
 
-833 commits. 202 fixes. Zero tests for the thing the app actually does. The numbers don't lie, even when the test suite is green.
+833 commits. 202 fixes. Zero tests for the thing the app actually does. A dev-only import that took down production. The numbers don't lie, even when the test suite is green.
