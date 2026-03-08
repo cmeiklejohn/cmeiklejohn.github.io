@@ -109,7 +109,6 @@ If any of this resonates with you — if you've been looking for the place that 
 
 ---
 
-> *"Don't let a heavy one hold back the dawn in you"*
 > *"I feel it all in our hands, in a rising sun"*
 > — Goose, "(dawn)"
 
