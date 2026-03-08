@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Claude Tested Everything Except the One Thing That Mattered"
-date:   2026-03-08 08:00:00 -0000
+date:   2026-03-08 00:00:00 -0000
 group: ai
 categories: ai claude
 ---
