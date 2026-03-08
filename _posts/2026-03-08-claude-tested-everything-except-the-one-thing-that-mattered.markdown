@@ -8,7 +8,7 @@ categories: ai claude
 
 Three weeks ago I [wrote about building a social app in a week with Claude Code](/ai/claude/2026/02/17/building-a-social-app-in-a-week-with-claude-code.html). The app shipped. My friends are using it. I kept building.
 
-Since that post, Claude has written 154 end-to-end tests across 17 spec files. It tests login, logout, signup, and redirect guards. It tests the feed, the bookmarks page, the notifications page. It tests liking, unliking, commenting, amplifying, recommending. It tests show RSVPs, band pages, setlist search. It tests a tournament bracket system. It tests song battles. It tests a badge and achievement system. It tests tour crews. It tests a getting-started tutorial. It tests a Goose Mode dashboard. It tests a community catalog. It tests tracklist rendering and live show layouts.
+Since that post, Claude has written 154 end-to-end tests across 17 spec files. It tests login, logout, signup, and redirect guards. It tests the feed, the bookmarks page, the notifications page. It tests liking, unliking, commenting, amplifying, recommending. It tests show RSVPs, band pages, setlist search. It tests a tournament bracket system. It tests song battles. It tests a badge and achievement system. It tests tour crews. It tests a getting-started tutorial. It tests a Goose Mode dashboard (if you haven't heard Goose yet, well, as they say, Goose fucks). It tests a community catalog. It tests tracklist rendering and live show layouts.
 
 It does not test posting.
 
