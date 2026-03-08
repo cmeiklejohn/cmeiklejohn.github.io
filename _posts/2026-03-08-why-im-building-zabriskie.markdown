@@ -43,8 +43,6 @@ Then I got back into the jam band world, and something completely different happ
 
 No other community in my life has worked like that. The jam band world doesn't care where you went to school or what you do for a living. It cares whether you were at the show. It cares about the music. And that's enough.
 
-Worst of all, almost nothing addresses couch tour. There is an enormous, passionate community of people watching livestreams from home — Phish, Goose, dozens of bands streaming regularly — and they want to share the experience with friends. They want to talk about what's happening in real time, react to the setlist, be *part of it* even from their couch. And there's nothing built for them.
-
 ## COVID Separated Us. We Never Came Back.
 
 The pandemic made all of this worse. It separated us physically, and we never fully recovered. We got distant from each other in ways we're still reckoning with. The platforms we had didn't help — they made it worse, feeding us outrage and ads while we sat alone.
