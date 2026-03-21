@@ -82,11 +82,23 @@ This is the thing that makes me genuinely optimistic about building alone. The t
 
 I still write tests for the things that matter to me — the tricky integration points, the things where the test itself is the specification. But the coverage floor, the boring-but-necessary tests that catch regressions? That's not my job anymore. And that means I actually have test coverage, which means I can refactor with confidence, which means the codebase stays healthy even at this pace.
 
+## Three Nights at the Beacon
+
+The Pigeons show was from my couch. The Tedeschi Trucks Band run at the Beacon Theatre was from my seat.
+
+TTB was playing three nights at the Beacon in March. I had tickets. I also had a platform that didn't know Tedeschi Trucks Band existed yet. On Tuesday afternoon I added them — 58 shows for the 2026 Future Soul Tour. But TTB's setlists don't come from setlist.fm. They come from TTBase, which has a completely different HTML structure. So I needed a new scraper.
+
+That night, from my seat at the Beacon, I built it. I told Claude what TTBase looked like, what data I needed, and how it should integrate with the live setlist poller. Claude wrote the scraper. I deployed it. It didn't work — the HTML structure didn't match what we'd expected. So I told Claude what was wrong, it fixed the scraper to match the actual Songfish HTML structure, I deployed again, and watched the setlist populate in real time while the band was playing.
+
+I used the app across all three shows. I'd be sitting there, listening to Derek Trucks play, and I'd notice something — a layout bug, a feature that didn't work right, something that could be better. I'd pull out my phone, tell Claude what I needed, watch it write the fix, push it to production, and then check it on my phone. All from my seat. All while the show was happening.
+
+This is a different thing from the Pigeons show, where I was on the couch and had a laptop open. At the Beacon I was in the audience with nothing but my phone. The workflow was: notice a problem, describe it to Claude in plain English, Claude fixes it and pushes to prod, I pull up the app and verify. No laptop. No IDE. No terminal. Just me, my phone, and a collaborator who could do the rest.
+
+By the end of the three-night run, the TTB experience on Zabriskie was solid. Live setlists from TTBase. Show pages with all the metadata. The whole thing built and refined from inside the venue where the band was playing. That's not a development workflow I ever imagined having.
+
 ## The Week Keeps Going
 
-After the Saturday marathon, I kept building. Sunday: clickable URLs in posts and comments. A small thing. The kind of thing you'd never prioritize on a roadmap but that users notice immediately.
-
-Tuesday: Tedeschi Trucks Band, 58 shows for the 2026 Future Soul Tour. A TTBase scraper for their setlists. This is the catalog work — the unsexy, essential work of making sure the platform actually has the data people need.
+After the Saturday marathon and the Beacon run, I kept building. Sunday: clickable URLs in posts and comments. A small thing. The kind of thing you'd never prioritize on a roadmap but that users notice immediately.
 
 Thursday: Grahame Lesh & Friends with 25 shows. Apple App Review fixes — a camera crash and an Android banner that needed updating. And then the bug forum. A full in-app bug reporting system with upvotes, comments, categorization, bot notifications, and admin tools. Built in an afternoon.
 
@@ -104,9 +116,9 @@ That's all I ever wanted.
 
 The gap between what you can imagine and what you can ship is the space where ideas go to die. For years I had this idea — the third place, the taste-based community, all of it — and I couldn't build it because I'm one person with a day job. Now I can. Not perfectly. Not without bugs. Not without 3am sessions that leave me wrecked the next day. But I can build it, and I can build it fast enough that the community doesn't outgrow the infrastructure.
 
-144 commits in a week. Six versions of Goose Mode. A live show debugged in real time. A test suite that actually exists. A bug forum built in two hours.
+144 commits in a week. Six versions of Goose Mode. A scraper built from a seat at the Beacon Theatre. A live show debugged in real time. A test suite that actually exists. A bug forum built in two hours.
 
-This is what building with Claude actually looks like. It's not a press release. It's a Saturday that starts at 11am and ends sometime around dawn, and when you look up, the thing you imagined is running on your phone, and people are using it.
+This is what building with Claude actually looks like. It's not a press release. It's a Saturday that starts at 11am and ends sometime around dawn. It's three nights at the Beacon with nothing but your phone, shipping fixes between sets. And when you look up, the thing you imagined is running on your phone, and people are using it.
 
 ---
 
