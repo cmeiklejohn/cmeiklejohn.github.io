@@ -2,8 +2,8 @@
 layout: post
 title:  "Why I'm Building Zabriskie"
 date:   2026-03-08 00:00:00 -0000
-group: zabriskie
-categories: zabriskie community
+group: ai
+categories: ai zabriskie community
 ---
 
 > *"Don't let a heavy one hold back the dawn in you"*

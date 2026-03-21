@@ -2,8 +2,8 @@
 layout: post
 title:  "What Building With Claude Actually Looks Like"
 date:   2026-03-20 00:00:00 -0000
-group: zabriskie
-categories: zabriskie development
+group: ai
+categories: ai zabriskie development
 ---
 
 > *"Sometimes a notion gets a-hold of you, carries you away"*
