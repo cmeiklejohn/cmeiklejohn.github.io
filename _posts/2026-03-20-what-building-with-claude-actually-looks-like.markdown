@@ -86,7 +86,7 @@ I still write tests for the things that matter to me — the tricky integration 
 
 The Pigeons show was from my couch. The Tedeschi Trucks Band run at the Beacon Theatre was from my seat.
 
-TTB was playing ten nights at the Beacon in March. I had tickets to three of them. I also had a platform that didn't know Tedeschi Trucks Band existed yet. On Tuesday afternoon I added them — 58 shows for the 2026 Future Soul Tour. But TTB's setlists don't come from setlist.fm. They come from TTBase, which has a completely different HTML structure. So I needed a new scraper.
+TTB was playing ten nights at the Beacon in March. I had tickets to three of them. I also had a platform that didn't know Tedeschi Trucks Band existed yet. Tuesday before the show I added them — 58 shows for the 2026 Future Soul Tour. But TTB's setlists don't come from setlist.fm. They come from TTBase, which has a completely different HTML structure. So I needed a new scraper.
 
 That night, from my seat at the Beacon, I built it. I told Claude what TTBase looked like, what data I needed, and how it should integrate with the live setlist poller. Claude wrote the scraper. I deployed it. It didn't work — the HTML structure didn't match what we'd expected. So I told Claude what was wrong, it fixed the scraper to match the actual Songfish HTML structure, I deployed again, and watched the setlist populate in real time while the band was playing.
 
