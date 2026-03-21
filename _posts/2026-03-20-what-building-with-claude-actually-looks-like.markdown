@@ -92,6 +92,8 @@ That night, from my seat at the Beacon, I built it. I told Claude what TTBase lo
 
 I used the app across all three shows. I'd be sitting there, listening to Derek Trucks play, and I'd notice something — a layout bug, a feature that didn't work right, something that could be better. I'd pull out my phone, tell Claude what I needed, watch it write the fix, push it to production, and then check it on my phone. All from my seat. All while the show was happening.
 
+The reason this was even possible is that Zabriskie uses a server-driven UI architecture. Early on, Claude helped guide me toward SDUI as the core design — the server sends down the layout and components, and the app just renders whatever it receives. That means I can change virtually anything about the experience without shipping a new version through the App Store. A fix to a layout, a new feature, a redesigned screen — it's all a server deploy. When I pushed a fix from the Beacon, every phone running the app got it immediately. No app update. No review process. No waiting.
+
 This is a different thing from the Pigeons show, where I was on the couch and had a laptop open. At the Beacon I was in the audience with nothing but my phone. The workflow was: notice a problem, describe it to Claude in plain English, Claude fixes it and pushes to prod, I pull up the app and verify. No laptop. No IDE. No terminal. Just me, my phone, and a collaborator who could do the rest.
 
 By the end of the three-night run, the TTB experience on Zabriskie was solid. Live setlists from TTBase. Show pages with all the metadata. The whole thing built and refined from inside the venue where the band was playing. That's not a development workflow I ever imagined having.
