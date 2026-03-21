@@ -106,9 +106,7 @@ Thursday I added Grahame Lesh & Friends with 25 shows. Saturday night I was at t
 
 That's the moment it stopped being a project and started being the thing I described in the manifesto. The bridge between the physical and the virtual. The people in the crowd and the people at home, in the same place. It worked. Not because I was fixing it in real time — because I didn't have to.
 
-Thursday also brought Apple App Review fixes — a camera crash and an Android banner that needed updating. And then the bug forum. A full in-app bug reporting system with upvotes, comments, categorization, bot notifications, and admin tools. Built in an afternoon.
-
-The bug forum is maybe the most meta thing I've built. A bug reporting system, built by one person with an AI collaborator, for reporting bugs in an app built by one person with an AI collaborator. It has six commits spanning two hours. It works. Users are filing bugs in it right now.
+The bug forum is maybe the most meta thing I've built that week. A full in-app bug reporting system with upvotes, comments, categorization, bot notifications, and admin tools. Built in an afternoon. A bug reporting system, built by one person with an AI collaborator, for reporting bugs in an app built by one person with an AI collaborator. It has six commits spanning two hours. It works. Users are filing bugs in it right now.
 
 ## What This Means
 
