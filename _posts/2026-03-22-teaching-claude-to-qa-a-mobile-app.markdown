@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Teaching Claude to QA a Mobile App"
-date:   2026-03-23 00:00:00 -0000
+date:   2026-03-22 00:00:00 -0000
 group: ai
 categories: ai zabriskie development android ios
 ---
