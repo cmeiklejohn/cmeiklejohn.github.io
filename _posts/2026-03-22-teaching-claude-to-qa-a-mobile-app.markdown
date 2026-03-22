@@ -9,6 +9,8 @@ categories: ai zabriskie development android ios
 > *"When life looks like Easy Street, there is danger at your door"*
 > — Grateful Dead, "Uncle John's Band"
 
+*(A note on picking this quote: I asked Claude to find me a Grateful Dead lyric that fit the theme. It couldn't — searching for "dead lyrics" triggers the content filtering policy: `API Error: 400 {"type":"error","error":{"type":"invalid_request_error","message":"Output blocked by content filtering policy"}`. I had to pick this one myself.)*
+
 I build Zabriskie alone — no team, no investors, just me in my bedroom shipping a community app because I think the internet needs better gathering places. One thing I learned fast: if it's not in the App Store, it doesn't exist. I had early users who loved the web version but wouldn't touch it daily because it wasn't "an app." It might as well not be real. So I needed to ship on three platforms — web for fast iteration and testing, iOS and Android because that's where people actually live.
 
 The problem is I'm one person. I can't write and maintain three separate codebases. The answer was [Capacitor](https://capacitorjs.com/): it takes the React web app I'd already built and wraps it in a native shell — a WebView on Android, a WKWebView on iOS — so the same code runs everywhere. Combined with the server-driven UI architecture (the backend sends screen layouts as JSON, and the client just renders them), I can push changes to all three platforms without waiting for App Store review. One codebase, three platforms, one developer. It's the only way this works.
