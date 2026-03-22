@@ -6,10 +6,16 @@ group: ai
 categories: ai zabriskie development android ios
 ---
 
-> *"I see a red door and I want it painted black"*
-> — The Rolling Stones, "Paint It Black"
+> *"When life looks like Easy Street, there is danger at your door"*
+> — Grateful Dead, "Uncle John's Band"
 
-Zabriskie runs on three platforms: web, iOS, and Android. The web gets tested by Playwright — 150+ E2E tests that run on every push. But the mobile apps had nothing. No automated QA, no visual regression checks, no way to know if either client was rendering correctly without manually clicking through every screen. I decided to fix that by teaching Claude to drive both mobile platforms, take screenshots, analyze them for issues, and file its own bug reports.
+I build Zabriskie alone — no team, no investors, just me in my bedroom shipping a community app because I think the internet needs better gathering places. One thing I learned fast: if it's not in the App Store, it doesn't exist. I had early users who loved the web version but wouldn't touch it daily because it wasn't "an app." It might as well not be real. So I needed to ship on three platforms — web for fast iteration and testing, iOS and Android because that's where people actually live.
+
+The problem is I'm one person. I can't write and maintain three separate codebases. The answer was [Capacitor](https://capacitorjs.com/): it takes the React web app I'd already built and wraps it in a native shell — a WebView on Android, a WKWebView on iOS — so the same code runs everywhere. Combined with the server-driven UI architecture (the backend sends screen layouts as JSON, and the client just renders them), I can push changes to all three platforms without waiting for App Store review. One codebase, three platforms, one developer. It's the only way this works.
+
+But Capacitor puts you in a testing no-man's-land. Playwright can't reach inside the native shell — it's not a browser tab anymore, it's an app. Native testing frameworks like XCTest and Espresso can't interact with the content — it's HTML inside a WebView, not native UI elements. You're too native for web tools and too web for native tools. Every testing approach in this post exists because of that gap.
+
+Zabriskie runs on all three platforms. The web gets tested by Playwright — 150+ E2E tests that run on every push. But the mobile apps had nothing. No automated QA, no visual regression checks, no way to know if either client was rendering correctly without manually clicking through every screen. I decided to fix that by teaching Claude to drive both mobile platforms, take screenshots, analyze them for issues, and file its own bug reports.
 
 Android took 90 minutes. iOS took over six hours. The difference says everything about the state of mobile automation tooling in 2026.
 
