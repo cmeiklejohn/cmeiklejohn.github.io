@@ -144,6 +144,16 @@ I don't want a faster code generator. I have that. I want a collaborator that:
 
 **Slows down when it matters.** Claude's speed is its greatest asset and its greatest liability. The same velocity that ships six redesigns in nine hours also ships three broken hotfixes in thirty minutes. The ability to move fast is only valuable when paired with the judgment to know when to slow down. And that judgment doesn't come from rules in a file — it comes from something closer to instinct, or experience, or care. Things that don't fit neatly into a `CLAUDE.md`.
 
+## The Stopgap Era
+
+Every day someone recommends me a new one. Context management tools. Workflow engines. Prompt orchestrators that inject the right rules at the right time. Everyone I know who builds seriously with AI has cobbled together their own version, and companies are raising money to productize the pattern. The sheer number of them tells you the problem is real.
+
+I don't think any of them will last.
+
+These tools exist because the models don't do this themselves yet. They're shims — workarounds for the gap between what agents can do and what they should do. The moment the models internalize uncertainty flagging, failure reporting, and behavioral memory, the entire category collapses. Nobody builds a startup around reminding humans to breathe.
+
+The real fix isn't better scaffolding around a model that doesn't learn. It's a model that learns.
+
 ## Where This Goes
 
 Claude is the best collaborator I've ever had for the first 80% of any task. It's also the most dangerous collaborator I've ever had for the last 20%. The part where you verify it works. The part where you slow down. The part where you say "wait, have we actually tested this?" The part where you remember what happened last time.
