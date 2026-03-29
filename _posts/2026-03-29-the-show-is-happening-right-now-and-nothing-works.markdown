@@ -106,6 +106,8 @@ Then I looked at the Safari Web Inspector. Not the console log tab -- the Errors
 Unhandled Promise Rejection: Error: "LiveActivity.then()" is not implemented on ios
 ```
 
+That was the smoking gun.
+
 ## The Actual Root Cause
 
 Capacitor's `registerPlugin()` returns a proxy object. The code had `getLiveActivityPlugin()` as an `async` function that returned this proxy. When callers did `await getLiveActivityPlugin()`, JavaScript called `.then()` on the returned value -- because that's what `await` does, it checks for a thenable. The proxy doesn't implement `.then()`. On iOS 26, Apple's JavaScript engine started strictly enforcing this check. The call threw, silently killing `startShowActivity()` every single time.
@@ -141,19 +143,19 @@ About two and a half hours of debugging during a live show. Multiple wrong theor
 
 I'm documenting these incidents because they're the research. Every failure mode is data. And this session was rich in data.
 
-**The AI solved the wrong problem repeatedly.** Claude spent most of the session investigating backend code paths when the real issue -- the `.then()` proxy error -- was a client-side JavaScript runtime error visible in the browser console's Errors tab. I've logged over 30 instances of wrong-approach debugging across this project. The pattern is consistent: Claude defaults to the layer it's most comfortable with (backend code reading) rather than the layer where the evidence is.
+- **The AI solved the wrong problem repeatedly.** Claude spent most of the session investigating backend code paths when the real issue -- the `.then()` proxy error -- was a client-side JavaScript runtime error visible in the browser console's Errors tab. I've logged over 30 instances of wrong-approach debugging across this project. The pattern is consistent: Claude defaults to the layer it's most comfortable with (backend code reading) rather than the layer where the evidence is.
 
-**The developer found the bug, not the AI.** I remembered a previous debugging session, pushed to check Safari Web Inspector errors specifically, and spotted the `.then()` rejection. Claude was still investigating the backend after the backend was proven correct. In a crisis, the AI's contribution was negative -- it consumed my attention with wrong theories while I could have been looking at the right data.
+- **The developer found the bug, not the AI.** I remembered a previous debugging session, pushed to check Safari Web Inspector errors specifically, and spotted the `.then()` rejection. Claude was still investigating the backend after the backend was proven correct. In a crisis, the AI's contribution was negative -- it consumed my attention with wrong theories while I could have been looking at the right data.
 
-**Silent failures are the worst failures.** The `.then()` error was an unhandled promise rejection. No crash. No error in the normal console output. No visual indication. The function silently died. This is the failure mode that's hardest for both humans and AI to debug, and it's the one AI is least equipped for -- because AI debugging relies heavily on explicit error messages, and silent failures produce none.
+- **Silent failures are the worst failures.** The `.then()` error was an unhandled promise rejection. No crash. No error in the normal console output. No visual indication. The function silently died. This is the failure mode that's hardest for both humans and AI to debug, and it's the one AI is least equipped for -- because AI debugging relies heavily on explicit error messages, and silent failures produce none.
 
-**Platform updates break things in ways you cannot predict.** The iOS 26 JavaScript engine change turned a latent bug into a hard failure. There's no way to write a test for "Apple will change how proxy objects interact with await in a future OS release." Some bugs only exist in the gap between what the spec says and what the runtime does.
+- **Platform updates break things in ways you cannot predict.** The iOS 26 JavaScript engine change turned a latent bug into a hard failure. There's no way to write a test for "Apple will change how proxy objects interact with await in a future OS release." Some bugs only exist in the gap between what the spec says and what the runtime does.
 
-**Test at showtime, not at noon.** The timezone bug only manifests after 8 PM Eastern. The auto-couch-tour was tested during the day. Nobody tested at 8 PM when shows actually happen. This is obvious in retrospect and completely non-obvious in the moment.
+- **Test at showtime, not at noon.** The timezone bug only manifests after 8 PM Eastern. The auto-couch-tour was tested during the day. Nobody tested at 8 PM when shows actually happen. This is obvious in retrospect and completely non-obvious in the moment.
 
-**Ship less before critical moments.** I deployed a new feature the same day as the most important show of the month. There was no urgency. It could have waited until Saturday. But the feature was done, and it looked good, and the temptation to ship is always there. This is the oldest lesson in software engineering, and I learned it again.
+- **Ship less before critical moments.** I deployed a new feature the same day as the most important show of the month. There was no urgency. It could have waited until Saturday. But the feature was done, and it looked good, and the temptation to ship is always there. This is the oldest lesson in software engineering, and I learned it again.
 
-**Now I understand why companies have entire teams for this.** I'm one person with an AI assistant, shipping an iOS app, an Android app, and a web app with a Go backend, real-time features, push notifications, Live Activities, and a server-driven UI architecture. Tonight I had to debug a Go timezone bug, a JavaScript proxy runtime error, two Capacitor build pipelines, Safari Web Inspector on a physical device, Railway deployment logs, and App Store Connect uploads -- all at the same time, all during a live show. Even with AI doing most of the coding, the operational complexity of shipping software to real users on real devices is staggering. The AI can write the code. It cannot feel the weight of it breaking.
+- **Now I understand why companies have entire teams for this.** I'm one person with an AI assistant, shipping an iOS app, an Android app, and a web app with a Go backend, real-time features, push notifications, Live Activities, and a server-driven UI architecture. Tonight I had to debug a Go timezone bug, a JavaScript proxy runtime error, two Capacitor build pipelines, Safari Web Inspector on a physical device, Railway deployment logs, and App Store Connect uploads -- all at the same time, all during a live show. Even with AI doing most of the coding, the operational complexity of shipping software to real users on real devices is staggering. The AI can write the code. It cannot feel the weight of it breaking.
 
 ---
 
