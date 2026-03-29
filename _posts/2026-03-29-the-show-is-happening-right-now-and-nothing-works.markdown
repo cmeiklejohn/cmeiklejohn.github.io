@@ -161,4 +161,4 @@ There's a silver lining to not being at the show. If I'd been on the floor at Ja
 
 Next time, I'm going to be at the show. On the floor. Up front. On the rail. And the app better work, because I won't be home to save it.
 
-But I'm writing this the morning after, and the feeling that lingers isn't satisfaction that we fixed it. It's the memory of two and a half hours where my AI assistant -- the one that wrote most of this application -- was actively making the crisis worse by consuming my attention with wrong answers delivered with full confidence. That's the reliability gap I'm trying to measure. Last night, during the Thatch jam, I felt it.
+I'm writing this while the encore plays, and the feeling that lingers isn't satisfaction that we fixed it. It's the memory of two and a half hours where my AI assistant -- the one that wrote most of this application -- was actively making the crisis worse by consuming my attention with wrong answers delivered with full confidence. That's the reliability gap I'm trying to measure. Last night, during the Thatch jam, I felt it.
