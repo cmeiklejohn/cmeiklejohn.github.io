@@ -56,9 +56,17 @@ The day-to-day shifts. Instead of "implement the notification preference screen,
 
 It's not a demotion. It's a different kind of engineering. And honestly, it's harder. Writing a feature is a bounded problem. Designing a platform that stays safe as dozens of people and agents ship changes to it every day, that's an open-ended one. With AI agents doing more of the feature work, the assumption has to be that individual changes will sometimes be imperfect. Agents hallucinate. They introduce subtle bugs. They make confident changes based on incomplete context. The platform has to absorb this. Not by making agents perfect, but by making the system tolerant of imperfection.
 
-## The Conversation We Need to Have
+## The Hard Questions
 
-At CMU, we talked about what this means for how we train software engineers. If the core discipline is shifting from "write correct code" to "design systems that are safe to build on," then the curriculum needs to shift too. More systems design, more fault tolerance, more observability. Less syntax, less framework-of-the-year. More thinking about failure modes and blast radius. More civil engineering.
+At CMU, two questions came up that I haven't stopped thinking about.
 
-The welders aren't going away. The work is real and important and skilled. But the bridge designers, the people who make it safe for everyone else to build, that's where the profession is heading. And I think we're going to get there faster than anyone expects.
+The first: students early in their software engineering careers don't know how to tell when the AI is doing something wrong. They don't have the spidey-sense yet. The AI generates code that looks plausible, passes a surface-level review, and the student ships it. They can't smell the bad decision because they've never seen what a bad decision leads to. How do you develop judgment about something you've never experienced failing?
+
+The second is even harder: where do our senior engineers come from? The ability to design good platforms, to make the right architectural calls, that comes from experience. You learn what breaks by building things that broke. You learn where to put the domain boundaries by having drawn them in the wrong place. You learn what to monitor by having been the person staring at useless dashboards during an incident at 2am. If AI is writing most of the code, and junior engineers aren't getting the reps of building and breaking things themselves, how do they develop the judgment to become the platform engineers we need?
+
+These are connected. The spidey-sense and the architectural intuition come from the same place: years of building things, watching them fail, and understanding why. Civil engineering solved this with structured apprenticeship. You don't go from coursework to designing bridges. There are years of supervised practice, increasing responsibility, professional licensing exams. The judgment develops through guided experience, not just classroom instruction.
+
+I don't think software engineering needs PE exams. But I think we need to take the experience pipeline seriously. If the entry-level work is increasingly done by AI, we have to find new ways to give junior engineers the exposure to failure that builds the intuition they'll need later. Maybe that means more simulation, more on-call rotations earlier, more structured mentorship around incident response. Maybe it means the curriculum shifts from "build this feature" to "here's a system that's broken in subtle ways, figure out why." I don't have the answer yet. But I think this is the most important question in software engineering education right now.
+
+The profession is changing fast. The people who make it safe for everyone else to build, that's where it's heading. And the question of how we train those people is one we need to start answering now.
 
