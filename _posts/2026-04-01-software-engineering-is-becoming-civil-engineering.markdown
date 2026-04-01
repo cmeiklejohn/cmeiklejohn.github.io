@@ -16,11 +16,11 @@ I think this is what's happening to software engineering right now. Not in five 
 
 Product managers are writing code. This is how I operate with [Zabriskie](/ai/zabriskie/community/2026/03/08/why-im-building-zabriskie.html), the app I'm building. I act as a product manager more than a programmer. I have non-technical collaborators who file bugs and feature requests, and Claude Code implements them directly. People who've never written a line of code are describing what they want, the AI writes it, they verify, it ships. The feedback loop is tight and the results are surprisingly good.
 
-This is the welding. And there's nothing wrong with it.
-
 But someone has to design the bridge. Someone has to decide how the database schema handles multi-tenancy. Someone has to design the deployment pipeline so a bad change rolls back automatically. Someone has to build the abstraction layer that lets a product manager add a new notification type without accidentally breaking the payment flow. That's the platform engineer. The structural engineer of software.
 
-The profession is splitting, and the split is healthy. The mistake would be pretending it isn't happening, or pretending that both sides require the same skills.
+The PMs writing features? That's the welding. And there's nothing wrong with it. But it only works if the bridge is designed right.
+
+The profession is splitting. The mistake would be pretending it isn't happening.
 
 ## What the Platform Has to Guarantee
 
@@ -30,21 +30,17 @@ A civil engineer doesn't just design a bridge. They decide *where* the bridge go
 
 Every one of these has a software analog, and together they paint a picture of what platform engineering actually is:
 
-- **Site selection and domain isolation.** A civil engineer picks the bridge site based on the terrain. In software, this is the API design between components, the domain boundaries, the isolation between services. Where does one system end and another begin? Get this wrong and every change becomes a potential cascading failure. The platform engineer decides where the "bridges" go between domains, and makes sure a change on one side can't bring down the other.
+- **Site selection and domain isolation.** A civil engineer picks the bridge site based on geology and terrain. In software, this is API design, domain boundaries, isolation between services. Get this wrong and every change becomes a potential cascading failure.
 
-- **Material specification.** The engineer specifies what grade of steel, what concrete mix. In software, this is choosing the languages, databases, queues, and frameworks that the rest of the team builds on. These choices constrain what's possible. That's the point. You pick materials that are well-understood, well-tested, and appropriate for the load they'll bear.
+- **Material specification.** The engineer specifies what grade of steel, what concrete mix. In software, this is choosing the languages, databases, queues, and frameworks. These choices constrain what's possible. That's the point.
 
-- **Load analysis.** Civil engineers calculate expected traffic, weight, wind, seismic forces, and then design for margins of safety, typically 2-4x the expected load. Software needs the same discipline. Capacity planning, rate limiting, designing for 10x your expected traffic. When a PM ships a feature that goes viral, the platform can't buckle.
+- **Load analysis.** Civil engineers design for 2-4x the expected load. Software needs the same discipline. Capacity planning, rate limiting, designing for 10x your expected traffic. When a PM ships a feature that goes viral, the platform can't buckle.
 
-- **Inspection regimes.** A civil engineer doesn't just design how the bridge is built. They design how it will be *inspected over its lifetime*. In software, this is observability and code review. Not just logs and metrics, but semantic observability. Not "HTTP 500 on endpoint /api/notify" but "the notification feature that was deployed 20 minutes ago by the growth PM is failing for 12% of users." The gap between raw telemetry and human-meaningful context is where most incidents rot. Code review serves the same function: a structured inspection process that catches problems before they reach production.
+- **Inspection regimes.** A civil engineer designs how the bridge will be *inspected over its lifetime*. In software, this is observability and code review. Not "HTTP 500 on endpoint /api/notify" but "the notification feature deployed 20 minutes ago by the growth PM is failing for 12% of users." Semantic observability, not raw telemetry.
 
-- **Environmental impact.** Before a bridge is built, engineers assess how it affects the surrounding area. Traffic patterns, water flow, ecosystems. In software, the analog is cost. What does this feature cost to run? What does it cost to maintain? What does it cost when it breaks? Platform engineers need to make these costs visible and bounded, because the people shipping features often have no idea what their changes cost downstream.
+- **Codes and standards compliance.** Building codes encode decades of hard-won lessons from failures. In software, this is security standards, accessibility requirements, regulatory compliance. The platform enforces these as constraints, not suggestions. Violations get caught automatically, not by a human reviewer who might miss them.
 
-- **Codes and standards compliance.** Building codes aren't optional. They encode decades of hard-won lessons from failures. In software, this is security standards, accessibility requirements, regulatory compliance. The platform has to enforce these as constraints, not suggestions. Code review is the inspection mechanism, but the standards themselves need to be baked into the platform so that violations are caught automatically, not by a human reviewer who might miss them.
-
-And one more that civil engineers take for granted and most software platforms still get wrong:
-
-- **Self-healing.** A bridge has expansion joints that absorb thermal stress without human intervention. Foundations shift and the structure adapts. Software needs the equivalent: automatic responses to predictable failure modes. When you detect elevated error rates, latency spikes, failed health checks, the system should automatically mitigate. Roll back the deploy. Disable the feature flag. Shed load. A bad change from a product manager at 3pm can't become a production incident at 3am.
+- **Self-healing.** A bridge has expansion joints that absorb thermal stress without human intervention. Software needs the equivalent. When you detect elevated error rates or failed health checks, the system should automatically mitigate. Roll back the deploy. Disable the feature flag. A bad change at 3pm can't become a production incident at 3am.
 
 ## What Actually Changes About the Job
 
@@ -64,19 +60,17 @@ The first: students early in their software engineering careers don't know how t
 
 The second is even harder: where do our senior engineers come from? The ability to design good platforms, to make the right architectural calls, that comes from experience. You learn what breaks by building things that broke. You learn where to put the domain boundaries by having drawn them in the wrong place. You learn what to monitor by having been the person staring at useless dashboards during an incident at 2am. If AI is writing most of the code, and junior engineers aren't getting the reps of building and breaking things themselves, how do they develop the judgment to become the platform engineers we need?
 
-These are connected, and they form a kind of paradox. The spidey-sense and the architectural intuition come from the same place: years of building things, watching them fail, and understanding why. But we're taking the coding away from students at the exact moment they need it most. The judgment to tell an AI it's wrong comes from having written enough code to know what right looks like. And we're handing them AI before they've had the chance to develop that judgment. So we're stuck: we need them to code to build intuition, but the industry is moving toward a world where they don't code.
+These are connected, and they form a kind of paradox. The spidey-sense and the architectural intuition come from the same place: years of building things, watching them fail, and understanding why. You can't design a migration system that handles conflicts if you've never written a migration. You can't design isolation boundaries if you don't understand how a database connection pool works. You can't build semantic observability if you've never been the person debugging a production incident from raw logs. The understanding comes from doing the work.
 
-I want to be clear: the SE curriculum isn't fundamentally wrong. Courses like 17-313 teach the right things. But it's been underserviced for a long time, and what was adequate before isn't adequate now. This is a sea change. The entire relationship between humans and code is shifting, and the curriculum needs to shift with it. Platform engineering can't be an afterthought or a single lecture in a survey course. It needs to be a first-class part of how we teach students to think about building software. How do you design systems that other people, and agents, can safely build on top of?
+But we're taking the coding away from students at the exact moment they need it most. The judgment to tell an AI it's wrong comes from having written enough code to know what right looks like. And we're handing them AI before they've had the chance to develop that judgment. So we're stuck: we need them to code to build intuition, but the industry is moving toward a world where they don't code.
 
-But here's the tension I keep coming back to, and I'm genuinely struggling with it: you need to understand code to design good platforms. You can't design a migration system that handles conflicts if you've never written a migration. You can't design isolation boundaries if you don't understand how a database connection pool works. You can't build semantic observability if you've never been the person debugging a production incident from raw logs. The understanding comes from doing the work.
+I want to be clear: the SE curriculum isn't fundamentally wrong. Courses like 17-313 teach the right things. But it's been underserviced for a long time, and what was adequate before isn't adequate now. This is a sea change. The entire relationship between humans and code is shifting, and the curriculum needs to shift with it. Platform engineering can't be an afterthought or a single lecture in a survey course. It needs to be a first-class part of how we teach students to think about building software.
 
-So if AI is writing more and more of the code, and junior engineers are getting fewer reps of building and breaking things themselves, how do they develop the deep understanding that platform engineering requires? Civil engineering solved this with structured apprenticeship. You don't go from coursework to designing bridges. There are years of supervised practice, increasing responsibility, professional licensing exams. The judgment develops through guided experience, not just classroom instruction.
+Civil engineering solved the experience problem with structured apprenticeship. You don't go from coursework to designing bridges. There are years of supervised practice, increasing responsibility, professional licensing exams. The judgment develops through guided experience, not just classroom instruction.
 
 I don't think software engineering needs PE exams. But we need to take this seriously.
 
 Here's a concrete example. For years, I gave one guest lecture per semester in a software engineering course at CMU on reliably releasing software. Feature flags, metrics, observability, safe deployments, self-healing, rollback strategies. One lecture. A nice-to-know topic in a course full of other things. That content is now the whole game. It's not a single lecture anymore. It's the core of what platform engineers need to understand, and it deserves its own course, its own projects, its own curriculum.
 
-CMU and programs like it need to build curriculum around platform engineering. Not as a footnote in a software engineering survey course, but as a first-class discipline. Teach students to design systems that are safe to build on. Teach them to think about blast radius, isolation, observability, self-healing. Give them broken systems and ask them to figure out why. Give them a platform and ask them to make it safe for a non-technical PM, or an AI agent, to ship changes without bringing everything down.
-
-The profession is changing. The people who make it safe for everyone else to build, that's where it's heading. And the question of how we train those people is one we can't afford to put off.
+The profession is changing. The question of how we train the people who make it safe for everyone else to build is one we can't afford to put off.
 
