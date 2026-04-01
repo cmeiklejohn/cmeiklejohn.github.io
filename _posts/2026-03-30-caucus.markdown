@@ -52,7 +52,7 @@ The thread connecting these projects is the same one I'm pulling on now: how do 
 
 I'm calling this project Caucus — independent parties coming together to coordinate. The processes used to be microservices, database replicas, Erlang actors. Now they're LLM agents. The problems are the same. The solutions should be too.
 
-Next: [the system design](/ai/agents/distributed/zabriskie/2026/03/31/caucus-system-design.html) — agent roles, the coordination layer, and the experiments I'm running to test whether distributed systems techniques actually improve multi-agent performance.
+Next: [the system design](/ai/agents/distributed/zabriskie/2026/04/03/caucus-system-design.html) — agent roles, the coordination layer, and the experiments I'm running to test whether distributed systems techniques actually improve multi-agent performance.
 
 <div id="refs" class="references">
 <div id="ref-hong2023metagpt">
