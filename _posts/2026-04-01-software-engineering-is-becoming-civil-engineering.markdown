@@ -6,7 +6,9 @@ group: ai
 categories: ai engineering
 ---
 
-I gave a guest lecture on AI in [Michael Hilton's](https://www.cs.cmu.edu/~mhilton/) Foundations of Software Engineering course ([CMU 17-313](https://cmu-313.github.io)) today. One of my favorite things about lecturing is the conversations that happen afterward, the ones that go in directions nobody planned. This one hasn't left my head: software engineering is going through the same transition that building went through in the 18th century, when structural design separated from craft construction and became its own discipline. What we now call civil engineering.
+I gave a guest lecture on AI in [Michael Hilton's](https://www.cs.cmu.edu/~mhilton/) Foundations of Software Engineering course ([CMU 17-313](https://cmu-313.github.io)) today. One of my favorite things about lecturing is the conversations that happen afterward, the ones that go in directions nobody planned.
+
+This one hasn't left my head: software engineering is going through the same transition that building went through in the 18th century, when structural design separated from craft construction and became its own discipline. What we now call civil engineering.
 
 The welders who join steel beams on a bridge are skilled tradespeople. They're not involved in the structural design. They don't decide where the load-bearing members go. They don't reason about wind shear or seismic tolerance. But the bridge is *designed* so that a welder doing their job correctly can't bring the whole thing down. The structural engineer's job isn't to weld. It's to create a system where welding happens safely within well-defined constraints.
 
@@ -24,7 +26,7 @@ The profession is splitting. The mistake would be pretending it isn't happening.
 
 ## What the Platform Has to Guarantee
 
-Here's where civil engineering has something important to teach us. The analogy goes deeper than I expected.
+Here's where civil engineering has something important to teach us.
 
 A civil engineer doesn't just design a bridge. They decide *where* the bridge goes based on geology, water flow, soil load. They specify the materials. They calculate the forces. They design the inspection regime. They assess the environmental impact. They ensure compliance with building codes. Then, and only then, does construction begin.
 
@@ -32,7 +34,7 @@ Every one of these has a software analog, and together they paint a picture of w
 
 - **Site selection and domain isolation.** A civil engineer picks the bridge site based on geology and terrain. In software, this is API design, domain boundaries, isolation between services. Get this wrong and every change becomes a potential cascading failure.
 
-- **Material specification.** The engineer specifies what grade of steel, what concrete mix. In software, this is choosing the languages, databases, queues, and frameworks. These choices constrain what's possible. That's the point.
+- **Material specification.** The engineer specifies what grade of steel, what concrete mix. In software, this is choosing the languages, databases, queues, and frameworks. These choices constrain what's possible.
 
 - **Load analysis.** Civil engineers design for 2-4x the expected load. Software needs the same discipline. Capacity planning, rate limiting, designing for 10x your expected traffic. When a PM ships a feature that goes viral, the platform can't buckle.
 
@@ -60,9 +62,9 @@ The first: students early in their software engineering careers don't know how t
 
 The second is even harder: where do our senior engineers come from? The ability to design good platforms, to make the right architectural calls, that comes from experience. You learn what breaks by building things that broke. You learn where to put the domain boundaries by having drawn them in the wrong place. You learn what to monitor by having been the person staring at useless dashboards during an incident at 2am. If AI is writing most of the code, and junior engineers aren't getting the reps of building and breaking things themselves, how do they develop the judgment to become the platform engineers we need?
 
-These are connected, and they form a kind of paradox. The spidey-sense and the architectural intuition come from the same place: years of building things, watching them fail, and understanding why. You can't design a migration system that handles conflicts if you've never written a migration. You can't design isolation boundaries if you don't understand how a database connection pool works. You can't build semantic observability if you've never been the person debugging a production incident from raw logs. The understanding comes from doing the work.
+These are connected, and they form a kind of paradox. You can't design a migration system that handles conflicts if you've never written a migration. You can't design isolation boundaries if you don't understand how a database connection pool works. You can't build semantic observability if you've never been the person debugging a production incident from raw logs. The understanding comes from doing the work. But we're taking the coding away from students at the exact moment they need it most. We need them to code to build intuition, but the industry is moving toward a world where they don't code.
 
-But we're taking the coding away from students at the exact moment they need it most. The judgment to tell an AI it's wrong comes from having written enough code to know what right looks like. And we're handing them AI before they've had the chance to develop that judgment. So we're stuck: we need them to code to build intuition, but the industry is moving toward a world where they don't code.
+## CS Is Not SE
 
 Here's the thing: most universities don't even have a software engineering program. They have computer science programs. And computer science is a discipline designed to produce researchers. Algorithms, data structures, theory of computation, concurrent programming. It's a rigorous education in how to write correct programs. But it was co-opted decades ago as the default training path for people who are going to spend their careers doing software engineering, which is a fundamentally different discipline.
 
