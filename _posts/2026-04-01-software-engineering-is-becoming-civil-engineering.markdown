@@ -48,7 +48,7 @@ Every one of these has a software analog, and together they paint a picture of w
 
 This isn't about coding becoming less important. It's about what you spend your time on.
 
-Today, most software engineers spend the majority of their day writing features. Tomorrow, I think the best ones will spend their day designing the systems that make it safe for *anyone* to ship features. This is what I've been spending most of my time on with Zabriskie. I'm still deeply technical. I'm still writing code. But the code I write is the platform, the constraints, the safety nets. Not the feature itself.
+Today, most software engineers spend the majority of their day writing features. Tomorrow, I think the best ones will spend their day designing the systems that make it safe for *anyone* to ship features. This is what I've been spending most of my time on with Zabriskie. I'm not writing much code anymore. I spend my time with the AI directing the platform direction. What are the domain boundaries? What needs isolation? Where do we need observability? How does the system heal itself when something goes wrong? That's the job now.
 
 The day-to-day shifts. Instead of "implement the notification preference screen," it's "design the notification system so that a PM can add a new notification type and the worst thing that happens if they get it wrong is that one notification doesn't send." Instead of writing the migration, it's designing the migration system so that conflicting migrations are detected and blocked automatically. Instead of fixing the bug, it's building the observability that surfaces the bug before a user reports it.
 
