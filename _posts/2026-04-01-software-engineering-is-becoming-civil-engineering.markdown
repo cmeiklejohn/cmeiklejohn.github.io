@@ -14,7 +14,7 @@ I think this is what's happening to software engineering right now. Not in five 
 
 ## The Split
 
-Product managers are writing code. Not hypothetically — I'm watching it happen. With Claude Code and tools like it, people who understand the product but never wrote a line of code are adding features, building new behaviors, shipping changes. They describe what they want, the AI writes it, they iterate. The feedback loop is tight and the results are surprisingly good.
+Product managers are writing code. Not hypothetically — this is how I operate with Zabriskie, the app I'm building. I act as a product manager more than a programmer. I have non-technical collaborators who file bugs and feature requests, and Claude Code implements them directly. People who've never written a line of code are describing what they want, the AI writes it, they verify, it ships. The feedback loop is tight and the results are surprisingly good.
 
 This is the welding. And there's nothing wrong with it.
 
