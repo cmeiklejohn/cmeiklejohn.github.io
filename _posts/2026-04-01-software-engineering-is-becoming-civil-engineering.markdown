@@ -78,5 +78,5 @@ Here's a concrete example. For years, I gave one guest lecture per semester in a
 
 The profession is changing. The question of how we train the people who make it safe for everyone else to build is one we can't afford to put off.
 
-*Thanks to [Michael Hilton](https://www.cs.cmu.edu/~mhilton/) and [Rohan Padhye](https://rohan.padhye.org/) for giving me the opportunity to lecture as adjunct faculty at CMU. Without it, I wouldn't have the space to think about and explore these problems.*
+*Thanks to [Michael Hilton](https://www.cs.cmu.edu/~mhilton/) and [Rohan Padhye](https://rohan.padhye.org/) for giving me the opportunity to lecture as adjunct faculty at CMU. Without it, I wouldn't have the space to think about and explore these problems. And thanks to CMU for teaching me how to think in the first place.*
 
