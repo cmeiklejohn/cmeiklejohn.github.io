@@ -6,9 +6,6 @@ group: ai
 categories: ai agents distributed zabriskie
 ---
 
-> *"Turned around, I finally found my way"*
-> — Goose, "Turned Clouds"
-
 ## The Problem I Keep Seeing
 
 A few weeks ago I was sitting in the Beacon Theatre watching Tedeschi Trucks Band and fixing bugs in Zabriskie from my phone. I've written about this before — about what it's like to build a social app with Claude as your only collaborator, deploying CSS fixes from your seat while Derek Trucks plays. That workflow is real. I do it all the time. And it works, because the loop is tight: I notice a problem, I describe it, Claude fixes it, I deploy, I verify. One human, one agent, one codebase.
@@ -19,9 +16,9 @@ I've been building Zabriskie — a taste-first social network for music, film, a
 
 The thing is, the problems I'm hitting now aren't problems a single agent can solve efficiently. There are bugs that come in from real users while I'm trying to ship new features. There are product decisions that conflict with each other. There are tests that need to be written and infrastructure that needs to be maintained and user feedback that needs to be triaged, all at the same time. The answer, obviously, is more agents. A team. One agent that simulates users and finds friction. One that triages incoming reports. One or more that write code. One that holds the product roadmap and resolves priority conflicts.
 
-This is where it gets interesting. Because the moment you have multiple agents working on the same codebase — reading the same files, writing to the same database, making decisions based on shared state — you have a distributed system. And distributed systems are what I've spent the last decade of my life studying.
+The moment you have multiple agents working on the same codebase — reading the same files, writing to the same database, making decisions based on shared state — you have a distributed system. And distributed systems are what I've spent the last decade of my life studying.
 
-I watched two Claude Code instances step on each other's migrations last month. One created migration 267. The other, running in a different worktree, also created migration 267. Different schemas, same filename. The second one silently overwrote the first. This is a lost update — the exact same problem that distributed databases have been solving since the 1970s. It's Lamport's happened-before relation <span class="citation">(Lamport 1978)</span>, playing out in a directory of SQL files instead of a network of processes. This is literally the kind of problem CRDTs <span class="citation">(Shapiro et al. 2011)</span> were invented to solve: two independent writers, no coordination, and the system needs to merge their work without losing either update.
+I watched two Claude Code instances step on each other's migrations last month. One created migration 267. The other, running in a different worktree, also created migration 267. Different schemas, same filename. The second one silently overwrote the first. This is a lost update — the exact same problem that distributed databases have been solving since the 1970s. It's Lamport's [happened-before relation](https://lamport.azurewebsites.net/pubs/time-clocks.pdf), playing out in a directory of SQL files instead of a network of processes. This is literally the kind of problem [CRDTs](https://hal.inria.fr/inria-00555588) were invented to solve: two independent writers, no coordination, and the system needs to merge their work without losing either update.
 
 That wasn't an isolated incident. I've seen agents make contradictory assumptions about the state of the codebase. I've seen an agent "fix" a bug by reverting a change that another agent made intentionally. I've seen context windows fill up with stale information because no one told the agent that the world had changed since it last looked. These aren't prompt engineering problems. They're coordination problems.
 
@@ -29,36 +26,33 @@ The more I looked at this, the more I realized: nobody is treating multi-agent L
 
 ## The Moment It Clicked
 
-The migration collision was annoying. But the moment I actually understood what I was looking at came later, while I was reading the ChatDev paper <span class="citation">(Qian et al. 2023)</span>.
+The migration collision was annoying. But the moment I actually understood what I was looking at came later, while I was reading the [ChatDev paper](https://arxiv.org/abs/2307.07924).
 
-ChatDev is a multi-agent system where LLM agents play different roles — CEO, programmer, art designer, tester — and collaborate through structured dialogues to build software. It's clever work. The role decomposition is smart. The dialogue structure is well-designed. But when I got to the section on how agents share state, I stopped reading.
+ChatDev is a multi-agent system where LLM agents play different roles — CEO, programmer, art designer, tester — and collaborate through structured dialogues to build software. The role decomposition is smart. The dialogue structure is well-designed. But when I got to the section on how agents share state, I stopped reading.
 
-They pass messages. That's it. An agent says something, the other agent receives it, they go back and forth. There's no persistent shared state beyond the conversation history. If two agents develop contradictory beliefs about the system they're building, nobody detects it until something breaks downstream. There's no causal ordering on the messages — no way to know whether agent A's message was sent before or after agent B's, or whether agent A had seen agent B's earlier message when it sent its own.
+They pass messages. That's it. There's no persistent shared state beyond the conversation history. If two agents develop contradictory beliefs about the system they're building, nobody detects it until something breaks downstream. There's no causal ordering on the messages — no way to know whether agent A's message was sent before or after agent B's, or whether agent A had seen agent B's earlier message when it sent its own. Imagine ChatDev's "programmer" and "tester" agents working on the same module: the programmer refactors a function signature while the tester is mid-conversation writing assertions against the old one. Neither knows. The tests pass in the tester's context and fail in reality. This is exactly the stale-read problem that distributed databases solved with version vectors decades ago.
 
-I'd seen this before. My PhD work sat at the intersection of all these problems: coordination-free programming with Lasp, conflict resolution with CRDTs, and fault injection testing across various communication topologies — first with Partisan, then with Filibuster. Each project attacked a different facet of the same question: how do independent processes share state and recover when things go wrong?
+And here was ChatDev, [MetaGPT](https://arxiv.org/abs/2308.00352), [AutoGen](https://arxiv.org/abs/2308.08155) — an entire field of multi-agent research — reinventing the same architecture that distributed systems abandoned in the 1990s. Shared mutable state with no concurrency control. Message passing with no causal ordering. No fault model. No formal reasoning about what happens when agents disagree.
 
-And here was ChatDev, MetaGPT <span class="citation">(Hong et al. 2023)</span>, AutoGen <span class="citation">(Wu et al. 2023)</span> — an entire field of multi-agent research — reinventing the same architecture that distributed systems abandoned in the 1990s. Shared mutable state with no concurrency control. Message passing with no causal ordering. No fault model. No formal reasoning about what happens when agents disagree.
-
-I don't say this to diminish their work. These systems made real breakthroughs on the agent layer — role specialization, structured dialogue, tool use patterns, task decomposition. That work is genuinely valuable. The agents themselves are impressive. But the coordination layer underneath them is where I spent the last decade building things like Lasp and Filibuster, and I could see every failure mode I'd ever catalogued hiding just beneath the surface.
+I don't say this to diminish their work. These systems made real breakthroughs on the agent layer — role specialization, structured dialogue, tool use patterns, task decomposition. The agents themselves are impressive. But the coordination layer underneath them is where I spent the last decade, and I could see every failure mode I'd ever catalogued hiding just beneath the surface.
 
 That's when I decided this was a research project, not just an observation.
 
 ## What I've Spent a Decade Building
 
-In 2015, I was working at Basho Technologies, deep in the operational reality of building eventually consistent databases in Erlang. Riak would accept writes on any node, replicate them asynchronously, and merge conflicts when the replicas reconnected. The hard part was never the database engine — it was the merging. How do you take two independent streams of updates and combine them into something consistent without throwing data away?
+In 2015, I was building eventually consistent databases at Basho Technologies. The hard part was never the database engine — it was the merging. How do you take two independent streams of updates and combine them into something consistent without throwing data away?
 
-That question led me to build Lasp <span class="citation">(Meiklejohn and Van Roy 2015)</span>, a programming model on top of Conflict-Free Replicated Data Types. CRDTs are data structures that are mathematically guaranteed to merge correctly regardless of the order updates arrive or whether the network partitions. No consensus protocol. No leader election. No locking. You just apply the operations in whatever order you receive them, and the result converges to the same state everywhere. We ran Lasp on over 1,000 nodes on AWS. It ended up in production systems I never expected — including, somehow, LoJack's stolen car recovery service across South America. That work received the PPDP 10-year most influential paper award last year.
+That question led me to build [Lasp](https://arxiv.org/abs/1510.07191), a programming model on top of Conflict-Free Replicated Data Types — data structures mathematically guaranteed to merge correctly regardless of the order updates arrive or whether the network partitions. No consensus protocol. No leader election. No locking. We ran it on over 1,000 nodes on AWS. It ended up in LoJack's stolen car recovery service across South America. That work received the PPDP 10-year most influential paper award last year.
 
-Then came Partisan <span class="citation">(Meiklejohn 2018)</span>, a custom distributed runtime for Erlang that gave us control over the network layer underneath Lasp. Partisan let us swap communication topologies — peer-to-peer, client-server, hybrid — and test how CRDTs performed and recovered across each one. Because Partisan controlled all message transmission, we could interpose on every message: omit it, delay it, duplicate it. Fault injection was built directly into the runtime. We used it to test distributed protocols like two-phase commit and reliable broadcast by exhaustively exploring message omission failures.
+Then came [Partisan](https://arxiv.org/abs/1802.02652), a distributed runtime that gave us control over the network layer: swap topologies, interpose on every message, inject faults directly into the runtime. And then [Filibuster](https://www.filibuster.cloud), which extracted those fault injection ideas and applied them to microservices — systematically injecting timeouts, connection errors, and unexpected responses into HTTP and gRPC calls to catch bugs during development instead of production.
 
-Filibuster <span class="citation">(Meiklejohn 2022)</span> was the extraction of those fault injection ideas from Partisan, applied to microservice applications. The core insight carried over — control all communication between components and systematically inject every possible failure — but the substrate changed from Erlang messages to HTTP and gRPC requests between services. Instead of testing distributed protocols, Filibuster tested whether microservice applications handled dependency failures correctly: timeouts, connection errors, unexpected responses. The approach found real bugs that would have caused production incidents, caught during local development instead of in production.
-
-The intellectual thread connecting these projects is the same thread I'm pulling on now: how do independent processes coordinate in the presence of partial failure? Lasp answered "make the data structures converge automatically." Partisan and Filibuster answered "verify that convergence actually holds by injecting every failure you can think of." The multi-agent version of this question is: how do independent LLM agents share state and communicate without losing work when things go wrong?
+The thread connecting these projects is the same one I'm pulling on now: how do independent processes coordinate in the presence of partial failure? Lasp answered "make the data structures converge automatically." Partisan and Filibuster answered "verify that convergence actually holds by injecting every failure you can think of." The multi-agent version: how do independent LLM agents share state and communicate without losing work when things go wrong?
 
 ## What's Next
 
-I'm calling this project Caucus — independent parties coming together to coordinate. Next week, I'll lay out the system design: the agent roles, the coordination layer, and the experiments I'm running to test whether distributed systems techniques actually improve multi-agent performance.
-I've spent ten years studying how independent processes coordinate in the presence of failures. The processes used to be microservices, database replicas, Erlang actors. Now they're LLM agents. The problems are the same. The solutions should be too.
+I'm calling this project Caucus — independent parties coming together to coordinate. I've spent ten years studying how independent processes coordinate in the presence of failures. The processes used to be microservices, database replicas, Erlang actors. Now they're LLM agents. The problems are the same. The solutions should be too.
+
+Next: [the system design](/ai/agents/distributed/zabriskie/2026/03/31/caucus-system-design.html) — agent roles, the coordination layer, and the experiments I'm running to test whether distributed systems techniques actually improve multi-agent performance.
 
 <div id="refs" class="references">
 <div id="ref-hong2023metagpt">
@@ -86,3 +80,4 @@ I've spent ten years studying how independent processes coordinate in the presen
 <p>Wu, Qingyun, Gagan Bansal, Jieyu Zhang, Yiran Wu, Shaokun Zhang, Erkang Zhu, Beibin Li, Li Jiang, Xiaoyun Zhang, and Chi Wang. 2023. "AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation." <em>arXiv Preprint arXiv:2308.08155</em>. <a href="https://arxiv.org/abs/2308.08155" class="uri">https://arxiv.org/abs/2308.08155</a>.</p>
 </div>
 </div>
+
