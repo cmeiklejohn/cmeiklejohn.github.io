@@ -58,7 +58,7 @@ It's not a demotion. It's a different kind of engineering. And honestly, it's ha
 
 ## The Hard Questions
 
-At CMU, two questions came up that I haven't stopped thinking about.
+I keep hearing the same anxiety from different directions. Engineers wondering what their job looks like in two years. Students wondering if they're learning the right things. At CMU, two questions came up that crystallized it for me.
 
 The first: students early in their software engineering careers don't know how to tell when the AI is doing something wrong. They don't have the spidey-sense yet. The AI generates code that looks plausible, passes a surface-level review, and the student ships it. They can't smell the bad decision because they've never seen what a bad decision leads to. How do you develop judgment about something you've never experienced failing?
 
