@@ -6,7 +6,7 @@ group: ai
 categories: ai agents distributed zabriskie
 ---
 
-[Last week](/ai/agents/distributed/zabriskie/2026/03/30/caucus.html) I talked about watching two Claude Code instances silently overwrite each other's database migrations — the same lost update problem that distributed databases solved decades ago. I traced the thread from that incident through ChatDev, MetaGPT, and AutoGen, and argued that nobody in the multi-agent space is treating these systems as what they actually are: distributed systems with unreliable components, partial information, and no shared clock.
+[Last week](/ai/agents/distributed/zabriskie/2026/03/30/multi-agent-systems-have-a-distributed-systems-problem.html) I talked about watching two Claude Code instances silently overwrite each other's database migrations — the same lost update problem that distributed databases solved decades ago. I traced the thread from that incident through ChatDev, MetaGPT, and AutoGen, and argued that nobody in the multi-agent space is treating these systems as what they actually are: distributed systems with unreliable components, partial information, and no shared clock.
 
 I called the project Caucus — independent parties coming together to coordinate. This week: the system design.
 
