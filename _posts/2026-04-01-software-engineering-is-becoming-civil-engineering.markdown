@@ -6,7 +6,7 @@ group: ai
 categories: ai engineering
 ---
 
-After my guest lecture on AI in Michael Hilton's Foundations of Software Engineering course (CMU 17-313) today, a conversation started that I haven't been able to stop thinking about: we're watching software engineering split into two disciplines, the same way civil engineering split from construction a long time ago.
+After my guest lecture on AI in Michael Hilton's Foundations of Software Engineering course (CMU 17-313) today, a conversation started that I haven't been able to stop thinking about: software engineering is going through the same transition that building went through in the 18th century — when structural design separated from craft construction and became its own discipline, what we now call civil engineering.
 
 The welders who join steel beams on a bridge are skilled tradespeople. They're not involved in the structural design. They don't decide where the load-bearing members go. They don't reason about wind shear or seismic tolerance. But the bridge is *designed* so that a welder doing their job correctly can't bring the whole thing down. The structural engineer's job isn't to weld — it's to create a system where welding happens safely within well-defined constraints.
 
