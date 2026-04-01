@@ -46,13 +46,15 @@ And one more that civil engineers take for granted and most software platforms s
 
 - **Self-healing.** A bridge has expansion joints that absorb thermal stress without human intervention. Foundations shift and the structure adapts. Software needs the equivalent: automatic responses to predictable failure modes. When you detect elevated error rates, latency spikes, failed health checks, the system should automatically mitigate. Roll back the deploy. Disable the feature flag. Shed load. A bad change from a product manager at 3pm can't become a production incident at 3am.
 
-## The Uncomfortable Implication
+## What Actually Changes About the Job
 
-The uncomfortable part of this analogy is what it says about coding itself. If software engineering becomes civil engineering, then writing code becomes more like welding. A skilled trade, but not the core intellectual discipline. The discipline becomes the design of systems that are safe to build on, safe to extend, and safe to operate.
+This isn't about coding becoming less important. It's about what you spend your time on.
 
-This doesn't mean coding stops mattering. Welding matters enormously. A bad weld can kill people. But the structural engineer's job is to design a system where a single bad weld doesn't bring down the bridge. That's the shift. The value moves from writing correct code to designing systems that remain correct even when individual changes are imperfect.
+Today, most software engineers spend the majority of their day writing features. Tomorrow, I think the best ones will spend their day designing the systems that make it safe for *anyone* to ship features. You're still deeply technical. You're still writing code. But the code you write is the platform, the constraints, the safety nets. Not the feature itself.
 
-And with AI agents doing more of the coding, "individual changes are imperfect" isn't a hypothetical. It's the baseline assumption. Agents hallucinate. They introduce subtle bugs. They make confident changes based on incomplete context. The platform has to absorb this. Not by making agents perfect, but by making the system tolerant of imperfection.
+The day-to-day shifts. Instead of "implement the notification preference screen," it's "design the notification system so that a PM can add a new notification type and the worst thing that happens if they get it wrong is that one notification doesn't send." Instead of writing the migration, it's designing the migration system so that conflicting migrations are detected and blocked automatically. Instead of fixing the bug, it's building the observability that surfaces the bug before a user reports it.
+
+It's not a demotion. It's a different kind of engineering. And honestly, it's harder. Writing a feature is a bounded problem. Designing a platform that stays safe as dozens of people and agents ship changes to it every day, that's an open-ended one. With AI agents doing more of the feature work, the assumption has to be that individual changes will sometimes be imperfect. Agents hallucinate. They introduce subtle bugs. They make confident changes based on incomplete context. The platform has to absorb this. Not by making agents perfect, but by making the system tolerant of imperfection.
 
 ## What This Means in Practice
 
