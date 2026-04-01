@@ -34,21 +34,21 @@ ChatDev agents do share artifacts — code, design documents — and it has a me
 
 Across this field, the pattern is the same: shared mutable state with no formal concurrency control. No fault model. No reasoning about what happens when agents disagree.
 
-I don't say this to diminish their work. These systems made real breakthroughs on the agent layer — role specialization, structured dialogue, tool use patterns, task decomposition. The agents themselves are impressive. But the coordination layer underneath them is where I spent the last decade, and I could see every failure mode I'd ever catalogued hiding just beneath the surface.
+I don't say this to diminish their work. These systems made real breakthroughs on the agent layer — role specialization, structured dialogue, tool use patterns, task decomposition. The agents themselves are impressive. But the coordination layer underneath them is exactly the problem space that distributed systems research has been working on for decades, and I kept recognizing failure modes I'd seen before.
 
-That's when I decided this was a research project, not just an observation.
+## We've Seen This Before
 
-## What I've Spent a Decade Building
+The reason I recognize these problems is that I spent a decade working on them in a different context.
 
 In 2015, I was building eventually consistent databases at Basho Technologies. The hard part was never the database engine — it was the merging. How do you take two independent streams of updates and combine them into something consistent without throwing data away?
 
 That question spawned an entire research program. The foundational work on Conflict-Free Replicated Data Types by [Shapiro et al.](https://hal.inria.fr/inria-00555588) showed that certain data structures are mathematically guaranteed to merge correctly regardless of the order updates arrive or whether the network partitions — no consensus protocol, no leader election, no locking. The EU's [SyncFree project](https://syncfree.lip6.fr) built on that foundation, bringing together researchers across Europe to make CRDTs practical for large-scale systems — producing [Antidote](https://www.antidotedb.eu/), a CRDT-native database, and a body of work on [highly available transactions](https://haslab.wordpress.com/2015/07/07/antidote-the-cure-for-your-cloud-database/) over replicated state.
 
-My contribution was [Lasp](https://arxiv.org/abs/1510.07191), which took the CRDT thinking a step further: instead of just using CRDTs as data structures, Lasp made them the basis for coordination-free distributed programming. Programs in Lasp computed over CRDTs directly — maps, filters, folds — so the entire application inherited their convergence guarantees. As part of SyncFree's partnership with [Rovio Entertainment](https://www.rovio.com/), we demonstrated that CRDTs could be used at scale in controlled experiments with real outcomes, running Lasp on over 1,000 nodes on AWS — at the time, one of the largest CRDT deployments in academic research. It ended up in LoJack's stolen car recovery service across South America. That work received the PPDP 10-year most influential paper award last year.
+[Lasp](https://arxiv.org/abs/1510.07191), which I worked on during my PhD, took the CRDT thinking a step further: instead of just using CRDTs as data structures, Lasp made them the basis for coordination-free distributed programming. Programs in Lasp computed over CRDTs directly — maps, filters, folds — so the entire application inherited their convergence guarantees. As part of SyncFree's partnership with [Rovio Entertainment](https://www.rovio.com/), we demonstrated that CRDTs could be used at scale in controlled experiments with real outcomes, running Lasp on over 1,000 nodes on AWS — at the time, one of the largest CRDT deployments in academic research. It ended up in LoJack's stolen car recovery service across South America. That work received the PPDP 10-year most influential paper award last year.
 
 Then came [Partisan](https://arxiv.org/abs/1802.02652), a distributed runtime that gave us control over the network layer: swap topologies, interpose on every message, inject faults directly into the runtime. And then [Filibuster](https://www.filibuster.cloud), which extracted those fault injection ideas and applied them to microservices — systematically injecting timeouts, connection errors, and unexpected responses into HTTP and gRPC calls to catch bugs during development instead of production.
 
-The thread connecting these projects is the same one I'm pulling on now: how do independent processes coordinate in the presence of partial failure?
+The thread connecting all of this work is a single question: how do independent processes coordinate in the presence of partial failure?
 
 ## Why This Is Inevitable
 
@@ -64,11 +64,11 @@ Here's the thing people miss about multi-agent systems: the distributed systems 
 
 These aren't hypothetical concerns. I've hit every one of them building Zabriskie with multiple Claude Code instances. And they emerge in any multi-agent architecture regardless of how clever the prompt engineering is, because they're properties of the architecture itself — multiple writers, no shared clock, partial failure.
 
-ChatDev, MetaGPT, and AutoGen each made real progress on the agent layer — what agents do and how they're organized. But the coordination layer underneath, the part that determines whether agents can safely share state and recover from failures, is where distributed systems research has been working for fifty years. We have formal models for reasoning about concurrent access. We have data structures that merge automatically. We have techniques for systematically testing every failure mode. None of this has made it into the multi-agent stack yet.
+What's interesting to me is that these are all problems with known solutions. Distributed systems research has spent fifty years developing formal models for concurrent access, data structures that merge automatically, and techniques for systematically testing every failure mode. None of this has made it into the multi-agent stack yet.
 
-That's the gap. Not better agents — better coordination. Lasp showed that if you build on the right data structures, convergence comes for free. Partisan and Filibuster showed that you can systematically verify that convergence holds by injecting every failure you can think of. The same ideas apply directly. The processes used to be microservices, database replicas, Erlang actors. Now they're LLM agents. The problems are the same. The solutions should be too.
+The question I keep coming back to is whether the solutions transfer. Lasp showed that if you build on CRDTs, convergence comes for free — but LLM agents aren't database replicas. They hallucinate. They lose context. They make confident decisions based on incomplete information. Partisan and Filibuster showed you can systematically verify coordination by injecting every failure you can think of — but the failure modes for agents (context overflow, hallucinated fixes, contradictory beliefs) are different from network partitions and crashed processes. The structural parallels are strong, but the open research question is whether the techniques actually carry over, and what has to change when they do.
 
-*In the [next post](/ai/agents/distributed/zabriskie/2026/04/03/caucus-system-design.html), I explore what applying these ideas looks like in practice.*
+*In a [follow-up post](/ai/agents/distributed/zabriskie/2026/04/03/caucus-system-design.html), I dig into specific experiments: what happens when you actually try to apply CRDTs, vector clocks, and fault injection to a multi-agent system?*
 
 <div id="refs" class="references">
 <div id="ref-fidge1988timestamps">
