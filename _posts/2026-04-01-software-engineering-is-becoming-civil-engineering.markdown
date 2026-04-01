@@ -56,16 +56,6 @@ The day-to-day shifts. Instead of "implement the notification preference screen,
 
 It's not a demotion. It's a different kind of engineering. And honestly, it's harder. Writing a feature is a bounded problem. Designing a platform that stays safe as dozens of people and agents ship changes to it every day, that's an open-ended one. With AI agents doing more of the feature work, the assumption has to be that individual changes will sometimes be imperfect. Agents hallucinate. They introduce subtle bugs. They make confident changes based on incomplete context. The platform has to absorb this. Not by making agents perfect, but by making the system tolerant of imperfection.
 
-## What This Means in Practice
-
-I've been thinking about this in the context of Zabriskie. The architecture decisions that matter most aren't the ones about which framework to use or how to structure the code. They're the ones about what happens when something goes wrong.
-
-Server-driven UI means I can push changes without App Store reviews, but it also means a bad server response can break every client simultaneously. So the platform needs client-side fallbacks, version negotiation, graceful degradation. The feature flag system isn't just a convenience. It's a safety mechanism that lets me, or a PM, or an agent, ship something and have it automatically disabled if error rates spike.
-
-The database migration system needs to be idempotent and reversible, because agents will create conflicting migrations. I've seen this happen. The test suite needs to run automatically on every change, because the person making the change might not know what to test. The monitoring needs to be semantic enough that "the thing the growth PM shipped is broken" is a sentence the system can construct and act on, not just a pattern a human has to recognize in a wall of logs.
-
-This is platform engineering. It's the structural design of the bridge. And it's becoming the actual discipline of software engineering, while the coding itself, increasingly done by AI, becomes the construction.
-
 ## The Conversation We Need to Have
 
 At CMU, we talked about what this means for how we train software engineers. If the core discipline is shifting from "write correct code" to "design systems that are safe to build on," then the curriculum needs to shift too. More systems design, more fault tolerance, more observability. Less syntax, less framework-of-the-year. More thinking about failure modes and blast radius. More civil engineering.
