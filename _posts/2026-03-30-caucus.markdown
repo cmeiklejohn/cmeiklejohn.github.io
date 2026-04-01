@@ -58,7 +58,7 @@ What fascinates me is that these are all problems with known solutions — or at
 
 Lasp showed that if you build on CRDTs, convergence comes for free — but LLM agents aren't database replicas. They hallucinate. They lose context. They make confident decisions based on incomplete information. Partisan and Filibuster showed you can systematically verify coordination by injecting every failure you can think of — but the failure modes for agents (context overflow, hallucinated fixes, contradictory beliefs) are strange new versions of network partitions and crashed processes. The structural parallels are strong. Whether the techniques actually carry over, and what has to change when they do — that's the part I find genuinely exciting to think about.
 
-*In a [follow-up post](/ai/agents/distributed/zabriskie/2026/04/03/caucus-system-design.html), I dig into specific experiments: what happens when you actually try to apply CRDTs, vector clocks, and fault injection to a multi-agent system?*
+*I'm going to keep exploring this space. If you're thinking about these problems too, I'd love to hear from you.*
 
 <div id="refs" class="references">
 <div id="ref-fidge1988timestamps">
