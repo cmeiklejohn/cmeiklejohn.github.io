@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Caucus: The System Design — Agents, CRDTs, and Fault Injection"
-date:   2026-04-06 00:00:00 -0000
+date:   2026-03-31 00:00:00 -0000
 group: ai
 categories: ai agents distributed zabriskie
 ---
