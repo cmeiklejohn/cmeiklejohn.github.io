@@ -72,5 +72,11 @@ But here's the tension I keep coming back to, and I'm genuinely struggling with 
 
 So if AI is writing more and more of the code, and junior engineers are getting fewer reps of building and breaking things themselves, how do they develop the deep understanding that platform engineering requires? Civil engineering solved this with structured apprenticeship. You don't go from coursework to designing bridges. There are years of supervised practice, increasing responsibility, professional licensing exams. The judgment develops through guided experience, not just classroom instruction.
 
-I don't think software engineering needs PE exams. But we need to take this seriously. Maybe the curriculum shifts from "build this feature" to "here's a system that's broken in subtle ways, figure out why." Maybe it means more structured mentorship, more incident response exposure, more time spent understanding *why* systems fail, not just how to make them work. I don't have the answer. But I think this is the most important open question in software engineering education right now, and it's one I want to keep exploring.
+I don't think software engineering needs PE exams. But we need to take this seriously.
+
+Here's a concrete example. For years, I gave one guest lecture per semester in a software engineering course at CMU on reliably releasing software. Feature flags, metrics, observability, safe deployments, self-healing, rollback strategies. One lecture. A nice-to-know topic in a course full of other things. That content is now the whole game. It's not a single lecture anymore. It's the core of what platform engineers need to understand, and it deserves its own course, its own projects, its own curriculum.
+
+CMU and programs like it need to build curriculum around platform engineering. Not as a footnote in a software engineering survey course, but as a first-class discipline. Teach students to design systems that are safe to build on. Teach them to think about blast radius, isolation, observability, self-healing. Give them broken systems and ask them to figure out why. Give them a platform and ask them to make it safe for a non-technical PM, or an AI agent, to ship changes without bringing everything down.
+
+The profession is changing. The people who make it safe for everyone else to build, that's where it's heading. And the question of how we train those people is one we can't afford to put off.
 
