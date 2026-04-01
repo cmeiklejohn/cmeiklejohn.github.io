@@ -8,7 +8,7 @@ categories: ai agents distributed zabriskie
 
 ## The Problem I Keep Seeing
 
-A few weeks ago I was sitting in the Beacon Theatre watching Tedeschi Trucks Band and fixing bugs in Zabriskie from my phone. I've written about this before — about what it's like to build a social app with Claude as your only collaborator, deploying CSS fixes from your seat while Derek Trucks plays. That workflow is real. I do it all the time. And it works, because the loop is tight: I notice a problem, I describe it, Claude fixes it, I deploy, I verify. One human, one agent, one codebase.
+A few weeks ago I was sitting in the Beacon Theatre watching Tedeschi Trucks Band and fixing bugs in Zabriskie from my phone. I've [written about this before](/ai/zabriskie/development/2026/03/29/the-show-is-happening-right-now-and-nothing-works.html) — about what it's like to build a social app with Claude as your only collaborator, deploying CSS fixes from your seat while Derek Trucks plays. That workflow is real. I do it all the time. And it works, because the loop is tight: I notice a problem, I describe it, Claude fixes it, I deploy, I verify. One human, one agent, one codebase.
 
 But I kept thinking about what happens when it's not just one agent.
 
