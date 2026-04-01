@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Caucus: Why a Distributed Systems Researcher Is Building Multi-Agent LLM Coordination"
+title:  "Multi-Agent Systems Have a Distributed Systems Problem"
 date:   2026-03-30 00:00:00 -0000
 group: ai
 categories: ai agents distributed zabriskie
@@ -48,20 +48,40 @@ My contribution was [Lasp](https://arxiv.org/abs/1510.07191), which took the CRD
 
 Then came [Partisan](https://arxiv.org/abs/1802.02652), a distributed runtime that gave us control over the network layer: swap topologies, interpose on every message, inject faults directly into the runtime. And then [Filibuster](https://www.filibuster.cloud), which extracted those fault injection ideas and applied them to microservices — systematically injecting timeouts, connection errors, and unexpected responses into HTTP and gRPC calls to catch bugs during development instead of production.
 
-The thread connecting these projects is the same one I'm pulling on now: how do independent processes coordinate in the presence of partial failure? Lasp answered "make the data structures converge automatically." Partisan and Filibuster answered "verify that convergence actually holds by injecting every failure you can think of." The multi-agent version: how do independent LLM agents share state and communicate without losing work when things go wrong?
+The thread connecting these projects is the same one I'm pulling on now: how do independent processes coordinate in the presence of partial failure?
 
-## What's Next
+## Why This Is Inevitable
 
-I'm calling this project Caucus — independent parties coming together to coordinate. The processes used to be microservices, database replicas, Erlang actors. Now they're LLM agents. The problems are the same. The solutions should be too.
+Here's the thing people miss about multi-agent systems: the distributed systems problems aren't a bug. They're not an artifact of bad architecture or missing features. They're an inevitable consequence of having multiple autonomous processes that share state. Every multi-agent system, no matter how it's built, will hit the same categories of failure.
 
-Next: [the system design](/ai/agents/distributed/zabriskie/2026/04/03/caucus-system-design.html) — agent roles, the coordination layer, and the experiments I'm running to test whether distributed systems techniques actually improve multi-agent performance.
+**Conflicts and stale reads.** Two agents modify the same file concurrently — one's changes get silently lost. Or worse: an agent reads the issue tracker, picks a bug, starts coding a fix, but another agent resolved that bug ten minutes ago. Redundant work based on stale state. In distributed databases, this is why we have version vectors and causal consistency. In multi-agent systems, nobody's even tracking it.
+
+**Failure and recovery.** Any node can crash at any time — that's the foundational assumption of distributed systems. In a multi-agent system, an agent can hit a context window limit, hallucinate a fix, or just stop responding mid-task. The other agents have to detect this, recover in-progress work, and continue without it. This is the crash-recovery model, applied to LLM processes instead of database replicas.
+
+**Ordering without a clock.** Lamport's [1978 paper](https://lamport.azurewebsites.net/pubs/time-clocks.pdf) established that you can reason about event ordering using happened-before relations even without a shared clock. Consider: a user files a bug report, a triage agent assigns it to agent A, but agent B sees the original report before the assignment arrives and starts fixing it independently. Two agents working the same issue because the system can't express causal ordering. [Vector clocks](https://en.wikipedia.org/wiki/Vector_clock) solve this. Nobody in the agent space is using them.
+
+**Partition tolerance.** Communication failures — API timeouts, rate limits, one agent buried in a long task — split agents into groups that can't coordinate. They diverge. When they reconnect, their states need to merge without losing either side's work. CRDTs were designed for exactly this.
+
+These aren't hypothetical concerns. I've hit every one of them building Zabriskie with multiple Claude Code instances. And they emerge in any multi-agent architecture regardless of how clever the prompt engineering is, because they're properties of the architecture itself — multiple writers, no shared clock, partial failure.
+
+ChatDev, MetaGPT, and AutoGen each made real progress on the agent layer — what agents do and how they're organized. But the coordination layer underneath, the part that determines whether agents can safely share state and recover from failures, is where distributed systems research has been working for fifty years. We have formal models for reasoning about concurrent access. We have data structures that merge automatically. We have techniques for systematically testing every failure mode. None of this has made it into the multi-agent stack yet.
+
+That's the gap. Not better agents — better coordination. Lasp showed that if you build on the right data structures, convergence comes for free. Partisan and Filibuster showed that you can systematically verify that convergence holds by injecting every failure you can think of. The same ideas apply directly. The processes used to be microservices, database replicas, Erlang actors. Now they're LLM agents. The problems are the same. The solutions should be too.
+
+*In the [next post](/ai/agents/distributed/zabriskie/2026/04/03/caucus-system-design.html), I explore what applying these ideas looks like in practice.*
 
 <div id="refs" class="references">
+<div id="ref-fidge1988timestamps">
+<p>Fidge, Colin J. 1988. "Timestamps in Message-Passing Systems That Preserve the Partial Ordering." <em>Proceedings of the 11th Australian Computer Science Conference</em> 10 (1): 56–66.</p>
+</div>
 <div id="ref-hong2023metagpt">
 <p>Hong, Sirui, Xiawu Zheng, Jonathan Chen, Yuheng Cheng, Jinlin Wang, Ceyao Zhang, Zili Wang, et al. 2023. "MetaGPT: Meta Programming for Multi-Agent Collaborative Framework." <em>arXiv Preprint arXiv:2308.00352</em>. <a href="https://arxiv.org/abs/2308.00352" class="uri">https://arxiv.org/abs/2308.00352</a>.</p>
 </div>
 <div id="ref-lamport1978time">
 <p>Lamport, Leslie. 1978. "Time, Clocks, and the Ordering of Events in a Distributed System." <em>Communications of the ACM</em> 21 (7): 558–65.</p>
+</div>
+<div id="ref-mattern1989virtual">
+<p>Mattern, Friedemann. 1989. "Virtual Time and Global States of Distributed Systems." <em>Parallel and Distributed Algorithms</em> 1 (23): 215–26.</p>
 </div>
 <div id="ref-meiklejohn2018partisan">
 <p>Meiklejohn, Christopher. 2018. "Partisan: Enabling Cloud-Scale Erlang Applications." <em>Technical Report</em>. Université catholique de Louvain. <a href="https://arxiv.org/abs/1802.02652" class="uri">https://arxiv.org/abs/1802.02652</a>.</p>
