@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forge - Product Developer Mode</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0; height: 100vh; display: flex; flex-direction: column; }
+
+  /* Top bar */
+  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 8px 16px; background: #16162a; border-bottom: 1px solid #2a2a4a; height: 44px; }
+  .topbar-left { display: flex; align-items: center; gap: 16px; }
+  .logo { font-weight: 700; font-size: 15px; color: #7c8aff; letter-spacing: 0.5px; }
+  .mode-switcher { display: flex; background: #1a1a2e; border-radius: 6px; overflow: hidden; border: 1px solid #2a2a4a; }
+  .mode-btn { padding: 4px 12px; font-size: 12px; border: none; cursor: pointer; color: #888; background: transparent; }
+  .mode-btn.active { background: #7c8aff; color: white; }
+  .topbar-right { display: flex; align-items: center; gap: 12px; }
+  .project-name { font-size: 13px; color: #888; }
+  .avatar { width: 24px; height: 24px; border-radius: 50%; background: #f472b6; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: white; }
+
+  /* Main layout */
+  .main { display: flex; flex: 1; overflow: hidden; }
+
+  /* Left: conversation */
+  .conversation-panel { width: 420px; display: flex; flex-direction: column; border-right: 1px solid #2a2a4a; }
+  .conv-header { padding: 12px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #666; border-bottom: 1px solid #2a2a4a; display: flex; justify-content: space-between; align-items: center; }
+  .domain-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; background: #1e3a2e; color: #4ade80; text-transform: none; letter-spacing: 0; }
+
+  .messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+
+  .message { max-width: 90%; }
+  .message.user { align-self: flex-end; }
+  .message.assistant { align-self: flex-start; }
+
+  .message-bubble { padding: 10px 14px; border-radius: 12px; font-size: 13px; line-height: 1.5; }
+  .message.user .message-bubble { background: #7c8aff; color: white; border-bottom-right-radius: 4px; }
+  .message.assistant .message-bubble { background: #222244; color: #e0e0e0; border-bottom-left-radius: 4px; }
+
+  .message-meta { font-size: 10px; color: #666; margin-top: 4px; padding: 0 4px; }
+  .message.user .message-meta { text-align: right; }
+
+  .status-message { align-self: center; padding: 6px 12px; background: #1e3a2e; border-radius: 20px; font-size: 11px; color: #4ade80; display: flex; align-items: center; gap: 6px; }
+  .status-message.warning { background: #3a2a1e; color: #facc15; }
+
+  .thinking { display: flex; align-items: center; gap: 6px; align-self: flex-start; padding: 10px 14px; background: #222244; border-radius: 12px; border-bottom-left-radius: 4px; }
+  .thinking-dot { width: 6px; height: 6px; border-radius: 50%; background: #666; animation: think 1.4s infinite; }
+  .thinking-dot:nth-child(2) { animation-delay: 0.2s; }
+  .thinking-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes think { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+  .input-area { padding: 12px 16px; border-top: 1px solid #2a2a4a; }
+  .input-wrapper { display: flex; gap: 8px; }
+  .input-field { flex: 1; padding: 10px 14px; background: #222244; border: 1px solid #2a2a4a; border-radius: 8px; color: #e0e0e0; font-size: 13px; outline: none; }
+  .input-field:focus { border-color: #7c8aff; }
+  .input-field::placeholder { color: #555; }
+  .send-btn { padding: 10px 16px; background: #7c8aff; border: none; border-radius: 8px; color: white; font-size: 13px; font-weight: 500; cursor: pointer; }
+  .send-btn:hover { background: #6b79ee; }
+
+  /* Right: preview */
+  .preview-panel { flex: 1; display: flex; flex-direction: column; background: #111122; }
+  .preview-header { padding: 12px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #666; border-bottom: 1px solid #2a2a4a; display: flex; justify-content: space-between; align-items: center; }
+  .preview-tabs { display: flex; gap: 4px; }
+  .preview-tab { padding: 3px 10px; border-radius: 4px; font-size: 11px; cursor: pointer; color: #888; text-transform: none; letter-spacing: 0; font-weight: 400; }
+  .preview-tab.active { background: #2a2a4a; color: #e0e0e0; }
+
+  .phone-frame { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .phone { width: 320px; height: 580px; background: #0f0f1a; border-radius: 32px; border: 2px solid #2a2a4a; overflow: hidden; display: flex; flex-direction: column; }
+  .phone-statusbar { padding: 12px 20px 8px; display: flex; justify-content: space-between; font-size: 11px; color: #888; }
+  .phone-content { flex: 1; padding: 0 16px; overflow-y: auto; }
+
+  /* App mockup content */
+  .app-header { padding: 12px 0; display: flex; justify-content: space-between; align-items: center; }
+  .app-title { font-size: 22px; font-weight: 700; }
+  .notification-bell { position: relative; font-size: 18px; cursor: pointer; }
+  .bell-badge { position: absolute; top: -4px; right: -6px; width: 16px; height: 16px; background: #f87171; border-radius: 50%; font-size: 9px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; }
+  .live-banner { background: linear-gradient(135deg, #7c8aff 0%, #f472b6 100%); border-radius: 12px; padding: 12px 16px; margin-bottom: 12px; }
+  .live-banner-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+  .live-banner-title .live-dot { width: 6px; height: 6px; border-radius: 50%; background: white; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .live-banner-artist { font-size: 16px; font-weight: 600; }
+  .live-banner-venue { font-size: 12px; opacity: 0.8; }
+
+  .notification-item { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid #1a1a2e; }
+  .notif-avatar { width: 32px; height: 32px; border-radius: 50%; background: #2a2a4a; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .notif-content { flex: 1; }
+  .notif-text { font-size: 12px; line-height: 1.4; }
+  .notif-text strong { color: #7c8aff; }
+  .notif-time { font-size: 10px; color: #666; margin-top: 2px; }
+  .notif-new { width: 6px; height: 6px; border-radius: 50%; background: #7c8aff; flex-shrink: 0; margin-top: 4px; }
+
+  /* Deploy bar at bottom of preview */
+  .deploy-bar { padding: 12px 16px; border-top: 1px solid #2a2a4a; display: flex; gap: 8px; align-items: center; }
+  .deploy-status { flex: 1; font-size: 12px; color: #4ade80; display: flex; align-items: center; gap: 6px; }
+  .deploy-btn { padding: 8px 20px; background: #4ade80; border: none; border-radius: 6px; color: #1a1a2e; font-size: 12px; font-weight: 600; cursor: pointer; }
+  .deploy-btn:hover { background: #3dcc73; }
+  .deploy-btn.disabled { background: #2a2a4a; color: #666; cursor: not-allowed; }
+  .sandbox-indicator { display: flex; align-items: center; gap: 4px; font-size: 11px; color: #facc15; }
+  .sandbox-spinner { width: 12px; height: 12px; border: 2px solid #2a2a4a; border-top-color: #facc15; border-radius: 50%; animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Bottom bar */
+  .bottombar { display: flex; align-items: center; justify-content: space-between; padding: 4px 16px; background: #16162a; border-top: 1px solid #2a2a4a; height: 28px; font-size: 11px; color: #666; }
+  .constraint-info { display: flex; align-items: center; gap: 4px; }
+  .constraint-icon { color: #4ade80; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="logo">⬡ FORGE</div>
+    <div class="mode-switcher">
+      <button class="mode-btn">Platform</button>
+      <button class="mode-btn active">Product</button>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <div class="project-name">zabriskie</div>
+    <div class="avatar">SP</div>
+  </div>
+</div>
+
+<div class="main">
+  <!-- Left: conversation -->
+  <div class="conversation-panel">
+    <div class="conv-header">
+      Feature Builder
+      <span class="domain-badge">notifications</span>
+    </div>
+    <div class="messages">
+      <div class="message user">
+        <div class="message-bubble">I want to add a badge count to the notification bell icon so users can see how many unread notifications they have</div>
+        <div class="message-meta">Sarah · 3 min ago</div>
+      </div>
+
+      <div class="message assistant">
+        <div class="message-bubble">
+          I'll add a red badge to the bell icon showing the unread notification count. It'll pull from the existing notifications table (read access is allowed in this domain).
+          <br><br>
+          Here's what I'm planning:
+          <br>• Badge appears when unread count > 0
+          <br>• Shows count up to 99, then "99+"
+          <br>• Updates in real time via the existing WebSocket
+          <br><br>
+          Building this now.
+        </div>
+        <div class="message-meta">Forge · 3 min ago</div>
+      </div>
+
+      <div class="status-message">
+        ✓ Sandbox passed · No boundary violations · Error rate 0%
+      </div>
+
+      <div class="message assistant">
+        <div class="message-bubble">
+          Done. Preview is showing on the right. The badge count pulls from unread notifications and updates live.
+          <br><br>
+          I wrapped it in a feature flag (<code>notif-bell-badge</code>) that will auto-disable if error rates exceed 2%.
+          <br><br>
+          Ready to deploy when you are.
+        </div>
+        <div class="message-meta">Forge · 1 min ago</div>
+      </div>
+
+      <div class="message user">
+        <div class="message-bubble">Looks great. Can we also show a little preview of the latest notification when you long-press the bell?</div>
+        <div class="message-meta">Sarah · just now</div>
+      </div>
+
+      <div class="thinking">
+        <span class="thinking-dot"></span>
+        <span class="thinking-dot"></span>
+        <span class="thinking-dot"></span>
+      </div>
+    </div>
+
+    <div class="input-area">
+      <div class="input-wrapper">
+        <input class="input-field" placeholder="Describe what you want to build..." />
+        <button class="send-btn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: preview -->
+  <div class="preview-panel">
+    <div class="preview-header">
+      <span>Preview</span>
+      <div class="preview-tabs">
+        <div class="preview-tab active">Mobile</div>
+        <div class="preview-tab">Web</div>
+        <div class="preview-tab">Diff</div>
+      </div>
+    </div>
+    <div class="phone-frame">
+      <div class="phone">
+        <div class="phone-statusbar">
+          <span>9:47 PM</span>
+          <span>⚡ 87%</span>
+        </div>
+        <div class="phone-content">
+          <div class="app-header">
+            <div class="app-title">Zabriskie</div>
+            <div class="notification-bell">
+              🔔
+              <div class="bell-badge">3</div>
+            </div>
+          </div>
+
+          <div class="live-banner">
+            <div class="live-banner-title"><span class="live-dot"></span> LIVE NOW</div>
+            <div class="live-banner-artist">Goose</div>
+            <div class="live-banner-venue">Madison Square Garden · Set 2</div>
+          </div>
+
+          <div style="font-size: 14px; font-weight: 600; margin-bottom: 8px;">Notifications</div>
+
+          <div class="notification-item">
+            <div class="notif-new"></div>
+            <div class="notif-avatar">🎸</div>
+            <div class="notif-content">
+              <div class="notif-text"><strong>Goose</strong> just started a live show at Madison Square Garden</div>
+              <div class="notif-time">2 min ago</div>
+            </div>
+          </div>
+
+          <div class="notification-item">
+            <div class="notif-new"></div>
+            <div class="notif-avatar">👤</div>
+            <div class="notif-content">
+              <div class="notif-text"><strong>jake_vinyl</strong> started following you</div>
+              <div class="notif-time">15 min ago</div>
+            </div>
+          </div>
+
+          <div class="notification-item">
+            <div class="notif-new"></div>
+            <div class="notif-avatar">💿</div>
+            <div class="notif-content">
+              <div class="notif-text"><strong>emily_records</strong> rated "Dripfield" ★★★★★</div>
+              <div class="notif-time">1 hr ago</div>
+            </div>
+          </div>
+
+          <div class="notification-item">
+            <div style="width: 6px;"></div>
+            <div class="notif-avatar">🎵</div>
+            <div class="notif-content">
+              <div class="notif-text"><strong>Tedeschi Trucks Band</strong> added new tour dates</div>
+              <div class="notif-time">3 hr ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="deploy-bar">
+      <div class="sandbox-indicator">
+        <span class="sandbox-spinner"></span>
+        Sandbox running
+      </div>
+      <div class="deploy-status">
+        <span style="color: #4ade80;">●</span> All checks passing
+      </div>
+      <button class="deploy-btn">Ship It</button>
+    </div>
+  </div>
+</div>
+
+<div class="bottombar">
+  <div class="constraint-info">
+    <span class="constraint-icon">✓</span> Domain: notifications · Boundaries enforced · Feature flag: notif-bell-badge
+  </div>
+  <span>Sandbox: 0 violations · 0 errors · Latency normal</span>
+</div>
+
+</body>
+</html>
