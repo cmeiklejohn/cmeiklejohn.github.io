@@ -1,0 +1,196 @@
+---
+layout: page
+title: Blog archive — Christopher Meiklejohn
+---
+
+<div id="archive">
+  <p class="archive-intro">Posts grouped by topic. <a href="/">← Home</a></p>
+
+  <section class="archive-section" id="cat-newest">
+    <h2 class="home-section-title archive-section-heading">Newest</h2>
+    <p class="archive-section-intro">Most recent blog posts.</p>
+    <ul class="posts">
+      {% for post in site.posts limit:25 %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="archive-section" id="cat-ai">
+    <h2 class="home-section-title archive-section-heading">Zabriskie / AI</h2>
+    <p class="archive-section-intro">Building Zabriskie, writing about AI tools, workflows, and building with large language models.</p>
+    <ul class="posts">
+      {% for post in site.posts %}
+        {% if post.group == "ai" %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="archive-section" id="cat-short">
+    <h2 class="home-section-title archive-section-heading">Short Posts, Thoughts, Reflections</h2>
+    <p class="archive-section-intro">Reflections I've had on building research software, industrial software development, in the context of my Ph.D. research.</p>
+    <ul class="posts">
+      {% for post in site.posts %}
+        {% if post.group == "short" %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="archive-section" id="cat-filibuster-2">
+    <h2 class="home-section-title archive-section-heading">Filibuster 2.0 Features</h2>
+    <p class="archive-section-intro">Short posts about new features in Filibuster 2.0, the next major release of <b>Filibuster.</b></p>
+    <ul class="posts">
+      {% for post in site.posts %}
+        {% if post.group == "filibuster-2" %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="archive-section" id="cat-doordash">
+    <h2 class="home-section-title archive-section-heading">DoorDash Engineering</h2>
+    <p class="archive-section-intro">Articles I've written for the DoorDash Engineering blog.</p>
+    <ul class="posts">
+      <li><span class="home-post-date">25 Apr 2022</span> <a class="home-post-link" href="https://doordash.engineering/2022/04/25/using-fault-injection-testing-to-improve-doordash-reliability/">Using Fault Injection Testing to Improve DoorDash Reliability</a></li>
+    </ul>
+  </section>
+
+  <section class="archive-section" id="cat-filibuster">
+    <h2 class="home-section-title archive-section-heading">Service-level Fault Injection Testing</h2>
+    <p class="archive-section-intro">Articles I've written about Service-level Fault Injection Testing and <b>Filibuster.</b></p>
+    <ul class="posts">
+      {% for post in site.posts %}
+        {% if post.group == "filibuster" %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="archive-section" id="cat-food">
+    <h2 class="home-section-title archive-section-heading">Food</h2>
+    <p class="archive-section-intro">Articles I've written about food allergies, intolerances, recipes and general food horror.</p>
+    <ul class="posts">
+      {% for post in site.posts %}
+        {% if post.group == "food" %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="archive-section" id="cat-teaching">
+    <h2 class="home-section-title archive-section-heading">Teaching</h2>
+    <p class="archive-section-intro">Articles I've written about teaching.</p>
+    <ul class="posts">
+      {% for post in site.posts %}
+        {% if post.group == "teaching" %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="archive-section" id="cat-macrometa">
+    <h2 class="home-section-title archive-section-heading">Macrometa</h2>
+    <p class="archive-section-intro">Articles I've written for the Macrometa blog.</p>
+    <ul class="posts">
+      {% for post in site.posts %}
+        {% if post.group == "Macrometa" %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="archive-section" id="cat-serverless">
+    <h2 class="home-section-title archive-section-heading">Stateful Serverless</h2>
+    <p class="archive-section-intro">Building stateful serverless solutions.</p>
+    <ul class="posts">
+      {% for post in site.posts %}
+        {% if post.group == "Serverless" %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="archive-section" id="cat-partisan">
+    <h2 class="home-section-title archive-section-heading">Partisan</h2>
+    <p class="archive-section-intro">Building the next generation of high-performance, fault-tolerant distributed runtimes.</p>
+    <ul class="posts">
+      {% for post in site.posts %}
+        {% if post.group == "Partisan" %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="archive-section" id="cat-pl">
+    <h2 class="home-section-title archive-section-heading">Programming Models and Languages for Distributed Computing</h2>
+    <p class="archive-section-intro">Work in progress <a href="https://github.com/cmeiklejohn/PMLDC">seminar curriculum</a> on distributed computing and programming languages.</p>
+    <ul class="posts">
+      {% for post in site.posts %}
+        {% if post.group == "pl" %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="archive-section" id="cat-syncfree">
+    <h2 class="home-section-title archive-section-heading">SyncFree / Lasp</h2>
+    <p class="archive-section-intro">Research related to the <a href="http://syncfree.lip6.fr">SyncFree</a> project on large-scale
+    synchronization-free computation.</p>
+    <ul class="posts">
+      {% for post in site.posts %}
+        {% if post.group == "SyncFree" %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="archive-section" id="cat-readings">
+    <h2 class="home-section-title archive-section-heading">Reading Lists</h2>
+    <p class="archive-section-intro">Reading lists on computer science related topics.</p>
+    <ul class="posts">
+      {% for post in site.posts %}
+        {% if post.group == "readings" %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="archive-section" id="cat-vvclocks">
+    <h2 class="home-section-title archive-section-heading">Verified Vector Clocks</h2>
+    <p class="archive-section-intro">Work towards creating a verified vector clock library in Coq,
+    exported to Erlang for use in Riak.</p>
+    <ul class="posts">
+      {% for post in site.posts %}
+        {% if post.group == "vvclocks" %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="archive-section" id="cat-general">
+    <h2 class="home-section-title archive-section-heading">General</h2>
+    <p class="archive-section-intro">Various blog posts.</p>
+    <ul class="posts">
+      {% for post in site.posts %}
+        {% if post.group == nil %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </section>
+</div>

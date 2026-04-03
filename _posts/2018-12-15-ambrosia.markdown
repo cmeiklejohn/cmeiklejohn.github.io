@@ -56,7 +56,7 @@ _This is one post in a series about programming models and languages for distrib
 <h3 id="high-performance">High Performance</h3>
 <p>To achieve high performance, a combination of adaptive batching – which ensures low latency under both light and heavy workloads is used for message transmission between nodes. These batches are accumulated in buffers that are concurrently written to and flushed using a shared buffer pool – both techniques seen in high-performance systems such as Trill and Quill. Batch commit is used to deliver applications to both the log and application for processing from the system itself to keep latency low.</p>
 <p>We refer the interested reader to the paper for the full experimental evaluation, but we can say the results are amazing: 12.7X improvement compared to gRPC, despite gRPC having no failure protection mechanism and 100x improvement in cost per unit served compared to stateless compute using serverless and existing exactly-once strategies.</p>
-<div id="refs" class="references">
+<div id="refs" class="references" role="doc-bibliography" aria-label="References">
 <div id="ref-chandramouli2016quill">
 <p>Chandramouli, Badrish, Raul Castro Fernandez, Jonathan Goldstein, Ahmed Eldawy, and Abdul Quamar. 2016. “The Quill Distributed Analytics Library and Platform.” Technical report, Microsoft Research (MSR-TR-2016-25). http://aka. ms/quill-tr.</p>
 </div>

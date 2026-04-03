@@ -74,7 +74,7 @@ _This is one post in a series about programming models and languages for distrib
 <p>ARGUS served as the platform where other ideas would blossom: both <strong>Remote Procedure Call</strong> was used as the primary abstraction for making remote calls, where subactions were used to mask omissions. The optimizations that <strong>Promises</strong> provided to pipeline RPCs and ensure ordering of requests and responses also were originally developed in the ARGUS system.</p>
 <p>The idea of compensating transactions in ARGUS for top-level actions that can not be “recovered” also appeared later in the SAGA design <span class="citation">(Garcia-Molina and Salem 1987)</span>.</p>
 <p>Finally, languages like Bloom <span class="citation">(Alvaro et al. 2011)</span>, while not providing abstractions for consistency, take an alternative approach by providing analysis tools for determining where consistency could be violated and cause program anomalies. The authors propose to plug in a distributed consensus mechanism, such as Zookeeper, to ensure consistency while performing these changes.</p>
-<div id="refs" class="references">
+<div id="refs" class="references" role="doc-bibliography" aria-label="References">
 <div id="ref-alvaro2011consistency">
 <p>Alvaro, Peter, Neil Conway, Joseph M Hellerstein, and William R Marczak. 2011. “Consistency Analysis in Bloom: A Calm and Collected Approach.” In <em>CIDR</em>, 249–60. Citeseer.</p>
 </div>

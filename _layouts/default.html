@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
+        <script>
+        (function () {
+          try {
+            var t = localStorage.getItem("theme");
+            if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+            else if (t === "light") document.documentElement.setAttribute("data-theme", "light");
+          } catch (e) {}
+        })();
+        </script>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>{{ page.title }}</title>
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        {% if page.refresh %}
+        <meta http-equiv="refresh" content="0; url={{ page.refresh | xml_escape }}">
+        {% endif %}
+        <meta name="color-scheme" content="light dark">
+        <meta name="theme-color" content="#f5f4f1" media="(prefers-color-scheme: light)">
+        <meta name="theme-color" content="#18181c" media="(prefers-color-scheme: dark)">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -21,47 +40,117 @@
         </script>
 
         <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.url }}/feed.xml">
-        <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css" href="http://tikzjax.com/v1/fonts.css">
-        <script src="http://tikzjax.com/v1/tikzjax.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
     </head>
     <body>
 
+        <a class="skip-link" href="#main-content">Skip to content</a>
+
         <div class="container">
           <div class="site">
-            <div class="header">
-              <h1 class="title"><a href="/">{{ site.name }}</a></h1>
-              <a class="extra" href="/">home</a>
-              <a class="extra" href="/research.html">research</a>
-              <a class="extra" href="/courses.html">courses</a>
-              <a class="extra" href="/publications.html">publications</a>
-              <a class="extra" href="/videos.html">videos</a>
-              <a class="extra" href="http://github.com/cmeiklejohn">code</a>
-              <a class="extra" href="/meiklejohn-cv.pdf">curriculum vitae</a>
-            </div>
+            <header class="site-header header" role="banner">
+              <div class="site-brand">
+                <a href="/" class="site-brand-link">{{ site.name }}</a>
+              </div>
+              <nav class="site-nav" aria-label="Primary">
+                <a href="/">home</a>
+                <a href="/archive.html">archive</a>
+                <a href="/research.html">research</a>
+                <a href="/teaching.html">teaching</a>
+                <a href="/publications.html">publications</a>
+                <a href="/meiklejohn-cv.pdf">curriculum vitae</a>
+                <a class="site-nav-github" href="https://github.com/cmeiklejohn" aria-label="GitHub (code)">
+                  <svg class="site-nav-github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+              </nav>
+            </header>
 
+            <main class="site-main" id="main-content">
                 {{ content }}
+            </main>
 
-            <div class="footer">
+            <footer class="site-footer footer" role="contentinfo">
               <div class="contact">
-                <img src="/me.jpg" alt="My Photo!" class="photo" />
+                <img src="/me.jpg" alt="Portrait of Christopher Meiklejohn" class="photo" width="200" height="200" />
                 <div class="bio">
                   <p>
-                    Christopher S. Meiklejohn has a Ph.D. in Software Engineering from the <a href="https://s3d.cmu.edu">Software and Societal Systems Department</a> at the <a href="https://www.scs.cmu.edu">School of Computer Science</a> of <a href="http://cmu.edu">Carnegie Mellon University.</a>
+                    Christopher S. Meiklejohn has a Ph.D. in Software Engineering from the <a href="https://s3d.cmu.edu">Software and Societal Systems Department</a> at the <a href="https://www.scs.cmu.edu">School of Computer Science</a> of <a href="https://www.cmu.edu">Carnegie Mellon University.</a>
                     <br/>
                     <br/>
                     <a href="mailto:christopher.meiklejohn@gmail.com">christopher.meiklejohn@gmail.com</a><br />
                     <a href="mailto:cmeiklej@andrew.cmu.edu">cmeiklej@andrew.cmu.edu</a><br />
                     <br/>
-                    <a href="http://filibuster.cloud">filibuster.cloud</a><br />
+                    <a href="https://filibuster.cloud">filibuster.cloud</a><br />
                     </p>
                 </div>
               </div>
-            </div>
+              <div class="site-footer-tools">
+                <button type="button" class="theme-cycle" id="theme-cycle" aria-label="Theme: match device. Click to use light mode.">
+                  <span class="theme-cycle-icons" aria-hidden="true">
+                    <svg data-icon="system" class="theme-cycle-icon" viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
+                    <svg data-icon="light" class="theme-cycle-icon theme-cycle-icon--stroke" viewBox="0 0 24 24" focusable="false" hidden><circle cx="12" cy="12" r="4" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/></svg>
+                    <svg data-icon="dark" class="theme-cycle-icon" viewBox="0 0 24 24" focusable="false" hidden><path fill="currentColor" d="M21.64 13a9 9 0 01-11.32-11.32A7 7 0 1021.64 13z"/></svg>
+                  </span>
+                </button>
+              </div>
+            </footer>
           </div>
         </div> <!-- /container -->
 
+        <script>
+          (function () {
+            var root = document.documentElement;
+            var key = "theme";
+            function getStored() {
+              try {
+                var t = localStorage.getItem(key);
+                if (t === "light" || t === "dark") return t;
+              } catch (e) {}
+              return null;
+            }
+            function setStored(v) {
+              try {
+                if (v == null) localStorage.removeItem(key);
+                else localStorage.setItem(key, v);
+              } catch (e) {}
+            }
+            function effectiveMode() {
+              var s = getStored();
+              if (s === "light" || s === "dark") return s;
+              return "system";
+            }
+            function applyFromStored() {
+              var s = getStored();
+              if (s === "dark") root.setAttribute("data-theme", "dark");
+              else if (s === "light") root.setAttribute("data-theme", "light");
+              else root.removeAttribute("data-theme");
+              var btn = document.getElementById("theme-cycle");
+              if (!btn) return;
+              var mode = effectiveMode();
+              btn.querySelectorAll(".theme-cycle-icon").forEach(function (svg) {
+                var m = svg.getAttribute("data-icon");
+                svg.hidden = m !== mode;
+              });
+              var hints = {
+                system: "Theme: match device. Click to use light mode.",
+                light: "Theme: light. Click to use dark mode.",
+                dark: "Theme: dark. Click to match device."
+              };
+              btn.setAttribute("aria-label", hints[mode] || hints.system);
+            }
+            function cycle() {
+              var m = effectiveMode();
+              if (m === "system") setStored("light");
+              else if (m === "light") setStored("dark");
+              else setStored(null);
+              applyFromStored();
+            }
+            var cycleBtn = document.getElementById("theme-cycle");
+            if (cycleBtn) cycleBtn.addEventListener("click", cycle);
+            applyFromStored();
+          })();
+        </script>
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

@@ -66,7 +66,7 @@ _This is one post in a series about programming models and languages for distrib
 <blockquote>
 <p>“We are all proud of Emerald, and feel that it is one of the most significant pieces of research we have ever undertaken. People who have never heard of Emerald are surprised that a language that is so old, and was implemented by so small a team, does so much that is ’modern’. If asked to describe Emerald briefly, we sometimes say that it’s like Java, except that it has always had generics, and that its objects are mobile.” <span class="citation">A. P. Black et al. (2007)</span></p>
 </blockquote>
-<div id="refs" class="references">
+<div id="refs" class="references" role="doc-bibliography" aria-label="References">
 <div id="ref-Birrell:1993:NO:168619.168637">
 <p>Birrell, Andrew, Greg Nelson, Susan Owicki, and Edward Wobber. 1993. “Network Objects.” In <em>Proceedings of the Fourteenth ACM Symposium on Operating Systems Principles</em>, 217–30. SOSP ’93. New York, NY, USA: ACM. doi:<a href="https://doi.org/10.1145/168619.168637">10.1145/168619.168637</a>.</p>
 </div>
@@ -95,7 +95,7 @@ _This is one post in a series about programming models and languages for distrib
 <p>Shapiro, Marc, Yvon Gourhant, Sabine Habert, Laurence Mosseri, Michel Ruffin, and Celine Valot. 1989. “SOS: An Object-Oriented Operating System―-Assessment and Perspectives.” <em>Computing Systems</em> 2 (4): 287–338.</p>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes" role="doc-endnotes" aria-label="Footnotes">
 <hr />
 <ol>
 <li id="fn1"><p>As in, the Emerald city from “The Wonderful Wizard of Oz” referencing the original runtime for the Oz language “Toto”, and the nickname for Seattle.<a href="#fnref1">↩</a></p></li>
