@@ -2,15 +2,25 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <script>
+        (function () {
+          try {
+            var t = localStorage.getItem("theme");
+            if (t === "dark") document.documentElement.setAttribute("data-theme", "dark");
+            else if (t === "light") document.documentElement.setAttribute("data-theme", "light");
+          } catch (e) {}
+        })();
+        </script>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>{{ page.title }}</title>
         <meta name="viewport" content="width=device-width">
-        <meta name="color-scheme" content="light">
-        <meta name="theme-color" content="#ffffff">
+        <meta name="color-scheme" content="light dark">
+        <meta name="theme-color" content="#f5f4f1" media="(prefers-color-scheme: light)">
+        <meta name="theme-color" content="#121214" media="(prefers-color-scheme: dark)">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -40,15 +50,24 @@
               <div class="site-brand">
                 <a href="/" class="site-brand-link">{{ site.name }}</a>
               </div>
-              <nav class="site-nav" aria-label="Primary">
-                <a href="/">home</a>
-                <a href="/research.html">research</a>
-                <a href="/courses.html">courses</a>
-                <a href="/publications.html">publications</a>
-                <a href="/videos.html">videos</a>
-                <a href="https://github.com/cmeiklejohn">code</a>
-                <a href="/meiklejohn-cv.pdf">curriculum vitae</a>
-              </nav>
+              <div class="site-header-right">
+                <nav class="site-nav" aria-label="Primary">
+                  <a href="/">home</a>
+                  <a href="/research.html">research</a>
+                  <a href="/courses.html">courses</a>
+                  <a href="/publications.html">publications</a>
+                  <a href="/videos.html">videos</a>
+                  <a href="https://github.com/cmeiklejohn">code</a>
+                  <a href="/meiklejohn-cv.pdf">curriculum vitae</a>
+                </nav>
+                <div class="theme-switcher" role="group" aria-label="Color theme">
+                  <button type="button" class="theme-btn" data-set-theme="light">Light</button>
+                  <span class="theme-switcher-sep" aria-hidden="true">·</span>
+                  <button type="button" class="theme-btn" data-set-theme="dark">Dark</button>
+                  <span class="theme-switcher-sep" aria-hidden="true">·</span>
+                  <button type="button" class="theme-btn" data-set-theme="system">Auto</button>
+                </div>
+              </div>
             </header>
 
             <main class="site-main" id="main-content">
@@ -74,6 +93,47 @@
           </div>
         </div> <!-- /container -->
 
+        <script>
+          (function () {
+            var root = document.documentElement;
+            var key = "theme";
+            function getStored() {
+              try { return localStorage.getItem(key); } catch (e) { return null; }
+            }
+            function setStored(v) {
+              try {
+                if (v === "system" || v == null) localStorage.removeItem(key);
+                else localStorage.setItem(key, v);
+              } catch (e) {}
+            }
+            function apply(t) {
+              if (t === "dark") root.setAttribute("data-theme", "dark");
+              else if (t === "light") root.setAttribute("data-theme", "light");
+              else root.removeAttribute("data-theme");
+              document.querySelectorAll(".theme-btn").forEach(function (btn) {
+                var v = btn.getAttribute("data-set-theme");
+                var active =
+                  (t === "light" && v === "light") ||
+                  (t === "dark" && v === "dark") ||
+                  ((t === null || t === undefined) && v === "system");
+                btn.setAttribute("aria-pressed", active ? "true" : "false");
+              });
+            }
+            document.querySelectorAll(".theme-btn").forEach(function (btn) {
+              btn.addEventListener("click", function () {
+                var v = btn.getAttribute("data-set-theme");
+                if (v === "system") {
+                  setStored(null);
+                  apply(null);
+                } else {
+                  setStored(v);
+                  apply(v);
+                }
+              });
+            });
+            apply(getStored());
+          })();
+        </script>
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
