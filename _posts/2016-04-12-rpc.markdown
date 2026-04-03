@@ -193,7 +193,7 @@ Modern day RPC mechanisms.</p></li>
 <blockquote>
 <p>“Does developer convenience really trump correctness, scalability, performance, separation of concerns, extensibility, and accidental complexity?” <span class="citation">Vinoski (2008)</span></p>
 </blockquote>
-<div id="refs" class="references">
+<div id="refs" class="references" role="doc-bibliography" aria-label="References">
 <div id="ref-alvaro2011consistency">
 <p>Alvaro, Peter, Neil Conway, Joseph M Hellerstein, and William R Marczak. 2011. “Consistency Analysis in Bloom: A CALM and Collected Approach.” In <em>CIDR</em>, 249–60. Citeseer.</p>
 </div>
@@ -252,7 +252,7 @@ Modern day RPC mechanisms.</p></li>
 <p>Wollrath, Ann, Roger Riggs, and Jim Waldo. 1996. “A Distributed Object Model for the Java TM System.” In <em>Proceedings of the 2nd Conference on USENIX Conference on Object-Oriented Technologies (COOTS)-Volume 2</em>, 17–17. USENIX Association.</p>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes" role="doc-endnotes" aria-label="Footnotes">
 <hr />
 <ol>
 <li id="fn1"><p>Fun fact: BBN’s Internet division would later become Genuity and then Level3 out of bankruptcy and has autonomous system number 1 (ASN 1).<a href="#fnref1">↩</a></p></li>

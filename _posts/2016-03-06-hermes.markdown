@@ -28,7 +28,7 @@ _This is one post in a series about programming models and languages for distrib
 <p>The design of Hermes was completed in a year and a half, written in Modula-2+, and was demonstrated functional in the laboratory with a LAN composed of a small number of nodes. According to one of the authors of the paper, the system never was turned into a product, mainly because Digital did not have a team at the time responsible for turning advanced research projects into actual distributed systems products<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</p>
 <p>The Sapphire <span class="citation">(Zhang et al. 2014)</span> system presented at OSDI ’14 bears a similar resemblance to the Hermes system and its Emerald roots. While Sapphire focuses on the separation of application logic from deployment logic through the use of interfaces and interface inheritance in object-oriented programming languages, Sapphire uses many of the techniques presented in both Emerald and Hermes: transparent relocation based on annotations or for load balancing; location independent method invocation through the use of forwarding pointers, and fallback to a persistent data store to find the canonical location of a particular object.</p>
 <p>Today, idempotence <span class="citation">(Helland 2012)</span> has been a topic of study in distributed systems, as it assists in designing deterministic computations that must happen on unreliable, asynchronous networks; a place where it is impossible to reliably detect failures <span class="citation">(Fischer, Lynch, and Paterson 1985)</span>. Shapiro <em>et al.</em> <span class="citation">(Shapiro et al. 2011)</span> propose the use of data structures that are associative, commutative, and idempotent as the basis for shared state in distributed databases. Meiklejohn and Van Roy <span class="citation">(Meiklejohn and Van Roy 2015)</span> propose similar for large-scale distributed computations; whereas Conway <em>et al.</em> <span class="citation">(Conway et al. 2012)</span> propose similar for protocol development. Lee <em>et al.</em>  propose a system called RIFL for ensuring exactly-once semantics for remote procedure calls by uniquely identifying each call and fault-tolerant storage of the results <span class="citation">(Lee et al. 2015)</span>.</p>
-<div id="refs" class="references">
+<div id="refs" class="references" role="doc-bibliography" aria-label="References">
 <div id="ref-black1990implementing">
 <p>Black, Andrew P, and Yeshayahu Artsy. 1990. “Implementing Location Independent Invocation.” <em>Parallel and Distributed Systems, IEEE Transactions on</em> 1 (1). IEEE: 107–19.</p>
 </div>
@@ -63,7 +63,7 @@ _This is one post in a series about programming models and languages for distrib
 <p>Zhang, Irene, Adriana Szekeres, Dana Van Aken, Isaac Ackerman, Steven D Gribble, Arvind Krishnamurthy, and Henry M Levy. 2014. “Customizable and Extensible Deployment for Mobile/Cloud Applications.” In <em>11th Usenix Symposium on Operating Systems Design and Implementation (Osdi 14)</em>, 97–112.</p>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes" role="doc-endnotes" aria-label="Footnotes">
 <hr />
 <ol>
 <li id="fn1"><p>Andrew P. Black, personal communication.<a href="#fnref1">↩</a></p></li>

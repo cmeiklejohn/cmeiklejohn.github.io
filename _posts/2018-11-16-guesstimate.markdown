@@ -23,7 +23,7 @@ _This is one post in a series about programming models and languages for distrib
 <p>Users of Guesstimate have to also deal with the reality that updates will be executed multiple times, although against different components of the objects state: “guesstimated” and ”committed”.</p>
 <p>Guesstimates’ runtime takes care of most of the synchronization concerns: nodes are allowed to leave and join the system, where failed nodes are evicted after a certain amount of time and forced to rejoin the cluster and repopulate their state. Nodes form a full mesh, where each node can talk to each other node, and there’s currently no mechanism outlined for handling the failure of a “master” node that begins and coordinates the synchronization rounds.</p>
 <p>We can see the genesis of ideas that made it into systems such as the Global Sequence Protocol and CAPtain, which are covered in other articles.</p>
-<div id="refs" class="references">
+<div id="refs" class="references" role="doc-bibliography" aria-label="References">
 <div id="ref-rajan2010guesstimate">
 <p>Rajan, Kaushik, Sriram Rajamani, and Shashank Yaduvanshi. 2010. “Guesstimate: A Programming Model for Collaborative Distributed Systems.” In <em>ACM Sigplan Notices</em>, 45:210–20. 6. ACM.</p>
 </div>

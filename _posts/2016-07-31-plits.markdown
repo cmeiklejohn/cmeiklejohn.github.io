@@ -57,12 +57,12 @@ _This is one post in a series about programming models and languages for distrib
 <li><p>The design of both the PLITS kernel, as a process scheduler responsible for waking and suspending processes waiting on messages, as well as the Host Control Program work very similar to the implementation of Distributed Erlang: processes running on remote machines are uniquely identified by a process identifier that encodes the machine name and messages are transparently delivered to them under what aims to achieve reliable transmission, but sometimes falls short.</p></li>
 </ul>
 <p>We should be clear, however, that PLITS is <strong>not</strong> an actor-based language such as Erlang. While PLITS shares many of the same design patterns and abstractions, the language is fundamentally a module-message system: modules are identified by name, which includes a location and incarnation number and are the target of messages, not processes.</p>
-<div id="refs" class="references">
+<div id="refs" class="references" role="doc-bibliography" aria-label="References">
 <div id="ref-feldman1979high">
 <p>Feldman, Jerome A. 1979. “High Level Programming for Distributed Computing.” <em>Communications of the ACM</em> 22 (6). ACM: 353–68.</p>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes" role="doc-endnotes" aria-label="Footnotes">
 <hr />
 <ol>
 <li id="fn1"><p>It is easy to argue today that conventional programming, <strong>is</strong> distributed computing, but I digress.<a href="#fnref1">↩</a></p></li>

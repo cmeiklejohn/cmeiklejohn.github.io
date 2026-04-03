@@ -60,7 +60,7 @@ What fascinates me is that these are all problems with known solutions — or at
 
 *I'm going to keep exploring this space. If you're thinking about these problems too, I'd love to hear from you.*
 
-<div id="refs" class="references">
+<div id="refs" class="references" role="doc-bibliography" aria-label="References">
 <div id="ref-fidge1988timestamps">
 <p>Fidge, Colin J. 1988. "Timestamps in Message-Passing Systems That Preserve the Partial Ordering." <em>Proceedings of the 11th Australian Computer Science Conference</em> 10 (1): 56–66.</p>
 </div>

@@ -1,41 +1,43 @@
 ---
-layout: default
+layout: page
 title: Research
 ---
 
-<div id="post">
-  <h1>Research</h1>
-  <p>My current research interests:</p>
-  <h2>Research Interests</h2>
-  <p></p>
+<p>My Ph.D. at Carnegie Mellon focused on <strong>service-level fault injection testing</strong> and resilience in microservice systems. Lately most of my public writing applies the same instincts—coordination, failure modes, and what &ldquo;safe to build on&rdquo; means—to <strong>AI-assisted development</strong>, <strong>multi-agent workflows</strong>, and the product I&rsquo;m shipping, <strong>Zabriskie</strong>.</p>
 
-  <ul>
-    <li><a href="/crdt/2014/07/22/readings-in-crdts.html">Conflict-Free Replicated Data Types (CRDTs)</a>
-      <p>Applications of CRDTs in distributed systems, specifically partitioned and replicated computation in large-scale systems.</p>
-    </li>
-    <li><a href="/distributed/systems/2013/07/12/readings-in-distributed-systems.html">Distributed Computing</a>
-      <p>Efficient distributed computation in mobile and desktop applications supporting offline operation that preserve the correctness properties of applications.</p>
-    </li>
-    <li><a href="http://thinkdistributed.io">Education</a>
-      <p>Instruction of distributed systems topics.</p>
-    </li>
-  </ul>
+<h2>What I&rsquo;m Thinking About Now</h2>
 
-  <h2>Research Projects</h2>
-  <p></p>
+<ul class="page-prose-list">
+  <li><a href="{% post_url 2026-03-30-multi-agent-systems-have-a-distributed-systems-problem %}">Multi-agent systems and distributed systems</a>
+    <p>Multiple LLM agents on one codebase behave like a distributed system: shared mutable state, stale views, lost updates, and coordination failures that aren&rsquo;t fixed by better prompts. I&rsquo;m interested in how ideas from concurrency control, CRDTs, and fault models carry over (and where they don&rsquo;t).</p>
+  </li>
+  <li><a href="{% post_url 2026-04-01-software-engineering-is-becoming-civil-engineering %}">Platforms, safety, and who ships code</a>
+    <p>As more product work is done with AI assistants, the limiting factor becomes the <em>platform</em>: isolation, traceability, observability, and automatic mitigation so that &ldquo;welding&rdquo; new features doesn&rsquo;t collapse the bridge.</p>
+  </li>
+  <li><a href="{% post_url 2026-03-08-why-im-building-zabriskie %}">Zabriskie and community around taste</a>
+    <p>A social product for people who care deeply about music—grounded in how real-world scenes (including the jam band world) already organize around shared experience, and what&rsquo;s missing in today&rsquo;s tools.</p>
+  </li>
+  <li><a href="/crdt/2014/07/22/readings-in-crdts.html">Conflict-free replicated data types (CRDTs)</a> and <a href="/distributed/systems/2013/07/12/readings-in-distributed-systems.html">distributed computing</a>
+    <p>Still the conceptual backbone: replication, merge semantics, and coordination-free programming—now as much for reasoning about agents and tools as for classic large-scale systems.</p>
+  </li>
+  <li><a href="http://thinkdistributed.io">Education</a>
+    <p>Teaching and public writing on distributed systems ideas.</p>
+  </li>
+</ul>
 
-  <ul>
-    <li><a href="http://github.com/filibuster-testing/filibuster">Filibuster</a>
-      <p>Filibuster is the prototype implementation of Service-level Fault Injection Testing, a technique for identifying resilience issues in microservice applications.</p>
-    </li>
-    <li><a href="http://github.com/lasp-lang/partisan">Partisan</a>
-      <p>Partisan is a high-performance alternative distributed runtime for Erlang.</p>
-    </li>
-    <li>Lasp
-      <p>Lasp is a new programming model designed to simplify large scale, fault-tolerant, distributed programming. Lasp is being developed as part of the SyncFree European research project. It leverages ideas from distributed dataflow extended with convergent replicated data types, or CRDTs. This supports computations where not all participants are online together at a given moment. The initial design supports synchronization-free programming by combining CRDTs together with primitives for composing them inspired by functional programming. This lets us write long-lived fault-tolerant distributed applications, including ones with nonmonotonic behavior, in a functional paradigm. The initial prototype is implemented as an Erlang library built on top of the Riak Core distributed systems infrastructure.</p>
-    </li>
-    <li><a href="https://syncfree.lip6.fr">SyncFree (EU/FP7)</a>
-      <p>Large-scale online services including social networks and multiplayer games handle huge quantities of frequently changing shared data. Maintaining its consistency is relatively simple in a centralised cloud, but no longer possible due to increased scalability requirements. Instead, data must replicated across several distributed data centres, requiring new principled approaches to consistency that will be explored by the SyncFree project.</p>
-    </li>
-  </ul>
-</div>
+<h2>Research Lineage &amp; Software</h2>
+
+<ul class="page-prose-list">
+  <li><a href="https://github.com/filibuster-testing/filibuster">Filibuster</a>
+    <p>Prototype implementation of <strong>service-level fault injection testing</strong>—the topic of my Ph.D. dissertation—for finding resilience bugs in microservice applications before production.</p>
+  </li>
+  <li><strong>Zabriskie</strong> (in development)
+    <p>Current product work at the intersection of community, music, and mobile—documented in the <a href="/archive.html#cat-ai">Zabriskie / AI</a> section of this site.</p>
+  </li>
+  <li><a href="https://github.com/lasp-lang/partisan">Partisan</a>
+    <p>A high-performance alternative distributed runtime for Erlang, originally built to run large-scale <a href="https://github.com/lasp-lang/lasp">Lasp</a> experiments; it influenced later work on fault injection and testing.</p>
+  </li>
+  <li><a href="https://github.com/lasp-lang/lasp">Lasp</a> (<a href="{% post_url 2026-03-01-ten-years-of-lasp %}">retrospective</a>) and <a href="https://syncfree.lip6.fr">SyncFree (EU/FP7)</a>
+    <p>Lasp was a coordination-free programming model on top of CRDTs, developed in the SyncFree project alongside systems such as Antidote. Partisan and Filibuster grew out of that line of work.</p>
+  </li>
+</ul>

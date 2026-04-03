@@ -34,7 +34,7 @@ _This is one post in a series about programming models and languages for distrib
 </ul>
 <p>Yet another example of where the methodology becomes unclear is around enforcing latency bounds. Given the user has the choice on how they aim to meet the consistency policy specified on a data type by selecting the appropriate data store operations, is the user responsible for specifying the code to run the requests for values under different consistency models in parallel? The previous concern would indicate so, but the demonstrating examples in the paper seems to show the user issuing single read operations against the store.</p>
 <p>The IPA system is realized on top of the Scala programming language, with an associated middleware component for managing reservations, and can be run on top of any backing data store that supports per-object or per-operation consistency levels. The paper contains a thorough evaluation and links to related and future work.</p>
-<div id="refs" class="references">
+<div id="refs" class="references" role="doc-bibliography" aria-label="References">
 <div id="ref-balegas2015extending">
 <p>Balegas, Valter, Diogo Serra, Sergio Duarte, Carla Ferreira, Rodrigo Rodrigues, Nuno Preguiça, Marc Shapiro, and Mahsa Najafzadeh. 2015. “Extending Eventually Consistent Cloud Databases for Enforcing Numeric Invariants.” <em>ArXiv Preprint ArXiv:1503.09052</em>.</p>
 </div>

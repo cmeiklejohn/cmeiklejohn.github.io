@@ -56,7 +56,7 @@ group: SyncFree
 
 <p>If you’re interested in building high-performance, safe distributed systems, and you’d like to do a Ph.D with our group, you should reach out! We’re always looking for new students who want to join us.</p>
 
-<div id="refs" class="references">
+<div id="refs" class="references" role="doc-bibliography" aria-label="References">
 <div id="ref-almeida2015efficient">
 <p>Almeida, Paulo Sérgio, Ali Shoker, and Carlos Baquero. 2015. “Efficient State-Based Crdts by Delta-Mutation.” In <em>International Conference on Networked Systems</em>, 62–76. Springer.</p>
 </div>
@@ -109,7 +109,7 @@ group: SyncFree
 <p>Wu, Chenggang, Jose Faleiro, Yihan Lin, and Joseph Hellerstein. 2019. “Anna: A Kvs for Any Scale.” <em>IEEE Transactions on Knowledge and Data Engineering</em>. IEEE.</p>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes" role="doc-endnotes" aria-label="Footnotes">
 <hr />
 <ol>
 <li id="fn1"><p>There is some nuance here around the addition of elements at a replica that is causally ahead of another replica, where the updates must be buffered until the other object has witnessed the same causal history that is left out of this discussion.<a href="#fnref1">↩</a></p></li>
