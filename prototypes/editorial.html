@@ -1,0 +1,161 @@
+---
+layout: null
+permalink: /prototypes/editorial.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prototype: Editorial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --fg: #14120f;
+      --muted: #5c5854;
+      --rule: #d4cfc7;
+      --wash: #fbf9f6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Newsreader", Georgia, serif;
+      background: var(--wash);
+      color: var(--fg);
+      font-size: 18px;
+      line-height: 1.55;
+    }
+    .page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr min(38rem, 92vw) minmax(8rem, 1fr);
+      grid-template-rows: auto 1fr auto;
+    }
+    .page > * { grid-column: 2; }
+    header {
+      padding: clamp(2rem, 6vw, 4rem) 0 2rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .kicker {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    header h1 {
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 700;
+      font-size: clamp(2.5rem, 8vw, 4.25rem);
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+      font-variation-settings: "SOFT" 40, "WONK" 0.9;
+    }
+    .lede {
+      margin-top: 1.25rem;
+      max-width: 28rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    nav {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem 1.75rem;
+    }
+    nav a {
+      color: var(--fg);
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 1px solid transparent;
+    }
+    nav a:hover { border-bottom-color: var(--fg); }
+    main { padding: 2.5rem 0 4rem; }
+    .section-label {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    article + article { margin-top: 2.75rem; padding-top: 2.75rem; border-top: 1px solid var(--rule); }
+    article h2 {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    article ul { list-style: none; margin-top: 0.5rem; }
+    article li {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr;
+      gap: 0.75rem 1.25rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid rgba(212, 207, 199, 0.6);
+      align-items: baseline;
+    }
+    article li:last-child { border-bottom: 0; }
+    .date { font-size: 0.82rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+    article a { color: var(--fg); text-decoration: none; border-bottom: 1px solid var(--rule); }
+    article a:hover { border-bottom-color: var(--fg); }
+    footer {
+      grid-column: 1 / -1;
+      padding: 1.5rem clamp(1rem, 4vw, 2rem);
+      border-top: 1px solid var(--rule);
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      background: #fff;
+    }
+    footer a { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <p class="kicker">Prototype · not the live site</p>
+      <h1>Christopher<br>Meiklejohn</h1>
+      <p class="lede">Ph.D. software engineering, CMU. Writing on distributed systems, correctness, and tools that fail loudly on purpose.</p>
+      <nav aria-label="Primary">
+        <a href="#">Writing</a>
+        <a href="#">Research</a>
+        <a href="#">Courses</a>
+        <a href="#">Publications</a>
+        <a href="#">Code</a>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+        <p class="section-label">Recent</p>
+        <h2>Latest posts</h2>
+        <ul>
+          <li><span class="date">3 Apr 2026</span> <a href="#">Software engineering as civil engineering</a></li>
+          <li><span class="date">12 Mar 2026</span> <a href="#">Fault injection at the service level</a></li>
+          <li><span class="date">2 Feb 2026</span> <a href="#">Replicated state without the ceremony</a></li>
+        </ul>
+      </article>
+      <article>
+        <p class="section-label">Series</p>
+        <h2>Zabriskie / AI</h2>
+        <ul>
+          <li><span class="date">15 Jan 2026</span> <a href="#">Multi-agent workflows in a real repo</a></li>
+          <li><span class="date">3 Dec 2025</span> <a href="#">When the model edits your build files</a></li>
+        </ul>
+      </article>
+    </main>
+
+    <footer>
+      <span>Editorial prototype — Fraunces + Newsreader</span>
+      <span><a href="/prototypes/index.html">All prototypes</a> · <a href="/">Live blog</a></span>
+    </footer>
+  </div>
+</body>
+</html>

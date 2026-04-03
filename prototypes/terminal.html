@@ -1,0 +1,150 @@
+---
+layout: null
+permalink: /prototypes/terminal.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Prototype: Terminal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0f0c;
+      --fg: #c8f5c4;
+      --dim: #5a7a56;
+      --accent: #7fff6b;
+      --warn: #ffb347;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { color-scheme: dark; }
+    body {
+      font-family: "Share Tech Mono", ui-monospace, monospace;
+      background: var(--bg);
+      color: var(--fg);
+      font-size: 15px;
+      line-height: 1.5;
+      min-height: 100vh;
+      text-shadow: 0 0 1px rgba(200, 245, 196, 0.15);
+    }
+    .crt {
+      min-height: 100vh;
+      padding: 1.25rem clamp(0.75rem, 3vw, 2rem) 3rem;
+      max-width: 52rem;
+      margin: 0 auto;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 0, 0, 0.06) 2px,
+          rgba(0, 0, 0, 0.06) 4px
+        );
+    }
+    .prompt::before {
+      content: "guest@cmeiklejohn:~$ ";
+      color: var(--dim);
+    }
+    .banner {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      white-space: pre-wrap;
+    }
+    h1 {
+      font-size: 1rem;
+      font-weight: normal;
+      color: var(--accent);
+      margin: 1rem 0 0.5rem;
+    }
+    h1::before { content: "# "; color: var(--dim); }
+    .meta { color: var(--dim); font-size: 0.9em; margin-bottom: 1.25rem; }
+    nav { margin: 1rem 0 2rem; }
+    nav a {
+      display: block;
+      color: var(--fg);
+      text-decoration: none;
+      padding: 0.15rem 0;
+    }
+    nav a::before { content: "./"; color: var(--dim); }
+    nav a:hover { color: var(--accent); }
+    .section {
+      margin-top: 1.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(90, 122, 86, 0.45);
+    }
+    .section h2 {
+      font-size: 1rem;
+      font-weight: normal;
+      color: var(--warn);
+      margin-bottom: 0.75rem;
+    }
+    .section h2::before { content: "## "; color: var(--dim); }
+    ul { list-style: none; }
+    li {
+      padding: 0.35rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    li::before {
+      content: ">";
+      position: absolute;
+      left: 0;
+      color: var(--dim);
+    }
+    .date { color: var(--dim); margin-right: 0.75rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--dim);
+      color: var(--dim);
+      font-size: 0.85em;
+    }
+  </style>
+</head>
+<body>
+  <div class="crt">
+    <p class="prompt"><span class="banner">cat /etc/motd
+╔══════════════════════════════════════╗
+║  C.MEIKLEJOHN — SYSLOG (PROTOTYPE)    ║
+╚══════════════════════════════════════╝</span></p>
+
+    <h1>index</h1>
+    <p class="meta">last_build=2026-04-03 · mode=read_only · encoding=utf-8</p>
+
+    <nav aria-label="Primary">
+      <a href="#">home</a>
+      <a href="#">research</a>
+      <a href="#">publications</a>
+      <a href="#">videos</a>
+      <a href="#">code</a>
+    </nav>
+
+    <section class="section" aria-labelledby="s1">
+      <h2 id="s1">var/log/recent</h2>
+      <ul>
+        <li><span class="date">2026-04-03</span> <a href="#">civil-engineering.md</a></li>
+        <li><span class="date">2026-03-12</span> <a href="#">filibuster-slo.md</a></li>
+        <li><span class="date">2026-02-02</span> <a href="#">crdt-notes.md</a></li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="s2">
+      <h2 id="s2">opt/zabriskie</h2>
+      <ul>
+        <li><span class="date">2026-01-15</span> <a href="#">agents-workspace.md</a></li>
+        <li><span class="date">2025-12-03</span> <a href="#">tooling-long-session.md</a></li>
+      </ul>
+    </section>
+
+    <p class="footer">
+      <span class="prompt"></span>exit — <a href="/prototypes/index.html">prototypes</a> · <a href="/">production site</a>
+    </p>
+  </div>
+</body>
+</html>
