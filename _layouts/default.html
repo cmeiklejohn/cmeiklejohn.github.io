@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>{{ page.title }}</title>
         <meta name="viewport" content="width=device-width">
+        <meta name="color-scheme" content="light">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -21,44 +27,50 @@
         </script>
 
         <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.url }}/feed.xml">
-        <link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" type="text/css" href="http://tikzjax.com/v1/fonts.css">
-        <script src="http://tikzjax.com/v1/tikzjax.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
+        <script src="https://tikzjax.com/v1/tikzjax.js"></script>
     </head>
     <body>
 
+        <a class="skip-link" href="#main-content">Skip to content</a>
+
         <div class="container">
           <div class="site">
-            <div class="header">
-              <h1 class="title"><a href="/">{{ site.name }}</a></h1>
-              <a class="extra" href="/">home</a>
-              <a class="extra" href="/research.html">research</a>
-              <a class="extra" href="/courses.html">courses</a>
-              <a class="extra" href="/publications.html">publications</a>
-              <a class="extra" href="/videos.html">videos</a>
-              <a class="extra" href="http://github.com/cmeiklejohn">code</a>
-              <a class="extra" href="/meiklejohn-cv.pdf">curriculum vitae</a>
-            </div>
+            <header class="site-header header" role="banner">
+              <div class="site-brand">
+                <a href="/" class="site-brand-link">{{ site.name }}</a>
+              </div>
+              <nav class="site-nav" aria-label="Primary">
+                <a href="/">home</a>
+                <a href="/research.html">research</a>
+                <a href="/courses.html">courses</a>
+                <a href="/publications.html">publications</a>
+                <a href="/videos.html">videos</a>
+                <a href="https://github.com/cmeiklejohn">code</a>
+                <a href="/meiklejohn-cv.pdf">curriculum vitae</a>
+              </nav>
+            </header>
 
+            <main class="site-main" id="main-content">
                 {{ content }}
+            </main>
 
-            <div class="footer">
+            <footer class="site-footer footer" role="contentinfo">
               <div class="contact">
-                <img src="/me.jpg" alt="My Photo!" class="photo" />
+                <img src="/me.jpg" alt="Portrait of Christopher Meiklejohn" class="photo" width="200" height="200" />
                 <div class="bio">
                   <p>
-                    Christopher S. Meiklejohn has a Ph.D. in Software Engineering from the <a href="https://s3d.cmu.edu">Software and Societal Systems Department</a> at the <a href="https://www.scs.cmu.edu">School of Computer Science</a> of <a href="http://cmu.edu">Carnegie Mellon University.</a>
+                    Christopher S. Meiklejohn has a Ph.D. in Software Engineering from the <a href="https://s3d.cmu.edu">Software and Societal Systems Department</a> at the <a href="https://www.scs.cmu.edu">School of Computer Science</a> of <a href="https://www.cmu.edu">Carnegie Mellon University.</a>
                     <br/>
                     <br/>
                     <a href="mailto:christopher.meiklejohn@gmail.com">christopher.meiklejohn@gmail.com</a><br />
                     <a href="mailto:cmeiklej@andrew.cmu.edu">cmeiklej@andrew.cmu.edu</a><br />
                     <br/>
-                    <a href="http://filibuster.cloud">filibuster.cloud</a><br />
+                    <a href="https://filibuster.cloud">filibuster.cloud</a><br />
                     </p>
                 </div>
               </div>
-            </div>
+            </footer>
           </div>
         </div> <!-- /container -->
 
