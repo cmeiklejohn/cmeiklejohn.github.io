@@ -1,0 +1,176 @@
+---
+layout: null
+permalink: /prototypes/swiss.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prototype: Swiss grid</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      background: #fff;
+      color: #0d0d0d;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem clamp(1rem, 4vw, 2rem) 4rem;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0 1.5rem;
+    }
+    .tag {
+      grid-column: 1 / -1;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #e42313;
+      margin-bottom: 2rem;
+    }
+    header {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: subgrid;
+      border-bottom: 2px solid #0d0d0d;
+      padding-bottom: 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+    header h1 {
+      grid-column: 1 / span 7;
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    header .sub {
+      grid-column: 8 / -1;
+      align-self: end;
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.45;
+    }
+    nav {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1.25rem;
+    }
+    nav a {
+      color: #0d0d0d;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    nav a:hover { color: #e42313; }
+    section {
+      grid-column: 1 / -1;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #ddd;
+    }
+    .sec-head {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .sec-num {
+      grid-column: 1 / span 1;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: #e42313;
+    }
+    .sec-title {
+      grid-column: 2 / span 10;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .rows { grid-column: 1 / -1; }
+    .row {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0 1.5rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid #eee;
+      align-items: baseline;
+    }
+    .row:last-child { border-bottom: 0; }
+    .row .d { grid-column: 1 / span 2; font-size: 0.8rem; color: #888; font-variant-numeric: tabular-nums; }
+    .row .t { grid-column: 3 / span 9; }
+    .row a { color: #0d0d0d; text-decoration: none; font-weight: 500; }
+    .row a:hover { color: #e42313; }
+    footer {
+      grid-column: 1 / -1;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 2px solid #0d0d0d;
+      font-size: 0.8rem;
+      color: #666;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+    }
+    footer a { color: #0d0d0d; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="tag">Prototype · Swiss / grid</p>
+    <header>
+      <h1>Christopher Meiklejohn</h1>
+      <p class="sub">Software engineering, distributed systems, fault injection. Ph.D., Carnegie Mellon.</p>
+      <nav aria-label="Primary">
+        <a href="#">Home</a>
+        <a href="#">Research</a>
+        <a href="#">Publications</a>
+        <a href="#">Courses</a>
+        <a href="#">Code</a>
+      </nav>
+    </header>
+
+    <section aria-labelledby="l1">
+      <div class="sec-head">
+        <span class="sec-num" id="l1">01</span>
+        <span class="sec-title">Recent</span>
+      </div>
+      <div class="rows">
+        <div class="row"><span class="d">2026-04-03</span><span class="t"><a href="#">Software as civil engineering</a></span></div>
+        <div class="row"><span class="d">2026-03-12</span><span class="t"><a href="#">Service-level fault injection</a></span></div>
+        <div class="row"><span class="d">2026-02-02</span><span class="t"><a href="#">CRDTs and partitioned workloads</a></span></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="l2">
+      <div class="sec-head">
+        <span class="sec-num" id="l2">02</span>
+        <span class="sec-title">Zabriskie / AI</span>
+      </div>
+      <div class="rows">
+        <div class="row"><span class="d">2026-01-15</span><span class="t"><a href="#">Agents sharing a repository</a></span></div>
+        <div class="row"><span class="d">2025-12-03</span><span class="t"><a href="#">Long sessions and tool boundaries</a></span></div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Space Grotesk · 12-column layout</span>
+      <span><a href="/prototypes/index.html">Prototypes</a> · <a href="/">Live site</a></span>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+---
+layout: null
+permalink: /prototypes/nocturne.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Prototype: Nocturne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { color-scheme: dark; }
+    body {
+      font-family: "Literata", Georgia, serif;
+      background: #121214;
+      color: #e6e4e0;
+      font-size: 17px;
+      line-height: 1.62;
+    }
+    .page {
+      max-width: 40rem;
+      margin: 0 auto;
+      padding: 2.75rem clamp(1rem, 4vw, 2rem) 4rem;
+    }
+    .pill {
+      display: inline-block;
+      font-family: "Outfit", system-ui, sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9b96f0;
+      margin-bottom: 1.75rem;
+    }
+    header h1 {
+      font-family: "Outfit", system-ui, sans-serif;
+      font-size: clamp(1.5rem, 4vw, 1.85rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #f5f4f1;
+      margin-bottom: 0.5rem;
+    }
+    header .bio {
+      font-size: 0.95rem;
+      color: #9c9893;
+      max-width: 32rem;
+    }
+    nav {
+      font-family: "Outfit", system-ui, sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.35rem;
+      margin: 2rem 0 2.75rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+    nav a {
+      color: #c9c5be;
+      text-decoration: none;
+    }
+    nav a:hover { color: #c8b8ff; }
+    .rule {
+      height: 1px;
+      background: linear-gradient(90deg, #2a2a30, transparent);
+      margin: 0 0 2rem;
+    }
+    section + section { margin-top: 2.25rem; }
+    .sec-label {
+      font-family: "Outfit", system-ui, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #7a7780;
+      margin-bottom: 0.5rem;
+    }
+    section h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #f5f4f1;
+      margin-bottom: 0.85rem;
+    }
+    ul { list-style: none; }
+    li {
+      padding: 0.55rem 0;
+      border-bottom: 1px solid #24242a;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 1rem;
+      align-items: baseline;
+    }
+    li:last-child { border-bottom: 0; }
+    .date {
+      font-family: "Outfit", system-ui, sans-serif;
+      font-size: 0.78rem;
+      color: #6e6b73;
+      font-variant-numeric: tabular-nums;
+      min-width: 5.5rem;
+    }
+    li a {
+      color: #c8b8ff;
+      text-decoration: none;
+    }
+    li a:hover { color: #e8e0ff; text-decoration: underline; text-underline-offset: 3px; }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #24242a;
+      font-family: "Outfit", system-ui, sans-serif;
+      font-size: 0.8rem;
+      color: #6e6b73;
+    }
+    footer a { color: #9b96f0; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <p class="pill">Prototype · dark / nocturne</p>
+    <header>
+      <h1>Christopher Meiklejohn</h1>
+      <p class="bio">Research on distributed systems, correctness, and fault injection. Previously CMU; writing lives here.</p>
+      <nav aria-label="Primary">
+        <a href="#">Home</a>
+        <a href="#">Research</a>
+        <a href="#">Publications</a>
+        <a href="#">Courses</a>
+        <a href="#">Code</a>
+      </nav>
+    </header>
+
+    <div class="rule" aria-hidden="true"></div>
+
+    <section aria-labelledby="n1">
+      <p class="sec-label" id="n1">Recent</p>
+      <h2>Latest posts</h2>
+      <ul>
+        <li><span class="date">3 Apr 2026</span> <a href="#">Software engineering as civil engineering</a></li>
+        <li><span class="date">12 Mar 2026</span> <a href="#">Fault injection in microservices</a></li>
+        <li><span class="date">2 Feb 2026</span> <a href="#">Replicated state without the drama</a></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="n2">
+      <p class="sec-label" id="n2">Series</p>
+      <h2>Zabriskie / AI</h2>
+      <ul>
+        <li><span class="date">15 Jan 2026</span> <a href="#">Multi-agent workflows</a></li>
+        <li><span class="date">3 Dec 2025</span> <a href="#">Tools and long sessions</a></li>
+      </ul>
+    </section>
+
+    <footer>
+      <a href="/prototypes/index.html">Prototypes</a> · <a href="/">Light theme site</a>
+    </footer>
+  </div>
+</body>
+</html>
