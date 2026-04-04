@@ -944,21 +944,22 @@ main > #post {
   line-height: 1.4;
 }
 
-/* Link row(s): preprint, ACM, slides, etc.) */
-.page #post ul.publications-list > li > p > span:has(a) {
+/* Link row(s): preprint, ACM, slides, etc. */
+.page #post ul.publications-list > li > p > span:not(.author):not(.date) {
   display: block;
-  margin-left: 0.9rem;
+  margin-left: 0;
   padding-left: 0;
   margin-top: 0.15rem;
   line-height: 1.35;
 }
 
-.page #post ul.publications-list > li > p > span:has(a) > a {
+.page #post ul.publications-list > li > p > span:not(.author):not(.date) > a {
   display: inline-block;
+  margin-left: 0.9rem;
 }
 
-.page #post ul.publications-list > li > p > span:has(a) > a + a {
-  margin-left: 0.75rem;
+.page #post ul.publications-list > li > p > span:not(.author):not(.date) > a + a {
+  margin-left: 0.65rem;
 }
 
 .page #post > ul > li > p + p {
