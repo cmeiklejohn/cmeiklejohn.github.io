@@ -916,8 +916,8 @@ main > #post {
 
 /* Publications: stack title → authors → venue → links; tighter row rhythm */
 .page #post ul.publications-list > li {
-  padding-bottom: 0.5rem;
-  margin-bottom: 0.5rem;
+  padding-bottom: 0.85rem;
+  margin-bottom: 0.85rem;
 }
 
 .page #post ul.publications-list > li:last-child {
@@ -947,18 +947,10 @@ main > #post {
 /* Link row(s): preprint, ACM, slides, etc. */
 .page #post ul.publications-list > li > p > span:not(.author):not(.date) {
   display: block;
-  margin-left: 0;
+  margin-left: 0.12rem;
   padding-left: 0;
-  text-indent: 0;
   margin-top: 0.15rem;
   line-height: 1.35;
-}
-
-.page #post ul.publications-list > li > p > span.author,
-.page #post ul.publications-list > li > p > span.date {
-  margin-left: 0;
-  padding-left: 0;
-  text-indent: 0;
 }
 
 .page #post ul.publications-list > li > p > span:not(.author):not(.date) > a {
