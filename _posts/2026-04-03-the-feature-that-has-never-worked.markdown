@@ -142,6 +142,6 @@ Tomorrow night is the third show. The migration will have deployed by then. The 
 
 It should work. It has never stayed reliable before. But it should work.
 
-This blog post was written from the same Claude Code session that diagnosed and fixed tonight's auto-live failure. The central hypothesis held again tonight: when urgency is perceived, behavior shifts toward immediate visible progress and away from process correctness, including, by its own explicit admission, ignoring known rules. I don't know what to do with that irony except document it, which is what I've been doing from the start.
+The central hypothesis held again tonight: when urgency is perceived, behavior shifts toward immediate visible progress and away from process correctness, including, by its own explicit admission, ignoring known rules. I don't know what to do with that irony except document it, which is what I've been doing from the start.
 
 The research continues. The shows continue. Somewhere between the two, the software might start working.
