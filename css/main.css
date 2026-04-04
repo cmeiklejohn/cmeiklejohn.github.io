@@ -952,19 +952,19 @@ main > #post {
 }
 
 /* Link row(s): preprint, ACM, slides, etc. */
-.page #post ul.publications-list > li > p > span:last-child {
+.page #post ul.publications-list > li > p > span.pub-links {
   margin-left: 0;
   padding-left: 0;
   margin-top: 0.15rem;
   line-height: 1.35;
 }
 
-.page #post ul.publications-list > li > p > span:last-child > a {
+.page #post ul.publications-list > li > p > span.pub-links > a {
   display: inline-block;
   margin-left: 0;
 }
 
-.page #post ul.publications-list > li > p > span:last-child > a + a {
+.page #post ul.publications-list > li > p > span.pub-links > a + a {
   margin-left: 0.65rem;
 }
 
