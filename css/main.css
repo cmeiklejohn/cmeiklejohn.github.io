@@ -817,6 +817,16 @@ code {
   color: var(--fg-heading);
 }
 
+.post-subtitle {
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.45;
+  margin: 0.35rem 0 0;
+  color: var(--fg-muted);
+  max-width: 42rem;
+}
+
 .post-header {
   margin-bottom: 0.35rem;
 }

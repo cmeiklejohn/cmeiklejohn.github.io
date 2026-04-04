@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "The Feature That Has Never Worked"
+subtitle: "Seven outages in thirteen days: auto-live, Claude Code, and what urgency does to an AI agent"
 date:   2026-04-03 00:00:00 -0000
 group: ai
 categories: ai zabriskie reliability

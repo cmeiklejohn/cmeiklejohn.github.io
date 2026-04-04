@@ -12,7 +12,13 @@
         })();
         </script>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ page.title }}</title>
+        <title>{% if page.subtitle %}{{ page.title | xml_escape }} · {{ page.subtitle | xml_escape }} | {{ site.name | xml_escape }}{% elsif page.title %}{{ page.title | xml_escape }}{% else %}{{ site.name | xml_escape }}{% endif %}</title>
+        {% if page.layout == 'post' and page.subtitle %}
+        <meta name="description" content="{{ page.subtitle | xml_escape }}">
+        <meta property="og:title" content="{{ page.title | xml_escape }} · {{ page.subtitle | xml_escape }}">
+        <meta property="og:description" content="{{ page.subtitle | xml_escape }}">
+        <meta property="og:type" content="article">
+        {% endif %}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
         {% if page.refresh %}
         <meta http-equiv="refresh" content="0; url={{ page.refresh | xml_escape }}">
