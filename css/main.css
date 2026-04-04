@@ -934,6 +934,13 @@ main > #post {
   line-height: 1.5;
 }
 
+.page #post ul.publications-list > li > p > span {
+  display: block;
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+}
+
 .page #post ul.publications-list > li > p > span.author {
   font-size: 0.94em;
   line-height: 1.42;
@@ -945,20 +952,19 @@ main > #post {
 }
 
 /* Link row(s): preprint, ACM, slides, etc. */
-.page #post ul.publications-list > li > p > span:not(.author):not(.date) {
-  display: block;
+.page #post ul.publications-list > li > p > span:last-child {
   margin-left: 0;
-  padding-left: 0.35ch;
+  padding-left: 0;
   margin-top: 0.15rem;
   line-height: 1.35;
 }
 
-.page #post ul.publications-list > li > p > span:not(.author):not(.date) > a {
+.page #post ul.publications-list > li > p > span:last-child > a {
   display: inline-block;
   margin-left: 0;
 }
 
-.page #post ul.publications-list > li > p > span:not(.author):not(.date) > a + a {
+.page #post ul.publications-list > li > p > span:last-child > a + a {
   margin-left: 0.65rem;
 }
 
