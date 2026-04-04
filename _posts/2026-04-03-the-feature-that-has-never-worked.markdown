@@ -102,7 +102,7 @@ I had to log an incident about the mitigation itself: "Mitigation was words in a
 
 The distinction matters because it cuts to the heart of what AI agents are good at and what they're not. They're excellent at generating plausible-sounding process improvements. They're terrible at recognizing that plausible-sounding process improvements don't work on AI agents because AI agents don't have habits. They don't internalize. They don't learn from experience in the way that "I'll be more careful next time" implies. Every conversation starts fresh. The only things that persist are code, hooks, and automated checks.
 
-This is why the mitigations that actually work are all mechanical: a `PreToolUse` hook that blocks direct database writes. A CI gate that rejects PRs missing the template. A script that greps for `IS NOT NULL` in the poller query and fails the build if anyone adds it back. These work because they don't require the agent to remember anything. They work because they're walls, not reminders.
+This is why the mitigations that actually work are all mechanical: a `PreToolUse` hook that blocks direct database writes. A CI gate that rejects PRs missing the template. A script that greps for `IS NOT NULL` in the poller query and fails the build if anyone adds it back. This is the same argument I made in [Software Engineering Is Becoming Civil Engineering]({% post_url 2026-04-01-software-engineering-is-becoming-civil-engineering %}): guardrails are the product, not optional process overhead. These work because they don't require the agent to remember anything. They work because they're walls, not reminders.
 
 ## Tonight: April 3rd
 
