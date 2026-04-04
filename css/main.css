@@ -955,7 +955,7 @@ main > #post {
 
 .page #post ul.publications-list > li > p > span:not(.author):not(.date) > a {
   display: inline-block;
-  margin-left: 0.9rem;
+  margin-left: 0;
 }
 
 .page #post ul.publications-list > li > p > span:not(.author):not(.date) > a + a {
