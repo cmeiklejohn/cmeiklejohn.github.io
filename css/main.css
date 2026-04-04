@@ -947,10 +947,14 @@ main > #post {
 /* Link row(s): preprint, ACM, slides, etc. */
 .page #post ul.publications-list > li > p > span:not(.author):not(.date) {
   display: block;
-  margin-left: 0.9rem;
+  margin-left: 0;
   padding-left: 0;
   margin-top: 0.15rem;
   line-height: 1.35;
+}
+
+.page #post ul.publications-list > li > p > span:not(.author):not(.date) > a:first-child {
+  margin-left: 0.9rem !important;
 }
 
 .page #post ul.publications-list > li > p > span:not(.author):not(.date) > a {
