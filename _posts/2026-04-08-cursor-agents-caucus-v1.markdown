@@ -50,27 +50,33 @@ This is what I mean when I say Caucus V1 is rev 1 of that earlier vision. I'm no
 
 ## What We've Built So Far
 
-The current version has a few properties that feel foundational to me:
+None of this is obvious from product names on a screen, so here is the actual job, then what the UI is for.
 
-- **Enforced agent reuse.** "Start Agents" boots a fixed set of stage agents. "Run minimal cycle" does not spin up new ones if they are missing. It fails instead. If every stage is secretly talking to a newly created worker with no relationship to the previous run, there is no persistent system to reason about.
+The job is to keep two long-lived Cursor background workers alive, one for implementation and one for code review, and to drive them through a loop: implement, review, maybe implement again, until the PR is approved or the loop hits a safety limit. "Caucus" is just the local web UI plus Python code that calls Cursor's agent API, tracks handoffs, and talks to GitHub when it needs to.
 
-- **Structured stage handoff.** Each stage emits a machine-readable payload, and the orchestrator reads fields like `prUrl`, `reviewDecision`, `commentUrls`, and `actorClock` directly instead of trying to infer them from natural language.
+The UI exists so I do not have to remember API details every time. In one row I can type what I want done (for example a small change in the repo to exercise the loop). Separately, there is a control whose only job is to **provision** those two cloud workers through Cursor (implementation session and review session). There is another control whose only job is to **run one traversal of the loop** against the workers that are already provisioned: send the task to the implementer, wait for structured output, send context to the reviewer, branch on approve versus request changes, repeat. The labels on my build say "Start" and "Run minimal cycle"; the point is the separation, not the wording. There is also stop, and a path for "I already have a PR, skip straight to review and remediation" for faster debugging.
 
-- **Remediation grounded in actual PR feedback.** When the reviewer requests changes and the implementer re-enters, the orchestrator fetches the live PR comments and reviews from GitHub using `gh api` and builds the remediation task from that source of truth. If the loop isn't grounded in the actual review artifacts, it isn't really a review loop.
+A few properties of that setup feel foundational:
 
-- **Orchestrator ownership of failure boundaries.** If the reviewer cannot post comments because the cloud integration lacks permission, the orchestrator posts them locally. If the implementer doesn't surface a PR URL cleanly, the orchestrator extracts it from the transcript. The system does not rely on every agent having perfect permissions and perfect follow-through at every step. It has deterministic fallback behavior where failure is predictable.
+- **No silent substitution of workers.** The run-the-loop action refuses to allocate fresh agents if the pair was never provisioned or if a session died. It fails loudly instead of pretending continuity. The assumption is that a multi-agent workflow only deserves the name if the same identifiable Cursor runs carry context across rounds. Otherwise it is just a string of unrelated one-off jobs.
+
+- **Structured handoff between the two roles.** After each side finishes, it emits JSON the runtime can parse (for example `prUrl`, `reviewDecision`, `commentUrls`, and the `actorClock` I mentioned earlier). A small orchestrator in the Caucus code reads those fields; it does not scrape adjectives out of the model's closing paragraph.
+
+- **Remediation tied to GitHub, not to chat memory.** When review requests changes and implementation runs again, the orchestrator pulls live comments and reviews with `gh api` and bakes that into the next task. The source of truth is the PR thread.
+
+- **The runtime can patch around a flaky side.** If the review worker cannot post to GitHub, the orchestrator can post from the machine running Caucus. If the implementation worker never emits a tidy PR URL, the orchestrator can still recover the link from the transcript. Reliability is allowed to live outside any single model reply.
 
 ## Why The Dashboard Matters
 
-![Caucus minimal workflow dashboard: Start/Stop agents, task input, run controls, launched agents, DAG timeline with implement and review rounds, and per-attempt log](/img/caucus-minimal-workflow-dashboard-2026-04-07.png)
+![Screenshot of the Caucus web UI: dark page with a task field, buttons to allocate or stop the two Cursor workers, a control to run the implement–review loop, optional review-only fields, cards for each live agent run, a small graph of implementation and review attempts in order, and a log panel](/img/caucus-minimal-workflow-dashboard-2026-04-07.png)
 
-One thing I did not appreciate at the beginning is how much the dashboard is part of the runtime, not just a UI on top of it.
+The screenshot is there because the page is doing real work, not decoration. Reading top to bottom: the text field is the task I am asking the implementation side to perform. The blue and red actions are allocate versus tear down the two Cursor background sessions (implementation and review). Next to that is the action that runs the loop once through those sessions, using that task. Off to the side there is an optional alternate path where I paste an existing pull request URL if I only want to exercise "review said no, fix it again" without a fresh implementation pass. Below that, two cards show whether each Cursor run is actually alive and link out to the run in Cursor's UI if I need the full transcript. The strip in the middle is the graph of attempts in order (first implementation, first review, second implementation, and so on), so I can see the cycle without inferring it from logs. The panel at the bottom is the per-attempt trace: which stage, which handoff id, whether it finished, and the run id to correlate with Cursor.
 
-For a multi-round system, observability is not optional. If implementation and review can each happen multiple times, you need to be able to inspect attempt history as a first-class thing. You need to know which round failed, what the handoff looked like, what the orchestrator decided, and whether the system is failing because the agents are dead, because the current run is blocked, or because a specific handoff was malformed.
+One thing I did not appreciate at the beginning is how much that surface is part of the runtime, not a thin skin on top.
 
-So the dashboard now shows the workflow as a DAG with attempt-specific nodes, separate agent and run status, per-attempt logs, and a debug event stream of orchestrator decisions. There is also a review-only mode that lets me point the system at an existing PR and start from review, which cuts debugging time dramatically when the thing I'm testing is the review-remediation loop rather than initial implementation.
+For a multi-round system, observability is not optional. If implementation and review can each happen multiple times, you need attempt history as a first-class thing: which round failed, what the handoff contained, what the orchestrator decided, and whether you are stuck because a worker died, because the run is waiting, or because a payload was malformed.
 
-That sounds like implementation detail, but I don't think it is. If you can't see the cycle, you can't really debug the cycle. And if you can't debug it, then you don't have a system yet. You have a toy.
+So the UI is doing what a control panel for a distributed job should do. It maps the DAG, separates "are the workers up" from "what did the last loop try," and streams enough detail to replay decisions. If you cannot see the cycle, you cannot debug the cycle. If you cannot debug it, you do not have a system yet, you have a toy.
 
 ## Where This Is Going
 
