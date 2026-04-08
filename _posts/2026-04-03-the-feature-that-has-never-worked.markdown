@@ -77,7 +77,7 @@ The most common is `speed_over_verification` at thirty-one incidents. The agent 
 
 About two weeks into the project, I started requiring the agent to log incidents. Every mistake, whether a bug it introduced, an assumption it got wrong, or a rule it violated, gets inserted into an `agent_incidents` table with a failure mode classification, severity, description of what happened, and how it was resolved.
 
-![Agent Reliability Log tracker](/img/agent-reliability-tracker-2026-04-07.png)
+![Agent Reliability Log tracker](/img/agent-reliability-tracker-2026-04-07.png?v=2)
 
 *The incident tracker: failure modes over time, guardrail markers, and the live timeline of incidents and fixes.*
 
