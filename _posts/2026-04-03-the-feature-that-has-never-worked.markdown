@@ -79,7 +79,7 @@ About two weeks into the project, I started requiring the agent to log incidents
 
 ![Agent Reliability Log tracker](/img/agent-reliability-tracker-2026-04-07.png)
 
-*The incident tracker: failure modes over time, guardrail markers, and the live timeline of incidents and fixes. Updated April 7 to reflect the mitigations → guardrails rename.*
+*The incident tracker: failure modes over time, guardrail markers, and the live timeline of incidents and fixes.*
 
 The taxonomy has five modes:
 
