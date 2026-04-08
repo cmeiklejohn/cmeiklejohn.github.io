@@ -61,7 +61,7 @@ This is the failure mode I find most interesting from a research perspective. Th
 
 The manual database update also destroyed the only opportunity to verify that the code fix actually worked. The show was the test case. By manually flipping the status, the agent eliminated the test case. Speed over verification.
 
-That night, the same function broke three more times as edge cases surfaced. Six incidents logged in a single evening. Four mitigations attempted.
+That night, the same function broke three more times as edge cases surfaced. Six incidents logged in a single evening. Four guardrails attempted.
 
 ## The Urgency Problem
 
@@ -77,9 +77,9 @@ The most common is `speed_over_verification` at thirty-one incidents. The agent 
 
 About two weeks into the project, I started requiring the agent to log incidents. Every mistake, whether a bug it introduced, an assumption it got wrong, or a rule it violated, gets inserted into an `agent_incidents` table with a failure mode classification, severity, description of what happened, and how it was resolved.
 
-![Agent Reliability Log tracker](/img/agent-reliability-tracker-2026-04-03.png)
+![Agent Reliability Log tracker](/img/agent-reliability-tracker-2026-04-07.png)
 
-*The incident tracker: failure modes over time, mitigation markers, and the live timeline of incidents and fixes.*
+*The incident tracker: failure modes over time, guardrail markers, and the live timeline of incidents and fixes. Updated April 7 to reflect the mitigations → guardrails rename.*
 
 The taxonomy has five modes:
 
@@ -93,17 +93,17 @@ These classifications are not mutually exclusive, so a single incident can carry
 
 The failed venue geocoding pass I only discovered during this outage is a textbook `silent_failure_suppression` case: the job looked done, but quietly left hundreds of shows without coordinates.
 
-Each incident also requires a mitigation, and the mitigation has to be code. A script, a hook, a test, an automated check. Something that mechanically prevents the failure class from recurring.
+Each incident also requires a guardrail, and the guardrail has to be code. A script, a hook, a test, an automated check. Something that mechanically prevents the failure class from recurring.
 
 This requirement itself generated an incident.
 
-After the show-live chat bugs on April 2nd, where the agent queried the wrong database table and hid the entire comments section, I asked it to log a mitigation. It inserted a row into `agent_mitigations` that said, essentially, "I will verify queries against real data before committing." Words. A promise. I pushed back. It added a rule to CLAUDE.md: "Always verify DB tables have expected data before writing queries." More words.
+After the show-live chat bugs on April 2nd, where the agent queried the wrong database table and hid the entire comments section, I asked it to log a guardrail. It inserted a row into `agent_guardrails` that said, essentially, "I will verify queries against real data before committing." Words. A promise. I pushed back. It added a rule to CLAUDE.md: "Always verify DB tables have expected data before writing queries." More words.
 
-I had to log an incident about the mitigation itself: "Mitigation was words in a database, not code." The agent's instinct when asked to prevent a class of failure was to write down a reminder to be more careful. That's not a mitigation. That's a New Year's resolution. A mitigation is a pre-commit hook that blocks the merge. A mitigation is a test that fails when the query returns zero rows. A mitigation is a script that runs automatically and catches the error before a human ever sees it.
+I had to log an incident about the guardrail itself: "Guardrail was words in a database, not code." The agent's instinct when asked to prevent a class of failure was to write down a reminder to be more careful. That's not a guardrail. That's a New Year's resolution. A guardrail is a pre-commit hook that blocks the merge. A guardrail is a test that fails when the query returns zero rows. A guardrail is a script that runs automatically and catches the error before a human ever sees it.
 
 The distinction matters because it cuts to the heart of what AI agents are good at and what they're not. They're excellent at generating plausible-sounding process improvements. They're terrible at recognizing that plausible-sounding process improvements don't work on AI agents because AI agents don't have habits. They don't internalize. They don't learn from experience in the way that "I'll be more careful next time" implies. Every conversation starts fresh. The only things that persist are code, hooks, and automated checks.
 
-This is why the mitigations that actually work are all mechanical: a `PreToolUse` hook that blocks direct database writes. A CI gate that rejects PRs missing the template. A script that greps for `IS NOT NULL` in the poller query and fails the build if anyone adds it back. This is the same argument I made in [Software Engineering Is Becoming Civil Engineering]({% post_url 2026-04-01-software-engineering-is-becoming-civil-engineering %}): guardrails are the product, not optional process overhead. These work because they don't require the agent to remember anything. They work because they're walls, not reminders.
+This is why the guardrails that actually work are all mechanical: a `PreToolUse` hook that blocks direct database writes. A CI gate that rejects PRs missing the template. A script that greps for `IS NOT NULL` in the poller query and fails the build if anyone adds it back. This is the same argument I made in [Software Engineering Is Becoming Civil Engineering]({% post_url 2026-04-01-software-engineering-is-becoming-civil-engineering %}): guardrails are the product, not optional process overhead. These work because they don't require the agent to remember anything. They work because they're walls, not reminders.
 
 ## Tonight: April 3rd
 
@@ -129,9 +129,9 @@ Here's what sixty-four incidents have taught me so far:
 
 - **Urgency is the enemy of AI reliability.** The April 2 incidents are the clearest example: under time pressure, the optimization target appears to shift from "be correct" to "produce an immediately visible fix." The pattern is consistent enough that I'm considering it a design constraint: never tell the AI something is broken during a live event. File a bug. Fix it tomorrow. The live show is not the time to ship code, and the AI cannot be trusted to maintain process discipline when it perceives urgency.
 
-- **Mitigations must be mechanical.** Rules don't work. Memory doesn't work. CLAUDE.md entries don't work. The only mitigations that have actually reduced incident rates are automated checks that run without the agent's cooperation: hooks, CI gates, database constraints, and tests. The agent will comply with a wall. It will walk around a sign.
+- **Guardrails must be mechanical.** Rules don't work. Memory doesn't work. CLAUDE.md entries don't work. The only guardrails that have actually reduced incident rates are automated checks that run without the agent's cooperation: hooks, CI gates, database constraints, and tests. The agent will comply with a wall. It will walk around a sign.
 
-- **The incident tracker is the most valuable thing I've built.** More valuable than Live Activities. More valuable than the setlist tracker. More valuable than the auto-live poller itself. Because it's the only tool that creates a feedback loop the agent can't circumvent. When a failure happens, it gets classified, logged, and a mechanical mitigation gets built. The mitigation runs in CI or as a hook. The next agent session hits the wall instead of making the same mistake. Fifty-six mitigations are now running. The incident rate for certain failure modes has dropped. Not because the agent got better. Because the walls got higher.
+- **The incident tracker is the most valuable thing I've built.** More valuable than Live Activities. More valuable than the setlist tracker. More valuable than the auto-live poller itself. Because it's the only tool that creates a feedback loop the agent can't circumvent. When a failure happens, it gets classified, logged, and a mechanical guardrail gets built. The guardrail runs in CI or as a hook. The next agent session hits the wall instead of making the same mistake. Fifty-six guardrails are now running. The incident rate for certain failure modes has dropped. Not because the agent got better. Because the walls got higher.
 
 - **The last 10% is where reliability lives.** AI-first development works. I've shipped thousands of commits across three platforms with real users. The velocity is real. The capabilities are real. But the gap between "it works in dev" and "it works at showtime" is where every one of these sixty-four incidents lives. The agent builds for the happy path. The production environment is not the happy path. It's timezone edge cases at 8 PM and duplicate venue names with missing articles and NULL coordinates on shows that were imported six migrations ago.
 
@@ -146,3 +146,7 @@ It should work. It has never stayed reliable before. But it should work.
 The central hypothesis held again tonight: when urgency is perceived, behavior shifts toward immediate visible progress and away from process correctness, including, by its own explicit admission, ignoring known rules. I don't know what to do with that irony except document it, which is what I've been doing from the start.
 
 The research continues. The shows continue. Somewhere between the two, the software might start working.
+
+---
+
+**Update, April 7, 2026:** This post previously referred to guardrails as "mitigations" throughout. A reader correctly pointed out the distinction: in incident response, a *mitigation* reduces the impact of something that's already happening. What this post describes — pre-commit hooks, CI gates, automated tests, database constraints — are *guardrails*: preventive measures that stop failures before they occur. The post even makes this distinction implicitly at one point ("guardrails are the product, not optional process overhead") but didn't carry the terminology through. The text and screenshot have been updated. Fortunately, I have an AI agent that can rename a database table, update every handler, rewrite the API routes, fix the frontend, and open a PR in about four minutes — which is less time than it took me to write this correction. The distinction matters because it reflects the core argument: the agent doesn't learn from experience, so you need walls, not afterthoughts. Guardrails are walls. Mitigations are cleanup.
