@@ -60,13 +60,13 @@ Every incident I've logged in the Zabriskie reliability database reinforces this
 
 You can't build an application on video evidence alone. A witness is an existence proof: "this works." A regression suite is a universal proof: "nothing that used to work is now broken." You need both. The video catches the bugs that tests miss, the ones where the test verifies the button exists but nobody checked whether it actually does anything. The regression suite catches the things the video didn't think to look at, the five other features that silently broke when you fixed the one you were focused on.
 
-They're complements, not substitutes. The witness fills the gap that testing leaves. Testing fills the gap that the witness leaves. Neither one alone is verification. Together, they're closer.
-
 ## Who Builds the Stage?
 
 The witness works for Zabriskie because it's a single application that runs on one machine. I can `go run cmd/api/main.go`, `npm run dev`, open a browser, and navigate the whole app. An agent can do the same thing on a VM in the cloud. The witness is easy to construct because the environment is easy to provision.
 
-But most real-world software doesn't look like Zabriskie. And when I started thinking about where the witness concept breaks down, I realized the answer is the same in every case: it's not the agent. It's the environment. The agent is smart enough to navigate an app and record what it sees. The hard part is giving it an app to navigate.
+But even Zabriskie isn't really one thing. There's the web app, the iOS app in the App Store, the Android app on Google Play, and the backend API they all talk to. When I push a backend change, the iOS app is still running last week's code. When I add a new SDUI component type, the web client needs to know how to render it or it silently does nothing. I've already lived a small version of the coordination problem: four deployment targets, one developer, and no guarantee they're all in sync. If this is already hard at my scale, imagine a company with 200 services.
+
+Most real-world software has this problem worse than I do. And when I started thinking about where the witness concept breaks down at larger scales, I realized the answer is the same in every case: it's not the agent. It's the environment. The agent is smart enough to navigate an app and record what it sees. The hard part is giving it an app to navigate.
 
 That's a platform engineering problem. And it's the same one I was pointing at in [Software Engineering Is Becoming Civil Engineering]({% post_url 2026-04-01-software-engineering-is-becoming-civil-engineering %}). The structural engineer doesn't weld the beams. The structural engineer designs the bridge so that a welder doing their job correctly can't bring the whole thing down. The platform engineer doesn't write the feature. The platform engineer builds the infrastructure so that an agent writing a feature can *verify* it works. The witness is the agent's job. The stage is the platform engineer's job.
 
@@ -112,7 +112,7 @@ The platform engineer's job here is maintaining that reference app and keeping i
 
 In [Software Engineering Is Becoming Civil Engineering]({% post_url 2026-04-01-software-engineering-is-becoming-civil-engineering %}), I argued that the profession is splitting: feature development is becoming accessible to non-engineers, but someone still has to design the bridge. I described the platform engineer's job in terms of API design, load analysis, inspection regimes, self-healing systems.
 
-I think there's another item on that list now: making the system witnessable. Building the infrastructure so that when an agent writes a feature, it has somewhere to run it, navigate it, and record the evidence that it works. For a web app, that means making the app bootable with one command. For mobile, it means automatable simulators. For microservices, it means ephemeral environments that can compose services on demand. For platforms, it means maintaining reference apps that exercise the API surface.
+I think there's another item on that list now: making the system witnessable. Building the infrastructure so that when an agent writes a feature, it has somewhere to run it, navigate it, and record the evidence that it works.
 
 The agent can write the code. The agent can construct the witness. But the platform engineer builds the stage. That's the structural engineer's other job, the one that doesn't show up on anyone's roadmap yet but will determine whether agentic development actually delivers on its promise or just produces more pull requests with green CI and broken features.
 
