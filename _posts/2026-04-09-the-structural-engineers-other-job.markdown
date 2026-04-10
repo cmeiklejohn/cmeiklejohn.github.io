@@ -32,7 +32,7 @@ AI-powered review tools help with the mechanical side: style, boundary condition
 
 ## The Agent at a Computer
 
-This is where something genuinely new has happened, and I think people are still catching up to how significant it is.
+This is where something genuinely new has happened.
 
 Cursor's cloud agents don't just write code in a text editor. Each agent gets its own virtual machine, a real computer with a browser, a terminal, and the ability to interact with running software. The agent writes the code, starts the application, navigates through it like a user would, takes screenshots, records video of the feature working, and attaches all of that to the pull request. More than [30% of the PRs merged at Cursor](https://cursor.com/blog/agent-computer-use) itself are now created by these agents operating autonomously in cloud sandboxes. OpenAI's Codex has moved in the same direction, [wiring Chrome DevTools Protocol into the agent runtime](https://openai.com/index/harness-engineering/) so the agent can start a browser, inspect the DOM, take screenshots, and reason about UI behavior directly.
 
@@ -114,6 +114,6 @@ In [Software Engineering Is Becoming Civil Engineering]({% post_url 2026-04-01-s
 
 I think there's another item on that list now: making the system witnessable. Building the infrastructure so that when an agent writes a feature, it has somewhere to run it, navigate it, and record the evidence that it works.
 
-The agent can write the code. The agent can construct the witness. But the platform engineer builds the stage. That's the structural engineer's other job, the one that doesn't show up on anyone's roadmap yet but will determine whether agentic development actually delivers on its promise or just produces more pull requests with green CI and broken features.
+The agent can write the code. The agent can construct the witness. But the platform engineer builds the stage, and that work doesn't show up on anyone's roadmap yet.
 
 I stopped reading the tests. I started watching the video. And the thing I keep coming back to is: the video only works if someone built the infrastructure to make it possible.
