@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Watching Is Believing"
+title:  "The Structural Engineer's Other Job"
 date:   2026-04-09 00:00:00 -0000
 group: ai
 categories: ai verification zabriskie agents
@@ -62,27 +62,29 @@ You can't build an application on video evidence alone. A witness is an existenc
 
 They're complements, not substitutes. The witness fills the gap that testing leaves. Testing fills the gap that the witness leaves. Neither one alone is verification. Together, they're closer.
 
-## Where the Witness Goes Next
+## Who Builds the Stage?
 
-"Watching is believing" works for Zabriskie because it's a single application that runs on one machine. I can `go run cmd/api/main.go`, `npm run dev`, open a browser, and navigate the whole app. An agent can do the same thing on a VM in the cloud. The witness is easy to construct because the environment is easy to provision.
+The witness works for Zabriskie because it's a single application that runs on one machine. I can `go run cmd/api/main.go`, `npm run dev`, open a browser, and navigate the whole app. An agent can do the same thing on a VM in the cloud. The witness is easy to construct because the environment is easy to provision.
 
-But most real-world software doesn't look like Zabriskie. And this is where the idea gets interesting, not because it breaks down, but because it points toward what has to be built next.
+But most real-world software doesn't look like Zabriskie. And when I started thinking about where the witness concept breaks down, I realized the answer is the same in every case: it's not the agent. It's the environment. The agent is smart enough to navigate an app and record what it sees. The hard part is giving it an app to navigate.
+
+That's a platform engineering problem. And it's the same one I was pointing at in [Software Engineering Is Becoming Civil Engineering]({% post_url 2026-04-01-software-engineering-is-becoming-civil-engineering %}). The structural engineer doesn't weld the beams. The structural engineer designs the bridge so that a welder doing their job correctly can't bring the whole thing down. The platform engineer doesn't write the feature. The platform engineer builds the infrastructure so that an agent writing a feature can *verify* it works. The witness is the agent's job. The stage is the platform engineer's job.
+
+Every scaling challenge for the witness turns out to be a question about whether someone has built the right stage.
 
 ### Mobile
 
-The simulation infrastructure needs to catch up to the agents. Cursor's cloud agents run on Linux VMs with browsers. For iOS and Android, you need actual simulators, and the tooling gap is significant. I experienced this firsthand: Android was workable in 90 minutes because WebViews expose a Chrome DevTools Protocol socket, and CDP is the same protocol that powers Playwright. iOS took over six hours because Apple's tooling isn't designed for headless automation in cloud environments.
-
-You can run macOS VMs in the cloud. Services like MacStadium offer them, and GitHub Actions has macOS runners with simulator support. The infrastructure exists. But it's not designed for ephemeral agent-per-PR workflows the way a Linux VM with Chrome is. The signing chain, provisioning profiles, Xcode version management: it's friction that makes the witness harder to construct, not impossible. This is a solvable engineering problem. The agents are capable. The simulation layer needs to meet them where they are.
+For mobile, the stage is a simulator. I [wrote about this in detail]({% post_url 2026-03-22-teaching-claude-to-qa-a-mobile-app %}): Android was workable in 90 minutes because Capacitor WebViews expose a Chrome DevTools Protocol socket, the same protocol that powers Playwright. iOS took over six hours because Apple's tooling isn't designed for headless automation. The cloud infrastructure exists (macOS VMs, GitHub Actions runners with simulator support) but it isn't built for ephemeral agent-per-PR workflows the way a Linux VM with Chrome is. The agents are capable today. The platform work is making the simulation layer automatable enough that an agent can spin one up, use the app, and tear it down without human intervention.
 
 ### Microservices
 
-This is the most interesting case, and there are two very different versions of it.
+For distributed systems, the stage is an environment where all the relevant services are running together. This is the most interesting case, and there are two very different versions of it.
 
 **The monorepo world.** Companies like Google, Meta, Twitter, and Uber keep all their services in a single repository. The key advantage is that cross-cutting changes can be made atomically, one PR that touches the API gateway, the billing service, and the notification service, all committed together. An agent working in a monorepo can, in principle, make a coordinated change across multiple services in a single diff.
 
-But can you *run* all those services on one machine to produce a witness? That depends entirely on the application's complexity. A monorepo with 15 services might be runnable with `docker compose` on a beefy VM. A monorepo with 500 services almost certainly isn't. And even for the 15-service case, the bootstrapping problem is real: database migrations, seed data, service discovery, mock credentials for third-party APIs. The question isn't whether the agent can write the code. It's whether the application is *mechanizable* enough for the agent to stand it up and use it.
+But can you *run* all those services on one machine to produce a witness? That depends entirely on the application's complexity. A monorepo with 15 services might be runnable with `docker compose` on a beefy VM. A monorepo with 500 services almost certainly isn't. And even for the 15-service case, the bootstrapping problem is real: database migrations, seed data, service discovery, mock credentials for third-party APIs. The question isn't whether the agent can write the code. It's whether the platform team has made the application *bootable* enough for the agent to stand it up and use it.
 
-This reframes what "testable" means. It's not just about code coverage or CI pipelines anymore. It's about whether an autonomous agent can cold-start your system from a fresh checkout and get to a state where it can navigate through a feature. That's a higher bar than most organizations have cleared, and I think the pressure from agentic development is going to become *the* forcing function for infrastructure investment. If an agent can't boot your app, an agent can't verify your app. That makes bootability a prerequisite for the kind of verification that actually catches bugs.
+This reframes what "testable" means. It's not just about code coverage or CI pipelines anymore. It's about whether an autonomous agent can cold-start your system from a fresh checkout and get to a state where it can navigate through a feature. That's a higher bar than most organizations have cleared, and I think the pressure from agentic development is going to become *the* forcing function for platform investment. If an agent can't boot your app, an agent can't verify your app. Making the system bootable is platform engineering work. It's the structural engineer designing the inspection regime for the bridge.
 
 **The polyrepo world.** Companies that use separate repositories for each service face a fundamentally different problem. A single feature, say adding a discount for subscribers, might require changes to the user service (store subscription status), the pricing service (check subscription at checkout), and the checkout frontend (display the discounted total). That's three PRs in three repositories, reviewed by three different teams, merged on three different timelines.
 
@@ -90,26 +92,28 @@ Each service has to make a backwards-compatible change. The new pricing service 
 
 But here's the question that video evidence forces you to ask: when does anyone actually *see* the discount appear on the checkout page? Each PR gets reviewed in isolation. Each service's CI passes independently. But the *feature*, the thing the user actually experiences, doesn't exist until all three changes are deployed together. The witness for the feature can't be produced at review time. It can only be produced after all the independently-reviewed changes are merged and deployed. By then, the code was written days or weeks ago. If something's wrong (the discount doesn't apply, or it applies twice, or the price flickers between old and new) the feedback loop is enormously long compared to what an agent on a single machine can do.
 
-The path forward, I think, looks something like agent-per-service coordination. Imagine a system, not unlike the [Caucus]({% post_url 2026-04-08-cursor-agents-caucus-v1 %}) workflow I've been building for code review, where each service gets its own agent. The agents make their changes independently, each producing backwards-compatible modifications. But before any of them merge, a coordinator stages all the changes together in an ephemeral environment and runs the end-to-end user journey. One agent starts the user service with the subscription change. Another starts the pricing service with the discount logic. A third starts the checkout UI. The coordinator navigates the full flow (subscribe, browse, add to cart, see the discount at checkout) and produces video evidence of the feature working across the composed system.
+The platform engineering answer is a coordination layer that can stage cross-service changes together before any of them merge. Imagine a system, not unlike the [Caucus]({% post_url 2026-04-08-cursor-agents-caucus-v1 %}) workflow I've been building for code review, where each service gets its own agent. The agents make their changes independently, each producing backwards-compatible modifications. But before any of them merge, a coordinator stages all the changes together in an ephemeral environment and runs the end-to-end user journey. One agent starts the user service with the subscription change. Another starts the pricing service with the discount logic. A third starts the checkout UI. The coordinator navigates the full flow (subscribe, browse, add to cart, see the discount at checkout) and produces video evidence of the feature working across the composed system.
 
 You could even roll individual services forward and back: does the feature degrade gracefully if only the user service and pricing service are updated, but the checkout UI is still on the old version? That's backwards-compatibility testing through exploration rather than assertion. The agents become a way to simulate deployment order, probing the combinatorial space of "which services have been updated" without deploying anything to production.
 
-This isn't something anyone has built yet, as far as I know. But the pieces are converging. Ephemeral preview environments that spin up isolated service meshes per branch. Agent runtimes that can control browsers and navigate applications. Coordination layers that manage multi-agent workflows with structured handoffs. The missing piece is connecting them: a system that knows which services participate in a feature, stages their changes together, and produces a cross-service witness.
+Nobody has built this yet, as far as I know. But the pieces are converging. Ephemeral preview environments that spin up isolated service meshes per branch. Agent runtimes that can control browsers and navigate applications. Coordination layers that manage multi-agent workflows with structured handoffs. The missing piece is the platform engineering work that connects them: a system that knows which services participate in a feature, stages their changes together, and produces a cross-service witness. That's infrastructure. That's the structural engineer's job.
 
-### Platforms
+### APIs and SDKs
 
 The hardest case is the one where there's no button to click at all. When you're building a platform (an API, an SDK, a shared library, an internal service that other teams depend on) your users are other developers. The feature doesn't have a UI. There's no page to navigate. There's no checkout flow to walk through.
 
 The witness for a platform change might be: does every team that depends on this API still build and pass tests after this change? But producing that witness means checking out *their* code, building *their* project against your new version, running *their* tests. That's not an agent at a computer. That's an agent that understands organizational dependency graphs.
 
-The path forward might be simpler than it sounds, though: the witness is video evidence *of a sample application that uses the API*. This is how good API and SDK development already works in practice: you build a real application that consumes your own product before shipping it to external users. The agent version: make the platform change, check out the reference app, build it against the new version, run it, navigate through it. If the reference app still works, your change is backwards-compatible. If it doesn't, you've caught a breaking change before it reached your consumers. The witness isn't your library running. It's what your library *enables* running.
+But the platform engineering answer here might be the most straightforward of all: the witness is video evidence *of a sample application that uses the API*. This is how good API and SDK development already works in practice: you build a real application that consumes your own product before shipping it to external users. The agent version: make the platform change, check out the reference app, build it against the new version, run it, navigate through it. If the reference app still works, your change is backwards-compatible. If it doesn't, you've caught a breaking change before it reached your consumers. The witness isn't your library running. It's what your library *enables* running.
 
-## What This Means
+The platform engineer's job here is maintaining that reference app and keeping it representative. That's not glamorous work. But without it, there's no stage for the agent to perform on, and the witness can't be constructed.
 
-For a single app on a single machine, we're there today. Agents produce visual proof that features work, and reviewing that proof is faster and more reliable than reading the code or reading the tests.
+## The Other Job
 
-For everything else (mobile platforms, distributed systems, organizational codebases) the challenge isn't the agent's intelligence. It's the environment. Can you provision a simulator? Can you boot the service mesh? Can you check out the consumer's code? The witness requires a running system, and the harder the system is to run, the harder the witness is to construct.
+In [Software Engineering Is Becoming Civil Engineering]({% post_url 2026-04-01-software-engineering-is-becoming-civil-engineering %}), I argued that the profession is splitting: feature development is becoming accessible to non-engineers, but someone still has to design the bridge. I described the platform engineer's job in terms of API design, load analysis, inspection regimes, self-healing systems.
 
-I think this is going to be the defining infrastructure question of the next few years. Not "can the AI write the code," that's increasingly solved. Not "can the AI review the code," that's getting better fast. But: can we build environments where the AI can *use* what it built, and show us that it works? The organizations that figure this out, that make their systems bootable, mechanizable, witnessable, are the ones where agentic development will actually deliver on its promise. The ones that don't will keep shipping pull requests with green CI and broken features.
+I think there's another item on that list now: making the system witnessable. Building the infrastructure so that when an agent writes a feature, it has somewhere to run it, navigate it, and record the evidence that it works. For a web app, that means making the app bootable with one command. For mobile, it means automatable simulators. For microservices, it means ephemeral environments that can compose services on demand. For platforms, it means maintaining reference apps that exercise the API surface.
 
-I stopped reading the tests. I started watching the video. And I haven't gone back.
+The agent can write the code. The agent can construct the witness. But the platform engineer builds the stage. That's the structural engineer's other job, the one that doesn't show up on anyone's roadmap yet but will determine whether agentic development actually delivers on its promise or just produces more pull requests with green CI and broken features.
+
+I stopped reading the tests. I started watching the video. And the thing I keep coming back to is: the video only works if someone built the infrastructure to make it possible.
