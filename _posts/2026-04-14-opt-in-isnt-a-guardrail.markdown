@@ -6,7 +6,7 @@ group: ai
 categories: ai zabriskie agents reliability caucus
 ---
 
-Tonight, Goose was playing a very special set two. The band was spelling out SUCK IT STORM with their song titles, a response to a critic named Ryan Storm who'd publicly trashed their setlist choices, and people in the live chat were losing their minds about it in real time. Zabriskie was built for exactly this moment: friends sharing what they're hearing, live chat going, the app doing the one thing it exists to do.
+Tonight, Goose was playing a very special set two. The band was spelling out SUCK IT STORM with their song titles, a response to a critic named Ryan Storm who'd publicly trashed their setlist choices and alternative arrangements, and people in the live chat were losing their minds about it in real time. Zabriskie was built for exactly this moment: friends sharing what they're hearing, live chat going, the app doing the one thing it exists to do.
 
 The feed was blank. The landing page was blank. Every route in the app was rendering nothing.
 
