@@ -14,7 +14,7 @@ No architecture change on my end. No rewrite. The app is the app. The model is a
 
 ## Same Prompt, Different Creature
 
-Here's a specific observation. For a few weeks in April I was running the [Caucus Permit Gate]({% post_url 2026-04-14-opt-in-isnt-a-guardrail %}). Every PR had to land with a permit file in `.caucus/permits/` and a proof file in `.caucus/proofs/` that matched the diff. CI blocked the merge unless both were there and fresh.
+Here's a specific observation. For a few weeks in April I was running the [Caucus Permit Gate]({% post_url 2026-04-14-opt-in-isnt-a-guardrail %}). It was my attempt at forcing agents to prove their work before merging. Every PR had to land with a permit file in `.caucus/permits/` declaring the scope and risk of the change, plus a proof file in `.caucus/proofs/` recording the output of allowlisted test commands run against the current working tree. CI blocked the merge unless both were there and fresh.
 
 Codex 5.3, given a task I'd given Composer 2 the day before, shipped the PR with the feature, the permit, and the proof all in the first commit. Two commits total on the branch. Gate green on the first push. Composer 2 on a similar task shipped the feature commit alone. Gate red. Then `chore(caucus): add proof`. Gate red. Then `chore(caucus): sync permit scope and refresh proof`. Then a merge of `origin/main`. Then `chore(caucus): refresh proof after merge`. The slowest Composer 2 PR from that era landed in main with twenty-three commits on the branch. One of them was the feature.
 
