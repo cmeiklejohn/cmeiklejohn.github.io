@@ -46,6 +46,8 @@ Two questions. Does the rule point at a specific past event? And does its cost s
 
 The permit gate failed both. It didn't point at a specific incident; it was a ritual about carefulness in general. And its cost scaled with every rebase against main, regardless of whether anything risky was happening on the branch. Cost grew with velocity. Value stayed flat.
 
+It had the shape of every code-review checklist I've ever seen at a company. "Consider thread safety." "Check error handling." "Verify input validation." You check the boxes, go through the motions. The actual review happens in someone's head, from memory of the specific thing that burned the team last quarter. Ceremony versus pattern recognition. The permit gate was all ceremony.
+
 The guardrails that have survived the audit pass both. "Do not drop a column without running `./scripts/check-references.sh` first" points at the time we dropped a column and broke ninety percent of the reports. "No `--admin` merges" points at a specific session in [Memory Isn't Learning]({% post_url 2026-03-27-memory-isnt-learning %}). "No database triggers. EVER." points at the incident I'm about to describe. The cost of obeying each of these is a few seconds, paid only when the agent is about to do the specific dangerous thing. Cost scales with the rate of the risky action, not with the rate of all work.
 
 They refer to events. They are shaped like scars.
