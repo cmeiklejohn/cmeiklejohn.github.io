@@ -12,14 +12,14 @@ If you try to read multi-agent systems papers without the vocabulary, you will g
 <div class="mas-series-nav">
   <div class="mas-series-label">Getting Up to Speed on MAS</div>
   <ol>
-    <li><a href="{% post_url 2026-04-24-mas-series-01-the-landscape %}">Part 1. The Landscape</a></li>
+    <li><a href="/ai/agents/mas-series/2026/04/24/mas-series-01-the-landscape.html">Part 1. The Landscape</a></li>
     <li class="mas-current"><strong>Part 2. The Vocabulary (you are here)</strong></li>
-    <li><a href="{% post_url 2026-04-26-mas-series-03-wave-one %}">Part 3. Wave 1: Can Agents Coordinate At All?</a></li>
-    <li><a href="{% post_url 2026-04-27-mas-series-04-wave-two %}">Part 4. Wave 2: Why It Breaks</a></li>
-    <li><a href="{% post_url 2026-04-28-mas-series-05-debate-state-coordination %}">Part 5. Debate, State, and Coordination</a></li>
-    <li><a href="{% post_url 2026-04-29-mas-series-06-verification-patterns %}">Part 6. Verification Patterns</a></li>
-    <li><a href="{% post_url 2026-04-30-mas-series-07-benchmarks %}">Part 7. Benchmarks and What They Miss</a></li>
-    <li><a href="{% post_url 2026-05-01-mas-series-08-open-questions %}">Part 8. Open Questions</a></li>
+    <li><a href="/ai/agents/mas-series/2026/04/26/mas-series-03-wave-one.html">Part 3. Wave 1: Can Agents Coordinate At All?</a></li>
+    <li><a href="/ai/agents/mas-series/2026/04/27/mas-series-04-wave-two.html">Part 4. Wave 2: Why It Breaks</a></li>
+    <li><a href="/ai/agents/mas-series/2026/04/28/mas-series-05-debate-state-coordination.html">Part 5. Debate, State, and Coordination</a></li>
+    <li><a href="/ai/agents/mas-series/2026/04/29/mas-series-06-verification-patterns.html">Part 6. Verification Patterns</a></li>
+    <li><a href="/ai/agents/mas-series/2026/04/30/mas-series-07-benchmarks.html">Part 7. Benchmarks and What They Miss</a></li>
+    <li><a href="/ai/agents/mas-series/2026/05/01/mas-series-08-open-questions.html">Part 8. Open Questions</a></li>
   </ol>
 </div>
 
