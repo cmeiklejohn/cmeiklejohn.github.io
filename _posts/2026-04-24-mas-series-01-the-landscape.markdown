@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Getting Up to Speed on Multi-Agent Systems, Part 1: The Landscape"
-date:   2026-04-24 12:00:00 -0000
+date:   2026-04-24 06:00:00 -0000
 group: ai
 series: mas
 categories: ai agents mas-series
