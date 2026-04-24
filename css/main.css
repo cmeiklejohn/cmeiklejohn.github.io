@@ -1278,3 +1278,28 @@ html {
     border-radius: 6px;
   }
 }
+
+/*****************************************************************************/
+/* Home: featured series section
+/*****************************************************************************/
+
+.home-series-section {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--brand);
+  padding: 1.25rem 1.5rem 1.75rem;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 2.25rem;
+}
+
+.home-series-section.archive-section + .archive-section {
+  border-top: none;
+  padding-top: 0;
+}
+
+.home-series-section .archive-section-heading {
+  color: var(--brand);
+}
+
+.home-series-section ul.posts li {
+  border-bottom-color: var(--border-strong);
+}

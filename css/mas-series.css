@@ -1,0 +1,368 @@
+/*****************************************************************************/
+/* Multi-Agent Systems Series — infographic components
+/*
+/* Used by posts tagged "mas-series" to render timelines, paper cards,
+/* taxonomy boxes, and comparison tables in a consistent visual language.
+/*****************************************************************************/
+
+:root {
+  --mas-pink:    #d14592;
+  --mas-blue:    #3b82f6;
+  --mas-orange:  #e68848;
+  --mas-purple:  #8b5cf6;
+  --mas-green:   #10b981;
+  --mas-red:     #e25858;
+  --mas-yellow:  #d4a82a;
+}
+
+/* -------------------------------------------------------------------------
+   Series navigation
+   ------------------------------------------------------------------------- */
+
+.mas-series-nav {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--brand);
+  padding: 0.9rem 1.1rem;
+  margin: 1.5rem 0 2rem;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  border-radius: 0 6px 6px 0;
+}
+
+.mas-series-nav .mas-series-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--fg-muted);
+  margin-bottom: 0.35rem;
+}
+
+.mas-series-nav ol {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 0.88rem;
+}
+
+.mas-series-nav ol li {
+  margin-bottom: 0.15rem;
+}
+
+.mas-series-nav .mas-current {
+  font-weight: 600;
+  color: var(--fg-heading);
+}
+
+/* -------------------------------------------------------------------------
+   Paper cards
+   ------------------------------------------------------------------------- */
+
+.mas-paper-card {
+  background: var(--bg-elevated);
+  border-left: 4px solid var(--border-strong);
+  border-radius: 0 8px 8px 0;
+  padding: 1.1rem 1.3rem;
+  margin: 1.25rem 0;
+  font-family: var(--font-ui);
+}
+
+.mas-paper-card.mas-camel    { border-left-color: var(--mas-yellow); }
+.mas-paper-card.mas-genagents{ border-left-color: var(--mas-green); }
+.mas-paper-card.mas-chatdev  { border-left-color: var(--mas-orange); }
+.mas-paper-card.mas-metagpt  { border-left-color: var(--mas-blue); }
+.mas-paper-card.mas-autogen  { border-left-color: var(--mas-purple); }
+.mas-paper-card.mas-debate   { border-left-color: var(--mas-orange); }
+.mas-paper-card.mas-mast     { border-left-color: var(--mas-red); }
+.mas-paper-card.mas-wave2    { border-left-color: var(--mas-red); }
+
+.mas-paper-card .mas-card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.mas-paper-card .mas-card-title strong {
+  font-size: 1.05rem;
+  color: var(--fg-heading);
+  font-family: var(--font-text);
+  font-weight: 600;
+}
+
+.mas-paper-card .mas-card-meta {
+  font-size: 0.78rem;
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+}
+
+.mas-paper-card .mas-card-oneliner {
+  font-style: italic;
+  color: var(--fg-muted);
+  margin: 0 0 0.5rem;
+  font-size: 0.92rem;
+}
+
+.mas-paper-card .mas-card-bet {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  padding: 0.4rem 0.65rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  margin: 0.5rem 0;
+}
+
+.mas-paper-card ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.15rem;
+  font-size: 0.9rem;
+}
+
+.mas-paper-card ul li {
+  margin-bottom: 0.3rem;
+}
+
+.mas-paper-card .mas-card-source {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+}
+
+/* -------------------------------------------------------------------------
+   Tag chips
+   ------------------------------------------------------------------------- */
+
+.mas-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.12rem 0.5rem;
+  border-radius: 3px;
+  background: var(--code-bg);
+  color: var(--fg-muted);
+  margin-right: 0.3rem;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid var(--code-border);
+}
+
+/* -------------------------------------------------------------------------
+   Timeline
+   ------------------------------------------------------------------------- */
+
+.mas-timeline-wave {
+  margin: 1.5rem 0 2rem;
+}
+
+.mas-wave-header {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--fg-muted);
+  margin: 0 0 0.25rem;
+}
+
+.mas-wave-subhead {
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+  font-style: italic;
+  margin: 0 0 0.75rem;
+}
+
+.mas-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 0.5rem;
+  font-family: var(--font-ui);
+}
+
+.mas-timeline-node {
+  background: var(--bg-elevated);
+  border-top: 3px solid var(--border-strong);
+  padding: 0.6rem 0.75rem;
+  border-radius: 0 0 6px 6px;
+  font-size: 0.85rem;
+}
+
+.mas-timeline-node .mas-node-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+}
+
+.mas-timeline-node .mas-node-name {
+  font-weight: 600;
+  color: var(--fg-heading);
+  margin: 0.15rem 0;
+  font-size: 0.95rem;
+}
+
+.mas-timeline-node .mas-node-desc {
+  font-size: 0.78rem;
+  color: var(--fg-muted);
+}
+
+.mas-timeline-node.mas-c-camel    { border-top-color: var(--mas-yellow); }
+.mas-timeline-node.mas-c-genagents{ border-top-color: var(--mas-green); }
+.mas-timeline-node.mas-c-chatdev  { border-top-color: var(--mas-orange); }
+.mas-timeline-node.mas-c-metagpt  { border-top-color: var(--mas-blue); }
+.mas-timeline-node.mas-c-autogen  { border-top-color: var(--mas-purple); }
+.mas-timeline-node.mas-c-debate   { border-top-color: var(--mas-orange); }
+.mas-timeline-node.mas-c-mast     { border-top-color: var(--mas-red); }
+.mas-timeline-node.mas-c-red      { border-top-color: var(--mas-red); }
+.mas-timeline-node.mas-c-blue     { border-top-color: var(--mas-blue); }
+.mas-timeline-node.mas-c-green    { border-top-color: var(--mas-green); }
+.mas-timeline-node.mas-c-purple   { border-top-color: var(--mas-purple); }
+.mas-timeline-node.mas-c-pink     { border-top-color: var(--mas-pink); }
+
+/* -------------------------------------------------------------------------
+   Callout
+   ------------------------------------------------------------------------- */
+
+.mas-callout {
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--brand);
+  border-radius: 0 6px 6px 0;
+  padding: 0.9rem 1.15rem;
+  margin: 1.5rem 0;
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+}
+
+.mas-callout .mas-callout-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--brand);
+  margin-bottom: 0.3rem;
+}
+
+/* -------------------------------------------------------------------------
+   Taxonomy boxes (labeled chip rows)
+   ------------------------------------------------------------------------- */
+
+.mas-taxonomy {
+  background: var(--bg-elevated);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin: 1.25rem 0;
+  font-family: var(--font-ui);
+}
+
+.mas-taxonomy h4 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: var(--fg-heading);
+}
+
+.mas-tax-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.mas-tax-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.mas-tax-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.mas-tax-chip {
+  display: inline-block;
+  font-size: 0.8rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  color: var(--fg);
+}
+
+.mas-tax-chip.mas-chip-ok  { border-color: var(--mas-green); color: var(--mas-green); }
+.mas-tax-chip.mas-chip-bad { border-color: var(--mas-red); color: var(--mas-red); }
+
+/* -------------------------------------------------------------------------
+   Comparison tables (override blog default to be more compact)
+   ------------------------------------------------------------------------- */
+
+.mas-compare {
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  margin: 1.25rem 0;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mas-compare th {
+  background: var(--fg-heading);
+  color: var(--bg);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 0.7rem;
+  border: none;
+  text-align: left;
+}
+
+.mas-compare td {
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid var(--border);
+  border-left: none;
+  border-right: none;
+  vertical-align: top;
+}
+
+.mas-compare tr:last-child td { border-bottom: none; }
+
+.mas-compare td:first-child {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.mas-compare tr.mas-row-highlight td {
+  background: var(--code-bg);
+}
+
+.mas-compare-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.25rem 0;
+}
+
+.mas-compare-wrap .mas-compare { margin: 0; min-width: 580px; }
+
+/* -------------------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .mas-tax-row { flex-direction: column; gap: 0.2rem; }
+  .mas-tax-label { min-width: 0; }
+  .mas-paper-card .mas-card-title { flex-direction: column; align-items: flex-start; }
+  .mas-timeline { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 420px) {
+  .mas-timeline { grid-template-columns: 1fr; }
+  .mas-paper-card { padding: 0.9rem 1rem; }
+  .mas-paper-card ul { font-size: 0.85rem; }
+}

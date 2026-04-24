@@ -2,3 +2,6 @@ _site
 .texpadtmp/
 PMLDC/
 .idea/.claude/worktrees/
+.bundle/
+vendor/
+.claude/

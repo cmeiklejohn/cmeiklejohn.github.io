@@ -10,11 +10,23 @@ title: Christopher Meiklejohn
     Recent posts. Everything else is organized by topic in the <a href="/archive.html">archive</a>.
   </p>
 
+  <section class="archive-section home-series-section" aria-labelledby="home-series-heading">
+    <h2 id="home-series-heading" class="home-section-title archive-section-heading">Series · Getting Up to Speed on Multi-Agent Systems</h2>
+    <p class="archive-section-intro">A short series mapping the multi-agent LLM literature for readers coming in fresh. Published over the next week and a half.</p>
+    <ul class="posts">
+      {% assign mas_posts = site.posts | where: "series", "mas" | sort: "date" %}
+      {% for post in mas_posts %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+
   <section class="archive-section home-recent-section" aria-labelledby="home-recent-heading">
     <h2 id="home-recent-heading" class="home-section-title archive-section-heading">Recent</h2>
     <p class="archive-section-intro">The latest writing on the site. Open the archive for full lists by topic.</p>
     <ul class="posts">
-      {% for post in site.posts limit:9 %}
+      {% assign recent_posts = site.posts | where_exp: "p", "p.series != 'mas'" %}
+      {% for post in recent_posts limit:9 %}
         <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
       {% endfor %}
     </ul>
