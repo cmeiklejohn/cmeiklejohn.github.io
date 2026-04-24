@@ -9,19 +9,7 @@ categories: ai agents mas-series
 
 If you try to read multi-agent systems papers without the vocabulary, you will get nowhere. The field has settled on a shared set of words for the pieces of a system, and every paper now slots into those categories even when it pretends to be doing something novel. This post is about those words. Once you know them, you can read any paper in the field and know what it is and isn't claiming.
 
-<div class="mas-series-nav">
-  <div class="mas-series-label">Getting Up to Speed on MAS</div>
-  <ol>
-    <li><a href="/ai/agents/mas-series/2026/04/24/mas-series-01-the-landscape.html">Part 1. The Landscape</a></li>
-    <li class="mas-current"><strong>Part 2. The Vocabulary (you are here)</strong></li>
-    <li><a href="/ai/agents/mas-series/2026/04/26/mas-series-03-wave-one.html">Part 3. Wave 1: Can Agents Coordinate At All?</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/27/mas-series-04-wave-two.html">Part 4. Wave 2: Why It Breaks</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/28/mas-series-05-debate-state-coordination.html">Part 5. Debate, State, and Coordination</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/29/mas-series-06-verification-patterns.html">Part 6. Verification Patterns</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/30/mas-series-07-benchmarks.html">Part 7. Benchmarks and What They Miss</a></li>
-    <li><a href="/ai/agents/mas-series/2026/05/01/mas-series-08-open-questions.html">Part 8. Open Questions</a></li>
-  </ol>
-</div>
+{% include mas-series-nav.html current="mas-series-02-the-vocabulary" %}
 
 Three surveys have done the work of consolidating the vocabulary. Each one cuts the space slightly differently, but together they give you the conceptual toolkit.
 

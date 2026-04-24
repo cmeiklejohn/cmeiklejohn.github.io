@@ -9,19 +9,7 @@ categories: ai agents mas-series
 
 If you've read this far, you've noticed that every paper I've discussed has a number next to it. 85.9 percent on HumanEval. 12.5 percent on SWE-bench. 25 percent on TravelPlanner. These numbers do a lot of work in the multi-agent literature, and they also do a surprising amount of harm. This post is about the benchmarks themselves. What they measure. What they don't. And why ChatDev and MetaGPT can report contradictory results on each other without either one being obviously wrong.
 
-<div class="mas-series-nav">
-  <div class="mas-series-label">Getting Up to Speed on MAS</div>
-  <ol>
-    <li><a href="/ai/agents/mas-series/2026/04/24/mas-series-01-the-landscape.html">Part 1. The Landscape</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/25/mas-series-02-the-vocabulary.html">Part 2. The Vocabulary</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/26/mas-series-03-wave-one.html">Part 3. Wave 1: Can Agents Coordinate At All?</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/27/mas-series-04-wave-two.html">Part 4. Wave 2: Why It Breaks</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/28/mas-series-05-debate-state-coordination.html">Part 5. Debate, State, and Coordination</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/29/mas-series-06-verification-patterns.html">Part 6. Verification Patterns</a></li>
-    <li class="mas-current"><strong>Part 7. Benchmarks and What They Miss (you are here)</strong></li>
-    <li><a href="/ai/agents/mas-series/2026/05/01/mas-series-08-open-questions.html">Part 8. Open Questions</a></li>
-  </ol>
-</div>
+{% include mas-series-nav.html current="mas-series-07-benchmarks" %}
 
 ## The Landscape
 

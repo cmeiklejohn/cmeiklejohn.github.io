@@ -1,0 +1,43 @@
+{%- comment -%}
+  MAS series navigation.
+
+  Renders the full 8-post list from _data/mas_series.yml. Each entry
+  is rendered in one of three states:
+
+    1. CURRENT — the post the reader is on. Bolded, marked "(you are here)".
+    2. PUBLISHED — the post exists in site.posts (its date has passed and
+       Jekyll has built it). Rendered as a link.
+    3. UPCOMING — not yet in site.posts. Rendered as dimmed text with the
+       scheduled publish date.
+
+  Usage inside a post:
+    {% include mas-series-nav.html current="mas-series-01-the-landscape" %}
+{%- endcomment -%}
+
+{%- assign published_urls = site.posts | where: "series", "mas" | map: "url" -%}
+
+<div class="mas-series-nav">
+  <div class="mas-series-label">Getting Up to Speed on MAS</div>
+  <ol>
+    {%- for entry in site.data.mas_series -%}
+      {%- assign is_current = false -%}
+      {%- if entry.slug == include.current -%}{% assign is_current = true %}{%- endif -%}
+
+      {%- assign is_published = false -%}
+      {%- for u in published_urls -%}
+        {%- if u == entry.url -%}{% assign is_published = true %}{%- break -%}{%- endif -%}
+      {%- endfor -%}
+
+      {%- if is_current -%}
+        <li class="mas-current"><strong>{{ entry.title }} (you are here)</strong></li>
+      {%- elsif is_published -%}
+        <li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
+      {%- else -%}
+        <li class="mas-upcoming">
+          <span class="mas-upcoming-title">{{ entry.title }}</span>
+          <span class="mas-upcoming-date">(publishes {{ entry.date | date: "%B %-d" }})</span>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ol>
+</div>

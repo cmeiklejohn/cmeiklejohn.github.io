@@ -11,19 +11,7 @@ By 2025, two things had happened. Wave-1 architectures were running in productio
 
 This wave is where I find the literature most useful, because it's where empirical work finally catches up with the claims of wave 1.
 
-<div class="mas-series-nav">
-  <div class="mas-series-label">Getting Up to Speed on MAS</div>
-  <ol>
-    <li><a href="/ai/agents/mas-series/2026/04/24/mas-series-01-the-landscape.html">Part 1. The Landscape</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/25/mas-series-02-the-vocabulary.html">Part 2. The Vocabulary</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/26/mas-series-03-wave-one.html">Part 3. Wave 1: Can Agents Coordinate At All?</a></li>
-    <li class="mas-current"><strong>Part 4. Wave 2: Why It Breaks (you are here)</strong></li>
-    <li><a href="/ai/agents/mas-series/2026/04/28/mas-series-05-debate-state-coordination.html">Part 5. Debate, State, and Coordination</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/29/mas-series-06-verification-patterns.html">Part 6. Verification Patterns</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/30/mas-series-07-benchmarks.html">Part 7. Benchmarks and What They Miss</a></li>
-    <li><a href="/ai/agents/mas-series/2026/05/01/mas-series-08-open-questions.html">Part 8. Open Questions</a></li>
-  </ol>
-</div>
+{% include mas-series-nav.html current="mas-series-04-wave-two" %}
 
 ## MAST: 14 Failure Modes from 1,600 Traces
 

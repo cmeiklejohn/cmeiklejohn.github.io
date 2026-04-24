@@ -9,19 +9,7 @@ categories: ai agents mas-series
 
 If wave 1 was about role-playing and the agentic coding turn was about interface quality, there's a parallel thread running through the field asking a more fundamental question: what should multiple agents actually <em>do</em> with each other? Debate? Share state? Coordinate? And are any of these interchangeable? This post is about four papers that sit at that intersection, including one that isn't really an LLM paper at all but is the clearest theoretical bridge from distributed systems into multi-agent AI.
 
-<div class="mas-series-nav">
-  <div class="mas-series-label">Getting Up to Speed on MAS</div>
-  <ol>
-    <li><a href="/ai/agents/mas-series/2026/04/24/mas-series-01-the-landscape.html">Part 1. The Landscape</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/25/mas-series-02-the-vocabulary.html">Part 2. The Vocabulary</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/26/mas-series-03-wave-one.html">Part 3. Wave 1: Can Agents Coordinate At All?</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/27/mas-series-04-wave-two.html">Part 4. Wave 2: Why It Breaks</a></li>
-    <li class="mas-current"><strong>Part 5. Debate, State, and Coordination (you are here)</strong></li>
-    <li><a href="/ai/agents/mas-series/2026/04/29/mas-series-06-verification-patterns.html">Part 6. Verification Patterns</a></li>
-    <li><a href="/ai/agents/mas-series/2026/04/30/mas-series-07-benchmarks.html">Part 7. Benchmarks and What They Miss</a></li>
-    <li><a href="/ai/agents/mas-series/2026/05/01/mas-series-08-open-questions.html">Part 8. Open Questions</a></li>
-  </ol>
-</div>
+{% include mas-series-nav.html current="mas-series-05-debate-state-coordination" %}
 
 ## Du et al.: Convergent Debate
 

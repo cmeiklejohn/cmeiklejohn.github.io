@@ -366,3 +366,21 @@
   .mas-paper-card { padding: 0.9rem 1rem; }
   .mas-paper-card ul { font-size: 0.85rem; }
 }
+
+/* -------------------------------------------------------------------------
+   Upcoming (unpublished) series nav entries
+   ------------------------------------------------------------------------- */
+
+.mas-series-nav .mas-upcoming {
+  color: var(--fg-muted);
+}
+
+.mas-series-nav .mas-upcoming-title {
+  opacity: 0.75;
+}
+
+.mas-series-nav .mas-upcoming-date {
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  margin-left: 0.25rem;
+}
