@@ -25,7 +25,7 @@ Live music gets there too. The phone isn't the enemy of the show. The phone, use
 
 That is a lot of what we're building. Anything that broke at the Goose show, Patrick and I would fix between Goose and Phish, and I'd run it live at Phish two hours later. Every feature got tested twice a night, against two different bands, in two different time zones, by a person who was actively living the multi-show pattern the app is supposed to enable.
 
-I started writing this because I wanted to remember what we built during the tour. I looked at the PR list and counted. **Three hundred and nine pull requests** merged into [Zabriskie](https://github.com/cmeiklejohn/zabriskie) between the first show and the last. About fifty of those merged today, with the tour wrap-up package shipping in real time as I'm writing this. That number doesn't feel real. It is real. Most of it shipped to TestFlight and Google Play in the same week it was written. Some of it shipped during the show.
+I started writing this because I wanted to remember what we built during the tour. I looked at the PR list and counted. **Three hundred and nine pull requests** merged into [Zabriskie](https://github.com/cmeiklejohn/zabriskie) between the first show and the last. About fifty of those merged today, with the tour wrap-up package shipping in real time as I'm writing this. That number doesn't feel real. It is real. Most of it shipped to the web immediately so we could test it ourselves the moment it merged, then went out to our TestFlight and Play Store testers within hours, and will be live in the App Store and Play Store this week for everyone. Some of it shipped during the show.
 
 This is what stuck.
 
