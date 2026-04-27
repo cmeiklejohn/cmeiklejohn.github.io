@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "The Structural Engineer's Other Job"
+subtitle: "AI-generated code increasingly passes review and tests but ships half-working features. What humans have to check for instead."
 date:   2026-04-09 00:00:00 -0000
 group: ai
 categories: ai verification zabriskie agents

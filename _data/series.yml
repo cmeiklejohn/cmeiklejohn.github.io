@@ -1,0 +1,11 @@
+# Series metadata, keyed by the `series:` slug used in post frontmatter.
+#
+# Each series also has an ordered post list in `_data/{slug}_series.yml`
+# (e.g. `_data/mas_series.yml`), which is what the prev/next include
+# walks. This file holds only the series-level chrome.
+
+mas:
+  title: "Getting Up to Speed on Multi-Agent Systems"
+  short_title: "Getting Up to Speed on MAS"
+  landing_url: /series/multi-agent-systems/
+  description: "An eight-part series mapping the multi-agent LLM literature for readers coming in fresh. Two waves of research, one outside disruption, and the questions the field is still trying to answer."
