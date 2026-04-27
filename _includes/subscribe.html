@@ -5,9 +5,9 @@
 <aside class="subscribe" aria-labelledby="subscribe-heading">
   <p id="subscribe-heading" class="subscribe-label">New posts</p>
   <p class="subscribe-blurb">
-    No newsletter yet — the site has an RSS feed you can drop into Feedly, Inoreader, NetNewsWire, or any other reader.
+    No newsletter yet — the site has an RSS feed you can drop into Feedly, Inoreader, NetNewsWire, or any other reader. I post on Bluesky too.
   </p>
   <p class="subscribe-cta">
-    <a href="/feed.xml">Subscribe via RSS →</a>
+    <a href="/feed.xml">Subscribe via RSS →</a>{% if site.social.bluesky %} <span class="subscribe-cta-sep">·</span> <a href="{{ site.social.bluesky }}">Follow on Bluesky →</a>{% endif %}
   </p>
 </aside>
