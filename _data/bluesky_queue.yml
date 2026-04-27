@@ -1,0 +1,80 @@
+# Bluesky post queue — drafts ready to send.
+#
+# Recommended cadence: one per day, alternating heavy MAS-series pieces with
+# Zabriskie/perspective posts so the feed stays varied for new readers.
+#
+# Workflow:
+#   1. Pick the next entry (top of the list)
+#   2. Edit the `text` if you want a different angle
+#   3. Post via the MCP `post` tool (auto-attaches OG card after the
+#      Claude Code restart that picks up the new MCP build)
+#   4. Run: python scripts/bluesky_log.py mark <post_url> --bluesky-url <bsky-url>
+#   5. Move the entry below `posted:` (or delete it)
+
+queue:
+  - post_url: https://christophermeiklejohn.com/ai/zabriskie/development/2026/04/26/spring-tour-recap.html
+    title: "Spring Tour Recap: A Month of Shipping on Zabriskie"
+    notes: "Lead Zabriskie post. Broad personality + concrete numbers. Strong second-day-after-MAS-1 pick."
+    text: |-
+      Couch-toured Goose from a Vegas hotel while at Phish at Sphere. Two live chats, two lock-screen Live Activities, two shows in two timezones. Music has never had this layer.
+
+      Goose spring tour: 14 shows, 40 friends, 3,737 chats, 309 PRs.
+
+      https://christophermeiklejohn.com/ai/zabriskie/development/2026/04/26/spring-tour-recap.html
+
+  - post_url: https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/25/mas-series-02-the-vocabulary.html
+    title: "Getting Up to Speed on Multi-Agent Systems, Part 2: The Vocabulary"
+    notes: "Continues the series. Hook = 'reading without vocab is hopeless.'"
+    text: |-
+      Reading multi-agent systems papers without the shared vocabulary is hopeless. Three surveys did the consolidation. Part 2 of the series walks through them so any paper becomes legible — what it is and isn't claiming.
+
+      https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/25/mas-series-02-the-vocabulary.html
+
+  - post_url: https://christophermeiklejohn.com/ai/agents/distributed/zabriskie/2026/03/30/multi-agent-systems-have-a-distributed-systems-problem.html
+    title: "Multi-Agent Systems Have a Distributed Systems Problem"
+    notes: "Foundational. Concrete migration-collision hook. Bridges the MAS series and Zabriskie."
+    text: |-
+      Two Claude Code instances created the same migration with different schemas. Lost update — the same problem distributed databases have solved since the 1970s. Multi-agent systems have a distsys problem.
+
+      https://christophermeiklejohn.com/ai/agents/distributed/zabriskie/2026/03/30/multi-agent-systems-have-a-distributed-systems-problem.html
+
+  - post_url: https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/26/mas-series-03-wave-one.html
+    title: "Getting Up to Speed on Multi-Agent Systems, Part 3: Wave 1"
+    notes: "Names the canonical five papers. Dense but well-known names = high click rate."
+    text: |-
+      When someone says "I read the multi-agent papers," they usually mean five from 2023: CAMEL, GenAgents, ChatDev, MetaGPT, AutoGen. Part 3 walks through what each builds and where they quietly disagree.
+
+      https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/26/mas-series-03-wave-one.html
+
+  - post_url: https://christophermeiklejohn.com/ai/agents/reliability/zabriskie/2026/04/08/cursor-agents-caucus-v1.html
+    title: "Caucus V1: Cursor Background Agents and a Multi-Agent Workflow That Actually Loops"
+    notes: "Capstone Zabriskie systems post. 'Multi-agent that's actually a distsys primitive.'"
+    text: |-
+      Built a multi-agent runtime on Cursor's background agents. Permits, proofs, scope-checked merges. Most multi-agent systems are roleplay; this one's closer to a distsys primitive.
+
+      https://christophermeiklejohn.com/ai/agents/reliability/zabriskie/2026/04/08/cursor-agents-caucus-v1.html
+
+  - post_url: https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/27/mas-series-04-wave-two.html
+    title: "Getting Up to Speed on Multi-Agent Systems, Part 4: Wave 2"
+    notes: "Names the canonical wave-2 papers. Pairs with Part 3."
+    text: |-
+      Wave 1 assumed coordination was the hard problem. Wave 2 asks why it breaks. MAST documents the failure modes, MAS-FIRE injects them, Silo-Bench finds the limits of what coordination can fix. Part 4:
+
+      https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/27/mas-series-04-wave-two.html
+
+  - post_url: https://christophermeiklejohn.com/ai/engineering/2026/04/01/software-engineering-is-becoming-civil-engineering.html
+    title: "Software Engineering Is Becoming Civil Engineering"
+    notes: "Most quotable / shareable. Best closer for the run because the take is broader."
+    text: |-
+      Civil engineering exists because in the 18th century, structural design separated from craft construction. The bridge is designed so a welder doing their job can't bring it down. Software is making that shift now.
+
+      https://christophermeiklejohn.com/ai/engineering/2026/04/01/software-engineering-is-becoming-civil-engineering.html
+
+posted:
+  - post_url: https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/24/mas-series-01-the-landscape.html
+    bluesky_url: https://bsky.app/profile/christophermeiklejohn.com/post/3mkifxam7mk2w
+    posted_on: 2026-04-27
+    text: |-
+      Wave-1 multi-agent LLM papers (2023) assumed coordination was hard because reasoning was free. Thinking models flipped that. 8-part series for engineers shipping agents — Part 1:
+
+      https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/24/mas-series-01-the-landscape.html
