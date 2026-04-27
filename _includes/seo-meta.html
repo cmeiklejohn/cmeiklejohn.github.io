@@ -35,8 +35,13 @@
 {%- comment -%} ---- Image ---- {%- endcomment -%}
 {%- if page.image -%}
   {%- assign meta_image = page.image | absolute_url -%}
+  {%- assign meta_image_is_card = true -%}
+{%- elsif page.layout == "post" -%}
+  {%- assign meta_image = "/og/" | append: page.slug | append: ".png" | absolute_url -%}
+  {%- assign meta_image_is_card = true -%}
 {%- else -%}
   {%- assign meta_image = site.default_og_image | default: "/me.jpg" | absolute_url -%}
+  {%- assign meta_image_is_card = false -%}
 {%- endif -%}
 
 {%- comment -%} ---- Type ---- {%- endcomment -%}
@@ -47,16 +52,39 @@
 {%- endif -%}
 
 {%- comment -%} ---- Twitter card variant ---- {%- endcomment -%}
-{%- assign twitter_card = page.image_card_type | default: "summary" -%}
+{%- if page.image_card_type -%}
+  {%- assign twitter_card = page.image_card_type -%}
+{%- elsif meta_image_is_card -%}
+  {%- assign twitter_card = "summary_large_image" -%}
+{%- else -%}
+  {%- assign twitter_card = "summary" -%}
+{%- endif -%}
 
 <meta name="description" content="{{ meta_description | xml_escape }}">
 <link rel="canonical" href="{{ page.url | absolute_url }}">
+{%- comment -%}
+  prev/next link tags. Jekyll's page.previous = chronologically older,
+  page.next = chronologically newer. We map "rel=prev" → older post
+  (the conventional reading direction).
+{%- endcomment -%}
+{%- if page.layout == "post" %}
+{%- if page.previous %}
+<link rel="prev" href="{{ page.previous.url | absolute_url }}">
+{%- endif %}
+{%- if page.next %}
+<link rel="next" href="{{ page.next.url | absolute_url }}">
+{%- endif %}
+{%- endif %}
 
 <meta property="og:title" content="{{ meta_title | xml_escape }}">
 <meta property="og:description" content="{{ meta_description | xml_escape }}">
 <meta property="og:type" content="{{ meta_type }}">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
 <meta property="og:image" content="{{ meta_image }}">
+{%- if meta_image_is_card %}
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+{%- endif %}
 <meta property="og:site_name" content="{{ site.name | xml_escape }}">
 {%- if page.layout == "post" %}
 <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
@@ -105,6 +133,49 @@
     "name": "{{ site.author | default: site.name }}",
     "url": "{{ person_url }}"
   }
+}
+</script>
+{%- comment -%} BreadcrumbList — gives Google a richer SERP listing. {%- endcomment -%}
+{%- assign series_meta = nil -%}
+{%- if page.series and site.data.series[page.series] -%}
+  {%- assign series_meta = site.data.series[page.series] -%}
+{%- endif -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ site.url }}/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Archive",
+      "item": "{{ site.url }}/archive.html"
+    }{% if series_meta %},
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": {{ series_meta.short_title | default: series_meta.title | jsonify }},
+      "item": "{{ site.url }}{{ series_meta.landing_url }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": {{ page.title | jsonify }},
+      "item": "{{ page.url | absolute_url }}"
+    }{% else %},
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": {{ page.title | jsonify }},
+      "item": "{{ page.url | absolute_url }}"
+    }{% endif %}
+  ]
 }
 </script>
 {%- else %}

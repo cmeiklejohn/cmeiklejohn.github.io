@@ -1305,6 +1305,78 @@ html {
 }
 
 /*****************************************************************************/
+/* Chronological newer/older post nav (non-series posts)
+/*****************************************************************************/
+
+.post-nav {
+  margin: 2.5rem 0 1rem;
+  font-family: var(--font-ui);
+}
+
+.post-nav-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.post-nav-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.85rem 1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--fg);
+  transition: border-color 120ms ease;
+}
+
+.post-nav-card:hover {
+  border-color: var(--brand);
+}
+
+.post-nav-card.post-nav-newer {
+  text-align: right;
+}
+
+.post-nav-card.post-nav-empty {
+  background: transparent;
+  border: 1px dashed var(--border);
+  visibility: hidden;
+}
+
+.post-nav-direction {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--fg-muted);
+}
+
+.post-nav-title {
+  font-size: 0.95rem;
+  color: var(--fg-heading);
+  font-weight: 600;
+}
+
+.post-nav-card:hover .post-nav-title {
+  color: var(--link-hover);
+}
+
+@media (max-width: 600px) {
+  .post-nav-row {
+    grid-template-columns: 1fr;
+  }
+  .post-nav-card.post-nav-newer {
+    text-align: left;
+  }
+  .post-nav-card.post-nav-empty {
+    display: none;
+  }
+}
+
+/*****************************************************************************/
 /* Related posts ("More on this topic") footer
 /*****************************************************************************/
 

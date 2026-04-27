@@ -1,0 +1,31 @@
+{%- comment -%}
+  Generic chronological prev/next navigation, rendered at the bottom of any
+  post that is NOT in a series (series posts get series-prev-next.html instead).
+
+  Jekyll's page.previous = chronologically older post,
+           page.next     = chronologically newer post.
+{%- endcomment -%}
+
+{%- if page.previous or page.next -%}
+<nav class="post-nav" aria-label="Posts by date">
+  <div class="post-nav-row">
+    {%- if page.previous -%}
+      <a class="post-nav-card post-nav-older" href="{{ page.previous.url }}">
+        <span class="post-nav-direction">← Older post</span>
+        <span class="post-nav-title">{{ page.previous.title }}</span>
+      </a>
+    {%- else -%}
+      <span class="post-nav-card post-nav-empty" aria-hidden="true"></span>
+    {%- endif -%}
+
+    {%- if page.next -%}
+      <a class="post-nav-card post-nav-newer" href="{{ page.next.url }}">
+        <span class="post-nav-direction">Newer post →</span>
+        <span class="post-nav-title">{{ page.next.title }}</span>
+      </a>
+    {%- else -%}
+      <span class="post-nav-card post-nav-empty" aria-hidden="true"></span>
+    {%- endif -%}
+  </div>
+</nav>
+{%- endif -%}

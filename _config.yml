@@ -11,4 +11,6 @@ social:
   bluesky: https://bsky.app/profile/cmeik.bsky.social
 
 highlighter: rouge
-exclude: [vendor]
+exclude: [vendor, scripts]
+include:
+  - .well-known
