@@ -10,4 +10,9 @@
 # Commit this file alongside the share — it's the source of truth for
 # which evergreen posts are due for another rotation.
 
-shared: {}
+shared:
+  /ai/agents/mas-series/2026/04/24/mas-series-01-the-landscape.html:
+    bluesky_url: https://bsky.app/profile/christophermeiklejohn.com/post/3mkifncf7gt2b
+    first_shared: '2026-04-27'
+    last_shared: '2026-04-27'
+    times: 1
