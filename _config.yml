@@ -8,7 +8,7 @@ default_og_image: /me.jpg
 # Profile URLs across the web. Used for JSON-LD sameAs and the site nav.
 social:
   github: https://github.com/cmeiklejohn
-  bluesky: https://bsky.app/profile/cmeik.bsky.social
+  bluesky: https://bsky.app/profile/christophermeiklejohn.com
 
 highlighter: rouge
 exclude: [vendor, scripts]
