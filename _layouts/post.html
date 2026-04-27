@@ -16,6 +16,8 @@ layout: default
 
   {% if page.series %}
     {% include series-prev-next.html %}
+  {% else %}
+    {% include post-nav.html %}
   {% endif %}
 
   {% include related-posts.html %}

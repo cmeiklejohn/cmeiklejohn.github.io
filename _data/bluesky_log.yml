@@ -1,0 +1,13 @@
+# Tracks when each blog post was last shared on Bluesky.
+#
+# Updated by:
+#   python scripts/bluesky_log.py mark <post-url> [--bluesky-url <bsky-url>]
+#
+# Queried by:
+#   python scripts/bluesky_log.py status [--group <group>]
+#   python scripts/bluesky_log.py next   [--group <group>]
+#
+# Commit this file alongside the share — it's the source of truth for
+# which evergreen posts are due for another rotation.
+
+shared: {}
