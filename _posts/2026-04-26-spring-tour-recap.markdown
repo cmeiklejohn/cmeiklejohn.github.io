@@ -178,7 +178,9 @@ So mid-tour we just stopped waiting. If you're at the show, type the song into t
 
 People watching from home love to try to guess the next song from the opening notes. You hear a couple of bars on the stream, you blurt out "MADHUVAN!", you're either a hero or you wait six seconds and pretend you didn't say anything. Until this tour the only place to do that was a group text or whoever happened to be in the room with you.
 
-This was the feature I was most nervous to ship and most happy we did. During a live show, you can now call the next song inside the app. There's a 📣 chip on the current-song strip; tap it, type the song you think comes next, and the app fuzzy-matches against the band's catalog (so "atlas" picks up "Atlas Dogs"). Submit, and a pending pill drops below the strip. If the song you called actually plays, you get a green ✓ YOU CALLED IT pill with a confetti burst. Misses fade quietly. There's a per-show leaderboard so you can see who's hot tonight, but deliberately no global all-time ranking. We thought about this carefully. The minute you ship a season-long leaderboard, the app starts becoming a Fantasy Music game where the goal is to win, and that pulls everything toward optimization, sweat, and people gaming the call window instead of just enjoying the show together. The ranking lives inside the show and ends with the show. Community first, scoreboard second:
+This was the feature I was most nervous to ship and most happy we did. During a live show, you can now call the next song inside the app. There's a 📣 chip on the current-song strip; tap it, type the song you think comes next, and the app fuzzy-matches against the band's catalog (so "atlas" picks up "Atlas Dogs"). Submit, and a pending pill drops below the strip. If the song you called actually plays, you get a green ✓ YOU CALLED IT pill with a confetti burst. Misses fade quietly. There's a per-show leaderboard so you can see who's hot tonight, but deliberately no global all-time ranking.
+
+This is one of the load-bearing design principles of the whole app, so it's worth stating plainly: **we are not building Fantasy Music.** The minute you ship a season-long leaderboard, the gravitational pull of the product changes. The goal becomes winning. People start optimizing their calls, gaming the window, refreshing for stats, treating the show as input to a meta-game played somewhere outside of it. The community shrinks into a competition. We've watched this happen to every adjacent product that started as a fan tool and ended up as a points engine, and we don't want any part of it. The leaderboard exists, because the celebration of a correct call is part of the fun, but it lives inside the show and ends with the show. Community first, scoreboard second. Every feature in this app gets evaluated against that line:
 
 <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin:18px auto;">
   <div style="background:#F5F2EB; border-radius:18px; box-shadow:0 6px 20px rgba(0,0,0,0.08); padding:14px 16px; flex:0 0 auto; max-width:340px; font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif; color:#262626;">
@@ -293,36 +295,36 @@ Tap any of those purple `🎵` song pills and a stat sheet slides up. Last time 
 
     <div style="padding:18px 16px 6px;">
       <div style="display:inline-block; font-size:9px; font-weight:800; letter-spacing:0.08em; color:#fff; background:#059669; padding:3px 8px; border-radius:999px; text-transform:uppercase;">Rare</div>
-      <div style="font-size:24px; font-weight:800; margin-top:8px; line-height:1.1;">Atlas Dogs</div>
-      <div style="font-size:11px; color:#6B7280; margin-top:2px;">Goose · 31 lifetime plays</div>
+      <div style="font-size:24px; font-weight:800; margin-top:8px; line-height:1.1;">Factory Fiction</div>
+      <div style="font-size:11px; color:#6B7280; margin-top:2px;">Goose · 27 lifetime plays</div>
     </div>
 
     <div style="padding:8px 16px 8px;">
       <div style="padding:10px 12px; background:linear-gradient(135deg,#EC4899 0%,#db2777 100%); color:#fff; border-radius:12px; display:flex; align-items:center; gap:8px;">
-        <span style="font-size:18px;">🪿</span>
-        <div style="flex:1;"><div style="font-size:13px; font-weight:700;">You've caught Atlas Dogs live 3 times</div><div style="font-size:10px; opacity:0.85;">last at 4/22 · Saenger, NOLA · counts toward your stats</div></div>
+        <span style="font-size:18px;">🎯</span>
+        <div style="flex:1;"><div style="font-size:13px; font-weight:700;">You've never caught Factory Fiction live</div><div style="font-size:10px; opacity:0.85;">on your wishlist · 8 fans called it this tour, none landed</div></div>
       </div>
     </div>
 
     <div style="padding:0 16px 14px; display:grid; grid-template-columns:1fr 1fr; gap:8px;">
       <div style="background:#fff; padding:10px 12px; border-radius:10px;">
         <div style="font-size:9px; font-weight:700; letter-spacing:0.05em; color:#6B7280; text-transform:uppercase;">Last played</div>
-        <div style="font-size:15px; font-weight:800; margin-top:2px;">4/22/26</div>
-        <div style="font-size:10px; color:#6B7280;">Saenger, NOLA</div>
+        <div style="font-size:15px; font-weight:800; margin-top:2px;">12/13/25</div>
+        <div style="font-size:10px; color:#6B7280;">Goosemas · Hampton</div>
       </div>
       <div style="background:#fff; padding:10px 12px; border-radius:10px;">
         <div style="font-size:9px; font-weight:700; letter-spacing:0.05em; color:#6B7280; text-transform:uppercase;">Show gap</div>
-        <div style="font-size:15px; font-weight:800; margin-top:2px;">2 shows</div>
+        <div style="font-size:15px; font-weight:800; margin-top:2px;">14 shows</div>
         <div style="font-size:10px; color:#6B7280;">since last play</div>
       </div>
       <div style="background:#fff; padding:10px 12px; border-radius:10px;">
         <div style="font-size:9px; font-weight:700; letter-spacing:0.05em; color:#6B7280; text-transform:uppercase;">FTP</div>
-        <div style="font-size:15px; font-weight:800; margin-top:2px;">Aug 13, 2022</div>
-        <div style="font-size:10px; color:#6B7280;">Marymoor Park, WA</div>
+        <div style="font-size:15px; font-weight:800; margin-top:2px;">Oct 9, 2016</div>
+        <div style="font-size:10px; color:#6B7280;">The Hartford, CT</div>
       </div>
       <div style="background:#fff; padding:10px 12px; border-radius:10px;">
         <div style="font-size:9px; font-weight:700; letter-spacing:0.05em; color:#6B7280; text-transform:uppercase;">All-time plays</div>
-        <div style="font-size:15px; font-weight:800; margin-top:2px;">31</div>
+        <div style="font-size:15px; font-weight:800; margin-top:2px;">27</div>
         <div style="font-size:10px; color:#6B7280;">across all tours</div>
       </div>
     </div>
@@ -330,7 +332,7 @@ Tap any of those purple `🎵` song pills and a stat sheet slides up. Last time 
     <div style="padding:0 16px 16px;">
       <div style="padding:8px 12px; background:rgba(139,92,246,0.10); border-radius:10px; font-size:11px; color:#5b21b6; display:flex; align-items:center; gap:8px;">
         <span style="font-size:14px;">👀</span>
-        <span><strong>1 person in chomp</strong> was at this song's FTP. Tap to see who.</span>
+        <span><strong>0 people in chomp</strong> were at this song's FTP. (It was a 2016 small-club show, before most of us found the band.)</span>
       </div>
     </div>
   </div>
@@ -531,6 +533,8 @@ Each matchup card has an inline audio player for each side, since you obviously 
 </div>
 
 The community is voting now.
+
+The reason the bracket matters more than it might first appear is that the gap between tours is where most music apps die. The tour ends, the chat empties out, the lock-screen Live Activity goes dark, and people drift back to their normal feeds until the next run is announced. The jam tournament is a deliberate counter to that. Voting runs across multiple weeks, the rounds release on a schedule, and every matchup card pulls a real audio clip from a real show people went to, so listening to the bracket is also re-listening to the tour. The conversation in the chat doesn't end when the lights come up in Irving. It keeps going through Round of 16, Quarters, Semis, Final, and by the time we crown a Jam of the Tour, the next run is already on the calendar and the muscle memory of opening the app every day is intact. The bracket is the bridge.
 
 The "all bands" UX got a final shape today too: the band dropdown collapsed into a BANDS card on Tour Stats, the All Bands directory got tuned-in count parity with band pages, Dead & Company switched to a "📜 Setlist archive" tour-status because they're done touring, Billy Strings got a full historical import and a live setlist source, and a bunch of polish on Tour Completion, soundcheck-row dedup, encore-vs-Set-3 labeling, miracle ticket cards, and the rest of the long tail.
 
