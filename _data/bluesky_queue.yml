@@ -12,13 +12,21 @@
 #   5. Move the entry below `posted:` (or delete it)
 
 queue:
+  - post_url: https://christophermeiklejohn.com/ai/zabriskie/community/2026/03/08/why-im-building-zabriskie.html
+    title: "Why I'm Building Zabriskie"
+    notes: "Origin story. Sets the 'third place' frame for new readers."
+    text: |-
+      Sociology has a "third place" — not home, not work, but where you find your people. Coffee shops, record stores, post-show bars. Live music has lost most. Zabriskie is one attempt to bring one back.
+
+      https://christophermeiklejohn.com/ai/zabriskie/community/2026/03/08/why-im-building-zabriskie.html
+
   - post_url: https://christophermeiklejohn.com/ai/zabriskie/development/2026/04/26/spring-tour-recap.html
     title: "Spring Tour Recap: A Month of Shipping on Zabriskie"
-    notes: "Lead Zabriskie post. Broad personality + concrete numbers. Strong second-day-after-MAS-1 pick."
+    notes: "Recent shipping recap. Concrete numbers, strong personality."
     text: |-
-      Couch-toured Goose from a Vegas hotel while at Phish at Sphere. Two live chats, two lock-screen Live Activities, two shows in two timezones. Music has never had this layer.
+      Couch-toured Goose from Vegas while at Phish at Sphere. Two live chats, two Live Activities. Music has never had this layer.
 
-      Goose spring tour: 14 shows, 40 friends, 3,737 chats, 309 PRs.
+      14 shows. 40 friends. 3,737 chats. 309 PRs.
 
       https://christophermeiklejohn.com/ai/zabriskie/development/2026/04/26/spring-tour-recap.html
 
@@ -26,7 +34,7 @@ queue:
     title: "Getting Up to Speed on Multi-Agent Systems, Part 2: The Vocabulary"
     notes: "Continues the series. Hook = 'reading without vocab is hopeless.'"
     text: |-
-      Reading multi-agent systems papers without the shared vocabulary is hopeless. Three surveys did the consolidation. Part 2 of the series walks through them so any paper becomes legible — what it is and isn't claiming.
+      Reading multi-agent papers without the shared vocabulary is hopeless. Three surveys did the consolidation. Part 2 walks through them so any paper becomes legible — what it is and isn't claiming.
 
       https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/25/mas-series-02-the-vocabulary.html
 
@@ -34,7 +42,7 @@ queue:
     title: "Multi-Agent Systems Have a Distributed Systems Problem"
     notes: "Foundational. Concrete migration-collision hook. Bridges the MAS series and Zabriskie."
     text: |-
-      Two Claude Code instances created the same migration with different schemas. Lost update — the same problem distributed databases have solved since the 1970s. Multi-agent systems have a distsys problem.
+      Two Claude Code instances stepped on each other's database migrations. A lost update from the 1970s, replayed in 2025.
 
       https://christophermeiklejohn.com/ai/agents/distributed/zabriskie/2026/03/30/multi-agent-systems-have-a-distributed-systems-problem.html
 
@@ -64,11 +72,19 @@ queue:
 
   - post_url: https://christophermeiklejohn.com/ai/engineering/2026/04/01/software-engineering-is-becoming-civil-engineering.html
     title: "Software Engineering Is Becoming Civil Engineering"
-    notes: "Most quotable / shareable. Best closer for the run because the take is broader."
+    notes: "Most quotable / shareable. Broad take that pairs naturally with the next entry."
     text: |-
-      Civil engineering exists because in the 18th century, structural design separated from craft construction. The bridge is designed so a welder doing their job can't bring it down. Software is making that shift now.
+      Civil engineering separated structural design from craft 250 years ago. Bridges are designed so a welder doing their job can't bring them down. Software is making that shift now.
 
       https://christophermeiklejohn.com/ai/engineering/2026/04/01/software-engineering-is-becoming-civil-engineering.html
+
+  - post_url: https://christophermeiklejohn.com/ai/verification/zabriskie/agents/2026/04/09/the-structural-engineers-other-job.html
+    title: "The Structural Engineer's Other Job"
+    notes: "Direct sequel to the Civil Engineering post — concrete bug taxonomy."
+    text: |-
+      Test passed. Review passed. Feature half-works. AI-generated code makes the structural engineer's other job — keeping the system robust to builders following directions — central.
+
+      https://christophermeiklejohn.com/ai/verification/zabriskie/agents/2026/04/09/the-structural-engineers-other-job.html
 
 posted:
   - post_url: https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/24/mas-series-01-the-landscape.html
