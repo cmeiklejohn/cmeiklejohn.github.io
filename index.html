@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Christopher Meiklejohn
+description: "Christopher Meiklejohn — Ph.D., Software Engineering (CMU). Notes on multi-agent systems, distributed computing, fault injection, and the engineering practice of shipping research."
 ---
 
 <div id="home">
@@ -11,8 +12,8 @@ title: Christopher Meiklejohn
   </p>
 
   <section class="archive-section home-series-section" aria-labelledby="home-series-heading">
-    <h2 id="home-series-heading" class="home-section-title archive-section-heading">Series · Getting Up to Speed on Multi-Agent Systems</h2>
-    <p class="archive-section-intro">A short series mapping the multi-agent LLM literature for readers coming in fresh. Published over the next week and a half.</p>
+    <h2 id="home-series-heading" class="home-section-title archive-section-heading"><a href="/series/multi-agent-systems/">Series · Getting Up to Speed on Multi-Agent Systems</a></h2>
+    <p class="archive-section-intro">A short series mapping the multi-agent LLM literature for readers coming in fresh. Published over the next week and a half. <a href="/series/multi-agent-systems/">Series overview →</a></p>
     <ul class="posts">
       {% assign mas_posts = site.posts | where: "series", "mas" | sort: "date" %}
       {% for post in mas_posts %}

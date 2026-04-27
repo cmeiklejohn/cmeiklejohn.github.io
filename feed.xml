@@ -8,7 +8,7 @@ layout: null
 		<description>{{ site.description }}</description>
 		<link>{{ site.url }}</link>
 		<atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml" />
-		{% for post in site.posts limit:10 %}
+		{% for post in site.posts limit:50 %}
 			<item>
 				<title>{{ post.title | xml_escape }}{% if post.subtitle %} · {{ post.subtitle | xml_escape }}{% endif %}</title>
 				<description>{{ post.content | xml_escape }}</description>

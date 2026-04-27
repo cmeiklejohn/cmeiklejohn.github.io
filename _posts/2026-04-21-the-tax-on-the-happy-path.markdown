@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "The Tax on the Happy Path"
+subtitle: "What I learned by removing the elaborate CI gate I'd built to slow my AI agents down — after realizing it had never actually caught anything."
 date:   2026-04-21 00:00:00 -0000
 group: ai
 categories: ai zabriskie agents reliability caucus

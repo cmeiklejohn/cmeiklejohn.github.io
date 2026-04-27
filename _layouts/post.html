@@ -13,4 +13,12 @@ layout: default
   <div id="post">
 {{ content }}
   </div>
+
+  {% if page.series %}
+    {% include series-prev-next.html %}
+  {% endif %}
+
+  {% include related-posts.html %}
+
+  {% include subscribe.html %}
 </article>

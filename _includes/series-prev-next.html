@@ -1,0 +1,75 @@
+{%- comment -%}
+  Generic previous/next series navigation, rendered at the bottom of any
+  post that has `series: <slug>` in frontmatter.
+
+  Reads:
+    - site.data.series[<slug>]            — series-level metadata
+    - site.data[<slug>_series]            — ordered list of posts
+
+  Quietly renders nothing if the post isn't found in the ordered list,
+  so a stray `series: foo` in frontmatter won't blow up the build.
+{%- endcomment -%}
+
+{%- assign series_meta = site.data.series[page.series] -%}
+{%- assign series_data_key = page.series | append: "_series" -%}
+{%- assign series_list = site.data[series_data_key] -%}
+
+{%- assign current_index = -1 -%}
+{%- for entry in series_list -%}
+  {%- if entry.url == page.url -%}
+    {%- assign current_index = forloop.index0 -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if current_index >= 0 -%}
+  {%- assign published_urls = site.posts | where: "series", page.series | map: "url" -%}
+  {%- assign total = series_list.size -%}
+  {%- assign part_num = current_index | plus: 1 -%}
+
+  <nav class="series-prev-next" aria-label="Series navigation">
+    <div class="series-prev-next-meta">
+      {%- if series_meta.landing_url -%}
+        <a href="{{ series_meta.landing_url }}">{{ series_meta.short_title | default: series_meta.title }}</a>
+      {%- else -%}
+        {{ series_meta.short_title | default: series_meta.title }}
+      {%- endif -%}
+      <span class="series-prev-next-meta-sep"> · </span>Part {{ part_num }} of {{ total }}
+    </div>
+    <div class="series-prev-next-row">
+      {%- if current_index > 0 -%}
+        {%- assign prev_index = current_index | minus: 1 -%}
+        {%- assign prev = series_list[prev_index] -%}
+        <a class="series-prev-next-card series-prev" href="{{ prev.url }}">
+          <span class="series-prev-next-direction">← Previous</span>
+          <span class="series-prev-next-title">{{ prev.title }}</span>
+        </a>
+      {%- else -%}
+        <span class="series-prev-next-card series-prev-next-empty" aria-hidden="true"></span>
+      {%- endif -%}
+
+      {%- assign next_index = current_index | plus: 1 -%}
+      {%- if next_index < total -%}
+        {%- assign next = series_list[next_index] -%}
+        {%- assign next_published = false -%}
+        {%- for u in published_urls -%}
+          {%- if u == next.url -%}{%- assign next_published = true -%}{%- break -%}{%- endif -%}
+        {%- endfor -%}
+        {%- if next_published -%}
+          <a class="series-prev-next-card series-next" href="{{ next.url }}">
+            <span class="series-prev-next-direction">Next →</span>
+            <span class="series-prev-next-title">{{ next.title }}</span>
+          </a>
+        {%- else -%}
+          <span class="series-prev-next-card series-next series-prev-next-pending">
+            <span class="series-prev-next-direction">Next →</span>
+            <span class="series-prev-next-title">{{ next.title }}</span>
+            <span class="series-prev-next-date">publishes {{ next.date | date: "%B %-d" }}</span>
+          </span>
+        {%- endif -%}
+      {%- else -%}
+        <span class="series-prev-next-card series-prev-next-empty" aria-hidden="true"></span>
+      {%- endif -%}
+    </div>
+  </nav>
+{%- endif -%}

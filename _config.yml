@@ -1,5 +1,14 @@
 name: Christopher Meiklejohn
-description: Christopher Meiklejohn
-url: http://christophermeiklejohn.com
+description: Notes on multi-agent systems, distributed computing, fault injection, and the engineering practice of shipping research. By Christopher Meiklejohn.
+short_description: Christopher Meiklejohn — notes on multi-agent systems, distributed computing, and shipping research.
+url: https://christophermeiklejohn.com
+author: Christopher Meiklejohn
+default_og_image: /me.jpg
+
+# Profile URLs across the web. Used for JSON-LD sameAs and the site nav.
+social:
+  github: https://github.com/cmeiklejohn
+  bluesky: https://bsky.app/profile/cmeik.bsky.social
+
 highlighter: rouge
 exclude: [vendor]

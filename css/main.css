@@ -476,7 +476,7 @@ code {
   outline-offset: 2px;
 }
 
-.site-nav-github {
+.site-nav-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -484,11 +484,11 @@ code {
   line-height: 1;
 }
 
-.site-nav-github:hover {
+.site-nav-icon:hover {
   color: var(--link);
 }
 
-.site-nav-github-icon {
+.site-nav-icon-svg {
   display: block;
   width: 1.15rem;
   height: 1.15rem;
@@ -1302,4 +1302,174 @@ html {
 
 .home-series-section ul.posts li {
   border-bottom-color: var(--border-strong);
+}
+
+/*****************************************************************************/
+/* Related posts ("More on this topic") footer
+/*****************************************************************************/
+
+.related-posts {
+  margin: 2.5rem 0 1rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-ui);
+}
+
+.related-posts-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--fg-muted);
+  margin: 0 0 0.85rem;
+}
+
+.related-posts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
+}
+
+.related-posts-link {
+  display: block;
+  padding: 0.75rem 1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--fg);
+  transition: border-color 120ms ease;
+}
+
+.related-posts-link:hover {
+  border-color: var(--brand);
+}
+
+.related-posts-date {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--fg-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 0.15rem;
+}
+
+.related-posts-title {
+  display: block;
+  font-family: var(--font-text);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--fg-heading);
+  line-height: 1.3;
+}
+
+.related-posts-link:hover .related-posts-title {
+  color: var(--link-hover);
+}
+
+.related-posts-subtitle {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--fg-muted);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+/*****************************************************************************/
+/* Email subscribe (Buttondown embed)
+/*****************************************************************************/
+
+.subscribe {
+  margin: 2.5rem 0 1rem;
+  padding: 1.25rem 1.4rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-ui);
+}
+
+.subscribe-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--brand);
+  margin: 0 0 0.35rem;
+}
+
+.subscribe-blurb {
+  margin: 0 0 0.85rem;
+  color: var(--fg-muted);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.subscribe-cta {
+  margin: 0;
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.subscribe-cta a {
+  color: var(--brand);
+  text-decoration: none;
+}
+
+.subscribe-cta a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.subscribe-form input[type="email"] {
+  flex: 1;
+  min-width: 0;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 5px;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.subscribe-form input[type="email"]:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--selection-bg);
+}
+
+.subscribe-form button {
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--brand);
+  border-radius: 5px;
+  background: var(--brand);
+  color: var(--bg);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.subscribe-form button:hover {
+  background: var(--link-hover);
+  border-color: var(--link-hover);
+}
+
+@media (max-width: 480px) {
+  .subscribe-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Opt-In Isn't a Guardrail"
+subtitle: "A CI gate I built to slow AI agents down passed every paperwork check, missed every real bug, and blocked the rollback during a production outage."
 date:   2026-04-14 00:00:00 -0000
 group: ai
 categories: ai zabriskie agents reliability caucus

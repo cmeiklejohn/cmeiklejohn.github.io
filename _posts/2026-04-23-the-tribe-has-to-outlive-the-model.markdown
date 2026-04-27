@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "The Tribe Has to Outlive the Model"
+subtitle: "Five model swaps in three weeks taught me the project's continuity lives in the humans and conventions around the agents, not the agents themselves."
 date:   2026-04-23 00:00:00 -0000
 group: ai
 categories: ai zabriskie agents reliability

@@ -1,0 +1,39 @@
+{%- comment -%}
+  "More on this topic" — shows up to 5 sibling posts that share the
+  current post's `group:` (the user's coarse topic field). Excludes the
+  current post and any other post in the same series, since those are
+  already linked via the series prev/next.
+
+  Renders nothing if there are no siblings, or if the current post has
+  no `group:` set.
+{%- endcomment -%}
+
+{%- if page.group -%}
+  {%- assign sibling_posts = site.posts | where: "group", page.group | sort: "date" | reverse -%}
+  {%- assign related = "" | split: "" -%}
+  {%- for p in sibling_posts -%}
+    {%- if p.url == page.url -%}{%- continue -%}{%- endif -%}
+    {%- if page.series and p.series == page.series -%}{%- continue -%}{%- endif -%}
+    {%- assign related = related | push: p -%}
+    {%- if related.size >= 5 -%}{%- break -%}{%- endif -%}
+  {%- endfor -%}
+
+  {%- if related.size > 0 -%}
+    <aside class="related-posts" aria-labelledby="related-heading">
+      <p id="related-heading" class="related-posts-label">More on this topic</p>
+      <ul class="related-posts-list">
+        {%- for p in related -%}
+          <li>
+            <a class="related-posts-link" href="{{ p.url }}">
+              <span class="related-posts-date">{{ p.date | date: "%b %-d, %Y" }}</span>
+              <span class="related-posts-title">{{ p.title }}</span>
+              {%- if p.subtitle -%}
+                <span class="related-posts-subtitle">{{ p.subtitle }}</span>
+              {%- endif -%}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </aside>
+  {%- endif -%}
+{%- endif -%}
