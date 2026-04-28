@@ -22,9 +22,7 @@
         <meta name="theme-color" content="#f5f4f1" media="(prefers-color-scheme: light)">
         <meta name="theme-color" content="#18181c" media="(prefers-color-scheme: dark)">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+        <!-- Self-hosted fonts (declarations in main.css) -->
 
         <!-- syntax highlighting CSS -->
         <link rel="stylesheet" href="/css/syntax.css">
@@ -36,17 +34,19 @@
         <link rel="stylesheet" href="/css/mas-series.css">
         {% endif %}
 
+        <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.url }}/feed.xml">
+
+        {% if page.math %}
         <script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
         </script>
+        <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        {% endif %}
 
-        <script type="text/javascript"
-                src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-        </script>
-
-        <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.url }}/feed.xml">
+        {% if page.tikz %}
         <link rel="stylesheet" type="text/css" href="https://tikzjax.com/v1/fonts.css">
         <script src="https://tikzjax.com/v1/tikzjax.js"></script>
+        {% endif %}
     </head>
     <body>
 
