@@ -769,7 +769,7 @@ code {
 }
 
 /* Top-level lists on static pages */
-.page #post > ul {
+.page #post > ul:not(.topic-landing-projects) {
   list-style: none;
   margin-left: 0;
   padding-left: 0;
@@ -777,7 +777,7 @@ code {
 }
 
 /* Match body typography (avoid 1rem vs body 17px root mismatch) */
-.page #post > ul > li {
+.page #post > ul:not(.topic-landing-projects) > li {
   border-bottom: 1px solid var(--border);
   padding-bottom: 0.85rem;
   margin-bottom: 0.85rem;
@@ -787,7 +787,7 @@ code {
   color: var(--fg);
 }
 
-.page #post > ul > li:last-child {
+.page #post > ul:not(.topic-landing-projects) > li:last-child {
   border-bottom: none;
   padding-bottom: 0;
   margin-bottom: 0;
