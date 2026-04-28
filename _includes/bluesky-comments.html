@@ -1,0 +1,34 @@
+{%- comment -%}
+  Bluesky comments — renders the thread of replies to a Bluesky post that
+  shared this blog post.
+
+  Looks up the bluesky_url stored in _data/bluesky_log.yml (under
+  shared.{page.url}.bluesky_url), extracts the rkey, and builds an at://
+  URI using site.bluesky_did. Client-side JS (assets/js/bluesky-comments.js)
+  fetches the thread from public.api.bsky.app and renders replies inline.
+
+  Renders nothing if the post hasn't been shared on Bluesky yet.
+{%- endcomment -%}
+
+{%- assign bsky_log = site.data.bluesky_log.shared[page.url] -%}
+{%- if bsky_log and bsky_log.bluesky_url and site.bluesky_did -%}
+  {%- assign rkey = bsky_log.bluesky_url | split: "/post/" | last -%}
+  {%- assign bsky_at_uri = "at://" | append: site.bluesky_did | append: "/app.bsky.feed.post/" | append: rkey -%}
+  <section
+    class="bsky-comments"
+    aria-labelledby="bsky-comments-heading"
+    data-bsky-uri="{{ bsky_at_uri }}"
+    data-bsky-url="{{ bsky_log.bluesky_url }}"
+  >
+    <header class="bsky-comments-header">
+      <h2 id="bsky-comments-heading" class="bsky-comments-heading">Discussion on Bluesky</h2>
+      <p class="bsky-comments-subhead">
+        Replies to <a href="{{ bsky_log.bluesky_url }}" rel="external">this post on Bluesky</a> appear below. Reply there to join the conversation.
+      </p>
+    </header>
+    <div class="bsky-comments-body">
+      <p class="bsky-comments-loading">Loading discussion…</p>
+    </div>
+  </section>
+  <script src="/assets/js/bluesky-comments.js" defer></script>
+{%- endif -%}

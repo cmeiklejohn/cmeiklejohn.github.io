@@ -10,6 +10,10 @@ social:
   github: https://github.com/cmeiklejohn
   bluesky: https://bsky.app/profile/christophermeiklejohn.com
 
+# Bluesky DID — used by the bluesky-comments embed to construct at:// URIs
+# from the bsky.app URLs stored in _data/bluesky_log.yml.
+bluesky_did: did:plc:rz6tddfmmh2c6jind64mc6lw
+
 highlighter: rouge
 exclude: [vendor, scripts]
 include:
