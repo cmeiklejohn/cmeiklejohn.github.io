@@ -28,7 +28,7 @@ permalink: /distributed-systems/
 <aside class="related-posts" aria-label="Distributed systems posts">
   <p class="related-posts-label">All distributed-systems posts</p>
   <ul class="related-posts-list">
-    {%- assign distsys_groups = "SyncFree,Partisan,vvclocks,filibuster,filibuster-2,pl,Serverless,Macrometa" | split: "," -%}
+    {%- assign distsys_groups = "SyncFree,Partisan,vvclocks,filibuster,filibuster-2,pl,Serverless,Macrometa,lasp" | split: "," -%}
     {%- assign distsys_posts = site.posts | where_exp: "p", "distsys_groups contains p.group" | sort: "date" | reverse -%}
     {%- for post in distsys_posts -%}
       <li>
