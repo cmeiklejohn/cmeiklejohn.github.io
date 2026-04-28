@@ -1451,6 +1451,200 @@ html {
 }
 
 /*****************************************************************************/
+/* Bluesky comments — replies to the Bluesky post that shared this article
+/*****************************************************************************/
+
+.bsky-comments {
+  margin: 2.5rem 0 1rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-ui);
+}
+
+.bsky-comments-header {
+  margin-bottom: 1.1rem;
+}
+
+.bsky-comments-heading {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--brand);
+  margin: 0 0 0.4rem;
+}
+
+.bsky-comments-subhead {
+  margin: 0;
+  color: var(--fg-muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.bsky-comments-loading,
+.bsky-comments-empty,
+.bsky-comments-error {
+  color: var(--fg-muted);
+  font-size: 0.92rem;
+  font-style: italic;
+  margin: 0.75rem 0 0;
+}
+
+.bsky-comments-summary {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--fg-muted);
+  margin: 0 0 0.85rem;
+}
+
+.bsky-comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+}
+
+.bsky-comment {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 0.65rem;
+  padding: 0.7rem 0.85rem 0.7rem 0.7rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.bsky-comment-avatar-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.bsky-comment-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: block;
+  background: var(--bg);
+  flex-shrink: 0;
+}
+
+.bsky-comment-avatar.bsky-comment-avatar-fallback {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+}
+
+.bsky-comment-content {
+  min-width: 0;
+}
+
+.bsky-comment-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.88rem;
+}
+
+.bsky-comment-name {
+  font-weight: 600;
+  color: var(--fg-heading);
+  text-decoration: none;
+}
+
+.bsky-comment-name:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.bsky-comment-handle {
+  color: var(--fg-muted);
+  font-size: 0.82rem;
+}
+
+.bsky-comment-time {
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.bsky-comment-time:hover {
+  text-decoration: underline;
+}
+
+.bsky-comment-body {
+  color: var(--fg);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.bsky-comment-body a {
+  color: var(--link);
+}
+
+.bsky-comment-meta {
+  margin-top: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--fg-muted);
+}
+
+.bsky-comment-replies {
+  grid-column: 2;
+  margin-top: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  border-left: 2px solid var(--border);
+  padding-left: 0.85rem;
+}
+
+.bsky-comment-replies .bsky-comment {
+  /* Nested replies use a flatter look. */
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 0.6rem 0.7rem 0.6rem 0.6rem;
+}
+
+.bsky-comments-footer {
+  margin: 1rem 0 0;
+  font-size: 0.88rem;
+}
+
+.bsky-comments-footer a {
+  color: var(--brand);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.bsky-comments-footer a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .bsky-comment-time {
+    margin-left: 0;
+    flex-basis: 100%;
+  }
+  .bsky-comment-replies {
+    padding-left: 0.6rem;
+  }
+}
+
+/*****************************************************************************/
 /* Email subscribe (Buttondown embed)
 /*****************************************************************************/
 
