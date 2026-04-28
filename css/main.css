@@ -1,4 +1,85 @@
 /*****************************************************************************/
+/* Self-hosted fonts (formerly via Google Fonts CDN)
+/*
+/* Source files live in /fonts/. Pulled from googlefonts/literata,
+/* Outfitio/Outfit-Fonts, JetBrains/JetBrainsMono. To add or refresh fonts,
+/* see scripts/generate_og_images.py for the same family list.
+/*****************************************************************************/
+
+@font-face {
+  font-family: "Literata";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Literata-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Literata";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Literata-Italic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Literata";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/Literata-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Literata";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Literata-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Outfit-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/Outfit-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/Outfit-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Outfit-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/JetBrainsMono-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/JetBrainsMono-Medium.ttf") format("truetype");
+}
+
+/*****************************************************************************/
 /* Nocturne + light companion, Literata / Outfit, Swiss-style home lists
 /*****************************************************************************/
 

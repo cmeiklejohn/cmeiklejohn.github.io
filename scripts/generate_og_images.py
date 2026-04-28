@@ -24,7 +24,9 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 POSTS = ROOT / "_posts"
 OUT = ROOT / "og"
-FONTS_DIR = Path(__file__).resolve().parent / "fonts"
+# Fonts live at the repo root /fonts/ — same files served by the website
+# via @font-face declarations in css/main.css.
+FONTS_DIR = ROOT / "fonts"
 
 OUT.mkdir(exist_ok=True)
 
