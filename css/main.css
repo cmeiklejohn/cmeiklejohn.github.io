@@ -1532,6 +1532,45 @@ html {
 }
 
 /*****************************************************************************/
+/* Topic landing pages (/zabriskie/, /agents/, /distributed-systems/)
+/*****************************************************************************/
+
+.topic-landing-lead {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--fg-heading);
+  margin: 1rem 0 1.25rem;
+}
+
+.topic-landing-meta {
+  font-family: var(--font-ui);
+  color: var(--fg-muted);
+  margin: 0 0 1rem;
+  line-height: 1.55;
+}
+
+.topic-landing-meta strong {
+  color: var(--fg-heading);
+}
+
+.topic-landing-projects {
+  list-style: disc;
+  padding-left: 1.4rem;
+  margin: 0 0 1.5rem;
+  color: var(--fg);
+  font-family: var(--font-ui);
+}
+
+.topic-landing-projects li {
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+.topic-landing-projects strong {
+  color: var(--fg-heading);
+}
+
+/*****************************************************************************/
 /* Bluesky comments — replies to the Bluesky post that shared this article
 /*****************************************************************************/
 
