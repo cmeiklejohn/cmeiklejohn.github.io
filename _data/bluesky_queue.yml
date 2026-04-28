@@ -12,14 +12,6 @@
 #   5. Move the entry below `posted:` (or delete it)
 
 queue:
-  - post_url: https://christophermeiklejohn.com/ai/zabriskie/community/2026/03/08/why-im-building-zabriskie.html
-    title: "Why I'm Building Zabriskie"
-    notes: "Origin story. Sets the 'third place' frame for new readers."
-    text: |-
-      Sociology has a "third place" — not home, not work, but where you find your people. Coffee shops, record stores, post-show bars. Live music has lost most. Zabriskie is one attempt to bring one back.
-
-      https://christophermeiklejohn.com/ai/zabriskie/community/2026/03/08/why-im-building-zabriskie.html
-
   - post_url: https://christophermeiklejohn.com/ai/zabriskie/development/2026/04/26/spring-tour-recap.html
     title: "Spring Tour Recap: A Month of Shipping on Zabriskie"
     notes: "Recent shipping recap. Concrete numbers, strong personality."
@@ -94,3 +86,11 @@ posted:
       Wave-1 multi-agent LLM papers (2023) assumed coordination was hard because reasoning was free. Thinking models flipped that. 8-part series for engineers shipping agents — Part 1:
 
       https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/24/mas-series-01-the-landscape.html
+
+  - post_url: https://christophermeiklejohn.com/ai/zabriskie/community/2026/03/08/why-im-building-zabriskie.html
+    bluesky_url: https://bsky.app/profile/christophermeiklejohn.com/post/3mkjlydk6552o
+    posted_on: 2026-04-27
+    text: |-
+      Sociology has a "third place" — not home, not work, but where you find your people. Coffee shops, record stores, post-show bars. Live music has lost most. Zabriskie is one attempt to bring one back.
+
+      https://christophermeiklejohn.com/ai/zabriskie/community/2026/03/08/why-im-building-zabriskie.html
