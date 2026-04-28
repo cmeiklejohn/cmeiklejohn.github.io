@@ -10,8 +10,7 @@ permalink: /zabriskie/
 </p>
 
 <p class="topic-landing-meta">
-  <strong>Live:</strong> <a href="https://zabriskie.app">zabriskie.app</a> &nbsp;·&nbsp;
-  <strong>Code:</strong> <a href="https://github.com/cmeiklejohn/zabriskie">github.com/cmeiklejohn/zabriskie</a>
+  <strong>Live:</strong> <a href="https://zabriskie.app">zabriskie.app</a>
 </p>
 
 <p class="topic-landing-meta">
