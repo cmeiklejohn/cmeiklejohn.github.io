@@ -12,16 +12,6 @@
 #   5. Move the entry below `posted:` (or delete it)
 
 queue:
-  - post_url: https://christophermeiklejohn.com/ai/zabriskie/development/2026/04/26/spring-tour-recap.html
-    title: "Spring Tour Recap: A Month of Shipping on Zabriskie"
-    notes: "Recent shipping recap. Concrete numbers, strong personality."
-    text: |-
-      Couch-toured Goose from Vegas while at Phish at Sphere. Two live chats, two Live Activities. Music has never had this layer.
-
-      14 shows. 40 friends. 3,737 chats. 309 PRs.
-
-      https://christophermeiklejohn.com/ai/zabriskie/development/2026/04/26/spring-tour-recap.html
-
   - post_url: https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/25/mas-series-02-the-vocabulary.html
     title: "Getting Up to Speed on Multi-Agent Systems, Part 2: The Vocabulary"
     notes: "Continues the series. Hook = 'reading without vocab is hopeless.'"
@@ -94,3 +84,13 @@ posted:
       Sociology has a "third place" — not home, not work, but where you find your people. Coffee shops, record stores, post-show bars. Live music has lost most. Zabriskie is one attempt to bring one back.
 
       https://christophermeiklejohn.com/ai/zabriskie/community/2026/03/08/why-im-building-zabriskie.html
+
+  - post_url: https://christophermeiklejohn.com/ai/zabriskie/development/2026/04/26/spring-tour-recap.html
+    bluesky_url: https://bsky.app/profile/christophermeiklejohn.com/post/3mkp2htfdwp2o
+    posted_on: 2026-04-30
+    text: |-
+      Couch-toured Goose from Vegas while at Phish at Sphere. Two live chats, two Live Activities. Music has never had this layer.
+
+      14 shows. 40 friends. 3,737 chats. 309 PRs.
+
+      https://christophermeiklejohn.com/ai/zabriskie/development/2026/04/26/spring-tour-recap.html
