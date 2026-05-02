@@ -52,6 +52,78 @@ queue:
 
       https://christophermeiklejohn.com/ai/verification/zabriskie/agents/2026/04/09/the-structural-engineers-other-job.html
 
+  - post_url: https://christophermeiklejohn.com/ai/zabriskie/development/2026/03/27/memory-isnt-learning.html
+    title: "Memory Isn't Learning"
+    notes: "Thesis post — 'prose in CLAUDE.md is a journal of failures.' Foundational for the gate-failure arc."
+    text: |-
+      Prose in an instruction file is a journal of failures, not a guardrail. Agents read it. They acknowledge it. They violate it next time. Memory and learning are different things.
+
+      https://christophermeiklejohn.com/ai/zabriskie/development/2026/03/27/memory-isnt-learning.html
+
+  - post_url: https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/28/mas-series-05-debate-state-coordination.html
+    title: "Getting Up to Speed on Multi-Agent Systems, Part 5: Debate, State, and Coordination"
+    notes: "Debate vs. shared state vs. distributed-systems theorem. Bridge between MAS and distsys."
+    text: |-
+      Should multi-agent systems make agents agree, disagree, or share a notebook? Three papers, three different bets. Plus a 1980 distsys theorem explaining when each fits. Part 5:
+
+      https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/28/mas-series-05-debate-state-coordination.html
+
+  - post_url: https://christophermeiklejohn.com/ai/zabriskie/reliability/2026/04/03/the-feature-that-has-never-worked.html
+    title: "The Feature That Has Never Worked"
+    notes: "Concrete bug story with stakes (Billy Strings show)."
+    text: |-
+      Auto-live poller broke 7 times in 13 days. Each fix introduced a new failure mode. UI showed "scheduled" while Billy Strings played a sold-out show. AI ships features that half-work.
+
+      https://christophermeiklejohn.com/ai/zabriskie/reliability/2026/04/03/the-feature-that-has-never-worked.html
+
+  - post_url: https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/29/mas-series-06-verification-patterns.html
+    title: "Getting Up to Speed on Multi-Agent Systems, Part 6: Verification Patterns"
+    notes: "Hook: best verification pattern in the field isn't in any paper."
+    text: |-
+      Verifying what a multi-agent system did is the new bottleneck. Part 6 walks the patterns — referees, swarm voting, spec checks. The best isn't in a paper; it's in a commercial product.
+
+      https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/29/mas-series-06-verification-patterns.html
+
+  - post_url: https://christophermeiklejohn.com/ai/zabriskie/agents/reliability/caucus/2026/04/14/opt-in-isnt-a-guardrail.html
+    title: "Opt-In Isn't a Guardrail"
+    notes: "Subtitle works as the post body. Strong narrative — gate blocks rollback during outage."
+    text: |-
+      A CI gate I built to slow AI agents down passed every paperwork check, missed every real bug, and blocked the rollback during a production outage. Opt-in isn't a guardrail.
+
+      https://christophermeiklejohn.com/ai/zabriskie/agents/reliability/caucus/2026/04/14/opt-in-isnt-a-guardrail.html
+
+  - post_url: https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/30/mas-series-07-benchmarks.html
+    title: "Getting Up to Speed on Multi-Agent Systems, Part 7: Benchmarks and What They Miss"
+    notes: "Concrete numbers as hook. Names papers (ChatDev, MetaGPT)."
+    text: |-
+      85.9% HumanEval. 12.5% SWE-bench. MAS benchmarks do a lot of work — and a surprising amount of harm. Part 7 explains why ChatDev and MetaGPT can report contradictory results without either being wrong.
+
+      https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/30/mas-series-07-benchmarks.html
+
+  - post_url: https://christophermeiklejohn.com/ai/zabriskie/agents/reliability/caucus/2026/04/21/the-tax-on-the-happy-path.html
+    title: "The Tax on the Happy Path"
+    notes: "Pairs with Opt-In Isn't a Guardrail. Closes the gate-retrospective arc."
+    text: |-
+      Removed the CI gate I'd built to slow my agents down — after realizing it had never actually caught anything. What it costs to build gates that catch only the people doing it right.
+
+      https://christophermeiklejohn.com/ai/zabriskie/agents/reliability/caucus/2026/04/21/the-tax-on-the-happy-path.html
+
+  - post_url: https://christophermeiklejohn.com/ai/agents/mas-series/2026/05/01/mas-series-08-open-questions.html
+    title: "Getting Up to Speed on Multi-Agent Systems, Part 8: Open Questions"
+    notes: "Series finale. Reflective wrap-up post."
+    text: |-
+      If multi-agent systems are going to ship, what's still stuck? Part 8 lists what the field hasn't figured out — coordination, verification, and the boring stuff that ends up mattering.
+
+      https://christophermeiklejohn.com/ai/agents/mas-series/2026/05/01/mas-series-08-open-questions.html
+
+  - post_url: https://christophermeiklejohn.com/ai/zabriskie/agents/reliability/2026/04/23/the-tribe-has-to-outlive-the-model.html
+    title: "The Tribe Has to Outlive the Model"
+    notes: "Capstone reflection. Subtitle works as text."
+    text: |-
+      Five model swaps in three weeks taught me the project's continuity lives in the humans and conventions around the agents, not the agents themselves.
+
+      https://christophermeiklejohn.com/ai/zabriskie/agents/reliability/2026/04/23/the-tribe-has-to-outlive-the-model.html
+
 posted:
   - post_url: https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/24/mas-series-01-the-landscape.html
     bluesky_url: https://bsky.app/profile/christophermeiklejohn.com/post/3mkifxam7mk2w
