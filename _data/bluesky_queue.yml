@@ -12,14 +12,6 @@
 #   5. Move the entry below `posted:` (or delete it)
 
 queue:
-  - post_url: https://christophermeiklejohn.com/ai/agents/distributed/zabriskie/2026/03/30/multi-agent-systems-have-a-distributed-systems-problem.html
-    title: "Multi-Agent Systems Have a Distributed Systems Problem"
-    notes: "Foundational. Concrete migration-collision hook. Bridges the MAS series and Zabriskie."
-    text: |-
-      Two Claude Code instances stepped on each other's database migrations. A lost update from the 1970s, replayed in 2025.
-
-      https://christophermeiklejohn.com/ai/agents/distributed/zabriskie/2026/03/30/multi-agent-systems-have-a-distributed-systems-problem.html
-
   - post_url: https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/26/mas-series-03-wave-one.html
     title: "Getting Up to Speed on Multi-Agent Systems, Part 3: Wave 1"
     notes: "Names the canonical five papers. Dense but well-known names = high click rate."
@@ -94,3 +86,11 @@ posted:
       Reading multi-agent papers without the shared vocabulary is hopeless. Three surveys did the consolidation. Part 2 walks through them so any paper becomes legible — what it is and isn't claiming.
 
       https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/25/mas-series-02-the-vocabulary.html
+
+  - post_url: https://christophermeiklejohn.com/ai/agents/distributed/zabriskie/2026/03/30/multi-agent-systems-have-a-distributed-systems-problem.html
+    bluesky_url: https://bsky.app/profile/christophermeiklejohn.com/post/3mkvex7iw342o
+    posted_on: 2026-05-02
+    text: |-
+      Two Claude Code instances stepped on each other's database migrations. A lost update from the 1970s, replayed in 2025.
+
+      https://christophermeiklejohn.com/ai/agents/distributed/zabriskie/2026/03/30/multi-agent-systems-have-a-distributed-systems-problem.html

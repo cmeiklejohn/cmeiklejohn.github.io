@@ -11,6 +11,11 @@
 # which evergreen posts are due for another rotation.
 
 shared:
+  /ai/agents/distributed/zabriskie/2026/03/30/multi-agent-systems-have-a-distributed-systems-problem.html:
+    bluesky_url: https://bsky.app/profile/christophermeiklejohn.com/post/3mkvex7iw342o
+    first_shared: '2026-05-02'
+    last_shared: '2026-05-02'
+    times: 1
   /ai/agents/mas-series/2026/04/24/mas-series-01-the-landscape.html:
     bluesky_url: https://bsky.app/profile/christophermeiklejohn.com/post/3mkifxam7mk2w
     first_shared: '2026-04-27'
