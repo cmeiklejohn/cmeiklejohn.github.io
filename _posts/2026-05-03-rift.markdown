@@ -1,0 +1,70 @@
+---
+layout: post
+title:  "Rift"
+subtitle: "For thirty years I programmed with Phish on, every day. In 2026, the music is out of phase with the work."
+date:   2026-05-03 13:00:00 -0700
+group: ai
+categories: ai personal phish flow agents
+---
+
+Someone on the Phish Facebook group reposted a TikTok overdub. Vanessa Bayer and Paul Rudd at their desks, losing their minds to a song while their coworkers stare. The original was Fleetwood Mac. Whoever made it swapped in "Down With Disease."
+
+That move is Phish fans in miniature. Someone cared enough about the song and the bit that they rebuilt a piece of pop culture around the band. That's how the scene works. People spend their time doing things like this for free, because the music asks for it.
+
+For thirty years, that was me at my desk.
+
+I used to make a joke that if I ever had to interview for a new job, I'd need to ask the interviewer to put Phish on so I could actually program for them. I'd say it as a joke, because saying it straight would have made it sound deranged. But it wasn't a joke. After three decades, the cue and the state had fused. I could not, with any reliability, get into the zone without the music. The conditioning was complete and I knew it.
+
+I would make the joke and people would laugh, and I would laugh too, and underneath that we both knew I was telling the truth.
+
+---
+
+I got into Phish in 1995. By then I had already been programming for years, self-taught. In 1998 I got my first professional job in tech. I was 15.
+
+Around that time I also tried to get a normal teenage job. There was a grocery store near my house and I went in to apply, figuring I could bag groceries on weekends like everybody else. They turned me down. Not because I was too young or too inexperienced. They told me I was overqualified. A 15 year old kid with programming on his application was, somehow, too much for the grocery store.
+
+So I kept programming. There was never any other plan.
+
+---
+
+All I ever wanted to do was listen to Phish and program. That was the whole list. It didn't have qualifiers. It didn't have a third thing I sometimes wanted instead. There was no balance I was striving for. There was the music and the code, and there wasn't anything else competing for the space.
+
+Other kids my age were figuring out what they liked, trying things on, growing into and out of phases. I was watching them do it from a desk. I had picked early. I started writing code as a kid. I heard Phish for the first time at thirteen. By the time I was fifteen and had a professional gig, the picking was settled. I had two things, and I didn't want a third.
+
+If I had a free Friday night, I knew what I was doing with it. If I had a long weekend, I knew what I was doing with it. If a holiday came up, I knew what I was doing with it. The activity didn't change. The output changed, the project changed, the song changed, but the shape of the time was constant.
+
+For the next three decades, that's what it stayed. I would put on Phish and write code. That was the day. That was the night. It was my job, and it was also my hobby, and there was no seam between them.
+
+The work I did in that state was the work I am most proud of. Distributed systems. Backend services. The hard stuff that needs you to hold a lot in your head at once and stay there. Phish is a band that rewards you for staying in one place for a long time. The jams are long. The compositions unfold. If you give it an hour, it gives you something back. That matched the shape of the work exactly.
+
+I was in graduate school for a decade. The bulk of the dissertation, more than two hundred pages by the end, got written between 2021 and 2023, after I came back to Pittsburgh from Europe. I was too poor to travel to shows. So I planned nights of couch tour. There was a live stream. I would set it up on one screen and write on the other. The band would play in Hampton or Alpine Valley or wherever, and I would write about distributed systems while they played, and at some point in the second set the dissertation would crack open a little and I would understand something I had not understood that morning.
+
+The dissertation is the longest single thing I made inside that ritual, but it isn't the only thing. Entire pieces of production software came out of those nights too. Systems that ran for years, handled real load, served real users. Whole systems, from the first commit to the version that shipped. I'd put a show on and stay inside the work until something existed that hadn't existed when the show started.
+
+I have listened to Phish every day since I was fifteen. Every day. The years I lived in Europe earlier in graduate school, where going to a show meant flying back across an ocean, I listened. I would sit at my desk in another country and put on a show from the nineties and code. I have listened to certain shows so many times that I can sing the solos back, note by note, without thinking about it. Trey will play a phrase and my mouth will already be ahead of him.
+
+I felt lucky. I still feel lucky. There aren't many people who get to spend thirty years inside the thing they loved at fifteen.
+
+---
+
+Since January, the work has changed.
+
+I don't really write code anymore. The main thing now is managing agents. I open a session, ask a question, redirect, switch to a different one, check on a merge, review what came back, send it back for changes, switch again. The day is a queue. Things finish at different times and require different responses, and the responses are short and the contexts are constantly different.
+
+This is engineering. I keep being told that. It is engineering and it is the future and it is more leveraged than what I used to do. All of that is probably true. But it is not the work I have been doing for thirty years. The shape of it is different. The rhythm is different. The way it sits in the day is different.
+
+---
+
+I tried to keep the music on. I'm writing this in the days after nine nights of Phish at the Sphere. Since I finished grad school and got a real job, I've gone to every show I could, every tour, every residency, making up for lost time. The music is more present in my life now than it has ever been. It isn't what's gone.
+
+But the music is out of phase with the work. The jams are built for one continuous arc of attention. The work is staccato. I'll be three minutes into a song and I will have already context-switched four times. The song is happening and the work is happening and they're no longer happening together. They're parallel, but they no longer touch.
+
+I'm sad. I don't get into that state anymore. I don't know how to be honest about this without sounding like I am complaining about progress, but I can't pretend that something hasn't been taken. The flow state I had for thirty years is not part of my workday now. The creativity that lived inside it is not there either. I do useful things. I do not feel what I used to feel while doing them.
+
+I keep thinking about that overdub. Vanessa Bayer at her desk, lost in the song, blissfully unhinged while the rest of the world keeps on doing whatever it is doing. For thirty years, I was her. Now I'm the coworker. I'm at the desk. I'm watching.
+
+---
+
+The flow state wasn't just where I got things done. It was where the fulfillment lived. The creativity, the involvement, the sense of being inside the thing instead of next to it. That's what programming and Phish gave me for thirty years. It's what supervision takes away.
+
+How do we bring this back in an agentic world?
