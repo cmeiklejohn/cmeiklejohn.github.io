@@ -39,11 +39,13 @@ For the next three decades, that's what it stayed. I would put on Phish and writ
 
 The work I did in that state was the work I am most proud of. Distributed systems. Backend services. The hard stuff that needs you to hold a lot in your head at once and stay there. Phish is a band that rewards you for staying in one place for a long time. The jams are long. The compositions unfold. If you give it an hour, it gives you something back. That matched the shape of the work exactly.
 
+Before grad school, I had a day job at Berklee College of Music writing music software, and night classes at Northeastern. I'd take the 12:00 AM train home. I'd put Junta on as I sat down. Most nights I'd fall asleep to it before the train pulled in. (This might be why I love "Foam" so much.)
+
 I was in graduate school for a decade. The bulk of the dissertation, more than two hundred pages by the end, got written between 2021 and 2023, after I came back to Pittsburgh from Europe. I was too poor to travel to shows. So I planned nights of couch tour. There was a live stream. I would set it up on one screen and write on the other. The band would play in Hampton or Alpine Valley or wherever, and I would write about distributed systems while they played, and at some point in the second set the dissertation would crack open a little and I would understand something I had not understood that morning.
 
 The dissertation is the longest single thing I made inside that ritual, but it isn't the only thing. Entire pieces of production software came out of those nights too. Systems that ran for years, handled real load, served real users. Whole systems, from the first commit to the version that shipped. I'd put a show on and stay inside the work until something existed that hadn't existed when the show started.
 
-I have listened to Phish every day since I was fifteen. Every day. The years I lived in Europe earlier in graduate school, where going to a show meant flying back across an ocean, I listened. I would sit at my desk in another country and put on a show from the nineties and code. I have listened to certain shows so many times that I can sing the solos back, note by note, without thinking about it. Trey will play a phrase and my mouth will already be ahead of him.
+I have listened to Phish every day since I was fifteen. Every day. The years I lived in Europe earlier in graduate school, where going to a show meant flying back across an ocean, I listened. I would sit at my desk in another country and put on a show from the nineties and code. I have listened to certain shows so many times that I can sing the solos back, note by note, without thinking about it. Boardwalk Hall Halloween. NYE 1995. Trey will play a phrase and my mouth will already be ahead of him.
 
 I felt lucky. I still feel lucky. There aren't many people who get to spend thirty years inside the thing they loved at fifteen.
 
