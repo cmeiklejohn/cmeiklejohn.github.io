@@ -2,7 +2,7 @@
 layout: post
 title:  "Rift"
 subtitle: "For thirty years I programmed with Phish on, every day. In 2026, the music is out of phase with the work."
-date:   2026-05-03 13:00:00 -0700
+date:   2026-05-03 02:00:00 -0700
 group: ai
 categories: ai personal phish flow agents
 ---
