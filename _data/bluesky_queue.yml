@@ -124,6 +124,62 @@ queue:
 
       https://christophermeiklejohn.com/ai/zabriskie/agents/reliability/2026/04/23/the-tribe-has-to-outlive-the-model.html
 
+  - post_url: https://christophermeiklejohn.com/ai/claude/2026/02/17/building-a-social-app-in-a-week-with-claude-code.html
+    title: "I Built a Social App in a Week with Claude Code"
+    notes: "Origin story. Earliest Zabriskie post. Concrete build numbers."
+    text: |-
+      Built a social app in a week with Claude Code. 384 messages, 27 sessions, 168 files. Mostly late at night on an iPad in bed. First version shipped. The hard part started after.
+
+      https://christophermeiklejohn.com/ai/claude/2026/02/17/building-a-social-app-in-a-week-with-claude-code.html
+
+  - post_url: https://christophermeiklejohn.com/ai/claude/2026/03/08/claude-tested-everything-except-the-one-thing-that-mattered.html
+    title: "Claude Tested Everything Except the One Thing That Mattered"
+    notes: "Concrete bug-class story. Punchline is the title."
+    text: |-
+      154 E2E tests written by Claude. Login. Feed. Bookmarks. RSVPs. Badges. Tournaments. Zero tests for posting — the entire point of the app.
+
+      https://christophermeiklejohn.com/ai/claude/2026/03/08/claude-tested-everything-except-the-one-thing-that-mattered.html
+
+  - post_url: https://christophermeiklejohn.com/ai/zabriskie/development/2026/03/20/what-building-with-claude-actually-looks-like.html
+    title: "What Building With Claude Actually Looks Like"
+    notes: "Practitioner overview. Best 'first month with Claude Code' summary post."
+    text: |-
+      124 commits in one day. 144 in a week. Six new bands, backend coverage 43% → 70%. What building with Claude actually looks like, from inside.
+
+      https://christophermeiklejohn.com/ai/zabriskie/development/2026/03/20/what-building-with-claude-actually-looks-like.html
+
+  - post_url: https://christophermeiklejohn.com/ai/zabriskie/development/android/ios/2026/03/22/teaching-claude-to-qa-a-mobile-app.html
+    title: "Teaching Claude to QA a Mobile App"
+    notes: "Practical: Capacitor + WebView testing gap, how Claude bridges it."
+    text: |-
+      Capacitor puts you in a testing no-man's-land. Playwright can't reach inside the shell; XCTest can't see the WebView. Here's how I taught Claude to QA an app in that gap.
+
+      https://christophermeiklejohn.com/ai/zabriskie/development/android/ios/2026/03/22/teaching-claude-to-qa-a-mobile-app.html
+
+  - post_url: https://christophermeiklejohn.com/ai/zabriskie/development/2026/03/29/the-show-is-happening-right-now-and-nothing-works.html
+    title: "The Show Is Happening Right Now and Nothing Works"
+    notes: "Production outage during Goose's spring opener. Strong narrative + stakes."
+    text: |-
+      Six weeks of work building toward Goose's spring opener. Live Activities, real-time sync, live chat. Saturday night nothing worked. The show was happening right now.
+
+      https://christophermeiklejohn.com/ai/zabriskie/development/2026/03/29/the-show-is-happening-right-now-and-nothing-works.html
+
+  - post_url: https://christophermeiklejohn.com/lasp/distributed/2026/03/01/ten-years-of-lasp.html
+    title: "Ten Years of Lasp"
+    notes: "Research retrospective, PPDP 10-year award. Different audience than the Zabriskie thread."
+    text: |-
+      Ten years ago we published Lasp, a coordination-free distributed programming language. PPDP just gave it a 10-year award. The retrospective — what it was, where it traveled, why CRDTs matter more now.
+
+      https://christophermeiklejohn.com/lasp/distributed/2026/03/01/ten-years-of-lasp.html
+
+  - post_url: https://christophermeiklejohn.com/ai/development/claude/2026/03/23/finding-safe-food-on-the-road.html
+    title: "Finding Safe Food on the Road"
+    notes: "Off-topic for AI niche but adds personality. Celiac + travel."
+    text: |-
+      Got celiac during my PhD in Europe. Thought my traveling days were over. They weren't. Notes for jam-band tour, gluten-free, in restaurants where you don't speak the language.
+
+      https://christophermeiklejohn.com/ai/development/claude/2026/03/23/finding-safe-food-on-the-road.html
+
 posted:
   - post_url: https://christophermeiklejohn.com/ai/agents/mas-series/2026/04/24/mas-series-01-the-landscape.html
     bluesky_url: https://bsky.app/profile/christophermeiklejohn.com/post/3mkifxam7mk2w
