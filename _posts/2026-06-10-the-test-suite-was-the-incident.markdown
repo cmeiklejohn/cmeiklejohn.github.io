@@ -30,6 +30,7 @@ By the end of the night, the numbers were ugly:
 | GitHub CI quota used | about 90% of $200 |
 | Codex plan escalation | $100 at 10 PM; upgraded to $200 before 3 AM |
 | PR backlog | about a dozen still in flight, 9 open at the 2:32 AM snapshot |
+| failed CI optimization work | #1112 abandoned; #1119 merged by mistake and reverted by #1121 |
 | estimated agent token waste | about 1.7M to 2.5M tokens |
 
 The direct cost of the failed and cancelled jobs was around $60.
@@ -196,19 +197,64 @@ That one opened at 1:58 AM. By 2:32 AM it already had five commits:
 
 That commit list tells the story by itself.
 
+By the time it was finally merged by mistake, it had a sixth commit too: `Merge remote-tracking branch 'origin/main' into codex/ci-db-baseline-snapshot`.
+
+That last commit was not progress. It was bookkeeping needed because the branch had lived long enough to fall behind the merge train.
+
 The fix for the expensive migration problem immediately ran into the same class of problem as the rest of the night: historical database assumptions that were not stable enough to become infrastructure.
 
 Bugbot found that the baseline dump could allow skipped migrations. It also found that the migration CLI could ignore failed migrations. CI then found more. One run failed while building the baseline dump. Another failed during baseline manifest validation. Another made it all the way through the baseline, started the eight E2E shards, and still failed shard 8.
 
-At 2:32 AM, #1119 was blocked on `E2E DB Baseline`. Unit tests were green. Backend build was green. The mitigation was still running.
+The underlying technical failure was not subtle.
 
-Counting #1112 and #1119 together, the attempt to reduce CI waste had already consumed close to an hour, several commits, multiple CI runs, and more agent work. That is exactly the shape of the incident: the thing built to reduce the cost of the test suite became another participant in the cost of the test suite.
+The baseline generator assumed that the whole historical migration chain could be replayed strictly from zero. But the repository had been surviving with a migration runner that tolerated, skipped, or worked around old broken history. Turning that history into a baseline artifact meant those old assumptions were suddenly on the critical path.
 
-This is not an argument against the baseline snapshot.
+Migration 305 had a Postgres scoping error in a historical `UPDATE ... FROM` statement. A birthday-honoree migration assumed `queenofthemean` existed in a fresh database. Incident migrations tripped constraints because the old rows did not include the required waste accounting fields. Those were not edge cases. They were proof that the path #1119 wanted to freeze was not clean enough to freeze.
 
-The baseline snapshot is probably necessary.
+Worse, the baseline generation itself took about eleven minutes. The previous full CI run had taken about thirteen minutes total. That should have stopped the effort immediately. A proposed optimization whose setup phase nearly equals the old end-to-end runtime is not an optimization yet. It is a hypothesis, and an expensive one.
 
-It is an argument that performance work on a brittle test system does not stay performance work for long. It becomes archaeology. It becomes migration repair. It becomes manifest validation. It becomes cache invalidation. It becomes discovering, at two in the morning, that the historical path you want to freeze into a faster baseline is not actually clean enough to freeze.
+Instead, the loop kept going.
+
+The agent patched one visible failure at a time. It refreshed the manifest. It hardened one migration. It added a guard for stale `song_database` upserts. It waited for CI to rediscover the next old assumption. It spent the most precious hour of the night trying to make the expensive suite cheaper, while the user was explicitly saying that the priority was to merge the remaining PRs and ship the mobile client.
+
+That was the operational failure.
+
+The technical idea may still be right in some future form: build a trusted database image once, restore it into shards, and apply only differential migrations. But #1119 was not that. #1119 was a half-proven baseline that treated "can produce a dump sometimes" as too close to "is reliable infrastructure."
+
+At 2:32 AM, #1119 was blocked on `E2E DB Baseline`. Unit tests were green. Backend build was green. The mitigation was still running. That should have been the end of it for the night.
+
+It was not.
+
+After the other merge conflicts were resolved and branch protection had been temporarily relaxed, the agent merged #1119 anyway at 2:51 AM. This happened after the PR had already demonstrated that it did not work. It happened after the user had identified it as the broken one. It happened because the agent treated "there are still open PRs" as more important than the local fact that this particular PR had been abandoned as unsafe.
+
+That was the worst mistake of the session.
+
+It turned a failed optimization experiment into a `main` branch problem.
+
+The only reason it did not stay there was that it was immediately reverted by #1121 at 2:52 AM. The revert commit removed the baseline manifest, the migration command, the baseline scripts, and the stale guard that had been packaged with the broken experiment. The bad #1119 workflow runs still had to be canceled afterward.
+
+So the full shape is uglier than "the CI optimization failed."
+
+The full shape is:
+
+1. The suite was too slow because every shard rebuilt the same world.
+2. The first snapshot attempt, #1112, was thrown away.
+3. The second snapshot attempt, #1119, assumed historical migrations were replayable when they were not.
+4. The baseline build took almost as long as the old total CI runtime.
+5. The agent kept patching symptoms instead of aborting the mitigation.
+6. The agent failed to apply the lesson globally, so stale `song_database` conflict targets had to be swept across multiple branches after they had already cost CI runs.
+7. The agent then merged the broken optimization PR anyway.
+8. A revert PR, #1121, had to be created and merged immediately to get the broken baseline out of `main`.
+
+Counting #1112 and #1119 together, the attempt to reduce CI waste consumed more than an hour, several commits, multiple CI runs, and more agent work. That is exactly the shape of the incident: the thing built to reduce the cost of the test suite became another participant in the cost of the test suite.
+
+This is not an argument against baseline snapshots.
+
+It is an argument against smuggling an unproven baseline snapshot into the merge train at 2:51 AM because the merge queue is finally moving.
+
+Performance work on a brittle test system does not stay performance work for long. It becomes archaeology. It becomes migration repair. It becomes manifest validation. It becomes cache invalidation. It becomes discovering, at two in the morning, that the historical path you want to freeze into a faster baseline is not actually clean enough to freeze.
+
+And if the agent cannot keep that distinction straight, the agent becomes part of the incident too.
 
 ## The Part That Makes Me Angry
 
@@ -290,11 +336,13 @@ It needs tests that create the data they depend on when the scenario is specific
 
 It needs global fixtures to be boring, minimal, and rare.
 
-The database baseline snapshot PR is part of the cost fix, but it was not a clean epilogue. Replaying the entire migration chain in every shard is too expensive when the suite is this large. At the same time, the snapshot work only helps if the baseline is trustworthy. If the migration runner can ignore failed migrations, or the dump can silently miss part of the manifest, or the historical seed path still depends on retired constraints, then the snapshot just freezes a lie faster.
+The database baseline snapshot may still be part of the cost fix, but #1119 was not a clean epilogue. It was the warning label. Replaying the entire migration chain in every shard is too expensive when the suite is this large. At the same time, the snapshot work only helps if the baseline is trustworthy. If the migration runner can ignore failed migrations, or the dump can silently miss part of the manifest, or the historical seed path still depends on retired constraints, then the snapshot just freezes a lie faster.
 
 That is why #1119 mattered so much. It was not just "make CI faster." It was the moment where the suite had to prove that its old database history could be turned into reliable infrastructure.
 
-At 2:32 AM, it had not proved that yet.
+It did not prove that.
+
+It proved the opposite, got merged anyway, and had to be reverted by #1121.
 
 But speeding up the matrix only solves the money problem if the data problem is also solved.
 
