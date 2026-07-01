@@ -1361,28 +1361,50 @@ html {
 }
 
 /*****************************************************************************/
-/* Home: featured series section
+/* Home: compact featured-series callout
 /*****************************************************************************/
 
-.home-series-section {
+.home-series-callout {
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  line-height: 1.5;
   background: var(--bg-elevated);
   border-left: 3px solid var(--brand);
-  padding: 1.25rem 1.5rem 1.75rem;
-  border-radius: 0 8px 8px 0;
-  margin-bottom: 2.25rem;
+  border-radius: 0 6px 6px 0;
+  padding: 0.65rem 1rem;
+  margin: 0 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.55rem;
 }
 
-.home-series-section.archive-section + .archive-section {
-  border-top: none;
-  padding-top: 0;
-}
-
-.home-series-section .archive-section-heading {
+.home-series-callout-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--brand);
 }
 
-.home-series-section ul.posts li {
-  border-bottom-color: var(--border-strong);
+.home-series-callout-title {
+  font-weight: 500;
+  color: var(--fg-heading);
+  text-decoration: none;
+}
+
+.home-series-callout-sep {
+  color: var(--fg-muted);
+}
+
+.home-series-callout-overview {
+  color: var(--fg-muted);
+  text-decoration: none;
+}
+
+.home-series-callout a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /*****************************************************************************/

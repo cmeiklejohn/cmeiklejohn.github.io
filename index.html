@@ -11,16 +11,12 @@ description: "Christopher Meiklejohn — Ph.D., Software Engineering (CMU). Note
     Recent posts. Topic pages: <a href="/zabriskie/">Zabriskie</a> · <a href="/agents/">AI Agents</a> · <a href="/distributed-systems/">Distributed Systems</a>. Or the full <a href="/archive.html">archive</a>.
   </p>
 
-  <section class="archive-section home-series-section" aria-labelledby="home-series-heading">
-    <h2 id="home-series-heading" class="home-section-title archive-section-heading"><a href="/series/multi-agent-systems/">Series · Getting Up to Speed on Multi-Agent Systems</a></h2>
-    <p class="archive-section-intro">A short series mapping the multi-agent LLM literature for readers coming in fresh. Published over the next week and a half. <a href="/series/multi-agent-systems/">Series overview →</a></p>
-    <ul class="posts">
-      {% assign mas_posts = site.posts | where: "series", "mas" | sort: "date" %}
-      {% for post in mas_posts %}
-        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
-      {% endfor %}
-    </ul>
-  </section>
+  <p class="home-series-callout">
+    <span class="home-series-callout-label">Series</span>
+    <a class="home-series-callout-title" href="/series/multi-agent-systems/">Getting Up to Speed on Multi-Agent Systems</a>
+    <span class="home-series-callout-sep" aria-hidden="true">·</span>
+    <a class="home-series-callout-overview" href="/series/multi-agent-systems/">8-part overview →</a>
+  </p>
 
   <section class="archive-section home-recent-section" aria-labelledby="home-recent-heading">
     <h2 id="home-recent-heading" class="home-section-title archive-section-heading">Recent</h2>
