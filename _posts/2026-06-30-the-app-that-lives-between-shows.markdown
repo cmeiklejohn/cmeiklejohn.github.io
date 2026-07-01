@@ -107,9 +107,7 @@ Here is the honest engagement picture, and it is the number I am happiest about 
 
 The people in it will tell you what it feels like better than I can:
 
-> *"you only get the lockscreen setlist if you mark 🛋️ or 🎸. but it's kind of the killer feature"*
->
-> *"New reactions are super cute."*
+> *"Still an hour 20 til show time but I opened the chomp."*
 >
 > *"I love the time counter for the song."*
 >
@@ -297,7 +295,7 @@ The part that makes it work is the audio. Every matchup card has an **inline pla
       <div style="background:#FEFDFB; border-radius:14px; padding:12px 13px; box-shadow:0 2px 8px rgba(20,18,30,0.05);">
         <div style="display:flex; align-items:baseline; justify-content:space-between;">
           <div><span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:9px; font-weight:800; color:#E83A73;">SEED 1</span> <span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:16px; font-weight:700;">Madhuvan</span></div>
-          <span style="font-family:'Instrument Serif','Cormorant Garamond',Georgia,serif; font-style:italic; font-size:13px; color:#9A9AAA;">6/22 · SPAC</span>
+          <span style="font-family:'Instrument Serif','Cormorant Garamond',Georgia,serif; font-style:italic; font-size:13px; color:#9A9AAA;">6/20 · MSG</span>
         </div>
         <div style="display:flex; align-items:center; gap:10px; margin-top:9px;">
           <span style="width:30px; height:30px; border-radius:50%; background:#141220; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px;">▶</span>
@@ -312,7 +310,7 @@ The part that makes it work is the audio. Every matchup card has an **inline pla
       <div style="background:#FEFDFB; border-radius:14px; padding:12px 13px; box-shadow:0 2px 8px rgba(20,18,30,0.05);">
         <div style="display:flex; align-items:baseline; justify-content:space-between;">
           <div><span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:9px; font-weight:800; color:#9A9AAA;">SEED 4</span> <span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:16px; font-weight:700;">Into the Myst</span></div>
-          <span style="font-family:'Instrument Serif','Cormorant Garamond',Georgia,serif; font-style:italic; font-size:13px; color:#9A9AAA;">6/14 · Raleigh</span>
+          <span style="font-family:'Instrument Serif','Cormorant Garamond',Georgia,serif; font-style:italic; font-size:13px; color:#9A9AAA;">6/26 · Raleigh</span>
         </div>
         <div style="display:flex; align-items:center; gap:10px; margin-top:9px;">
           <span style="width:30px; height:30px; border-radius:50%; background:#fff; border:2px solid #141220; color:#141220; display:flex; align-items:center; justify-content:center; font-size:12px;">▶</span>
@@ -485,6 +483,8 @@ That is the growth engine. Not a referral loop or a viral coefficient. A person 
 I promised numbers, not vibes, so here they are, including the ones I would have quietly dropped if I were selling something.
 
 **Users grew from 251 to 426.** That is 70% growth in two months, which sounds great until you look at *when* it happened.
+
+There is one milestone I am, as the proprietor of a jam band app, contractually obligated to report. Somewhere during the two-night Raleigh run at the end of June, right about the time Goose hit the stage at Red Hat, the registered user count ticked over to exactly **420.** We did not plan this. We are, however, precisely the crowd that was going to notice, screenshot it, and refuse to shut up about it. It has since climbed to a spiritually inferior 426, but for one perfect night in Raleigh, the fanbase was, numerically, blazing it.
 
 <div style="background:#e5e2d9; padding:20px 18px; border-radius:14px; margin:16px auto; max-width:560px; font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif; color:#262626;">
   <div style="font-size:11px; font-weight:800; letter-spacing:0.05em; text-transform:uppercase; color:#6B7280; margin-bottom:14px;">New signups by week · Mar 23 → Jun 29</div>
