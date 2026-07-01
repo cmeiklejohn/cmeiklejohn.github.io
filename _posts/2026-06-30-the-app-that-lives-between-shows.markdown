@@ -31,7 +31,7 @@ During a show the chat is called the Chomp, and it is the beating heart of the w
 
 The heatbar sits above the chat and shows the room temperature. It counts the reactions flying right now, so you can feel a jam landing before you have read a single word. It turns out a lot of people want to be in the room without composing a sentence, and a tap of 🔥 is a much lower bar than typing. Around it we shipped set markers ("🎼 Set 1 begins," a "Set break" vote chip), duration-sized song progress bars, role badges, a spoiler-safe delay for couch viewers so the people in the building do not ruin the song for the people on the stream, and, because we are on the App Store now, report-and-block moderation on every message.
 
-<div style="background:#E7E2D6; padding:16px; border-radius:20px; margin:16px auto; max-width:420px;">
+<div style="color-scheme:light; background:#E7E2D6; padding:16px; border-radius:20px; margin:16px auto; max-width:420px;">
   <div style="background:#F0EDE4; border-radius:20px; box-shadow:0 12px 34px rgba(20,18,30,0.14); overflow:hidden; max-width:390px; margin:0 auto; color:#2A2A3A; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;">
     <div style="position:relative; padding:12px 16px; background:radial-gradient(circle at 20% 20%, #E83A73, #2A5FAA 120%); color:#fff;">
       <div style="position:absolute; inset:0; opacity:0.12; mix-blend-mode:overlay; background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); background-size:130px 130px;"></div>
@@ -82,6 +82,26 @@ The heatbar sits above the chat and shows the room temperature. It counts the re
     </div>
   </div>
 </div>
+
+One detail I love more than I expected to: the reactions are **band-specific.** The palette changes depending on whose show you are in. Walk into a Goose chat and your reactions are the band, Rick and Peter and Trevor and Cotter, plus the instruments. Walk into a Phish chat and it is Page, Trey, Mike, and Fishman. Every band we add gets its own kit, drawn from its own members and its own instrument vocabulary, all server-driven so we can hand a new band its reactions without shipping an app update. There are even conditional sit-in reactions, so 🎷 Stuart Bogie shows up in the palette on the nights he actually sits in with Goose. It is a small thing that tells the regulars we know exactly whose room they are standing in.
+
+<div style="color-scheme:light; background:#E7E2D6; padding:16px; border-radius:20px; margin:16px auto; max-width:420px;">
+  <div style="background:#F0EDE4; border-radius:18px; box-shadow:0 10px 28px rgba(20,18,30,0.12); overflow:hidden; max-width:390px; margin:0 auto; color:#2A2A3A; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; padding:14px 16px;">
+    <div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#9A9AAA; margin-bottom:10px;">React · 🪿 Goose kit</div>
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <span style="display:inline-flex; align-items:center; gap:6px; padding:7px 11px; border-radius:999px; background:#FEFDFB; box-shadow:0 2px 6px rgba(20,18,30,0.06); font-size:13px; font-weight:600;"><span style="width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#E83A73,#F2A83B);"></span> Rick</span>
+      <span style="display:inline-flex; align-items:center; gap:6px; padding:7px 11px; border-radius:999px; background:#FEFDFB; box-shadow:0 2px 6px rgba(20,18,30,0.06); font-size:13px; font-weight:600;"><span style="width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#2A5FAA,#3AC4E8);"></span> Peter</span>
+      <span style="display:inline-flex; align-items:center; gap:6px; padding:7px 11px; border-radius:999px; background:#FEFDFB; box-shadow:0 2px 6px rgba(20,18,30,0.06); font-size:13px; font-weight:600;"><span style="width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#F2A83B,#FACC15);"></span> Trevor</span>
+      <span style="display:inline-flex; align-items:center; gap:6px; padding:7px 11px; border-radius:999px; background:#FEFDFB; box-shadow:0 2px 6px rgba(20,18,30,0.06); font-size:13px; font-weight:600;"><span style="width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#8B5CF6,#E83A73);"></span> Cotter</span>
+      <span style="display:inline-flex; align-items:center; gap:5px; padding:7px 11px; border-radius:999px; background:#FEFDFB; box-shadow:0 2px 6px rgba(20,18,30,0.06); font-size:15px;">🎸</span>
+      <span style="display:inline-flex; align-items:center; gap:5px; padding:7px 11px; border-radius:999px; background:#FEFDFB; box-shadow:0 2px 6px rgba(20,18,30,0.06); font-size:15px;">🥁</span>
+      <span style="display:inline-flex; align-items:center; gap:5px; padding:7px 11px; border-radius:999px; background:#FEFDFB; box-shadow:0 2px 6px rgba(20,18,30,0.06); font-size:15px;">🎹</span>
+      <span style="display:inline-flex; align-items:center; gap:5px; padding:7px 11px; border-radius:999px; background:rgba(232,58,115,0.10); font-size:15px;">🔥</span>
+    </div>
+  </div>
+</div>
+
+The chat noticed the second we shipped it: *"New reactions are super cute. Rick, Peter, Trevor, Cotter?"*
 
 Here is the honest engagement picture, and it is the number I am happiest about in the whole post. Reactions were basically dormant through May, a handful a week. Then the **Big Modern!** tour started and the chat went vertical: **312, then 1,067, then 897 reactions in three consecutive weeks.** In just the last three weeks of tour, the Goose live chats carried roughly **1,500 messages and 2,300 reactions**, about 3,800 interactions total, which rivals the entire fourteen-show Spring tour in a fraction of the nights. When the band finally gave everyone something to be loud about, the redesigned room was ready to be loud in.
 
@@ -211,7 +231,7 @@ Every show now opens into a redesigned, cinematic **show detail page**, and it i
 
 The hero is a sunset marquee with a live flip-clock counting down to doors. Under it, three avatar rows show your people sorted into **GOING**, **COUCH** (couch touring), and **WANT TIX**, so you can see the shape of the night at a glance and who to find. You can **call the opener right from the show page**, days before doors, the same one-tap prediction game that lives on the Lot and in the live room (they all share one store, so your pick follows you everywhere). You can share **where you are sitting** and see where everyone else is, section and row, so your friends can actually find each other in a shed. There is trip planning for lodging, a "the stage is dark" empty state that flips to a live setlist when the first song lands, and, once it is over, the full setlist with gaps, sit-ins, and a recap blurb built from the room's own reactions.
 
-<div style="background:#E7E2D6; padding:16px; border-radius:20px; margin:16px auto; max-width:420px;">
+<div style="color-scheme:light; background:#E7E2D6; padding:16px; border-radius:20px; margin:16px auto; max-width:420px;">
   <div style="background:#F0EDE4; border-radius:20px; box-shadow:0 12px 34px rgba(20,18,30,0.14); overflow:hidden; max-width:390px; margin:0 auto; color:#2A2A3A; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;">
     <div style="position:relative; min-height:150px; background:radial-gradient(circle at 50% 18%, #F8C8A8 0%, #F2A83B 22%, #E83A73 60%, #2A2A3A 108%);">
       <div style="position:absolute; inset:0; opacity:0.12; mix-blend-mode:overlay; background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); background-size:130px 130px;"></div>
@@ -257,6 +277,60 @@ The hero is a sunset marquee with a live flip-clock counting down to doors. Unde
 </div>
 
 That "call the opener from anywhere" detail is a small example of a rule we hold hard: a feature should be one thing with one source of truth, reachable from wherever you happen to be. Your opener call is the same object whether you make it on the Lot four days out, on the show page the morning of, or in the live room as the lights drop. People noticed. One night in the chat: *"we should build a closer call feature for pre show lol."* That is the app working, when the users start designing it with you.
+
+## The Bracket Is the Bridge Between Tours
+
+This is the feature I care about most for the actual between-shows problem, because it is the one that reaches into the dead weeks and keeps people listening.
+
+When a tour ends, the app seeds a **March Madness style bracket** of that tour's best jams. The seeding is not editorial: we run sentiment over every show's live chat, weight it by song, cross-reference the historical setlist data for bustouts and rarities, and the top sixteen jams become the bracket. Then the rounds release on a schedule, Round of 16, Quarters, Semis, Final, and the community votes each one. Ties break by seed. Followers get a push when a new round opens.
+
+The part that makes it work is the audio. Every matchup card has an **inline player for both jams**, streaming from **Relisten** where the recording exists, with a nugs.net "listen on" link as the fallback when it does not. You cannot vote between two twenty-minute jams without hearing them, so voting in the bracket means re-listening to the tour you just watched, one jam at a time, for weeks after the lights came up. By the time we crown a Jam of the Tour, the next run is already on the calendar and nobody ever fully left.
+
+<div style="color-scheme:light; background:#E7E2D6; padding:16px; border-radius:20px; margin:16px auto; max-width:460px;">
+  <div style="background:#F0EDE4; border-radius:18px; box-shadow:0 10px 28px rgba(20,18,30,0.12); overflow:hidden; max-width:420px; margin:0 auto; color:#2A2A3A; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;">
+    <div style="padding:11px 15px; background:#141220; color:#fff; display:flex; align-items:center; justify-content:space-between;">
+      <span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.14em;">🏆 JAM BRACKET · SEMIFINAL</span>
+      <span style="font-size:11px; opacity:0.6;">Big Modern! Tour</span>
+    </div>
+    <div style="padding:14px 15px;">
+      <!-- side 1 -->
+      <div style="background:#FEFDFB; border-radius:14px; padding:12px 13px; box-shadow:0 2px 8px rgba(20,18,30,0.05);">
+        <div style="display:flex; align-items:baseline; justify-content:space-between;">
+          <div><span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:9px; font-weight:800; color:#E83A73;">SEED 1</span> <span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:16px; font-weight:700;">Madhuvan</span></div>
+          <span style="font-family:'Instrument Serif','Cormorant Garamond',Georgia,serif; font-style:italic; font-size:13px; color:#9A9AAA;">6/22 · SPAC</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; margin-top:9px;">
+          <span style="width:30px; height:30px; border-radius:50%; background:#141220; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px;">▶</span>
+          <div style="flex:1;">
+            <div style="display:flex; align-items:center; gap:6px; font-size:10px; color:#9A9AAA;"><span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-weight:700; color:#2A5FAA;">RELISTEN</span> · 22:14</div>
+            <div style="height:4px; background:rgba(42,42,58,0.08); border-radius:2px; margin-top:4px; overflow:hidden;"><div style="height:100%; width:34%; background:#E83A73;"></div></div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center; font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:11px; font-weight:800; color:#9A9AAA; padding:8px 0;">VS</div>
+      <!-- side 2 -->
+      <div style="background:#FEFDFB; border-radius:14px; padding:12px 13px; box-shadow:0 2px 8px rgba(20,18,30,0.05);">
+        <div style="display:flex; align-items:baseline; justify-content:space-between;">
+          <div><span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:9px; font-weight:800; color:#9A9AAA;">SEED 4</span> <span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:16px; font-weight:700;">Into the Myst</span></div>
+          <span style="font-family:'Instrument Serif','Cormorant Garamond',Georgia,serif; font-style:italic; font-size:13px; color:#9A9AAA;">6/14 · Raleigh</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; margin-top:9px;">
+          <span style="width:30px; height:30px; border-radius:50%; background:#fff; border:2px solid #141220; color:#141220; display:flex; align-items:center; justify-content:center; font-size:12px;">▶</span>
+          <div style="flex:1;">
+            <div style="display:flex; align-items:center; gap:6px; font-size:10px; color:#9A9AAA;"><span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-weight:700; color:#6B6B7B;">nugs.net</span> · 18:03</div>
+            <div style="height:4px; background:rgba(42,42,58,0.08); border-radius:2px; margin-top:4px; overflow:hidden;"><div style="height:100%; width:0%; background:#E83A73;"></div></div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; margin-top:12px;">
+        <button style="flex:1; padding:10px; border-radius:999px; border:none; background:#E83A73; color:#fff; font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-weight:700; font-size:11px; letter-spacing:0.10em; text-transform:uppercase;">Vote Madhuvan</button>
+        <button style="flex:1; padding:10px; border-radius:999px; border:1px solid rgba(42,42,58,0.16); background:#FEFDFB; color:#2A2A3A; font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-weight:700; font-size:11px; letter-spacing:0.10em; text-transform:uppercase;">Vote Into the Myst</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+The gap between tours is where most music apps quietly die. The bracket is the deliberate answer: it turns the dead weeks into a reason to open the app every few days, re-listen to a jam, and argue about it in the chat, right up until the next tour makes the argument moot.
 
 ## A Reference Library You Browse for Fun
 
@@ -331,6 +405,39 @@ We built out **festivals** as their own surface: a multi-stage schedule grid, a 
 
 The point of all of it is the same: the more bands and the more festivals live in the app, the more nights of the year there is something happening for somebody, and the fewer truly dead Tuesdays there are.
 
+## Festival Mode: Plan It Like a Conference
+
+A festival is a different animal from a tour stop, so it gets its own mode. The centerpiece is a **multi-stage schedule grid**, and the closest honest comparison is a work conference program: stages down one axis, set times across the other, every slot a block you can tap. Except the sessions are sets and the tracks are stages, and the scheduling conflict you are agonizing over is which of two bands you love you have to miss.
+
+You build a plan for each day, the grid flags your overlaps, every day carries its own weather, and there is a live peek that lights up the set happening right now. When the weekend is over, Festival Mode writes a **recap of the whole event**, not one show but the full arc: a program block, the standout moments, a route map of where the weekend went, and per-day bookends. **Viva El Gonzo** in Cabo got the full treatment this year, down to canonicalizing every set to San José del Cabo.
+
+<div style="color-scheme:light; background:#E7E2D6; padding:16px; border-radius:20px; margin:16px auto; max-width:480px;">
+  <div style="background:#F0EDE4; border-radius:18px; box-shadow:0 10px 28px rgba(20,18,30,0.12); overflow:hidden; max-width:440px; margin:0 auto; color:#2A2A3A; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;">
+    <div style="padding:12px 15px; background:radial-gradient(circle at 20% 20%, #F2A83B, #E83A73 120%); color:#fff; display:flex; align-items:center; justify-content:space-between;">
+      <span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:12px; font-weight:700; letter-spacing:0.10em;">⛺ VIVA EL GONZO · SAT</span>
+      <span style="font-family:'Instrument Serif','Cormorant Garamond',Georgia,serif; font-style:italic; font-size:14px; opacity:0.92;">San José del Cabo · 82°</span>
+    </div>
+    <div style="padding:12px 13px;">
+      <div style="display:grid; grid-template-columns:58px 1fr 1fr; gap:6px; font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:9px; font-weight:700; letter-spacing:0.06em; color:#9A9AAA; text-transform:uppercase; margin-bottom:6px;">
+        <div></div><div style="text-align:center;">Beach Stage</div><div style="text-align:center;">Jungle Stage</div>
+      </div>
+      <div style="display:grid; grid-template-columns:58px 1fr 1fr; gap:6px; align-items:stretch;">
+        <div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:11px; font-weight:700; color:#6B6B7B; display:flex; align-items:center;">7:00</div>
+        <div style="background:#FEFDFB; border-radius:10px; padding:9px; border-left:3px solid #2A5FAA;"><div style="font-size:12px; font-weight:700;">Goose</div><div style="font-size:10px; color:#9A9AAA;">7:00 · Set I</div></div>
+        <div style="background:#FEFDFB; border-radius:10px; padding:9px; opacity:0.55;"><div style="font-size:12px; font-weight:600;">Dogs in a Pile</div><div style="font-size:10px; color:#9A9AAA;">7:30</div></div>
+      </div>
+      <div style="display:grid; grid-template-columns:58px 1fr 1fr; gap:6px; align-items:stretch; margin-top:6px;">
+        <div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:11px; font-weight:700; color:#6B6B7B; display:flex; align-items:center;">9:00</div>
+        <div style="background:rgba(232,58,115,0.10); border-radius:10px; padding:9px; border-left:3px solid #E83A73;"><div style="font-size:12px; font-weight:700;">Goose</div><div style="font-size:10px; color:#E83A73; font-weight:600;">9:15 · Set II</div></div>
+        <div style="background:rgba(232,58,115,0.10); border-radius:10px; padding:9px; border-left:3px solid #E83A73;"><div style="font-size:12px; font-weight:700;">Khruangbin</div><div style="font-size:10px; color:#E83A73; font-weight:600;">9:30 · conflict</div></div>
+      </div>
+      <div style="margin-top:10px; display:flex; align-items:center; gap:8px; padding:8px 11px; background:rgba(242,168,59,0.12); border-radius:10px; font-size:11.5px; color:#8a5a10;">
+        <span>⚠️</span><span>You planned both 9:00 sets. Goose Set II overlaps Khruangbin by 45 min.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 ## Half of This Is Patrick
 
 I need to stop and do this properly, because if you have read this far you have been reading "we" the whole time and the "we" is doing a lot of quiet work.
@@ -343,7 +450,7 @@ He put it best himself, in the chat one night, and I am quoting it because it is
 
 That was me, about him. He would tell you the opposite. We are both a little bit right and he is more right than I am.
 
-And here is the part that does not show up in a commit log at all. **Patrick made stickers.** Actual, physical, die-cut vinyl stickers, and he has spent this whole stretch handing them out at shows, on the lot, in the lot line, to strangers between sets, and quietly talking people into trying the app one human conversation at a time. Every growth chart later in this post that ticks up, ticks up partly because a guy stood in a parking lot in the heat and gave someone a sticker and said you should try this thing my buddy and I made.
+And here is the part that does not show up in a commit log at all. **Patrick made stickers.** Actual, physical, die-cut vinyl slaps, and he brings them to **every single show** and hands them out: on the lot, in the lot line, in the pit, to the person next to him, to the bartender, to total strangers between sets. He is not just leaving them on a table. He is walking up to people, showing them the app on his own phone, and talking them into it one human conversation at a time, night after night, city after city. Every growth chart later in this post that ticks up, ticks up because Patrick stood in a parking lot in the heat and sold someone on a thing he helped build. The man is a mensch. I do not know a better word for it, and I do not think there is one. Half the code and all of the street team, cheerfully, for the love of it.
 
 <div style="display:flex; gap:18px; flex-wrap:wrap; justify-content:center; margin:20px auto; max-width:520px;">
   <div style="filter:drop-shadow(0 8px 14px rgba(20,18,30,0.28)); transform:rotate(-5deg);">
