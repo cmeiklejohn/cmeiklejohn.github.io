@@ -452,35 +452,13 @@ I need to stop and do this properly, because if you have read this far you have 
 
 Patrick McCaughey (he is `@blimpalot` in the app) wrote **nearly half of the 787 pull requests in this window.** Not helper commits. Whole features, end to end, that are among the best things in the product. The Apple Watch app is his. The entire sit-in and guest-credit system is his. Group DMs and the Messages hub are his. Birthdays, big chunks of the poster archive, huge swaths of Tour Stats, the band backfills, the reaction kits for new bands. When I said the reference library is the part people actually used all summer, I was mostly describing Patrick's work.
 
-He put it best himself, in the chat one night, and I am quoting it because it is both generous and exactly backwards about who deserves credit:
+I said it myself in the chat one night, and I am quoting it because it is both generous and exactly backwards about who actually deserves the credit:
 
 > *"I might have wrote the app but all the cool shit in the app isn't me it's Patrick lol"*
 
-That was me, about him. He would tell you the opposite. We are both a little bit right and he is more right than I am.
+He would tell you the opposite. We are both a little bit right, and he is more right than I am.
 
 And here is the part that does not show up in a commit log at all. **Patrick made stickers.** Actual, physical, die-cut vinyl slaps, and he brings them to **every single show** and hands them out: on the lot, in the lot line, in the pit, to the person next to him, to the bartender, to total strangers between sets. He is not just leaving them on a table. He is walking up to people, showing them the app on his own phone, and talking them into it one human conversation at a time, night after night, city after city. Every growth chart later in this post that ticks up, ticks up because Patrick stood in a parking lot in the heat and sold someone on a thing he helped build. The man is a mensch. I do not know a better word for it, and I do not think there is one. Half the code and all of the street team, cheerfully, for the love of it.
-
-<div style="display:flex; gap:18px; flex-wrap:wrap; justify-content:center; margin:20px auto; max-width:520px;">
-  <div style="filter:drop-shadow(0 8px 14px rgba(20,18,30,0.28)); transform:rotate(-5deg);">
-    <div style="width:180px; height:180px; border-radius:26px; background:#FEFDFB; padding:9px; box-sizing:border-box;">
-      <div style="width:100%; height:100%; border-radius:20px; background:radial-gradient(circle at 32% 26%, #F8C8A8 0%, #F2A83B 22%, #E83A73 55%, #2A5FAA 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff; text-align:center; position:relative; overflow:hidden;">
-        <div style="position:absolute; inset:0; opacity:0.12; mix-blend-mode:overlay; background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); background-size:120px 120px;"></div>
-        <div style="font-size:40px; position:relative;">🪿</div>
-        <div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:20px; font-weight:700; letter-spacing:0.16em; position:relative; margin-top:4px;">ZABRISKIE</div>
-        <div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:9px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; opacity:0.9; position:relative; margin-top:3px;">couch tour '26</div>
-      </div>
-    </div>
-  </div>
-  <div style="filter:drop-shadow(0 8px 14px rgba(20,18,30,0.28)); transform:rotate(4deg);">
-    <div style="border-radius:999px; background:#FEFDFB; padding:9px; box-sizing:border-box;">
-      <div style="width:162px; height:162px; border-radius:999px; background:#141220; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff; text-align:center; border:2px solid #E83A73; position:relative;">
-        <div style="font-family:'Instrument Serif','Cormorant Garamond',Georgia,serif; font-style:italic; font-size:22px; color:#F2A83B; line-height:1.05;">are you<br>chomping?</div>
-        <div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:9px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.75); margin-top:10px;">✦ get on the lot</div>
-      </div>
-    </div>
-  </div>
-</div>
-<div style="text-align:center; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:11px; color:#9A9AAA; margin:-4px auto 6px; max-width:420px;">Stickers in the app's colors. A mockup, not a photo of Patrick's real ones, which are better.</div>
 
 My favorite version of this showed up in the chat one night, and it is the whole thesis in one message:
 
@@ -552,4 +530,4 @@ If you toured with us this Spring, thanks for chomping. If you have been in the 
 
 ---
 
-*One housekeeping note, same as last time: the screens in this post are mockups, not real screenshots, drawn to make each feature legible in one frame. The real app looks slightly different on iOS, Android, and the watch (Live Activities vs. ongoing notifications, complication styling, system fonts). The features themselves all shipped, and the stickers are real (Patrick's are cooler than the mockup here). The growth figures are real production numbers as of June 30, including the unflattering ones. Patrick's share of the work is real too, and if anything I undersold it.*
+*One housekeeping note, same as last time: the screens in this post are mockups, not real screenshots, drawn to make each feature legible in one frame. The real app looks slightly different on iOS, Android, and the watch (Live Activities vs. ongoing notifications, complication styling, system fonts). The features themselves all shipped, and Patrick's stickers are real. The growth figures are real production numbers as of June 30, including the unflattering ones. Patrick's share of the work is real too, and if anything I undersold it.*
