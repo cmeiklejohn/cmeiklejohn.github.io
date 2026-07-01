@@ -83,7 +83,7 @@ The heatbar sits above the chat and shows the room temperature. It counts the re
   </div>
 </div>
 
-One detail I love more than I expected to: the reactions are **band-specific.** The palette changes depending on whose show you are in. Walk into a Goose chat and your reactions are the band: 🥸 for Peter, 👟 for Rick's yellow Chuck Taylors, 🕶️ for Trevor, 🌽 for Cotter (yes, a corn). Walk into a Phish chat and it is 🎹 Page, 🎸 Trey, 🌵 Mike, and ⭕ Fishman. Every band we add gets its own kit drawn from its own members, all server-driven so we can hand a new band its reactions without shipping an app update. And there are conditional sit-in reactions, so Stuart Bogie's 🎷 slots into the Goose lineup, right between Rick's Chucks and Trevor's shades, on the nights he actually sits in. It is a small thing that tells the regulars we know exactly whose room they are standing in.
+One detail I love more than I expected to: the reactions are **band-specific.** The palette changes depending on whose show you are in. Walk into a Goose chat and your reactions are the band: 🥸 for Peter, 👟 for Rick's yellow Chuck Taylors, 🕶️ for Trevor, 🌽 for Cotter (yes, a corn). Walk into a Phish chat and it is 🎹 Page, 🎸 Trey, 🌵 Mike, and ⭕ Fishman. Every band we add gets its own kit drawn from its own members, all server-driven so we can hand a new band its reactions without shipping an app update. And there are conditional sit-in reactions, so Stuart Bogie's 🎷 slots into the Goose lineup, right between Rick's Chucks and Trevor's shades, on the nights he actually sits in. This one has a lineage worth naming: **Nicole had the original idea**, and **Patrick built it** into the server-driven kit it is now. It is a small thing that tells the regulars we know exactly whose room they are standing in.
 
 <div style="color-scheme:light; background:#E7E2D6; padding:16px; border-radius:20px; margin:16px auto; max-width:420px;">
   <div style="background:#F0EDE4; border-radius:18px; box-shadow:0 10px 28px rgba(20,18,30,0.12); max-width:390px; margin:0 auto; color:#2A2A3A; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; padding:16px;">
@@ -94,6 +94,27 @@ One detail I love more than I expected to: the reactions are **band-specific.** 
 
 The chat noticed the second we shipped it: *"New reactions are super cute. Rick, Peter, Trevor, Cotter?"*
 
+And the chat is wired into the stats the whole time. Tap any song in the setlist and a stat sheet slides up: when the band last played it, the gap since, its first-time-played, and your own history with the song, including how many times you personally have caught it live.
+
+<div style="color-scheme:light; background:#E7E2D6; padding:16px; border-radius:20px; margin:16px auto; max-width:420px;">
+  <div style="background:#F0EDE4; border-radius:18px; box-shadow:0 10px 28px rgba(20,18,30,0.12); overflow:hidden; max-width:390px; margin:0 auto; color:#2A2A3A; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;">
+    <div style="background:#141220; color:#fff; padding:10px 15px; display:flex; align-items:center; justify-content:space-between;"><span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.14em;">🎵 SONG STATS</span><span style="font-size:10px; opacity:0.6;">tap-up sheet</span></div>
+    <div style="padding:15px;">
+      <div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:22px; font-weight:700;">Big Modern!</div>
+      <div style="font-family:'Instrument Serif','Cormorant Garamond',Georgia,serif; font-style:italic; font-size:14px; color:#9A9AAA; margin-bottom:12px;">Goose · 35 lifetime plays</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+        <div style="background:#FEFDFB; border-radius:12px; padding:10px 12px;"><div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:9px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:#9A9AAA;">Last played</div><div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:15px; font-weight:700;">6/26 Raleigh</div></div>
+        <div style="background:#FEFDFB; border-radius:12px; padding:10px 12px;"><div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:9px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:#9A9AAA;">Show gap</div><div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:15px; font-weight:700;">2 shows</div></div>
+      </div>
+      <div style="margin-top:8px; padding:12px 14px; border-radius:12px; background:linear-gradient(135deg,#E83A73,#F2A83B); color:#fff; display:flex; align-items:center; gap:10px;"><span style="font-size:20px;">🎯</span><div><div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:16px; font-weight:800;">You have caught 27 of 35</div><div style="font-size:11px; opacity:0.9;">performances of Big Modern! live</div></div></div>
+    </div>
+  </div>
+</div>
+
+During the **Big Modern!** tour that last number turned into a running joke. The album's songs were suddenly in every setlist, and people watched their personal counts climb show by show, in real time. One chomper, a few nights deep:
+
+> *"I've now seen 27 of 35 Big Modern! ever played 🤣"*
+
 Here is the honest engagement picture, and it is the number I am happiest about in the whole post. Reactions were basically dormant through May, a handful a week. Then the **Big Modern!** tour started and the chat went vertical: **312, then 1,067, then 897 reactions in three consecutive weeks.** In just the last three weeks of tour, the Goose live chats carried roughly **1,500 messages and 2,300 reactions**, about 3,800 interactions total, which rivals the entire fourteen-show Spring tour in a fraction of the nights. When the band finally gave everyone something to be loud about, the redesigned room was ready to be loud in.
 
 The people in it will tell you what it feels like better than I can:
@@ -101,8 +122,6 @@ The people in it will tell you what it feels like better than I can:
 > *"Still an hour 20 til show time but I opened the chomp."*
 >
 > *"I love the time counter for the song."*
->
-> *"I've now seen 27 of 35 Big Modern! ever played 🤣"*
 
 ## The Lot
 
