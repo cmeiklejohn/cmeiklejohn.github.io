@@ -21,13 +21,85 @@ It is also a post about whether the between-shows bet worked, which is a questio
 
 I counted the PRs again, the same way I did in April. Between the last show of Spring tour and today, **787 pull requests** merged into [Zabriskie](https://github.com/cmeiklejohn/zabriskie). That is more than two and a half times the entire Spring tour, in about the same span of calendar. The app went from build 25-ish to **iOS 53 and Android 51**, shipped **v1.5.0 to the App Store and the Play Store**, and grew an entire second client: it runs on your **watch** now, which Patrick built end to end. And nearly half of those 787 pull requests are his, which is the single most important fact in this post and the one I want to sit on for a minute before anything else.
 
-But start with the front door, because that is the biggest change.
+There was also a real deadline this time. Goose put out a new album, **Big Modern!**, and took it on the road this summer. The album drop and the tour behind it are the biggest moment a band's community gets all year, and I wanted every surface of the app ready for it: the live chat, the show page, the home screen, the band's whole history one tap away. So a lot of what follows is us getting the room ready for the party. And when the Big Modern! tour actually started in June, the room filled. I will show you the chat numbers, because they are the ones I am proudest of.
+
+Start with the room everyone actually lives in during a show: the chat.
+
+## The Live Chat Got Rebuilt, and It Is Where Everything Happens
+
+During a show the chat is called the Chomp, and it is the beating heart of the whole app. This window we tore it down to the studs and rebuilt it as **Live Chat V2**: warmer, bigger, more cinematic, and organized around one new idea, the **reaction heatbar**.
+
+The heatbar sits above the chat and shows the room temperature. It counts the reactions flying right now, so you can feel a jam landing before you have read a single word. It turns out a lot of people want to be in the room without composing a sentence, and a tap of 🔥 is a much lower bar than typing. Around it we shipped set markers ("🎼 Set 1 begins," a "Set break" vote chip), duration-sized song progress bars, role badges, a spoiler-safe delay for couch viewers so the people in the building do not ruin the song for the people on the stream, and, because we are on the App Store now, report-and-block moderation on every message.
+
+<div style="background:#E7E2D6; padding:16px; border-radius:20px; margin:16px auto; max-width:420px;">
+  <div style="background:#F0EDE4; border-radius:20px; box-shadow:0 12px 34px rgba(20,18,30,0.14); overflow:hidden; max-width:390px; margin:0 auto; color:#2A2A3A; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;">
+    <div style="position:relative; padding:12px 16px; background:radial-gradient(circle at 20% 20%, #E83A73, #2A5FAA 120%); color:#fff;">
+      <div style="position:absolute; inset:0; opacity:0.12; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:130px 130px;"></div>
+      <div style="position:relative; display:flex; align-items:center; justify-content:space-between;">
+        <div style="display:flex; align-items:center; gap:8px;"><span style="width:8px; height:8px; border-radius:50%; background:#EF4444;"></span><span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:12px; font-weight:700; letter-spacing:0.14em;">GOOSE · LIVE</span></div>
+        <span style="font-family:'Instrument Serif','Cormorant Garamond',Georgia,serif; font-style:italic; font-size:15px; opacity:0.92;">The Cap · Set 2</span>
+      </div>
+    </div>
+
+    <!-- reaction heatbar (room temperature) -->
+    <div style="display:flex; align-items:center; gap:8px; padding:9px 14px; background:rgba(232,58,115,0.06); border-bottom:1px solid rgba(42,42,58,0.06);">
+      <span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:9px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#9A9AAA;">Room temp</span>
+      <span style="font-size:13px;">🔥 <b style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:12px;">41</b></span>
+      <span style="font-size:13px;">🤯 <b style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:12px;">18</b></span>
+      <span style="font-size:13px;">🕺 <b style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:12px;">12</b></span>
+      <span style="font-size:13px;">🎷 <b style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:12px;">7</b></span>
+      <span style="flex:1;"></span>
+      <span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:10px; color:#E83A73; font-weight:700;">🌡 boiling</span>
+    </div>
+
+    <div style="padding:8px 0 8px;">
+      <div style="padding:6px 14px;"><span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:12px; font-weight:600; letter-spacing:0.04em; color:#2A5FAA; background:rgba(42,95,170,0.10); padding:4px 12px; border-radius:12px;">🎼 Set 2 begins</span></div>
+      <div style="padding:4px 14px 2px;"><span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:13px; font-weight:600; color:#E83A73; background:rgba(232,58,115,0.10); padding:4px 12px; border-radius:12px;">🎵 Madhuvan</span> <span style="font-size:11px; color:#9A9AAA;">↩ 6-show gap</span></div>
+
+      <div style="padding:8px 14px; display:flex; gap:10px; align-items:flex-start;">
+        <div style="width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg,#F2A83B,#E83A73); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:#fff; flex-shrink:0;">P</div>
+        <div>
+          <div style="display:flex; gap:6px; align-items:center;"><span style="font-weight:700; font-size:14px;">patrick</span><span style="font-size:9px; padding:2px 6px; border-radius:8px; color:#fff; font-weight:700; background:#E83A73;">🎸 Show</span></div>
+          <div style="font-size:14px; line-height:1.35;">HERE IT IS. this is the one 🔥🔥🔥</div>
+          <div style="margin-top:4px;"><span style="font-size:11px; padding:2px 9px; border-radius:10px; background:rgba(232,58,115,0.10); color:#E83A73; font-weight:700;">🔥 9</span></div>
+        </div>
+      </div>
+
+      <div style="padding:4px 14px; display:flex; gap:10px; align-items:flex-start;">
+        <div style="width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg,#3AC4E8,#2A5FAA); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:#fff; flex-shrink:0;">C</div>
+        <div>
+          <div style="display:flex; gap:6px; align-items:center;"><span style="font-weight:700; font-size:14px;">chomper1</span><span style="font-size:9px; padding:2px 6px; border-radius:8px; color:#fff; font-weight:700; background:#3AC4E8;">🛋 Couch</span></div>
+          <div style="font-size:14px; line-height:1.35;">YOOO CHOMPERS 🎸🤝🛋️ nugs is 40s behind, no spoilers</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:8px 14px 14px;">
+      <div style="display:flex; gap:8px; align-items:center; padding:9px 12px; background:#FEFDFB; border-radius:16px; border:1px solid rgba(42,42,58,0.08);">
+        <span style="font-size:14px; color:#9A9AAA; flex:1; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;">Say something to the chomp…</span>
+        <span style="font-size:12px; font-weight:700; color:#fff; background:#E83A73; padding:5px 14px; border-radius:12px; font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;">Send</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+Here is the honest engagement picture, and it is the number I am happiest about in the whole post. Reactions were basically dormant through May, a handful a week. Then the **Big Modern!** tour started and the chat went vertical: **312, then 1,067, then 897 reactions in three consecutive weeks.** In just the last three weeks of tour, the Goose live chats carried roughly **1,500 messages and 2,300 reactions**, about 3,800 interactions total, which rivals the entire fourteen-show Spring tour in a fraction of the nights. When the band finally gave everyone something to be loud about, the redesigned room was ready to be loud in.
+
+The people in it will tell you what it feels like better than I can:
+
+> *"you only get the lockscreen setlist if you mark 🛋️ or 🎸. but it's kind of the killer feature"*
+>
+> *"New reactions are super cute."*
+>
+> *"Back at it! And ready for another sneaky Tuesday heater 🤘. Chomping from row G 😉"*
+>
+> *"I've now seen 27 of 35 Big Modern! ever played 🤣"*
 
 ## The Lot
 
 When you open Zabriskie now, you do not land on a feed. You land on **The Lot**.
 
-The Lot is a personalized home. It is the leftmost tab and the default route, and it is built to answer one question the feed never could: what is worth my attention right now, for me. If a band you follow is on stage somewhere, the hero card is that show with a live setlist preview ticking underneath it. If nothing is live, it reaches for the next best thing: tonight's shows, last night's recap, the jam bracket that is still taking votes, an "On This Day" card that falls back to a band anniversary when you personally have no show on the date, a bookmark worth revisiting, a nudge to post to the Flow if you have been quiet for a week.
+The Lot is a personalized home. It is the leftmost tab and the default route, and it is built to answer one question the feed never could: what is worth my attention right now, for me. If a band you follow is on stage somewhere, the hero card is that show with a live setlist preview ticking underneath it. If nothing is live, it reaches for the next best thing, and it has a lot of next-best things to reach for: tonight's shows and who is going to them, last night's auto-generated recap, the jam bracket that is still taking votes, a new album to go listen to (it pushed the **Big Modern!** listening party the week it dropped), an "On This Day" card that surfaces a show from your own history or a band anniversary, a historical show worth revisiting, a bookmark to return to, a one-tap RSVP, even a nudge to post to the Flow if you have been quiet for a week. Every card is a real destination, not a placeholder. The Lot's whole job is to always have one more good reason to stay.
 
 <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Jost:wght@400;500;600;700&display=swap');</style>
 
@@ -133,6 +205,59 @@ The Lot is a personalized home. It is the leftmost tab and the default route, an
 
 The design principle underneath The Lot is the same one that governs the whole app: it never shows you an empty room. If there is nothing live, it does not say "nothing is live." It finds the thing about your history, or your friends, or the band's history, that is worth a tap. An app that opens onto a dead feed teaches you to stop opening it. The Lot is the counter to that reflex, and it is the surface that most of the rest of this post feeds into.
 
+## The Show Page Became the Whole Show
+
+Every show now opens into a redesigned, cinematic **show detail page**, and it is doing a lot of jobs at once. Before the show it is a countdown and a planning surface. During the show it hands off to the live chat. After the show it is the recap and the setlist for good.
+
+The hero is a sunset marquee with a live flip-clock counting down to doors. Under it, three avatar rows show your people sorted into **GOING**, **COUCH** (couch touring), and **WANT TIX**, so you can see the shape of the night at a glance and who to find. You can **call the opener right from the show page**, days before doors, the same one-tap prediction game that lives on the Lot and in the live room (they all share one store, so your pick follows you everywhere). You can share **where you are sitting** and see where everyone else is, section and row, so the crew can actually find each other in a shed. There is trip planning for lodging, a "the stage is dark" empty state that flips to a live setlist when the first song lands, and, once it is over, the full setlist with gaps, sit-ins, and a recap blurb built from the room's own reactions.
+
+<div style="background:#E7E2D6; padding:16px; border-radius:20px; margin:16px auto; max-width:420px;">
+  <div style="background:#F0EDE4; border-radius:20px; box-shadow:0 12px 34px rgba(20,18,30,0.14); overflow:hidden; max-width:390px; margin:0 auto; color:#2A2A3A; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;">
+    <div style="position:relative; min-height:150px; background:radial-gradient(circle at 50% 18%, #F8C8A8 0%, #F2A83B 22%, #E83A73 60%, #2A2A3A 108%);">
+      <div style="position:absolute; inset:0; opacity:0.12; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:130px 130px;"></div>
+      <div style="position:absolute; left:0; right:0; bottom:0; height:100%; background:linear-gradient(to top, rgba(20,18,30,0.9) 6%, rgba(20,18,30,0.4) 55%, transparent 100%);"></div>
+      <div style="position:relative; z-index:1; padding:14px 16px 16px; display:flex; flex-direction:column; height:100%; justify-content:flex-end; min-height:150px;">
+        <div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:24px; font-weight:600; letter-spacing:0.03em; color:#fff;">Goose</div>
+        <div style="font-family:'Instrument Serif','Cormorant Garamond',Georgia,serif; font-style:italic; font-size:17px; color:rgba(255,255,255,0.94);">The Capitol Theatre · Port Chester</div>
+        <div style="display:flex; gap:7px; margin-top:10px;">
+          <div style="background:rgba(20,18,30,0.5); border-radius:10px; padding:5px 9px; text-align:center;"><div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:18px; font-weight:700; color:#fff; font-variant-numeric:tabular-nums;">02</div><div style="font-size:7px; letter-spacing:0.12em; color:rgba(255,255,255,0.7);">DAYS</div></div>
+          <div style="background:rgba(20,18,30,0.5); border-radius:10px; padding:5px 9px; text-align:center;"><div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:18px; font-weight:700; color:#fff; font-variant-numeric:tabular-nums;">14</div><div style="font-size:7px; letter-spacing:0.12em; color:rgba(255,255,255,0.7);">HRS</div></div>
+          <div style="background:rgba(20,18,30,0.5); border-radius:10px; padding:5px 9px; text-align:center;"><div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:18px; font-weight:700; color:#fff; font-variant-numeric:tabular-nums;">31</div><div style="font-size:7px; letter-spacing:0.12em; color:rgba(255,255,255,0.7);">MIN</div></div>
+          <div style="background:rgba(20,18,30,0.5); border-radius:10px; padding:5px 9px; text-align:center;"><div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:18px; font-weight:700; color:#F2A83B; font-variant-numeric:tabular-nums;">08</div><div style="font-size:7px; letter-spacing:0.12em; color:rgba(255,255,255,0.7);">SEC</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:12px 14px;">
+      <!-- who's going -->
+      <div style="display:flex; gap:8px; margin-bottom:12px;">
+        <div style="flex:1; background:#FEFDFB; border-radius:12px; padding:8px 10px; text-align:center;"><div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:9px; font-weight:700; letter-spacing:0.08em; color:#2A5FAA;">GOING</div><div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:18px; font-weight:700;">14</div></div>
+        <div style="flex:1; background:#FEFDFB; border-radius:12px; padding:8px 10px; text-align:center;"><div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:9px; font-weight:700; letter-spacing:0.08em; color:#3AC4E8;">COUCH</div><div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:18px; font-weight:700;">31</div></div>
+        <div style="flex:1; background:#FEFDFB; border-radius:12px; padding:8px 10px; text-align:center;"><div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:9px; font-weight:700; letter-spacing:0.08em; color:#F2A83B;">WANT TIX</div><div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:18px; font-weight:700;">6</div></div>
+      </div>
+
+      <!-- call the opener -->
+      <div style="background:#FEFDFB; border-radius:14px; padding:12px; margin-bottom:10px;">
+        <div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#2A5FAA; margin-bottom:8px;">🔮 Call the opener</div>
+        <div style="display:flex; gap:6px; flex-wrap:wrap;">
+          <span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:12px; font-weight:600; padding:6px 12px; border-radius:999px; background:rgba(42,95,170,0.10); color:#2A5FAA;">Hungersite</span>
+          <span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:12px; font-weight:600; padding:6px 12px; border-radius:999px; border:1px solid rgba(42,42,58,0.14); color:#6B6B7B;">Arrow</span>
+          <span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:12px; font-weight:600; padding:6px 12px; border-radius:999px; border:1px solid rgba(42,42,58,0.14); color:#6B6B7B;">Madhuvan</span>
+        </div>
+      </div>
+
+      <!-- who's sitting where -->
+      <div style="background:#FEFDFB; border-radius:14px; padding:12px;">
+        <div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#E83A73; margin-bottom:8px;">🪑 Your crew's seats</div>
+        <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:12.5px; color:#2A2A3A;"><span style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#F2A83B,#E83A73);"></span> patrick · <b>Orch L, Row G</b></div>
+        <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:12.5px; color:#2A2A3A; margin-top:6px;"><span style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#F2A83B,#FACC15);"></span> gmart · <b>Balcony, Row B</b></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+That "call the opener from anywhere" detail is a small example of a rule we hold hard: a feature should be one thing with one source of truth, reachable from wherever you happen to be. Your opener call is the same object whether you make it on the Lot four days out, on the show page the morning of, or in the live room as the lights drop. People noticed. One night in the chat: *"we should build a closer call feature for pre show lol."* That is the app working, when the users start designing it with you.
+
 ## Hangs and Crews: The Social Bets That Have Not Landed Yet
 
 The most on-the-nose thing we built for the between-shows problem is **Hangs**. A hang is a real-world meetup: tacos before the show, a lot rendezvous, a hotel-bar session after the encore. You make one, you drop a place on it, and people RSVP.
@@ -205,6 +330,10 @@ The other way to earn a Tuesday open is to be worth reading when nothing is happ
 
 None of these three are things you open during a show. They are things you open because you are a fan and it is a slow afternoon and you want to fall into your band's history for twenty minutes. That is the whole idea, and unlike the crew rooms, this is the part people actually did all summer. More on that below.
 
+## Goose Mode and the Band Pages
+
+Each band gets a **band mode**, a tour companion tailored to one band at a time, and Goose Mode got most of the love because Goose is home base. It knows the band's calendar, colors, and vocabulary. The centerpiece is a tour timeline with a live countdown to the next show, past shows checked off, upcoming shows carrying weather and which of your friends are going, and your crew annotated in and out of the run leg by leg. Every band also has a full band page: recent shows with inline-expand setlists, your personal history with that band, and a jump straight into the Songbook. Adding a band is a whole project (find a setlist source, backfill the history, wire the page and the mode), and we did it more than a dozen times, because the more homes there are, the more nights someone has a reason to open the app.
+
 ## It Runs on Your Watch Now
 
 We shipped an entire new client this window: **Wear OS and Apple Watch**, and Patrick built essentially all of it, from the SwiftUI screens to the WidgetKit complications to the connectivity layer.
@@ -231,7 +360,7 @@ The watch is the purest expression of the "be present at the show" argument I ke
 
 ## The Whole App Got Redesigned Underneath All of This
 
-Quietly, in parallel with every feature above, we rebuilt the look of the app. The Flow, the live chat, profiles, notifications, crews, and festivals all got "v2" cinematic redesigns: warmer, larger, more editorial, less like a database with a skin on it. This is a big deal operationally because of how it ships. Every redesign runs behind a version flag, keyed to the client build, so an old phone that has not updated keeps getting the old design and a fresh install gets the new one, and neither breaks. That is the machinery that lets us redesign a live surface without stranding the person watching a show on a two-month-old binary. It is unglamorous and it is most of why we can move this fast without breaking the people already here.
+None of this happened in isolation. The Lot, the live chat, the show page, the Flow, profiles, notifications, crews, festivals, and the band modes all got "v2" cinematic redesigns in the same language: warm parchment and sunset gradients, film grain, an editorial serif for the venues, less like a database with a skin on it and more like a thing made by people who love the thing. The whole app changed clothes this window. This is a big deal operationally because of how it ships. Every redesign runs behind a version flag, keyed to the client build, so an old phone that has not updated keeps getting the old design and a fresh install gets the new one, and neither breaks. That is the machinery that lets us redesign a live surface without stranding the person watching a show on a two-month-old binary. It is unglamorous and it is most of why we can move this fast without breaking the people already here.
 
 ## New Rooms: Cabo, the Festivals, More Bands
 
@@ -277,7 +406,11 @@ And here is the part that does not show up in a commit log at all. **Patrick mad
 </div>
 <div style="text-align:center; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:11px; color:#9A9AAA; margin:-4px auto 6px; max-width:420px;">Stickers in the app's colors. A mockup, not a photo of Patrick's real ones, which are better.</div>
 
-This is what organic actually means. Not a referral loop or a viral coefficient. A person who loves the thing, standing in front of another person, in the place they both love to be. You cannot buy that and you cannot fake it, and it is the entire reason a two-person app has a real community around it at all.
+My favorite version of this showed up in the chat one night, and it is the whole thesis in one message:
+
+> *"the owner of this bar is super cool. huge deadhead and big goose fan. he is renting a bus and taking his whole staff to the SPAC show! just got him on the app hahha"*
+
+That is the growth engine. Not a referral loop or a viral coefficient. A person who loves the thing, standing in front of another person, in the place they both love to be, and now a bar owner is busing his staff to a Goose show and they are all in the chat. You cannot buy that and you cannot fake it, and it is the entire reason a two-person app has a real community around it at all.
 
 ## Did It Work? The Honest Numbers
 
@@ -319,6 +452,7 @@ So if new signups are a tour phenomenon, the real job of everything in this post
 - **The live chat never went silent.** 2,547 messages from 42 people across this window, versus 3,737 from 40 during the concentrated Spring run. Fewer messages, because there were far fewer big Goose nights, but the same size of core showing up, between tours, with no fourteen-show schedule forcing them to.
 - **People spent the quiet months logging their history.** Attendance records went from 1,783 to **4,598**, and **2,570 of those were logged in this window**, spread across 70 different bands. Cataloging the shows you have been to is the most between-shows activity there is. Nobody logs a 2016 club show during a live set. They do it on a slow Sunday, which is precisely the Tuesday-open I was trying to earn.
 - **The reference library got used.** The Songbook, the poster archive, and the guest directory are the surfaces with real traffic on no-show days, which tracks: they are built to be read when nothing is live.
+- **And when there was a show, engagement went vertical.** As covered up in the live-chat section: reactions went from a handful a week to 1,067 in a single week once the Big Modern! tour started, and the last three weeks of tour drove roughly 3,800 chat interactions, rivaling the whole Spring run. The between-tours job is retention, but the tour itself proved the redesigned room is more alive than it has ever been.
 
 And the numbers I am **not** going to give you: a clean daily-active-users chart. We record a row when a user opens the app, but that table has multi-week holes in it from May and early June where the logging was broken, so any DAU or "percent active on non-show days" figure I quoted would be built on gaps. I would rather tell you the table is broken than draw a confident line through missing data. Fixing that instrumentation is now on the list, because the between-shows thesis deserves a real measurement and right now I cannot give it one.
 
