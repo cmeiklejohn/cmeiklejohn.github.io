@@ -498,7 +498,7 @@ And I should say the obvious thing, the thing under all of it, the reason two pe
 
 Goose Summer is in the books now, and this post is the receipt for it. Phish is up next, then Goose Fall after that. The festivals are seeded, the watch is on my wrist, and Patrick built it. The app is not done, and the real test of everything here is not this recap. It is whether the room stays this alive between now and the next run, while it is still just an announcement away.
 
-If you toured with us this summer, thanks for chomping. If you have been in the chat on the dead Tuesdays, you are the 42, and you are the entire experiment working. If Patrick handed you a sticker in a parking lot and you scanned it, welcome, you are the growth chart. And if you have never tried it and an app that is good company between shows sounds like something you want, come find us. There is probably something worth reading tonight, even if nothing is live.
+If you toured with us this summer, thanks for chomping. If you have been in the chat on the dead Tuesdays, you are one of the 42 who kept it alive, and you are the entire experiment working. If Patrick handed you a sticker in a parking lot and you scanned it, welcome, you are the growth chart. And if you have never tried it and an app that is good company between shows sounds like something you want, come find us. There is probably something worth reading tonight, even if nothing is live.
 
 ---
 
