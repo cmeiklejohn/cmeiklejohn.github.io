@@ -34,7 +34,7 @@ The heatbar sits above the chat and shows the room temperature. It counts the re
 <div style="background:#E7E2D6; padding:16px; border-radius:20px; margin:16px auto; max-width:420px;">
   <div style="background:#F0EDE4; border-radius:20px; box-shadow:0 12px 34px rgba(20,18,30,0.14); overflow:hidden; max-width:390px; margin:0 auto; color:#2A2A3A; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;">
     <div style="position:relative; padding:12px 16px; background:radial-gradient(circle at 20% 20%, #E83A73, #2A5FAA 120%); color:#fff;">
-      <div style="position:absolute; inset:0; opacity:0.12; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:130px 130px;"></div>
+      <div style="position:absolute; inset:0; opacity:0.12; mix-blend-mode:overlay; background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); background-size:130px 130px;"></div>
       <div style="position:relative; display:flex; align-items:center; justify-content:space-between;">
         <div style="display:flex; align-items:center; gap:8px;"><span style="width:8px; height:8px; border-radius:50%; background:#EF4444;"></span><span style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:12px; font-weight:700; letter-spacing:0.14em;">GOOSE · LIVE</span></div>
         <span style="font-family:'Instrument Serif','Cormorant Garamond',Georgia,serif; font-style:italic; font-size:15px; opacity:0.92;">The Cap · Set 2</span>
@@ -91,7 +91,7 @@ The people in it will tell you what it feels like better than I can:
 >
 > *"New reactions are super cute."*
 >
-> *"Back at it! And ready for another sneaky Tuesday heater 🤘. Chomping from row G 😉"*
+> *"I love the time counter for the song."*
 >
 > *"I've now seen 27 of 35 Big Modern! ever played 🤣"*
 
@@ -132,7 +132,7 @@ The Lot is a personalized home. It is the leftmost tab and the default route, an
       <!-- Tier-0 cinematic hero: UP NEXT (the gap, made visible) -->
       <div style="margin:12px 14px 4px; border-radius:18px; overflow:hidden; box-shadow:0 16px 40px -14px rgba(20,18,30,0.5);">
         <div style="position:relative; min-height:206px; background:radial-gradient(circle at 30% 24%, #F8C8A8 0%, #F2A83B 20%, #E83A73 52%, #2A5FAA 100%);">
-          <div style="position:absolute; inset:0; opacity:0.12; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:150px 150px;"></div>
+          <div style="position:absolute; inset:0; opacity:0.12; mix-blend-mode:overlay; background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); background-size:150px 150px;"></div>
           <div style="position:absolute; left:0; right:0; bottom:0; height:100%; background:linear-gradient(to top, rgba(20,18,30,0.90) 4%, rgba(20,18,30,0.5) 46%, transparent 100%);"></div>
           <div style="position:relative; z-index:1; display:flex; flex-direction:column; gap:12px; padding:15px 17px 17px; min-height:206px;">
             <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px;">
@@ -152,7 +152,7 @@ The Lot is a personalized home. It is the leftmost tab and the default route, an
                   <div style="width:26px; height:26px; border-radius:50%; background:linear-gradient(135deg,#E83A73,#F2A83B); box-shadow:0 0 0 2px #14121e; margin-right:-8px;"></div>
                   <div style="width:26px; height:26px; border-radius:50%; background:linear-gradient(135deg,#F2A83B,#FACC15); box-shadow:0 0 0 2px #14121e;"></div>
                 </div>
-                <span style="font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:13px; color:rgba(255,255,255,0.85);">patrick, gmart, +10 in your crew going</span>
+                <span style="font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:13px; color:rgba(255,255,255,0.85);">patrick, gmart, +10 you follow going</span>
               </div>
               <button style="margin-top:14px; padding:12px 16px; width:100%; border-radius:999px; border:none; font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-weight:700; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; background:#E83A73; color:#fff; box-shadow:0 10px 28px -6px rgba(232,58,115,0.6);">View show →</button>
             </div>
@@ -209,12 +209,12 @@ The design principle underneath The Lot is the same one that governs the whole a
 
 Every show now opens into a redesigned, cinematic **show detail page**, and it is doing a lot of jobs at once. Before the show it is a countdown and a planning surface. During the show it hands off to the live chat. After the show it is the recap and the setlist for good.
 
-The hero is a sunset marquee with a live flip-clock counting down to doors. Under it, three avatar rows show your people sorted into **GOING**, **COUCH** (couch touring), and **WANT TIX**, so you can see the shape of the night at a glance and who to find. You can **call the opener right from the show page**, days before doors, the same one-tap prediction game that lives on the Lot and in the live room (they all share one store, so your pick follows you everywhere). You can share **where you are sitting** and see where everyone else is, section and row, so the crew can actually find each other in a shed. There is trip planning for lodging, a "the stage is dark" empty state that flips to a live setlist when the first song lands, and, once it is over, the full setlist with gaps, sit-ins, and a recap blurb built from the room's own reactions.
+The hero is a sunset marquee with a live flip-clock counting down to doors. Under it, three avatar rows show your people sorted into **GOING**, **COUCH** (couch touring), and **WANT TIX**, so you can see the shape of the night at a glance and who to find. You can **call the opener right from the show page**, days before doors, the same one-tap prediction game that lives on the Lot and in the live room (they all share one store, so your pick follows you everywhere). You can share **where you are sitting** and see where everyone else is, section and row, so your friends can actually find each other in a shed. There is trip planning for lodging, a "the stage is dark" empty state that flips to a live setlist when the first song lands, and, once it is over, the full setlist with gaps, sit-ins, and a recap blurb built from the room's own reactions.
 
 <div style="background:#E7E2D6; padding:16px; border-radius:20px; margin:16px auto; max-width:420px;">
   <div style="background:#F0EDE4; border-radius:20px; box-shadow:0 12px 34px rgba(20,18,30,0.14); overflow:hidden; max-width:390px; margin:0 auto; color:#2A2A3A; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;">
     <div style="position:relative; min-height:150px; background:radial-gradient(circle at 50% 18%, #F8C8A8 0%, #F2A83B 22%, #E83A73 60%, #2A2A3A 108%);">
-      <div style="position:absolute; inset:0; opacity:0.12; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:130px 130px;"></div>
+      <div style="position:absolute; inset:0; opacity:0.12; mix-blend-mode:overlay; background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); background-size:130px 130px;"></div>
       <div style="position:absolute; left:0; right:0; bottom:0; height:100%; background:linear-gradient(to top, rgba(20,18,30,0.9) 6%, rgba(20,18,30,0.4) 55%, transparent 100%);"></div>
       <div style="position:relative; z-index:1; padding:14px 16px 16px; display:flex; flex-direction:column; height:100%; justify-content:flex-end; min-height:150px;">
         <div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:24px; font-weight:600; letter-spacing:0.03em; color:#fff;">Goose</div>
@@ -248,7 +248,7 @@ The hero is a sunset marquee with a live flip-clock counting down to doors. Unde
 
       <!-- who's sitting where -->
       <div style="background:#FEFDFB; border-radius:14px; padding:12px;">
-        <div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#E83A73; margin-bottom:8px;">🪑 Your crew's seats</div>
+        <div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#E83A73; margin-bottom:8px;">🪑 Who's sitting where</div>
         <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:12.5px; color:#2A2A3A;"><span style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#F2A83B,#E83A73);"></span> patrick · <b>Orch L, Row G</b></div>
         <div style="display:flex; align-items:center; gap:8px; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:12.5px; color:#2A2A3A; margin-top:6px;"><span style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#F2A83B,#FACC15);"></span> gmart · <b>Balcony, Row B</b></div>
       </div>
@@ -257,45 +257,6 @@ The hero is a sunset marquee with a live flip-clock counting down to doors. Unde
 </div>
 
 That "call the opener from anywhere" detail is a small example of a rule we hold hard: a feature should be one thing with one source of truth, reachable from wherever you happen to be. Your opener call is the same object whether you make it on the Lot four days out, on the show page the morning of, or in the live room as the lights drop. People noticed. One night in the chat: *"we should build a closer call feature for pre show lol."* That is the app working, when the users start designing it with you.
-
-## Hangs and Crews: The Social Bets That Have Not Landed Yet
-
-The most on-the-nose thing we built for the between-shows problem is **Hangs**. A hang is a real-world meetup: tacos before the show, a lot rendezvous, a hotel-bar session after the encore. You make one, you drop a place on it, and people RSVP.
-
-Every hang has a cinematic detail page at `/hang/:id` with a hero, the RSVP list, an activity timeline, and a **map**. The place picker autocompletes against OpenStreetMap, so you are pinning a real venue, not typing an address into a box. There is a `/hangs` hub that consolidates every hang you are part of and a `/hangs/past` archive so the meetups you have already done do not clutter the live list.
-
-<div style="background:#e5e2d9; padding:18px; border-radius:14px; margin:16px auto; max-width:520px; font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif; color:#262626;">
-  <div style="background:#F5F2EB; border-radius:18px; box-shadow:0 6px 20px rgba(0,0,0,0.08); overflow:hidden; max-width:380px; margin:0 auto;">
-    <div style="height:120px; background:linear-gradient(135deg,#fb923c 0%,#ea580c 60%,#8B5CF6 100%); position:relative;">
-      <div style="position:absolute; bottom:10px; left:14px; color:#fff;">
-        <div style="font-size:10px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; opacity:0.9;">Pre-show hang</div>
-        <div style="font-size:19px; font-weight:800;">Tacos before Red Rocks 🌮</div>
-      </div>
-      <div style="position:absolute; top:10px; right:12px; background:rgba(0,0,0,0.35); color:#fff; font-size:10px; font-weight:700; padding:4px 8px; border-radius:8px;">Fri · 6:00pm</div>
-    </div>
-    <div style="padding:14px;">
-      <div style="display:flex; gap:10px; align-items:center; padding:10px 12px; background:#fff; border-radius:12px;">
-        <span style="font-size:20px;">📍</span>
-        <div style="flex:1;"><div style="font-size:13px; font-weight:700;">Torchy's Tacos · Morrison</div><div style="font-size:11px; color:#6B7280;">1.2 mi from the venue · pinned on the map</div></div>
-      </div>
-      <div style="margin-top:10px; padding:10px 12px; background:#fff; border-radius:12px;">
-        <div style="font-size:10px; font-weight:800; letter-spacing:0.05em; color:#6B7280; text-transform:uppercase; margin-bottom:8px;">Going · 4</div>
-        <div style="display:flex; align-items:center; gap:8px;">
-          <div style="display:flex;">
-            <div style="width:26px; height:26px; border-radius:50%; background:linear-gradient(135deg,#ffd6b0,#f59e47); border:2px solid #fff; font-size:10px; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; margin-right:-7px;">P</div>
-            <div style="width:26px; height:26px; border-radius:50%; background:linear-gradient(135deg,#b0eaff,#3ba8e0); border:2px solid #fff; font-size:10px; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; margin-right:-7px;">C</div>
-            <div style="width:26px; height:26px; border-radius:50%; background:linear-gradient(135deg,#a7f3d0,#10b981); border:2px solid #fff; font-size:10px; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; margin-right:-7px;">B</div>
-            <div style="width:26px; height:26px; border-radius:50%; background:linear-gradient(135deg,#fde68a,#f59e0b); border:2px solid #fff; font-size:10px; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700;">G</div>
-          </div>
-          <span style="flex:1; font-size:11px; color:#6B7280;">patrick, chomper1, +2</span>
-          <span style="font-size:12px; font-weight:800; padding:6px 14px; border-radius:12px; background:#FB923C; color:#fff;">I'm in</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-Here is the honest part, and it covers the bigger swing too. Hangs has a dozen entries so far, not a movement. And Crews, which got the most social engineering of anything this stretch, landed even quieter. We turned Crews from a roster into a real-time room this tour: a live channel with messages, reactions, and typing indicators, live-show song markers mirrored straight in, and song calls you can throw from inside the crew feed that share the same store as the live room. It is genuinely nice engineering, and almost nobody used it. Ten crews, about two dozen messages total, across the entire window. I am putting that number in the post because the premise of writing these is that the receipts are real, and "we shipped real-time crew chat" and "people use real-time crew chat" are two different claims and only the first one is true yet. My read is that both Hangs and Crews are tour-shaped features. They need a big shared run pointing everyone at the same cities on the same nights to fill, and there was not one in this window. The plumbing is done. Whether people move in is a Fall problem, and I will report back either way.
 
 ## A Reference Library You Browse for Fun
 
@@ -328,11 +289,11 @@ The other way to earn a Tuesday open is to be worth reading when nothing is happ
   </div>
 </div>
 
-None of these three are things you open during a show. They are things you open because you are a fan and it is a slow afternoon and you want to fall into your band's history for twenty minutes. That is the whole idea, and unlike the crew rooms, this is the part people actually did all summer. More on that below.
+None of these three are things you open during a show. They are things you open because you are a fan and it is a slow afternoon and you want to fall into your band's history for twenty minutes. That is the whole idea, and this is the part people actually did all summer. More on that below.
 
 ## Goose Mode and the Band Pages
 
-Each band gets a **band mode**, a tour companion tailored to one band at a time, and Goose Mode got most of the love because Goose is home base. It knows the band's calendar, colors, and vocabulary. The centerpiece is a tour timeline with a live countdown to the next show, past shows checked off, upcoming shows carrying weather and which of your friends are going, and your crew annotated in and out of the run leg by leg. Every band also has a full band page: recent shows with inline-expand setlists, your personal history with that band, and a jump straight into the Songbook. Adding a band is a whole project (find a setlist source, backfill the history, wire the page and the mode), and we did it more than a dozen times, because the more homes there are, the more nights someone has a reason to open the app.
+Each band gets a **band mode**, a tour companion tailored to one band at a time, and Goose Mode got most of the love because Goose is home base. It knows the band's calendar, colors, and vocabulary. The centerpiece is a tour timeline with a live countdown to the next show, past shows checked off, upcoming shows carrying weather and which of your friends are going, and your friends annotated in and out of the run leg by leg. Every band also has a full band page: recent shows with inline-expand setlists, your personal history with that band, and a jump straight into the Songbook. Adding a band is a whole project (find a setlist source, backfill the history, wire the page and the mode), and we did it more than a dozen times, because the more homes there are, the more nights someone has a reason to open the app.
 
 ## It Runs on Your Watch Now
 
@@ -360,7 +321,7 @@ The watch is the purest expression of the "be present at the show" argument I ke
 
 ## The Whole App Got Redesigned Underneath All of This
 
-None of this happened in isolation. The Lot, the live chat, the show page, the Flow, profiles, notifications, crews, festivals, and the band modes all got "v2" cinematic redesigns in the same language: warm parchment and sunset gradients, film grain, an editorial serif for the venues, less like a database with a skin on it and more like a thing made by people who love the thing. The whole app changed clothes this window. This is a big deal operationally because of how it ships. Every redesign runs behind a version flag, keyed to the client build, so an old phone that has not updated keeps getting the old design and a fresh install gets the new one, and neither breaks. That is the machinery that lets us redesign a live surface without stranding the person watching a show on a two-month-old binary. It is unglamorous and it is most of why we can move this fast without breaking the people already here.
+None of this happened in isolation. The Lot, the live chat, the show page, the Flow, profiles, notifications, festivals, and the band modes all got "v2" cinematic redesigns in the same language: warm parchment and sunset gradients, film grain, an editorial serif for the venues, less like a database with a skin on it and more like a thing made by people who love the thing. The whole app changed clothes this window. This is a big deal operationally because of how it ships. Every redesign runs behind a version flag, keyed to the client build, so an old phone that has not updated keeps getting the old design and a fresh install gets the new one, and neither breaks. That is the machinery that lets us redesign a live surface without stranding the person watching a show on a two-month-old binary. It is unglamorous and it is most of why we can move this fast without breaking the people already here.
 
 ## New Rooms: Cabo, the Festivals, More Bands
 
@@ -388,7 +349,7 @@ And here is the part that does not show up in a commit log at all. **Patrick mad
   <div style="filter:drop-shadow(0 8px 14px rgba(20,18,30,0.28)); transform:rotate(-5deg);">
     <div style="width:180px; height:180px; border-radius:26px; background:#FEFDFB; padding:9px; box-sizing:border-box;">
       <div style="width:100%; height:100%; border-radius:20px; background:radial-gradient(circle at 32% 26%, #F8C8A8 0%, #F2A83B 22%, #E83A73 55%, #2A5FAA 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff; text-align:center; position:relative; overflow:hidden;">
-        <div style="position:absolute; inset:0; opacity:0.12; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:120px 120px;"></div>
+        <div style="position:absolute; inset:0; opacity:0.12; mix-blend-mode:overlay; background-image:url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E&quot;); background-size:120px 120px;"></div>
         <div style="font-size:40px; position:relative;">🪿</div>
         <div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:20px; font-weight:700; letter-spacing:0.16em; position:relative; margin-top:4px;">ZABRISKIE</div>
         <div style="font-family:'Jost',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:9px; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; opacity:0.9; position:relative; margin-top:3px;">couch tour '26</div>
@@ -460,7 +421,7 @@ The one-line version: **we are not going viral, and I do not want to. We are gro
 
 ## What This Stretch Taught Me
 
-- **The gap is the product, and it is a retention problem, not a growth problem.** Spring proved the show works. This stretch proved that new users arrive on the tour calendar and not otherwise, so the between-shows job is to hold the community you already have. Almost every feature in this post is a bet on retention, and the honest scoreboard is "the core stayed" and "crews and hangs have not proven themselves yet," not a signup hockey stick.
+- **The gap is the product, and it is a retention problem, not a growth problem.** Spring proved the show works. This stretch proved that new users arrive on the tour calendar and not otherwise, so the between-shows job is to hold the community you already have. Almost every feature in this post is a bet on retention, and the honest scoreboard is "the core stayed," not a signup hockey stick.
 - **Measure the thesis or you are guessing.** I built a whole argument about between-shows engagement and then discovered my own session-tracking had holes in it. Shipping the features without fixing the instrument to grade them is a mistake I am writing down so I actually fix it.
 - **Shipping a redesign is a distributed-systems problem.** The version-flag machinery that lets an old build keep its old UI while a new build gets v2 is the least visible work of the whole two months and close to the most important. Without it, moving this fast would mean breaking the exact people who already showed up.
 - **787 PRs is still not normal, and most of it is still Claude.** Same as April: a lot of this was written by Claude, a lot of it had to be rewritten by Claude after I caught it going sideways, and every sharp edge got logged into the [agent reliability dataset]({% post_url 2026-06-10-the-test-suite-was-the-incident %}) I keep publishing from. The failures are the point of the dataset, not something to hide.
@@ -468,7 +429,7 @@ The one-line version: **we are not going viral, and I do not want to. We are gro
 
 And I should say the obvious thing, the thing under all of it, the reason two people spend nights and tour weekends building a couch-touring app instead of doing literally anything else: **Goose fucks.** That is the whole premise. The band is that good, the jams are worth talking about at 1am, the bustouts are worth calling from your couch, and the community around them is worth building a home for. Everything in this post is downstream of a band being good enough that people want to be in the same room about it, even when the room is a chat.
 
-Goose Summer is on the calendar. The festivals are seeded. The watch is on my wrist, and Patrick built it. The app is not done, and the real test of everything here is not this recap. It is whether the rooms fill when the next tour points everyone at the same cities again.
+Goose Summer is on the calendar. The festivals are seeded. The watch is on my wrist, and Patrick built it. The app is not done, and the real test of everything here is not this recap. It is whether the room stays this alive after the tour ends, when the next run is still just an announcement away.
 
 If you toured with us this Spring, thanks for chomping. If you have been in the chat on the dead Tuesdays, you are the 42, and you are the entire experiment working. If Patrick handed you a sticker in a parking lot and you scanned it, welcome, you are the growth chart. And if you have never tried it and an app that is good company between shows sounds like something you want, come find us. There is probably something worth reading tonight, even if nothing is live.
 
