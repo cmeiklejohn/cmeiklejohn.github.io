@@ -6,8 +6,8 @@ group: ai
 categories: ai zabriskie development
 ---
 
-> *"is there a show tonight? no. am I still opening this every morning? yeah."*
-> (a chomper, in the crew chat, mid-June, no show on the calendar for nine days)
+> *"Thank god this app rocks and I can live through the chompers."*
+> (a chomper, in the chat, on a night they could not make the show)
 
 Two months ago I [wrote up Goose Spring '26]({% post_url 2026-04-26-spring-tour-recap %}). The through-line of that post was that the live show finally worked. Live Activities stayed up, the setlist was seconds behind the room instead of minutes, song calls landed, and forty people spent a tour sending each other 3,737 messages from their couches and their seats. The app was good for the two and a half hours a night that a band was on stage.
 
@@ -27,72 +27,92 @@ When you open Zabriskie now, you do not land on a feed. You land on **The Lot**.
 
 The Lot is a personalized home. It is the leftmost tab and the default route, and it is built to answer one question the feed never could: what is worth my attention right now, for me. If a band you follow is on stage somewhere, the hero card is that show with a live setlist preview ticking underneath it. If nothing is live, it reaches for the next best thing: tonight's shows, last night's recap, the jam bracket that is still taking votes, an "On This Day" card that falls back to a band anniversary when you personally have no show on the date, a bookmark worth revisiting, a nudge to post to the Flow if you have been quiet for a week.
 
-<div style="background:#e5e2d9; padding:18px; border-radius:14px; margin:16px auto; max-width:520px; font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif; color:#262626;">
-  <div style="background:#F5F2EB; border-radius:18px; box-shadow:0 6px 20px rgba(0,0,0,0.08); overflow:hidden; max-width:380px; margin:0 auto;">
-    <div style="background:#262626; color:#fff; padding:10px 16px; font-size:11px; letter-spacing:0.04em; text-transform:uppercase; display:flex; justify-content:space-between; align-items:center;">
-      <span>🪧 The Lot</span>
-      <span style="opacity:0.65; font-weight:400; text-transform:none; letter-spacing:0;">Tuesday · nothing live</span>
-    </div>
+<div style="background:#E7E2D6; padding:16px; border-radius:20px; margin:16px auto; max-width:420px;">
+  <div style="background:#F0EDE4; border-radius:20px; box-shadow:0 12px 34px rgba(20,18,30,0.14); overflow:hidden; max-width:390px; margin:0 auto; color:#2A2A3A;">
 
-    <div style="padding:14px 14px 4px;">
-      <div style="font-size:13px; font-weight:800;">Good morning, @cmeik 👋</div>
-      <div style="font-size:11px; color:#6B7280; margin-top:2px;">No show tonight. Here's what's moving.</div>
-    </div>
-
-    <div style="padding:10px 14px 6px;">
-      <div style="background:linear-gradient(135deg,#8B5CF6 0%,#7c3aed 100%); border-radius:14px; padding:14px; color:#fff;">
-        <div style="font-size:9px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; opacity:0.85;">🏆 Jam Bracket · Semifinals</div>
-        <div style="font-size:15px; font-weight:800; margin-top:4px;">Madhuvan vs Into the Myst</div>
-        <div style="font-size:11px; opacity:0.85; margin-top:2px;">voting closes in 18h · you haven't voted</div>
-        <div style="margin-top:10px; background:rgba(255,255,255,0.18); border-radius:10px; padding:6px 10px; font-size:12px; font-weight:700; text-align:center;">Listen to both · cast your vote →</div>
+    <!-- greeting header -->
+    <div style="padding:16px 16px 6px; font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;">
+      <div style="display:flex; align-items:center; gap:7px; flex-wrap:wrap;">
+        <span style="color:#E83A73; font-size:12px; line-height:1;">✦</span>
+        <span style="font-family:'Jost','Jost Fallback',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#9A9AAA;">The Lot</span>
+        <span style="font-size:11px; color:#9A9AAA;">· Tuesday · Jun 30 · 9:41 AM</span>
+      </div>
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-top:9px;">
+        <div style="font-family:'Jost','Jost Fallback',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:25px; font-weight:500; letter-spacing:0.02em; line-height:1.1; color:#2A2A3A;">Good morning, cmeik</div>
+        <div style="width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,#E83A73,#F2A83B); flex-shrink:0; box-shadow:0 2px 8px rgba(20,18,30,0.12);"></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px; margin-top:9px; font-size:12.5px; color:#6B6B7B;">
+        <span>🔥 12-day streak</span><span style="width:3px; height:3px; border-radius:50%; background:#9A9AAA;"></span><span>✍️ 3 logged this week</span>
       </div>
     </div>
 
-    <div style="padding:6px 14px;">
-      <div style="background:#fff; border-radius:12px; padding:12px; display:flex; gap:10px; align-items:center;">
-        <div style="font-size:22px;">📅</div>
-        <div style="flex:1;"><div style="font-size:13px; font-weight:700;">On this day, 2 years ago</div><div style="font-size:11px; color:#6B7280;">You caught Hungersite → Arrow at the Cap. 34-show gap that night.</div></div>
+    <!-- Tier-0 cinematic hero: UP NEXT (the gap, made visible) -->
+    <div style="margin:12px 14px 4px; border-radius:18px; overflow:hidden; box-shadow:0 16px 40px -12px rgba(20,18,30,0.55);">
+      <div style="position:relative; min-height:210px; background:radial-gradient(circle at 30% 24%, #F8C8A8 0%, #F2A83B 20%, #E83A73 52%, #2A5FAA 100%);">
+        <div style="position:absolute; inset:0; opacity:0.12; mix-blend-mode:overlay; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:150px 150px;"></div>
+        <div style="position:absolute; left:0; right:0; bottom:0; height:100%; background:linear-gradient(to top, rgba(20,18,30,0.90) 4%, rgba(20,18,30,0.5) 46%, transparent 100%);"></div>
+        <div style="position:relative; z-index:1; display:flex; flex-direction:column; gap:12px; padding:15px 17px 17px; height:100%;">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px;">
+            <span style="display:inline-flex; align-items:center; padding:6px 12px; border-radius:999px; background:rgba(20,18,30,0.5); font-family:'Jost','Jost Fallback',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.18em; color:#fff;">UP NEXT</span>
+            <div style="text-align:right;">
+              <div style="font-family:'Jost','Jost Fallback',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-variant-numeric:tabular-nums; font-size:20px; font-weight:600; color:#fff; letter-spacing:0.04em;">9d 04h</div>
+              <div style="font-family:'Jost','Jost Fallback',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:9px; font-weight:600; letter-spacing:0.16em; color:rgba(255,255,255,0.7); text-transform:uppercase;">until doors</div>
+            </div>
+          </div>
+          <div style="margin-top:auto;">
+            <div style="font-family:'Jost','Jost Fallback',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:28px; font-weight:600; letter-spacing:0.03em; line-height:1.08; color:#fff;">Goose</div>
+            <div style="font-family:'Instrument Serif','Cormorant Garamond',Georgia,serif; font-style:italic; font-size:19px; color:rgba(255,255,255,0.94); margin-top:2px; line-height:1.25;">The Capitol Theatre<span style="color:rgba(255,255,255,0.58);"> · Port Chester, NY</span></div>
+            <div style="font-family:'Jost','Jost Fallback',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:11px; font-weight:600; letter-spacing:0.09em; text-transform:uppercase; color:rgba(255,255,255,0.72); margin-top:7px;">Fri Jul 10 · 8:00 PM</div>
+            <div style="display:flex; align-items:center; gap:9px; margin-top:11px;">
+              <div style="display:flex;">
+                <div style="width:26px; height:26px; border-radius:50%; background:linear-gradient(135deg,#2A5FAA,#3AC4E8); box-shadow:0 0 0 2px #14121e; margin-right:-8px;"></div>
+                <div style="width:26px; height:26px; border-radius:50%; background:linear-gradient(135deg,#E83A73,#F2A83B); box-shadow:0 0 0 2px #14121e; margin-right:-8px;"></div>
+                <div style="width:26px; height:26px; border-radius:50%; background:linear-gradient(135deg,#F2A83B,#FACC15); box-shadow:0 0 0 2px #14121e;"></div>
+              </div>
+              <span style="font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:13px; color:rgba(255,255,255,0.84);">patrick, gmart, +10 in your crew going</span>
+            </div>
+            <button style="margin-top:14px; padding:12px 16px; width:100%; border-radius:999px; border:none; font-family:'Jost','Jost Fallback',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-weight:700; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; background:#E83A73; color:#fff; box-shadow:0 10px 28px -6px rgba(232,58,115,0.6);">View show →</button>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div style="padding:6px 14px 14px;">
-      <div style="background:#fff; border-radius:12px; padding:12px; display:flex; gap:10px; align-items:center;">
-        <div style="font-size:22px;">👋</div>
-        <div style="flex:1;"><div style="font-size:13px; font-weight:700;">A hang near you</div><div style="font-size:11px; color:#6B7280;">3 chompers grabbing tacos before Red Rocks · Fri 6pm</div></div>
-        <span style="font-size:11px; font-weight:800; padding:5px 10px; border-radius:10px; background:#EDE9FE; color:#8B5CF6;">RSVP</span>
-      </div>
+    <!-- tier label -->
+    <div style="display:flex; align-items:center; gap:12px; margin:20px 16px 10px;">
+      <span style="font-family:'Jost','Jost Fallback',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.20em; text-transform:uppercase; color:#9A9AAA;">Act now</span>
+      <span style="flex:1; height:1px; background:rgba(42,42,58,0.10);"></span>
+      <span style="font-size:11px; color:#9A9AAA;">nothing live tonight</span>
     </div>
+
+    <!-- Jam Bracket card -->
+    <div style="margin:0 14px 12px; background:#FEFDFB; border-radius:16px; box-shadow:0 6px 18px rgba(20,18,30,0.06); padding:16px; position:relative; overflow:hidden;">
+      <span style="position:absolute; left:0; top:0; bottom:0; width:3px; background:#2A5FAA;"></span>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+        <span style="font-size:15px;">🏆</span>
+        <span style="font-family:'Jost','Jost Fallback',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#2A5FAA;">Jam Bracket · Semifinals</span>
+      </div>
+      <div style="font-family:'Jost','Jost Fallback',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:21px; font-weight:600; letter-spacing:0.03em; color:#2A2A3A;">Madhuvan <span style="color:#9A9AAA; font-size:15px;">vs</span> Into the Myst</div>
+      <div style="font-family:'Instrument Serif','Cormorant Garamond',Georgia,serif; font-style:italic; font-size:15px; color:#2A5FAA; margin-top:3px;">voting closes in 18h · you haven't voted</div>
+      <button style="margin-top:14px; padding:9px 16px; border-radius:999px; border:none; font-family:'Jost','Jost Fallback',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-weight:600; font-size:11px; letter-spacing:0.10em; text-transform:uppercase; background:#E83A73; color:#fff; box-shadow:0 6px 16px -4px rgba(232,58,115,0.3);">Listen to both · vote</button>
+    </div>
+
+    <!-- On This Day card -->
+    <div style="margin:0 14px 16px; background:#FEFDFB; border-radius:16px; box-shadow:0 6px 18px rgba(20,18,30,0.06); padding:16px; position:relative; overflow:hidden;">
+      <span style="position:absolute; left:0; top:0; bottom:0; width:3px; background:#F2A83B;"></span>
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+        <span style="font-size:15px;">📅</span>
+        <span style="font-family:'Jost','Jost Fallback',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#F2A83B;">On this day</span>
+      </div>
+      <div style="font-family:'Jost','Jost Fallback',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:18px; font-weight:600; letter-spacing:0.02em; color:#2A2A3A;">2 years ago at the Cap</div>
+      <div style="font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif; font-size:13px; color:#6B6B7B; margin-top:6px; line-height:1.5;">You caught Hungersite → Arrow. 34-show gap on the Arrow that night.</div>
+    </div>
+
   </div>
 </div>
 
 The design principle underneath The Lot is the same one that governs the whole app: it never shows you an empty room. If there is nothing live, it does not say "nothing is live." It finds the thing about your history, or your friends, or the band's history, that is worth a tap. An app that opens onto a dead feed teaches you to stop opening it. The Lot is the counter to that reflex, and it is the surface that most of the rest of this post feeds into.
 
-## Crews Got a Living Room
-
-In Spring, Crews were mostly a roster: here are the people touring together, here is who is going to which show. This tour we tried to turn the roster into a room.
-
-Every crew now has a **real-time chat**. Not a comment thread you refresh, a live channel: messages, reactions, and typing indicators all stream over the same server-sent-events bundle the live show uses. When a band your crew follows goes on stage, the live-show song markers mirror straight into the crew chat, so the crew room becomes a private live-chat for just your people. You can **call a song from inside the crew chat**, sharing the exact same song-call store as the live room, and a correct call throws its win celebration right there in the crew feed. There are unread counts on the crew list so you know which room is talking.
-
-<div style="background:#e5e2d9; padding:18px; border-radius:14px; margin:16px auto; max-width:520px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; color:#262626;">
-  <div style="background:#1a1410; border-radius:18px; box-shadow:0 6px 20px rgba(0,0,0,0.18); overflow:hidden; max-width:380px; margin:0 auto; color:#e8dcc8;">
-    <div style="background:#0f0b08; color:#e8dcc8; padding:10px 16px; font-size:11px; letter-spacing:0.04em; text-transform:uppercase; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(232,220,200,0.12);">
-      <span>🎫 Texas Run Crew</span>
-      <span style="opacity:0.55; font-weight:400; text-transform:none; letter-spacing:0;">5 members · 2 typing</span>
-    </div>
-    <div style="padding:12px 14px; display:flex; flex-direction:column; gap:8px; font-size:12px;">
-      <div style="display:flex; gap:8px;"><span style="opacity:0.4; font-size:10px; min-width:38px;">9:14pm</span><span><span style="color:#e0a458; font-weight:700;">patrick</span> they're tuning down, this is Tumble</span></div>
-      <div style="padding:4px 10px; background:rgba(224,164,88,0.14); border-radius:8px; color:#e0a458; font-weight:700; font-size:11px; align-self:flex-start;">🎵 Tumble · Set 2</div>
-      <div style="display:flex; gap:8px;"><span style="opacity:0.4; font-size:10px; min-width:38px;">9:14pm</span><span><span style="color:#8fb4e0; font-weight:700;">gmart</span> 📣 called it three songs ago 😤</span></div>
-      <div style="padding:6px 10px; background:linear-gradient(135deg,#10b981,#059669); border-radius:8px; color:#fff; font-weight:700; font-size:11px; align-self:flex-start;">✓ gmart called Tumble · +1 🎉</div>
-      <div style="display:flex; gap:8px;"><span style="opacity:0.4; font-size:10px; min-width:38px;">9:15pm</span><span><span style="color:#d9a3e0; font-weight:700;">mwat</span> couch crew reporting in, stream is 40s behind you all</span></div>
-      <div style="opacity:0.4; font-size:10px; padding-top:2px;">patrick is typing…</div>
-    </div>
-  </div>
-</div>
-
-Here is the honest part. As of today there are ten crews and about two dozen messages in all of them combined. The living room is built and mostly empty. I am putting the real number in the post because the whole premise of writing these is that the receipts are real, and "we shipped real-time crew chat" and "people are using real-time crew chat" are two different claims, and only the first one is true yet. My read is that crews are a tour-shaped feature and there was not a big shared Goose run in this window to fill them. The Fall test is whether they light up when everyone is pointed at the same set of dates again. I will report back either way.
-
-## Hangs: The App Leaves the Phone
+## Hangs and Crews: The Social Bets That Have Not Landed Yet
 
 The most on-the-nose thing we built for the between-shows problem is **Hangs**. A hang is a real-world meetup: tacos before the show, a lot rendezvous, a hotel-bar session after the encore. You make one, you drop a place on it, and people RSVP.
 
@@ -129,7 +149,7 @@ Every hang has a cinematic detail page at `/hang/:id` with a hero, the RSVP list
   </div>
 </div>
 
-Same honesty note applies: a dozen hangs so far, not a movement. Everything else in the app is designed to deepen the online community, and Hangs is the one feature whose entire job is to end the online part and get people in the same room. It is the app trying to make itself unnecessary for an evening, which is exactly what a third place should do, and it is going to take a tour full of people in the same cities to know if it takes. The plumbing is done. The proof is a Fall problem.
+Here is the honest part, and it covers the bigger swing too. Hangs has a dozen entries so far, not a movement. And Crews, which got the most social engineering of anything this stretch, landed even quieter. We turned Crews from a roster into a real-time room this tour: a live channel with messages, reactions, and typing indicators, live-show song markers mirrored straight in, and song calls you can throw from inside the crew feed that share the same store as the live room. It is genuinely nice engineering, and almost nobody used it. Ten crews, about two dozen messages total, across the entire window. I am putting that number in the post because the premise of writing these is that the receipts are real, and "we shipped real-time crew chat" and "people use real-time crew chat" are two different claims and only the first one is true yet. My read is that both Hangs and Crews are tour-shaped features. They need a big shared run pointing everyone at the same cities on the same nights to fill, and there was not one in this window. The plumbing is done. Whether people move in is a Fall problem, and I will report back either way.
 
 ## A Reference Library You Browse for Fun
 
