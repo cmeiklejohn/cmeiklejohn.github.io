@@ -115,6 +115,8 @@ During the **Big Modern!** tour that last number turned into a running joke. The
 
 > *"I've now seen 27 of 35 Big Modern! ever played 🤣"*
 
+That same history powers the feature I am fondest of, the **FTP witness**. FTP is "first time played," a song's debut show. When a song lands in a live setlist, the app quietly checks everyone in the room, and if any of them were RSVP'd to that song's very first performance, an inline 👀 pill drops into the chat: "2 people in the chomp were at this song's FTP." Tap it and it opens the debut show. It is the app reaching back years to tell a room that someone standing in it was there at the beginning, and nothing makes a chat feel more like a community than being reminded, live, that the person you are talking to caught the debut of the song you are both hearing right now.
+
 Here is the honest engagement picture, and it is the number I am happiest about in the whole post. Reactions were basically dormant through May, a handful a week. Then the **Big Modern!** tour started and the chat went vertical: **312, then 1,067, then 897 reactions in three consecutive weeks.** In just the last three weeks of tour, the Goose live chats carried roughly **1,500 messages and 2,300 reactions**, about 3,800 interactions total, which rivals the entire fourteen-show Spring tour in a fraction of the nights. When the band finally gave everyone something to be loud about, the redesigned room was ready to be loud in.
 
 The people in it will tell you what it feels like better than I can:
@@ -409,7 +411,7 @@ None of this happened in isolation. The Lot, the live chat, the show page, the F
 
 The band list kept growing. We backfilled full histories for **Widespread Panic (3,114 shows), Eggy, and Dizgo**, on top of the dozen bands we added during Spring, each with the full treatment: a source for the setlists, a band page, a band mode, a spot in the directory. There are **102 bands and 38,894 shows** in the catalog now.
 
-We built out **festivals** as their own surface: a multi-stage schedule grid, a plan phase, and a full **festival recap** that reads the whole weekend rather than one show, with a program block, hero moments, a route map, and per-day bookends. **Viva El Gonzo** in Cabo got the destination-festival treatment (down to canonicalizing every set to San José del Cabo), and we seeded lineups for All Good Now and Northlands. Goose Summer is on the calendar and already wired in.
+We built out **festivals** as their own surface: a multi-stage schedule grid, a plan phase, and a full **festival recap** that reads the whole weekend rather than one show, with a program block, hero moments, a route map, and per-day bookends. **Viva El Gonzo** in Cabo got the destination-festival treatment (down to canonicalizing every set to San José del Cabo), and we seeded lineups for All Good Now and Northlands. Every new tour gets wired in the moment it is announced.
 
 The point of all of it is the same: the more bands and the more festivals live in the app, the more nights of the year there is something happening for somebody, and the fewer truly dead Tuesdays there are.
 
@@ -524,9 +526,9 @@ The one-line version: **we are not going viral, and I do not want to. We are gro
 
 And I should say the obvious thing, the thing under all of it, the reason two people spend nights and tour weekends building a couch-touring app instead of doing literally anything else: **Goose fucks.** That is the whole premise. The band is that good, the jams are worth talking about at 1am, the bustouts are worth calling from your couch, and the community around them is worth building a home for. Everything in this post is downstream of a band being good enough that people want to be in the same room about it, even when the room is a chat.
 
-Goose Summer is on the calendar. The festivals are seeded. The watch is on my wrist, and Patrick built it. The app is not done, and the real test of everything here is not this recap. It is whether the room stays this alive after the tour ends, when the next run is still just an announcement away.
+Goose Summer is in the books now, and this post is the receipt for it. Phish is up next, then Goose Fall after that. The festivals are seeded, the watch is on my wrist, and Patrick built it. The app is not done, and the real test of everything here is not this recap. It is whether the room stays this alive between now and the next run, while it is still just an announcement away.
 
-If you toured with us this Spring, thanks for chomping. If you have been in the chat on the dead Tuesdays, you are the 42, and you are the entire experiment working. If Patrick handed you a sticker in a parking lot and you scanned it, welcome, you are the growth chart. And if you have never tried it and an app that is good company between shows sounds like something you want, come find us. There is probably something worth reading tonight, even if nothing is live.
+If you toured with us this summer, thanks for chomping. If you have been in the chat on the dead Tuesdays, you are the 42, and you are the entire experiment working. If Patrick handed you a sticker in a parking lot and you scanned it, welcome, you are the growth chart. And if you have never tried it and an app that is good company between shows sounds like something you want, come find us. There is probably something worth reading tonight, even if nothing is live.
 
 ---
 
