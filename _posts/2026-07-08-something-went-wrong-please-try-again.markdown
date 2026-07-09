@@ -9,7 +9,7 @@ categories: ai personal agents reliability testing
 
 Toronto to Detroit to Norfolk. Two nights of Goose at the Dome. I have made this trip, or one shaped like it, more times than I can count.
 
-On Sunday my connection to Norfolk slipped an hour, then another, then another. At 11:30 PM Delta cancelled it along with hundreds of other flights, said the next seat out was Tuesday, and told us to sleep in the airport. The run was Sunday and Monday. Whatever happened next, night one was already gone.
+On Sunday my connection to Norfolk slipped an hour, then another, then another. At 11:30 PM Delta cancelled it along with hundreds of other flights, said the next seat out was Tuesday, and told us to sleep in the airport. The run was Monday and Tuesday. Whatever happened next, night one was already gone.
 
 Everything near the terminal was full. So I called outward.
 
