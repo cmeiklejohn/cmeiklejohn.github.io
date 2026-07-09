@@ -7,9 +7,9 @@ group: ai
 categories: ai personal agents reliability testing
 ---
 
-Toronto to Detroit to Norfolk. Two nights of Goose at the Dome. I have made this trip, or one shaped like it, more times than I can count.
+Toronto to Detroit to Norfolk. Two nights of Goose at the Dome, Monday and Tuesday, and I was flying in the night before. I have made this trip, or one shaped like it, more times than I can count.
 
-On Sunday my connection to Norfolk slipped an hour, then another, then another. At 11:30 PM Delta cancelled it along with hundreds of other flights, said the next seat out was Tuesday, and told us to sleep in the airport. The run was Monday and Tuesday. Whatever happened next, night one was already gone.
+On Sunday night my connection to Norfolk slipped an hour, then another, then another. At 11:30 PM Delta cancelled it along with hundreds of other flights, said the next seat out was Tuesday, and told us to sleep in the airport. Whatever happened next, night one was already gone.
 
 Everything near the terminal was full. So I called outward.
 
@@ -69,7 +69,7 @@ Her: I need the address to verify your identity.
 
 Me: I am going to google it, and then I am going to read it back to you, and we are both going to pretend that proved something.
 
-She accepted the address. I found it in nine seconds, on the open internet, on the same phone that could not update my own account. A stranger with my name and a search bar could have done the same thing. The system was not verifying that I was me. It was verifying that I was willing to perform the ritual, at 1:00 AM, with a dead phone battery and no room, and I was.
+She accepted the address. I found it in nine seconds, on the open internet, on the same phone that could not update my own account. A stranger with my name and a search bar could have done the same thing. The system was not verifying that I was me. It was verifying that I was willing to perform the ritual, and at 1:00 AM with nowhere to sleep, I was willing to perform anything.
 
 ## Three machines, one pattern
 
