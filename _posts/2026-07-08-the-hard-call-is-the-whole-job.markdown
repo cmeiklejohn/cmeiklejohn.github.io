@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Something Went Wrong. Please Try Again."
+title:  "The Hard Call Is the Whole Job"
 subtitle: "A cancelled flight, three confident machines, and the woman on the Hilton Diamond line who refused to stop."
 date:   2026-07-08 12:00:00 -0700
 group: ai
