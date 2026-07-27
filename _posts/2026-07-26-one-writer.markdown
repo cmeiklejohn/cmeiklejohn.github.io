@@ -29,7 +29,7 @@ Some context for readers arriving fresh.  [Zabriskie](https://zabriskie.app) is 
 
 That framing matters, because several things below look like obvious mistakes and are.  I let agents design a migration scheme with only another agent reviewing it, I stopped reading most diffs, and I let sixty-four pull requests go up in a single day, all of which a careful engineer would tell you not to do and would be right about.  But the point of running an experiment at the extreme is to find the walls.  That week I found several at once.
 
-A _migration_, throughout, is a versioned SQL file that changes the database schema.  _CI_ is the automated checking that runs on every proposed change: build the app, spin up a fresh database, run the tests.
+A **migration**, throughout, is a versioned SQL file that changes the database schema.  **CI** is the automated checking that runs on every proposed change: build the app, spin up a fresh database, run the tests.
 
 Here is the shape of the three days.  Treat these numbers as texture, not as evidence, for a reason I will get to.
 
@@ -83,21 +83,15 @@ That assumption was invisible to _me_ because it never bound me.  It has bound l
 
 So what is new here isn't the concurrency.  **It's that a solo developer now operates in the regime that used to require an infrastructure organization, with none of the infrastructure and no headcount to build it.  Agents removed the cap on my arrival rate.  They didn't hand me Google's build system.**
 
-The organizational fix is worth naming, because it isn't subtle.  Large companies make every developer's environment a faithful copy of the one that builds and ships the product, either by moving development onto cloud machines provisioned from the same definition as CI, or by reproducing that environment in miniature on the laptop: a container per service, a database per test, a toolchain pinned to a lockfile.  Somebody owns that, full time.  The cost of getting it wrong is paid once, by a platform team, instead of every day by everyone else.
-
-I don't have a platform team, and neither does anyone else building alone with agents.  An independent developer can now reach a working prototype absurdly fast, faster than at any point in my career, and then hit the wall this whole post is describing: one environment, artifacts that assume one writer, and no organization to absorb the difference.  Getting off the ground is close to solved.  Staying up is not, and I don't have a good answer for it.
-
-That's the same argument I made [a few months ago about civil engineering]({% post_url 2026-04-01-software-engineering-is-becoming-civil-engineering %}), coming at it from the other side.  When construction gets cheap, design is what fails, and the design here is the substrate: what runs where, what is isolated from what, and what has to be serialized.  An agent isn't going to do that for you, and it won't show up in the prototype.
-
 Partial isolation is then its own trap.  A worktree gives you the _feeling_ of a private workspace (clean tree, own branch, no file collisions), and it reads as properly parallel right up until two private workspaces write the same database row.  Nothing errors.  Nothing warns.  The contention surfaces later, somewhere else, as a red X on an unrelated pull request.
 
 Worse, the isolation _below_ git is advisory, and agents have to choose it.  Mine routinely don't.  One incident reads _"PR 1868 isolated E2E attempt fell back to shared ports"_: the agent tried to isolate its test environment, isolation failed, and nothing stopped the run.
 
-Worse still, a worktree is cut from a commit and stays there, so it's isolated _in the past_ and decays with every merge.  When I changed one of the agent gates in July (they're tracked scripts in the repository, not `.git/hooks`, so every worktree carries its own copy pinned to the commit it was cut from) the fix merged at 1:48 AM, and four hours later 73 of 74 worktrees were still running the old one.  A stale worktree can't detect its own staleness, so it goes green about a world that no longer exists, and the error is deferred to the only actor holding current `main`, which is CI.
+Worse still, a worktree is cut from a commit and stays there, so it's isolated _in the past_ and decays with every merge.  When I changed one of the agent gates in July (they're tracked scripts in the repository, not `.git/hooks`, so every worktree carries its own copy pinned to the commit it was cut from) the fix merged at 1:48 AM, and four hours later **73 of 74 worktrees were still running the old one**.  A stale worktree can't detect its own staleness, so it goes green about a world that no longer exists, and the error is deferred to the only actor holding current `main`, which is CI.
 
 ### Convergence and Invariant Preservation
 
-One framing before the specifics, because it unifies them.  Every merge mechanism here is built to _terminate_, and none of them is built to _preserve invariants_.
+One framing before the specifics, because it unifies them.  Every merge mechanism here is built to **terminate**, and none of them is built to **preserve invariants**.
 
 Git is honest about the cases it cannot decide: on a textual conflict it halts and asks you.  The trouble is the far more common case, where it doesn't halt, produces a merge confidently, and the invariant it never knew about is now false.
 
@@ -214,7 +208,7 @@ Here is the size of it in my own logs:
 
 Databases avoid all of this for one reason.  **A transaction declares its read/write set.**  The system knows what each transaction touched, so it can detect conflicts, order what must be ordered, and let everything else proceed.
 
-That question (which operations may run without coordination) has an exact answer in the literature.  [Bailis and colleagues](https://www.bailis.org/papers/ca-vldb2015.pdf) named it _invariant confluence_: a set of operations is I-confluent with respect to an invariant precisely when merging any two invariant-preserving reachable states that share a common ancestor yields another invariant-preserving state.
+That question (which operations may run without coordination) has an exact answer in the literature.  [Bailis and colleagues](https://www.bailis.org/papers/ca-vldb2015.pdf) named it **invariant confluence**: a set of operations is I-confluent with respect to an invariant precisely when merging any two invariant-preserving reachable states that share a common ancestor yields another invariant-preserving state.
 
 This is a necessary and sufficient condition for running those operations coordination-free while maintaining the invariant, not a heuristic.  If your workload is I-confluent you can run coordination-free and stay correct; if it is not, coordination is a requirement, and **no merge function will save you.**
 
@@ -248,9 +242,15 @@ Prior art exists, and none of it quite lands:
 
 Coordination-free multi-agent development, if it's possible at all, needs solving at two layers, in order.  Getting the second right while the first is broken buys nothing.
 
-_The environment has to permit it first._  Separate databases, working directories, port ranges, and instances of every service, per agent, enforced rather than attempted.  Writers in one checkout contend regardless of how elegant your merge semantics are, and I still do not know how many of those 84 were writers.
+**The environment has to permit it first.**  Separate databases, working directories, port ranges, and instances of every service, per agent, enforced rather than attempted.  Writers in one checkout contend regardless of how elegant your merge semantics are, and I still do not know how many of those 84 were writers.
 
-_Then the artifacts have to stop requiring a coordinator._  A total order needs somebody to assign it, and in the single-writer world the assigner was free: migration numbers went up because one person added one at a time.  Put N agents on it and the assigner is gone.  You can reintroduce one as a central coordinator handing out positions, but a central coordinator _is_ coordination, and it caps throughput at one.
+Large companies solved this a while ago, and the shape of the fix isn't subtle: make every developer's environment a faithful copy of the one that builds and ships the product.  Either move development onto cloud machines provisioned from the same definition as CI, or reproduce that environment in miniature on the laptop, with a container per service, a database per test, and a toolchain pinned to a lockfile.  Somebody owns that, full time.  The cost of getting it wrong is paid once, by a platform team, instead of every day by everyone else.
+
+I don't have a platform team, and neither does anyone else building alone with agents.  An independent developer can now reach a working prototype absurdly fast, faster than at any point in my career, and then hit the wall this whole post is describing: one environment, artifacts that assume one writer, and no organization to absorb the difference.  Getting off the ground is close to solved.  Staying up is not, and I don't have a good answer for it.
+
+That's the same argument I made [a few months ago about civil engineering]({% post_url 2026-04-01-software-engineering-is-becoming-civil-engineering %}), coming at it from the other side.  When construction gets cheap, design is what fails, and the design here is the substrate: what runs where, what is isolated from what, and what has to be serialized.  An agent isn't going to do that for you, and it won't show up in the prototype.
+
+**Then the artifacts have to stop requiring a coordinator.**  A total order needs somebody to assign it, and in the single-writer world the assigner was free: migration numbers went up because one person added one at a time.  Put N agents on it and the assigner is gone.  You can reintroduce one as a central coordinator handing out positions, but a central coordinator _is_ coordination, and it caps throughput at one.
 
 Two mainstream designs exist and always have: a total order by timestamp, as [Rails](https://guides.rubyonrails.org/active_record_migrations.html) has done since 2008, and a dependency graph, as [Django](https://docs.djangoproject.com/en/stable/topics/migrations/) and [Alembic](https://alembic.sqlalchemy.org/) do.  Under one writer the choice barely matters.  Under many it matters enormously, because a total order needs an assigner and a graph doesn't.  My agent picked the total order.
 
