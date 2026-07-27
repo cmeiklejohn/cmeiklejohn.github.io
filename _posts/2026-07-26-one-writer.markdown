@@ -91,9 +91,9 @@ Git detects conflicts over lines of text; my conflicts live in shared runtime st
 
 ### Verification that doesn't compose
 
-Which gives the sharpest version: **green(A on base) and green(B on base) does not imply green(merge of A and B).** The test suite is the only thing in my pipeline that checks the invariant at all, since git checks text and timestamps check ordering. So the tests are my invariant checker, and **I run it on each branch and never on the composition.**
+Which gives the sharpest version: **green(A on base) and green(B on base) does not imply green(merge of A and B).** The test suite is the only thing in my pipeline that checks the invariant at all, since git checks text and timestamps check ordering. So the tests are my invariant checker. I do run them on the composition: pull requests rebase onto current `main` and merge in sequence, each one retested before it lands, and `main` itself is checked after land. That catches the break. It just catches it late, and only by paying the serial tax — rebase, retest, merge, next — which is exactly the queue-wide cost the sealed prefix made visible when one seal invalidated everything behind it.
 
-There is an industry answer, and it isn't serialization. Speculative merge queues build the candidate futures, `main+A`, `main+A+B`, `main+A+B+C`, test them concurrently, and discard a failure from the middle. OpenStack's Zuul has gated that way since 2012; GitHub's merge queue ships a version; bors, which lands Rust, does the cheaper batch-and-bisect variant. It works, and it works by brute force, which I'll come back to.
+Serialization is the honest answer, and I already pay it. Speculative merge queues try to buy the same guarantee back with parallelism: build the candidate futures, `main+A`, `main+A+B`, `main+A+B+C`, test them concurrently, and discard a failure from the middle. OpenStack's Zuul has gated that way since 2012; GitHub's merge queue ships a version; bors, which lands Rust, does the cheaper batch-and-bisect variant. It works, and it works by brute force, which I'll come back to.
 
 ### An environment with one of everything
 
@@ -122,7 +122,7 @@ Look down that column and most of it is not the phenomenon this post is about. T
 
 The one that is irreducible is the sixth row: tests leaning on shared fixture state, which is green(A) and green(B) failing to imply green(A+B) wearing work clothes.
 
-It accounts for sixteen of the 361, tied with the seal for the smallest systemic bucket, and I want to put that number in front of you rather than let you find it by subtraction. Sixteen out of 361 is four percent. The thing this post is about is the *rarest* thing that happened that week. It is also the only one nothing catches short of building the composition and running the entire suite against it, which is precisely the expensive thing, and the only one where I can't tell you what an *affordable* fix would look like.
+It accounts for sixteen of the 361, tied with the seal for the smallest systemic bucket, and I want to put that number in front of you rather than let you find it by subtraction. Sixteen out of 361 is four percent. The thing this post is about is the *rarest* thing that happened that week. It is also the only one where catching it means building the composition and running the entire suite against it — which I do, serially, late — which is precisely the expensive thing, and the only one where I can't tell you what an *affordable* fix would look like.
 
 ## The Missing Primitive
 
