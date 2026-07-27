@@ -77,7 +77,7 @@ That distinction is the oldest lesson in the replicated-data literature and it h
 
 Some of what follows has that shape. The first case is plainer, and I should not dress it up.
 
-### A totally ordered sequence with several writers appending
+### Sealing a prefix under an in-flight queue
 
 This project has 1,388 migrations, and rebuilding a test database from all of them on each of eight parallel test machines is as slow as it sounds. So, in response to my complaining for weeks that CI was too expensive, an agent froze a database snapshot into the repository for CI to restore, applying only what came after. Good optimization: it saves 13 to 18 minutes of machine time per run. It merged at 5:01 AM Eastern on the third day.
 
