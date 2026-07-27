@@ -168,7 +168,11 @@ The obvious objection is that I'm demanding a soundness nobody needs. Large orga
 
 It is tempting to say I can't absorb escapes because my blast radius is smaller, but that has it backwards: an escape into Google's trunk blocks far more people than an escape into mine. What they have, and I don't, is containment. Post-submit continuous builds, automated culprit-finding, and rollback tooling bound what an escape costs. I have none of that. What I have instead is a queue of agents that respond to a red trunk by independently rediscovering the failure, each paying for its own full CI run, without being asked. Escapes are cheaper for them not because fewer people are blocked — more are — but because they built the machine that catches and bounds the damage. Without that machine, imprecise selection is a cost I can't absorb.
 
-Prior art exists and none of it quite lands. Regression test selection has estimated read sets for years, at file granularity, which is the granularity that doesn't help, though the dynamic variants get closer than my static one does. Speculative merge automation tests the composition, which is the expensive thing. Proactive conflict detection went after semantic conflicts directly more than a decade ago and never became something anybody runs.
+Prior art exists and none of it quite lands:
+
+- [Regression test selection](https://www.cs.purdue.edu/homes/xyzhang/fall07/Papers/p173-rothermel.pdf) has estimated read sets for years, at file granularity, which is the granularity that doesn't help, though [dynamic variants](https://mir.cs.illinois.edu/marinov/publications/GligoricETAL15PracticalRTS.pdf) get closer than my static one does.
+- Speculative merge automation — [Zuul](https://zuul-ci.org/), [SubmitQueue](https://www.uber.com/ci/en/blog/slashing-ci-costs-at-uber/), and the rest — tests the composition, which is the expensive thing.
+- [Proactive conflict detection](https://people.cs.umass.edu/~brun/pubs/pubs/Brun11fse.pdf) went after semantic conflicts directly more than a decade ago and never became something anybody runs.
 
 ## What Coordination-Free Would Actually Require
 
