@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "One Writer"
-subtitle: "Our tools assume a single writer. Nothing computes what a change reads and writes at runtime, so the only known fix is brute force priced for organizations."
+subtitle: "Our tools assume one writer, and assume that writer is a human. Nothing computes what a change reads and writes at runtime, so the only known fix is brute force priced for organizations."
 date:   2026-07-26 22:00:00 -0400
 group: ai
 categories: ai zabriskie agents reliability testing ci distributed
@@ -11,7 +11,9 @@ Six weeks ago I wrote [The Test Suite Was the Incident]({% post_url 2026-06-10-t
 
 I got a worse one, and it lasted three days. This post is not really about that, though. It's about a property of our tooling that the three days made impossible to ignore.
 
-**Pull requests, code review, migration sequences, a development database, a port range: nearly every layer assumes a single writer making one change at a time, with conflicts resolved by a human at a human's pace.** Git is the partial exception, and I'll come to why the exception doesn't help. That assumption was invisible for forty years because nothing ever bound it at my scale. Agents remove the bound and leave the assumption in place. Nothing in the stack detects the violation when it happens. It gets caught later, somewhere else, attributed to the wrong change, and paid for at full price.
+**Nearly every layer of this assumes one writer, and assumes that writer is a human.** Git hands you a conflict and waits. Code review assumes somebody reads. A migration sequence assumes somebody is assigning the order. Each of those protocols terminates in a person, which is fine while there is exactly one and they are one.
+
+That was invisible for forty years because nothing ever bound it at my scale. Agents break both halves at once: there are many of them, and not one of them is the person the protocol was waiting for. Git is the partial exception, and I'll come to why the exception doesn't help. Nothing in the stack detects the violation when it happens. It gets caught later, somewhere else, attributed to the wrong change, and paid for at full price.
 
 Context for readers arriving fresh. Zabriskie is a social app for live-music fans, and it is also a deliberate experiment: I'm building a real, deployed, used application almost entirely with AI agents, to find out what that's like and where it breaks. I've written almost none of the code. Agents wrote the features and agents wrote the tests that guard them.
 
@@ -158,11 +160,11 @@ The move is to stop requiring a total order, which is not a new idea. Two mainst
 
 That's the part worth sitting with, and it isn't really about migrations. Nobody ever weighed a sequence against a graph. I ratified the timestamp scheme myself, back in March, and I want to be exact about what I ratified: a fix for filename *collisions*. That was the problem in front of me, the fix solved it, and I shipped it and wrote a post about it. What nobody did, me included, was ask the next question, which is whether a total order is the right shape when several writers are appending at once. The workload was never a consideration.
 
-An agent proposed it and an agent reviewed it, and I signed off on the part I understood. What a review is supposed to supply is an independent prior, and neither of the two reviewers here had one: not the agent, which reached for the most common pattern, and not me, because I was evaluating a collision fix and never saw an ordering decision. The better option was documented, shipped in two major frameworks, and one search away.
+An agent proposed it and an agent reviewed it, and I signed off on the part I understood. This is the human assumption failing in its own particular way. Review is one of those protocols that terminates in a person, and what the person is supposed to supply is an independent prior. Neither reviewer here had one: not the agent, which reached for the most common pattern, and not me, because I was evaluating a collision fix and never saw an ordering decision. The better option was documented, shipped in two major frameworks, and one search away.
 
 This is what vibe coding actually costs, and it isn't bad code. The code was ordinary and defensible. What's missing is the one question nobody asked, because asking it requires somebody who has been hurt by the answer before, and I had removed all of those people from the loop on purpose.
 
-Django and Alembic also don't solve it, and the reason is the granularity problem again. A Django dependency is an edge to another *migration*: this one runs after `0042_add_venue`. It says nothing about what the migration reads or writes. Two migrations with no declared edge are unordered, and the framework runs them in whichever direction the traversal produces. If one adds a column and the other's `UPDATE` reads it, that pair conflicts, no edge exists, and nothing detects it. The DAG removed the global sequence and left the effects undeclared. When two branches produce divergent heads, the resolution is a merge revision: a node with two parents that doesn't verify the branches are compatible. It records a human's assertion that they are.
+Django and Alembic also don't solve it, and the reason is the granularity problem again. A Django dependency is an edge to another *migration*: this one runs after `0042_add_venue`. It says nothing about what the migration reads or writes. Two migrations with no declared edge are unordered, and the framework runs them in whichever direction the traversal produces. If one adds a column and the other's `UPDATE` reads it, that pair conflicts, no edge exists, and nothing detects it. The DAG removed the global sequence and left the effects undeclared. When two branches produce divergent heads, the resolution is a merge revision: a node with two parents that doesn't verify the branches are compatible. It records a human's assertion that they are, which is the same protocol terminating in the same person, one layer down.
 
 So the proposal isn't "invent a DAG." The DAG exists. It's to make the edges *effect-based* rather than identity-based: know that this migration writes `show_attendance` and reads `shows.date`, and derive the ordering constraints and the genuine independence from that.
 
