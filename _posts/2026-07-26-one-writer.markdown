@@ -9,7 +9,7 @@ categories: ai zabriskie agents reliability testing ci distributed
 
 Six weeks ago I wrote [The Test Suite Was the Incident]({% post_url 2026-06-10-the-test-suite-was-the-incident %}): my test suite had grown a pile of shared data nobody owned, every pull request paid to rebuild it, and the resulting failures had nothing to do with the changes under review. That cost me about $180 in one night.
 
-I got a worse one, and it lasted three days. This post is not really about that, though. It's about a property of our tooling that the three days made impossible to ignore.
+I got a worse one. It lasted three days, and in one twenty-four-hour stretch of it I burned through an entire Codex 20x max plan. This post is not really about that, though. It's about a property of our tooling that the three days made impossible to ignore.
 
 **Nearly every layer of this assumes one writer, and assumes that writer is a human.** Git hands you a conflict and waits. Code review assumes somebody reads. A migration sequence assumes somebody is assigning the order. Each of those protocols terminates in a person, which is fine while there is exactly one and they are one.
 
