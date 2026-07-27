@@ -1067,6 +1067,74 @@ main > #post {
   margin-top: 0;
 }
 
+/*****************************************************************************/
+/* Post reading typography
+/*
+/* Long-form posts were rendering at ~93 characters per line, with headings
+/* set in rem against a 16px root while the body runs at 17px — so h1/h2 came
+/* out *smaller* than the prose they introduced, and paragraph gaps (17px) sat
+/* below the line height (28px). The result read as one undifferentiated
+/* block. These rules apply to the post layout only; index, archive, and
+/* research pages keep the wide measure.
+/*****************************************************************************/
+
+/* Measure: cap prose at ~72 characters. Tables, figures, and code keep the
+   full column width so wide content is not squeezed. */
+.post #post > p,
+.post #post > ul,
+.post #post > ol,
+.post #post > blockquote,
+.post #post > h2,
+.post #post > h3,
+.post #post > h4,
+.post #post > hr {
+  max-width: 42rem;
+}
+
+/* Paragraph gap must exceed the leading, or paragraphs run together. */
+.post #post > p {
+  margin: 0 0 1.5em;
+}
+
+/* Headings need to outrank the body text they introduce. */
+.post .post-title {
+  font-size: 1.6rem;
+  line-height: 1.25;
+}
+
+.post #post h2 {
+  font-size: 1.32rem;
+  margin-top: 2.4em;
+  margin-bottom: 0.5em;
+}
+
+.post #post h3 {
+  font-size: 1.08rem;
+  margin-top: 2em;
+  margin-bottom: 0.45em;
+}
+
+/* Bold carried no luminance lift, so it read as body text set slightly
+   heavier — especially on dark, where light-on-dark bloom thickens the
+   regular weight and compresses the difference. */
+.post #post strong {
+  color: var(--fg-heading);
+}
+
+/* Same bloom is why the dark theme looked washed out: unhinted grayscale
+   smoothing fattens every stroke. Antialiased only in dark. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+:root[data-theme="dark"] body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 #post code {
   border: 1px solid var(--code-border);
   background-color: var(--code-bg);

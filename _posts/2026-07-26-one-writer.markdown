@@ -77,7 +77,9 @@ That distinction is the oldest lesson in the replicated-data literature and it h
 
 Hold that record. Here is where it landed.
 
-**A totally ordered sequence with several writers appending.** This project has 1,388 migrations, and rebuilding a test database from all of them on each of eight parallel test machines is as slow as it sounds. So, in response to my complaining for weeks that CI was too expensive, an agent froze a database snapshot into the repository for CI to restore, applying only what came after. Good optimization: it saves 13 to 18 minutes of machine time per run. It merged at 5:01 AM Eastern on the third day.
+### A totally ordered sequence with several writers appending
+
+This project has 1,388 migrations, and rebuilding a test database from all of them on each of eight parallel test machines is as slow as it sounds. So, in response to my complaining for weeks that CI was too expensive, an agent froze a database snapshot into the repository for CI to restore, applying only what came after. Good optimization: it saves 13 to 18 minutes of machine time per run. It merged at 5:01 AM Eastern on the third day.
 
 Fifty-four minutes later the first pull request failed, because its migration no longer sorted after the newly frozen prefix. Then another. By late morning a single incident covers four at once: *"Four queued PRs carried migrations older than the sealed CI baseline suffix."*
 
@@ -85,15 +87,23 @@ Caching a prefix of an ordered log converts a latent ordering property into an e
 
 I had also already "fixed" this once. In [Multi-Agent Systems Have a Distributed Systems Problem]({% post_url 2026-03-30-multi-agent-systems-have-a-distributed-systems-problem %}) I described two agents in two worktrees both creating migration 267, the second silently overwriting the first. The fix was UTC timestamps in filenames, which makes collisions impossible and changes nothing: two migrations now merge perfectly cleanly while violating the same ordering constraint, silently, with nothing left to trip over. A timestamp is an arbitration function. It guarantees convergence and says nothing about whether *that* order yields a correct schema.
 
-**A merge function looking in the wrong place.** Git detects conflicts over lines of text; my conflicts live in shared runtime state. From that week: *"Song-call E2E suites deleted each other's shared pending call."* Two test files, no overlapping lines, both green alone, and the row one of them depends on is the row the other deletes. The collision is in the database at runtime, not in the diff. Those are the `name` and the `length`. They share no lines, each merges cleanly, each is individually green, and the invariant binding them is false the moment they land together. No improvement to git's merge algorithm catches that, because the property isn't a property of any file. It's a property of the composition, and git has no representation of the composition to check.
+### A merge function looking in the wrong place
 
-**Verification that doesn't compose.** Which gives the sharpest version: **green(A on base) and green(B on base) does not imply green(merge of A and B).** The test suite is the only thing in my pipeline that checks the invariant at all, since git checks text and timestamps check ordering. So the tests are my invariant checker, and **I run it on each branch and never on the composition.**
+Git detects conflicts over lines of text; my conflicts live in shared runtime state. From that week: *"Song-call E2E suites deleted each other's shared pending call."* Two test files, no overlapping lines, both green alone, and the row one of them depends on is the row the other deletes. The collision is in the database at runtime, not in the diff. Those are the `name` and the `length`. They share no lines, each merges cleanly, each is individually green, and the invariant binding them is false the moment they land together. No improvement to git's merge algorithm catches that, because the property isn't a property of any file. It's a property of the composition, and git has no representation of the composition to check.
+
+### Verification that doesn't compose
+
+Which gives the sharpest version: **green(A on base) and green(B on base) does not imply green(merge of A and B).** The test suite is the only thing in my pipeline that checks the invariant at all, since git checks text and timestamps check ordering. So the tests are my invariant checker, and **I run it on each branch and never on the composition.**
 
 There is an industry answer, and it isn't serialization. Speculative merge queues build the candidate futures, `main+A`, `main+A+B`, `main+A+B+C`, test them concurrently, and discard a failure from the middle. OpenStack's Zuul has gated that way since 2012; GitHub's merge queue ships a version; bors, which lands Rust, does the cheaper batch-and-bisect variant. It works, and it works by brute force, which I'll come back to.
 
-**An environment with one of everything.** One port range, one development database, one mock server. I do have a script assigning each worktree its own ports by hashing the directory name, which is the right idea, and it hashes into 99 slots. With dozens of worktrees on disk the birthday math makes a collision effectively certain, and two agents get handed the same port whenever the colliding pair happens to be running at once.
+### An environment with one of everything
 
-**Work that was never actually divided.** Nothing split the problem into non-conflicting units. The agents were pointed at one problem and found their own boundaries, which were mostly the same boundaries. Classified by root cause: 245 of the 361 entries collapse into ten systemic problems, 73 are one-off product bugs, and 43 I couldn't classify. Here are the ten, because a taxonomy whose majority is invisible isn't a taxonomy:
+One port range, one development database, one mock server. I do have a script assigning each worktree its own ports by hashing the directory name, which is the right idea, and it hashes into 99 slots. With dozens of worktrees on disk the birthday math makes a collision effectively certain, and two agents get handed the same port whenever the colliding pair happens to be running at once.
+
+### Work that was never actually divided
+
+Nothing split the problem into non-conflicting units. The agents were pointed at one problem and found their own boundaries, which were mostly the same boundaries. Classified by root cause: 245 of the 361 entries collapse into ten systemic problems, 73 are one-off product bugs, and 43 I couldn't classify. Here are the ten, because a taxonomy whose majority is invisible isn't a taxonomy:
 
 | systemic root cause | incidents |
 | --- | ---: |
