@@ -129,7 +129,7 @@ Which gives the sharpest version of the problem: **green(A on base) and green(B 
 
 The test suite is the only thing in my pipeline that checks the invariant at all, since git checks text and timestamps check ordering.  So the tests are my invariant checker.
 
-I do run them on the composition.  Pull requests rebase onto current `main` and merge in sequence, each one retested before it lands, and `main` itself is checked after land.  That catches the break.  It just catches it late, and only by paying the serial tax --- rebase, retest, merge, next --- and that tax is exactly the queue-wide cost the sealed prefix made visible on the morning when one seal invalidated everything queued behind it.
+I do run them on the composition.  Pull requests rebase onto current `main` and merge in sequence, each one retested before it lands, and `main` itself is checked after land.  That catches the break.  It just catches it late, and only by paying the serial tax: rebase, retest, merge, next.  That tax is exactly the queue-wide cost the sealed prefix made visible on the morning when one seal invalidated everything queued behind it.
 
 Serialization is the honest answer, and I already pay it.
 
@@ -176,7 +176,7 @@ So that substrate problem is the _rarest_ thing that happened that week.  It is 
 
 Except that the two are the same problem, and it took me most of a week to see it.  What a coordinator needs in order to divide work is exactly a read/write set per unit, which is the primitive this whole post is about, one layer up.  Mine had no way to compute one, so it couldn't divide anything, so eighty-four agents went out and found the same boundaries and did the same work on top of each other.  That's the top two rows of the table, a hundred and twenty entries, a third of everything I logged.  I'm counting two rows and not the three above, because swallowed errors are ordinary bad error handling and belong to a different complaint.
 
-So the four percent isn't a rare problem I've chosen to write about instead of the common one.  It's the identical question --- what does this thing read, and what does it write --- asked about a code change instead of about an agent.  At the code layer the question is open, which is the research problem.  At the agent layer it's answerable in principle, and my runtime simply didn't ask, which is the more embarrassing half and the one my week actually went to.
+So the four percent isn't a rare problem I've chosen to write about instead of the common one.  It's the identical question, "what does this thing read, and what does it write," asked about a code change instead of about an agent.  At the code layer the question is open, which is the research problem.  At the agent layer it's answerable in principle, and my runtime simply didn't ask, which is the more embarrassing half and the one my week actually went to.
 
 ## The Missing Primitive
 
@@ -230,7 +230,7 @@ One objection here is that I am demanding a soundness nobody needs.  Large organ
 
 It's tempting to say I can't absorb escapes because my blast radius is smaller, but that has it backwards: an escape into Google's trunk blocks far more people than an escape into mine.  What they have, and I don't, is containment.  Post-submit continuous builds, automated culprit-finding, and rollback tooling all bound what an escape costs.
 
-I have none of that.  What I've instead is a queue of agents that respond to a red trunk by independently rediscovering the failure, each one paying for its own full CI run, none of them asked to, and none of them aware that eleven others are doing exactly the same thing at exactly the same moment.  Escapes are cheaper for Google not because fewer people are blocked --- more are --- but because they built the machine that catches and bounds the damage.  Without that machine, imprecise selection is a cost I can't absorb.
+I have none of that.  What I have instead is a queue of agents that respond to a red trunk by independently rediscovering the failure, each one paying for its own full CI run, none of them asked to, and none of them aware that eleven others are doing exactly the same thing at exactly the same moment.  Escapes are cheaper for Google not because fewer people are blocked, since more are, but because they built the machine that catches and bounds the damage.  Without that machine, imprecise selection is a cost I can't absorb.
 
 Prior art exists, and none of it quite lands:
 
