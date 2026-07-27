@@ -75,7 +75,7 @@ One framing before the specifics, because it unifies them. Every merge mechanism
 
 That distinction is the oldest lesson in the replicated-data literature and it has a canonical counterexample. Take a replicated map where each field merges independently under its own perfectly reasonable rule. One field holds a person's name, another the length of that name. Two replicas concurrently write different names. Each field converges exactly as specified, and the result is a record whose `name` came from one replica and whose `length` came from the other, with the invariant tying them now false. Nothing merged incorrectly. The composition of correct local merges is not a correct global merge. Closing that gap is what work like Balegas and colleagues' Indigo, which enforces application invariants over eventually consistent stores, is [for]({% post_url 2018-11-14-ipa %}).
 
-Hold that record. Here is where it landed.
+Every failure below has that shape.
 
 ### A totally ordered sequence with several writers appending
 
