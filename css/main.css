@@ -115,8 +115,8 @@
     /* Softer contrast: warm charcoal base, stone text (not paper white on black). */
     --bg: #18181c;
     --bg-elevated: #212128;
-    --fg: #c9c3b8;
-    --fg-heading: #ddd6cb;
+    --fg: #b3ada2;
+    --fg-heading: #cfc8bc;
     --fg-muted: #9c958a;
     /* Saturated violet so links read as links, not the same “white” as headings */
     --link: #9580ec;
@@ -155,8 +155,8 @@
 :root[data-theme="dark"] {
   --bg: #18181c;
   --bg-elevated: #212128;
-  --fg: #c9c3b8;
-  --fg-heading: #ddd6cb;
+  --fg: #b3ada2;
+  --fg-heading: #cfc8bc;
   --fg-muted: #9c958a;
   --link: #9580ec;
   --link-hover: #b6a3f5;
@@ -1070,69 +1070,50 @@ main > #post {
 /*****************************************************************************/
 /* Post reading typography
 /*
-/* Long-form posts were rendering at ~93 characters per line, with headings
-/* set in rem against a 16px root while the body runs at 17px — so h1/h2 came
-/* out *smaller* than the prose they introduced, and paragraph gaps (17px) sat
-/* below the line height (28px). The result read as one undifferentiated
-/* block. These rules apply to the post layout only; index, archive, and
-/* research pages keep the wide measure.
+/* Posts keep the full-width measure (~83 characters), so the work of making
+/* long lines readable is done by size and leading rather than by narrowing
+/* the column. Headings were also set in rem against a 16px root while the
+/* body ran at 17px, so h1/h2 computed *smaller* than the prose they
+/* introduced, and paragraph gaps (17px) sat below the line height (28px).
+/* Scoped to the post layout; index, archive, and research are untouched.
 /*****************************************************************************/
 
-/* Measure: cap prose at ~72 characters. Tables, figures, and code keep the
-   full column width so wide content is not squeezed. */
-.post #post > p,
-.post #post > ul,
-.post #post > ol,
-.post #post > blockquote,
-.post #post > h2,
-.post #post > h3,
-.post #post > h4,
-.post #post > hr {
-  max-width: 42rem;
+/* Bigger type is the only lever left once the column stays full width:
+   at the 872px content width, 17px runs ~97 characters per line and 20px
+   runs ~84. Going to 22px would reach ~76, inside the comfortable range,
+   at the cost of type that reads large. */
+.post #post {
+  font-size: 20px;
+}
+
+/* Long lines need the extra leading — it is what keeps the return sweep from
+   landing on the wrong row. */
+.post #post p,
+.post #post li {
+  line-height: 1.85;
 }
 
 /* Paragraph gap must exceed the leading, or paragraphs run together. */
 .post #post > p {
-  margin: 0 0 1.5em;
+  margin: 0 0 1.4em;
 }
 
 /* Headings need to outrank the body text they introduce. */
 .post .post-title {
-  font-size: 1.6rem;
+  font-size: 1.75rem;
   line-height: 1.25;
 }
 
 .post #post h2 {
-  font-size: 1.32rem;
-  margin-top: 2.4em;
+  font-size: 1.5rem;
+  margin-top: 2.2em;
   margin-bottom: 0.5em;
 }
 
 .post #post h3 {
-  font-size: 1.08rem;
-  margin-top: 2em;
+  font-size: 1.25rem;
+  margin-top: 1.9em;
   margin-bottom: 0.45em;
-}
-
-/* Bold carried no luminance lift, so it read as body text set slightly
-   heavier — especially on dark, where light-on-dark bloom thickens the
-   regular weight and compresses the difference. */
-.post #post strong {
-  color: var(--fg-heading);
-}
-
-/* Same bloom is why the dark theme looked washed out: unhinted grayscale
-   smoothing fattens every stroke. Antialiased only in dark. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-}
-
-:root[data-theme="dark"] body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 #post code {
