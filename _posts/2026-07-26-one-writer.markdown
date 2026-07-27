@@ -75,7 +75,7 @@ One framing before the specifics, because it unifies them. Every merge mechanism
 
 That distinction is the oldest lesson in the replicated-data literature and it has a canonical counterexample. Take a replicated map where each field merges independently under its own perfectly reasonable rule. One field holds a person's name, another the length of that name. Two replicas concurrently write different names. Each field converges exactly as specified, and the result is a record whose `name` came from one replica and whose `length` came from the other, with the invariant tying them now false. Nothing merged incorrectly. The composition of correct local merges is not a correct global merge. Closing that gap is what work like Balegas and colleagues' Indigo, which enforces application invariants over eventually consistent stores, is [for]({% post_url 2018-11-14-ipa %}).
 
-Every failure below has that shape.
+Some of what follows has that shape. The first case is plainer, and I should not dress it up.
 
 ### A totally ordered sequence with several writers appending
 
@@ -83,9 +83,9 @@ This project has 1,388 migrations, and rebuilding a test database from all of th
 
 Fifty-four minutes later the first pull request failed, because its migration no longer sorted after the newly frozen prefix. Then another. By late morning a single incident covers four at once: *"Four queued PRs carried migrations older than the sealed CI baseline suffix."*
 
-Caching a prefix of an ordered log converts a latent ordering property into an enforced constraint. And once you seal while pull requests with migrations are already open, those pull requests are going to fail: their migrations were written against an earlier prefix and do not sort after the new one. That is not a subtle concurrency bug. It is the obvious consequence of moving the seal under an in-flight queue. So the loop closes: I complained CI was expensive, an agent made CI cheaper, and the mechanism became a new source of CI failures against the whole queue.
+The diagnosis is ordinary, and a critic will say so. Other agents had already opened pull requests that appended migrations. One agent sealed a new prefix underneath them. Those streams of work conflicted, and nothing noticed until CI rejected the queued pull requests much later. That is parallel work colliding and finding out late — not a subtle invariant bug. Caching a prefix of an ordered log made the collision loud and retroactive, but it did not invent the collision. So the loop closes: I complained CI was expensive, an agent made CI cheaper, and the mechanism became a new source of CI failures against the whole queue.
 
-I had also already "fixed" this once. In [Multi-Agent Systems Have a Distributed Systems Problem]({% post_url 2026-03-30-multi-agent-systems-have-a-distributed-systems-problem %}) I described two agents in two worktrees both creating migration 267, the second silently overwriting the first. The fix was UTC timestamps in filenames, which makes collisions impossible and changes nothing: two migrations now merge perfectly cleanly while violating the same ordering constraint, silently, with nothing left to trip over. A timestamp is an arbitration function. It guarantees convergence and says nothing about whether *that* order yields a correct schema.
+The deeper version of the same sequence is the one I had already "fixed." In [Multi-Agent Systems Have a Distributed Systems Problem]({% post_url 2026-03-30-multi-agent-systems-have-a-distributed-systems-problem %}) I described two agents in two worktrees both creating migration 267, the second silently overwriting the first. The fix was UTC timestamps in filenames, which makes collisions impossible and changes nothing: two migrations now merge perfectly cleanly while violating the same ordering constraint, silently, with nothing left to trip over. A timestamp is an arbitration function. It guarantees convergence and says nothing about whether *that* order yields a correct schema.
 
 ### A merge function looking in the wrong place
 
