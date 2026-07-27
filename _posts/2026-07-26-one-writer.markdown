@@ -162,7 +162,7 @@ At the granularity where my conflicts live, nothing declares those effects. So t
 
 > **What is the runtime read/write set of a code change, and can it be computed precisely enough, and cheaply enough, to decide which changes are safe to integrate concurrently?**
 
-I've already built a bad version of this without recognizing it. My affected-spec selector maps a change to the tests it could affect, so CI only runs what's relevant. That's a read-set estimator, and its failure mode is the research problem in miniature: it traced a one-screen change through a shared UI component, concluded the change could affect anything, and scheduled all 115 test files. An over-approximation collapsing to "conflicts with everything" is the same degenerate case as a lock covering the whole table. Sound, and useless.
+I've already built a bad version of this without recognizing it. My affected-spec selector maps a change to the tests it could affect, so CI only runs what's relevant. That's a read-set estimator, and its failure mode is the research problem in miniature: it traced a one-screen change through a shared UI component, concluded the change could affect anything, and scheduled all 115 test files. An over-approximation collapsing to "conflicts with everything" is the same degenerate case as a lock covering the whole table, or serializing every update to a dictionary even when the changes are to disjoint keys. Sound, and useless.
 
 The obvious objection is that I'm demanding a soundness nobody needs. Large organizations run test selection that is deliberately imprecise and absorb the escapes. I nearly wrote that the difference is blast radius, and that would have been backwards: an escape into Google's trunk blocks far more people than an escape into mine.
 
