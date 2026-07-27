@@ -25,14 +25,19 @@
 
         <!-- Self-hosted fonts (declarations in main.css) -->
 
+        <!-- Stylesheets carry a build-time fingerprint. Cloudflare fronts this
+             site and caches /css/*.css for 4 hours (max-age=14400) while the
+             HTML stays DYNAMIC, so without this a deploy ships fresh markup
+             against a stale stylesheet. site.time changes every build. -->
+
         <!-- syntax highlighting CSS -->
-        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/syntax.css?v={{ site.time | date: '%s' }}">
 
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/main.css?v={{ site.time | date: '%s' }}">
 
         {% if page.series == "mas" %}
-        <link rel="stylesheet" href="/css/mas-series.css">
+        <link rel="stylesheet" href="/css/mas-series.css?v={{ site.time | date: '%s' }}">
         {% endif %}
 
         <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.url }}/feed.xml">

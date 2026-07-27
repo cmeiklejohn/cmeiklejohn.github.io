@@ -898,14 +898,15 @@ code {
   color: var(--fg-heading);
 }
 
+/* No max-width: the subtitle shares the full column with the prose below it,
+   so capping it here left it stopping short of every paragraph. */
 .post-subtitle {
   font-family: var(--font-ui);
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 500;
-  line-height: 1.45;
+  line-height: 1.5;
   margin: 0.35rem 0 0;
   color: var(--fg-muted);
-  max-width: 42rem;
 }
 
 .post-header {
@@ -1093,9 +1094,16 @@ main > #post {
   line-height: 1.85;
 }
 
-/* Paragraph gap must exceed the leading, or paragraphs run together. */
+/* Paragraph gap must exceed the leading, or paragraphs run together. Kept
+   symmetric so margin collapsing gives adjacent paragraphs 1.4em while a
+   paragraph following a table, figure, or list still clears it. */
 .post #post > p {
-  margin: 0 0 1.4em;
+  margin: 1.4em 0;
+}
+
+/* Tables carry no margin of their own by default. */
+.post #post table {
+  margin: 0.5em 0 1.4em;
 }
 
 /* Headings need to outrank the body text they introduce. */
