@@ -143,7 +143,14 @@ So the state of the art converts an unsolved program-analysis problem into a com
 
 My two complaints turn out to be one complaint. "CI is too expensive" and "composition failures show up only when the serial queue retests them" are the same missing primitive seen from two sides.
 
-Here's the size of it in my own logs. Over three days, 510 CI runs were spent against 111 opened and 100 merged pull requests: roughly five full verifications per change that landed, though the runs attach to opened pull requests rather than merged ones, so read that as an order of magnitude and not a rate. Of the 510, 112 failed or were cancelled outright, and cancellations are usually a new push superseding an old one rather than an escape. I shouldn't overstate what fixing that buys. Deleting every one of those 112 takes the multiplier from 5.1 to 4.0, not to 1. The rest is ordinary iteration, some fraction of which is rebasing onto a main that moved underneath, which is the same problem in work clothes. The primitive is worth about a quarter of the excess, and only if every one of those failures turns out to be a composition escape, which I can't show. A serial queue stays slow either way.
+Here's the size of it in my own logs:
+
+- Over three days, 510 CI runs were spent against 111 opened and 100 merged pull requests: roughly five full verifications per change that landed.
+- The runs attach to opened pull requests rather than merged ones, so read that as an order of magnitude and not a rate.
+- Of the 510, 112 failed or were cancelled outright, and cancellations are usually a new push superseding an old one rather than an escape.
+- I shouldn't overstate what fixing that buys. Deleting every one of those 112 takes the multiplier from 5.1 to 4.0, not to 1.
+- The rest is ordinary iteration, some fraction of which is rebasing onto a main that moved underneath, which is the same problem in work clothes.
+- The primitive is worth about a quarter of the excess, and only if every one of those failures turns out to be a composition escape, which I can't show. A serial queue stays slow either way.
 
 Databases avoid all of this for one reason. **A transaction declares its read/write set.** The system knows what each transaction touched, so it can detect conflicts, order what must be ordered, and let everything else proceed.
 
