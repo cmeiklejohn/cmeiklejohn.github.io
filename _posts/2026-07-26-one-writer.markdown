@@ -158,7 +158,7 @@ That question, which operations may run without coordination, has an exact answe
 
 Source code carries a partial declaration at best. Build systems get closest: [Bazel](https://bazel.build/) and [Nix](https://nixos.org/) require every target to declare its inputs and outputs, which is a real read/write set at file granularity, and it's how affected-target computation works across enormous monorepos. But file granularity is the wrong granularity here. My two colliding pull requests touch entirely disjoint files. A build graph would call them independent, and a build graph would be right, and they would still destroy each other, because the thing they share is a row in a database that neither one names.
 
-Nothing declares runtime effects. So there's no conflict detection where my conflicts live, and with none you can't tell which regime a pair of changes is in, and if you can't tell, the only safe policy is to assume the worst and coordinate everything.
+At the granularity where my conflicts live, nothing declares those effects. So there's no conflict detection there, and without it you can't tell which regime a pair of changes is in, and if you can't tell, the only safe policy is to assume the worst and coordinate everything.
 
 > **What is the runtime read/write set of a code change, and can it be computed precisely enough, and cheaply enough, to decide which changes are safe to integrate concurrently?**
 
