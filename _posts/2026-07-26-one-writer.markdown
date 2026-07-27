@@ -39,7 +39,7 @@ Late Saturday night the queue jammed. Sixty-four pull requests had gone up that 
 
 Codex read that and hired a workforce. Over seventeen hours that session made 81 spawn calls, producing 74 direct children; those children spawned 10 more, for 84 threads. Then 358 calls waiting on them, 96 listing them, 85 sending follow-up work, 13 interrupting. Six hundred and thirty-three tool calls of pure management overhead against 54 messages from me. All 84 ran in the same checked-out copy of the repository.
 
-Trivial parallelization, at scale, with no coordinator, on a toolchain built for one writer. The rest of this post is about why that combination is so much worse than it sounds.
+Trivial parallelization, at scale, with a coordinator that only managed agents, on a toolchain built for one writer. The rest of this post is about why that combination is so much worse than it sounds.
 
 I asked afterward why it had spawned anything, since I never requested it. Take what follows as a fluent account rather than an explanation: a language model asked why it did something produces plausible narrative, not introspection, and I apply that skepticism to self-reported incidents earlier so I should apply it here. What makes the quotes worth printing is that the account is *correct*, whatever its provenance.
 
@@ -101,7 +101,9 @@ One port range, one development database, one mock server. I do have a script as
 
 ### Work that was never actually divided
 
-Nothing split the problem into non-conflicting units. The agents were pointed at one problem and found their own boundaries, which were mostly the same boundaries. Classified by root cause: 245 of the 361 entries collapse into ten systemic problems, 73 are one-off product bugs, and 43 I couldn't classify. Here are the ten, because a taxonomy whose majority is invisible isn't a taxonomy:
+Trivial parallelism does not work on a problem that was never split into non-conflicting units. The agents were pointed at one jammed queue and found their own boundaries, which were mostly the same boundaries. What looked like a coordinator was a process manager: spawn, wait, list, follow up — six hundred and thirty-three tool calls of overhead — without deep context about which pieces of work actually interacted. A coordinator that only manages agents cannot divide work it does not understand, so the children rediscover the same failures, edit the same new scripts, and invalidate one another's assumptions. Codex said as much afterward: the agents generated work for the coordinator instead of removing work from the critical path.
+
+Classified by root cause: 245 of the 361 entries collapse into ten systemic problems, 73 are one-off product bugs, and 43 I couldn't classify. Here are the ten, because a taxonomy whose majority is invisible isn't a taxonomy:
 
 | systemic root cause | incidents |
 | --- | ---: |
@@ -116,13 +118,13 @@ Nothing split the problem into non-conflicting units. The agents were pointed at
 | evidence produced against a base that moved | 10 |
 | verification run without its dependencies | 7 |
 
-I'd defend the shape rather than the ratio: uncoordinated workers rediscover the same things, often enough to dominate a log.
+I'd defend the shape rather than the ratio: workers under a shallow coordinator rediscover the same things, often enough to dominate a log.
 
-Look down that column and most of it is not the phenomenon this post is about. The top three, 152 incidents between them, are agents editing the same new scripts, colliding in an unisolated environment, and swallowing errors. Those are real and mostly boring: ordinary defects that concurrency made frequent. The seal and the port hash are ordinary defects with boring fixes. Recovery-that-wouldn't-converge and CI cost structure are process, not substrate.
+Look down that column and the majority is exactly that failure. The top three, 152 incidents between them, are agents editing the same new scripts, colliding in an unisolated environment, and swallowing errors — ordinary defects that undivided parallel work made frequent. The seal and the port hash are ordinary defects with boring fixes. Recovery-that-wouldn't-converge and CI cost structure are process, not substrate.
 
-The one that is irreducible is the sixth row: tests leaning on shared fixture state, which is green(A) and green(B) failing to imply green(A+B) wearing work clothes.
+The one that is irreducible in a different sense is the sixth row: tests leaning on shared fixture state, which is green(A) and green(B) failing to imply green(A+B) wearing work clothes.
 
-It accounts for sixteen of the 361, tied with the seal for the smallest systemic bucket, and I want to put that number in front of you rather than let you find it by subtraction. Sixteen out of 361 is four percent. The thing this post is about is the *rarest* thing that happened that week. It is also the only one where catching it means building the composition and running the entire suite against it — which I do, serially, late — which is precisely the expensive thing, and the only one where I can't tell you what an *affordable* fix would look like.
+It accounts for sixteen of the 361, tied with the seal for the smallest systemic bucket, and I want to put that number in front of you rather than let you find it by subtraction. Sixteen out of 361 is four percent. That substrate problem is the *rarest* thing that happened that week, and the only one where catching it means building the composition and running the entire suite against it — which I do, serially, late — which is precisely the expensive thing, and the only one where I can't tell you what an *affordable* fix would look like. The common problem was simpler: parallelism without a division of the work, supervised by something that was counting agents rather than understanding them.
 
 ## The Missing Primitive
 
@@ -134,7 +136,7 @@ That leaves two ways to find it: execute the composition and observe what breaks
 
 So the state of the art converts an unsolved program-analysis problem into a compute purchase. Rational at Google's scale, and precisely the wrong trade at mine, because speculation costs queue depth times full suite times parallel environments, and agents raise queue depth. The sanctioned fix for the correctness problem is more CI spend, scaling with the exact variable agents just multiplied.
 
-My two complaints turn out to be one complaint. "CI is too expensive" and "green pull requests merge into a broken `main`" are the same missing primitive seen from two sides.
+My two complaints turn out to be one complaint. "CI is too expensive" and "composition failures show up only when the serial queue retests them" are the same missing primitive seen from two sides.
 
 Here's the size of it in my own logs. Over three days, 510 CI runs were spent against 111 opened and 100 merged pull requests: roughly five full verifications per change that landed, though the runs attach to opened pull requests rather than merged ones, so read that as an order of magnitude and not a rate. Of the 510, 112 failed or were cancelled outright, and cancellations are usually a new push superseding an old one rather than an escape. I shouldn't overstate what fixing that buys. Deleting every one of those 112 takes the multiplier from 5.1 to 4.0, not to 1. The rest is ordinary iteration, some fraction of which is rebasing onto a main that moved underneath, which is the same problem in work clothes. The primitive is worth about a quarter of the excess, and only if every one of those failures turns out to be a composition escape, which I can't show. A serial queue stays slow either way.
 
