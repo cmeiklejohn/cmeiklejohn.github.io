@@ -132,7 +132,12 @@ So what would it take for some layer to detect any of this?
 
 Start with why detection is hard. One pull request writes a row to `show_attendance`; another reads a count over it. Neither diff says so. The write goes through an HTTP handler, an ORM, and some SQL; the read goes through the app. **The conflict is a property of what the code does when it runs, and it is not present in the text.**
 
-That leaves two ways to find it: execute the composition and observe what breaks, or compute the effects of each change and compare them without running anything. Nobody can do the second precisely enough at the granularity where my conflicts live, so everybody does the first. If you can't compute effects you can't tell which pairs need checking, so you pay for a full verification of every candidate future you're willing to buy. Uber's SubmitQueue needed a probabilistic model of which changes would land in order to prune the speculation tree, which is less an optimization than a confession: you only guess your way through the tree when nothing can tell you which branches matter.
+That leaves two ways to find it:
+
+1. Execute the composition and observe what breaks.
+2. Compute the effects of each change and compare them without running anything.
+
+Nobody can do the second precisely enough at the granularity where my conflicts live, so everybody does the first. If you can't compute effects you can't tell which pairs need checking, so you pay for a full verification of every candidate future you're willing to buy. Uber's SubmitQueue needed a probabilistic model of which changes would land in order to prune the speculation tree, which is less an optimization than a confession: you only guess your way through the tree when nothing can tell you which branches matter.
 
 So the state of the art converts an unsolved program-analysis problem into a compute purchase. Rational at Google's scale, and precisely the wrong trade at mine, because speculation costs queue depth times full suite times parallel environments, and agents raise queue depth. The sanctioned fix for the correctness problem is more CI spend, scaling with the exact variable agents just multiplied.
 
