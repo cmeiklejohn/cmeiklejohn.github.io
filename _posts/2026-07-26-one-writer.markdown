@@ -120,7 +120,7 @@ Classified by root cause: 245 of the 361 entries collapse into ten systemic prob
 
 I'd defend the shape rather than the ratio: workers under a shallow coordinator rediscover the same things, often enough to dominate a log.
 
-Look down that column and the majority is exactly that failure. The top three, 152 incidents between them, are agents editing the same new scripts, colliding in an unisolated environment, and swallowing errors — ordinary defects that undivided parallel work made frequent. The seal and the port hash are ordinary defects with boring fixes. Recovery-that-wouldn't-converge and CI cost structure are process, not substrate.
+Look down that column and the majority is exactly that failure. The top row alone — tooling the session was writing that same day, 87 incidents — is agents redoing and colliding on the same work because nothing holding the session had enough context to keep them off each other's toes. Add isolation failures and swallowed errors and the top three are 152. Those are not ordinary defects that concurrency merely made frequent. They are the artifact of coordination without context: a parent counting agents instead of understanding the work, so the children rediscover and rewrite the same things. The seal and the port hash still have boring mechanical fixes. Recovery-that-wouldn't-converge and CI cost structure are process. The rediscovery is not.
 
 The one that is irreducible in a different sense is the sixth row: tests leaning on shared fixture state, which is green(A) and green(B) failing to imply green(A+B) wearing work clothes.
 
