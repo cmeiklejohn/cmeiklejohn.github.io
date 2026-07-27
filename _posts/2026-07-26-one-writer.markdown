@@ -137,7 +137,7 @@ That leaves two ways to find it:
 1. Execute the composition and observe what breaks.
 2. Compute the effects of each change and compare them without running anything.
 
-Nobody can do the second precisely enough at the granularity where my conflicts live, so everybody does the first. If you can't compute effects you can't tell which pairs need checking, so you pay for a full verification of every candidate future you're willing to buy. Uber's [SubmitQueue](https://doi.org/10.1145/3302424.3303970) needed a probabilistic model of which changes would land in order to prune the speculation tree, which is less an optimization than a confession: you only guess your way through the tree when nothing can tell you which branches matter.
+Nobody can do the second precisely enough at the granularity where my conflicts live, so everybody does the first. If you can't compute effects you can't tell which pairs need checking, so you pay for a full verification of every candidate future you're willing to buy. Uber's [SubmitQueue](https://www.uber.com/ci/en/blog/slashing-ci-costs-at-uber/) needed a probabilistic model of which changes would land in order to prune the speculation tree, which is less an optimization than a confession: you only guess your way through the tree when nothing can tell you which branches matter.
 
 So the state of the art converts an unsolved program-analysis problem into a compute purchase. Rational at Google's scale, and precisely the wrong trade at mine, because speculation costs queue depth times full suite times parallel environments, and agents raise queue depth. The sanctioned fix for the correctness problem is more CI spend, scaling with the exact variable agents just multiplied.
 
