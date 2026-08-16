@@ -73,13 +73,13 @@
   discovery_loop_role: "Show the uncontrolled loop in practice: an agent could propose, implement, run, interpret, and extend experiments while its reports failed to surface or enforce the premises entering the next iteration."
   outline:
     - title: "The deletion evening"
-      detail: "Open on deleting two notebooks, withdrawing two blog posts, and taking down a listening study after friends had already spent time on it."
+      detail: "Open on deleting two notebooks, taking two blog posts offline after three people had read them, and taking down a listening study after friends had already spent time on it."
     - title: "The audio-research project"
       detail: "Preserve the complete chronology for a standalone reader: automatic set detection was the original goal; the corpus and apparent power of audio features pulled the project into the Type I/Type II improvisation detour where the two notebooks failed; SetScope later returned to the original target. Establish the author's research background, corpus, labels, and why an LLM agent made work at this scale possible. Treat the PhD as evidence that the constraints were understood and explicit, while making clear that expertise cannot reveal a violation the autonomous system neither blocks nor reports."
     - title: "Notebook 1"
       detail: "Reconstruct the performance-level train/test leak, why the resulting numbers looked compelling, and why no downstream result could be repaired after the boundary was crossed."
     - title: "Notebook 2"
-      detail: "Trace the inherited 90-second segmentation default through nine scripts, fingerprints, clusters, charts, published prose, and the listening study. Name both layers: the immediate defect was implementation fidelity because the default violated the written method; the deferred scientific debt was measurement validity because the convenient segment then defined what phenomenon the analysis could observe."
+      detail: "Trace the inherited 90-second segmentation default through nine scripts, fingerprints, clusters, charts, prose in the blog posts, and the listening study. Name both layers: the immediate defect was implementation fidelity because the default violated the written method; the deferred scientific debt was measurement validity because the convenient segment then defined what phenomenon the analysis could observe."
     - title: "The shared shape"
       detail: "Show that neither failure was bad syntax or an obvious hallucination. Each was a locally plausible decision that remained invisible while the agent accelerated everything built on top of it."
     - title: "Two failures, two debts"
@@ -100,7 +100,7 @@
     - "Do not explain the complete R-1 through R-11 governance system here."
     - "Keep Q01 and Q02 to a compact account of the project's immediate response: the new discipline could retire or narrow questions, but had not yet solved measurement validity. Part 4 owns the later failure of those internal gates; Part 6 owns the mature operating protocol."
     - "Do not present the current SetScope engineering result as the resolution."
-    - "Do not make the lesson that the author should personally inspect every split, constant, or generated artifact. Preserve responsibility for publication while locating the system failure in missing enforcement and disclosure."
+    - "Do not make the lesson that the author should personally inspect every split, constant, or generated artifact. Preserve responsibility for putting the work online while locating the system failure in missing enforcement and disclosure."
 
 - slug: the-holdout-is-a-one-way-door
   title: "Part 3. The Holdout Is a One-Way Door"

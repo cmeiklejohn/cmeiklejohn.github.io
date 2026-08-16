@@ -12,11 +12,11 @@ categories: ai research zabriskie agents
 
 I deleted two notebooks of audio research during this project, but not at once. Notebook 1 failed after four days on April 30. I wrote down what had gone wrong and started over that day. Notebook 2 failed for a different reason on May 6, less than a week later.
 
-Between them, the notebooks represented a little more than a week of nearly continuous agent work. The second had already produced two long blog posts and a listening study I had asked friends to complete in their free time. The study was already in front of two people. One of them, my regular Phish-going friend Patrick, had spent an evening on it. I was planning to talk about the results at a music festival beginning two days later.
+Between them, the notebooks represented a little more than a week of nearly continuous agent work. The second had already produced two long blog posts that I put online. Three people read them. I had also asked friends to complete a listening study in their free time. The study was already in front of two people. One of them, my regular Phish-going friend Patrick, had spent an evening on it. I was planning to talk about the results at a music festival beginning two days later.
 
 All of it came down because each notebook contained a silent setup decision that invalidated what followed. The decisions were different. One crossed an information boundary. The other changed what the experiment was measuring. In both cases, most of the code worked exactly as written.
 
-This is a postmortem about what an LLM agent did, but publication was still my decision. I asked the agent to move quickly, then published work from reports that presented the stated requirements as satisfied. I did not independently reconstruct every split or trace each setup decision back to the raw data. Doing that after every run would have defeated the reason for delegating the research process. The failure was that the system could violate an explicit method without blocking the work or disclosing the violation, then present everything downstream as finished.
+This is a postmortem about what an LLM agent did, but putting the work online was still my decision. I asked the agent to move quickly, then put the resulting work online because its reports presented the stated requirements as satisfied. I did not independently reconstruct every split or trace each setup decision back to the raw data. Doing that after every run would have defeated the reason for delegating the research process. The failure was that the system could violate an explicit method without blocking the work or disclosing the violation, then present everything downstream as finished.
 
 I have a PhD and have spent much of my career doing systems research. That matters because these were not rules I did not know to write. My background helped me specify the constraints and recognize the failures once they became visible. It could not make an undisclosed violation visible inside a large volume of competent-looking work.
 
@@ -71,7 +71,7 @@ In every case, the script began the jam at ninety seconds.
 
 Several minutes of verses, choruses, and composed instrumental material had been placed inside the windows labeled `jam`. Every chart built from those windows mixed the musical phenomenon I wanted to study with material the method itself said should be excluded.
 
-The default propagated through nine analysis scripts and the artifacts they produced: fingerprints, threshold sweeps, cluster assignments, silhouette scores, confidence intervals, per-window data, and every cell in the figures published with the blog posts. Research questions 2 through 4 lost their numerical findings; the first question was principally a preregistration. The listening study was asking people to evaluate evidence the project itself could no longer defend.
+The default propagated through nine analysis scripts and the artifacts they produced: fingerprints, threshold sweeps, cluster assignments, silhouette scores, confidence intervals, per-window data, and every cell in the figures included in the blog posts. Research questions 2 through 4 lost their numerical findings; the first question was principally a preregistration. The listening study was asking people to evaluate evidence the project itself could no longer defend.
 
 So Notebook 2 came down too.
 
@@ -93,7 +93,7 @@ A little later, frustrated with cleanup, I asked for some real progress that was
 
 The silence was the problem. The downstream work treated each choice as settled before I knew a choice had been made.
 
-By the time a result exists, it becomes harder to reopen its premises without wanting the premises to be right. I had charts. I had interpretations. I had blog posts that looked finished enough to publish. The quantity and polish of the artifacts increased the cost of asking whether the first step had been valid.
+By the time a result exists, it becomes harder to reopen its premises without wanting the premises to be right. I had charts. I had interpretations. I had blog posts that looked finished enough to put online. The quantity and polish of the artifacts increased the cost of asking whether the first step had been valid.
 
 The choice never appeared as a decision requiring review. The agent did not volunteer it, and the reports treated the resulting pipeline as complete. That is the system we actually built.
 

@@ -162,11 +162,11 @@ characters.
 ### Criticism Includes The Author
 
 Strong criticism does not float above the events. The author states his own
-role in defining the constraints, deciding what to publish, or building the
+role in defining the constraints, deciding what to put online, or building the
 system. That accountability is central to the research series and should
 remain visible even when the agent made the immediate error.
 
-Responsibility for publishing a claim is not the same as a requirement to
+Responsibility for putting a claim online is not the same as a requirement to
 manually reconstruct every operation an autonomous system reports as complete.
 When Christopher supplied an explicit constraint and the system presented the
 work as satisfying it, do not rewrite the incident as a lesson that he should
@@ -301,7 +301,7 @@ Before a *Machine in the Lab* post is considered ready for author review:
 - the opening is a documented event, finding, or institutional action;
 - the post reaches the audio-research story through evidence rather than a
   generic AI transition;
-- responsibility for publication remains visible without turning autonomy into
+- responsibility for putting work online remains visible without turning autonomy into
   a requirement that the author manually reperform every reported check;
 - every number is attached to its population and methodological boundary;
 - later knowledge is not placed into the mouth of the earlier narrator;
