@@ -64,7 +64,7 @@
           <span class="series-prev-next-card series-next series-prev-next-pending">
             <span class="series-prev-next-direction">Next →</span>
             <span class="series-prev-next-title">{{ next.title }}</span>
-            <span class="series-prev-next-date">{% if next.date %}publishes {{ next.date | date: "%B %-d" }}{% elsif next.status == "draft" %}draft in progress{% else %}in development{% endif %}</span>
+            <span class="series-prev-next-date">{% if next.status == "collecting-results" %}collecting tour results{% elsif next.status == "blocked-on-result" %}blocked on evidence{% elsif next.date %}publishes {{ next.date | date: "%B %-d" }}{% elsif next.status == "draft" %}draft in progress{% else %}in development{% endif %}</span>
           </span>
         {%- endif -%}
       {%- else -%}
