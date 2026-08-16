@@ -239,7 +239,7 @@ Without Part 1, the series becomes a personal tool-failure story and loses the r
 
 ### Standalone contract
 
-A reader should understand how two small, plausible implementation choices invalidated a large body of work, why the autonomous system neither blocked nor reported them, and why responsibility for publication is different from manually reconstructing every experiment the system claims to have completed.
+A reader should understand how two small, plausible implementation choices invalidated a large body of work, why the autonomous system neither blocked nor reported them, and why responsibility for putting the work online is different from manually reconstructing every experiment the system claims to have completed.
 
 The author should be introduced as an experienced, PhD-trained systems researcher attempting an ambitious self-directed research program with LLM assistance. The credential is not an appeal to authority. It establishes that the constraints were understood and written down. The failure was not ignorance of holdouts or implementation fidelity; it was that the system could violate explicit constraints without enforcing or disclosing them.
 
@@ -259,12 +259,12 @@ How can mostly correct code produce research that must be discarded in full?
 2. The resulting metrics looked strong because the model could exploit information that should have remained unavailable.
 3. Once feature and method decisions had been made against those outcomes, changing the split could not restore independent evidence.
 4. The second notebook inherited a 90-second head-and-tail segmentation default despite a methodology document that warned against that exact strategy. Its immediate defect was plan-to-implementation fidelity: the code violated the written method.
-5. The constant propagated through scripts, fingerprints, clusters, charts, published posts, and a listening study. The broader debt was measurement validity: the convenient unit of analysis silently defined which portion of the music could count as the phenomenon, a problem that merely making later code match a plan would not solve.
+5. The constant propagated through scripts, fingerprints, clusters, charts, two blog posts put online for three readers, and a listening study. The broader debt was measurement validity: the convenient unit of analysis silently defined which portion of the music could count as the phenomenon, a problem that merely making later code match a plan would not solve.
 6. The failures share a propagation mechanism but create different methodological debts. Notebook 1 invalidated independence because information crossed a boundary. Notebook 2 first violated its plan and then exposed the separate need to justify that an operational measurement corresponds to the named phenomenon.
 7. Part 3 follows the first debt through the holdout, caches, derivatives, and human adaptation. Part 4 returns to the second debt after a much stronger review process still confuses a consistent measurement chain with the claimed acoustic event.
 8. The attempted deletion that became archival and the request for progress that produced paperwork show the same lower-stakes bias toward plausible forward action.
-9. The reports presented the explicit constraints as satisfied, and the author used those reports to publish claims and involve other people's time.
-10. The author remains responsible for publication, but the system failure is the absence of enforcement and disclosure. Requiring manual reconstruction of every completed run would negate the autonomy being evaluated.
+9. The reports presented the explicit constraints as satisfied, and the author used those reports to put two blog posts online for three readers and involve other people's time.
+10. The author remains responsible for putting the work online, but the system failure is the absence of enforcement and disclosure. Requiring manual reconstruction of every completed run would negate the autonomy being evaluated.
 11. The improvisation questions encountered during the detour were genuinely interesting but too dependent on disputed labels and operational definitions to yield the clean answer the early work implied.
 12. A compact coda records the immediate response: the first written discipline retired Q01 before audio loaded and forced Q02 into a narrower, caveated claim. This belongs here as contemporaneous history, not as proof that the new process solved validity.
 13. Part 4 owns the later demonstration that those internal gates could still preserve a meaning error. Part 6 owns the mature operating protocol. Part 5 does not inherit Q01 or Q02.
@@ -279,11 +279,11 @@ Contemporaneous user-authored postmortem, retained repository history, invalidat
 
 ### Required counterarguments
 
-- A competent researcher remains responsible for claims they publish.
+- A competent researcher remains responsible for claims they put online.
 - These failures could occur with a junior human assistant.
 - A long checklist may remove the speed benefit that motivated agent use.
 
-The post should concede all three without accepting the premise that autonomy requires the researcher to reperform every mechanical check. The author remains responsible for publication. The system being evaluated is responsible for enforcing or disclosing explicit constraints it claims to have followed. If every split and constant must be reconstructed manually before any output can be used, the system is a fast implementation assistant, not an autonomous researcher. The contribution is the speed, silent violation, and propagation documented inside this project, not a general causal estimate.
+The post should concede all three without accepting the premise that autonomy requires the researcher to reperform every mechanical check. The author remains responsible for putting the work online. The system being evaluated is responsible for enforcing or disclosing explicit constraints it claims to have followed. If every split and constant must be reconstructed manually before any output can be used, the system is a fast implementation assistant, not an autonomous researcher. The contribution is the speed, silent violation, and propagation documented inside this project, not a general causal estimate.
 
 ### Standalone context requirement
 
@@ -863,7 +863,7 @@ Some ideas must recur because they are the throughline. They should gain meaning
 
 - **The surface looks complete:** scholarly prose in Part 1, notebooks in Part 2, audit trails in Part 4, percentages and UI in Part 5.
 - **The outside judge:** primary sources and evaluators in Part 1, split audits in Part 3, audio in Part 4, source frames and complete-product scoring in Part 5, sealed and prospective evidence in Part 6. Each judge still requires an independence and construct check of its own.
-- **The human remains inside the system:** publication responsibility in Part 2, adaptation in Part 3, primed diagnosis in Part 4, insistence on browser tests in Part 5, approval and veto limits in Part 6.
+- **The human remains inside the system:** responsibility for putting the work online in Part 2, adaptation in Part 3, primed diagnosis in Part 4, insistence on browser tests in Part 5, approval and veto limits in Part 6.
 - **Failure must change status:** invalid notebooks, contaminated caches, withdrawn dispatch, invalid browser sessions, opened engineering results, final sealed verdict.
 - **The product remains concrete:** the original song-guesser ambition in Part 2, the browser path in Part 5, the narrow live result in Part 6, and the versioned tour outcome in Part 7.
 
@@ -888,7 +888,7 @@ An adversarial review should verify that the series encounters these objections 
 | An anonymous example cannot be independently inspected by the reader | Part 1 | Correct. The public post may use it only as a nonessential illustration of a category already supported elsewhere. The private dossier preserves the source for editorial audit; the series' substantive validity argument comes from the author's named case. |
 | There is no counterfactual for how much time the LLM saved | Parts 1 and 2 | Correct. Treat "weeks into hours" as the author's documented project estimate, not a causal productivity measurement or population claim. |
 | One person's labels can still be excellent | Part 4 | Yes. Reliability is unmeasured, not disproven. Expertise and agreement answer different questions, and the series' own labels require the same scrutiny. |
-| The author should have reviewed every split and constant personally | Part 2 | The author remains responsible for publication, but this is not an answer to the autonomy problem. The constraints were explicit and the reports presented them as satisfied. A system that requires manual reconstruction of every run is not autonomously running the research process. |
+| The author should have reviewed every split and constant personally | Part 2 | The author remains responsible for putting the work online, but this is not an answer to the autonomy problem. The constraints were explicit and the reports presented them as satisfied. A system that requires manual reconstruction of every run is not autonomously running the research process. |
 | Preregistration and clean splits solve the problem | Parts 3 and 4 | They protect confirmation and information boundaries but do not establish construct validity. |
 | Listening is subjective | Part 4 | Report that the historical ten-case check used one outcome-aware author-listener and therefore did not estimate agreement. Preserve ambiguity, and describe neutral presentation or multiple raters as stronger future designs rather than properties of the original evidence. |
 | A frozen plan can preserve a bad construct more efficiently | Parts 4 and 6 | Yes. Durability protects provenance and permissions; it does not establish meaning. A different evidence path must still challenge the construct. |
