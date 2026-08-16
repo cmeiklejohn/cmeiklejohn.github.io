@@ -1416,18 +1416,27 @@ html {
   border-radius: 0 6px 6px 0;
   padding: 0.65rem 1rem;
   margin: 0 0 2rem;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
   align-items: baseline;
-  gap: 0.4rem 0.55rem;
+  gap: 0.3rem 0.7rem;
 }
 
 .home-series-callout-label {
+  grid-row: 1 / span 2;
   font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--brand);
+}
+
+.home-series-callout-entry {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.45rem;
+  min-width: 0;
 }
 
 .home-series-callout-title {
@@ -1448,6 +1457,16 @@ html {
 .home-series-callout a:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .home-series-callout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .home-series-callout-label {
+    grid-row: auto;
+  }
 }
 
 /*****************************************************************************/
