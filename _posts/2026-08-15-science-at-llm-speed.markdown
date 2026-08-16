@@ -49,7 +49,9 @@ While I was writing this, Jeff Dean, Sanjay Ghemawat, Oriol Vinyals, and Quoc Le
 
 The model is no longer only helping with a research task. It is becoming capable of moving the project around the loop.
 
-My audio project is obviously not operating at the scale implied by that company. Goose song identification is probably not their launch domain. But the underlying systems problem is recognizable. Once an agent can propose an experiment, implement it, run it, read the result, and modify the next experiment, research velocity becomes a property of the loop rather than any one model response. So do the failures. A contaminated result can alter the next hypothesis. A convenient proxy can become the objective. A component test can be promoted into a claim about a system that never ran.
+I had been trying to build a much smaller discovery loop of my own. I run Zabriskie, a community for live-music fans. During a livestream by the band Goose, viewers who want a running setlist have to wait for a person or an external service to recognize each song and enter it. I wanted Zabriskie to infer the setlist from the audio itself: listen to the stream, identify the current song, and post the guess while the show was still happening. The recognizer became SetScope.
+
+SetScope is obviously not operating at the scale implied by that company. Goose song identification is probably not their launch domain. But the underlying systems problem is recognizable. Once an agent can propose an experiment, implement it, run it, read the result, and modify the next experiment, research velocity becomes a property of the loop rather than any one model response. So do the failures. A contaminated result can alter the next hypothesis. A convenient proxy can become the objective. A component test can be promoted into a claim about a system that never ran.
 
 There is emerging evidence that this has changed scientific production, although the size of the change is difficult to measure cleanly. A [large study of preprints, peer reviews, and document-access records](https://doi.org/10.1126/science.adw3000) associated inferred LLM use with increased manuscript output. A subsequent [methodological comment](https://arxiv.org/abs/2605.17979) identified an important selection problem: authors with high-output months give a classifier more opportunities to decide that adoption occurred. The direction is plausible. The largest causal interpretation is not yet settled.
 
@@ -99,9 +101,7 @@ The system is useful not merely because it can produce candidates at speed, but 
 
 ## A small audio lab enters this moment
 
-I started the Zabriskie audio-research project with a practical question. I wanted a computer to listen to a live Goose show and identify the song while the show was happening, without waiting for an external setlist.
-
-I had years of labeled recordings. I had access to the usual audio features and increasingly capable embedding models. I also had an LLM agent that could write scanners, build manifests, generate features, train classifiers, run evaluations, analyze failures, and modify the live application. What had been an implausibly large solo project looked tractable.
+That practical feature became the Zabriskie audio-research project. I had years of labeled recordings, access to the usual audio features and increasingly capable embedding models, and an LLM agent that could write scanners, build manifests, generate features, train classifiers, run evaluations, analyze failures, and modify the live application. What had been an implausibly large solo project looked tractable.
 
 Then the corpus pulled the project sideways. The recordings seemed to offer a way to investigate harder questions about improvisation: whether musical features could identify when a performance left its composed structure, whether different forms of jamming had measurable signatures, and whether those signatures generalized across performances. Those questions were more interesting than simple song identification. They were also much harder to define.
 
