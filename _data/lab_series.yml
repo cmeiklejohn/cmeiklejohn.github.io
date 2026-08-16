@@ -70,12 +70,12 @@
   date: 2026-08-18
   estimated_words: "3,000-3,500 words"
   purpose: "Show what happened when an experienced, PhD-trained systems researcher used an LLM agent to make an ambitious self-directed audio-research program tractable: two silent setup decisions became foundations for plausible downstream work while creating different information and meaning failures."
-  discovery_loop_role: "Show the uncontrolled loop in practice: an agent could propose, implement, run, interpret, and extend experiments faster than the researcher could inspect the premises entering the next iteration."
+  discovery_loop_role: "Show the uncontrolled loop in practice: an agent could propose, implement, run, interpret, and extend experiments while its reports failed to surface or enforce the premises entering the next iteration."
   outline:
     - title: "The deletion evening"
       detail: "Open on deleting two notebooks, retracting two articles, and taking down a listening study after friends had already spent time on it."
     - title: "The audio-research project"
-      detail: "Preserve the complete chronology for a standalone reader: automatic set detection was the original goal; the corpus and apparent power of audio features pulled the project into the Type I/Type II improvisation detour where the two notebooks failed; SetScope later returned to the original target. Establish the author's research background, corpus, labels, and why an LLM agent made work at this scale possible. Treat the PhD as context for the supervision problem, not evidence that a result must be correct."
+      detail: "Preserve the complete chronology for a standalone reader: automatic set detection was the original goal; the corpus and apparent power of audio features pulled the project into the Type I/Type II improvisation detour where the two notebooks failed; SetScope later returned to the original target. Establish the author's research background, corpus, labels, and why an LLM agent made work at this scale possible. Treat the PhD as evidence that the constraints were understood and explicit, while making clear that expertise cannot reveal a violation the autonomous system neither blocks nor reports."
     - title: "Notebook 1"
       detail: "Reconstruct the performance-level train/test leak, why the resulting numbers looked compelling, and why no downstream result could be repaired after the boundary was crossed."
     - title: "Notebook 2"
@@ -94,11 +94,13 @@
     - "In empirical work, setup is not preliminary plumbing; setup is the experiment."
     - "LLM-generated research can be invalid while the code, charts, and prose all look professional."
     - "The cost of a hidden assumption grows with every artifact the agent produces before surfacing it."
+    - "An autonomous research system must prevent or report violations of explicit constraints; requiring the operator to reconstruct every run defeats the premise."
     - "Different setup failures require different remedies: protecting independence cannot establish that a measurement corresponds to the phenomenon in the claim."
   excludes:
     - "Do not explain the complete R-1 through R-11 governance system here."
     - "Keep Q01 and Q02 to a compact account of the project's immediate response: the new discipline could retire or narrow questions, but had not yet solved measurement validity. Part 4 owns the later failure of those internal gates; Part 6 owns the mature operating protocol."
     - "Do not present the current SetScope engineering result as the resolution."
+    - "Do not make the lesson that the author should personally inspect every split, constant, or generated artifact. Preserve responsibility for publication while locating the system failure in missing enforcement and disclosure."
 
 - slug: the-holdout-is-a-one-way-door
   title: "Part 3. The Holdout Is a One-Way Door"

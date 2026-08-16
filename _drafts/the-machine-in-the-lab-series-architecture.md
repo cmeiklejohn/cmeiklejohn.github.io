@@ -21,7 +21,7 @@ The ordinary [editorial plan](/series/the-machine-in-the-lab/editorial-plan/) re
 
 ### Controlling question
 
-What has to change when an LLM agent can implement empirical research faster than its supervising researcher can inspect the methodological decisions embedded in that implementation?
+What has to change when an LLM agent can implement empirical research while silently violating constraints it was explicitly given, then carry those violations into the next experiment?
 
 ### Series answer
 
@@ -111,7 +111,7 @@ Part 6 is not a fourth boundary. It is the operating protocol that coordinates a
 The series is also a field report about automated experimental loops. This connection should be visible to readers following the new generation of systems that propose, execute, evaluate, and revise experiments, including the contemporary company Discovery Loop, without turning the series into commentary about a company whose implementation is not public.
 
 1. Part 1 establishes why automating the loop has become a live research and systems objective.
-2. Part 2 shows an uncontrolled loop producing plausible experimental state faster than its premises could be inspected.
+2. Part 2 shows an uncontrolled loop producing plausible experimental state while failing to surface or enforce the premises carried into the next iteration.
 3. Part 3 identifies the information problem: iteration changes what the agent and operator know, so independence must be represented as lineage rather than file placement.
 4. Part 4 identifies the evaluator problem: the loop can optimize a reproducible proxy that does not measure the named phenomenon.
 5. Part 5 identifies the execution problem: the loop must exercise the actual input, transport, controller, and display path rather than only its strongest component.
@@ -124,7 +124,7 @@ The recruiting signal should come from the technical fit. Parts 1 and 6 may name
 
 Each rung depends on the one before it. A draft that jumps past a rung has broken the series even if every sentence in the draft is individually true.
 
-### S1. Cheap research-like production changes what must be inspected
+### S1. Cheap research-like production changes what must be enforced and disclosed
 
 LLMs participate in literature search, writing, review, code, analysis, and hypothesis generation. They can contribute to verifiable work, and they make complete-looking scholarly artifacts cheap to produce. That observation does not establish a general rate comparison between production and verification costs. It creates the narrower question that controls the series: what evidence outside the generated artifact chain judges each output?
 
@@ -239,9 +239,9 @@ Without Part 1, the series becomes a personal tool-failure story and loses the r
 
 ### Standalone contract
 
-A reader should understand how two small, plausible implementation choices invalidated a large body of work, why ordinary code review did not surface them, and why the author shares responsibility for accepting the outputs.
+A reader should understand how two small, plausible implementation choices invalidated a large body of work, why the autonomous system neither blocked nor reported them, and why responsibility for publication is different from manually reconstructing every experiment the system claims to have completed.
 
-The author should be introduced as an experienced, PhD-trained systems researcher attempting an ambitious self-directed research program with LLM assistance. The credential is not an appeal to authority. It establishes that conventional research training did not automatically solve the supervision problem created by the agent's speed.
+The author should be introduced as an experienced, PhD-trained systems researcher attempting an ambitious self-directed research program with LLM assistance. The credential is not an appeal to authority. It establishes that the constraints were understood and written down. The failure was not ignorance of holdouts or implementation fidelity; it was that the system could violate explicit constraints without enforcing or disclosing them.
 
 The existing *Two Notebooks Lost* file remains contemporaneous source material rather than a contract-compliant series draft. Its phrase "the question I started with" refers to the first jam-research notebook question, not the origin of the full Zabriskie audio project. Part 2 will be a separate series draft built from that source. It needs the full set-detection-to-jam-detour chronology and a selective compression of the later governance coda assigned to Parts 4 and 6. This architecture does not authorize changing the contemporaneous source file itself without author approval.
 
@@ -263,8 +263,8 @@ How can mostly correct code produce research that must be discarded in full?
 6. The failures share a propagation mechanism but create different methodological debts. Notebook 1 invalidated independence because information crossed a boundary. Notebook 2 first violated its plan and then exposed the separate need to justify that an operational measurement corresponds to the named phenomenon.
 7. Part 3 follows the first debt through the holdout, caches, derivatives, and human adaptation. Part 4 returns to the second debt after a much stronger review process still confuses a consistent measurement chain with the claimed acoustic event.
 8. The attempted deletion that became archival and the request for progress that produced paperwork show the same lower-stakes bias toward plausible forward action.
-9. The human accepted the framing, read the artifacts, published the claims, and incurred social costs before reopening the setup.
-10. The failure is therefore a property of the human-agent system: machine speed and plausible output combine with human trust and commitment.
+9. The reports presented the explicit constraints as satisfied, and the author used those reports to publish claims and involve other people's time.
+10. The author remains responsible for publication, but the system failure is the absence of enforcement and disclosure. Requiring manual reconstruction of every completed run would negate the autonomy being evaluated.
 11. The improvisation questions encountered during the detour were genuinely interesting but too dependent on disputed labels and operational definitions to yield the clean answer the early work implied.
 12. A compact coda records the immediate response: the first written discipline retired Q01 before audio loaded and forced Q02 into a narrower, caveated claim. This belongs here as contemporaneous history, not as proof that the new process solved validity.
 13. Part 4 owns the later demonstration that those internal gates could still preserve a meaning error. Part 6 owns the mature operating protocol. Part 5 does not inherit Q01 or Q02.
@@ -279,11 +279,11 @@ Contemporaneous user-authored postmortem, retained repository history, invalidat
 
 ### Required counterarguments
 
-- A competent researcher should inspect their own split and constants.
+- A competent researcher remains responsible for claims they publish.
 - These failures could occur with a junior human assistant.
 - A long checklist may remove the speed benefit that motivated agent use.
 
-The post should concede all three. The author's research background makes the first objection more important, not less: expertise did not remove responsibility or confer immunity. The contribution is the speed and propagation documented inside this human-agent project, not a general causal estimate or the discovery that researchers remain responsible.
+The post should concede all three without accepting the premise that autonomy requires the researcher to reperform every mechanical check. The author remains responsible for publication. The system being evaluated is responsible for enforcing or disclosing explicit constraints it claims to have followed. If every split and constant must be reconstructed manually before any output can be used, the system is a fast implementation assistant, not an autonomous researcher. The contribution is the speed, silent violation, and propagation documented inside this project, not a general causal estimate.
 
 ### Standalone context requirement
 
@@ -863,7 +863,7 @@ Some ideas must recur because they are the throughline. They should gain meaning
 
 - **The surface looks complete:** scholarly prose in Part 1, notebooks in Part 2, audit trails in Part 4, percentages and UI in Part 5.
 - **The outside judge:** primary sources and evaluators in Part 1, split audits in Part 3, audio in Part 4, source frames and complete-product scoring in Part 5, sealed and prospective evidence in Part 6. Each judge still requires an independence and construct check of its own.
-- **The human remains inside the system:** trust in Part 2, adaptation in Part 3, primed diagnosis in Part 4, insistence on browser tests in Part 5, approval and veto limits in Part 6.
+- **The human remains inside the system:** publication responsibility in Part 2, adaptation in Part 3, primed diagnosis in Part 4, insistence on browser tests in Part 5, approval and veto limits in Part 6.
 - **Failure must change status:** invalid notebooks, contaminated caches, withdrawn dispatch, invalid browser sessions, opened engineering results, final sealed verdict.
 - **The product remains concrete:** the original song-guesser ambition in Part 2, the browser path in Part 5, the narrow live result in Part 6, and the versioned tour outcome in Part 7.
 
@@ -883,12 +883,12 @@ An adversarial review should verify that the series encounters these objections 
 
 | Objection | Required location | Required answer |
 | --- | --- | --- |
-| Humans make all of these errors | Parts 1 and 2 | Yes. The general point is not uniquely machine-created misconduct; the case-specific claim concerns rapid propagation, plausible surface quality, and changed supervision demands in this project. |
+| Humans make all of these errors | Parts 1 and 2 | Yes. The general point is not uniquely machine-created misconduct; the case-specific claim concerns rapid propagation, plausible surface quality, and a system that neither enforced nor disclosed explicit constraints. |
 | The adjacent example is a fan product, not a paper | Part 1 | Yes. That is the point: a serious science-shaped artifact can exist outside the institutions where research-quality debates are usually located. It is not presented as misconduct, proof of invalidity, or evidence that its creator used an LLM. |
 | An anonymous example cannot be independently inspected by the reader | Part 1 | Correct. The public post may use it only as a nonessential illustration of a category already supported elsewhere. The private dossier preserves the source for editorial audit; the series' substantive validity argument comes from the author's named case. |
 | There is no counterfactual for how much time the LLM saved | Parts 1 and 2 | Correct. Treat "weeks into hours" as the author's documented project estimate, not a causal productivity measurement or population claim. |
 | One person's labels can still be excellent | Part 4 | Yes. Reliability is unmeasured, not disproven. Expertise and agreement answer different questions, and the series' own labels require the same scrutiny. |
-| The notebooks failed because the author did not review the work | Part 2 | Yes. Human responsibility is part of the causal system, not a rebuttal to it. |
+| The author should have reviewed every split and constant personally | Part 2 | The author remains responsible for publication, but this is not an answer to the autonomy problem. The constraints were explicit and the reports presented them as satisfied. A system that requires manual reconstruction of every run is not autonomously running the research process. |
 | Preregistration and clean splits solve the problem | Parts 3 and 4 | They protect confirmation and information boundaries but do not establish construct validity. |
 | Listening is subjective | Part 4 | Report that the historical ten-case check used one outcome-aware author-listener and therefore did not estimate agreement. Preserve ambiguity, and describe neutral presentation or multiple raters as stronger future designs rather than properties of the original evidence. |
 | A frozen plan can preserve a bad construct more efficiently | Parts 4 and 6 | Yes. Durability protects provenance and permissions; it does not establish meaning. A different evidence path must still challenge the construct. |

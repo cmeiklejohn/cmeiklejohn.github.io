@@ -16,9 +16,9 @@ Between them, the notebooks represented a little more than a week of nearly cont
 
 All of it came down because each notebook contained a silent setup decision that invalidated what followed. The decisions were different. One crossed an information boundary. The other changed what the experiment was measuring. In both cases, most of the code worked exactly as written.
 
-This is a postmortem about what an LLM agent did, but it is not an attempt to assign the mistake to the machine and walk away clean. I asked the agent to move quickly. I accepted its framing of the work. I read the charts and the prose and did not trace the setup all the way back to the data. The project moved faster because of the agent, and the failures traveled at the same speed.
+This is a postmortem about what an LLM agent did, but publication was still my decision. I asked the agent to move quickly, then published work from reports that presented the stated requirements as satisfied. I did not independently reconstruct every split or trace each setup decision back to the raw data. Doing that after every run would have defeated the reason for delegating the research process. The failure was that the system could violate an explicit method without blocking the work or disclosing the violation, then present everything downstream as finished.
 
-I have a PhD and have spent much of my career doing systems research. That background helped me recognize the failures once they were visible. It did not stop me from accepting their premises while they were hidden inside a large volume of competent-looking work.
+I have a PhD and have spent much of my career doing systems research. That matters because these were not rules I did not know to write. My background helped me specify the constraints and recognize the failures once they became visible. It could not make an undisclosed violation visible inside a large volume of competent-looking work.
 
 ## The project before the notebooks
 
@@ -44,7 +44,7 @@ Once I knew that, there was no honest adjustment to the reported number. The lea
 
 I withdrew Notebook 1 after four days, wrote a short list of things not to do again, and started over. Its files remained in the working tree until May 4.
 
-The lesson I should have written was larger: a split I did not personally inspect was not a split I had established.
+The larger lesson was not that every split required my personal inspection. It was that a split the system could violate without stopping or reporting the violation had not been established at all.
 
 ## Notebook 2
 
@@ -93,9 +93,9 @@ A little later, frustrated with cleanup, I asked for some real progress that was
 
 The silence was the problem. The downstream work treated each choice as settled before I knew a choice had been made.
 
-By the time a result exists, it becomes harder to inspect its premises without wanting the premises to be right. I had charts. I had interpretations. I had articles that felt like articles I would respect if someone else wrote them. The quantity and polish of the artifacts increased the cost of asking whether the first step had been valid.
+By the time a result exists, it becomes harder to reopen its premises without wanting the premises to be right. I had charts. I had interpretations. I had articles that felt like articles I would respect if someone else wrote them. The quantity and polish of the artifacts increased the cost of asking whether the first step had been valid.
 
-I did not ask early enough. The agent did not volunteer the decision. That is the system we actually built.
+The choice never appeared as a decision requiring review. The agent did not volunteer it, and the reports treated the resulting pipeline as complete. That is the system we actually built.
 
 ## Two failures, not one
 
@@ -105,7 +105,7 @@ Notebook 1 failed because information crossed a boundary. The test evidence was 
 
 Notebook 2 failed because an implementation convenience defined the observable phenomenon. Even with a perfectly isolated test set, the pipeline would still have called several minutes of composition a jam. This is a meaning problem. It asks whether the measurement corresponds to the event named in the claim. A later experiment would pass every process gate we wrote after these failures and demonstrate that the problem was not solved by cleaner procedure.
 
-The common mechanism is acceleration. The agent could propose code, implement it, run it, interpret the output, write the article, and suggest the next experiment before I had fully inspected the premises of the first one. Every trip around the loop made the hidden choice more expensive to surface.
+The common mechanism is acceleration. The agent could propose code, implement it, run it, interpret the output, write the article, and suggest the next experiment before its own reports had surfaced the premises of the first one. Every trip around the loop made the hidden choice more expensive to expose.
 
 We eventually returned to the original set-detection problem. That return did not make the two lost notebooks irrelevant. It gave us a narrower question with an answer that could be checked during a live show. It also forced us to decide what a check actually is.
 

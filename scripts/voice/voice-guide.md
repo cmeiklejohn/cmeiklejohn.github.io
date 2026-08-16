@@ -162,9 +162,18 @@ characters.
 ### Criticism Includes The Author
 
 Strong criticism does not float above the events. The author states his own
-role in accepting an assumption, missing a check, or building the system. That
-accountability is central to the research series and should remain visible
-even when the agent made the immediate error.
+role in defining the constraints, deciding what to publish, or building the
+system. That accountability is central to the research series and should
+remain visible even when the agent made the immediate error.
+
+Responsibility for publishing a claim is not the same as a requirement to
+manually reconstruct every operation an autonomous system reports as complete.
+When Christopher supplied an explicit constraint and the system presented the
+work as satisfying it, do not rewrite the incident as a lesson that he should
+have personally rechecked every split, constant, file, or generated artifact.
+Name the actual system failure: the constraint was neither enforced nor its
+violation disclosed. If routine manual reperformance is required before any
+result can be used, the system is not autonomously running the research process.
 
 ## Academic Habits Worth Carrying Into Essays
 
@@ -292,7 +301,8 @@ Before a *Machine in the Lab* post is considered ready for author review:
 - the opening is a documented event, finding, or institutional action;
 - the article reaches the audio-research story through evidence rather than a
   generic AI transition;
-- the author's own responsibility remains visible;
+- responsibility for publication remains visible without turning autonomy into
+  a requirement that the author manually reperform every reported check;
 - every number is attached to its population and methodological boundary;
 - later knowledge is not placed into the mouth of the earlier narrator;
 - the ending creates a real reason to read the next part;
