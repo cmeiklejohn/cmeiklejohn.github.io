@@ -4,7 +4,7 @@ title: "The Machine in the Lab"
 description: "How I used an autonomous LLM research program to build a live Goose song guesser, discarded two invalid notebooks, and began testing it during a real tour."
 permalink: /series/the-machine-in-the-lab/
 series: lab
-image: /og/the-machine-in-the-lab.png
+image: /og/the-machine-in-the-lab-editorial.png
 image_card_type: summary_large_image
 ---
 
