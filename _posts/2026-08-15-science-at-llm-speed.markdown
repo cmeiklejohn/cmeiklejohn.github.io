@@ -119,7 +119,7 @@ The agent produced code that ran, clean-looking metrics, detailed figures, inter
 
 Underneath the first notebook, performances from the same source had crossed the training and test boundary. Underneath the second, a 90-second default that the written method had explicitly warned against silently defined which parts of a track counted as improvisation. Both mistakes were small in code. Both propagated through almost everything that followed.
 
-I eventually deleted the two notebooks on the same evening.
+I deleted the first notebook when I found the leakage and started the analysis again. The second notebook was that restart. I deleted it later, after finding the segmentation default.
 
 That experience did not teach me that LLMs cannot contribute to research. The project would not exist at its current scale without them. It taught me that speed changes the location of the work. Producing the next artifact becomes cheap. Establishing what the artifact means, what information entered it, and what could prove it wrong does not.
 
