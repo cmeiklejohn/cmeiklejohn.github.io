@@ -1,0 +1,102 @@
+[
+  {
+    "filename": "ppdp-2025-lasp.pdf",
+    "url": "https://webperso.info.ucl.ac.be/~pvr/ppdp-2025-lasp.pdf",
+    "title": "Distributed, Coordination-Free Programming: 10 Years of Progress Since Lasp"
+  },
+  {
+    "filename": "netherite-vldb-2022.pdf",
+    "url": "https://www.vldb.org/pvldb/vol15/p1591-burckhardt.pdf",
+    "title": "Netherite: Efficient Execution of Serverless Workflows"
+  },
+  {
+    "filename": "durable-functions-2021.pdf",
+    "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2021/10/DF-Semantics-With-Proofs.pdf",
+    "title": "Durable Functions: Semantics for Stateful Serverless"
+  },
+  {
+    "filename": "ambrosia-vldb-2020.pdf",
+    "url": "https://www.microsoft.com/en-us/research/uploads/prod/2018/12/AmbrosiaPaper.pdf",
+    "title": "A.M.B.R.O.S.I.A: Providing Performant Virtual Resiliency for Distributed Applications"
+  },
+  {
+    "filename": "semidirect-2004.04303.pdf",
+    "url": "https://arxiv.org/pdf/2004.04303",
+    "title": "Composing and Decomposing Op-Based CRDTs with Semidirect Products"
+  },
+  {
+    "filename": "partisan-atc-2019.pdf",
+    "url": "https://www.usenix.org/system/files/atc19-meiklejohn.pdf",
+    "title": "Partisan: Scaling the Distributed Actor Runtime"
+  },
+  {
+    "filename": "worlds-1608.03326.pdf",
+    "url": "https://arxiv.org/pdf/1608.03326",
+    "title": "Worlds of Events: Deduction with Partial Knowledge about Causality"
+  },
+  {
+    "filename": "property-papoc-2016.pdf",
+    "url": "https://webperso.info.ucl.ac.be/~pvr/papoc-2016-viotti-cr.pdf",
+    "title": "Towards Property-Based Consistency Verification"
+  },
+  {
+    "filename": "lasp-papoc-2015.pdf",
+    "url": "https://webperso.info.ucl.ac.be/~pvr/papoc-2015-lasp-abstract.pdf",
+    "title": "Lasp: A Language for Distributed, Eventually Consistent Computations with CRDTs"
+  },
+  {
+    "filename": "derflow-erlang-2014.pdf",
+    "url": "https://webperso.info.ucl.ac.be/~pvr/erlang14cameraready.pdf",
+    "title": "Derflow: Distributed Deterministic Dataflow Programming for Erlang"
+  },
+  {
+    "filename": "riak-dt-map-2014.pdf",
+    "url": "https://lenary.co.uk/publications/riak_dt_map.pdf",
+    "title": "Riak DT Map: A Composable, Convergent Replicated Dictionary"
+  },
+  {
+    "filename": "distributed-execution-indexing-2209.08740.pdf",
+    "url": "https://arxiv.org/pdf/2209.08740",
+    "title": "Distributed Execution Indexing"
+  },
+  {
+    "filename": "systems-approach-1802.02681.pdf",
+    "url": "https://arxiv.org/pdf/1802.02681",
+    "title": "Towards A Systems Approach To Distributed Programming"
+  },
+  {
+    "filename": "partisan-cloud-scale-1802.02652.pdf",
+    "url": "https://arxiv.org/pdf/1802.02652",
+    "title": "Partisan: Enabling Cloud-Scale Erlang Applications"
+  },
+  {
+    "filename": "just-right-consistency-1801.06340.pdf",
+    "url": "https://arxiv.org/pdf/1801.06340",
+    "title": "Just-Right Consistency: Reconciling Availability and Safety"
+  },
+  {
+    "filename": "design-distributed-models-1701.07615.pdf",
+    "url": "https://arxiv.org/pdf/1701.07615",
+    "title": "On the Design of Distributed Programming Models"
+  },
+  {
+    "filename": "dynamic-path-1609.01068.pdf",
+    "url": "https://arxiv.org/pdf/1609.01068",
+    "title": "Dynamic Path Contraction for Distributed, Dynamic Dataflow Languages"
+  },
+  {
+    "filename": "declarative-secure-edge-1512.04898.pdf",
+    "url": "https://arxiv.org/pdf/1512.04898",
+    "title": "Declarative, Secure, Convergent Edge Computation"
+  },
+  {
+    "filename": "database-tendency-1510.08473.pdf",
+    "url": "https://arxiv.org/pdf/1510.08473",
+    "title": "A Certain Tendency Of The Database Community"
+  },
+  {
+    "filename": "vector-clocks-coq-1406.4291.pdf",
+    "url": "https://arxiv.org/pdf/1406.4291",
+    "title": "Vector Clocks in Coq: An Experience Report"
+  }
+]

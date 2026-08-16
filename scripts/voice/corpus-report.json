@@ -1,0 +1,957 @@
+{
+  "generated_on": "2026-08-15",
+  "policy": {
+    "cutoff": "Only posts dated before 2026 are eligible for voice inference.",
+    "blog_role": "Primary evidence for narrative voice.",
+    "paper_role": "Evidence for technical precision, qualification, and argument structure.",
+    "coauthor_rule": "Many-author papers are not treated as direct evidence of surface voice."
+  },
+  "blog": {
+    "discovered_posts": 92,
+    "included_authorial_posts": 91,
+    "excluded_posts": {
+      "2022-06-02-extending-filibuster-to-redis.markdown": "Guest-authored by Eunice Chen; retained in the site but excluded from authorial voice inference."
+    },
+    "aggregate": {
+      "words": 82266,
+      "sentences": 4256,
+      "mean_sentence_words": 19.33,
+      "median_sentence_words": 17.0,
+      "paragraphs": 1775,
+      "mean_paragraph_words": 46.35,
+      "median_paragraph_words": 29,
+      "question_marks": 161,
+      "exclamation_marks": 79,
+      "parenthetical_groups": 418,
+      "contractions": 1001,
+      "first_person_singular": 1339,
+      "first_person_plural": 1170
+    },
+    "periods": {
+      "2013-2015": {
+        "posts": 37,
+        "words": 16852,
+        "sentences": 857,
+        "mean_sentence_words": 19.66,
+        "median_sentence_words": 17,
+        "paragraphs": 606,
+        "mean_paragraph_words": 27.81,
+        "median_paragraph_words": 21.0,
+        "question_marks": 31,
+        "exclamation_marks": 25,
+        "parenthetical_groups": 23,
+        "contractions": 218,
+        "first_person_singular": 162,
+        "first_person_plural": 365
+      },
+      "2016-2019": {
+        "posts": 24,
+        "words": 36126,
+        "sentences": 1921,
+        "mean_sentence_words": 18.81,
+        "median_sentence_words": 16,
+        "paragraphs": 511,
+        "mean_paragraph_words": 70.7,
+        "median_paragraph_words": 37,
+        "question_marks": 50,
+        "exclamation_marks": 13,
+        "parenthetical_groups": 227,
+        "contractions": 384,
+        "first_person_singular": 429,
+        "first_person_plural": 295
+      },
+      "2020-2023": {
+        "posts": 30,
+        "words": 29288,
+        "sentences": 1478,
+        "mean_sentence_words": 19.82,
+        "median_sentence_words": 17.0,
+        "paragraphs": 658,
+        "mean_paragraph_words": 44.51,
+        "median_paragraph_words": 31.0,
+        "question_marks": 80,
+        "exclamation_marks": 41,
+        "parenthetical_groups": 168,
+        "contractions": 399,
+        "first_person_singular": 748,
+        "first_person_plural": 510
+      }
+    },
+    "most_common_contractions": [
+      [
+        "it's",
+        110
+      ],
+      [
+        "i'm",
+        83
+      ],
+      [
+        "i've",
+        83
+      ],
+      [
+        "let's",
+        47
+      ],
+      [
+        "didn't",
+        43
+      ],
+      [
+        "don't",
+        33
+      ],
+      [
+        "here's",
+        32
+      ],
+      [
+        "that's",
+        27
+      ],
+      [
+        "we've",
+        26
+      ],
+      [
+        "wasn't",
+        25
+      ],
+      [
+        "we're",
+        24
+      ],
+      [
+        "isn't",
+        23
+      ],
+      [
+        "it\u2019s",
+        23
+      ],
+      [
+        "you're",
+        19
+      ],
+      [
+        "can't",
+        19
+      ],
+      [
+        "we'll",
+        18
+      ],
+      [
+        "doesn't",
+        16
+      ],
+      [
+        "i'd",
+        15
+      ],
+      [
+        "i'll",
+        15
+      ],
+      [
+        "haven't",
+        11
+      ]
+    ]
+  },
+  "publications": {
+    "publication_page_entries": 39,
+    "authorship_roles": {
+      "coauthor": 12,
+      "first": 15,
+      "sole": 12
+    },
+    "entries": [
+      {
+        "section": "Dissertation",
+        "title": "Resilient Microservice Applications, By Design, and without the Chaos",
+        "authors": "Christopher S. Meiklejohn",
+        "publication": "Ph.D. dissertation, Software and Societal Systems, Carnegie Mellon University (2024)",
+        "authorship_role": "sole",
+        "links": [
+          {
+            "label": "[PDF]",
+            "url": "https://christophermeiklejohn.com/publications/cmeiklej_phd_s3d_2024.pdf"
+          }
+        ]
+      },
+      {
+        "section": "Conferences",
+        "title": "Distributed, Coordination-Free Programming: 10 Years of Progress Since Lasp",
+        "authors": "Christopher Meiklejohn, Peter Van Roy",
+        "publication": "The 27th International Symposium on Principles and Practice of Declarative Programming (PPDP '25)",
+        "authorship_role": "first",
+        "links": [
+          {
+            "label": "[ACM]",
+            "url": "https://dl.acm.org/doi/10.1145/3756907.3756910"
+          }
+        ]
+      },
+      {
+        "section": "Conferences",
+        "title": "Method Overloading the Circuit",
+        "authors": "Christopher S. Meiklejohn, Lydia Stark, Cezare Celozzi, Matt Ranney, Heather Miller",
+        "publication": "Proceedings of the ACM Symposium on Cloud Computing (SoCC '22)",
+        "authorship_role": "first",
+        "links": [
+          {
+            "label": "[preprint]",
+            "url": "publications/socc2022-preprint.pdf"
+          }
+        ]
+      },
+      {
+        "section": "Conferences",
+        "title": "Netherite: Efficient Execution of Serverless Workflows",
+        "authors": "Sebastian Burckhardt, Badrish Chandramouli, Chris Gillum, David Justo, Konstantinos Kallas, Connor McMahon, Christopher S. Meiklejohn, Xiangfeng Zhu",
+        "publication": "Proceedings of the VLDB Endowment, Vol. 15, No. 8 (VLDB '22)",
+        "authorship_role": "coauthor",
+        "links": [
+          {
+            "label": "[VLDB]",
+            "url": "https://www.vldb.org/pvldb/vol15/p1591-burckhardt.pdf"
+          }
+        ]
+      },
+      {
+        "section": "Conferences",
+        "title": "Service-level Fault Injection Testing",
+        "authors": "Christopher S. Meiklejohn, Andrea Estrada, Yiwen Song, Heather Miller, Rohan Padhye",
+        "publication": "Proceedings of the ACM Symposium on Cloud Computing (SoCC '21)",
+        "authorship_role": "first",
+        "links": [
+          {
+            "label": "[preprint]",
+            "url": "https://christophermeiklejohn.com/publications/filibuster-socc-2021.pdf"
+          },
+          {
+            "label": "[ACM]",
+            "url": "https://dl.acm.org/doi/abs/10.1145/3472883.3487005"
+          }
+        ]
+      },
+      {
+        "section": "Conferences",
+        "title": "Durable Functions: Semantics for Stateful Serverless",
+        "authors": "Sebastian Burckhardt, Chris Gillum, David Justo, Konstantinos Kallas, Connor McMahon, and Christopher S. Meiklejohn",
+        "publication": "Proceedings of the ACM on Programming Languages, Issue OOPSLA (OOPSLA '21)",
+        "authorship_role": "coauthor",
+        "links": [
+          {
+            "label": "[ACM]",
+            "url": "https://dl.acm.org/doi/10.1145/3485510"
+          }
+        ]
+      },
+      {
+        "section": "Conferences",
+        "title": "A.M.B.R.O.S.I.A: Providing Performant Virtual Resiliency for Distributed Applications",
+        "authors": "Jonathan Goldstein, Ahmed Abdelhamid, Mike Barnett, Sebastian Burckhardt, Badrish Chandramouli, Darren Gehring, Niel Lebeck, Christopher Meiklejohn, Umar Farooq Minhas, Ryan Newton, Rahee Ghosh Peshawaria, Tal Zaccai, Irene Zhang",
+        "publication": "Proceedings of the VLDB Endowment, Vol. 13, No. 5 (VLDB '20)",
+        "authorship_role": "coauthor",
+        "links": [
+          {
+            "label": "[Microsoft]",
+            "url": "https://www.microsoft.com/en-us/research/uploads/prod/2018/12/AmbrosiaPaper.pdf"
+          }
+        ]
+      },
+      {
+        "section": "Conferences",
+        "title": "Composing and Decomposing Op-Based CRDTs with Semidirect Products",
+        "authors": "Matthew Weidner, Christopher S. Meiklejohn, Heather Miller",
+        "publication": "Proceedings of the ACM on Programming Languages, Volume 4, Issue ICFP (ICFP '20)",
+        "authorship_role": "coauthor",
+        "links": [
+          {
+            "label": "[ACM]",
+            "url": "https://dl.acm.org/doi/10.1145/3408976"
+          }
+        ]
+      },
+      {
+        "section": "Conferences",
+        "title": "Partisan: Scaling the Distributed Actor Runtime",
+        "authors": "Christopher S. Meiklejohn, Heather Miller, Peter Alvaro",
+        "publication": "The 19th USENIX Annual Technical Conference (ATC '19)",
+        "authorship_role": "first",
+        "links": [
+          {
+            "label": "[USENIX]",
+            "url": "https://www.usenix.org/conference/atc19/presentation/meiklejohn"
+          }
+        ]
+      },
+      {
+        "section": "Conferences",
+        "title": "Practical Evaluation of the Lasp Programming Model at Large Scale",
+        "authors": "Christopher S. Meiklejohn, Vitor Enes, Junghun Yoo, Carlos Baquero, Peter Van Roy, Annette Bieniusa",
+        "publication": "The 19th International Symposium on Principles and Practice of Declarative Programming (PPDP '17)",
+        "authorship_role": "first",
+        "links": [
+          {
+            "label": "[preprint]",
+            "url": "https://christophermeiklejohn.com/publications/ppdp-2017-preprint.pdf"
+          }
+        ]
+      },
+      {
+        "section": "Conferences",
+        "title": "Lasp: A Language for Distributed, Coordination-Free Programming",
+        "authors": "Christopher S. Meiklejohn, Peter Van Roy",
+        "publication": "The 17th International Symposium on Principles and Practice of Declarative Programming (PPDP '15)",
+        "authorship_role": "first",
+        "links": [
+          {
+            "label": "[preprint]",
+            "url": "https://christophermeiklejohn.com/publications/ppdp-2015-preprint.pdf"
+          },
+          {
+            "label": "[ACM]",
+            "url": "https://dl.acm.org/citation.cfm?id=2790525"
+          }
+        ]
+      },
+      {
+        "section": "Workshops",
+        "title": "Composing and decomposing op-based CRDTs with semidirect products: (summary)",
+        "authors": "Matthew Weidner, Christopher Meiklejohn, Heather Miller",
+        "publication": "Proceedings of the 7th Workshop on Principles and Practice of Consistency for Distributed Data (PaPoC '20)",
+        "authorship_role": "coauthor",
+        "links": [
+          {
+            "label": "[ACM]",
+            "url": "https://dl.acm.org/doi/10.1145/3380787.3393687"
+          }
+        ]
+      },
+      {
+        "section": "Workshops",
+        "title": "Towards a Solution to the Red Wedding Problem",
+        "authors": "Christopher S. Meiklejohn, Heather Miller, Zeeshan Lakhani",
+        "publication": "The First Workshop on Hot Topics in Edge Computing (HotEdge '18), colocated with ATC '18",
+        "authorship_role": "first",
+        "links": [
+          {
+            "label": "[preprint]",
+            "url": "https://christophermeiklejohn.com/publications/hotedge-2018-preprint.pdf"
+          },
+          {
+            "label": "[USENIX]",
+            "url": "https://www.usenix.org/conference/hotedge18/presentation/meiklejohn"
+          }
+        ]
+      },
+      {
+        "section": "Workshops",
+        "title": "Partisan: Enabling Real-World Protocol Evaluation",
+        "authors": "Christopher S. Meiklejohn",
+        "publication": "The 2018 Workshop on Advanced Tools, Programming Languages, and PLatforms for Implementing and Evaluating Algorithms for Distributed systems, colocated with PODC '18",
+        "authorship_role": "sole",
+        "links": [
+          {
+            "label": "[ACM]",
+            "url": "https://dl.acm.org/citation.cfm?id=3231106"
+          }
+        ]
+      },
+      {
+        "section": "Workshops",
+        "title": "Towards A Systems Approach To Distributed Programming",
+        "authors": "Christopher S. Meiklejohn",
+        "publication": "OBT 2018, colocated with POPL 2018",
+        "authorship_role": "sole",
+        "links": []
+      },
+      {
+        "section": "Workshops",
+        "title": "On the Design of Distributed Programming Models",
+        "authors": "Christopher S. Meiklejohn",
+        "publication": "PMLDC 2018, colocated with ECOOP 2018",
+        "authorship_role": "sole",
+        "links": []
+      },
+      {
+        "section": "Workshops",
+        "title": "Loquat: A Framework for Large-Scale Actor Communication on Edge Networks",
+        "authors": "Christopher S. Meiklejohn, Peter Van Roy",
+        "publication": "The First International Workshop on Smart Edge Computing and Networking (SmartEdge '17)",
+        "authorship_role": "first",
+        "links": [
+          {
+            "label": "[preprint]",
+            "url": "https://www.info.ucl.ac.be/~pvr/loquat-smartedge17.pdf"
+          }
+        ]
+      },
+      {
+        "section": "Workshops",
+        "title": "Dynamic Path Contraction for Distributed Dataflow Languages",
+        "authors": "Borja Arnau de R\u00e9gil Bas\u00e1\u00f1ez, Christopher S. Meiklejohn",
+        "publication": "AGERE 2016, colocated with SPLASH 2016",
+        "authorship_role": "coauthor",
+        "links": []
+      },
+      {
+        "section": "Workshops",
+        "title": "Worlds of Events: Deduction with Partial Knowledge about Causality.",
+        "authors": "Seyed Hossein Haeri, Peter Van Roy, Carlos Baquero, and Christopher S. Meiklejohn",
+        "publication": "9th Interaction and Concurrency Experience Satellite Workshop of DisCoTec 2016",
+        "authorship_role": "coauthor",
+        "links": []
+      },
+      {
+        "section": "Workshops",
+        "title": "Towards Property-Based Consistency Verification",
+        "authors": "Paolo Viotti, Christopher S. Meiklejohn, Marko Vukolic",
+        "publication": "PaPoC '16, colocated event at ACM EuroSys '16",
+        "authorship_role": "coauthor",
+        "links": [
+          {
+            "label": "[EURECOM]",
+            "url": "https://www.eurecom.fr/en/publication/4874/detail/towards-property-based-consistency-verification"
+          }
+        ]
+      },
+      {
+        "section": "Workshops",
+        "title": "Declarative, Sliding Window Aggregations for Computations at the Edge",
+        "authors": "Christopher S. Meiklejohn, Seyed H. Haeri, Peter Van Roy",
+        "publication": "1st International Workshop on Edge Computing, EdgeCom 2016, colocated event at CCNC 2016",
+        "authorship_role": "first",
+        "links": [
+          {
+            "label": "[preprint]",
+            "url": "https://christophermeiklejohn.com/publications/edgecom-2016-preprint.pdf"
+          }
+        ]
+      },
+      {
+        "section": "Workshops",
+        "title": "Selective Hearing: An Approach to Distributed, Eventually Consistent Edge Computation",
+        "authors": "Christopher S. Meiklejohn, Peter Van Roy",
+        "publication": "Workshop on Planetary-Scale Distributed Systems, colocated event at SRDS '15",
+        "authorship_role": "first",
+        "links": [
+          {
+            "label": "[preprint]",
+            "url": "https://christophermeiklejohn.com/publications/wpsds-2015-preprint.pdf"
+          }
+        ]
+      },
+      {
+        "section": "Workshops",
+        "title": "The Implementation and Use of a Generic Dataflow Behaviour in Erlang",
+        "authors": "Christopher S. Meiklejohn, Peter Van Roy",
+        "publication": "ACM SIGPLAN Erlang Workshop '15, colocated event at ICFP '15",
+        "authorship_role": "first",
+        "links": [
+          {
+            "label": "[preprint]",
+            "url": "https://christophermeiklejohn.com/publications/erlang-workshop-2015-preprint.pdf"
+          },
+          {
+            "label": "[ACM]",
+            "url": "https://dl.acm.org/citation.cfm?id=2804300"
+          }
+        ]
+      },
+      {
+        "section": "Workshops",
+        "title": "Lasp: A Language for Distributed, Eventually Consistent Computations with CRDTs",
+        "authors": "Christopher S. Meiklejohn, Peter Van Roy",
+        "publication": "PaPoC '15, colocated event at ACM EuroSys '15",
+        "authorship_role": "first",
+        "links": [
+          {
+            "label": "[ACM]",
+            "url": "https://dl.acm.org/citation.cfm?id=2745954"
+          }
+        ]
+      },
+      {
+        "section": "Workshops",
+        "title": "Eventual Consistency and Deterministic Dataflow Programming: A Case Study of Integrating Derflow with the Riak Data Store",
+        "authors": "Christopher S. Meiklejohn",
+        "publication": "LADIS Workshop '14",
+        "authorship_role": "sole",
+        "links": [
+          {
+            "label": "[preprint]",
+            "url": "/publications/derflowl-ladis.pdf"
+          },
+          {
+            "label": "[slides]",
+            "url": "https://speakerdeck.com/cmeiklejohn/eventual-consistency-and-deterministic-dataflow-programming"
+          }
+        ]
+      },
+      {
+        "section": "Workshops",
+        "title": "Derflow: distributed deterministic dataflow programming for erlang",
+        "authors": "Manuel Bravo, Zhongmiao Li, Peter Van Roy, Christopher S. Meiklejohn",
+        "publication": "ACM SIGPLAN Erlang Workshop '14, colocated event at ICFP '14",
+        "authorship_role": "coauthor",
+        "links": [
+          {
+            "label": "[ACM]",
+            "url": "https://dl.acm.org/citation.cfm?id=2633451"
+          },
+          {
+            "label": "[slides]",
+            "url": "https://speakerdeck.com/cmeiklejohn/derflow-distributed-deterministic-dataflow-programming-for-erlang"
+          }
+        ]
+      },
+      {
+        "section": "Workshops",
+        "title": "On The Composability of the Riak DT Map: Expanding From Embedded To Multi-Key Structures",
+        "authors": "Christopher S. Meiklejohn",
+        "publication": "PaPEC '14, colocated event at ACM EuroSys '14",
+        "authorship_role": "sole",
+        "links": [
+          {
+            "label": "[ACM]",
+            "url": "http://dl.acm.org/citation.cfm?doid=2596631.2596635"
+          },
+          {
+            "label": "[slides]",
+            "url": "https://speakerdeck.com/cmeiklejohn/on-the-composability-of-the-riak-dt-map-expanding-from-embedded-to-multi-key-structures"
+          }
+        ]
+      },
+      {
+        "section": "Workshops",
+        "title": "Riak DT Map: A Composable, Convergent Replicated Dictionary",
+        "authors": "Russell Brown, Sean Cribbs, Sam Elliott, and Christopher S. Meiklejohn",
+        "publication": "PaPEC '14, colocated event at ACM EuroSys '14",
+        "authorship_role": "coauthor",
+        "links": [
+          {
+            "label": "[ACM]",
+            "url": "http://dl.acm.org/citation.cfm?doid=2596631.2596633"
+          }
+        ]
+      },
+      {
+        "section": "Workshops",
+        "title": "Riak PG: distributed process groups on dynamo-style distributed storage",
+        "authors": "Christopher S. Meiklejohn",
+        "publication": "ACM SIGPLAN Erlang Workshop '13, colocated event at ICFP '13",
+        "authorship_role": "sole",
+        "links": [
+          {
+            "label": "[ACM]",
+            "url": "https://dl.acm.org/citation.cfm?id=2505305.2505309"
+          },
+          {
+            "label": "[slides]",
+            "url": "https://speakerdeck.com/cmeiklejohn/riak-pg-distributed-process-groups-on-dynamo-style-distributed-storage"
+          }
+        ]
+      },
+      {
+        "section": "Posters",
+        "title": "Augmented Inverted Indexes to Track Causality in Eventually Consistent Data Stores",
+        "authors": "Christopher S. Meiklejohn",
+        "publication": "Middleware '14, Demos & Poster Session",
+        "authorship_role": "sole",
+        "links": [
+          {
+            "label": "[ACM]",
+            "url": "https://dl.acm.org/citation.cfm?id=2678512"
+          }
+        ]
+      },
+      {
+        "section": "Preprints & drafts",
+        "title": "Distributed Execution Indexing",
+        "authors": "Christopher S. Meiklejohn, Rohan Padhye, Heather Miller",
+        "publication": "Sep 2022",
+        "authorship_role": "first",
+        "links": [
+          {
+            "label": "[arXiv]",
+            "url": "https://arxiv.org/abs/2209.08740"
+          }
+        ]
+      },
+      {
+        "section": "Preprints & drafts",
+        "title": "Towards A Systems Approach To Distributed Programming",
+        "authors": "Christopher S. Meiklejohn, Peter Van Roy",
+        "publication": "Feb 2018",
+        "authorship_role": "first",
+        "links": [
+          {
+            "label": "[arXiv]",
+            "url": "https://arxiv.org/abs/1802.02681"
+          }
+        ]
+      },
+      {
+        "section": "Preprints & drafts",
+        "title": "Partisan: Enabling cloud-scale erlang applications",
+        "authors": "Christopher S. Meiklejohn, Heather Miller",
+        "publication": "Feb 2018",
+        "authorship_role": "first",
+        "links": [
+          {
+            "label": "[arXiv]",
+            "url": "https://arxiv.org/abs/1802.02652"
+          }
+        ]
+      },
+      {
+        "section": "Preprints & drafts",
+        "title": "Just-Right Consistency: reconciling availability and safety",
+        "authors": "Marc Shapiro, Annette Bieniusa, Nuno Pregucia, Valter Balegas, Christopher Meiklejohn",
+        "publication": "Jan 2018",
+        "authorship_role": "coauthor",
+        "links": [
+          {
+            "label": "[arXiv]",
+            "url": "https://arxiv.org/abs/1801.06340"
+          }
+        ]
+      },
+      {
+        "section": "Preprints & drafts",
+        "title": "On the Design of Distributed Programming Models",
+        "authors": "Christopher S. Meiklejohn",
+        "publication": "Feb 2017",
+        "authorship_role": "sole",
+        "links": [
+          {
+            "label": "[arXiv]",
+            "url": "https://arxiv.org/abs/1701.07615"
+          }
+        ]
+      },
+      {
+        "section": "Preprints & drafts",
+        "title": "Dynamic Path Contraction for Distributed, Dynamic Dataflow Languages",
+        "authors": "Borja Arnau de R\u00e9gil Bas\u00e1\u00f1ez, Christopher S. Meiklejohn",
+        "publication": "Sep 2016",
+        "authorship_role": "coauthor",
+        "links": [
+          {
+            "label": "[arXiv]",
+            "url": "https://arxiv.org/abs/1609.01068"
+          }
+        ]
+      },
+      {
+        "section": "Preprints & drafts",
+        "title": "Declarative, Secure, Convergent Edge Computation",
+        "authors": "Christopher S. Meiklejohn",
+        "publication": "Nov 2015",
+        "authorship_role": "sole",
+        "links": [
+          {
+            "label": "[arXiv]",
+            "url": "https://arxiv.org/abs/1512.04898"
+          }
+        ]
+      },
+      {
+        "section": "Preprints & drafts",
+        "title": "A Certain Tendency Of The Database Community",
+        "authors": "Christopher S. Meiklejohn",
+        "publication": "Oct 2015",
+        "authorship_role": "sole",
+        "links": [
+          {
+            "label": "[arXiv]",
+            "url": "https://arxiv.org/abs/1510.08473"
+          }
+        ]
+      },
+      {
+        "section": "Preprints & drafts",
+        "title": "Vector Clocks in Coq: An Experience Report",
+        "authors": "Christopher S. Meiklejohn",
+        "publication": "Jun 2014",
+        "authorship_role": "sole",
+        "links": [
+          {
+            "label": "[arXiv]",
+            "url": "https://arxiv.org/abs/1406.4291"
+          }
+        ]
+      }
+    ],
+    "coverage_note": "Every publication-page entry was inventoried. Full text was analyzed when a site or open-access PDF was available; four short items are represented by official abstracts, related author manuscripts, or author talk transcripts instead of an exact downloadable manuscript.",
+    "partial_text_entries": [
+      "Partisan: Enabling Real-World Protocol Evaluation",
+      "On The Composability of the Riak DT Map: Expanding From Embedded To Multi-Key Structures",
+      "Riak PG: distributed process groups on dynamo-style distributed storage",
+      "Augmented Inverted Indexes to Track Causality in Eventually Consistent Data Stores"
+    ],
+    "pdf_corpus": {
+      "unique_full_text_pdfs": 36,
+      "total_extracted_words": 265285,
+      "documents": [
+        {
+          "filename": "cmeiklej_phd_s3d_2024.pdf",
+          "pages": 213,
+          "words": 54656,
+          "sha256": "121a8645b60409d1427628980a4084d0d3fa949632c60347a54438531c97fa3a",
+          "source": "site"
+        },
+        {
+          "filename": "derflowl-ladis.pdf",
+          "pages": 2,
+          "words": 1022,
+          "sha256": "9d537871e92a55366945f78ef1bd220a13ec56f63b5ad09d9565894557c35308",
+          "source": "site"
+        },
+        {
+          "filename": "edgecom-2016-preprint.pdf",
+          "pages": 6,
+          "words": 4987,
+          "sha256": "57c6d902c54b052f7da1252273de6aebc6c0ba13ceb4687b914a29e1392b6527",
+          "source": "site"
+        },
+        {
+          "filename": "erlang-workshop-2015-preprint.pdf",
+          "pages": 7,
+          "words": 6116,
+          "sha256": "547032044c4a7f3da4918835d448a1e53076c78ac213325e51d72270025cce1f",
+          "source": "site"
+        },
+        {
+          "filename": "filibuster-socc-2021.pdf",
+          "pages": 15,
+          "words": 12407,
+          "sha256": "766d06870f7f697423e8a44467283ac1daf187a86aff76ca08fcde799e9253c2",
+          "source": "site"
+        },
+        {
+          "filename": "hotedge-2018-containers-preprint.pdf",
+          "pages": 5,
+          "words": 3792,
+          "sha256": "ca4477d1d7d507f2ebc4392347c0f5b358db2e89605fb472d8fb0c7f7b78cef7",
+          "source": "site"
+        },
+        {
+          "filename": "hotedge-2018-preprint.pdf",
+          "pages": 5,
+          "words": 3260,
+          "sha256": "b247b429e57bb209543c29b215a299bb619142c8d8d6a983b4bee913c11a19e5",
+          "source": "site"
+        },
+        {
+          "filename": "hpts_2019_submission.pdf",
+          "pages": 1,
+          "words": 621,
+          "sha256": "08bae333bdb80358911762332037f78aab0aa8cc620fa86c5a246e90ca6e61e4",
+          "source": "site"
+        },
+        {
+          "filename": "loquat-smartedge17-preprint.pdf",
+          "pages": 6,
+          "words": 5170,
+          "sha256": "b2523c704a3da434502b44f5a95c5066a877a855bafd648a5b459d017791e637",
+          "source": "site"
+        },
+        {
+          "filename": "obt-2016-draft.pdf",
+          "pages": 2,
+          "words": 1945,
+          "sha256": "25a9972792d8cf3f345efe7f05ba11fca32f5624a758c141e9551bfef5f0a29e",
+          "source": "site"
+        },
+        {
+          "filename": "pmldc-2017-preprint.pdf",
+          "pages": 6,
+          "words": 5030,
+          "sha256": "aac55944c893586a7d3556db93cdebb8c4af41e77e60052969aa2da157e2e806",
+          "source": "site"
+        },
+        {
+          "filename": "ppdp-2015-preprint.pdf",
+          "pages": 12,
+          "words": 11385,
+          "sha256": "53dc081bbbc4c0695f2755efafe17ca91ea19eaf5c31dd2f31b163bd2c4a1bde",
+          "source": "site"
+        },
+        {
+          "filename": "ppdp-2017-preprint.pdf",
+          "pages": 6,
+          "words": 5230,
+          "sha256": "19080cf9d3cc389f0a01b79f2c3752e2bed8dbf9b50606ae357a9702a059bd1f",
+          "source": "site"
+        },
+        {
+          "filename": "socc2022-preprint.pdf",
+          "pages": 16,
+          "words": 12080,
+          "sha256": "2ea658b8a217045227fd8e3ce244c4515a2be62dd274ebc92a4558f813536daa",
+          "source": "site"
+        },
+        {
+          "filename": "thesis-proposal.pdf",
+          "pages": 7,
+          "words": 1797,
+          "sha256": "a44a9deba46032f1027ec14f919f4ebe0e4da7647d1282dcd4b5be6ffc226526",
+          "source": "site"
+        },
+        {
+          "filename": "wpsds-2015-preprint.pdf",
+          "pages": 6,
+          "words": 4952,
+          "sha256": "b26e24b9132f8965cb0de280e665ce3f7bf38cd82f9d1ed728397715e5171f84",
+          "source": "site"
+        },
+        {
+          "filename": "ambrosia-vldb-2020.pdf",
+          "pages": 14,
+          "words": 11728,
+          "sha256": "e0ddf1e1156c848113c6b1289f2ba0aad36d209f3eafc1514647a1bdeab683e1",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "database-tendency-1510.08473.pdf",
+          "pages": 8,
+          "words": 3190,
+          "sha256": "80c94cc910c2de057b5454d6faf6ae84991e8205645a4ca4cc53cff5eb8413e9",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "declarative-secure-edge-1512.04898.pdf",
+          "pages": 2,
+          "words": 2154,
+          "sha256": "dd147c7c9c18ecbfe84a086f58e9192f765518536e5e6058a48043fa05804d1f",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "derflow-erlang-2014.pdf",
+          "pages": 10,
+          "words": 8398,
+          "sha256": "c3ce1080d110cbf6e648027dbe683244e8356189620d5eda28342e40bb8be227",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "design-distributed-models-1701.07615.pdf",
+          "pages": 12,
+          "words": 4451,
+          "sha256": "904b91cab61573bf5045a4cfd0f2616725bd3018398432f582bcaae869d37701",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "distributed-execution-indexing-2209.08740.pdf",
+          "pages": 13,
+          "words": 11486,
+          "sha256": "a3b0447f0c9bd594940ac39f70105596a9c4f6ec14650b255a84016b9dae7e0d",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "durable-functions-2021.pdf",
+          "pages": 34,
+          "words": 14970,
+          "sha256": "456432cd92ca70dda00797100cc1cd91a3969e1afa5a4c65db602c52c5fe88ab",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "dynamic-path-1609.01068.pdf",
+          "pages": 5,
+          "words": 3595,
+          "sha256": "fbe707359c18be1b2001688285f4a9c922bbdc54cf89d6365121b159ba3dd0a4",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "just-right-consistency-1801.06340.pdf",
+          "pages": 17,
+          "words": 5393,
+          "sha256": "e424bb5cb2f764e4d03e5135abb7bce9d968fc152c33abe28ddcb9d5eff8cacd",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "lasp-papoc-2015.pdf",
+          "pages": 4,
+          "words": 2447,
+          "sha256": "455e88f884fdb190438596f35fc887d3c07935f4a08b5239c39fb2488e46d15a",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "netherite-vldb-2022.pdf",
+          "pages": 14,
+          "words": 11391,
+          "sha256": "4cee38e089d22cc4796c3b9ee0ae8b40a04b4d9702fca992e36cc9f385ff90c5",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "partisan-atc-2019.pdf",
+          "pages": 15,
+          "words": 9466,
+          "sha256": "5d68720716445c8c9b2c0510e1074794f0c5053f55f4a6fccc6a0cc595b30e94",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "partisan-cloud-scale-1802.02652.pdf",
+          "pages": 12,
+          "words": 7843,
+          "sha256": "9935f099d8ef334cfa1d05c1bcb1b4f9d3259aa6b2ec8ecf560a9b3a601392ef",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "ppdp-2025-lasp.pdf",
+          "pages": 3,
+          "words": 2707,
+          "sha256": "cdd18f156c5eca8133740c838bcf6ef8fb9d0d424979d0780efa809068534a3a",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "property-papoc-2016.pdf",
+          "pages": 4,
+          "words": 2987,
+          "sha256": "06d0e371294b2f4531a41a9dd944e777c9d1d3f92a946819c038f7ed18a5689a",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "riak-dt-map-2014.pdf",
+          "pages": 1,
+          "words": 605,
+          "sha256": "c36bf971c9d779f33dba9ddb1c5a3b0a77754d1c6ebe49a1056e12e9217dcff3",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "semidirect-2004.04303.pdf",
+          "pages": 25,
+          "words": 12964,
+          "sha256": "329fffb74c4f98713ce8f1a2af03b1b308831c7710fad58df4478f1632204309",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "systems-approach-1802.02681.pdf",
+          "pages": 3,
+          "words": 1596,
+          "sha256": "c69dccd07e210142816cb9c26e5dfe3bbb5f04e7e65d8e60714135cbc162908c",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "vector-clocks-coq-1406.4291.pdf",
+          "pages": 6,
+          "words": 4585,
+          "sha256": "4f7a8da67969f15e47e4930bc1a3087ddf2cafb8ffdd2535e5ba83c545f5b8f8",
+          "source": "open-access-cache"
+        },
+        {
+          "filename": "worlds-1608.03326.pdf",
+          "pages": 15,
+          "words": 8879,
+          "sha256": "797cbd4d2f34a1fbd1c47de3b4bdf142fdd07dd9c939190054185d9478745346",
+          "source": "open-access-cache"
+        }
+      ]
+    }
+  }
+}
