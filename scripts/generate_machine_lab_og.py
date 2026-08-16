@@ -7,140 +7,81 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "og" / "the-machine-in-the-lab.png"
+SOURCE = ROOT / "img" / "the-machine-in-the-lab-source.jpg"
+OUT = ROOT / "og" / "the-machine-in-the-lab-editorial.png"
 FONTS = ROOT / "fonts"
 
 WIDTH = 1200
 HEIGHT = 630
 
-BACKGROUND = (235, 232, 226)
-PANEL = (246, 244, 239)
-INK = (24, 22, 27)
-MUTED = (105, 101, 101)
-BRAND = (61, 47, 115)
-TEAL = (42, 113, 108)
-RED = (169, 67, 57)
-LINE = (201, 197, 190)
+PAPER = (238, 232, 216)
+PAPER_MUTED = (194, 188, 174)
+RED = (194, 70, 52)
 
 
 def font(name: str, size: int) -> ImageFont.FreeTypeFont:
     return ImageFont.truetype(str(FONTS / name), size)
 
 
-TITLE = font("Literata-SemiBold.ttf", 62)
-SUBTITLE = font("Literata-Regular.ttf", 28)
-LABEL = font("Outfit-SemiBold.ttf", 20)
-NODE_TITLE = font("Outfit-SemiBold.ttf", 21)
-NODE_DETAIL = font("Outfit-Regular.ttf", 17)
-SMALL = font("Outfit-Regular.ttf", 18)
-SMALL_BOLD = font("Outfit-SemiBold.ttf", 18)
+TITLE = font("Literata-SemiBold.ttf", 61)
+SUBTITLE = font("Literata-Regular.ttf", 25)
+LABEL = font("Outfit-SemiBold.ttf", 19)
+SMALL = font("Outfit-Medium.ttf", 17)
 
 
-def text_width(draw: ImageDraw.ImageDraw, value: str, face: ImageFont.FreeTypeFont) -> int:
-    box = draw.textbbox((0, 0), value, font=face)
-    return box[2] - box[0]
+def cover(source: Image.Image) -> Image.Image:
+    source_ratio = source.width / source.height
+    target_ratio = WIDTH / HEIGHT
 
-
-def centered_text(
-    draw: ImageDraw.ImageDraw,
-    box: tuple[int, int, int, int],
-    value: str,
-    face: ImageFont.FreeTypeFont,
-    fill: tuple[int, int, int],
-    y_offset: int = 0,
-) -> None:
-    x1, y1, x2, y2 = box
-    bounds = draw.textbbox((0, 0), value, font=face)
-    width = bounds[2] - bounds[0]
-    height = bounds[3] - bounds[1]
-    x = x1 + ((x2 - x1) - width) / 2
-    y = y1 + ((y2 - y1) - height) / 2 - bounds[1] + y_offset
-    draw.text((x, y), value, font=face, fill=fill)
-
-
-def node(
-    draw: ImageDraw.ImageDraw,
-    box: tuple[int, int, int, int],
-    title: str,
-    detail: str,
-) -> None:
-    x1, y1, x2, y2 = box
-    draw.rounded_rectangle(box, radius=8, fill=PANEL, outline=LINE, width=2)
-    draw.rectangle((x1, y1, x1 + 7, y2), fill=TEAL)
-    draw.text((x1 + 23, y1 + 15), title, font=NODE_TITLE, fill=INK)
-    draw.text((x1 + 23, y1 + 43), detail, font=NODE_DETAIL, fill=MUTED)
-
-
-def arrow(
-    draw: ImageDraw.ImageDraw,
-    start: tuple[int, int],
-    end: tuple[int, int],
-    color: tuple[int, int, int] = BRAND,
-    width: int = 3,
-) -> None:
-    draw.line((start, end), fill=color, width=width)
-    ex, ey = end
-    sx, sy = start
-    if abs(ex - sx) >= abs(ey - sy):
-        direction = 1 if ex > sx else -1
-        points = [(ex, ey), (ex - 10 * direction, ey - 6), (ex - 10 * direction, ey + 6)]
+    if source_ratio > target_ratio:
+        crop_width = round(source.height * target_ratio)
+        left = (source.width - crop_width) // 2
+        crop_box = (left, 0, left + crop_width, source.height)
     else:
-        direction = 1 if ey > sy else -1
-        points = [(ex, ey), (ex - 6, ey - 10 * direction), (ex + 6, ey - 10 * direction)]
-    draw.polygon(points, fill=color)
+        crop_height = round(source.width / target_ratio)
+        top = (source.height - crop_height) // 2
+        crop_box = (0, top, source.width, top + crop_height)
+
+    return source.crop(crop_box).resize((WIDTH, HEIGHT), Image.Resampling.LANCZOS)
+
+
+def darken_copy_space(image: Image.Image) -> Image.Image:
+    overlay = Image.new("RGBA", image.size, (0, 0, 0, 0))
+    pixels = overlay.load()
+    fade_start = 430
+    fade_end = 720
+
+    for x in range(fade_end):
+        if x <= fade_start:
+            alpha = 82
+        else:
+            alpha = round(82 * (fade_end - x) / (fade_end - fade_start))
+        for y in range(HEIGHT):
+            pixels[x, y] = (0, 0, 0, alpha)
+
+    return Image.alpha_composite(image.convert("RGBA"), overlay).convert("RGB")
 
 
 def render() -> Image.Image:
-    image = Image.new("RGB", (WIDTH, HEIGHT), BACKGROUND)
+    image = cover(Image.open(SOURCE).convert("RGB"))
+    image = darken_copy_space(image)
     draw = ImageDraw.Draw(image)
 
-    draw.rectangle((0, 0, 14, HEIGHT), fill=BRAND)
-    draw.text((74, 58), "THE MACHINE IN THE LAB", font=LABEL, fill=BRAND)
+    draw.text((70, 55), "A SEVEN-PART FIELD REPORT", font=LABEL, fill=PAPER_MUTED)
 
-    draw.text((74, 137), "The Machine", font=TITLE, fill=INK)
-    draw.text((74, 217), "in the Lab", font=TITLE, fill=INK)
+    draw.text((68, 128), "The Machine", font=TITLE, fill=PAPER)
+    draw.text((68, 205), "in the Lab", font=TITLE, fill=PAPER)
 
-    draw.text(
-        (76, 330),
-        "What happens when an LLM runs\nthe next experiment?",
+    draw.rectangle((70, 319, 145, 324), fill=RED)
+    draw.multiline_text(
+        (70, 355),
+        "An autonomous LLM ran the experiments.\nTwice, it presented invalid research as finished.",
         font=SUBTITLE,
-        fill=MUTED,
-        spacing=13,
+        fill=PAPER,
+        spacing=12,
     )
 
-    draw.line((74, 498, 621, 498), fill=LINE, width=2)
-    draw.text((74, 526), "A SEVEN-PART FIELD REPORT", font=SMALL_BOLD, fill=INK)
-    draw.text((74, 557), "Christopher Meiklejohn", font=SMALL, fill=MUTED)
-
-    draw.line((668, 52, 668, 578), fill=LINE, width=2)
-    draw.text((716, 58), "AUTONOMOUS RESEARCH", font=LABEL, fill=BRAND)
-
-    propose = (716, 124, 902, 205)
-    run = (944, 124, 1130, 205)
-    evaluate = (944, 388, 1130, 469)
-    revise = (716, 388, 902, 469)
-
-    node(draw, propose, "PROPOSE", "choose experiment")
-    node(draw, run, "RUN", "write + execute")
-    node(draw, evaluate, "EVALUATE", "interpret result")
-    node(draw, revise, "REVISE", "choose what is next")
-
-    arrow(draw, (905, 164), (937, 164))
-    arrow(draw, (1037, 211), (1037, 379))
-    arrow(draw, (937, 428), (909, 428))
-
-    draw.line((809, 379, 809, 236, 704, 236, 704, 164, 709, 164), fill=BRAND, width=3)
-    draw.polygon([(716, 164), (706, 158), (706, 170)], fill=BRAND)
-
-    failure = (786, 258, 1060, 331)
-    draw.rounded_rectangle(failure, radius=8, fill=(246, 232, 228), outline=RED, width=2)
-    centered_text(draw, (786, 265, 1060, 293), "FAILURE NOT REPORTED", SMALL_BOLD, RED)
-    centered_text(draw, (786, 294, 1060, 323), "enters the next experiment", SMALL, INK)
-    arrow(draw, (923, 334), (923, 378), color=RED, width=3)
-
-    footer = "CHRISTOPHERMEIKLEJOHN.COM"
-    footer_width = text_width(draw, footer, SMALL_BOLD)
-    draw.text((1130 - footer_width, 548), footer, font=SMALL_BOLD, fill=BRAND)
+    draw.text((70, 558), "CHRISTOPHERMEIKLEJOHN.COM", font=SMALL, fill=PAPER_MUTED)
 
     return image
 
