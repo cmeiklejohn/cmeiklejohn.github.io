@@ -575,6 +575,21 @@ a.series-landing-link:hover .series-landing-title {
   flex: 1;
 }
 
+.series-landing-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.series-landing-subtitle {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--fg-muted);
+}
+
 .series-landing-date {
   font-family: var(--font-mono);
   font-size: 0.78rem;
