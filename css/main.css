@@ -359,7 +359,7 @@ abbr[title] {
 .home-archive-cta {
   font-family: var(--font-ui);
   font-size: 0.92rem;
-  font-weight: 500;
+  font-weight: 400;
   margin: 1.5rem 0 0;
 }
 
@@ -375,7 +375,7 @@ abbr[title] {
 .home-section-title {
   font-family: var(--font-ui);
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   margin: 0;
@@ -449,7 +449,7 @@ ul.posts li:last-child {
 .home-post-date {
   font-family: var(--font-ui);
   font-size: 0.8125rem;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--fg-muted);
   font-variant-numeric: tabular-nums;
 }
@@ -515,9 +515,9 @@ code {
 
 .site-brand-link {
   font-family: var(--font-ui);
-  font-weight: 600;
+  font-weight: 400;
   font-size: clamp(1.2rem, 3vw, 1.45rem);
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   color: var(--fg-heading);
   text-decoration: none;
 }
@@ -540,7 +540,7 @@ code {
   gap: 0.35rem 1.1rem;
   font-family: var(--font-ui);
   font-size: 0.84rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .site-nav a {
@@ -891,8 +891,8 @@ code {
 .post-title {
   font-family: var(--font-ui);
   font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  letter-spacing: 0;
   line-height: 1.35;
   margin-bottom: 0;
   color: var(--fg-heading);
@@ -903,7 +903,7 @@ code {
 .post-subtitle {
   font-family: var(--font-ui);
   font-size: 1.05rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.5;
   margin: 0.35rem 0 0;
   color: var(--fg-muted);
@@ -932,7 +932,7 @@ main > #post {
   margin-top: 1.1em;
   scroll-margin-top: 1rem;
   font-family: var(--font-ui);
-  font-weight: 600;
+  font-weight: 500;
   color: var(--fg-heading);
 }
 
@@ -946,7 +946,7 @@ main > #post {
 /* Archive lives under #post (page layout); reset #post rules that fight list typography */
 #archive h2.home-section-title {
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   line-height: 1.35;
@@ -1424,14 +1424,14 @@ html {
 
 .home-series-callout-label {
   font-size: 0.68rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--brand);
 }
 
 .home-series-callout-title {
-  font-weight: 500;
+  font-weight: 400;
   color: var(--fg-heading);
   text-decoration: none;
 }
@@ -1861,7 +1861,7 @@ html {
 .subscribe-cta {
   margin: 0;
   font-size: 0.98rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .subscribe-cta a {

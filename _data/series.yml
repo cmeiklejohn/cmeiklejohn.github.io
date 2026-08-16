@@ -9,3 +9,9 @@ mas:
   short_title: "Getting Up to Speed on MAS"
   landing_url: /series/multi-agent-systems/
   description: "An eight-part series mapping the multi-agent LLM literature for readers coming in fresh. Two waves of research, one outside disruption, and the questions the field is still trying to answer."
+
+lab:
+  title: "The Machine in the Lab"
+  short_title: "The Machine in the Lab"
+  landing_url: /series/the-machine-in-the-lab/
+  description: "A PhD researcher's field report on using LLM agents to turn difficult audio questions into a verifiable live experiment, losing two notebooks along the way, and learning what the resulting evidence can actually claim."
