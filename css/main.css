@@ -80,23 +80,23 @@
 }
 
 /*****************************************************************************/
-/* Nocturne + light companion, Literata / Outfit, Swiss-style home lists
+/* Nocturne + light companion, book-serif reading type / Outfit UI
 /*****************************************************************************/
 
 :root {
   color-scheme: light dark;
-  --font-text: "Literata", Georgia, "Times New Roman", serif;
+  --font-text: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
   --font-ui: "Outfit", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
-  --site-max: 58rem;
+  --site-max: 51rem;
   --header-gap: clamp(0.5rem, 2vw, 1.25rem);
 
   /* Light (default) */
-  --bg: #f5f4f1;
+  --bg: #f7f7f4;
   --bg-elevated: #ebe8e2;
-  --fg: #1c1b1f;
-  --fg-heading: #121114;
-  --fg-muted: #6e6c68;
+  --fg: #20211f;
+  --fg-heading: #20211f;
+  --fg-muted: #60635d;
   --link: #5b4ba6;
   --link-hover: #3d2f85;
   --link-visited: #6a5699;
@@ -134,11 +134,11 @@
 }
 
 :root[data-theme="light"] {
-  --bg: #f5f4f1;
+  --bg: #f7f7f4;
   --bg-elevated: #ebe8e2;
-  --fg: #1c1b1f;
-  --fg-heading: #121114;
-  --fg-muted: #6e6c68;
+  --fg: #20211f;
+  --fg-heading: #20211f;
+  --fg-muted: #60635d;
   --link: #5b4ba6;
   --link-hover: #3d2f85;
   --link-visited: #6a5699;
@@ -191,8 +191,8 @@ body {
   background-color: var(--bg);
   color: var(--fg);
   font-family: var(--font-text);
-  font-size: 17px;
-  line-height: 1.55;
+  font-size: 19px;
+  line-height: 1.68;
   text-align: left;
   text-rendering: optimizeLegibility;
   font-feature-settings: "kern" 1, "liga" 1;
@@ -1069,41 +1069,27 @@ main > #post {
 }
 
 /*****************************************************************************/
-/* Post reading typography
-/*
-/* Posts keep the full-width measure (~83 characters), so the work of making
-/* long lines readable is done by size and leading rather than by narrowing
-/* the column. Headings were also set in rem against a 16px root while the
-/* body ran at 17px, so h1/h2 computed *smaller* than the prose they
-/* introduced, and paragraph gaps (17px) sat below the line height (28px).
-/* Scoped to the post layout; index, archive, and research are untouched.
+/* Reading typography                                                       */
 /*****************************************************************************/
 
-/* Bigger type is the only lever left once the column stays full width:
-   at the 872px content width, 17px runs ~97 characters per line and 20px
-   runs ~84. Going to 22px would reach ~76, inside the comfortable range,
-   at the cost of type that reads large. */
+/* The shared site measure leaves a 760px text column after desktop padding. */
+
 .post #post {
-  font-size: 20px;
+  font-size: inherit;
 }
 
-/* Long lines need the extra leading — it is what keeps the return sweep from
-   landing on the wrong row. */
 .post #post p,
 .post #post li {
-  line-height: 1.85;
+  line-height: 1.68;
 }
 
-/* Paragraph gap must exceed the leading, or paragraphs run together. Kept
-   symmetric so margin collapsing gives adjacent paragraphs 1.4em while a
-   paragraph following a table, figure, or list still clears it. */
 .post #post > p {
-  margin: 1.4em 0;
+  margin: 0 0 1.35em;
 }
 
 /* Tables carry no margin of their own by default. */
 .post #post table {
-  margin: 0.5em 0 1.4em;
+  margin: 0.5em 0 1.35em;
 }
 
 /* Headings need to outrank the body text they introduce. */
@@ -1355,7 +1341,7 @@ html {
 
 @media (max-width: 640px) {
   body {
-    font-size: 16px;
+    font-size: 18px;
   }
 
   .site {
