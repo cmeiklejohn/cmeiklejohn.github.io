@@ -43,27 +43,35 @@ That difference between fluent support and evidence capable of contradiction is 
 
 The citation problem is unusually easy to see because existence is a fairly crisp property. Either the referenced document can be found or it cannot. Most research decisions are not like that.
 
-During my PhD, I learned how much of a systems experiment happens before the experiment. [Filibuster](/publications/filibuster-socc-2021.pdf), the distributed-systems testing framework I was building, could not evaluate an existing application until that application had been adapted to run through its instrumentation. Building the OpenTelemetry-based prototype that made this possible took me three months of full-time engineering.
-
-That only got the application to the starting line. Filibuster works by perturbing executions of an existing test suite. If the target application did not already have useful tests, I had to write them before the framework had anything meaningful to explore. For one production application used in an evaluation paper, that took another six months.
-
-With the agents I use now, I believe I could produce a first implementation of much of that instrumentation and test scaffolding in days, perhaps a single day. During the SetScope work, agents built audio scanners, corpus manifests, feature pipelines, classifier harnesses, and live-browser instrumentation on that timescale. None of those components is a controlled equivalent of the OpenTelemetry work, and I cannot rerun my PhD for comparison. The estimate is a counterfactual, not a measured speedup. Code arriving quickly would not establish that the instrumentation preserved the application's behavior or that the generated tests supported the evaluation. Those questions would still require evidence. But even compressing the first implementation from months into days changes which research projects one person can plausibly attempt.
-
 A model can now help formulate a question, search for related work, write experiment code, select a statistical test, produce a figure, explain the figure, draft the limitations, and review the finished manuscript. Each output can become the input to the next step. A single person can move through activities that once required more time, more specialized assistance, or both.
 
 I wanted to use that capability to build an automatic live song guesser. I run Zabriskie, a community for live-music fans. During a livestream by the band Goose, viewers who want a running setlist have to wait for a person or an external service to recognize each song and enter it. I wanted Zabriskie to listen to the stream, identify the current song, and post the guess while the show was still happening. That product became SetScope.
 
 I also wanted AI to do the research needed to build it. I would give the system labeled recordings and tell it what SetScope needed to do. It would come up with ideas for recognizing songs, write the code, train models, run tests, examine the mistakes, and decide what to try next. I would not approve every step. That was the human-out-of-the-loop part of the project.
 
-While I was writing this, Jeff Dean, Sanjay Ghemawat, Oriol Vinyals, and Quoc Le left Google to form a company called [Discovery Loop](https://www.axios.com/2026/08/06/googles-ai-leadership-shuffle). Public descriptions say its goal is to [automate experimental loops](https://www.itpro.com/business/leadership/deepmind-ceo-demis-hassabis-steps-aside-amid-google-leadership-shake-up) in science and engineering: propose an experiment, run it, evaluate what happened, and decide what to try next. That is the same kind of autonomous researcher I was trying to use to build SetScope. Their target is science and engineering broadly. Mine was Goose song identification.
+The implementation speed is what made that plan plausible for one person. During my PhD, I learned how much of a systems experiment happens before the experiment. [Filibuster](/publications/filibuster-socc-2021.pdf), the distributed-systems testing framework I was building, could not evaluate an existing application until that application had been adapted to run through its instrumentation. Building the OpenTelemetry-based prototype that made this possible took me three months of full-time engineering.
+
+That only got the application to the starting line. Filibuster works by perturbing executions of an existing test suite. If the target application did not already have useful tests, I had to write them before the framework had anything meaningful to explore. For one production application used in an evaluation paper, that took another six months.
+
+With the agents I use now, I believe I could produce a first implementation of much of that instrumentation and test scaffolding in days, perhaps a single day. During the SetScope work, agents built audio scanners, corpus manifests, feature pipelines, classifier harnesses, and live-browser instrumentation on that timescale.
+
+None of those components is a controlled equivalent of the OpenTelemetry work, and I cannot rerun my PhD for comparison. The estimate is a counterfactual, not a measured speedup. Code arriving quickly would not establish that the instrumentation preserved the application's behavior or that the generated tests supported the evaluation. Those questions would still require evidence. But even compressing the first implementation from months into days changes which research projects one person can plausibly attempt.
+
+While I was writing this, Jeff Dean, Sanjay Ghemawat, Oriol Vinyals, and Quoc Le left Google to form a company called [Discovery Loop](https://www.axios.com/2026/08/06/googles-ai-leadership-shuffle). Public descriptions say its goal is to [automate experimental loops](https://www.itpro.com/business/leadership/deepmind-ceo-demis-hassabis-steps-aside-amid-google-leadership-shake-up) in science and engineering: propose an experiment, run it, evaluate what happened, and decide what to try next.
+
+That is the same kind of autonomous researcher I was trying to use to build SetScope. Their target is science and engineering broadly. Mine was Goose song identification.
 
 When a system can choose and run the next experiment by itself, a bad result can do more than produce one wrong answer. It can change what the system tries next. Leaked data can alter the next hypothesis. A convenient proxy can become the objective. A component test can become a claim about a product that never ran.
 
-The observation that matters here is narrower. LLMs have made it cheaper to produce an artifact that looks like the output of a research process. That artifact might be a paper. It might also be a methodology page, an interactive analysis, a benchmark, a data product, or a long post with equations and charts.
+## A polished analysis is not necessarily a scientific result
 
-Some of the most interesting versions appear outside journals and conferences. A person with a question and a dataset can now get meaningful help writing data-cleaning code, selecting features, fitting models, and interpreting results. In a participatory study of 15 people performing generative-AI-assisted data analysis, [Drosos and colleagues](https://doi.org/10.1145/3663384.3663389) observed participants using a model for information gathering, hypothesis generation, and analysis strategy. Some described checking an answer as requiring as much work as finding it without the model.
+Autonomous research is the most ambitious version of the problem, but a smaller version is already common. LLMs have made it cheaper to produce an artifact that looks like the output of a research process. That artifact might be a paper. It might also be a methodology page, an interactive analysis, a benchmark, a data product, or a long post with equations and charts.
 
-Useful analysis does not have to occur inside a university or become a paper. A fan project may rank performances, organize an archive, publish its formulas, and offer an excellent discovery tool. Reproducing the score can show that the product implements its stated rule. If the project also says that score reveals a property of improvisation, then the labels, measurement unit, and relationship between the score and that musical property become part of the claim. The publication venue does not settle whether the evidence is adequate. Neither do equations, transparent code, or polished charts.
+Some of the most interesting versions appear outside journals and conferences. A person with a question and a dataset can now get meaningful help writing data-cleaning code, selecting features, fitting models, and interpreting results. In a participatory study of 15 people performing generative-AI-assisted data analysis, [Drosos and colleagues](https://doi.org/10.1145/3663384.3663389) observed participants using a model for information gathering, hypothesis generation, and analysis strategy. Participants also described verification as effortful and time-consuming; several checked references, tested generated code or formulas in other tools, or tried to inspect every line.
+
+Useful analysis does not have to occur inside a university or become a paper. A fan project may rank performances, organize an archive, publish its formulas, and offer an excellent discovery tool. Reproducing the score can show that the product implements its stated rule.
+
+If the project also says that score reveals a property of improvisation, then the labels, measurement unit, and relationship between the score and that musical property become part of the claim. The publication venue does not settle whether the evidence is adequate. Neither do equations, transparent code, or polished charts.
 
 This category existed before LLMs. What changes now is the cost of producing the complete package. Code, prose, caveats, visualizations, and a memorable result can arrive together, quickly enough that their coherence can feel like evidence that the underlying empirical work occurred.
 
@@ -83,7 +91,9 @@ This does not demonstrate that a model can replace peer review. It demonstrates 
 
 The distinction is important. A second model does not become independent review merely by being a second model. Two systems can share training data, conventions, blind spots, and a preference for the same fluent explanation. Adding agents changes the number of outputs. It does not necessarily change the source of judgment.
 
-An actual review process has many other weaknesses, of course. Human reviewers miss errors, reward familiar methods, disagree, rush, and occasionally do not read closely enough. The point is not that humans provide a magical external check. The point is that we have to ask what information and incentives each check adds. If every stage evaluates the same generated artifact using the same kind of pattern recognition, the process can become impressively self-consistent without becoming more correct.
+An actual review process has many other weaknesses, of course. Human reviewers miss errors, reward familiar methods, disagree, rush, and occasionally do not read closely enough. The point is not that humans provide a magical external check.
+
+The question is what information and incentives each check adds. If every stage evaluates the same generated artifact using the same kind of pattern recognition, the process can become impressively self-consistent without becoming more correct.
 
 ## The machine can find something real
 
@@ -93,7 +103,7 @@ FunSearch used a language model to generate candidate programs for mathematical 
 
 The language model was valuable because it could search a space of programs in a productive way. It was not asked to decide, in prose, that its own program was mathematically interesting. The programs ran. The evaluator scored them. Other people could inspect the result.
 
-Other systems make weaker claims under different judges. [AI Scientist-v2](https://arxiv.org/abs/2504.08066) generated several machine-learning manuscripts end to end, with humans choosing initial ideas and selecting the best completed run; one manuscript scored above the acceptance threshold at an ICLR workshop. The authors' own inspection also found citation inaccuracies, possible data overlap, imprecise method descriptions, and code for a calibration technique that was never actually used.
+Other systems make weaker claims under different judges. [AI Scientist-v2](https://arxiv.org/abs/2504.08066) generated several machine-learning manuscripts end to end, with humans choosing initial ideas and selecting the best completed run; one manuscript scored above the acceptance threshold at an ICLR workshop. The authors' own inspection also found missing citations, possible data overlap, imprecise method descriptions, incorrect figure interpretations, and code for a calibration technique that was never actually used.
 
 These checks do not provide the same kind of evidence. A program evaluator can reject a candidate against a specified property; passing establishes only that property. An experiment can contradict a prediction. Inspecting a source can show that it does not support a sentence. Human review adds judgment, but a reviewer can still be persuaded by the same polished explanation as everyone else.
 
@@ -101,7 +111,7 @@ What matters is the new information each check contributes. The system becomes m
 
 Before treating a check as independent, I now ask three questions: What information does it add that was unavailable to the process that generated the result? What unfavorable answer can it return? Which precise claim would that answer reject?
 
-## A small audio lab enters this moment
+## Then my own research loop failed twice
 
 I then changed the task. Instead of improving SetScope's song guesses, I asked the system to use the recordings to study improvisation. I had years of labeled audio, access to the usual audio features and increasingly capable embedding models, and an LLM agent that could write scanners, build manifests, generate features, train classifiers, run evaluations, analyze failures, and modify the live application. What had been an implausibly large solo project looked tractable.
 
@@ -115,11 +125,13 @@ For the restart, I created a new corpus and wrote a methodology framework that e
 
 Both code defects were small. The consequences were not. I had decided to continue the work, publish the articles, and involve other people's time without tracing the split or the segmentation rule through the implementation. I deleted the second notebook, pulled the articles, and abandoned the listening study.
 
-We eventually gave the system its original job again: improve the live song guesser. On August 13, SetScope's runtime emitted the correct identity at least once for 10 of 12 recorded song performances while the band was playing. It also missed songs, switched guesses at the wrong time, and exposed failures in the live audio path. This was a product field test, not a formal whole-show accuracy estimate, and the complete operational record belongs later in this series. Neither audio from that performance nor its completed setlist existed during development. The surviving record shows what reached the controller, not confirmed viewer-visible delivery.
+We eventually gave the system its original job again: improve the live song guesser. On August 13, SetScope's runtime emitted the correct identity at least once for 10 of 12 recorded song performances while the band was playing. It also missed songs, switched guesses at the wrong time, and exposed failures in the live audio path.
+
+This was a product field test, not a formal whole-show accuracy estimate, and the complete operational record belongs later in this series. Neither audio from that performance nor its completed setlist existed during development. The surviving record shows what reached the controller, not confirmed viewer-visible delivery.
 
 The project would not exist at its current scale without LLMs. The failures taught me that speed changes the location of the work. Producing the next artifact becomes cheap. Establishing what the artifact means, what information entered it, and what could show it is wrong does not.
 
-The question is no longer whether the machine can participate in research. It plainly can. The question is how to build a discovery loop that can distinguish progress from a persuasive trip around its own assumptions: which decisions it may make silently, which checks add independent information, what state must survive the next iteration, and who is allowed to say that a result is ready to become a claim.
+The machine can participate in research. The harder problem is deciding what it may do without asking, what evidence must survive each iteration, and what can stop a bad result before it becomes the premise of the next experiment. This series is about learning to build those constraints after discovering, repeatedly, that a persuasive report was not one of them.
 
 ## What Comes Next
 
