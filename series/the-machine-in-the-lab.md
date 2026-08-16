@@ -15,7 +15,7 @@ image_card_type: summary_large_image
 </p>
 
 <p class="series-landing-meta">
-  I have a PhD and years of systems-research experience. That background did not prevent me from accepting either result. The project began with automatic song and set detection. The recordings pulled it into harder questions about improvisation. After both notebooks failed, I returned to the original goal: build the live song guesser.
+  I have a PhD and years of systems-research experience. These were not rules I did not know to write: both methods stated constraints the system later violated. I worked from the reports because an autonomous researcher that must be manually reconstructed after every run is not autonomous. The project began with automatic song and set detection. The recordings pulled it into harder questions about improvisation. After both notebooks failed, I returned to the original goal: build the live song guesser.
 </p>
 
 <p class="series-landing-meta">
