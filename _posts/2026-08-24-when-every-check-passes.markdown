@@ -18,7 +18,7 @@ The plan had been reviewed. Five advisor conditions had been applied. The figure
 
 Every recorded check was green.
 
-Then I read the article and listened to the first example.
+Then I read the blog post and listened to the first example.
 
 The listener mark sat two seconds before the audible end of the song.
 
@@ -26,7 +26,7 @@ The listener mark sat two seconds before the audible end of the song.
 
 The experiment concerned the end of a jam. In the project's labeling system, a listener marked the point where improvisation ended and the band returned to composed material. We compared those marks against an onset-density changepoint detector, a signal-processing method intended to find a large change in musical activity.
 
-The reported result was that the detector recovered the listener-marked end on three of four Sands and three of four Bathtub Gins within a song-specific tolerance. The article interpreted this as evidence that the end of a jam was acoustically recoverable as a band-level return to composed structure, even though the beginning remained difficult to detect.
+The reported result was that the detector recovered the listener-marked end on three of four Sands and three of four Bathtub Gins within a song-specific tolerance. The blog post interpreted this as evidence that the end of a jam was acoustically recoverable as a band-level return to composed structure, even though the beginning remained difficult to detect.
 
 That interpretation was the reason the result mattered. Agreement between timestamps by itself is not very interesting. If the detector and listener were identifying the same musical event through different paths, we had evidence that a community concept could be grounded in an acoustic change.
 
@@ -115,7 +115,7 @@ The first check still did something the elaborate agent process had failed to do
 
 An erratum can repeat the original failure if it is allowed to close around the first plausible explanation. The correction needed an evidence path outside the artifacts and diagnosis that produced it.
 
-This is the limit of process-heavy review in a discovery loop. Multiple agents can inspect a plan, implementation, result, and article while sharing one blind spot. Adding another reviewer to the same chain increases scrutiny without necessarily creating contradiction. The evaluator has to be capable of telling the entire chain that its interpretation is wrong.
+This is the limit of process-heavy review in a discovery loop. Multiple agents can inspect a plan, implementation, result, and blog post while sharing one blind spot. Adding another reviewer to the same chain increases scrutiny without necessarily creating contradiction. The evaluator has to be capable of telling the entire chain that its interpretation is wrong.
 
 For Dispatch 002, that evaluator was a person pressing play.
 
