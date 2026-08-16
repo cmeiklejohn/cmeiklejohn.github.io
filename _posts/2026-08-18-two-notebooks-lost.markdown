@@ -12,7 +12,7 @@ categories: ai research zabriskie agents
 
 I deleted two notebooks of audio research during this project, but not at once. Notebook 1 failed after four days on April 30. I wrote down what had gone wrong and started over that day. Notebook 2 failed for a different reason on May 6, less than a week later.
 
-Between them, the notebooks represented a little more than a week of nearly continuous agent work. The second had already produced two long articles and a listening study I had asked friends to complete in their free time. The study was already in front of two people. One of them, my regular Phish-going friend Patrick, had spent an evening on it. I was planning to talk about the results at a music festival beginning two days later.
+Between them, the notebooks represented a little more than a week of nearly continuous agent work. The second had already produced two long blog posts and a listening study I had asked friends to complete in their free time. The study was already in front of two people. One of them, my regular Phish-going friend Patrick, had spent an evening on it. I was planning to talk about the results at a music festival beginning two days later.
 
 All of it came down because each notebook contained a silent setup decision that invalidated what followed. The decisions were different. One crossed an information boundary. The other changed what the experiment was measuring. In both cases, most of the code worked exactly as written.
 
@@ -52,7 +52,7 @@ Notebook 2 looked much more disciplined.
 
 I created a new corpus and wrote a methodology framework organized around four research questions. The first question was about "operationalization knobs," the decisions required to turn an informal musical idea into something a program can compute. The document explicitly warned against defining a performance as a ninety-second composed head, a ninety-second composed tail, and a jam in between. That fixed-offset rule fails whenever the opening composition lasts longer than ninety seconds, which is true for most of the songs I wanted to study.
 
-I gave the framework to the agent. We built seven audio axes, per-performance fingerprints, per-window heat maps, clustering analyses, threshold sweeps, and canary checks. The work produced patterns. The patterns produced two articles, complete with timestamped walkthroughs and guided listening. I built a small site for the research and a listening assignment so other people could check whether the metrics corresponded to what they heard.
+I gave the framework to the agent. We built seven audio axes, per-performance fingerprints, per-window heat maps, clustering analyses, threshold sweeps, and canary checks. The work produced patterns. The patterns produced two blog posts, complete with timestamped walkthroughs and guided listening. I built a small site for the research and a listening assignment so other people could check whether the metrics corresponded to what they heard.
 
 For six days, the work looked like work.
 
@@ -71,7 +71,7 @@ In every case, the script began the jam at ninety seconds.
 
 Several minutes of verses, choruses, and composed instrumental material had been placed inside the windows labeled `jam`. Every chart built from those windows mixed the musical phenomenon I wanted to study with material the method itself said should be excluded.
 
-The default propagated through nine analysis scripts and the artifacts they produced: fingerprints, threshold sweeps, cluster assignments, silhouette scores, confidence intervals, per-window data, and every cell in the article figures. Research questions 2 through 4 lost their numerical findings; the first question was principally a preregistration. The listening study was asking people to evaluate evidence the project itself could no longer defend.
+The default propagated through nine analysis scripts and the artifacts they produced: fingerprints, threshold sweeps, cluster assignments, silhouette scores, confidence intervals, per-window data, and every cell in the figures published with the blog posts. Research questions 2 through 4 lost their numerical findings; the first question was principally a preregistration. The listening study was asking people to evaluate evidence the project itself could no longer defend.
 
 So Notebook 2 came down too.
 
@@ -93,7 +93,7 @@ A little later, frustrated with cleanup, I asked for some real progress that was
 
 The silence was the problem. The downstream work treated each choice as settled before I knew a choice had been made.
 
-By the time a result exists, it becomes harder to reopen its premises without wanting the premises to be right. I had charts. I had interpretations. I had articles that felt like articles I would respect if someone else wrote them. The quantity and polish of the artifacts increased the cost of asking whether the first step had been valid.
+By the time a result exists, it becomes harder to reopen its premises without wanting the premises to be right. I had charts. I had interpretations. I had blog posts that looked finished enough to publish. The quantity and polish of the artifacts increased the cost of asking whether the first step had been valid.
 
 The choice never appeared as a decision requiring review. The agent did not volunteer it, and the reports treated the resulting pipeline as complete. That is the system we actually built.
 
@@ -105,7 +105,7 @@ Notebook 1 failed because information crossed a boundary. The test evidence was 
 
 Notebook 2 failed because an implementation convenience defined the observable phenomenon. Even with a perfectly isolated test set, the pipeline would still have called several minutes of composition a jam. This is a meaning problem. It asks whether the measurement corresponds to the event named in the claim. A later experiment would pass every process gate we wrote after these failures and demonstrate that the problem was not solved by cleaner procedure.
 
-The common mechanism is acceleration. The agent could propose code, implement it, run it, interpret the output, write the article, and suggest the next experiment before its own reports had surfaced the premises of the first one. Every trip around the loop made the hidden choice more expensive to expose.
+The common mechanism is acceleration. The agent could propose code, implement it, run it, interpret the output, write the post, and suggest the next experiment before its own reports had surfaced the premises of the first one. Every trip around the loop made the hidden choice more expensive to expose.
 
 We eventually returned to the original set-detection problem. That return did not make the two lost notebooks irrelevant. It gave us a narrower question with an answer that could be checked during a live show. It also forced us to decide what a check actually is.
 

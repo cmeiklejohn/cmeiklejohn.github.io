@@ -261,7 +261,7 @@ reproduction of copy-editing errors.
    recollection, or unsupported. Recheck the cited source or experiment record
    after every material prose revision; a source that is real but does not
    support the sentence is an evidence failure.
-6. **Readability editor.** Read the rendered article continuously from the
+6. **Readability editor.** Read the rendered post continuously from the
    beginning, without using the outline as a substitute for the reading
    experience. Flag repetition, tangents, delayed context, abrupt transitions,
    qualification overload, jargon, overlong paragraphs, and sentences that are
@@ -299,7 +299,7 @@ Before a *Machine in the Lab* post is considered ready for author review:
 - the required structural, evidence, and readability gates have all passed on
   the current revision;
 - the opening is a documented event, finding, or institutional action;
-- the article reaches the audio-research story through evidence rather than a
+- the post reaches the audio-research story through evidence rather than a
   generic AI transition;
 - responsibility for publication remains visible without turning autonomy into
   a requirement that the author manually reperform every reported check;

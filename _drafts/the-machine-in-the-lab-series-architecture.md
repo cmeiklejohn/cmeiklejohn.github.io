@@ -5,7 +5,7 @@ description: "The complete argument map, post contracts, transitions, and advers
 permalink: /series/the-machine-in-the-lab/series-architecture/
 ---
 
-This is not a prose outline. It is the logical architecture of the series. Its purpose is to make the progression inspectable before the articles acquire narrative momentum, polished transitions, or conclusions that feel inevitable because they have been written well.
+This is not a prose outline. It is the logical architecture of the series. Its purpose is to make the progression inspectable before the posts acquire narrative momentum, polished transitions, or conclusions that feel inevitable because they have been written well.
 
 An adversarial reviewer should be able to use this document to answer five questions:
 
@@ -211,7 +211,7 @@ The answer is not that these objections are wrong. The series claims rapid propa
 
 ### Standalone context requirement
 
-Part 1 should need no prior series context. Its closing introduction to the audio lab must be short enough that the article remains a field-level argument rather than the first chapter of a memoir.
+Part 1 should need no prior series context. Its closing introduction to the audio lab must be short enough that the post remains a field-level argument rather than the first chapter of a memoir.
 
 ### Handoff to Part 2
 
