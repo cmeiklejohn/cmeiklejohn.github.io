@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "The Whole Night"
-date:   2026-08-17 20:00:00 -0400
+date:   2026-08-17 19:00:00 -0400
 group: ai
 categories: ai zabriskie development
 ---
