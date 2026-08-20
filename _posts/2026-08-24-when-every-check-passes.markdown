@@ -3,7 +3,6 @@ layout: post
 title: "When Every Check Passes"
 subtitle: "All the artifacts agreed. The interpretation had never been tested."
 date: 2026-08-24 08:00:00 -0400
-published: false
 group: ai
 series: lab
 editorial_review: three-pass

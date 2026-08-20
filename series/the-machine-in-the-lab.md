@@ -60,7 +60,7 @@ image_card_type: summary_large_image
               <span class="series-landing-title">{{ entry.title | remove_first: part_prefix }}</span>
               <span class="series-landing-subtitle">{{ entry.subtitle }}</span>
             </span>
-            <span class="series-landing-date">{% if entry.status == "collecting-results" %}collecting tour results{% elsif entry.status == "blocked-on-result" %}blocked on evidence{% elsif entry.status == "in-review" %}in review{% elsif entry.date %}publishes {{ entry.date | date: "%B %-d" }}{% elsif entry.status == "source-draft" %}source draft{% elsif entry.status == "draft" %}draft in progress{% else %}planned{% endif %}</span>
+            <span class="series-landing-date">{% if entry.status == "collecting-results" %}collecting tour results{% elsif entry.status == "blocked-on-result" %}blocked on evidence{% elsif entry.date %}publishes {{ entry.date | date: "%B %-d" }}{% elsif entry.status == "source-draft" %}source draft{% elsif entry.status == "draft" %}draft in progress{% else %}planned{% endif %}</span>
           </span>
         {%- endif -%}
       </li>

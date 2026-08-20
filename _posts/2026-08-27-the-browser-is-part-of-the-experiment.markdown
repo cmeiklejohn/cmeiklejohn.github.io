@@ -3,7 +3,6 @@ layout: post
 title: "The Browser Is Part of the Experiment"
 subtitle: "A model score cannot tell you what the live system actually heard."
 date: 2026-08-27 08:00:00 -0400
-published: false
 group: ai
 series: lab
 editorial_review: three-pass

@@ -3,7 +3,6 @@ layout: post
 title: "A Discovery Loop That Can Say No"
 subtitle: "Bound the agent, preserve the failures, and let the evidence limit the claim."
 date: 2026-08-30 08:00:00 -0400
-published: false
 group: ai
 series: lab
 editorial_review: three-pass

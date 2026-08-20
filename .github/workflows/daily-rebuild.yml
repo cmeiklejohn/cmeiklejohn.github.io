@@ -1,0 +1,58 @@
+name: Daily rebuild for scheduled posts
+
+# Pushes an empty commit once a day to force GitHub Pages to rebuild.
+# Needed because Pages only rebuilds on push, so future-dated posts
+# don't go live on their scheduled date unless something triggers a
+# new build. Runs at 12:05 UTC so that any post dated "12:00 UTC" on
+# today's date will already be in the past when the rebuild starts.
+
+on:
+  schedule:
+    - cron: '5 12 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  trigger-rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Decide whether to rebuild
+        id: decide
+        run: |
+          # Only push a new commit if there is at least one post whose
+          # date crossed from future to past in the last 25 hours. This
+          # keeps the git log clean on days when nothing is scheduled.
+          now=$(date -u +%s)
+          cutoff=$((now - 21600))   # 6 hours ago — tight enough to catch only the just-published post, wide enough to survive GitHub cron delays
+
+          found=0
+          for f in _posts/*.markdown _posts/*.md; do
+            [ -e "$f" ] || continue
+            # Parse "date: YYYY-MM-DD HH:MM:SS +ZZZZ" from front matter
+            line=$(grep -m1 '^date:' "$f" || true)
+            [ -z "$line" ] && continue
+            ts_str=$(echo "$line" | sed -E 's/^date:[[:space:]]+//; s/[[:space:]]+$//')
+            ts=$(date -u -d "$ts_str" +%s 2>/dev/null || echo 0)
+            if [ "$ts" -gt "$cutoff" ] && [ "$ts" -le "$now" ]; then
+              echo "Post crossed into published window: $f ($ts_str)"
+              found=1
+            fi
+          done
+
+          echo "should_rebuild=$found" >> "$GITHUB_OUTPUT"
+
+      - name: Push empty commit to trigger Pages build
+        if: steps.decide.outputs.should_rebuild == '1'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "Daily rebuild: a scheduled post has gone live"
+          git push

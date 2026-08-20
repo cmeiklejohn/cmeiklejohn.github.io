@@ -3,7 +3,6 @@ layout: post
 title: "Two Notebooks Lost"
 subtitle: "The code was mostly right. The experiments were already lost."
 date: 2026-08-18 08:00:00 -0400
-published: false
 group: ai
 series: lab
 editorial_review: three-pass

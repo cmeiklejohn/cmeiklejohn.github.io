@@ -66,7 +66,7 @@
   title: "Part 2. Two Notebooks Lost"
   subtitle: "The code was mostly right. The experiments were already lost."
   url: /series/the-machine-in-the-lab/two-notebooks-lost-series/
-  status: in-review
+  status: scheduled
   date: 2026-08-18
   estimated_words: "3,000-3,500 words"
   purpose: "Show what happened when an experienced, PhD-trained systems researcher used an LLM agent to make an ambitious self-directed audio-research program tractable: two silent setup decisions became foundations for plausible downstream work while creating different information and meaning failures."
