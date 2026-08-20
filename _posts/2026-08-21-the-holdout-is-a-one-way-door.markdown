@@ -3,6 +3,7 @@ layout: post
 title: "The Holdout Is a One-Way Door"
 subtitle: "Evidence cannot independently confirm the claim it helped shape."
 date: 2026-08-21 08:00:00 -0400
+published: false
 group: ai
 series: lab
 editorial_review: three-pass
