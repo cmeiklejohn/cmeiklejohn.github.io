@@ -6,6 +6,7 @@ date: 2026-08-24 08:00:00 -0400
 group: ai
 series: lab
 editorial_review: three-pass
+published: false
 permalink: /series/the-machine-in-the-lab/when-every-check-passes/
 categories: ai research zabriskie agents
 ---

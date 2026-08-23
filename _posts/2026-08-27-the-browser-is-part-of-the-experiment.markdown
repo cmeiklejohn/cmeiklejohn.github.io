@@ -6,6 +6,7 @@ date: 2026-08-27 08:00:00 -0400
 group: ai
 series: lab
 editorial_review: three-pass
+published: false
 permalink: /series/the-machine-in-the-lab/the-browser-is-part-of-the-experiment/
 categories: ai research zabriskie agents
 ---
