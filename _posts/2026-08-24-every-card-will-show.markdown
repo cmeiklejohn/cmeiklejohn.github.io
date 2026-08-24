@@ -24,7 +24,7 @@ That wasn't true. After the earlier attempts kept failing, I got frustrated and 
 
 I think this is a useful kind of hallucination to call out. The agent hadn't invented a file, a function, or a test result. It had produced real code and real evidence. What it invented was the connective claim: because each piece of evidence established something close to my requirement, it was treated as establishing the requirement itself.
 
-This is a story about an AI producing an implementation, tests, audits, and numerical arguments that all said the algorithm was correct. Each artifact embodied or checked a weaker claim near my requirement: coverage within a week, isolated reachability, catalog completeness, or eventually coverage across an impossible itinerary. None checked whether one person's five visits, carrying one viewing history through the day, exposed every relevant card.
+This is a story about an AI producing an implementation, tests, audits, and numerical arguments that all said the algorithm was correct. Each artifact embodied or checked a weaker claim near my requirement: coverage within a week, isolated reachability, catalog completeness, or eventually coverage across an impossible itinerary. None checked whether one person's five visits on the same day exposed every relevant card.
 
 The work behind those artifacts began with a concrete problem. The earlier Lot was one long list: one version rendered 29 cards and produced a page more than 15,000 pixels tall. Showing everything at once wasn't a good answer. The scheduling algorithm was supposed to solve both problems at once: make each visit shorter and appropriate to that moment of the day while distributing the full set across five visits instead of silently dropping cards.
 
@@ -73,7 +73,7 @@ Before the first passing Lean model, three different pieces of assurance said th
 
 The first was a documentation audit. It reported 42 "cappable" cards and concluded that no card was permanently prevented from appearing. But the audit replaced my one-day requirement with a promise that a person could see every card within a week. I had not asked for a week. The agent hallucinated that time window, then audited its own version of the requirement. It made no code change and did not test five visits in one day.
 
-The second was a reachability test, a test that ran the selection code rather than inspecting documentation. The agent replaced my requirement with a different one: for each card considered separately, there should be at least one program and one favorable viewing history in which it could appear. My requirement asked whether all the cards appeared across one person's five visits while sharing one history. The test took each card separately, gave that card the maximum staleness bonus, treated comparable cards in its tier as recently shown, and searched the five time-of-day states for somewhere it could win. **Act Now** cards were divided into deadline and non-deadline groups, and test-only stand-ins represented the other tiers.
+The second was a reachability test, a test that ran the selection code rather than inspecting documentation. The agent replaced my requirement with a different one: for each card considered separately, there should be at least one favorable situation in which it could appear. My requirement asked whether all the cards appeared across the same person's five visits on one day. The test took each card separately, gave that card the maximum staleness bonus, treated comparable cards in its tier as recently shown, and searched the five time-of-day states for somewhere it could win. **Act Now** cards were divided into deadline and non-deadline groups, and test-only stand-ins represented the other tiers.
 
 The test established exactly that individual reachability claim: every card could win in some favorable scenario. It did not establish my shared-day claim because each target card received its own specially prepared world, and those worlds could contradict one another.
 
@@ -81,7 +81,7 @@ The third assurance was an adversarial review, a separate agent trying to find m
 
 There was another unrequested implementation decision. The agent split the scheduling policy between the server, which chose the card data, and the browser, which turned that data into the visible page. I had not asked for both layers to decide what appeared. Before the reachability work, the browser contained its own fixed ordering for cards within each section. The next version added an order from the server, but the browser still grouped cards, suppressed some of them, constructed sections, ordered those sections, and treated the Hero as an ordinary scored position. Every extra decision point created another place for a card to disappear, making the original guarantee harder to implement and verify.
 
-A passing server test was therefore not yet a passing product test. The thing being certified was not the entire path that decided what the person saw. One end-to-end test crossed that boundary, but it pinned a single midday response and checked that every section surviving that one cap rendered. It did not carry one history through five visits or ask whether their union covered the catalog.
+A passing server test was therefore not yet a passing product test. The thing being certified was not the entire path that decided what the person saw. One end-to-end test crossed that boundary, but it pinned a single midday response and checked that every section surviving that one cap rendered. It did not ask whether the union of one person's five visits covered the catalog.
 
 The checks hadn't lied. The agent had encoded weaker questions, then treated their passing results as answers to mine. I accepted that evidence as stronger than it was. At that point the hallucination had become executable, encoded in checks that could pass. A documentation audit, a test, and a review could all succeed, making an untested guarantee feel like a fact.
 
@@ -95,7 +95,7 @@ The shape of this setup came from [Cedar](https://docs.cedarpolicy.com/other/sec
 
 ### Lean proved the wrong day
 
-The agent wrote the first Lean coverage model too. I am still not sure whether asking an agent to formalize a requirement agents had repeatedly misunderstood was a good idea. But the model failed, which was useful: it was where we discovered that 20 of the 47 cards were starved. The dangerous version was the agent's next one. It passed, but it modeled the wrong day. It carried one viewing history through five visits labeled weekday morning, workday, evening, late night, and weekend daytime. A single calendar day cannot be both a weekday and a weekend.
+The agent wrote the first Lean coverage model too. I am still not sure whether asking an agent to formalize a requirement agents had repeatedly misunderstood was a good idea. But the model failed, which was useful: it was where we discovered that 20 of the 47 cards were starved. The dangerous version was the agent's next one. It passed, but it modeled the wrong day. It treated weekday morning, workday, evening, late night, and weekend daytime as five consecutive visits. A single calendar day cannot be both a weekday and a weekend.
 
 Lean proved that every card appeared in that impossible sequence. The theorem was valid. The agent's claim that it represented my one-day requirement was not.
 
@@ -105,7 +105,7 @@ This is where formal verification, using mathematical proof to check a software 
 
 ### Putting one day into the model
 
-The repair began by representing a visit with a day identifier and an hour. The five visits are written directly in the model:
+The repair began by giving every visit a day label and an hour. The five visits are written directly in the model:
 
 ```lean
 structure LocalVisit where
@@ -121,9 +121,11 @@ def fiveVisitsOn (localDay : Nat) : List LocalVisit :=
   ]
 ```
 
-`fiveVisitsOn` takes one `localDay` argument and copies it into all five records, so they share a day by construction. Its hour-to-program function uses the five fixed hours rather than interpreting the date. Separate Go tests therefore send the same hours through the production clock resolver on both a Wednesday and a Sunday. Those cases guard against a return of the old weekday-versus-weekend split.
+Despite its name, `localDay` is not a date. Lean does not know whether the number represents a Wednesday or a Sunday. It is only a label copied into all five records so they belong to the same nominal day. The model's hour-to-program function reads the hour and ignores that label.
 
-Lean models only the part of The Lot controlled by the ranked selector. It includes the structural Hero identity so the coverage question accounts for the top card, but the Hero appears independently and does not consume a supporting-card position. The model excludes **Live Now** and other modules inserted elsewhere on the page. The theorem below establishes coverage only for cards that pass through this selector.
+Lean therefore assumes that the same five programs exist every day. It does not prove the absence of the old weekday-versus-weekend split. Separate Go tests send these hours through the production clock resolver on both a Wednesday and a Sunday to check that production assumption.
+
+The coverage model concerns the ranked cards that rotate through The Lot's sections. **Live Now** and other uncapped modules bypass that selector, so they are outside this claim. When an independent Hero exists, the model keeps it without charging it against the supporting-card limit. A separate Lean model checks which already-built candidate, if any, is chosen to lead the page.
 
 Each identity becomes a typed record containing its section, deadline status, position, and preferred time. Each non-Hero identity also receives at least one program where it is guaranteed room. The code calls a section a `Tier`, a preferred time an `affinity`, and a guaranteed program a `posture`:
 
@@ -140,78 +142,36 @@ structure Card where
 
 `additionalPostures` means additional guaranteed programs. Most cards are guaranteed room in one program. **Connections** is guaranteed room at both midday and afternoon because either window leaves time to follow the card into a listen, read, or watch. It remains one card, and the theorem doesn't require it to appear twice. Lean didn't choose this policy; the model records the choice and checks what follows from it.
 
-### Carrying one viewing history
+### Reserving room before ranking
 
-The coverage theorems do not accept any possible viewing history as an input. They check two fixed starting points: one where the person has never seen any modeled card, and one where the person saw every card exactly once immediately before the 8 AM visit. The displayed theorem below is the first case. Its helper, `oneDayKeepsUnseen`, supplies an empty initial history, which is why history does not appear among the theorem's parameters. A neighboring theorem supplies the second starting history.
+The important rule is simpler than the ranking system. For each program, the selector first keeps every applicable card assigned to that program. Only then does ranking fill any positions left over. Ranking can change the order and the filler, but it is not supposed to decide whether an assigned card receives its guaranteed opportunity.
 
-History is then carried through the day rather than discarded. At each visit, the model converts the current history into staleness scores and runs the selector. Every retained card is treated as viewed. Before the next visit, the model records those impressions and advances their ages by the gap between the fixed hours. Noon therefore uses the history produced at 8 AM, afternoon uses the history produced at noon, and so on.
-
-The starting point matters because viewing a card changes its later score. In the all-unseen case, every card begins with the maximum staleness bonus. In the second case, every card begins with one fresh impression and no bonus. That number is not frozen. If a card appears at 8 AM, its impression count changes before noon; if it does not appear, its history changes differently. Recomputing those bonuses can change the later ordering.
-
-The first attempt to add that second case got it wrong. Lean and Go both carried a fixed map of bonus numbers through the five visits. They agreed with each other, and both history cases passed, but neither side modeled how production recomputed the bonus as time passed. The required adversarial review caught the shared mistake. We replaced the bonus map with impression count and age, then made both models advance the clock and recalculate before every visit.
-
-Lean now checks all four fixed combinations of the event-lead and tour conditions from both selected starting histories, and all eight walks pass. These theorems do not quantify over arbitrary prior impression counts or ages, mixed histories, cards becoming available or unavailable during the day, or those two conditions changing between visits. They also assume that every retained card is actually viewed and records an impression.
-
-The next definitions assemble that walk. `ScheduledVisit` keeps the program and hour together, while `ImpressionHistory` stores the two values the production staleness function needs:
+Lean expresses the reservation pass as `takePhase0`. It walks the ranked list and keeps every card that owns the current program until the program reaches its capacity:
 
 ```lean
-structure ImpressionHistory where
-  count : Nat
-  ageHours : Nat
-
-structure ScheduledVisit where
-  daypart : Daypart
-  hour : Nat
-
-def scheduledVisitsOn (localDay : Nat) : List ScheduledVisit :=
-  (fiveVisitsOn localDay).map fun visit =>
-    { daypart := postureAtHour visit.hour, hour := visit.hour }
-
-def freshHistoryFor (cards : List Card) :
-    List (String × ImpressionHistory) :=
-  cards.map fun c => (c.name, { count := 1, ageHours := 0 })
-
-def oneDayKeepsFrom (localDay : Nat) (eventLead onTour : Bool)
-    (initialHistory : List (String × ImpressionHistory)) :
-    List (List String) :=
-  simulateDayFrom fullCatalog (scheduledVisitsOn localDay)
-    eventLead onTour initialHistory
-
-def oneDayKeepsUnseen (localDay : Nat) (eventLead onTour : Bool) :
-    List (List String) :=
-  oneDayKeepsFrom localDay eventLead onTour []
+def takePhase0 (sorted : List Card) (d : Daypart)
+    (max : Nat) : List String :=
+  sorted.foldl (init := []) fun keep u =>
+    if keep.length >= max then keep
+    else if ownsProgramPosture u d then keep ++ [u.name]
+    else keep
 ```
 
-`scheduledVisitsOn` maps the five fixed hours in `fiveVisitsOn` to morning, midday, afternoon, evening, and late night without throwing the hours away. `oneDayKeepsFrom` is where the starting history enters the simulation. `freshHistoryFor` constructs the one-impression case. `oneDayKeepsUnseen` instead passes `[]`, an empty history meaning that no card has been seen. `simulateDayFrom` then runs the selector five times and returns five lists of retained card names. `eventLead` and `onTour` tell it which two product conditions remain fixed during the walk.
-
-Inside `simulateDayFrom`, a recursive helper named `go` carries that history from one visit to the next:
+The capacities are sized to the assignments in the catalog. Lean checks the number of cards assigned to morning, midday, afternoon, evening, and late night:
 
 ```lean
-def simulateDayFrom (units : List Card) (visits : List ScheduledVisit)
-    (isEventLead onTour : Bool)
-    (initialHistory : List (String × ImpressionHistory)) :
-    List (List String) :=
-  let rec go (history : List (String × ImpressionHistory))
-      (remaining : List ScheduledVisit) : List (List String) :=
-    match remaining with
-    | [] => []
-    | visit :: rest =>
-      let staleness := stalenessFromHistory history
-      let keep := capCards units visit.daypart isEventLead onTour
-        (capForDaypart visit.daypart) staleness
-      let recorded := recordImpressions history keep
-      let nextHistory :=
-        match rest with
-        | [] => recorded
-        | next :: _ =>
-          advanceHistory recorded (next.hour - visit.hour)
-      keep :: go nextHistory rest
-  go initialHistory visits
+theorem programmed_capacities_match_catalog :
+    (fivePostures.map fun posture =>
+      (fullCatalog.filter fun c => ownsProgramPosture c posture).length) =
+    [10, 13, 11, 10, 10] := by
+  native_decide
 ```
 
-The final line is where the data enters the loop: `go initialHistory visits` makes the selected starting history the `history` variable for the first visit. `stalenessFromHistory history` reads it to calculate the scores used by `capCards`. After the selection, `recordImpressions` updates the counts, `advanceHistory` adds the gap before the next visit, and `go nextHistory rest` passes that updated data into the next iteration.
+Those are also the five program limits. In other words, the guarantee comes from assigning every ranked card at least one program, reserving those cards before ordinary ranking, and providing enough room for all the assignments. Ranking determines order and fills holes left by cards that are not applicable. It is not the source of the no-starvation guarantee.
 
-Two more helpers turn those five outputs into the coverage question:
+The Lean implementation also mirrors the rest of production's ranking so the two selectors can be compared. That machinery is part of the implementation model, not the reason the coverage result holds.
+
+Lean runs the complete catalog through the five modeled programs. Two small helpers turn those outputs into the coverage question:
 
 ```lean
 def covered (keeps : List (List String)) (name : String) : Bool :=
@@ -223,33 +183,9 @@ def missing (keeps : List (List String)) (catalog : List String) :
     (fun a b => a ≤ b)
 ```
 
-`covered` asks whether one card name appears in at least one of the five lists. `missing` applies that question to the complete modeled catalog, returns every name for which the answer is no, and sorts the result so failures are reproducible. With those definitions in place, the theorem can state the invariant directly.
+`covered` asks whether one card name appears in at least one of the five lists. `missing` applies that question to the complete modeled catalog. The coverage checks require the result to be empty under each fixed event-lead and tour configuration they evaluate.
 
-The central theorem contains both the claim and the proof Lean checks. Read it in two halves. Everything before `:= by` is the statement we are asking Lean to establish. Everything after it is the proof:
-
-```lean
-theorem five_visits_on_one_day_starve_no_applicable_card_when_all_unseen
-    (localDay : Nat) :
-    missing (oneDayKeepsUnseen localDay false false) fullNames = [] := by
-  unfold oneDayKeepsUnseen oneDayKeepsFrom
-  have h : scheduledVisitsOn localDay = fiveScheduledVisits :=
-    every_local_day_has_the_same_five_scheduled_visits localDay
-  rw [h]
-  native_decide
-```
-
-Start with the statement. `(localDay : Nat)` means the theorem must hold for any local calendar day, represented here as a non-negative whole number. It does not need an hour parameter because `fiveVisitsOn` already supplies all five hours. It does not have a history parameter because `oneDayKeepsUnseen` has already fixed the initial history to empty. The theorem's name says `when_all_unseen` to expose that boundary. The two `false` values turn off the event-lead and tour modes for this displayed case. `missing ... fullNames = []` says that after those five visits, the list of modeled card names that never appeared must be empty.
-
-A neighboring theorem passes `freshHistoryFor fullCatalog` into `oneDayAllModesCoverFrom` and checks all four combinations of the event-lead and tour modes. The all-unseen case also has an all-modes theorem. Together they prove that the full catalog is covered from those two uniform starting histories while the mode conditions remain fixed throughout each walk.
-
-The lines after `by` reduce that statement to a finite computation:
-
-- `unfold oneDayKeepsUnseen oneDayKeepsFrom` replaces the helper names with the actual five-visit simulation and its empty initial history.
-- `have h` proves that any `localDay` produces the same five scheduled visits, including their hours and programs.
-- `rw [h]` replaces the arbitrary day's visit list with that fixed sequence.
-- `native_decide` runs the resulting simulation and comparison. Lean can finish the theorem only if the computed missing list is empty.
-
-This does not certify every behavior of the ranking algorithm. It certifies one property of the modeled selector: from either selected starting history, with these visits, fixed eligibility and mode conditions, catalog assignments, capacities, and reservations, no modeled card is left unseen. Ranking still decides how unused room is filled and how cards are ordered.
+This is a finite check of the current catalog and modeled selector. It does not prove that arbitrary eligibility or mode changes during the day preserve coverage. The structural protection is the reservation pass and the matching capacities above: ordinary ranking happens after the cards promised room in that program have been kept.
 
 ### Connecting Lean back to Go
 
@@ -257,9 +193,9 @@ But did the Go code make the same decisions as the model?
 
 The product makes two different top-of-page decisions. One chooses a primary lead from ten already-built candidates. The ranked catalog separately includes `hero:hero`, a structural identity that lets the coverage model account for an independent Hero without charging it against supporting capacity. The primary-lead chooser has its own smaller check: ten yes-or-no values representing whether each lead candidate is present, plus one of six program values. That produces 2<sup>10</sup> × 6, or 6,144, possible inputs. Lean writes the expected lead choice for every one, and Go must match all 6,144 rows. Candidate construction and rendering are outside that exhaustive comparison.
 
-The supporting-card selector has far too many possible subsets to compare exhaustively. Instead, the Lean executable writes 64 fixed catalog trials. Trial zero uses the complete modeled catalog. The other 63 use a fixed starting value to choose subsets and exercise all four fixed event-lead and tour combinations. Sixty-four is simply the test budget someone chose, not a total derived from the model. Each catalog is now run from both selected starting histories, producing 128 comparisons. The Go test also rejects the sample if it contains fewer than 32 distinct subsets, misses one of the four combinations, or omits either starting case.
+The supporting-card selector has far too many possible input catalogs to compare exhaustively. Instead, Lean writes a fixed sample of 128 selector walks, including the complete modeled catalog and reproducible subsets across the four event-lead and tour configurations. That number is a chosen test budget, not a total derived from the model.
 
-Go replays those 128 rows through `lotCapCards`, the production function that selects supporting cards, and `lotStalenessBonusForHistory`, the production function that derives a bonus from impression history. It records each retained card, advances the age between visits, and must return the same lists Lean produced for those inputs. A regression test pins the four-hour transition that exposed the frozen-history bug: a card viewed again has two impressions and a bonus of 49, while its unserved peer has one impression and a bonus of 74. A separate Go unit test constructs a synthetic all-applicable inventory containing the same modeled names and carries both selected starting histories through all four event-lead and tour modes. It tests the real selection and staleness functions, not the full request-to-browser path.
+Go replays those walks through `lotCapCards`, the production function that selects supporting cards, and must return the same lists Lean produced. A separate Go unit test constructs a synthetic all-applicable inventory with the same modeled names and runs the real selector across the four configurations. These checks exercise the production selection function, not the full request-to-browser path.
 
 That is a useful bridge, but it isn't proof that Lean and Go agree for every possible input. Lean proves the coverage theorem inside its model. The primary-lead comparison is exhaustive for its narrow input. The supporting-card comparison is sampled, with a full-catalog case and a separate full-catalog Go unit test. These are stronger and more explicit checks than we had before, but they establish different things.
 
@@ -269,7 +205,7 @@ The browser still honors explicit user actions such as local dismissals, and con
 
 These checks now run on every proposed code change. A failed Lean theorem, stale generated data that no longer matches Lean, a disagreement on one of the differential cases, or a missing card in the synthetic Go walk fails the check. The old independent caps were replaced with capacities sized to the assigned cards, currently 10, 13, 11, 10, and 10, and Lean checks that those assignments still fit.
 
-This was the first version I would accept as implementing the coverage design. Lean didn't certify the whole product or prove every behavior of the ranking algorithm. It established coverage inside the model for two explicit starting histories under fixed eligibility and mode conditions, and the additional tests made it much harder for the production selector to drift away without being noticed. That is different from producing another artifact that merely says the implementation looks correct.
+This was the first version I would accept as implementing the coverage design. Lean didn't certify the whole product or prove every behavior of the ranking algorithm. It checked the complete catalog against explicit program assignments and capacities, while the additional tests made it much harder for the production selector to drift away without being noticed. That is different from producing another artifact that merely says the implementation looks correct.
 
 ## Algorithms are hard
 
@@ -277,9 +213,9 @@ By then the agent had produced an implementation, unit tests, end-to-end tests, 
 
 Those artifacts agreed because the same failure pattern propagated from one artifact and agent to the next. One calendar day became a week. Guaranteed coverage became isolated reachability. Capacities from mutually exclusive programs were added together. Scheduling was divided between the server and browser. Then tests and audits treated those invented decisions as requirements. Green tests were not independent evidence about the invariant I had asked for. They were evidence that the substituted designs behaved as specified.
 
-The invariant was easy to state: carry one person's viewing history through five visits on one calendar day, then ensure that every available and relevant card appeared at least once. That did not make the algorithm easy to implement correctly. The agent could read the specification, write the implementation, write unit and end-to-end tests, and audit its own work, but it repeatedly failed to keep the invariant intact. Each time it encountered an ambiguity or an implementation obstacle, it invented a nearby requirement instead of asking me.
+The invariant was easy to state: across one person's five visits on one calendar day, every available and relevant card should appear at least once. That did not make the algorithm easy to implement correctly. The agent could read the specification, write the implementation, write unit and end-to-end tests, and audit its own work, but it repeatedly failed to keep the invariant intact. Each time it encountered an ambiguity or an implementation obstacle, it invented a nearby requirement instead of asking me.
 
-The power we eventually got from Lean wasn't another claim that the code looked right. Once the correct day, the impression-history transition, and the two explicit starting histories were part of the model, Lean established coverage for all four fixed mode combinations from each start. Go then had to match every primary-lead case and 128 supporting-card comparisons, while a separate unit test walked the real Go selection and staleness functions through the full modeled catalog from both starts. This didn't prove every Go input, every possible history, changing eligibility, changing modes, or the whole product. It gave us a checked property with an explicit boundary and strong evidence that the production selector agreed on the cases we compared.
+The power we eventually got from Lean wasn't another claim that the code looked right. Once the five daily programs, the card assignments, the reservation pass, and the capacities were explicit, Lean could check that the modeled catalog left no card behind. Go then had to match every primary-lead case and the sampled supporting-card comparisons, while a separate unit test walked the real Go selector through the full modeled catalog. This didn't prove every Go input, changing eligibility, changing modes, or the whole product. It gave us a checked property with an explicit boundary and strong evidence that the production selector agreed on the cases we compared.
 
 Lean itself was not immune to the problem. The first passing Lean model contained the wrong itinerary, and I let it merge without catching that mismatch. A theorem can make a misunderstanding more convincing if nobody checks that the formal statement still matches the request. The important step was not adding a proof to the artifact pile. It was making a precise, bounded version of my original invariant explicit, checking it, connecting it to the production implementation, and refusing to let a later layer weaken it.
 
