@@ -121,7 +121,7 @@ That is the theorem we should have written first. I had the agent replace the ol
 
 The repaired product defines the same five programs every day: morning, midday, afternoon, evening, and late night. A separate Go test sends five local times through the production hour-to-program resolver on a representative weekday and weekend date. On each date, those five visits must produce the full sequence. The Lean coverage theorem does not need a date or an hour.
 
-`modeledCardNames` is simply the 45 names in Lean's fixed catalog. Lean does not decide which cards are eligible in a live request. We use the full catalog as the most crowded case by treating every ranked card identity as if it has content to render. If the full catalog's reservations fit, a fixed subset can only require fewer slots. This does not cover eligibility changing between visits.
+`modeledCardNames` is simply the 45 names in Lean's fixed catalog. The simple specification deliberately takes the most crowded case: a user like me who qualifies for the full catalog, with every modeled card treated as applicable throughout the five visits. It asks whether every one of those cards has a reserved opportunity somewhere in the day's five programs.
 
 The model collects the cards reserved in each program, adds the structural Hero that is always present, and compares that union with the catalog. `nameSet` sorts the names and removes duplicates so the two lists represent sets:
 
@@ -139,7 +139,37 @@ theorem union_of_five_programs_is_all_modeled_cards :
 
 `native_decide` evaluates this finite equality and turns the result into a checked proof. **Connections** is reserved in two programs, but set equality removes the duplicate and only requires the card to appear once. **Live Now** and other uncapped modules are outside this selector.
 
-This is the assignment invariant, not yet a proof of what reached the browser. A separate theorem checks that each program has enough room for its reservations. The more detailed model handles history, scoring, ordering, and modes so it can be compared with Go. Those checks connect the small theorem to the implementation without putting the implementation back inside the theorem.
+The equality proves that every modeled card is either the structural Hero or reserved in at least one program. A companion theorem proves that each program has enough room for all of its reservations. Together, they establish the simple property I cared about: when all 45 modeled cards are applicable throughout the day, every card has an opportunity to appear across five visits.
+
+A person eligible for fewer cards inherits the same opportunity and capacity guarantees. Their cards are a subset of the full catalog, so removing the inapplicable cards cannot add competition or require more room. We wrote that consequence as a theorem too. `eligibleNames` is one fixed set for all five visits. Both definitions filter the two equal full-catalog sets by it, so the proof is just a rewrite using the equality above:
+
+```lean
+def fixedEligibleCardNames (eligibleNames : List String) : List String :=
+  nameSet (modeledCardNames.filter eligibleNames.contains)
+
+def fixedEligibleOpportunities (eligibleNames : List String) : List String :=
+  nameSet (cardsAcrossFivePrograms.filter eligibleNames.contains)
+
+theorem every_fixed_eligible_subset_has_an_opportunity
+    (eligibleNames : List String) :
+    fixedEligibleOpportunities eligibleNames =
+      fixedEligibleCardNames eligibleNames := by
+  unfold fixedEligibleOpportunities fixedEligibleCardNames
+  rw [union_of_five_programs_is_all_modeled_cards]
+```
+
+A second small theorem checks the capacity side: filtering a program's reservations can never make that list longer, so every fixed subset also fits in the capacities established for the complete catalog.
+
+But *fixed* matters. We asked Lean about the changing case too. In a concrete selector walk, **Last Night** is absent during its reserved morning program and becomes applicable for the remaining four visits. The later programs already have enough reservations to fill their capacities, so it never appears as filler. `becomesEligibleAfterMorningKeeps` runs the selector twin with those five candidate sets while carrying one viewing history through the day, and Lean proves the exact missing-card list:
+
+```lean
+theorem a_card_becoming_eligible_after_its_reservation_can_be_starved :
+    missing becomesEligibleAfterMorningKeeps fullNames =
+      ["actNow:lastNight"] := by
+  native_decide
+```
+
+The stronger claim is therefore not merely unproved. It is false for the current scheduler. A card which becomes applicable only after its reserved program has passed can still starve. Supporting changing eligibility will require another scheduling rule and another theorem.
 
 ### Connecting Lean back to Go
 
