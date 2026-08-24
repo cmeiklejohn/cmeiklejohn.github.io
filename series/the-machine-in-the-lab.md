@@ -52,7 +52,6 @@ image_card_type: summary_large_image
               <span class="series-landing-title">{{ entry.title | remove_first: part_prefix }}</span>
               <span class="series-landing-subtitle">{{ entry.subtitle }}</span>
             </span>
-            {%- if entry.date -%}<span class="series-landing-date">{{ entry.date | date: "%B %-d, %Y" }}</span>{%- endif -%}
           </a>
         {%- else -%}
           <span class="series-landing-link series-landing-link-pending">
@@ -60,7 +59,7 @@ image_card_type: summary_large_image
               <span class="series-landing-title">{{ entry.title | remove_first: part_prefix }}</span>
               <span class="series-landing-subtitle">{{ entry.subtitle }}</span>
             </span>
-            <span class="series-landing-date">{% if entry.status == "collecting-results" %}collecting tour results{% elsif entry.status == "blocked-on-result" %}blocked on evidence{% elsif entry.date %}publishes {{ entry.date | date: "%B %-d" }}{% elsif entry.status == "source-draft" %}source draft{% elsif entry.status == "draft" %}draft in progress{% else %}planned{% endif %}</span>
+            <span class="series-landing-date">{% if entry.status == "collecting-results" %}collecting tour results{% elsif entry.status == "blocked-on-result" %}blocked on evidence{% elsif entry.status == "source-draft" %}source draft{% elsif entry.status == "draft" %}draft in progress{% else %}planned{% endif %}</span>
           </span>
         {%- endif -%}
       </li>
