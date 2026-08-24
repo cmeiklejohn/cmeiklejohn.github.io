@@ -184,20 +184,32 @@ def oneDayKeepsUnseen (localDay : Nat) (eventLead onTour : Bool) :
 
 `scheduledVisitsOn` maps the five fixed hours in `fiveVisitsOn` to morning, midday, afternoon, evening, and late night without throwing the hours away. `oneDayKeepsFrom` is where the starting history enters the simulation. `freshHistoryFor` constructs the one-impression case. `oneDayKeepsUnseen` instead passes `[]`, an empty history meaning that no card has been seen. `simulateDayFrom` then runs the selector five times and returns five lists of retained card names. `eventLead` and `onTour` tell it which two product conditions remain fixed during the walk.
 
-Inside `simulateDayFrom`, the transition happens in four steps:
+Inside `simulateDayFrom`, a recursive helper named `go` carries that history from one visit to the next:
 
 ```lean
-let staleness := stalenessFromHistory history
-let keep := capCards units visit.daypart isEventLead onTour
-  (capForDaypart visit.daypart) staleness
-let recorded := recordImpressions history keep
-let nextHistory :=
-  match rest with
-  | [] => recorded
-  | next :: _ => advanceHistory recorded (next.hour - visit.hour)
+def simulateDayFrom (units : List Card) (visits : List ScheduledVisit)
+    (isEventLead onTour : Bool)
+    (initialHistory : List (String × ImpressionHistory)) :
+    List (List String) :=
+  let rec go (history : List (String × ImpressionHistory))
+      (remaining : List ScheduledVisit) : List (List String) :=
+    match remaining with
+    | [] => []
+    | visit :: rest =>
+      let staleness := stalenessFromHistory history
+      let keep := capCards units visit.daypart isEventLead onTour
+        (capForDaypart visit.daypart) staleness
+      let recorded := recordImpressions history keep
+      let nextHistory :=
+        match rest with
+        | [] => recorded
+        | next :: _ =>
+          advanceHistory recorded (next.hour - visit.hour)
+      keep :: go nextHistory rest
+  go initialHistory visits
 ```
 
-`stalenessFromHistory` applies the production formula to the history at the time of the current request. `capCards` makes the selection. `recordImpressions` increments the count and resets the age of every retained card. `advanceHistory` then adds the local-hour gap before the recursive call handles the next visit.
+The final line is where the data enters the loop: `go initialHistory visits` makes the selected starting history the `history` variable for the first visit. `stalenessFromHistory history` reads it to calculate the scores used by `capCards`. After the selection, `recordImpressions` updates the counts, `advanceHistory` adds the gap before the next visit, and `go nextHistory rest` passes that updated data into the next iteration.
 
 Two more helpers turn those five outputs into the coverage question:
 
