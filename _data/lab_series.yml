@@ -66,7 +66,7 @@
   title: "Part 2. Two Notebooks Lost"
   subtitle: "The first collapsed under validation. The second repeated a mistake it had already named."
   url: /series/the-machine-in-the-lab/two-notebooks-lost-series/
-  status: scheduled
+  status: published
   date: 2026-08-18
   estimated_words: "3,000-3,500 words"
   purpose: "Show what happened when an experienced, PhD-trained systems researcher used an LLM agent to make an ambitious self-directed audio-research program tractable: two silent setup decisions became foundations for plausible downstream work while creating different information and meaning failures."
@@ -106,8 +106,7 @@
   title: "Part 3. The Holdout Is a One-Way Door"
   subtitle: "Evidence cannot independently confirm the claim it helped shape."
   url: /series/the-machine-in-the-lab/the-holdout-is-a-one-way-door/
-  status: scheduled
-  date: 2026-08-21
+  status: draft
   estimated_words: "2,500-3,000 words"
   purpose: "Explain leakage as an information-flow problem rather than a faulty train_test_split call, using the project history to show how files, performances, caches, labels, derived features, and human adaptation can all cross the boundary."
   discovery_loop_role: "Define the loop's memory problem: results from one iteration change the agent, artifacts, and human operator, so evidence cannot remain independent merely by living in another directory."
@@ -144,8 +143,7 @@
   title: "Part 4. When Every Check Passes"
   subtitle: "All the artifacts agreed. The interpretation had never been tested."
   url: /series/the-machine-in-the-lab/when-every-check-passes/
-  status: scheduled
-  date: 2026-08-24
+  status: draft
   estimated_words: "2,800-3,400 words"
   purpose: "Pay off the meaning problem first exposed by Notebook 2 and demonstrate the limit of process-heavy agent review: a result can pass every internal-consistency gate and still make the wrong claim about the underlying world."
   discovery_loop_role: "Define the loop's evaluator problem: rapid iteration optimizes whatever signal closes the loop, including a technically consistent proxy that does not measure the claimed phenomenon."
@@ -184,8 +182,7 @@
   title: "Part 5. The Browser Is Part of the Experiment"
   subtitle: "A model score cannot tell you what the live system actually heard."
   url: /series/the-machine-in-the-lab/the-browser-is-part-of-the-experiment/
-  status: scheduled
-  date: 2026-08-27
+  status: draft
   estimated_words: "3,000-3,800 words"
   purpose: "Show why component metrics cannot predict the behavior of an end-to-end product path, and why hands-on browser rehearsals were part of building and evaluating the product rather than a ceremonial demo after the research. SetScope has an ordinary product job: show a viewer the song Goose is probably playing right now. Its guesses are product outputs, not scientific findings."
   discovery_loop_role: "Define the loop's execution problem: an experiment performed against an archive, component, or synthetic input does not evaluate the browser, audio transport, controller, and display path the product actually runs."
@@ -228,8 +225,7 @@
   title: "Part 6. A Discovery Loop That Can Say No"
   subtitle: "A strong result should authorize only the next step its evidence can support."
   url: /series/the-machine-in-the-lab/what-we-built-instead/
-  status: scheduled
-  date: 2026-08-30
+  status: draft
   estimated_words: "3,200-4,000 words"
   purpose: "Synthesize the practical research system that emerged and close the story with the fan-facing product it helped build. SetScope's guesses are not offered as scientific evidence: they are the output of a live song guesser. The methodological claim concerns how the project records failures and limits what may be inferred from engineering tests; broad numerical reliability claims remain reserved for clean evaluations if the author later chooses to make them."
   discovery_loop_role: "Present the systems contribution directly: a loop needs typed state, provenance, claim-scoped permissions, independent checks, invalid outcomes, stop conditions, and a promotion boundary that the generating agent cannot silently cross."
