@@ -111,6 +111,8 @@ Fixing the impossible day did not fix the shape of the proof. The next version s
 
 We eventually found that none of those inputs belonged in the coverage theorem. The theorem was valid for the executions it modeled, but the agent had reproduced the machinery around my question instead of stating the invariant directly.
 
+That contrast is the part I find most revealing. It took three Lean models to reach a property that ultimately fit in one equality. The first exposed the starvation bug but encoded the old collection of weekday and weekend programs. The second passed by turning those mutually exclusive programs into an impossible itinerary. The third modeled a real day, but carried dates, history, modes, and scoring into a theorem that did not need them. The LLM was not failing to prove a difficult theorem. It was failing to state the simple theorem without reproducing the implementation around it.
+
 Eventually I asked:
 
 > Is the union of the cards across the five daily programs equal to the set of all available cards?
