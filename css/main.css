@@ -479,17 +479,13 @@ ul.posts li:last-child {
   font-weight: 400;
   color: var(--fg-muted);
   text-decoration: none;
+  margin-right: 0.25rem;
 }
 
 .home-post-series:hover {
   color: var(--link-hover);
   text-decoration: underline;
   text-underline-offset: 3px;
-}
-
-.home-post-series-sep {
-  color: var(--fg-muted);
-  margin-right: 0.25rem;
 }
 
 @media (max-width: 520px) {
