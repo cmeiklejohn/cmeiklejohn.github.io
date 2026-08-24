@@ -107,7 +107,7 @@ This is where formal verification, using mathematical proof to check a software 
 
 ### The proof was still too complicated
 
-Fixing the impossible day did not fix the shape of the proof. The next version still ran a production-like selector inside the coverage theorem. It carried a `localDay` value that Lean never used to choose a program, checked two viewing histories even though history only changed filler order, and ran four fixed event and tour combinations. All of that was real implementation behavior. None of it was the starvation invariant.
+Fixing the impossible day did not fix the shape of the proof. The next version still ran a production-like selector inside the coverage theorem. It carried a `localDay` value that did not influence which program Lean chose, checked two viewing histories even though history could change order and filler but not which cards had reserved room, and ran four fixed event and tour combinations. All of that was real implementation behavior. None of it was the starvation invariant.
 
 I only pulled those pieces apart while editing this post. I kept asking what each input did and why five unexplained capacities appeared inside the argument. The theorem was valid for the executions it modeled, but the agent had reproduced the machinery around my question instead of stating the question simply enough for me to audit.
 
@@ -119,9 +119,9 @@ That is the theorem we should have written first. I had the agent replace the ol
 
 ### The theorem we actually needed
 
-The repaired product has five programs every day: morning, midday, afternoon, evening, and late night. A separate Go test sends five corresponding times on both a Wednesday and a Sunday through the production clock. That is where we check that the programs can occur on one date. The Lean coverage theorem does not need a date or an hour.
+The repaired product defines the same five programs every day: morning, midday, afternoon, evening, and late night. A separate Go test sends five local times through the production hour-to-program resolver on a representative weekday and weekend date. On each date, those five visits must produce the full sequence. The Lean coverage theorem does not need a date or an hour.
 
-The model collects the cards reserved in each of those programs, adds the structural Hero that is always present, and compares that union with the catalog. `nameSet` sorts the names and removes duplicates so the two lists represent sets:
+For this theorem, `availableCards` means the full modeled catalog under the assumption that every card has the content required to render. It is not the changing set of cards eligible in a live request. The model collects the cards reserved in each program, adds the structural Hero that is always present, and compares that union with the catalog. `nameSet` sorts the names and removes duplicates so the two lists represent sets:
 
 ```lean
 def availableCards : List String :=
@@ -135,15 +135,15 @@ theorem union_of_five_programs_is_all_available_cards :
   native_decide
 ```
 
-That is the coverage claim. **Connections** is reserved in two programs, but set equality removes the duplicate and only requires the card to appear once. **Live Now** and other uncapped modules are outside this selector.
+`native_decide` evaluates this finite equality and turns the result into a checked proof. **Connections** is reserved in two programs, but set equality removes the duplicate and only requires the card to appear once. **Live Now** and other uncapped modules are outside this selector.
 
-A separate theorem checks that each program has enough room for its reservations. The more detailed model handles history, scoring, ordering, and modes so it can be compared with Go. Those are useful checks, but they no longer obscure the finite claim Lean is proving about the current catalog.
+This is the assignment invariant, not yet a proof of what reached the browser. A separate theorem checks that each program has enough room for its reservations. The more detailed model handles history, scoring, ordering, and modes so it can be compared with Go. Those checks connect the small theorem to the implementation without putting the implementation back inside the theorem.
 
 ### Connecting Lean back to Go
 
 But did the Go code make the same decisions as the model?
 
-This is where the additional model detail matters. The production selector still contains scoring and ordering rules, even though starvation should not depend on them. The Lean twin reproduces those rules so a change in Go cannot silently move the reservation pass or make an assigned card lose to filler.
+This is where the additional model detail matters. The production selector still contains scoring and ordering rules, even though starvation should not depend on them. The Lean twin reproduces those rules so the compared cases fail if Go moves the reservation pass or lets an assigned card lose to filler.
 
 The supporting-card selector has far too many possible input catalogs to compare exhaustively. Instead, Lean writes a fixed sample of 128 selector walks, including the complete modeled catalog and reproducible subsets across the four event-lead and tour configurations. That number is a chosen test budget, not a total derived from the model.
 

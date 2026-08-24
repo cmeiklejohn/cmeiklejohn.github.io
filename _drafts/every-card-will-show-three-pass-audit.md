@@ -5,7 +5,7 @@ Post: `_posts/2026-08-24-every-card-will-show.markdown`
 Evidence base:
 
 - Zabriskie source excerpts rechecked through merged PR #2651 at `9a1141c2f1a8193a018e77a01e6fd7432b1fbc56`.
-- Blog `origin/master` at `fd63600bfe5dfab3e85ed4dc47614f769060830c`.
+- Blog `origin/master` at `145ce38bebd60a092a843921a6aee4c5935495ee`.
 - The author's first-person account for the conversation, elapsed time, the agent's 47-item product enumeration with 20 missing, agency, repeated requirement, production timing, and Zabriskie's role as a fully vibe-coded application whose implementation code he does not read.
 
 ## Structural reader
@@ -47,6 +47,8 @@ The new subheads keep the model failure, fixed schedule, structural coverage mec
 | Lean separates the starvation property from selector reproduction | `lean/LotLead/Starvation.lean`, `Catalog.lean`, `Cap.lean`, and `Cover.lean` at merged PR #2651 | The coverage theorem is now direct set equality. Dates, hours, history, ranking, modes, and capacity remain outside its statement. |
 | Public code excerpt matches the current Lean source | `availableCards`, `cardsAcrossFivePrograms`, and `union_of_five_programs_is_all_available_cards` from `lean/LotLead/Starvation.lean` at `9a1141c2f` | The only displayed theorem says that the union across five programs equals the available-card set. `nameSet` is explained as sorting and deduplicating the two name lists. |
 | The direct set-equality theorem holds | Local `./scripts/lean-lot-lead.sh`, PR #2651 Lean CI, unchanged differential fixtures, and focused production Go tests | Verified after replacing the indirect empty-starvation theorem. The selector twin and Go outputs did not change. |
+| `availableCards` denotes the full modeled catalog, not dynamic runtime eligibility | `Catalog.fullNames`, `Starvation.availableCards`, and the `allApplicableRankedLotCards` Go-test assumption | Added the assumption before the code excerpt so readers do not interpret the theorem as quantifying over arbitrary live eligibility changes. |
+| Direct equality is an assignment invariant, not proof of browser output | `Starvation.lean` for the union, `reservationsFit` for capacity, `Cover.lean` and differential fixtures for selector behavior, and the server-to-renderer handoff described later | Added the boundary immediately after the theorem and retained the separate implementation bridge. |
 | Lean checks coverage from two selected uniform starting histories | The all-unseen and all-fresh theorems in `lean/LotLead/Cover.lean` | Removed the history tutorial from the public post. Those finite cases are not a proof of arbitrary-history independence, and the structural coverage argument comes from reservations plus matching capacity. |
 | Go is compared through 64 deterministic trials from two histories plus a synthetic full-catalog selector test | `lot_cover_lean_diff_test.go`, `lot_card_day_coverage_test.go`, and `scripts/lean-lot-lead.sh` | Explicitly says the 128 supporting-card comparisons are sampled and that the full-catalog unit test calls the real selector without exercising the full request-to-browser path. |
 | Current browser no longer applies the old second scheduling policy | `lotApplyCardCap` and `lotRankCards` in `backend/internal/handlers/lot_posture.go`; `serverOwnsLayout` and `applyServerModuleOrder` in `web/src/components/sdui/cinematic/CinematicLot.jsx`; `docs/lot-posture-audit.md` | Separates server-owned candidate construction and layout from the checked selector. Preserves explicit client dismissals and does not claim proof of rendered pixels. |
