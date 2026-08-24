@@ -20,7 +20,7 @@ The answer was yes. Every card would show.
 
 That wasn't true. After the earlier attempts kept failing, I got frustrated and asked the agent to formalize the requirement in Lean. Only then did we discover the scale of the failure: of the 47 applicable cards the agent modeled, 20 didn't appear.
 
-I think this is a useful kind of hallucination to name. The agent hadn't invented a file, a function, or a test result. It had produced real code and real evidence. What it invented was the connective claim: because each piece of evidence established something close to my requirement, it was treated as establishing the requirement itself.
+I think this is a useful kind of hallucination to call out. The agent hadn't invented a file, a function, or a test result. It had produced real code and real evidence. What it invented was the connective claim: because each piece of evidence established something close to my requirement, it was treated as establishing the requirement itself.
 
 This is a story about an AI producing an implementation, tests, audits, and numerical arguments that all said the algorithm was correct. Each artifact embodied or checked a weaker claim near my requirement: coverage within a week, isolated reachability, catalog completeness, or eventually coverage across an impossible itinerary. None checked whether one person's five visits, carrying one viewing history through the day, exposed every relevant card.
 
