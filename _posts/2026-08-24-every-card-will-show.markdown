@@ -105,46 +105,39 @@ That passing version was added to the main source code, and its Lean check becam
 
 This is where formal verification, using mathematical proof to check a software claim, meets the hallucination problem. Lean checked the statement it was given. It could not check whether the agent had translated my product requirement faithfully.
 
-### Making the proof match the question
+### The proof was still too complicated
 
-The repaired product has five programs every day: morning, midday, afternoon, evening, and late night. A separate Go test sends 8 AM, noon, 3 PM, 8 PM, and 11 PM on both a Wednesday and a Sunday through the production clock. That is where we check that the five programs can occur on one real date. The starvation proof does not need a date or an hour once that fact has been established.
+Fixing the impossible day did not fix the shape of the proof. The next version still ran a production-like selector inside the coverage theorem. It carried a `localDay` value that Lean never used to choose a program, checked two viewing histories even though history only changed filler order, and ran four fixed event and tour combinations. All of that was real implementation behavior. None of it was the starvation invariant.
 
-It does not need viewing history either. History changes the order of ordinary filler cards. It cannot change the guarantee because the selector reserves room for a card in its assigned program before filling the remaining positions. The question is simply whether those reservations cover the catalog.
+I only pulled those pieces apart while editing this post. I kept asking what each input did and why five unexplained capacities appeared inside the argument. The theorem was valid for the executions it modeled, but the agent had reproduced the machinery around my question instead of stating the question simply enough for me to audit.
 
-The model now says that directly. It lists the five programs, finds the cards reserved in each one, and takes their union. The Hero is represented as a structural position that is always present and does not consume a supporting-card slot. **Live Now** and other uncapped modules are outside this selector.
+Eventually I asked:
 
-```lean
-def programs : List Daypart :=
-  [.morning, .midday, .afternoon, .evening, .late]
+> Is the union of the cards across the five daily programs equal to the set of all available cards?
 
-def reservedNames (program : Daypart) : List String :=
-  List.map (·.name)
-    (fullCatalog.filter fun card =>
-      !isStructural card &&
-        ownsProgramPosture card program)
+That is the theorem we should have written first. I had the agent replace the old coverage theorem with that statement and rerun the complete Lean and Go verification loop. It passed.
 
-def coveredNames : List String :=
-  structuralNames ++ programs.flatMap reservedNames
+### The theorem we actually needed
 
-def starved : List String :=
-  fullNames.filter fun name => !coveredNames.contains name
-```
+The repaired product has five programs every day: morning, midday, afternoon, evening, and late night. A separate Go test sends five corresponding times on both a Wednesday and a Sunday through the production clock. That is where we check that the programs can occur on one date. The Lean coverage theorem does not need a date or an hour.
 
-Most cards are reserved in one program. **Connections** is reserved in both midday and afternoon because either window leaves time to follow it into a listen, read, or watch. It is still one card, and it only has to appear once.
-
-Lean checks three concrete facts about the current catalog: every card is structural or assigned to a program, every program has room for all of its assignments, and the union leaves no card behind.
+The model collects the cards reserved in each of those programs, adds the structural Hero that is always present, and compares that union with the catalog. `nameSet` sorts the names and removes duplicates so the two lists represent sets:
 
 ```lean
-theorem every_program_has_room_for_its_assignments :
-    reservationsFit = true := by
-  native_decide
+def availableCards : List String :=
+  nameSet fullNames
 
-theorem five_program_reservations_starve_no_card :
-    starved = [] := by
+def cardsAcrossFivePrograms : List String :=
+  nameSet (structuralNames ++ programs.flatMap reservedNames)
+
+theorem union_of_five_programs_is_all_available_cards :
+    cardsAcrossFivePrograms = availableCards := by
   native_decide
 ```
 
-This is deliberately a finite proof about the current catalog and its reservations. It does not contain a calendar day, hours, history, scores, affinities, deadline state, tour state, or card ordering because none of those variables is part of the claim. The more detailed model still exists, but it has a different job: comparing the production selector with Lean.
+That is the coverage claim. **Connections** is reserved in two programs, but set equality removes the duplicate and only requires the card to appear once. **Live Now** and other uncapped modules are outside this selector.
+
+A separate theorem checks that each program has enough room for its reservations. The more detailed model handles history, scoring, ordering, and modes so it can be compared with Go. Those are useful checks, but they no longer obscure the finite claim Lean is proving about the current catalog.
 
 ### Connecting Lean back to Go
 
@@ -162,7 +155,7 @@ What happened after the selector returned? A checked result was still useless if
 
 The browser still honors explicit user actions such as local dismissals, and conventional tests cover the handoff from server identities to rendered components. This doesn't turn the theorem into proof of pixels. It closes the known hole where a later scheduling layer could silently weaken the selector's result.
 
-These checks now run on every proposed code change. A failed Lean theorem, stale generated data that no longer matches Lean, a disagreement on one of the differential cases, or a missing card in the synthetic Go walk fails the check. The old independent caps were replaced with capacities sized to the assigned cards, currently 10, 13, 11, 10, and 10, and Lean checks that those assignments still fit.
+These checks now run on every proposed code change. A failed Lean theorem, stale generated data that no longer matches Lean, a disagreement on one of the differential cases, or a missing card in the synthetic Go walk fails the check. The old independent caps were replaced with capacities sized to each program's assigned cards, and Lean fails if an assignment count exceeds its corresponding capacity.
 
 This was the first version I would accept as implementing the coverage design. Lean didn't certify the whole product or prove every behavior of the ranking algorithm. It checked the complete catalog against explicit program assignments and capacities, while the additional tests made it much harder for the production selector to drift away without being noticed. That is different from producing another artifact that merely says the implementation looks correct.
 
@@ -176,7 +169,7 @@ The invariant was easy to state: across one person's five visits on one calendar
 
 The power we eventually got from Lean wasn't another claim that the code looked right. Once the five daily programs, the card assignments, the reservation pass, and the capacities were explicit, Lean could check that the modeled catalog left no card behind. Go then had to match the sampled supporting-card comparisons, while a separate unit test walked the real Go selector through the full modeled catalog. This didn't prove every Go input, changing eligibility, changing modes, or the whole product. It gave us a checked property with an explicit boundary and strong evidence that the production selector agreed on the cases we compared.
 
-Lean itself was not immune to the problem. The first passing Lean model contained the wrong itinerary, and I let it merge without catching that mismatch. A theorem can make a misunderstanding more convincing if nobody checks that the formal statement still matches the request. The important step was not adding a proof to the artifact pile. It was making a precise, bounded version of my original invariant explicit, checking it, connecting it to the production implementation, and refusing to let a later layer weaken it.
+Lean itself was not immune to the problem. The first passing model contained the wrong itinerary. The repair was valid but still buried the invariant under dates, history, modes, and scoring until I questioned each input while editing this post. A theorem can make a misunderstanding more convincing, or make a simple claim needlessly difficult to inspect. The important step was not adding a proof to the artifact pile. It was reducing the theorem to the invariant I could evaluate, checking it, and then connecting that small claim to the production implementation.
 
 This wasn't one model having one bad run. I tried to repair the work with Claude Opus 4.6, Claude Opus 4.8, Claude Opus 5, and Codex using GPT-5.6 Sol. None independently arrived at both the invariant I had stated and an implementation that preserved it. They found different problems and produced more artifacts, but changing models didn't break the pattern. Each could accept or recreate a nearby requirement and then generate convincing evidence for its own version of the problem.
 
