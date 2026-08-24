@@ -5,7 +5,7 @@ Post: `_posts/2026-08-24-every-card-will-show.markdown`
 Evidence base:
 
 - Zabriskie source excerpts rechecked against `origin/main` at `51995c9433e522d9e27735aa30118b1aa7e02098`; the successful bounded proof loop remains recorded below at its August 24 merge commit.
-- Blog `origin/master` at `706fac1325730efa80a68347f2b5159a8d68b173`.
+- Blog `origin/master` at `5da3f3ebd727b25d3b59182f583fd6b7f1f96382`.
 - The author's first-person account for the conversation, elapsed time, the agent's 47-item product enumeration with 20 missing, agency, repeated requirement, production timing, and Zabriskie's role as a fully vibe-coded application whose implementation code he does not read.
 
 ## Structural reader
@@ -15,10 +15,10 @@ Evidence base:
 3. Responsibility boundary: keep at the end of the introduction. It locates the author's responsibility without assigning the invented policy to him.
 4. Agent-chosen policy: keep as the first main section. The author supplied the no-starvation requirement; the sequence from caps through ranking and classification to the impossible 27-position argument shows how the chosen implementation drifted away from it.
 5. Pre-Lean assurances: keep together as the second main section. The documentation audit, per-card reachability test, catalog review, and browser split all support the same distinction between local reachability and one-person coverage.
-6. Lean primer and chronology: keep as the final technical section, split under `Lean proved the wrong day`, `Putting one day into the model`, `Reserving room before ranking`, and `Connecting Lean back to Go`. Introduce the bounded Cedar-style architecture, then show the failed first model and the first passing model's impossible itinerary before explaining the reservation-and-capacity repair. This keeps the proof failure inside the incident chronology rather than revealing it after the corrected implementation.
+6. Lean primer and chronology: keep as the final technical section, split under `Lean proved the wrong day`, `Fixing the five-visit schedule`, `Reserving room before ranking`, and `Connecting Lean back to Go`. Introduce the bounded Cedar-style architecture, then show the failed first model and the first passing model's impossible itinerary before explaining the reservation-and-capacity repair. This keeps the proof failure inside the incident chronology rather than revealing it after the corrected implementation.
 7. Internal audit note and publication checklist: remove from the public body. Preserve them here instead. The evidence limits that matter to the argument remain explicit in the post.
 
-The new subheads keep the model failure, same-day label, structural coverage mechanism, and implementation bridge from reading as one uninterrupted proof tutorial. No section is left doing multiple unrelated jobs after this pass.
+The new subheads keep the model failure, fixed schedule, structural coverage mechanism, and implementation bridge from reading as one uninterrupted proof tutorial. No section is left doing multiple unrelated jobs after this pass.
 
 ## Evidence reviewer
 
@@ -45,7 +45,7 @@ The new subheads keep the model failure, same-day label, structural coverage mec
 | Connections owns both midday and afternoon | `lotCardAdditionalProgramPostures`, the `discover:connection` rationale in `lot_program_catalog.go`, `docs/lot-posture-audit.md`, and the matching Lean catalog entry | Explained that an applicable Connections card is intentionally repeated because either daytime window leaves runway to follow its listen/read/watch path. Identified this as current product policy encoded by Lean, not a mathematical consequence of the proof, and clarified that it remains one catalog identity. |
 | Late-hours Hero, Act Now, and Coming Up appeared in production | Read-only signed-in screenshots captured from `zabriskie.app/v2/lot` at 11:35 PM on August 23 and just after midnight on August 24 | Used only in image captions describing the visible program; not treated as five-visit coverage evidence. |
 | Lean models card metadata, five same-day visits, ranking, selection, and evolving staleness | `lean/LotLead/Cap.lean` and `lean/LotLead/Cover.lean` on `origin/main` | Added as the core of the primer; explicitly described as independent of the request path and Go source. |
-| Public code excerpts match the current Lean source | `takePhase0` from `lean/LotLead/Cap.lean`; `LocalVisit`, `fiveVisitsOn`, `programmed_capacities_match_catalog`, `covered`, and `missing` from `lean/LotLead/Cover.lean` at `51995c943` | Kept the examples adjacent to their plain-language translations and centered them on the reservation-and-capacity mechanism. |
+| Public code excerpts match the current Lean source | `takePhase0` from `lean/LotLead/Cap.lean`; `programmed_capacities_match_catalog`, `covered`, and `missing` from `lean/LotLead/Cover.lean` at `51995c943` | Kept the examples adjacent to their plain-language translations and centered them on the reservation-and-capacity mechanism. |
 | Lean checks coverage from two selected uniform starting histories | The all-unseen and all-fresh theorems in `lean/LotLead/Cover.lean` | Removed the history tutorial from the public post. Those finite cases are not a proof of arbitrary-history independence, and the structural coverage argument comes from reservations plus matching capacity. |
 | Go is compared through 64 deterministic trials from two histories plus a synthetic full-catalog selector test | `lot_cover_lean_diff_test.go`, `lot_card_day_coverage_test.go`, and `scripts/lean-lot-lead.sh` | Explicitly says the 128 supporting-card comparisons are sampled and that the full-catalog unit test calls the real selector without exercising the full request-to-browser path. |
 | Current browser no longer applies the old second scheduling policy | `lotApplyCardCap` and `lotRankCards` in `backend/internal/handlers/lot_posture.go`; `serverOwnsLayout` and `applyServerModuleOrder` in `web/src/components/sdui/cinematic/CinematicLot.jsx`; `docs/lot-posture-audit.md` | Separates server-owned candidate construction and layout from the checked selector. Preserves explicit client dismissals and does not claim proof of rendered pixels. |
@@ -58,9 +58,8 @@ Corrections preserved from the evidence pass:
 
 - Removed the `simulateDayFrom` history tutorial after confirming that history feeds ranking but is not the source of the no-starvation guarantee.
 - Recentered the Lean explanation on `takePhase0` reservations and the checked per-program assignment counts.
-- Clarified that `localDay` is only a copied identity label; Lean does not interpret weekday versus weekend, which remains a separate Go clock-resolver check.
+- Removed `localDay` from the public explanation after confirming that it is never consulted by the Lean clock or selector and does not contribute to the coverage result.
 - Defined `additionalPostures` in product language as additional guaranteed programs.
-- Corrected the same-day explanation: `fiveVisitsOn` reuses one `localDay` by construction; Lean is not performing a separate inequality check over the five records.
 - Replaced any implication that 27 caused the observed 20 missing cards with two independently bounded claims.
 - Replaced "daily maximum" language with "one visit to each distinct program."
 - Corrected the old six-card cap and 20/21 and 15/16 totals to include the Hero.
@@ -112,7 +111,7 @@ Corrections preserved from the evidence pass:
 - Condensed `What the agent invented instead` around four necessary points: caps, ranking and catalog policy, concrete classification failures and false owner attribution, and the impossible 27-position argument.
 - Replaced the abstract `impossible itinerary` explanation in the Lean chronology with the missing concrete fact: the passing model placed weekday and weekend programs inside one supposed calendar day.
 - Removed the history tutorial after a continuous reread showed that it made ranking state sound like the source of the coverage property. The revised section moves directly from program assignments to the reservation pass, matching capacities, and the empty missing-card check.
-- Rewrote the `localDay` explanation to say that the number is only an identity label and that Lean does not model weekday versus weekend. Kept the Wednesday/Sunday Go check as a separate implementation boundary.
+- Replaced the inert `localDay` code example with the actual boundary: Lean assumes the fixed five-program walk, while Wednesday/Sunday Go tests establish that production can realize it on a calendar date.
 - Rendered the shortened section with Jekyll, rechecked every displayed Lean excerpt against current Zabriskie `origin/main`, and confirmed that the revision introduces no em dashes or stale history code examples.
 
 ## Remaining publication checks
