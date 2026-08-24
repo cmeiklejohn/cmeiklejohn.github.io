@@ -5,7 +5,7 @@ Post: `_posts/2026-08-24-every-card-will-show.markdown`
 Evidence base:
 
 - Zabriskie `origin/main` at `fffec3548949bce7803dd48ad8600de9ca6e228d`.
-- Blog `origin/master` at `7f9955e0a2594bc2fc9318ad3c340df89eed2f23`.
+- Blog `origin/master` at `7a47e9a2171cd8b2b7eda2113954f7536bb06368`.
 - The author's first-person account for the conversation, elapsed time, the agent's 47-item product enumeration with 20 missing, agency, repeated requirement, production timing, and Zabriskie's role as a fully vibe-coded application whose implementation code he does not read.
 
 ## Structural reader
@@ -13,7 +13,7 @@ Evidence base:
 1. Opening incident: keep. It establishes the exact promise and observed contradiction before introducing the system.
 2. Product and experiment background: keep before the incident. It defines Zabriskie, states that the application is built entirely through agents without manual implementation review, and then defines The Lot, its five programs, and the intended product behavior.
 3. Responsibility boundary: keep at the end of the introduction. It locates the author's responsibility without assigning the invented policy to him.
-4. Agent-invented requirements: keep as the first main section. The sequence from page-length problem to unrequested caps, scoring, classification, and the impossible 27-position argument shows how the agent replaced the stated requirement rather than merely implementing it.
+4. Agent-chosen policy: keep as the first main section. The author supplied the no-starvation requirement; the sequence from caps through ranking and classification to the impossible 27-position argument shows how the chosen implementation drifted away from it.
 5. Pre-Lean assurances: keep together as the second main section. The documentation audit, per-card reachability test, catalog review, and browser split all support the same distinction between local reachability and one-person coverage.
 6. Lean primer and chronology: keep as the final technical section, but split its four jobs under `Lean proved the wrong day`, `Putting one day into the model`, `Carrying one viewing history`, and `Connecting Lean back to Go`. Introduce the bounded Cedar-style architecture, then show the failed first model and the first passing model's impossible itinerary before explaining the repair. This keeps the proof failure inside the incident chronology rather than revealing it after the corrected implementation.
 7. Internal audit note and publication checklist: remove from the public body. Preserve them here instead. The evidence limits that matter to the argument remain explicit in the post.
@@ -90,7 +90,7 @@ Corrections preserved from the evidence pass:
 - Preserved the distinction between a theorem about the finite Lean model, sampled differential agreement, the independent Go test, and unverified production behavior.
 - Introduced Cedar only to explain the verification architecture, then immediately bounded the analogy so readers do not infer that Cedar schedules The Lot.
 - Threaded hallucination through the argument as a false connection among real artifacts, not as a claim that the source code, test results, or Lean proof were fabricated.
-- Made agency explicit at the section and article level: the limits, rankings, classifications, weekly window, isolated reachability test, and split scheduling ownership were introduced by the agent without being requested or surfaced as product questions.
+- Made agency explicit at the section and article level: the author requested the no-starvation outcome; the agent chose the specific limits, rankings, and classifications, then introduced the weekly window, isolated reachability test, and split scheduling ownership without surfacing those substitutions.
 - Removed the public-facing audit appendix, which interrupted the ending after the argument had already reached its production boundary.
 - Added two current production screenshots at the points where the reader first encounters the Lot structure and the distinction between one partial program and the five-visit guarantee. The second image uses the Coming Up card; the What's New panel was dismissed before capture.
 - Checked for em dashes and accidental Markdown H1 headings in the body; none remain.
@@ -100,7 +100,8 @@ Corrections preserved from the evidence pass:
 - Read the revised page continuously after rendering. Removed the repeated Hero explanation, narrowed every conclusion that had called the two selected histories `extremes`, and retained the short sentence `Lean correctly proved coverage for an itinerary no person could take` as the central turn.
 - Rechecked the code-block spacing and the new third-level headings in the rendered page; both have clear separation from adjacent prose.
 - Added the vibe-coding paragraph between the product introduction and The Lot so the reader understands why the author evaluated browser behavior and requested audits instead of reading the implementation. The later conclusion now asks for the formal statement to be presented in terms a person can evaluate, rather than requiring manual source inspection.
-- Added a transition into the first implementation section: the request to distribute cards across the day became an unrequested policy about what each individual visit could omit.
+- Added a transition into the first implementation section: the request to distribute cards across the day became an agent-chosen policy about what each individual visit could omit.
+- Corrected the ranking paragraph so it no longer claims that the author had not asked for product rules. It now distinguishes the requested no-starvation outcome from the agent's chosen implementation.
 - Made the reachability substitution explicit: one shared history covering all cards became a separate favorable history for each card. Combined the following explanation so the section states the contrast once.
 - Replaced the dense weekday/weekend capacity accounting with the two actual schedules and the direct explanation that 27 added mutually exclusive programs.
 - Condensed `What the agent invented instead` around four necessary points: caps, ranking and catalog policy, concrete classification failures and false owner attribution, and the impossible 27-position argument.
