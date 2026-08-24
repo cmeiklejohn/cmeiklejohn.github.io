@@ -109,7 +109,7 @@ This is where formal verification, using mathematical proof to check a software 
 
 Fixing the impossible day did not fix the shape of the proof. The next version still ran a production-like selector inside the coverage theorem. It carried a `localDay` value that did not influence which program Lean chose, checked two viewing histories even though history could change order and filler but not which cards had reserved room, and ran four fixed event and tour combinations. All of that was real implementation behavior. None of it was the starvation invariant.
 
-I only pulled those pieces apart while editing this post. I kept asking what each input did and why five unexplained capacities appeared inside the argument. The theorem was valid for the executions it modeled, but the agent had reproduced the machinery around my question instead of stating the question simply enough for me to audit.
+We eventually found that none of those inputs belonged in the coverage theorem. The theorem was valid for the executions it modeled, but the agent had reproduced the machinery around my question instead of stating the invariant directly.
 
 Eventually I asked:
 
