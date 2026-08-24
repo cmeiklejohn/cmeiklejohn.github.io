@@ -121,7 +121,7 @@ def fiveVisitsOn (localDay : Nat) : List LocalVisit :=
   ]
 ```
 
-All five records carry the same `localDay`, and Lean checks that none differs. Its own hour-to-program function uses the five fixed hours rather than interpreting the date. Separate Go tests therefore send the same hours through the production clock resolver on both a Wednesday and a Sunday. Those cases guard against a return of the old weekday-versus-weekend split.
+`fiveVisitsOn` takes one `localDay` argument and copies it into all five records, so they share a day by construction. Its hour-to-program function uses the five fixed hours rather than interpreting the date. Separate Go tests therefore send the same hours through the production clock resolver on both a Wednesday and a Sunday. Those cases guard against a return of the old weekday-versus-weekend split.
 
 Lean models only the part of The Lot controlled by the ranked selector. It includes the structural Hero identity so the coverage question accounts for the top card, but the Hero appears independently and does not consume a supporting-card position. The model excludes **Live Now** and other modules inserted elsewhere on the page. The theorem below establishes coverage only for cards that pass through this selector.
 
