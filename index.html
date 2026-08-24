@@ -29,9 +29,19 @@ description: "Christopher Meiklejohn — Ph.D., Software Engineering (CMU). Note
     <h2 id="home-recent-heading" class="home-section-title archive-section-heading">Recent</h2>
     <p class="archive-section-intro">The latest writing on the site. Open the archive for full lists by topic.</p>
     <ul class="posts">
-      {% assign recent_posts = site.posts | where_exp: "p", "p.series != 'mas'" %}
-      {% for post in recent_posts limit:9 %}
-        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+      {% for post in site.posts limit:15 %}
+        {% assign series_meta = site.data.series[post.series] %}
+        {% assign series_title_prefix = "" %}
+        <li>
+          <span class="home-post-date">{{ post.date | date_to_string }}</span>
+          <span class="home-post-entry">
+            {% if series_meta %}
+              {% capture series_title_prefix %}{{ series_meta.title }}, {% endcapture %}
+              <a class="home-post-series" href="{{ series_meta.landing_url }}">{{ series_meta.title }}</a><span class="home-post-series-sep" aria-hidden="true">·</span>
+            {% endif %}
+            <a class="home-post-link" href="{{ post.url }}">{{ post.title | remove_first: series_title_prefix }}</a>
+          </span>
+        </li>
       {% endfor %}
     </ul>
   </section>
