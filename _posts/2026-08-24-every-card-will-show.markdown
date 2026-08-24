@@ -95,9 +95,9 @@ The shape of this setup came from [Cedar](https://docs.cedarpolicy.com/other/sec
 
 ### Lean proved the wrong day
 
-The agent wrote the first Lean coverage model too. I am still not sure whether asking an agent to formalize a requirement agents had repeatedly misunderstood was a good idea. But the model failed, which was useful: it was where we discovered that 20 of the 47 cards were starved. The dangerous version was the agent's next one, the first passing model presented as proving my requirement. It carried one history through five programs, but it treated weekday morning, workday, evening, late night, and weekend daytime as consecutive visits.
+The agent wrote the first Lean coverage model too. I am still not sure whether asking an agent to formalize a requirement agents had repeatedly misunderstood was a good idea. But the model failed, which was useful: it was where we discovered that 20 of the 47 cards were starved. The dangerous version was the agent's next one. It passed, but it modeled the wrong day. It carried one viewing history through five visits labeled weekday morning, workday, evening, late night, and weekend daytime. A single calendar day cannot be both a weekday and a weekend.
 
-Lean correctly proved coverage for an itinerary no person could take. The theorem was valid. The claim that it described one person's day was not.
+Lean proved that every card appeared in that impossible sequence. The theorem was valid. The agent's claim that it represented my one-day requirement was not.
 
 That passing version was added to the main source code, and its Lean check became required in continuous integration (CI), the automated test gate for every proposed code change. I merged it. The presence of a proof made the result feel stronger than it was, and I accepted the agent's description of the modeled day.
 
