@@ -89,9 +89,11 @@ The checks hadn't lied. The agent had encoded weaker questions, then treated the
 
 What would it take to test the question I had actually asked?
 
-Lean is both a programming language and a proof assistant, a tool for describing a system in logic and checking claims about that description. We used it to build a small, independent model of The Lot beside the server used by the live app, which is written in the [Go programming language](https://go.dev/). Lean does not run when somebody opens The Lot, and it does not read the Go source. We rewrote only the pieces needed for this claim, then made the two implementations compare results.
+Lean is both a programming language and a proof assistant, a tool for describing a system in logic and checking claims about that description. We used it to build an independent model of The Lot beside the server used by the live app, which is written in the [Go programming language](https://go.dev/). Lean does not run when somebody opens The Lot, and it does not read the Go source.
 
-The shape of this setup came from [Cedar](https://docs.cedarpolicy.com/other/security.html), the open-source language developed at AWS for deciding who is allowed to do what in an application. Cedar has a model written in Lean and a separate engine, the Rust program that makes real authorization decisions. It connects them with [differential testing](https://en.wikipedia.org/wiki/Differential_testing): generate an input, run it through both implementations, and check that they produce the same result. The proofs establish properties of the model; the differential tests check that the live engine continues to behave like it. We followed this model for the bounded part of The Lot that chooses the lead and supporting cards.
+The Lean code ended up doing two jobs. It checked whether the catalog was covered across five programs, and it reproduced enough of the production selector to compare Lean's output with Go's. Those jobs require different levels of detail. The coverage property needs program assignments, reservations, and capacities. The production comparison also needs the scoring and ordering rules. Those extra rules are part of the implementation twin, not the starvation argument.
+
+The shape of this setup came from [Cedar](https://docs.cedarpolicy.com/other/security.html), the open-source language developed at AWS for deciding who is allowed to do what in an application. Cedar has a model written in Lean and a separate engine, the Rust program that makes real authorization decisions. It connects them with [differential testing](https://en.wikipedia.org/wiki/Differential_testing): generate an input, run it through both implementations, and check that they produce the same result. The proofs establish properties of the model; the differential tests check that the live engine continues to behave like it. We followed that pattern for The Lot's supporting-card selector.
 
 ### Lean proved the wrong day
 
@@ -109,26 +111,21 @@ The repaired Lean model uses one fixed walk: morning, midday, afternoon, evening
 
 Lean does not model a calendar date or determine its day of the week. It assumes that all five programs are available during one day, then asks what the selector shows across that walk. Separate Go tests send 8 AM, noon, 3 PM, 8 PM, and 11 PM on both a Wednesday and a Sunday through the production clock resolver. Those tests, not the Lean model, check that the five-program walk is possible on a real date.
 
-The coverage model concerns the ranked cards that rotate through The Lot's sections. **Live Now** and other uncapped modules bypass that selector, so they are outside this claim. When an independent Hero exists, the model keeps it without charging it against the supporting-card limit. A separate Lean model checks which already-built candidate, if any, is chosen to lead the page.
+The coverage claim concerns the ranked supporting cards that rotate through The Lot's sections. **Live Now**, the independent Hero, and other uncapped modules bypass the supporting-card limit, so they are outside this starvation question.
 
-Each identity becomes a typed record containing its section, deadline status, position, and preferred time. Each non-Hero identity also receives at least one program where it is guaranteed room. The code calls a section a `Tier`, a preferred time an `affinity`, and a guaranteed program a `posture`:
+For coverage, the relevant catalog data is much smaller than the complete `Card` record. Each card has an identity and at least one program where it is guaranteed room. The source calls the primary guaranteed program a `posture` and any others `additionalPostures`:
 
 ```lean
-structure Card where
-  name : String
-  tier : Tier
-  deadline : Bool := false
-  renderOrder : Nat := 0
-  affinity : Affinity := .none
-  posture : Daypart := .none
-  additionalPostures : List Daypart := []
+def ownsProgramPosture (c : Card) (d : Daypart) : Bool :=
+  (c.posture != .none && c.posture == d) ||
+    c.additionalPostures.contains d
 ```
 
-`additionalPostures` means additional guaranteed programs. Most cards are guaranteed room in one program. **Connections** is guaranteed room at both midday and afternoon because either window leaves time to follow the card into a listen, read, or watch. It remains one card, and the theorem doesn't require it to appear twice. Lean didn't choose this policy; the model records the choice and checks what follows from it.
+Most cards own one program. **Connections** owns both midday and afternoon because either window leaves time to follow the card into a listen, read, or watch. It remains one card, and coverage only requires it to appear once. Lean didn't choose that product policy; the catalog records it.
 
-### Reserving room before ranking
+### The smaller starvation argument
 
-The important rule is simpler than the ranking system. For each program, the selector first keeps every applicable card assigned to that program. Only then does ranking fill any positions left over. Ranking can change the order and the filler, but it is not supposed to decide whether an assigned card receives its guaranteed opportunity.
+The starvation argument does not care which card ranks first. For each program, the selector first keeps every applicable card assigned to that program. Only then does it use ranking to fill positions left over. Ranking can change the order and filler, but it cannot take away an assigned card's guaranteed opportunity.
 
 Lean expresses the reservation pass as `takePhase0`. It walks the ranked list and keeps every card that owns the current program until the program reaches its capacity:
 
@@ -153,7 +150,9 @@ theorem programmed_capacities_match_catalog :
 
 Those are also the five program limits. In other words, the guarantee comes from assigning every ranked card at least one program, reserving those cards before ordinary ranking, and providing enough room for all the assignments. Ranking determines order and fills holes left by cards that are not applicable. It is not the source of the no-starvation guarantee.
 
-The Lean implementation also mirrors the rest of production's ranking so the two selectors can be compared. That machinery is part of the implementation model, not the reason the coverage result holds.
+The smaller theorem suggested by this design would quantify over any ranking: if every card owns one of the five programs, each program has room for all of its owners, and the selector keeps owners first, then the union of the five programs contains every card. The exact scores and resulting order would disappear from the statement.
+
+The current Lean coverage theorem does not state that general result. It executes the complete production-like selector on the current catalog and checks the resulting union. That is a valid finite check, but it makes the model more complicated than the starvation property requires.
 
 Lean runs the complete catalog through the five modeled programs. Two small helpers turn those outputs into the coverage question:
 
@@ -175,13 +174,13 @@ This is a finite check of the current catalog and modeled selector. It does not 
 
 But did the Go code make the same decisions as the model?
 
-The product makes two different top-of-page decisions. One chooses a primary lead from ten already-built candidates. The ranked catalog separately includes `hero:hero`, a structural identity that lets the coverage model account for an independent Hero without charging it against supporting capacity. The primary-lead chooser has its own smaller check: ten yes-or-no values representing whether each lead candidate is present, plus one of six program values. That produces 2<sup>10</sup> × 6, or 6,144, possible inputs. Lean writes the expected lead choice for every one, and Go must match all 6,144 rows. Candidate construction and rendering are outside that exhaustive comparison.
+This is where the additional model detail matters. The production selector still contains scoring and ordering rules, even though starvation should not depend on them. The Lean twin reproduces those rules so a change in Go cannot silently move the reservation pass or make an assigned card lose to filler.
 
 The supporting-card selector has far too many possible input catalogs to compare exhaustively. Instead, Lean writes a fixed sample of 128 selector walks, including the complete modeled catalog and reproducible subsets across the four event-lead and tour configurations. That number is a chosen test budget, not a total derived from the model.
 
 Go replays those walks through `lotCapCards`, the production function that selects supporting cards, and must return the same lists Lean produced. A separate Go unit test constructs a synthetic all-applicable inventory with the same modeled names and runs the real selector across the four configurations. These checks exercise the production selection function, not the full request-to-browser path.
 
-That is a useful bridge, but it isn't proof that Lean and Go agree for every possible input. Lean proves the coverage theorem inside its model. The primary-lead comparison is exhaustive for its narrow input. The supporting-card comparison is sampled, with a full-catalog case and a separate full-catalog Go unit test. These are stronger and more explicit checks than we had before, but they establish different things.
+That is a useful bridge, but it isn't proof that Lean and Go agree for every possible input. Lean checks coverage inside its model. The supporting-card comparison is sampled, with a full-catalog case and a separate full-catalog Go unit test. These are stronger and more explicit checks than we had before, but they establish different things.
 
 What happened after the selector returned? A checked result was still useless if the browser could discard or reorder it. We therefore centralized scheduling-time eligibility, deduplication, caps, sections, and ordering on the server. The checked selector owns the cap and reservation decision. The surrounding server code resolves candidates and produces `moduleOrder`, the final allow-list and order, plus `moduleSections` for placement. The browser follows those instructions instead of running its old second scheduling policy.
 
@@ -199,7 +198,7 @@ Those artifacts agreed because the same failure pattern propagated from one arti
 
 The invariant was easy to state: across one person's five visits on one calendar day, every available and relevant card should appear at least once. That did not make the algorithm easy to implement correctly. The agent could read the specification, write the implementation, write unit and end-to-end tests, and audit its own work, but it repeatedly failed to keep the invariant intact. Each time it encountered an ambiguity or an implementation obstacle, it invented a nearby requirement instead of asking me.
 
-The power we eventually got from Lean wasn't another claim that the code looked right. Once the five daily programs, the card assignments, the reservation pass, and the capacities were explicit, Lean could check that the modeled catalog left no card behind. Go then had to match every primary-lead case and the sampled supporting-card comparisons, while a separate unit test walked the real Go selector through the full modeled catalog. This didn't prove every Go input, changing eligibility, changing modes, or the whole product. It gave us a checked property with an explicit boundary and strong evidence that the production selector agreed on the cases we compared.
+The power we eventually got from Lean wasn't another claim that the code looked right. Once the five daily programs, the card assignments, the reservation pass, and the capacities were explicit, Lean could check that the modeled catalog left no card behind. Go then had to match the sampled supporting-card comparisons, while a separate unit test walked the real Go selector through the full modeled catalog. This didn't prove every Go input, changing eligibility, changing modes, or the whole product. It gave us a checked property with an explicit boundary and strong evidence that the production selector agreed on the cases we compared.
 
 Lean itself was not immune to the problem. The first passing Lean model contained the wrong itinerary, and I let it merge without catching that mismatch. A theorem can make a misunderstanding more convincing if nobody checks that the formal statement still matches the request. The important step was not adding a proof to the artifact pile. It was making a precise, bounded version of my original invariant explicit, checking it, connecting it to the production implementation, and refusing to let a later layer weaken it.
 
