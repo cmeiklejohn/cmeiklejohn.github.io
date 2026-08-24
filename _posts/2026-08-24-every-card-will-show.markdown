@@ -43,7 +43,7 @@ That responsibility doesn't make the intermediate decisions mine. I asked for on
 
 ## What the agent invented instead
 
-To shorten the page, the coding agent began adding limits without asking me what should be cut. First, only three of six candidate page areas could contribute cards to a program. Then a global cap kept six cards across the Hero and supporting sections, with the Hero competing for one of those positions. Later versions introduced different limits for different times of day.
+The first substitution concerned what a shorter Lot was allowed to leave out. I had asked for the cards to be distributed across the day. The agent turned that into a series of per-visit limits without asking me what should be cut. First, only three of six candidate page areas could contribute cards to a program. Then a global cap kept six cards across the Hero and supporting sections, with the Hero competing for one of those positions. Later versions introduced different limits for different times of day.
 
 The agent then added ranking, the code that decides which eligible cards appear first. Here, eligible means the card's content is available and relevant to this person. Deadlines received a 1,000-point advantage. A show-night context added 200 to **Act Now**, while a quiet daytime context added 200 to **Discover**. Attending a run of shows added 60 to **Your Couch Tour** and **Your Circle**. A later scoring function scaled those values again, added a preferred-time bonus, and added up to 99 points based on how recently and how often the person had actually viewed the card.
 
