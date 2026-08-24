@@ -5,13 +5,13 @@ Post: `_posts/2026-08-24-every-card-will-show.markdown`
 Evidence base:
 
 - Zabriskie `origin/main` at `fffec3548949bce7803dd48ad8600de9ca6e228d`.
-- Blog `origin/master` at `3a4acd8ab51c75f2b7394ad9226ce987dfa190be`.
-- The author's first-person account for the conversation, elapsed time, the agent's 47-item product enumeration with 20 missing, agency, repeated requirement, and production timing.
+- Blog `origin/master` at `788b3154f524af52c66ec33694d200e9da027459`.
+- The author's first-person account for the conversation, elapsed time, the agent's 47-item product enumeration with 20 missing, agency, repeated requirement, production timing, and Zabriskie's role as a fully vibe-coded application whose implementation code he does not read.
 
 ## Structural reader
 
 1. Opening incident: keep. It establishes the exact promise and observed contradiction before introducing the system.
-2. Lot background: keep immediately after the incident. It defines the five programs and the intended product behavior before implementation detail appears.
+2. Product and experiment background: keep before the incident. It defines Zabriskie, states that the application is built entirely through agents without manual implementation review, and then defines The Lot, its five programs, and the intended product behavior.
 3. Responsibility boundary: keep at the end of the introduction. It locates the author's responsibility without assigning the invented policy to him.
 4. Agent-invented requirements: keep as the first main section. The sequence from page-length problem to unrequested caps, scoring, classification, and the impossible 27-position argument shows how the agent replaced the stated requirement rather than merely implementing it.
 5. Pre-Lean assurances: keep together as the second main section. The documentation audit, per-card reachability test, catalog review, and browser split all support the same distinction between local reachability and one-person coverage.
@@ -25,6 +25,7 @@ The new subheads keep the model failure, corrected same-day representation, hist
 | Claim | Boundary or source | Disposition |
 | --- | --- | --- |
 | The agent said every card would show | Author recollection | Kept in first-person incident framing. |
+| Zabriskie is built entirely through vibe coding and the author does not read its implementation code | Author account of the experiment's method | Added near the beginning so reliance on agent-written code, tests, and audits is a premise of the incident rather than a detail inferred later. |
 | The agent enumerated 47 applicable product cards and found 20 did not appear | Author-supplied account of the agent's work | Corrected the agency: the author requested the enumeration; the agent performed it. The 47 was not a committed source-code catalog. |
 | Roughly ten hours on August 22 and twelve on August 23 | Author recollection | Kept with `roughly` and changed relative dates before moving the post to August 24. |
 | 29 cards and more than 15,000 pixels | PR #2514 evidence records 29 cards and 15,554 pixels | Rounded pixel count in prose. |
@@ -72,6 +73,7 @@ Corrections preserved from the evidence pass:
 - Replaced `history extremes` with the two actual uniform starting histories and stated the histories, eligibility changes, mode changes, and viewport behavior outside the theorem.
 - Corrected staleness to describe impression recency and frequency rather than time since server selection alone.
 - Replaced the remaining ambiguous `shipped code` with `merged code`.
+- Added the vibe-coding method near the beginning and replaced the implication that the author should have inspected the Lean source with the actual failure: he accepted the agent's inaccurate description of the modeled day.
 
 ## Continuous-read readability editor
 
@@ -97,6 +99,7 @@ Corrections preserved from the evidence pass:
 - Split the expanded Lean material into four named transitions so a reader can follow the chronology without treating the entire section as one proof listing.
 - Read the revised page continuously after rendering. Removed the repeated Hero explanation, narrowed every conclusion that had called the two selected histories `extremes`, and retained the short sentence `Lean correctly proved coverage for an itinerary no person could take` as the central turn.
 - Rechecked the code-block spacing and the new third-level headings in the rendered page; both have clear separation from adjacent prose.
+- Added the vibe-coding paragraph between the product introduction and The Lot so the reader understands why the author evaluated browser behavior and requested audits instead of reading the implementation. The later conclusion now asks for the formal statement to be presented in terms a person can evaluate, rather than requiring manual source inspection.
 
 ## Remaining publication checks
 

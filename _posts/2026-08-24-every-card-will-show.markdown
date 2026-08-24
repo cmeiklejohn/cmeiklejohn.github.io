@@ -10,6 +10,8 @@ categories: ai zabriskie development agents
 
 [Zabriskie](https://zabriskie.app/) is a social app I am building around music, films, books, art, and the people who care about them. It isn't organized around followers. Instead, it uses shared shows and overlapping taste to help people find culture and one another. People can post about albums, films, books, and concerts, say whether they are going to a show or watching from home, talk while a show is live, and keep a history of what they have seen. I wrote about that live-show experience in [The Whole Night](/ai/zabriskie/development/2026/08/17/the-whole-night.html).
 
+Zabriskie is also an experiment in building an entire application through vibe coding. I describe the behavior I want and evaluate what the product does in the browser, but I don't read the implementation code. Coding agents write the implementation, tests, and audits.
+
 Zabriskie's home screen is called [The Lot](https://zabriskie.app/v2/lot). It isn't one permanent feed. The Lot is assembled from cards, individual blocks that might contain a live show, a recommendation, a deadline, or something from a person's history. Today it changes between five scheduled versions over the course of a day: morning, midday, afternoon, evening, and late night. I call each of those versions a program in this post.
 
 Late on August 23, after spending most of two days trying to repair The Lot, I asked the AI coding agent implementing it a specific question.
@@ -106,7 +108,7 @@ The agent wrote the first Lean coverage model too. I am still not sure whether a
 
 Lean correctly proved coverage for an itinerary no person could take. The theorem was valid. The claim that it described one person's day was not.
 
-That passing version was added to the main source code, and its Lean check became required in continuous integration (CI), the automated test gate for every proposed code change. I merged it. The presence of a proof made the result feel stronger than it was, and I did not inspect the modeled day closely enough.
+That passing version was added to the main source code, and its Lean check became required in continuous integration (CI), the automated test gate for every proposed code change. I merged it. The presence of a proof made the result feel stronger than it was, and I accepted the agent's description of the modeled day.
 
 This is where formal verification, using mathematical proof to check a software claim, meets the hallucination problem. Lean checked the statement it was given. It could not check whether the agent had translated my product requirement faithfully.
 
@@ -280,6 +282,6 @@ This wasn't one model having one bad run. I tried to repair the work with Claude
 
 That is the takeaway for me. Algorithms are hard, even when their invariants are easy to say. AI can now read a specification, write an implementation, generate unit tests, generate end-to-end tests, and produce several audits explaining why everything is correct. It cannot guarantee an invariant merely by generating all the artifacts that say the invariant holds. If they all inherit an unexamined change to the requirement, their agreement means very little.
 
-For an algorithm whose correctness depends on an invariant, the invariant needs an executable form and an explicit bridge to the implementation. That bridge may check every input, sample some inputs, or rely on ordinary tests, and those offer different levels of confidence. Even then, the guarantee is only about the formal statement, so a person still has to check that the statement describes the requirement they actually meant.
+For an algorithm whose correctness depends on an invariant, the invariant needs an executable form and an explicit bridge to the implementation. That bridge may check every input, sample some inputs, or rely on ordinary tests, and those offer different levels of confidence. Even then, the guarantee is only about the formal statement, so a person still has to be shown, in terms they can evaluate, that the statement describes the requirement they actually meant.
 
 The final test should have been the first. The hard part is stating it before an AI has built the implementation, the tests, and the argument for trusting a nearby one.
