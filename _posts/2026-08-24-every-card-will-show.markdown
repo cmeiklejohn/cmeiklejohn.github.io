@@ -103,27 +103,11 @@ That passing version was added to the main source code, and its Lean check becam
 
 This is where formal verification, using mathematical proof to check a software claim, meets the hallucination problem. Lean checked the statement it was given. It could not check whether the agent had translated my product requirement faithfully.
 
-### Putting one day into the model
+### Fixing the five-visit schedule
 
-The repair began by giving every visit a day label and an hour. The five visits are written directly in the model:
+The repaired Lean model uses one fixed walk: morning, midday, afternoon, evening, and late night. That removes the impossible mixture of weekday and weekend programs from the coverage calculation.
 
-```lean
-structure LocalVisit where
-  localDay : Nat
-  hour : Nat
-
-def fiveVisitsOn (localDay : Nat) : List LocalVisit :=
-  [ { localDay, hour := 8 }
-  , { localDay, hour := 12 }
-  , { localDay, hour := 15 }
-  , { localDay, hour := 20 }
-  , { localDay, hour := 23 }
-  ]
-```
-
-Despite its name, `localDay` is not a date. Lean does not know whether the number represents a Wednesday or a Sunday. It is only a label copied into all five records so they belong to the same nominal day. The model's hour-to-program function reads the hour and ignores that label.
-
-Lean therefore assumes that the same five programs exist every day. It does not prove the absence of the old weekday-versus-weekend split. Separate Go tests send these hours through the production clock resolver on both a Wednesday and a Sunday to check that production assumption.
+Lean does not model a calendar date or determine its day of the week. It assumes that all five programs are available during one day, then asks what the selector shows across that walk. Separate Go tests send 8 AM, noon, 3 PM, 8 PM, and 11 PM on both a Wednesday and a Sunday through the production clock resolver. Those tests, not the Lean model, check that the five-program walk is possible on a real date.
 
 The coverage model concerns the ranked cards that rotate through The Lot's sections. **Live Now** and other uncapped modules bypass that selector, so they are outside this claim. When an independent Hero exists, the model keeps it without charging it against the supporting-card limit. A separate Lean model checks which already-built candidate, if any, is chosen to lead the page.
 
