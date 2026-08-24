@@ -5,7 +5,7 @@ Post: `_posts/2026-08-24-every-card-will-show.markdown`
 Evidence base:
 
 - Zabriskie `origin/main` at `fffec3548949bce7803dd48ad8600de9ca6e228d`.
-- Blog `origin/master` at `7a47e9a2171cd8b2b7eda2113954f7536bb06368`.
+- Blog `origin/master` at `a0882c97da9c2e0bb5a7146a483bac63769d3288`.
 - The author's first-person account for the conversation, elapsed time, the agent's 47-item product enumeration with 20 missing, agency, repeated requirement, production timing, and Zabriskie's role as a fully vibe-coded application whose implementation code he does not read.
 
 ## Structural reader
@@ -105,6 +105,7 @@ Corrections preserved from the evidence pass:
 - Made the reachability substitution explicit: one shared history covering all cards became a separate favorable history for each card. Combined the following explanation so the section states the contrast once.
 - Replaced the dense weekday/weekend capacity accounting with the two actual schedules and the direct explanation that 27 added mutually exclusive programs.
 - Condensed `What the agent invented instead` around four necessary points: caps, ranking and catalog policy, concrete classification failures and false owner attribution, and the impossible 27-position argument.
+- Replaced the abstract `impossible itinerary` explanation in the Lean chronology with the missing concrete fact: the passing model placed weekday and weekend programs inside one supposed calendar day.
 
 ## Remaining publication checks
 
