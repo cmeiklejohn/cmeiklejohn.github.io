@@ -5,7 +5,7 @@ Post: `_posts/2026-08-24-every-card-will-show.markdown`
 Evidence base:
 
 - Zabriskie `origin/main` at `fffec3548949bce7803dd48ad8600de9ca6e228d`.
-- Blog `origin/master` at `7747aefab9d335132973246d77388dd60da0ca36`.
+- Blog `origin/master` at `c47ce48c4e3db589fcea9f4b7692e2a5977aac21`.
 - The author's first-person account for the conversation, elapsed time, the agent's 47-item product enumeration with 20 missing, agency, repeated requirement, production timing, and Zabriskie's role as a fully vibe-coded application whose implementation code he does not read.
 
 ## Structural reader
@@ -56,6 +56,7 @@ The new subheads keep the model failure, corrected same-day representation, hist
 
 Corrections preserved from the evidence pass:
 
+- Expanded the `simulateDayFrom` excerpt to show both `go initialHistory visits`, which feeds the selected history into the first visit, and `go nextHistory rest`, which carries the updated history forward.
 - Rewrote the history explanation to distinguish the two fixed initial histories from the history that `simulateDayFrom` updates between visits; the theorems do not quantify over arbitrary history.
 - Defined `additionalPostures` in product language as additional guaranteed programs.
 - Corrected the same-day explanation: `fiveVisitsOn` reuses one `localDay` by construction; Lean is not performing a separate inequality check over the five records.
