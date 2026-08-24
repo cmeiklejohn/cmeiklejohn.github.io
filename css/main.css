@@ -1008,6 +1008,12 @@ main > #post {
   line-height: 1.5;
 }
 
+/* Rouge wraps fenced code in .highlighter-rouge. Preserve the post's
+   paragraph rhythm when the following paragraph has no top margin. */
+.post #post .highlighter-rouge {
+  margin-bottom: 1.35em;
+}
+
 /* Prose-style page lists (research, etc.): flush with headings — not indented like nested post lists */
 #post ul:not(.posts):not(.page-prose-list),
 #post ol {
