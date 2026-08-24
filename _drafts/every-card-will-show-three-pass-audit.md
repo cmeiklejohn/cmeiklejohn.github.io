@@ -5,7 +5,7 @@ Post: `_posts/2026-08-24-every-card-will-show.markdown`
 Evidence base:
 
 - Zabriskie `origin/main` at `fffec3548949bce7803dd48ad8600de9ca6e228d`.
-- Blog `origin/master` at `e8db060c110c3850b107d5d4df854a7a6533eb8a`.
+- Blog `origin/master` at `7f9955e0a2594bc2fc9318ad3c340df89eed2f23`.
 - The author's first-person account for the conversation, elapsed time, the agent's 47-item product enumeration with 20 missing, agency, repeated requirement, production timing, and Zabriskie's role as a fully vibe-coded application whose implementation code he does not read.
 
 ## Structural reader
@@ -30,9 +30,9 @@ The new subheads keep the model failure, corrected same-day representation, hist
 | Roughly ten hours on August 22 and twelve on August 23 | Author recollection | Kept with `roughly` and changed relative dates before moving the post to August 24. |
 | 29 cards and more than 15,000 pixels | PR #2514 evidence records 29 cards and 15,554 pixels | Rounded pixel count in prose. |
 | Three of six candidate areas, then a six-card global cap | PRs #2505 and #2514 | Corrected to say that the Hero competed inside the six positions rather than sitting above six supporting positions. |
-| Ranking values 1,000, 200, 60, and up to 99 staleness points | Ranking implementations in the audited history | Corrected the contexts: show-night adds 200 to Act Now, quiet daytime adds 200 to Discover, and tour state adds 60 to Couch Tour and Circle. |
+| Ranking values 1,000, 200, 60, and up to 99 staleness points | Ranking implementations in the audited history | Removed the exact constants from the public post because they do not support a later claim. Retained the ranking inputs and the staleness definition needed by the reachability and Lean sections. |
 | Connections given a late preference and On This Day products reversed | Audited merged implementations and their corrections | Avoids presenting late affinity as an absolute gate; product judgment about its intended 11 PM home remains first-person interpretation. |
-| The capacities totaled 26, then 27 | PRs #2599 and #2610 | Kept with the distinction that this was arithmetic over incompatible states. |
+| The capacities totaled 26, then 27 | PRs #2599 and #2610 | Removed the intermediate total of 26. Kept 27 because the article uses it as the example of arithmetic over incompatible schedules. |
 | Weekday positions 20 then 21; weekend positions 15 then 16 | Derived from one visit to each distinct old program | Removed from the public post because the intermediate totals obscured the only distinction the argument needs: weekday and weekend followed mutually exclusive schedules. |
 | Audit and repository counts of 42, 46, and 45 | PRs #2602, #2621/#2622, and merged final catalog | The 42-card documentation audit was internally inconsistent. The first executable inventory contained 46 ranked identities. The later server-owned layout collapsed Local Scene from separate Act Now and Discover identities into one canonical Discover identity, producing the current 45. The repository does not preserve the remaining 47-to-46 explanation. |
 | The documentation audit promised coverage within a week | PR #2602 for the weekly claim; author account for the fact that no weekly window was requested | Identified as a hallucinated replacement of the stated one-day requirement, not merely a weaker interpretation. |
@@ -82,7 +82,7 @@ Corrections preserved from the evidence pass:
 - Reworked the opening for a reader who has never used Zabriskie: separate paragraphs now explain the app's cultural scope and non-follower organization, common activities, The Lot, cards, and the five daily programs before the incident begins. Added a link to the deeper live-show account in "The Whole Night."
 - Defined ranking, eligibility, staleness, the catalog, supporting positions, reachability testing, adversarial review, server and browser responsibilities, proof assistant, differential testing, and continuous integration at first use.
 - Kept the short paragraphs around the opening contradiction and the first incorrect Lean model because both are genuine turns.
-- Kept implementation constants in one compact paragraph so they establish the invented policy without turning the post into a changelog.
+- Removed scoring constants that never support a later claim. Kept the ranking inputs and defined staleness because both matter to the later reachability and history explanations.
 - Defined staleness and Lean on first use.
 - Reordered the Lean section so the first passing but wrong model appears before the repair.
 - Kept the Lean examples for typed card and visit data, the history transition, the coverage helpers, and the theorem, while explaining each in prose.
@@ -103,6 +103,7 @@ Corrections preserved from the evidence pass:
 - Added a transition into the first implementation section: the request to distribute cards across the day became an unrequested policy about what each individual visit could omit.
 - Made the reachability substitution explicit: one shared history covering all cards became a separate favorable history for each card. Combined the following explanation so the section states the contrast once.
 - Replaced the dense weekday/weekend capacity accounting with the two actual schedules and the direct explanation that 27 added mutually exclusive programs.
+- Condensed `What the agent invented instead` around four necessary points: caps, ranking and catalog policy, concrete classification failures and false owner attribution, and the impossible 27-position argument.
 
 ## Remaining publication checks
 

@@ -43,39 +43,29 @@ That responsibility doesn't make the intermediate decisions mine. I asked for on
 
 ## What the agent invented instead
 
-The first substitution concerned what a shorter Lot was allowed to leave out. I had asked for the cards to be distributed across the day. The agent turned that into a series of per-visit limits without asking me what should be cut. First, only three of six candidate page areas could contribute cards to a program. Then a global cap kept six cards across the Hero and supporting sections, with the Hero competing for one of those positions. Later versions introduced different limits for different times of day.
+The first substitution concerned what a shorter Lot was allowed to leave out. I had asked for the cards to be distributed across the day. The agent turned that into per-visit limits: only three of six candidate page areas could contribute, then a six-card cap made the Hero compete with the supporting sections, and later versions gave different times of day different limits.
 
-The agent then added ranking, the code that decides which eligible cards appear first. Here, eligible means the card's content is available and relevant to this person. Deadlines received a 1,000-point advantage. A show-night context added 200 to **Act Now**, while a quiet daytime context added 200 to **Discover**. Attending a run of shows added 60 to **Your Couch Tour** and **Your Circle**. A later scoring function scaled those values again, added a preferred-time bonus, and added up to 99 points based on how recently and how often the person had actually viewed the card.
+The agent also wrote a ranking policy and a catalog of card identities. It assigned cards to sections, positions, and preferred times, then used deadlines, show-night context, tour status, and viewing history to decide which survived. The code called that last signal staleness and calculated it from how recently and how often a person had viewed the card. I hadn't asked for these product rules, and the agent didn't bring them back to me. They determined what people could see and what evidence would count as success.
 
-It also created a catalog, the list of cards known to the ranking system, which assigned every card an identity, section, deadline status, position within its section, and preferred time of day.
-
-I didn't request those limits, scores, preferred times, or classifications. I kept asking for one thing: take one person, have them visit the five actual programs during one calendar day, and show them every relevant card at least once.
-
-The agent never brought these choices back to me as product questions. It made them, encoded them in the product, and continued as though I had supplied them. An agent has to fill in implementation details, but these were not details. They changed what people could see, when they could see it, and what evidence would count as success.
-
-The distinction matters because a reasonable classification can still be wrong. **Connections**, a card about people whose taste overlaps with yours, was given a late-night preference. Around 11 PM became its intended home even though it could sometimes rotate into another program. That made little sense for something meant to begin a listen, read, or watch. Two **On This Day** products were wired backward in merged code, so the broader historical card and the personal-history card landed in each other's places.
+Some choices were plainly wrong. **Connections**, a card about people whose taste overlaps with yours, was given a late-night preference even though it was meant to begin a listen, read, or watch. Two **On This Day** products were wired backward, so the broader historical card and the personal-history card landed in each other's places.
 
 One comment even described a three-section rule as the "owner's cap decision." I had made no such decision. The agent had hallucinated where the policy came from: it invented a rule while implementing a different requirement, then attributed that rule to me. The invented decision began constraining later work as though I had chosen it.
 
-The most revealing number was 27. It sounded like a product limit, but it came from adding the capacities of five time-of-day states used by the code. Initially those limits totaled 26. When late night increased from three cards to four, they totaled 27.
-
-The problem was that those five states couldn't occur during one day.
-
-Before the repair, those five names did not mean five stops in a day. They described two different schedules:
+The clearest numerical argument was 27, presented as the number of card positions available across the day. It came from adding the capacities of five source-code states after the late-night limit increased. But those states described two different schedules, not five stops in one day:
 
 - A weekday could reach weekday morning, workday, evening, and late night.
 - A weekend could reach weekend daytime, evening, and late night.
 
-Evening and late night appeared on both schedules, but the other programs were mutually exclusive. The agent reached 27 by adding capacity from all five names anyway, as though one person could take both schedules on the same date.
+Evening and late night appeared on both schedules, but the other programs were mutually exclusive. Adding all five capacities treated one person as though they could take both schedules on the same date.
 
-Twenty-seven was therefore not evidence that one day had room for every card. It was arithmetic over an impossible itinerary.
+Twenty-seven was arithmetic over an impossible itinerary, not evidence that one day had room for every card.
 
 <figure style="max-width: 640px; margin: 2rem auto;">
   <img src="/img/zabriskie-every-card-will-show-coming-up.jpg" alt="The Coming Up card in the late-hours Lot, listing two Goose shows at Red Rocks and a Phish show at Dick's Sporting Goods Park" loading="lazy" style="width: 100%; height: auto; border-radius: 24px;">
   <figcaption>Farther down the late-hours program: Coming Up, with the next Goose and Phish dates. A single program is intentionally partial; the disputed guarantee concerns the five visits together.</figcaption>
 </figure>
 
-The capacity argument doesn't explain those 20 missing cards by itself. What the history does establish is that the argument didn't model the day I had repeatedly described.
+The number doesn't explain those 20 missing cards by itself. It establishes something narrower: the capacity argument didn't model the day I had repeatedly described.
 
 ## What the checks actually established
 
