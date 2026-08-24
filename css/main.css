@@ -468,6 +468,29 @@ ul.posts li:last-child {
   text-underline-offset: 3px;
 }
 
+.home-post-entry {
+  min-width: 0;
+}
+
+.home-post-series {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--fg-muted);
+  text-decoration: none;
+}
+
+.home-post-series:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.home-post-series-sep {
+  color: var(--fg-muted);
+  margin-right: 0.25rem;
+}
+
 @media (max-width: 520px) {
   ul.posts li {
     grid-template-columns: 1fr;
