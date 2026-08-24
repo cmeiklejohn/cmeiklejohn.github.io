@@ -5,7 +5,7 @@ Post: `_posts/2026-08-24-every-card-will-show.markdown`
 Evidence base:
 
 - Zabriskie `origin/main` at `fffec3548949bce7803dd48ad8600de9ca6e228d`.
-- Blog `origin/master` at `c5ee2c29d7e4bb8dfa497979ca0ee572043274b7`.
+- Blog `origin/master` at `7baeda1970f8990df4e3ad821060fd6f6ee5c301`.
 - The author's first-person account for the conversation, elapsed time, the agent's 47-item product enumeration with 20 missing, agency, repeated requirement, production timing, and Zabriskie's role as a fully vibe-coded application whose implementation code he does not read.
 
 ## Structural reader
@@ -101,6 +101,7 @@ Corrections preserved from the evidence pass:
 - Rechecked the code-block spacing and the new third-level headings in the rendered page; both have clear separation from adjacent prose.
 - Added the vibe-coding paragraph between the product introduction and The Lot so the reader understands why the author evaluated browser behavior and requested audits instead of reading the implementation. The later conclusion now asks for the formal statement to be presented in terms a person can evaluate, rather than requiring manual source inspection.
 - Added a transition into the first implementation section: the request to distribute cards across the day became an unrequested policy about what each individual visit could omit.
+- Made the reachability substitution explicit: one shared history covering all cards became a separate favorable history for each card. Combined the following explanation so the section states the contrast once.
 
 ## Remaining publication checks
 
