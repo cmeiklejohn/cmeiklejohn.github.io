@@ -5,7 +5,7 @@ Post: `_posts/2026-08-24-every-card-will-show.markdown`
 Evidence base:
 
 - Zabriskie `origin/main` at `fffec3548949bce7803dd48ad8600de9ca6e228d`.
-- Blog `origin/master` at `7baeda1970f8990df4e3ad821060fd6f6ee5c301`.
+- Blog `origin/master` at `e8db060c110c3850b107d5d4df854a7a6533eb8a`.
 - The author's first-person account for the conversation, elapsed time, the agent's 47-item product enumeration with 20 missing, agency, repeated requirement, production timing, and Zabriskie's role as a fully vibe-coded application whose implementation code he does not read.
 
 ## Structural reader
@@ -33,7 +33,7 @@ The new subheads keep the model failure, corrected same-day representation, hist
 | Ranking values 1,000, 200, 60, and up to 99 staleness points | Ranking implementations in the audited history | Corrected the contexts: show-night adds 200 to Act Now, quiet daytime adds 200 to Discover, and tour state adds 60 to Couch Tour and Circle. |
 | Connections given a late preference and On This Day products reversed | Audited merged implementations and their corrections | Avoids presenting late affinity as an absolute gate; product judgment about its intended 11 PM home remains first-person interpretation. |
 | The capacities totaled 26, then 27 | PRs #2599 and #2610 | Kept with the distinction that this was arithmetic over incompatible states. |
-| Weekday positions 20 then 21; weekend positions 15 then 16 | Derived from one visit to each distinct old program | Corrected to say these totals included the Hero as an ordinary capped position. |
+| Weekday positions 20 then 21; weekend positions 15 then 16 | Derived from one visit to each distinct old program | Removed from the public post because the intermediate totals obscured the only distinction the argument needs: weekday and weekend followed mutually exclusive schedules. |
 | Audit and repository counts of 42, 46, and 45 | PRs #2602, #2621/#2622, and merged final catalog | The 42-card documentation audit was internally inconsistent. The first executable inventory contained 46 ranked identities. The later server-owned layout collapsed Local Scene from separate Act Now and Discover identities into one canonical Discover identity, producing the current 45. The repository does not preserve the remaining 47-to-46 explanation. |
 | The documentation audit promised coverage within a week | PR #2602 for the weekly claim; author account for the fact that no weekly window was requested | Identified as a hallucinated replacement of the stated one-day requirement, not merely a weaker interpretation. |
 | Per-card reachability used target staleness, fresh comparable peers, separate Act Now cohorts, and synthetic tier representatives | PR #2621 for the test mechanics; author account for the fact that isolated reachability was not requested | Identified as another hallucinated replacement requirement: the agent built a passing test for isolated favorable worlds instead of the requested one-person day. |
@@ -102,6 +102,7 @@ Corrections preserved from the evidence pass:
 - Added the vibe-coding paragraph between the product introduction and The Lot so the reader understands why the author evaluated browser behavior and requested audits instead of reading the implementation. The later conclusion now asks for the formal statement to be presented in terms a person can evaluate, rather than requiring manual source inspection.
 - Added a transition into the first implementation section: the request to distribute cards across the day became an unrequested policy about what each individual visit could omit.
 - Made the reachability substitution explicit: one shared history covering all cards became a separate favorable history for each card. Combined the following explanation so the section states the contrast once.
+- Replaced the dense weekday/weekend capacity accounting with the two actual schedules and the direct explanation that 27 added mutually exclusive programs.
 
 ## Remaining publication checks
 
