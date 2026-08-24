@@ -138,13 +138,15 @@ structure Card where
   additionalPostures : List Daypart := []
 ```
 
-`additionalPostures` records one current product choice. **Connections** is one catalog identity, but it is reserved at both midday and afternoon because either window leaves time to follow the card into a listen, read, or watch. Lean didn't derive that decision, and the theorem doesn't require the card to appear twice. The model makes the choice visible and checks what follows from it.
+`additionalPostures` means additional guaranteed programs. Most cards are guaranteed room in one program. **Connections** is guaranteed room at both midday and afternoon because either window leaves time to follow the card into a listen, read, or watch. It remains one card, and the theorem doesn't require it to appear twice. Lean didn't choose this policy; the model records the choice and checks what follows from it.
 
 ### Carrying one viewing history
 
-At each visit, the model runs its version of the selector. It first preserves the cards guaranteed room in that program, then uses ranking to fill any space left over. Every retained card is treated as viewed and receives an impression. Before the next visit, the model advances the age of those impressions by the actual gap between the fixed hours. It then recomputes each card's staleness bonus from its impression count and age using the same four-hour cooldown and frequency formula as the Go code. The noon visit therefore receives the history produced by the morning visit, the afternoon receives the history from both, and so on. That is the crucial difference from testing every card in its own favorable world.
+The coverage theorems do not accept any possible viewing history as an input. They check two fixed starting points: one where the person has never seen any modeled card, and one where the person saw every card exactly once immediately before the 8 AM visit. The displayed theorem below is the first case. Its helper, `oneDayKeepsUnseen`, supplies an empty initial history, which is why history does not appear among the theorem's parameters. A neighboring theorem supplies the second starting history.
 
-Initial viewing history became another explicit boundary of the theorem. The first corrected same-day model began with every modeled card unseen, which gives each one the maximum staleness bonus. That is a favorable starting point. We added a second uniform case by giving every card exactly one fresh impression immediately before the 8 AM visit. Each begins with a zero bonus, but that number is not frozen. A card shown again at 8 AM has two impressions when the four-hour cooldown ends at noon, while a card not shown still has one. The production formula gives them different bonuses, which can change their order.
+History is then carried through the day rather than discarded. At each visit, the model converts the current history into staleness scores and runs the selector. Every retained card is treated as viewed. Before the next visit, the model records those impressions and advances their ages by the gap between the fixed hours. Noon therefore uses the history produced at 8 AM, afternoon uses the history produced at noon, and so on.
+
+The starting point matters because viewing a card changes its later score. In the all-unseen case, every card begins with the maximum staleness bonus. In the second case, every card begins with one fresh impression and no bonus. That number is not frozen. If a card appears at 8 AM, its impression count changes before noon; if it does not appear, its history changes differently. Recomputing those bonuses can change the later ordering.
 
 The first attempt to add that second case got it wrong. Lean and Go both carried a fixed map of bonus numbers through the five visits. They agreed with each other, and both history cases passed, but neither side modeled how production recomputed the bonus as time passed. The required adversarial review caught the shared mistake. We replaced the bonus map with impression count and age, then made both models advance the clock and recalculate before every visit.
 
@@ -180,7 +182,7 @@ def oneDayKeepsUnseen (localDay : Nat) (eventLead onTour : Bool) :
   oneDayKeepsFrom localDay eventLead onTour []
 ```
 
-`scheduledVisitsOn` maps the five fixed hours in `fiveVisitsOn` to morning, midday, afternoon, evening, and late night without throwing the hours away. `freshHistoryFor` constructs the one-impression starting case. `oneDayKeepsFrom` gives those visits and an explicit initial history to `simulateDayFrom`, which runs the selector five times and returns five lists of retained card names. An empty initial list represents cards the person has never seen. `oneDayKeepsUnseen` is the explicitly named empty-history case used by the displayed theorem. `eventLead` and `onTour` tell the simulator which two product conditions remain fixed during the walk.
+`scheduledVisitsOn` maps the five fixed hours in `fiveVisitsOn` to morning, midday, afternoon, evening, and late night without throwing the hours away. `oneDayKeepsFrom` is where the starting history enters the simulation. `freshHistoryFor` constructs the one-impression case. `oneDayKeepsUnseen` instead passes `[]`, an empty history meaning that no card has been seen. `simulateDayFrom` then runs the selector five times and returns five lists of retained card names. `eventLead` and `onTour` tell it which two product conditions remain fixed during the walk.
 
 Inside `simulateDayFrom`, the transition happens in four steps:
 
@@ -224,7 +226,7 @@ theorem five_visits_on_one_day_starve_no_applicable_card_when_all_unseen
   native_decide
 ```
 
-Start with the statement. `(localDay : Nat)` means the theorem must hold for any local calendar day, represented here as a non-negative whole number. It does not need an hour parameter because `fiveVisitsOn` already supplies all five hours. The theorem's name now says `when_all_unseen` instead of hiding its starting-history assumption. The two `false` values turn off the event-lead and tour modes for this displayed case. `missing ... fullNames = []` says that after those five visits, the list of modeled card names that never appeared must be empty.
+Start with the statement. `(localDay : Nat)` means the theorem must hold for any local calendar day, represented here as a non-negative whole number. It does not need an hour parameter because `fiveVisitsOn` already supplies all five hours. It does not have a history parameter because `oneDayKeepsUnseen` has already fixed the initial history to empty. The theorem's name says `when_all_unseen` to expose that boundary. The two `false` values turn off the event-lead and tour modes for this displayed case. `missing ... fullNames = []` says that after those five visits, the list of modeled card names that never appeared must be empty.
 
 A neighboring theorem passes `freshHistoryFor fullCatalog` into `oneDayAllModesCoverFrom` and checks all four combinations of the event-lead and tour modes. The all-unseen case also has an all-modes theorem. Together they prove that the full catalog is covered from those two uniform starting histories while the mode conditions remain fixed throughout each walk.
 
