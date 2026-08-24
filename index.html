@@ -46,7 +46,7 @@ description: "Christopher Meiklejohn — Ph.D., Software Engineering (CMU). Note
                 {% capture series_title_prefix %}{{ series_meta.title }}, {% endcapture %}
                 {% assign display_title = post.title | remove_first: series_title_prefix %}
               {% endif %}
-              <a class="home-post-series" href="{{ series_meta.landing_url }}">{{ series_meta.title }}</a><span class="home-post-series-sep" aria-hidden="true">:</span>
+              <a class="home-post-series" href="{{ series_meta.landing_url }}">{{ series_meta.title }}:</a>
             {% endif %}
             <a class="home-post-link" href="{{ post.url }}">{{ display_title }}</a>
           </span>
