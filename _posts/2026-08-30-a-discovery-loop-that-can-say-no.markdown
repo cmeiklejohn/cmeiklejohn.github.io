@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A Discovery Loop That Can Say No"
-subtitle: "Bound the agent, preserve the failures, and let the evidence limit the claim."
+subtitle: "A strong result should authorize only the next step its evidence can support."
 date: 2026-08-30 08:00:00 -0400
 group: ai
 series: lab
@@ -11,138 +11,76 @@ permalink: /series/the-machine-in-the-lab/what-we-built-instead/
 categories: ai research zabriskie agents
 ---
 
-SetScope began as a viewer-facing song guesser: listen to a live Goose stream and identify the current song without receiving the date or setlist. The audio corpus pulled the project into a harder detour about measuring improvisation. Two notebooks from that detour were deleted after hidden setup decisions invalidated them.
+The best SetScope result so far arrived on 75 historical Goose shows we had set aside for engineering.
 
-The first research-discipline document was our response. It had ten rules, named roles, explicit approvals, and an advisor agent with authority to block work. We used it for Dispatch 002, an experiment that compared listener-marked returns to composition with an acoustic changepoint detector. Every required gate passed. The general interpretation was still unsupported.
+By ninety seconds of music, the new controller had identified the opening song correctly on 65 shows and made no wrong opening call. It initially stayed quiet on the other ten, kept listening, and eventually recovered the correct current song on all ten.
 
-The failure was useful because it changed what I thought the system needed to control. A long prompt could tell an agent to be careful. A checklist could require it to produce more artifacts. Neither represented the state of the research strongly enough to determine which action was allowed next.
+I could have summarized that as 100 percent across 75 shows. That would have hidden almost everything important about the result.
 
-The project needed a discovery loop that could say no.
+The first number was 65 correct decisions and ten abstentions, or 86.67 percent coverage at ninety seconds with no wrong calls. The later recoveries happened under a different rule and at different times. More importantly, the controller had been designed by inspecting earlier failures on these same 75 shows. The result was strong evidence that the engineering change worked on the material that shaped it. It was not independent evidence about what would happen next.
 
-## The loop is the system
+The project had another 38 shows that remained unopened. We did not run them. Setlist posting remained off. The result authorized one action: install the controller and take it back through the browser.
 
-This project used an autonomous research program to improve SetScope. The program could propose an experiment, implement it, run it, evaluate the output, and choose what to try next with limited human intervention. That is the same basic ambition behind the emerging work on automated discovery loops in science and engineering. The important unit is no longer one prompt or model response. It is the loop that carries state from one iteration into the next.
+That decision is what I mean by a discovery loop that can say no. The name deliberately echoes the company described in Part 1: the ambition is the same kind of automated experimental cycle, applied here to a much smaller problem. There is no affiliation between the projects.
 
-That state includes more than code and results. It includes which labels have been seen, which thresholds were adjusted, which failures changed the design, what the evaluator actually measured, which runtime path was exercised, and what claim the project is now tempted to make.
+## Why the loop needed a boundary
 
-The lost notebooks showed that information roles and methodological decisions had to survive across iterations. Dispatch 002 showed that an internally consistent evaluator could still measure the wrong thing. The browser incident showed that a correct offline experiment did not exercise the deployed audio path. In every case, an agent could produce a locally correct next step from a globally invalid state.
+SetScope listens to a live Goose stream and guesses which song is playing. I used an LLM agent to improve it: propose an experiment, write the code, run it, inspect the output, and use the result to choose what to try next.
 
-The correction was to move the critical state outside the model's conversational memory and make it durable.
+That loop made a solo project possible at a scale I could not have reached by hand. It also produced the failures in this series.
 
-## From instructions to state
+The first research notebook expanded into too many questions without preserving evidence capable of independently evaluating the path it took. The second wrote down a rule against fixed ninety-second jam boundaries, then reintroduced the same boundaries in its implementation. We responded with written plans and additional reviewers. The next Phish experiment passed its publication gates, but no prepublication review compared what was audible at both the listener and detector timestamps.
 
-An instruction such as "do not use the test set" sounds clear until the project has five copies of a performance, three feature caches, a threshold selected after an opened result, and an agent that did not participate in the original decision. The instruction has to become data the system can inspect.
+Each failure followed the same acceleration. The agent made a plausible choice, generated a result from it, and carried the result into the next experiment before the choice returned to view.
 
-The current process represents at least these things explicitly:
+More instructions inside the conversation did not solve that problem. The important state had to survive across agents and sessions: which shows had been opened, which failures had influenced the controller, which version actually ran, and what the resulting evidence was still allowed to support.
 
-- a question and the exact claim it is capable of supporting;
-- the role of every input population;
-- a candidate model, feature set, catalog, and policy identified by hashes;
-- an analysis and scoring specification frozen before outcomes are visible;
-- the boundary between prediction, scoring, diagnosis, and promotion;
-- immutable result artifacts, including invalid and negative outcomes;
-- the evidence scope of a run, from component crop to live runtime to observed UI or publication; and
-- the actions the system is permitted to take automatically.
+## What we built
 
-This is less elegant than telling an agent to "follow scientific best practices." It is also inspectable. A candidate cannot quietly change after the run starts if the installed artifact has a recorded digest. A shadow event cannot become a delivered chat post if publication is disabled and receipts are required. A show used for diagnosis cannot later be described as sealed confirmation without contradicting its recorded role.
+There is no single research-control application enforcing all of this. The current system is a workflow made from written plans, hashes, separate execution and scoring scripts, saved results, human approvals, and promotion rules.
 
-The rules still depend on people honoring them. State does not eliminate discretion. It makes the exercise of discretion visible.
+Three changes matter most.
 
-## A bounded experiment
+Every show has a recorded job. Some fit the acoustic models. Opened shows are available for debugging and comparison. A smaller group remains hidden for one final run. Once a result from a show changes the system, a new filename or branch cannot make that show independent again.
 
-The useful unit of autonomy became a bounded experiment rather than an open-ended request to improve the model.
+Each experiment freezes the version, inputs, controller policy, and scoring rule before execution. Predictions are saved before labels are joined. Failed capture, an abstention, and a negative result remain in the record instead of disappearing behind the next successful run.
 
-Before execution, the experiment records:
+Finally, the plan says what a result may change. A classifier score can justify integration work. An offline whole-show replay can justify a browser rehearsal. A browser rehearsal can justify a shadow run with a live stream. None of those steps automatically enables public setlist posting.
 
-1. the question;
-2. the allowed inputs;
-3. the candidate and every configurable policy;
-4. the metric and selection rule;
-5. the compute or iteration budget;
-6. the outcome that would falsify or stop the treatment; and
-7. the downstream action the result may authorize.
+People and agents still have to honor the process. Its value is that the next action can be checked against a durable record instead of reconstructed from chat history.
 
-Planning, execution, and scoring are separate states. The planner can inspect opened engineering evidence. The executor receives frozen inputs and does not change the candidate. The scorer joins outcomes only after immutable predictions exist. Promotion requires evidence appropriate to the claim being promoted.
+## The live show that became engineering data
 
-This last point is where many agent workflows become vague. A result may authorize one action without supporting the next. A replay on 75 opened shows can justify another browser rehearsal while remaining useless as independent confirmation. A prospective run may demonstrate correct identities on future audio without supplying the capture record needed for a whole-show latency metric. Controller, interface, and publication events require their own evidence. Each promotion crosses another boundary.
+The August 13 Goose show in San Diego supplied the first genuinely prospective evidence. Its audio did not exist while SetScope was being built. During the show, the runtime emitted the correct current song at least once for 10 of 12 performances. A correct title appeared in the internal acoustic evidence for 11 of 12.
 
-## Five coordinates for evidence
+It also emitted three false switches and missed two songs. Set 1 failed its capture-timebase check, which invalidated exact latency from that portion. The truth boundaries available after the show were approximate. The surviving audit does not establish what was rendered in the UI or delivered through the publication path.
 
-We eventually began classifying evidence on separate axes instead of assigning it one adjective such as "clean" or "live."
+The show answered the smallest product question: SetScope could produce useful blind song identifications from new live audio. It also showed exactly where the product was weak. The controller could mistake a long jam for another song, wait minutes before accepting a correct transition, and remain stuck on the wrong title after the acoustic models recovered.
 
-**Information access.** Was the outcome unavailable when the candidate was frozen, sealed until scoring, or already opened and available for adaptation?
+Once we inspected those failures and used them to design later versions, August 13 became engineering data. It could teach the agent what to fix. A later controller needed different evidence to show that the fix generalized.
 
-**Temporal relation.** Was the evaluation retrospective on existing audio or prospective on a future event?
+## What happened on the 75 shows
 
-**System scope.** Did it exercise an isolated model, an integrated offline replay, the live runtime through controller state, the rendered interface, or an outward publication path?
+The larger controller experiment began with 113 eligible, verified shows from 2021 through 2025. A frozen hash split assigned 75 to engineering and 38 to final confirmation before song titles or outcomes were examined.
 
-**Publication action.** Was the system operating in shadow mode, attempting a post, receiving an acknowledgment, or independently observed as visible?
+The agent used the 75 opened shows to develop how SetScope handled uncertainty. The selected version, 0532, began conservatively: 65 correct opening locks by ninety music seconds and ten abstentions. It made no premusic opening or recovery locks and no opening or recovery calls on material outside its song vocabulary.
 
-**Metric eligibility.** Did capture, truth, timing, and protocol requirements pass for the metric being reported?
+While the displayed state remained unknown, the controller continued to evaluate two independent model families. It recovered six ordinary Goose openers after collecting more evidence. Four other shows began with soundcheck jams or songs outside the catalog; the controller waited until it had sustained evidence for a known song actually being played. All ten recoveries matched the current in-catalog song.
 
-These coordinates prevent one strong property from standing in for the others. The August 13 run was prospective and its audio was unavailable when the candidate was built. It exercised the live path through saved controller outputs. It did not preserve complete proof of every frozen pre-music condition, its first set failed the timebase rule, its truth boundaries were reconstructed after the show, and no separate UI-observation or outward-publication receipt survives.
+The same replay produced 99.33 percent correct current-song choices among the switches whose truth could be scored. That number is useful for comparing engineering versions. It does not include Chrome, the macOS audio route, the interface, or public posting.
 
-So it establishes a valuable fact: the system emitted correct blind song identities during a genuinely new show. It does not establish a formal whole-show accuracy rate or successful automatic publication.
+The [saved result](https://github.com/cmeiklejohn/zabriskie/blob/f52b45f47e0884d1504474d276e4230e2e0f2acd/tools/audio_detection/cloud/v0532-continuous-unknown-recovery-result.md) names the only promotion it earned: package that exact controller into SetScope with posting disabled, then run a controlled browser rehearsal.
 
-That sentence is more cumbersome than "the live test passed." It is also much harder for the next agent to misunderstand.
+We packaged the controller with posting disabled. The browser rehearsal remained the next test, and the 38 final shows stayed closed.
 
-## Preserving failure as an output
+## The evidence we have not spent
 
-The project originally treated failed runs as interruptions on the way to the result. That made it easy to rerun something slightly differently and report only the version that completed.
+The unopened shows are useful because the controller has not learned from their outcomes. Before they can be scored, the local model artifacts, catalog, controller, inputs, and scoring script have to be frozen. Once the results are visible, those shows become ordinary engineering material for every later version influenced by them.
 
-Now invalidation is a terminal result. A capture with missing samples retains its events but cannot contribute to metrics requiring continuous time. A candidate that emits no lock remains in the coverage denominator. An unknown song is not silently removed because the closed catalog could not name it. A planned comparison that lacks synchronized clocks is reported as missing rather than assigned a tie.
+A good result there would answer one offline whole-show question for one fixed version. The browser would still need to prove that it received continuous audio. The interface and publication path would still need their own receipts.
 
-Negative experiments remain useful too. One rebuilt question searched 263 curated jamchart entries for a frozen set of descriptive terms, found none, and halted before loading audio. Preserving the halt prevented the agent from silently broadening the phrase list until something matched.
+This is expensive in a small project. Every hidden show is one less show available for diagnosis. The alternative is a test set that quietly becomes a development set while its headline stays unchanged.
 
-A protocol that produces only impeccable refusals is not a research program. The halt matters because it keeps an unobserved change from turning a failed question into an apparently successful one.
+The workflow does not guarantee good science. A frozen experiment can still measure the wrong thing, and approvals can decay into ceremony. What it gives the autonomous program is a memory it cannot rewrite without leaving evidence: which inputs were available, what failed, which version ran, and where the result had to stop.
 
-## The larger opened engineering result
-
-After the August 13 show, we used opened shows to improve the temporal controller and its handling of abstention. The [corpus protocol](https://github.com/cmeiklejohn/zabriskie/blob/f52b45f47e0884d1504474d276e4230e2e0f2acd/tools/audio_detection/cloud/v0494-corpus-scale-evaluation-preregistered.md) had identified 113 eligible, manifest-verified shows from 2021 through 2025 whose dates appeared in neither fitting nor prior evaluation. A frozen within-year hash split assigned 75 to engineering and 38 to sealed confirmation without reading song titles or outcomes.
-
-The selected controller candidate, version 0532, was designed after reviewing earlier failures, including the August 13 show and version 0531. The 75 shows were opened development material. The result explicitly classified itself as engineering evidence and disabled setlist writes. The replay did not exercise Chrome, CoreAudio, the interface, or public posting, and it was not independent confirmation.
-
-Under the frozen replay rule, the selected treatment produced 65 correct initial locks by ninety admitted music seconds and abstained on the remaining ten shows. It emitted no wrong initial locks, which yields 100 percent selective initial precision and 86.67 percent correct coverage across all 75 shows. Median admitted music time to a correct initial lock was sixty seconds. It produced no premusic locks and no initial or recovery locks on out-of-vocabulary material in that replay.
-
-The [complete replay result](https://github.com/cmeiklejohn/zabriskie/blob/f52b45f47e0884d1504474d276e4230e2e0f2acd/tools/audio_detection/cloud/v0532-continuous-unknown-recovery-result.md) also retained the observation-level accounting:
-
-| Observation class | Count |
-| --- | ---: |
-| All ten-second observations | 65,085 |
-| Scoreable in-catalog observations | 61,446 |
-| Correct state | 57,079 |
-| Incorrect state | 3,415 |
-| Unlocked | 952 |
-| Outside the scoreable population | 3,639 |
-
-That is 92.89 percent correct state across scoreable observation time. Across 733 eligible in-vocabulary archive boundaries, the system detected 632 by ninety admitted music seconds, or 86.22 percent. Different slices of the replay produce different transition rates, which is precisely why the artifact retains the raw counts and scoring scope rather than one summary percentage.
-
-The larger sample does not replace the prospective field test. It answers a different question: under a frozen replay rule on these opened shows, did this treatment meet the engineering gates required to advance? It did, and the authorized next action is another complete-product test, not a universal reliability claim.
-
-## The boundary the agent cannot cross
-
-The other 38 shows from the same eligible population remain sealed under a [one-time final-candidate protocol](https://github.com/cmeiklejohn/zabriskie/blob/f52b45f47e0884d1504474d276e4230e2e0f2acd/tools/audio_detection/cloud/v0512-sealed-confirmation-execution-protocol.md). The within-year hash assignment prevents outcome- or song-based selection and preserves the year distribution; it does not make the 38 shows representative of every venue, source, year, or song in the wider Goose archive. The candidate, model artifacts, catalog, policy, inputs, scorer, and hashes must be frozen before that population is opened. Once scored, the set becomes opened forever for that candidate lineage.
-
-This is intentionally expensive. The point of a sealed evaluation is not to create a renewable source of encouraging numbers. It is to answer one question once without allowing the answer to influence the system that produced it.
-
-Even a good sealed result would remain one level in the product record. It could establish independent performance on the frozen catalog evaluation without showing that the browser path, interface, or automatic-publication path worked. Evidence at one level may authorize the next test without establishing the levels above it. Keeping those steps separate is the central job of the control plane.
-
-## What we built instead
-
-I do not think the resulting process is a universal method for AI-assisted research. It grew around specific failures in one self-directed project, and it has costs we have not measured.
-
-The gates may consume enough attention to erase the speedup. They can become paperwork. Approvals can become ceremonial. A protocol can preserve a perfect record of a bad measurement. We do not yet have an opportunity ledger showing how often each control catches a problem versus merely delaying work.
-
-What the system can do is narrower:
-
-- make data roles and openings durable;
-- freeze a bounded experiment before outcomes arrive;
-- require an evaluator with access to evidence outside the generated artifact chain;
-- exercise the path the product will actually run;
-- preserve invalid and negative outcomes;
-- attach every result to the claims and actions it may support; and
-- block automatic promotion when the required evidence does not exist.
-
-That is enough to change the behavior of the loop. The agent can still propose the next experiment and implement most of it. It can no longer convert a promising chart into a sealed result, an internal state into a delivered product event, or a successful engineering replay into authorization to post publicly without leaving a contradiction in the record.
-
-The method will be tested by inconvenience, not prose. Goose is playing eleven shows from August 13 through August 28. SetScope will change during the run. Streams will fail, songs will segue, and new covers may fall outside the catalog. The record has to retain which version heard each show, including the nights when no valid result exists. That is where the protocol becomes real.
+The next browser rehearsal is the immediate test. It has to preserve the abstention and recovery behavior while adding Chrome, CoreAudio, the controller, and the rendered state back into the path. If that works, the 38 shows will still be waiting for one final offline question. If it does not, they stay closed while the failure becomes the next engineering case.

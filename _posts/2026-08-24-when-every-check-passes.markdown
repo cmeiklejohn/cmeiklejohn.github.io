@@ -11,113 +11,72 @@ permalink: /series/the-machine-in-the-lab/when-every-check-passes/
 categories: ai research zabriskie agents
 ---
 
-On May 23, I published an audio-research result after it passed every check the project required.
+On May 23, I published an audio-research result after every gate used to approve publication returned green. Then I read the post, pressed play on its first example, and heard the interpretation fall apart.
 
-Those checks existed because the two earlier notebooks had failed. We had added explicit plans, reviews, artifact audits, and publication approvals to prevent another plausible result from outrunning its evidence.
+This was not an experiment on SetScope, the Goose song guesser. It came from the separate Phish detour described earlier in this series. The question was whether audio features could locate the end of an improvised jam, where the band returned to the composed song.
 
-The plan had been reviewed. Five advisor conditions had been applied. The figure-generation script passed three byte-faithfulness audits. The numbers in the prose traced to saved artifacts. A content audit found no unsupported numerical claims. A second advisor review approved the complete dispatch. I approved a soft launch and then a hard launch. The page went live with a homepage card and a final [publication log](https://github.com/cmeiklejohn/zabriskie-audio-research/blob/bfd8b0aa360b7898d7f50fa4aa6f119a9783d4d5/docs/logs/dispatch-002-publication.html).
+The process around the experiment was elaborate because two earlier notebooks had already failed. The plan was reviewed. Advisor conditions were added. The implementation, saved numbers, figures, prose, and final page were audited against one another. A second review approved the complete research post. I approved a soft launch and then a public one. The [publication log](https://github.com/cmeiklejohn/zabriskie-audio-research/blob/bfd8b0aa360b7898d7f50fa4aa6f119a9783d4d5/docs/logs/dispatch-002-publication.html) recorded every step.
 
-Every recorded check was green.
+Every gate used to authorize publication was green.
 
-Then I read the blog post and listened to the first example.
-
-The listener mark sat two seconds before the audible end of the song.
+The first listener mark sat two seconds before the audible end of the music.
 
 ## The result we thought we had
 
-The experiment concerned the end of a jam. In the project's labeling system, a listener marked the point where improvisation ended and the band returned to composed material. We compared those marks against an onset-density changepoint detector, a signal-processing method intended to find a large change in musical activity.
+The experiment compared human marks for the end of a jam with a detector based on changes in onset density, a rough measure of how frequently new musical events begin. It found large changes over time, removed candidates too close to the track edges or one another, and required at least two candidates to survive. When they did, it selected the last one. Otherwise it abstained.
 
-The reported result was that the detector recovered the listener-marked end on three of four Sands and three of four Bathtub Gins within a song-specific tolerance. The blog post interpreted this as evidence that the end of a jam was acoustically recoverable as a band-level return to composed structure, even though the beginning remained difficult to detect.
+That last part matters. The detector did not identify a return to composed music directly. It selected a late acoustic change and compared its time with a listener's mark.
 
-That interpretation was the reason the result mattered. Agreement between timestamps by itself is not very interesting. If the detector and listener were identifying the same musical event through different paths, we had evidence that a community concept could be grounded in an acoustic change.
+The full evaluation contained 16 tracks: ten listener-marked positives and six negatives. Eight of the positives belonged to the two multi-performance song groups, four Sands and four Bathtub Gins; Reba and Tweezer appeared once each. The headline result came from those two larger groups. The detector landed within plus or minus 60 seconds of the listener mark on three performances of each song, six of eight in total. We interpreted those agreements as evidence that the return from improvisation to composition created a detectable acoustic change.
 
-The first example was Sand from July 3, 2000. The listener mark was 11:56, the detector prediction was 11:42, and the music ended around 11:58. The archived track continued through audience and tail audio until 13:23. When I played the clip, the marked event did not initially sound like an abstract structural boundary. It sounded inseparable from the song ending.
+The first example was Sand from July 3, 2000. The listener mark was 11:56. The detector predicted 11:42. The music ended around 11:58, although the archive file continued through applause and tail audio until 13:23.
 
-The pipeline had answered the scoring question correctly: the predicted time was near the labeled time. I no longer knew whether either timestamp supported the sentence we had published.
+When I listened, the mark did not sound like an abstract structural boundary. It sounded inseparable from the ending of the song. The scorer was right that the two timestamps were close. I no longer knew whether their proximity supported the sentence we had published.
 
-## The first diagnosis
+## The first correction was wrong too
 
-The published six-of-eight verdict covered four Sands and four Bathtub Gins. The broader ten-case positive set also contained a Reba and a Tweezer. Five of the six reported hits had a listener mark within two minutes of the archive track boundary. Two were within a minute.
+The first explanation seemed obvious. Perhaps the listeners had marked the ends of performances rather than returns to composition.
 
-The first explanation seemed obvious. Perhaps the labels were systematically anchored to the end of the musical performance rather than the return to composition. The labeling instructions allowed two cases: mark the return to composed material, or mark track end when the jam continued through the end of the song. The analysis had silently assumed every value had the first meaning.
+The labeling instructions allowed two meanings for `jam_end`: mark the return to composed material, or mark the end of the track when the improvisation continued through the ending. The analysis treated those cases as if they all meant the first thing.
 
-Under that explanation, the detector might have been doing useful structural work while the labels were wrong. One failed Bathtub Gin appeared to support the inversion: the detector found a shift around 14:50, while the label sat at 16:11, almost exactly at track end.
+Several successful cases occurred near the end, which made the label problem look systematic. We withdrew the result and wrote the initial correction around that diagnosis.
 
-We wrote the withdrawal record around that diagnosis. The central claim was unsupported because label agreement could not establish recovery of composed structure if the labels represented a different event.
+Then I listened to all ten positive cases in the 16-track evaluation.
 
-Listening to all ten cases made the diagnosis mostly wrong.
+Eight listener marks were genuine returns to composed music. One Bathtub Gin used the permitted track-end interpretation because there was no composed return. One Reba mark did not survive review at all. The old withdrawal record says nine of ten were composed returns, but its own case table records eight; I am using the case-level record here.
 
-## The labels were better than the explanation
+The labels were not systematically anchored to track endings. In this selected set, the band often returned to the song shortly before the music ended. What looked like evidence of bad labeling was mostly a property of the performances.
 
-I used a one-off page that presented each listener mark and detector prediction with audio controls. Phish often returns to the song shortly before the music ends. The proximity that had looked like evidence of bad labels was, in most cases, a property of the performance structure.
+That did not restore the published result.
 
-The [preserved review record](https://github.com/cmeiklejohn/zabriskie-audio-research/blob/bfd8b0aa360b7898d7f50fa4aa6f119a9783d4d5/docs/logs/dispatch-002-withdrawal.html#L144-L170) contains a contradiction I missed at the time. Its ten-row case table records eight listener marks I heard as composed returns, one Bathtub Gin mark as track end without a composed return, and one Reba for which I wrote that both the listener and detector marks were wrong. The summary immediately below the table says nine of ten listener marks were composed returns. Those statements cannot both be true.
+The detector was designed to choose the last large acoustic change in a track. Many valid returns also happened late. Agreement between the two timestamps could therefore mean that the detector recognized the return, or that both the return and the detector's preferred change happened near the ending. The original experiment did not distinguish those explanations.
 
-The table is the case-level record, so I am using eight here and treating the old nine-of-ten summary as an error. The cases were:
+The listening review could invalidate our first interpretation and our first correction. It could not validate a replacement result. I was one outcome-aware listener reviewing selected positive cases after publication. The exercise could not estimate false negatives, specificity, or behavior over the full corpus.
 
-- **Sand, July 3, 2000:** composed return; original score: hit; 1:27 to the archive boundary.
-- **Sand, December 31, 2010:** composed return; original score: hit; 0:36 to the archive boundary.
-- **Sand, July 28, 2017:** composed return; original score: hit; 1:26 to the archive boundary.
-- **Sand, October 26, 2018:** composed return; original score: miss; 2:11 to the archive boundary.
-- **Bathtub Gin, July 10, 1999:** track end; original score: miss; 0:05 to the archive boundary.
-- **Bathtub Gin, July 20, 1998:** composed return; original score: hit; 0:58 to the archive boundary.
-- **Bathtub Gin, February 14, 2003:** composed return; original score: hit; 2:06 to the archive boundary.
-- **Bathtub Gin, February 28, 2003:** composed return; original score: hit; 1:45 to the archive boundary.
-- **Reba, August 16, 1993:** listener and detector marks both rejected; original score: miss; 5:59 to the archive boundary.
-- **Tweezer, November 2, 1994:** composed return; original score: hit; 2:07 to the archive boundary.
+The honest conclusion was narrower: the original score did not establish that the detector recognized a return to composed music.
 
-Eight of ten is enough to reject the first diagnosis that the labels were systematically anchored to track end. One label used the second permitted interpretation. One label did not survive the review at all. Most of the suspicious proximity came from the way these performances returned to the song and then ended.
+## What all the checks had checked
 
-## What the corrected case record could say
+Nothing in the approval chain was fake. It verified that the implementation followed the plan, the figure matched the saved result, the prose matched the figure, and the required reviews occurred.
 
-My ten-case listening review has important limitations. I was one listener. I knew the experiment had failed, knew the suspicious pattern, and saw the selected positive cases. This was an outcome-aware, post-publication review, not blinded annotation or an inter-rater agreement study. Because I reviewed selected positives, the exercise cannot estimate false negatives, specificity, or the detector's behavior over the full corpus.
+Every check followed the same chain. The label fed the scorer. The scorer produced an artifact. The artifact produced a figure. The figure supported the prose. Reviewers traced the claim backward through that chain and found it internally consistent.
 
-The review could reject our first explanation, but it did not establish the strong replacement explanation written into the withdrawal summary. All seven hits in the broader table were composed-return cases whose marks occurred 36 to 127 seconds before the archive boundary. The valid Sand miss occurred at 2 minutes 11 seconds, only four seconds beyond the largest hit gap. The Gin miss used the track-end interpretation, and the Reba mark at 5 minutes 59 seconds had itself been rejected.
+No prepublication gate required a claim-focused comparison of what was audible at both the listener and detector timestamps. The labels came from listening, but the interpretation built on their agreement had not been checked that way.
 
-The algorithm selected the final large changepoint in time order, so it was structurally biased toward late events. The selected ten-case review does not show how often that bias caused a hit or miss. It showed that the original interpretation had not been independently established, and that the first confident explanation of the failure had outrun the evidence too.
+The ambiguity was visible in the data definition. The instructions said that `jam_end` could mean either a composed return or the end of the performance. The hypothesis assumed the first meaning. A plan-to-data review should have stopped there, but our process treated the field as settled ground truth.
 
-That is not a new detector result. It is a limit on what the old result can claim.
+Traceability established where the claim came from. It did not establish that the measurement represented the musical event named in the claim.
 
-## What the gates actually checked
+## Returning to the phenomenon
 
-Nothing in the approval chain was fake. Each check answered a legitimate question:
+After the withdrawal, the project added an acoustic reality check for claims about audio. Before an analysis proceeds, and again before publication, someone has to listen at the relevant labels and predictions and record what is audible.
 
-- Did the implementation follow the plan?
-- Did the generated figure match the saved numerical artifact?
-- Did the prose accurately report the figure and result?
-- Were the planned unit, thresholds, and qualifiers preserved?
-- Were the required reviews and approvals recorded?
+Human hearing is not an infallible instrument. The first review was especially weak as a new experiment because I knew the result and the suspected failure. Later listening assignments used neutral metadata, randomized order, no preloaded explanation, and structured responses so that disagreement would survive the review.
 
-These are necessary checks. Without them, a claim can drift between plan, code, result, and prose. But every gate followed the same derivative chain. The label fed the scorer. The scorer fed the artifact. The artifact fed the figure. The figure fed the prose. Reviewers traced the claim backward through that chain and found it internally consistent.
+The value of listening was not that a human replaced the model. It was that the check encountered the underlying phenomenon through a path that did not descend from the same artifacts. The labels, scorer, chart, and prose could all share one mistaken interpretation. Audio could contradict all of them.
 
-No gate asked what was audible at the labeled and predicted timestamps.
+This is the limitation of adding more agents to one review chain. They can inspect a plan, implementation, result, and post while sharing the same blind spot. More agreement increases confidence only when a reviewer brings information capable of producing a different answer.
 
-Traceability established where the claim came from. It did not establish that the source measurement represented the musical event the claim named.
+For this experiment, that information arrived when someone pressed play.
 
-Notebook 2 had left this debt behind. Its ninety-second default made a convenient segment define what counted as a jam. The new discipline caught inherited constants and forced plans to state their assumptions, but we treated the labels in Dispatch 002 as settled ground truth. The interpretive choice moved from a constant into the meaning of a field, where the existing rules did not know to look.
-
-The most embarrassing part was that the ambiguity was documented. The labeling instructions explicitly said `jam_end` could mean return to composition or track end if no return occurred. A plan-to-data audit could have noticed that the hypothesis assumed only the first case. It did not.
-
-## A different evidence path
-
-The project added a rule requiring an acoustic reality check for claims about audio. Before an analysis proceeds, and again before publication, someone must listen at the relevant labels and predictions and record what is audible.
-
-The value of this check is not that human hearing is infallible. It is that the evidence does not descend from the same artifact chain. A waveform feature, a label, and a chart can agree because they share an assumption. Listening can contradict the interpretation through another modality.
-
-The original reality check was not independent in every sense. I was the author, knew the outcomes, and had already proposed an explanation.
-
-Later assignments were redesigned to present neutral metadata, randomize order, omit preloaded notes, and collect structured responses. That reduces some forms of priming and makes disagreement easier to inspect. It does not turn listeners into objective instruments, and it does not retroactively improve the first review.
-
-This matters because "add a human" is not a methodology. Which human? What did they know? Which cases did they hear? What categories were available? Were disagreements preserved? A domain check has its own measurement design.
-
-The first check still did something the elaborate agent process had failed to do: it returned to the underlying phenomenon. It made the published interpretation suspect, and then it made the first attempted correction suspect too.
-
-## The erratum needs evidence
-
-An erratum can repeat the original failure if it is allowed to close around the first plausible explanation. The correction needed an evidence path outside the artifacts and diagnosis that produced it.
-
-This is the limit of process-heavy review in a discovery loop. Multiple agents can inspect a plan, implementation, result, and blog post while sharing one blind spot. Adding another reviewer to the same chain increases scrutiny without necessarily creating contradiction. The evaluator has to be capable of telling the entire chain that its interpretation is wrong.
-
-For Dispatch 002, that evaluator was a person pressing play.
-
-The project eventually left the jam-classification detour and returned to the original song-identification tool. That made the output easier to name: either the screen said the song that was playing or it did not. It did not make evaluation simple. An offline score still could not say what happened between the browser and the model.
+SetScope would expose the same lesson in a product setting. An offline classifier could score well while the browser received broken audio, the controller changed songs at the wrong time, or the interface displayed the wrong state. The next useful check had to run through the product itself.
