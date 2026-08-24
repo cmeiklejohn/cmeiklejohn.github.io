@@ -31,15 +31,24 @@ description: "Christopher Meiklejohn — Ph.D., Software Engineering (CMU). Note
     <ul class="posts">
       {% for post in site.posts limit:15 %}
         {% assign series_meta = site.data.series[post.series] %}
+        {% assign display_title = post.title %}
         {% assign series_title_prefix = "" %}
         <li>
           <span class="home-post-date">{{ post.date | date_to_string }}</span>
           <span class="home-post-entry">
             {% if series_meta %}
-              {% capture series_title_prefix %}{{ series_meta.title }}, {% endcapture %}
-              <a class="home-post-series" href="{{ series_meta.landing_url }}">{{ series_meta.title }}</a><span class="home-post-series-sep" aria-hidden="true">·</span>
+              {% assign series_data_key = post.series | append: "_series" %}
+              {% assign series_posts = site.data[series_data_key] %}
+              {% assign series_entry = series_posts | where: "url", post.url | first %}
+              {% if series_entry %}
+                {% assign display_title = series_entry.title %}
+              {% else %}
+                {% capture series_title_prefix %}{{ series_meta.title }}, {% endcapture %}
+                {% assign display_title = post.title | remove_first: series_title_prefix %}
+              {% endif %}
+              <a class="home-post-series" href="{{ series_meta.landing_url }}">{{ series_meta.title }}</a><span class="home-post-series-sep" aria-hidden="true">:</span>
             {% endif %}
-            <a class="home-post-link" href="{{ post.url }}">{{ post.title | remove_first: series_title_prefix }}</a>
+            <a class="home-post-link" href="{{ post.url }}">{{ display_title }}</a>
           </span>
         </li>
       {% endfor %}
