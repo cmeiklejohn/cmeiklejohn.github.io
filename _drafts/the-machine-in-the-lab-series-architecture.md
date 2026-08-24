@@ -87,7 +87,7 @@ The series has a six-post methodological arc and a seventh-post product payoff:
 | Part | Reader's question | New claim earned | Remaining problem |
 | --- | --- | --- | --- |
 | 1. Science at LLM Speed | Why is this a research problem now? | LLMs make complete-looking research artifacts cheap; a valid claim still requires evidence outside the generated artifact chain. | What does the failure look like inside an actual project? |
-| 2. Two Notebooks Lost | How can plausible work become invalid? | In empirical work, setup decisions are part of the experiment. One silent choice can invalidate every correct artifact downstream. | Which distinct information and meaning boundaries did the two failures expose? |
+| 2. The Safeguards Have to Run | When does a research rule become a working control? | An autonomous research process cannot rely on instructions alone; it must block violations or surface them before dependent work continues. | Which information and meaning boundaries must the system enforce? |
 | 3. The Holdout Is a One-Way Door | What counts as leakage and independence? | Independence belongs to the complete information history of the research process, including derived artifacts and human adaptation. | Can a clean, preregistered, internally consistent experiment still make the wrong claim? |
 | 4. When Every Check Passes | What can process and provenance fail to detect? | Internal consistency cannot establish construct or measurement validity. The named interpretation must be checked against the underlying phenomenon through a different evidence path. | What new validity problem appears when the project leaves the jam-research detour, returns to automatic song identification, and evaluates a live deployed system? |
 | 5. The Browser Is Part of the Experiment | Why can an offline metric fail in use? | Product behavior belongs to the complete deployed path. The August 13 field test produced correct blind controller outputs on never-before-existing audio while exposing capture, transition, held-state, unknown-song, and missing display/publication receipts that offline metrics did not measure. | What operating system can represent and coordinate all three case-derived boundaries without stopping useful work? |
@@ -230,12 +230,12 @@ If generated work must be judged outside its own artifact chain, what happens wh
 
 Without Part 1, the series becomes a personal tool-failure story and loses the reason these incidents matter beyond one repository. It also loses the positive cases needed to explain why people accept the risk.
 
-## Part 2. Two Notebooks Lost
+## Part 2. The Safeguards Have to Run
 
 ### Working title proposition
 
-**Title:** Two Notebooks Lost
-**Subtitle:** In empirical work, setup is the experiment.
+**Title:** The Safeguards Have to Run
+**Subtitle:** Two abandoned notebooks showed me the difference between a research rule and a working control.
 
 ### Standalone contract
 
@@ -255,23 +255,20 @@ How can mostly correct code produce research that must be discarded in full?
 
 ### Argument chain
 
-1. The first notebook leaked performances across training and test while presenting a clean split at the surface.
-2. The resulting metrics looked strong because the model could exploit information that should have remained unavailable.
-3. Once feature and method decisions had been made against those outcomes, changing the split could not restore independent evidence.
-4. The second notebook inherited a 90-second head-and-tail segmentation default despite a methodology document that warned against that exact strategy. Its immediate defect was plan-to-implementation fidelity: the code violated the written method.
-5. The constant propagated through scripts, fingerprints, clusters, charts, two blog posts put online for three readers, and a listening study. The broader debt was measurement validity: the convenient unit of analysis silently defined which portion of the music could count as the phenomenon, a problem that merely making later code match a plan would not solve.
-6. The failures share a propagation mechanism but create different methodological debts. Notebook 1 invalidated independence because information crossed a boundary. Notebook 2 first violated its plan and then exposed the separate need to justify that an operational measurement corresponds to the named phenomenon.
-7. Part 3 follows the first debt through the holdout, caches, derivatives, and human adaptation. Part 4 returns to the second debt after a much stronger review process still confuses a consistent measurement chain with the claimed acoustic event.
-8. The attempted deletion that became archival and the request for progress that produced paperwork show the same lower-stakes bias toward plausible forward action.
-9. The reports presented the explicit constraints as satisfied, and the author used those reports to put two blog posts online for three readers and involve other people's time.
-10. The author remains responsible for putting the work online, but the system failure is the absence of enforcement and disclosure. Requiring manual reconstruction of every completed run would negate the autonomy being evaluated.
-11. The improvisation questions encountered during the detour were genuinely interesting but too dependent on disputed labels and operational definitions to yield the clean answer the early work implied.
-12. A compact coda records the immediate response: the first written discipline retired Q01 before audio loaded and forced Q02 into a narrower, caveated claim. This belongs here as contemporaneous history, not as proof that the new process solved validity.
-13. Part 4 owns the later demonstration that those internal gates could still preserve a meaning error. Part 6 owns the mature operating protocol. Part 5 does not inherit Q01 or Q02.
+1. The first notebook used pair-random cross-validation, allowing one performance to appear in a training pair and again in a test pair while presenting a clean split at the row level.
+2. Correcting the split reduced the headline classifier result. The classifier retained useful signal, but the original evaluation had not tested the claimed generalization to unseen performances.
+3. A later detector used fixed opening and closing regions when musical boundaries were unavailable. A 44-case holdout, with 38 analyzable performances, rejected the detector but could not independently replay the notebook's complete adaptive path.
+4. Notebook 2 began before Notebook 1 was removed. Its written methodology rejected blanket ninety-second boundaries, but its first implementation inherited that default and propagated it through later outputs.
+5. Notebook 2 also labeled five song groups containing 25 performances as final test data, then used four groups accounting for 22 performances during development. The label recorded an intention; no access control enforced it.
+6. After both notebooks were removed from the version-controlled project folder, a later inventory found 1,120 generated files in shared storage. A subsequent notebook had loaded 131 while deriving a threshold. The numeric effect was small, but the purge had not created the clean state it promised.
+7. These are distinct immediate failures with one system-level lesson: natural-language constraints did not control the split, access to reserved evidence, inherited constants, or generated-data lineage.
+8. The author remains responsible for putting work online and involving other people's time, but requiring manual reconstruction of every autonomous run would negate the autonomy being evaluated.
+9. A useful system must turn constraints into executable checks that block or surface violations before dependent work continues.
+10. Part 3 follows the information boundary through holdouts, caches, derivatives, and human adaptation. Part 4 returns to the separate question of whether a consistent measurement corresponds to the musical phenomenon named in the claim.
 
 ### Claim earned
 
-Research setup is not preliminary plumbing. A hidden split, constant, label definition, or unit of analysis can be the experiment, and downstream correctness cannot repair it.
+An autonomous research program cannot rely on instructions alone. Its safeguards have to run: they must constrain execution or surface violations before later work inherits them.
 
 ### Evidence base and status
 

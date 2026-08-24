@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Two Notebooks Lost"
-subtitle: "Notebook 1 had no final test. Notebook 2 wrote safeguards but did not enforce them."
+title: "The Safeguards Have to Run"
+subtitle: "Two abandoned notebooks showed me the difference between a research rule and a working control."
 date: 2026-08-18 08:00:00 -0400
 group: ai
 series: lab
@@ -10,58 +10,56 @@ permalink: /series/the-machine-in-the-lab/two-notebooks-lost-series/
 categories: ai research zabriskie agents
 ---
 
-*This is Part 2 of [The Machine in the Lab](/series/the-machine-in-the-lab/), a seven-part series about building SetScope, a live Goose song guesser, with an autonomous research program built from large language models (LLMs).*
+*This is Part 2 of [The Machine in the Lab](/series/the-machine-in-the-lab/), a series about using an autonomous research program built from large language models (LLMs) to build SetScope, a live Goose song guesser.*
 
-[SetScope]({% post_url 2026-08-15-science-at-llm-speed %}#the-research-loop-gets-faster) began with a fairly direct question: could a computer listen to a live [Goose](https://www.goosetheband.com) show and tell people which song was playing while the band was still onstage?
+In the first research notebook, I told an autonomous program to keep training and test data separate. Its report showed a clean split. It wasn't.
 
-Building a live recognizer first required a more basic answer: could audio tell that two performances were the same song even when the tempo, key, length, and improvisation changed? The first experiments compared same-song and different-song pairs. Their early results appeared to show that the composed sections carried most of the stable song identity while the jams, the improvised passages inside the performances, varied from night to night.
+How could both be true?
 
-That apparent result opened a broader and more interesting question. If improvisation was where performances diverged, could numerical measurements of rhythm, harmony, and texture describe how they diverged? Answering it required labeled data for two kinds of improvisation that jam-band listeners call Type I and Type II. In Type I, the band solos or varies the music while remaining inside the song's composed structure. In Type II, it leaves that structure for open-ended improvisation. My Goose archive had recordings and song titles, but it did not have a comparable collection of those annotations. [Phish](https://phish.com/) did: decades of performances accompanied by community-maintained lists of notable jams, listener-written notes, and Type II labels.
+The program was learning whether two recordings were performances of the same song. It created pairs of recordings, then randomly divided those pairs between training and testing. A performance called A could appear with B during training and appear again with C during testing. The rows were different, but the program had already encountered A. That meant the test could reward it for recognizing a performance it had seen rather than learning what made two performances instances of the same song.
 
-That is how the project changed bands. SetScope was still a Goose product, but the research notebook, a running workspace of code, data, experiments, and reports, was now driven by Phish data and Phish questions. It began searching for similar jams and trying to distinguish composed music from open improvisation instead of asking only how quickly SetScope could name a Goose song.
+This is the kind of problem a working safeguard should prevent. Instead, the rule existed in the research plan while the code quietly violated it.
 
-The LLM agent appeared to be making remarkable progress. I supplied the recordings, questions, and constraints. The agent proposed analyses, wrote the code, ran it, interpreted the results, and used each result to choose the next experiment. Each experiment produced another plausible finding and another promising direction, so I let it keep going instead of stopping to ask whether the new work was still improving SetScope.
+The LLM wasn't just writing code that I reviewed step by step. I supplied the objective, the audio collection, and the rules. The program proposed experiments, wrote and ran code, interpreted results, and chose what to investigate next without asking me to approve every decision. I called each sustained run a notebook: the accumulated data, code, experiments, reports, and decisions for one research direction.
 
-The speed was exhilarating. In a short span, the project produced more code, figures, findings, webpages, and listening exercises than I could keep in my head at once. This was the [same pitfall described in Part 1]({% post_url 2026-08-15-science-at-llm-speed %}#a-polished-analysis-is-not-necessarily-a-scientific-result): the volume and consistency of the output made forward motion look like evidence that the work was correct. A missing rule in one experiment could quietly carry into later code, figures, posts, and listening exercises before I noticed.
+The original objective was to build [SetScope]({% post_url 2026-08-15-science-at-llm-speed %}#the-research-loop-gets-faster), a system that could listen to a live [Goose](https://www.goosetheband.com) show and name the song while the band was still playing it. A live version can change in speed, length, arrangement, and improvisation while remaining recognizably the same song.
 
-That happened twice. Notebook 1 had no final test that could challenge the research path after the agent had used earlier results to choose what to do next. I stopped it and began Notebook 2 with explicit safeguards. Notebook 2 then proceeded without enforcing them. The failures were different, but both were able to spread because the research loop kept producing plausible work on top of an unchecked decision.
+Early comparisons appeared to show that composed passages carried much of a song's recurring identity while improvised passages accounted for much of the variation. That opened a more interesting question: could measurements of rhythm, harmony, and texture describe how performances diverged during improvisation?
 
-## Notebook 1: the missing final test
+Answering it required labeled data. My Goose archive contained recordings and song titles, but not a large collection of annotations identifying performances with open-ended jams. [Phish](https://phish.com/) had decades of performances accompanied by [community-maintained jam annotations](https://phish.net/blog/1387398339/new-and-improved-phish-jam-charts.html). The available data pulled the research away from the Goose product and toward Phish. The reports arrived quickly and appeared to form a coherent account of the music, so I let the program continue.
 
-Notebook 1 had no rule requiring one final set of recordings to remain outside the entire sequence of experiments. The agent could use a result to choose the next question, use that answer to choose a measurement, and use that measurement to set a numerical cutoff. Each step produced another plausible result, but there was no untouched evidence left to ask whether the sequence had gone in the right direction.
+## Notebook 1
 
-The consequence became visible in the improvisation work. The notebook proposed three measurable patterns for Type II playing, where a performance leaves the song's ordinary composed structure. I made a research webpage explaining the result and showed it to two friends.
+Correcting the pair split reduced the reported performance of the classifier that used measurements taken only from the audio. There was still useful signal in it, but the original result hadn't tested whether it could generalize to performances it had never encountered. The program had acknowledged the rule about separate evidence without implementing a split that enforced it at the level of a complete performance.
 
-The agent later applied the detector to 44 recordings that had not been used to set its numerical cutoffs. One pattern did not appear on any of them. The complete three-pattern combination never appeared either. The other two repeatedly marked composed passages as open improvisation.
+The notebook had already expanded beyond that classifier. One later experiment tried to identify open-ended improvisation by comparing an opening section, a middle section, and a closing section of each track. When actual musical boundaries were unavailable, the implementation treated the first and last ninety seconds as composed material and the middle as the jam.
 
-The detector had divided every recording into its first ninety seconds, its middle, and its last ninety seconds. Many songs do not have that structure, so it mistook ordinary changes between composed sections for departures into open improvisation. I took the webpage down.
+I asked the program to evaluate the detector against a separate group of 44 performances that had not been used to choose its numerical cutoffs. Six were too short for the method, leaving 38 analyzable cases. The fixed windows placed composed material that occurred after the opening ninety seconds inside the region treated as the jam. The detector repeatedly treated changes within those composed passages as evidence of open improvisation.
 
-That test showed that the detector on the webpage was wrong. It could not tell me which of the notebook's other results would survive a comparable challenge. Those results had already guided what the agent tried next, and Notebook 1 had reserved no final evidence for evaluating the path as a whole. The missing rule had allowed one result to become a webpage and guide later experiments before anything required the research loop to challenge it. That is why I stopped Notebook 1.
+That audit rejected this detector. It did not provide a clean test of the entire path that led to it, because earlier results had already influenced which features, thresholds, and questions the program pursued. I stopped Notebook 1.
 
-## Notebook 2: the rules existed only on paper
+## Notebook 2
 
-Notebook 2 tried to prevent the same kind of propagation. It assigned recordings to fixed roles and designated 25 for a final test, while documenting that some had already appeared in Notebook 1. Its written method also replaced the fixed ninety-second division with a default boundary tailored to each song. The old rule could be used only as a fallback and had to be checked against Reba, a Phish song whose composed sections had already fooled the detector.
+Notebook 2 began on April 30 with a written methodology intended to prevent the first notebook's failures. It assigned each song permanently to one of three uses: trying methods, choosing among them, or one final test that was supposed to remain unopened until the method was finished. It also rejected the blanket ninety-second division in favor of boundaries chosen for each song from the music itself.
 
-The rules did not control what the research loop actually ran. While the agent was still deciding what to investigate next, one analysis examined 22 of the 25 recordings assigned to the final test. They still had the label "test," but their results had already influenced what the agent did next.
+The code didn't follow those rules. The first implementation again set the opening and closing regions to ninety seconds. Later analyses reused measurements cut at those boundaries. The method had warned against the assumption, but nothing compared the running code with the method and stopped the work.
 
-The same thing happened with the audio boundaries. The newer analyses continued to use ninety seconds instead of the song-specific default, and the required Reba check was not run. Nothing compared the running code with the written method and stopped the work.
+The final test wasn't protected either. The locked collection assigned every performance of five songs, 25 recordings at the time, to remain unopened until the method was finished. Development analyses accessed four of those five groups, accounting for 22 of the 25 recordings, while the program was still choosing its method. A label in a data file said the groups were reserved. Nothing prevented the program from opening them.
 
-The ninety-second decision then appeared in later analyses, figures, two draft research posts, and two listening exercises I sent to friends. The code, charts, and prose agreed with one another because they all inherited the same setup. On May 6, I stopped Notebook 2, removed its active code and research files, and deleted the listening exercises and the responses people had submitted.
+I had started Notebook 2 while Notebook 1 was still present for reference. On May 4, I told the program to remove every Notebook 1 file so it couldn't contaminate the ongoing work. The cleanup removed the visible scripts, reports, figures, and data from the main project folder. But it couldn't make Notebook 2 a clean restart: the new work had already inherited the old ninety-second default.
 
-## Why the work still looked finished
+By the time I stopped Notebook 2 on May 6, its fixed segmentation had propagated into analyses, figures, two draft blog posts available by direct link, and listening exercises. I had also put accounts of the earlier work on the project's public site and sent listening exercises to friends. I don't know how many people saw the pages, but the autonomous process had produced two coherent bodies of work that I couldn't trust.
 
-Notebook 1 lacked a rule protecting a final evaluation. Notebook 2 wrote down safeguards, but nothing enforced them. In both cases, unchecked setup choices traveled through a growing body of internally consistent work before I noticed them.
+A later inventory on May 17 exposed another failure. After both notebooks had been removed from the project folder, 1,120 generated feature and measurement files from the abandoned work remained in reusable storage outside that folder. A subsequent notebook had loaded 131 of those files while calculating one of its numerical cutoffs. Removing them changed the number only slightly and didn't materially change the affected results. But the supposed clean slate hadn't been clean, and the program had no record showing where every generated file had come from.
 
-Most of the generated analysis code was not nonsense. It loaded the intended files. The charts accurately displayed the saved results they read. The prose accurately described the charts. That internal consistency is why I trusted the work long enough to build on it.
+## The safeguards have to run
 
-The same trap is not specific to this project. A fan analysis, an academic paper, or an autonomous research system can accumulate code, charts, and apparently consistent results until forward motion itself looks like scientific progress. The work can take the form of a research program before its conclusions survive a test that did not already influence the program.
+What had the written safeguards actually protected? In practice, very little: every named boundary could be crossed without stopping the run.
 
-I was responsible for showing the webpage to my friends and asking them to complete the listening exercises. But the answer cannot be that an autonomous research program is useful only if I independently reconstruct every data assignment, numerical constant, and intermediate output after each run. At that point the system has handed the research process back to me and added an audit job on top.
+A performance-level split should have rejected any training and test pair that shared a performance. Reserved data should have been inaccessible until a recorded release step. Generated files should have carried their source history, and a purge should have verified that no descendant remained in shared storage. A run whose code contradicted its written method should have stopped before producing dependent results.
 
-The program needed to expose its data assignments and numerical rules, compare the running code with the written method, and stop when they disagreed. It did none of those things reliably.
+Those checks belong inside the autonomous process. My job is to define and approve the constraints, not to reconstruct every data assignment, generated file, and numerical constant after the program finishes. If the system requires that reconstruction, it has not automated the research process. It has automated the production of work for a human auditor.
 
-I made one controlled attempt to continue the Phish work under stricter experimental rules. Then, on May 29, I returned the project to its original job: improve the live Goose song guesser.
+A natural-language instruction can describe a safeguard. It cannot enforce one.
 
-That return gave us a more direct output to challenge: a current-song guess produced while the show was playing. But evaluation was not limited to whether the guessed title was right or wrong. It also had to ask how long the guess took, when the system should withhold a guess because the evidence was weak, whether the title changed while the same song continued, and whether the result actually reached the viewer.
-
-The next post follows the problem that return to SetScope exposed. Once test results have guided the next version of the system, can those same results still provide an honest test?
+After Notebook 2, I returned the program to SetScope's original Goose song-identification problem. A new live show offered evidence that no earlier notebook could have seen. But each show could be new only once. Once the program used that show to decide what to do next, was it still independent evidence or had it become part of development? That's the question in Part 3. Part 4 returns to the separate problem exposed by the ninety-second detector: whether a consistent measurement actually represents the music named in the claim.
