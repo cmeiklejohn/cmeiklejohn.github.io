@@ -18,7 +18,7 @@ An LLM agent was running much of this loop. I supplied the recordings, the quest
 
 The speed was exhilarating. It was also the problem. In eight days the project produced more code, figures, findings, public pages, and listening exercises than I could keep in my head at once. When the notebook failed, it did not fail for one tidy reason. An audit exposed several different problems at the same time.
 
-By April 30, three Notebook 1 dispatches had appeared on the public site. One had already been pulled as its taxonomy shifted. A replacement had briefly appeared and then returned to draft after review. That evening I withdrew the notebook's central published Type II result. I abandoned Notebook 2 on May 6.
+By April 30, three Notebook 1 research posts had appeared on the public site. One had already been pulled as its taxonomy shifted. A replacement had briefly appeared and then returned to draft after review. That evening I withdrew the notebook's central published Type II result. I abandoned Notebook 2 on May 6.
 
 ## Notebook 1: the published claim fails its held-out test
 
@@ -30,13 +30,13 @@ A related retrieval experiment had a different problem. Even when it held out on
 
 Those were corrections to song-recognition experiments. They were not the event that killed Notebook 1.
 
-The published claim that collapsed was about improvisation. The notebook had proposed three acoustic signatures for what jam-band listeners call Type II playing, where a performance leaves the song's ordinary composed structure. A public dispatch used the November 9, 1998 Bathtub Gin from UIC as its central example.
+The published claim that collapsed was about improvisation. The notebook had proposed three acoustic signatures for what jam-band listeners call Type II playing, where a performance leaves the song's ordinary composed structure. A public research post used the November 9, 1998 Bathtub Gin from UIC as its central example.
 
 The signatures looked convincing on the performances used to develop them. Then the agent ran them on 44 held-out cases: 11 community-annotated Type II performances and 33 composed or Type I controls. One of the three signatures never fired. All three never fired together, even though the public research post was built around that combination. The other two produced more false positives than the argument could survive, including on Reba and several Goose songs with contrasting composed sections.
 
 The detector was reading changes inside the composition as departures from the composition. Its first-ninety-seconds, middle, and last-ninety-seconds windowing assumed a song form that many of the songs did not have.
 
-That result was decisive. The public dispatch's central claim did not generalize beyond the examples that had shaped it, so I withdrew it on April 30.
+That result was decisive. The public post's central claim did not generalize beyond the examples that had shaped it, so I withdrew it on April 30.
 
 The same audit also forced a harder conclusion about the notebook as a whole. It had accumulated many questions, datasets, thresholds, and evaluations without keeping one final test set out of sight from beginning to end while the program chose its next steps. Some individual reruns could produce more honest estimates. The notebook itself could no longer produce an independent final verdict on the research path it had already taken.
 
@@ -58,9 +58,9 @@ Then the first Notebook 2 analysis set `HEAD_S = 90` and `TAIL_S = 90`.
 
 The source code did not hide the constants. Its comments even called the calculation the "N1 default." What the research loop failed to do was notice that the implementation contradicted the notebook's own declared method and stop the experiment there.
 
-Instead, the work continued. The notebook expanded the corpus, compared several audio measurements, audited community labels, explored clusters, generated per-window heat maps, and drafted two long listening guides. Two new listening assignments went out: one around three Ghost performances, and another around Sand, Light, the 1994 Bangor Tweezer, and the 2024 Bethel Bathtub Gin. The two associated dispatches remained drafts, although they were accessible at their direct URLs while I worked on them.
+Instead, the work continued. The notebook expanded the corpus, compared several audio measurements, generated charts, and produced two listening assignments and two long research posts. The posts remained drafts, although they were accessible at their direct URLs while I worked on them.
 
-By the time the mismatch was identified, the fixed boundary had propagated through the analyses, figures, draft dispatches, and listening exercises.
+By the time the mismatch was identified, the fixed boundary had propagated through the analyses, figures, draft posts, and listening exercises.
 
 The mistake was especially difficult to excuse because Notebook 1 had already demonstrated it and Notebook 2 had already written down the rule that should have prevented it. This was not an unknown edge case. It was a named failure mode reintroduced by the first implementation.
 

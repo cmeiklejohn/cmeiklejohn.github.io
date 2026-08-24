@@ -117,11 +117,11 @@ I then changed the task. Instead of improving SetScope's song guesses, I asked t
 
 The recordings seemed to offer a way to investigate harder questions about improvisation: whether musical features could identify when a performance left its composed structure, whether different forms of jamming had measurable signatures, and whether those signatures generalized across performances. Those questions were more interesting than simple song identification. They were also much harder to define.
 
-I am a PhD-trained systems researcher. I know what a holdout is, and I know why an experimental method has to match its implementation. That was not enough. The first notebook expanded from song recognition into several improvisation questions without maintaining one prospective test set that remained untouched while the system chose its next experiments.
+I am a PhD-trained systems researcher. I know what a holdout is, and I know why an experimental method has to match its implementation. That was not enough. The first notebook expanded from song recognition into several improvisation questions without preserving one final test capable of evaluating the path the system chose.
 
-The audit found several problems, not one neat leak. A same-song classifier had been evaluated on different pair rows that could still reuse an individual performance. A stricter rerun showed that holding out a performance was not the same as holding out every performance of its song. More decisively, a published Type II improvisation detector failed on 44 held-out cases. One of its three signatures never fired, their conjunction never fired, and the remaining signatures mistook changes inside composed songs for improvisation. I withdrew the result and started again.
+The audit found several problems, not one neat leak. Most decisively, a published Type II improvisation detector failed on 44 held-out cases and mistook changes inside composed songs for improvisation. I withdrew the result and started again.
 
-For the restart, I locked a new split over many of the same recordings and wrote a methodology framework that explicitly warned against defining improvisation with fixed 90-second boundaries. I gave that framework to the agent. The first implementation nevertheless reused the same hard-coded default. The source code named it the old notebook's rule; the research loop never stopped to report that the code contradicted the declared method. Working from those reports, I put two draft dispatches online at their direct URLs and sent friends listening assignments built from the resulting analysis.
+For the restart, I locked a new split over many of the same recordings and wrote a methodology framework that explicitly warned against fixed ninety-second jam boundaries. The first implementation reused them anyway. The research loop never stopped to report that the code contradicted the declared method. Working from those reports, I put two draft research posts online at their direct URLs and sent friends listening assignments built from the analysis.
 
 The consequences were larger than the lines of code that caused them. I was responsible for putting the work online and involving other people's time. But the lesson could not be that I should manually reconstruct every split and trace every constant before accepting any result. A system that requires that level of supervision is not running the research process autonomously. It is generating work for a human auditor. The system needed to prevent violations of its rules or report them when they occurred. It had done neither. I deleted the second notebook, took the drafts down, and abandoned the listening study.
 
@@ -139,13 +139,13 @@ This is the first of seven posts in [The Machine in the Lab](/series/the-machine
 
 Part 2 reconstructs the two notebooks I deleted: the questions they tried to answer, the results that looked convincing, and the small implementation choices that invalidated nearly everything built on top of them.
 
-Part 3 is about the boundary we kept crossing. A holdout cannot remain independent if an agent is allowed to inspect it, explain a miss, and then use that explanation to choose the next experiment. The post follows the project from written instructions about data leakage to data roles and permissions the research system could actually enforce.
+Part 3 is about the boundary we kept crossing. A holdout cannot remain independent if an agent is allowed to inspect it, explain a miss, and then use that explanation to choose the next experiment. The post follows the project from written instructions about data leakage to durable data roles and a record of which evidence each later version had already used.
 
 Part 4 follows the review system we built next. Multiple agents audited the code, checked the methodology, and agreed that the experiment was ready. Every check passed. The experiment still reached the wrong acoustic interpretation for a reason the review process had not been designed to see.
 
 Part 5 moves the experiment into the browser. It covers the audio-capture path, the difference between a classifier result and a viewer-visible decision, and the first genuinely new Goose show the system heard while it was happening.
 
-Part 6 describes what we built instead of another long research prompt: typed experiment state, provenance, explicit permissions, preserved failures, and a promotion boundary that the agent cannot silently cross.
+Part 6 describes what we built instead of another long research prompt: durable data roles, frozen experiments, preserved failures, and a separate decision about what each result is allowed to change.
 
 Part 7 returns after Goose's August run with the operational record. It will report the versions that actually ran, the guesses they emitted, the misses and false switches, the capture failures, and the repairs made between shows without compressing an evolving live product into one flattering score.
 

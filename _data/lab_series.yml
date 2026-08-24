@@ -4,7 +4,7 @@
 
 - slug: science-at-llm-speed
   title: "Part 1. Science at LLM Speed"
-  subtitle: "Research-like output is cheap. Valid claims still need an outside judge."
+  subtitle: "Research-like output is cheap. A valid claim still needs evidence that can show it is wrong."
   url: /series/the-machine-in-the-lab/science-at-llm-speed/
   status: published
   date: 2026-08-15
@@ -64,7 +64,7 @@
 
 - slug: two-notebooks-lost
   title: "Part 2. Two Notebooks Lost"
-  subtitle: "The code was mostly right. The experiments were already lost."
+  subtitle: "The first collapsed under validation. The second repeated a mistake it had already named."
   url: /series/the-machine-in-the-lab/two-notebooks-lost-series/
   status: scheduled
   date: 2026-08-18
@@ -226,7 +226,7 @@
 
 - slug: what-we-built-instead
   title: "Part 6. A Discovery Loop That Can Say No"
-  subtitle: "Bound the agent, preserve the failures, and let the evidence limit the claim."
+  subtitle: "A strong result should authorize only the next step its evidence can support."
   url: /series/the-machine-in-the-lab/what-we-built-instead/
   status: scheduled
   date: 2026-08-30

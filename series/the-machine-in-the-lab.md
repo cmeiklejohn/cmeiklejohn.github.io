@@ -11,11 +11,11 @@ image_card_type: summary_large_image
 <p class="series-landing-lead">I wanted to build a tool that could tell Goose fans what song they were hearing while a show was still happening. I also wanted an autonomous LLM system to do the research needed to build it. The system would propose experiments, write and run code, evaluate the results, and decide what to try next. The tool became SetScope.</p>
 
 <p class="series-landing-meta">
-  By my estimate, the agent compressed weeks of implementation into hours. It also helped produce two polished research notebooks that I later discarded. One leaked recordings between training and test. The other analyzed the wrong portions of the songs because it inherited a 90-second segmentation rule that contradicted the method I had written. Both came with clean code, persuasive charts, and conclusions that sounded finished.
+  By my estimate, the agent compressed weeks of implementation into hours. It also helped produce two polished research notebooks that I later discarded. The first expanded across song recognition and improvisation research until its central public claim failed held-out validation and the notebook no longer had independent evidence for the path it had taken. The second explicitly rejected a 90-second segmentation rule, then reused that rule in its first implementation. Both came with clean code, persuasive charts, and conclusions that sounded finished.
 </p>
 
 <p class="series-landing-meta">
-  I have a PhD and years of systems-research experience. These were not rules I did not know to write: both methods stated constraints the system later violated. I worked from the reports because an autonomous researcher that must be manually reconstructed after every run is not autonomous. The project began with automatic song and set detection. The recordings pulled it into harder questions about improvisation. After both notebooks failed, I returned to the original goal: build the live song guesser.
+  I have a PhD and years of systems-research experience. The problem was not that I had never heard of a holdout or did not understand that a measurement must match its method. I worked from the reports because an autonomous researcher that must be manually reconstructed after every run is not autonomous. The project began with automatic song and set detection. The recordings pulled it into harder questions about improvisation. After both notebooks failed, I returned to the original goal: build the live song guesser.
 </p>
 
 <p class="series-landing-meta">
