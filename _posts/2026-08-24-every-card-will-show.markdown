@@ -121,17 +121,19 @@ That is the theorem we should have written first. I had the agent replace the ol
 
 The repaired product defines the same five programs every day: morning, midday, afternoon, evening, and late night. A separate Go test sends five local times through the production hour-to-program resolver on a representative weekday and weekend date. On each date, those five visits must produce the full sequence. The Lean coverage theorem does not need a date or an hour.
 
-For this theorem, `availableCards` means the full modeled catalog under the assumption that every card has the content required to render. It is not the changing set of cards eligible in a live request. The model collects the cards reserved in each program, adds the structural Hero that is always present, and compares that union with the catalog. `nameSet` sorts the names and removes duplicates so the two lists represent sets:
+`modeledCardNames` is simply the 45 names in Lean's fixed catalog. Lean does not decide which cards are eligible in a live request. We use the full catalog as the most crowded case by treating every ranked card identity as if it has content to render. If the full catalog's reservations fit, a fixed subset can only require fewer slots. This does not cover eligibility changing between visits.
+
+The model collects the cards reserved in each program, adds the structural Hero that is always present, and compares that union with the catalog. `nameSet` sorts the names and removes duplicates so the two lists represent sets:
 
 ```lean
-def availableCards : List String :=
+def modeledCardNames : List String :=
   nameSet fullNames
 
 def cardsAcrossFivePrograms : List String :=
   nameSet (structuralNames ++ programs.flatMap reservedNames)
 
-theorem union_of_five_programs_is_all_available_cards :
-    cardsAcrossFivePrograms = availableCards := by
+theorem union_of_five_programs_is_all_modeled_cards :
+    cardsAcrossFivePrograms = modeledCardNames := by
   native_decide
 ```
 
