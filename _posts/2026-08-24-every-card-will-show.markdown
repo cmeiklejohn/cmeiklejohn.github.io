@@ -61,11 +61,14 @@ The most revealing number was 27. It sounded like a product limit, but it came f
 
 The problem was that those five states couldn't occur during one day.
 
-Before the repair, The Lot did not yet use the five daily programs described above. Its clock chose a program partly from the day of the week. A weekday could reach weekday morning, workday, evening, and late night. A weekend day could reach weekend daytime, evening, and late night. The five names in the source code were therefore possible programs across a week, not five stops available on one date.
+Before the repair, those five names did not mean five stops in a day. They described two different schedules:
 
-On a weekday, one visit to each available program exposed 20 capped card positions before the late-night increase and 21 after it. On a weekend, the equivalent totals were 15 and then 16. Those totals included the Hero as an ordinary capped position. Repeated visits could rotate cards within a program, but there was no calendar day containing all five states that had been added together.
+- A weekday could reach weekday morning, workday, evening, and late night.
+- A weekend could reach weekend daytime, evening, and late night.
 
-The 27-position limit was therefore not evidence about a real person's day. It was arithmetic over an impossible itinerary.
+Evening and late night appeared on both schedules, but the other programs were mutually exclusive. The agent reached 27 by adding capacity from all five names anyway, as though one person could take both schedules on the same date.
+
+Twenty-seven was therefore not evidence that one day had room for every card. It was arithmetic over an impossible itinerary.
 
 <figure style="max-width: 640px; margin: 2rem auto;">
   <img src="/img/zabriskie-every-card-will-show-coming-up.jpg" alt="The Coming Up card in the late-hours Lot, listing two Goose shows at Red Rocks and a Phish show at Dick's Sporting Goods Park" loading="lazy" style="width: 100%; height: auto; border-radius: 24px;">
