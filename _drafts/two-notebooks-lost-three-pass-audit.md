@@ -14,7 +14,7 @@ Four adversarial readers examined the post independently for standalone clarity,
 
 The previous post treated the pair-level training leak, the ninety-second detector, the reserved test data, and the incomplete purge as separate notebook anecdotes. Its central sentence said that a missing rule could propagate through later work, but the notebook sections did not build that argument.
 
-The first rewrite made enforcement the throughline: a rule written in a plan or data file is not a safeguard unless it controls execution or stops the process when violated. The Goose-to-Phish pivot remained only to explain why the project changed corpora and questions.
+The first rewrite made enforcement the throughline: a rule written in a plan or data file is not a safeguard unless it controls execution or stops the process when violated. The pivot from song identification to improvisation remained only to explain how promising intermediate results changed the question the autonomous program pursued.
 
 The pass failed. It repeated the thesis too often, placed two unrelated failures under one section heading, and claimed that leftover Notebook 1 cache data caused Notebook 2 to reuse the ninety-second segmentation.
 
@@ -40,7 +40,9 @@ The post no longer treats the cache as the cause of Notebook 2's recurrence or c
 
 The final pass removed remaining research shorthand, defined a notebook and the autonomous division of labor, explained the A/B–A/C pair leak, defined the three data roles in plain language, and replaced technical cache terminology with a description of generated measurements stored outside the project folder.
 
-The structural reader confirmed one continuous sequence: concrete leak; autonomous-process definition; SetScope origin; labeled-data detour to Phish; Notebook 1 failures; Notebook 2 recurrence; later purge failure; executable safeguards; return to SetScope.
+The structural reader confirmed one continuous sequence: concrete leak; autonomous-process definition; SetScope origin; detour into improvisation; Notebook 1 failures; Notebook 2 recurrence; later purge failure; executable safeguards; return to SetScope.
+
+The author read then removed an unnecessary explanation of how the source data changed. The post now keeps only the causal point that matters to its argument: apparent progress made by the autonomous program kept the improvisation detour running.
 
 The evidence reader required two last corrections: the detector treated changes within composed passages as evidence rather than directly labeling passages, and later analyses reused generated measurements rather than generated audio clips. Both were corrected.
 
