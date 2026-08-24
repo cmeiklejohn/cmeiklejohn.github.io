@@ -475,6 +475,7 @@ ul.posts li:last-child {
 .home-post-series {
   font-family: var(--font-ui);
   font-size: 0.82rem;
+  font-style: italic;
   font-weight: 400;
   color: var(--fg-muted);
   text-decoration: none;
