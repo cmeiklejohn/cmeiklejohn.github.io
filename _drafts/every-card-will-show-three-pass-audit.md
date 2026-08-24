@@ -5,7 +5,7 @@ Post: `_posts/2026-08-24-every-card-will-show.markdown`
 Evidence base:
 
 - Zabriskie `origin/main` at `fffec3548949bce7803dd48ad8600de9ca6e228d`.
-- Blog `origin/master` at `d7e97bb52ec72c8eaba51dfff1f2cbb8370d5db3`.
+- Blog `origin/master` at `7747aefab9d335132973246d77388dd60da0ca36`.
 - The author's first-person account for the conversation, elapsed time, the agent's 47-item product enumeration with 20 missing, agency, repeated requirement, production timing, and Zabriskie's role as a fully vibe-coded application whose implementation code he does not read.
 
 ## Structural reader
@@ -56,6 +56,8 @@ The new subheads keep the model failure, corrected same-day representation, hist
 
 Corrections preserved from the evidence pass:
 
+- Rewrote the history explanation to distinguish the two fixed initial histories from the history that `simulateDayFrom` updates between visits; the theorems do not quantify over arbitrary history.
+- Defined `additionalPostures` in product language as additional guaranteed programs.
 - Corrected the same-day explanation: `fiveVisitsOn` reuses one `localDay` by construction; Lean is not performing a separate inequality check over the five records.
 - Replaced any implication that 27 caused the observed 20 missing cards with two independently bounded claims.
 - Replaced "daily maximum" language with "one visit to each distinct program."
