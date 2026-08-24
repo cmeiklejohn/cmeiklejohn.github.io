@@ -93,7 +93,7 @@ Lean is both a programming language and a proof assistant, a tool for describing
 
 The Lean code ended up doing two jobs. It checked whether the catalog was covered across five programs, and it reproduced enough of the production selector to compare Lean's output with Go's. Those jobs require different levels of detail. The coverage property needs program assignments, reservations, and capacities. The production comparison also needs the scoring and ordering rules. Those extra rules are part of the implementation twin, not the starvation argument.
 
-The shape of this setup came from [Cedar](https://docs.cedarpolicy.com/other/security.html), the open-source language developed at AWS for deciding who is allowed to do what in an application. Cedar has a model written in Lean and a separate engine, the Rust program that makes real authorization decisions. It connects them with [differential testing](https://en.wikipedia.org/wiki/Differential_testing): generate an input, run it through both implementations, and check that they produce the same result. The proofs establish properties of the model; the differential tests check that the live engine continues to behave like it. We followed that pattern for The Lot's supporting-card selector.
+We followed the verification shape used by [Cedar](https://docs.cedarpolicy.com/other/security.html), the open-source authorization language developed at AWS. Cedar has a model in Lean and a separate Rust engine, then uses [differential testing](https://en.wikipedia.org/wiki/Differential_testing) to compare their results. The proofs establish properties of the model; the comparisons check that the production implementation still behaves like it.
 
 ### Lean proved the wrong day
 
@@ -105,70 +105,46 @@ That passing version was added to the main source code, and its Lean check becam
 
 This is where formal verification, using mathematical proof to check a software claim, meets the hallucination problem. Lean checked the statement it was given. It could not check whether the agent had translated my product requirement faithfully.
 
-### Fixing the five-visit schedule
+### Making the proof match the question
 
-The repaired Lean model uses one fixed walk: morning, midday, afternoon, evening, and late night. That removes the impossible mixture of weekday and weekend programs from the coverage calculation.
+The repaired product has five programs every day: morning, midday, afternoon, evening, and late night. A separate Go test sends 8 AM, noon, 3 PM, 8 PM, and 11 PM on both a Wednesday and a Sunday through the production clock. That is where we check that the five programs can occur on one real date. The starvation proof does not need a date or an hour once that fact has been established.
 
-Lean does not model a calendar date or determine its day of the week. It assumes that all five programs are available during one day, then asks what the selector shows across that walk. Separate Go tests send 8 AM, noon, 3 PM, 8 PM, and 11 PM on both a Wednesday and a Sunday through the production clock resolver. Those tests, not the Lean model, check that the five-program walk is possible on a real date.
+It does not need viewing history either. History changes the order of ordinary filler cards. It cannot change the guarantee because the selector reserves room for a card in its assigned program before filling the remaining positions. The question is simply whether those reservations cover the catalog.
 
-The coverage claim concerns the ranked supporting cards that rotate through The Lot's sections. **Live Now**, the independent Hero, and other uncapped modules bypass the supporting-card limit, so they are outside this starvation question.
-
-For coverage, the relevant catalog data is much smaller than the complete `Card` record. Each card has an identity and at least one program where it is guaranteed room. The source calls the primary guaranteed program a `posture` and any others `additionalPostures`:
+The model now says that directly. It lists the five programs, finds the cards reserved in each one, and takes their union. The Hero is represented as a structural position that is always present and does not consume a supporting-card slot. **Live Now** and other uncapped modules are outside this selector.
 
 ```lean
-def ownsProgramPosture (c : Card) (d : Daypart) : Bool :=
-  (c.posture != .none && c.posture == d) ||
-    c.additionalPostures.contains d
+def programs : List Daypart :=
+  [.morning, .midday, .afternoon, .evening, .late]
+
+def reservedNames (program : Daypart) : List String :=
+  List.map (·.name)
+    (fullCatalog.filter fun card =>
+      !isStructural card &&
+        ownsProgramPosture card program)
+
+def coveredNames : List String :=
+  structuralNames ++ programs.flatMap reservedNames
+
+def starved : List String :=
+  fullNames.filter fun name => !coveredNames.contains name
 ```
 
-Most cards own one program. **Connections** owns both midday and afternoon because either window leaves time to follow the card into a listen, read, or watch. It remains one card, and coverage only requires it to appear once. Lean didn't choose that product policy; the catalog records it.
+Most cards are reserved in one program. **Connections** is reserved in both midday and afternoon because either window leaves time to follow it into a listen, read, or watch. It is still one card, and it only has to appear once.
 
-### The smaller starvation argument
-
-The starvation argument does not care which card ranks first. For each program, the selector first keeps every applicable card assigned to that program. Only then does it use ranking to fill positions left over. Ranking can change the order and filler, but it cannot take away an assigned card's guaranteed opportunity.
-
-Lean expresses the reservation pass as `takePhase0`. It walks the ranked list and keeps every card that owns the current program until the program reaches its capacity:
+Lean checks three concrete facts about the current catalog: every card is structural or assigned to a program, every program has room for all of its assignments, and the union leaves no card behind.
 
 ```lean
-def takePhase0 (sorted : List Card) (d : Daypart)
-    (max : Nat) : List String :=
-  sorted.foldl (init := []) fun keep u =>
-    if keep.length >= max then keep
-    else if ownsProgramPosture u d then keep ++ [u.name]
-    else keep
-```
+theorem every_program_has_room_for_its_assignments :
+    reservationsFit = true := by
+  native_decide
 
-The capacities are sized to the assignments in the catalog. Lean checks the number of cards assigned to morning, midday, afternoon, evening, and late night:
-
-```lean
-theorem programmed_capacities_match_catalog :
-    (fivePostures.map fun posture =>
-      (fullCatalog.filter fun c => ownsProgramPosture c posture).length) =
-    [10, 13, 11, 10, 10] := by
+theorem five_program_reservations_starve_no_card :
+    starved = [] := by
   native_decide
 ```
 
-Those are also the five program limits. In other words, the guarantee comes from assigning every ranked card at least one program, reserving those cards before ordinary ranking, and providing enough room for all the assignments. Ranking determines order and fills holes left by cards that are not applicable. It is not the source of the no-starvation guarantee.
-
-The smaller theorem suggested by this design would quantify over any ranking: if every card owns one of the five programs, each program has room for all of its owners, and the selector keeps owners first, then the union of the five programs contains every card. The exact scores and resulting order would disappear from the statement.
-
-The current Lean coverage theorem does not state that general result. It executes the complete production-like selector on the current catalog and checks the resulting union. That is a valid finite check, but it makes the model more complicated than the starvation property requires.
-
-Lean runs the complete catalog through the five modeled programs. Two small helpers turn those outputs into the coverage question:
-
-```lean
-def covered (keeps : List (List String)) (name : String) : Bool :=
-  keeps.any (fun visit => visit.contains name)
-
-def missing (keeps : List (List String)) (catalog : List String) :
-    List String :=
-  (catalog.filter (fun name => !(covered keeps name))).mergeSort
-    (fun a b => a ≤ b)
-```
-
-`covered` asks whether one card name appears in at least one of the five lists. `missing` applies that question to the complete modeled catalog. The coverage checks require the result to be empty under each fixed event-lead and tour configuration they evaluate.
-
-This is a finite check of the current catalog and modeled selector. It does not prove that arbitrary eligibility or mode changes during the day preserve coverage. The structural protection is the reservation pass and the matching capacities above: ordinary ranking happens after the cards promised room in that program have been kept.
+This is deliberately a finite proof about the current catalog and its reservations. It does not contain a calendar day, hours, history, scores, affinities, deadline state, tour state, or card ordering because none of those variables is part of the claim. The more detailed model still exists, but it has a different job: comparing the production selector with Lean.
 
 ### Connecting Lean back to Go
 
