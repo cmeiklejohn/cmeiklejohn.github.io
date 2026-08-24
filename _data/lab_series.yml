@@ -63,27 +63,27 @@
     - "Do not turn the post into an anti-AI catalogue; the positive results are necessary to explain why the risk is worth engaging."
 
 - slug: two-notebooks-lost
-  title: "Part 2. Two Notebooks Lost"
-  subtitle: "Notebook 1 had no final test. Notebook 2 wrote safeguards but did not enforce them."
+  title: "Part 2. The Safeguards Have to Run"
+  subtitle: "Two abandoned notebooks showed me the difference between a research rule and a working control."
   url: /series/the-machine-in-the-lab/two-notebooks-lost-series/
   status: published
   date: 2026-08-18
   estimated_words: "3,000-3,500 words"
-  purpose: "Show what happened when an experienced, PhD-trained systems researcher used an LLM agent to make an ambitious self-directed audio-research program tractable: two silent setup decisions became foundations for plausible downstream work while creating different information and meaning failures."
+  purpose: "Show how explicit rules failed to protect an autonomous research program because they were recorded as instructions rather than enforced as controls: a pair-level test leak, an inherited segmentation default, unprotected final-test data, and an incomplete cache purge all propagated into plausible downstream work."
   discovery_loop_role: "Show the uncontrolled loop in practice: an agent could propose, implement, run, interpret, and extend experiments while its reports failed to surface or enforce the premises entering the next iteration."
   outline:
-    - title: "The deletion evening"
-      detail: "Open on deleting two notebooks, taking two blog posts offline after three people had read them, and taking down a listening study after friends had already spent time on it."
+    - title: "The split that was not separate"
+      detail: "Open with the concrete pair-level leak: the same performance could appear in a training pair and a test pair even though the rows were different. Establish immediately that a written separation rule did not control the code."
     - title: "The audio-research project"
       detail: "Preserve the complete chronology for a standalone reader: automatic set detection was the original goal; the corpus and apparent power of audio features pulled the project into the Type I/Type II improvisation detour where the two notebooks failed; SetScope later returned to the original target. Establish the author's research background, corpus, labels, and why an LLM agent made work at this scale possible. Treat the PhD as evidence that the constraints were understood and explicit, while making clear that expertise cannot reveal a violation the autonomous system neither blocks nor reports."
     - title: "Notebook 1"
-      detail: "Reconstruct the performance-level train/test leak, why the resulting numbers looked compelling, and why no downstream result could be repaired after the boundary was crossed."
+      detail: "Reconstruct the pair-level cross-validation leak and the later 44-case detector holdout, including the 38 analyzable cases and the fixed ninety-second region assumption. Show why a late detector audit could reject that result but could not independently replay the notebook's adaptive path."
     - title: "Notebook 2"
-      detail: "Trace the inherited 90-second segmentation default through nine scripts, fingerprints, clusters, charts, prose in the blog posts, and the listening study. Name both layers: the immediate defect was implementation fidelity because the default violated the written method; the deferred scientific debt was measurement validity because the convenient segment then defined what phenomenon the analysis could observe."
-    - title: "The shared shape"
-      detail: "Show that neither failure was bad syntax or an obvious hallucination. Each was a locally plausible decision that remained invisible while the agent accelerated everything built on top of it."
-    - title: "Two failures, two debts"
-      detail: "Separate the mechanics explicitly. Notebook 1 crossed an information boundary and creates the question answered in Part 3. Notebook 2 let a convenient segmentation procedure define the observable phenomenon and creates the meaning question paid off in Part 4. The shared propagation mechanism should not collapse them into the same error."
+      detail: "Show that the new methodology rejected blanket ninety-second boundaries and assigned five song groups to final testing, while the code reused the fixed default and development accessed four reserved groups containing 22 of 25 performances at lock time. Keep the chronology precise: Notebook 2 began before Notebook 1 was removed."
+    - title: "The incomplete purge"
+      detail: "After both notebooks were removed from the version-controlled folder, a later inventory found 1,120 generated files in shared storage and documented that a subsequent notebook had loaded 131 of them. Treat this as a separate enforcement failure, not as the cause of Notebook 2's ninety-second recurrence."
+    - title: "The safeguards have to run"
+      detail: "Unify the distinct mechanics without collapsing them: constraints written in plans or data files did not control the split, data access, inherited constants, or generated-file lineage. State that autonomous research needs executable checks that block or surface violations before dependent work continues."
     - title: "The question for the series"
       detail: "End by preserving both unresolved questions: how the project protects information independence, answered in Part 3, and how it establishes that a measurement represents the named phenomenon, answered in Part 4."
   evidence:
