@@ -284,7 +284,7 @@ The post should concede all three without accepting the premise that autonomy re
 
 ### Standalone context requirement
 
-Part 2 must explain the full origin-detour-return chronology, audio question, corpus, and labels in plain language. A standalone reader must learn that automatic set detection was the original goal before the corpus pulled the project into Type I and Type II jam research. The post cannot assume the reader understands those categories or has read Part 1.
+Part 2 must explain the full origin-detour-return chronology in plain language. A standalone reader must learn that automatic set detection was the original goal before promising intermediate results pulled the autonomous program into improvisation research. The post cannot assume the reader has read Part 1.
 
 ### Handoff to Part 3
 

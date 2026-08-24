@@ -24,9 +24,7 @@ The LLM wasn't just writing code that I reviewed step by step. I supplied the ob
 
 The original objective was to build [SetScope]({% post_url 2026-08-15-science-at-llm-speed %}#the-research-loop-gets-faster), a system that could listen to a live [Goose](https://www.goosetheband.com) show and name the song while the band was still playing it. A live version can change in speed, length, arrangement, and improvisation while remaining recognizably the same song.
 
-Early comparisons appeared to show that composed passages carried much of a song's recurring identity while improvised passages accounted for much of the variation. That opened a more interesting question: could measurements of rhythm, harmony, and texture describe how performances diverged during improvisation?
-
-Answering it required labeled data. My Goose archive contained recordings and song titles, but not a large collection of annotations identifying performances with open-ended jams. [Phish](https://phish.com/) had decades of performances accompanied by [community-maintained jam annotations](https://phish.net/blog/1387398339/new-and-improved-phish-jam-charts.html). The available data pulled the research away from the Goose product and toward Phish. The reports arrived quickly and appeared to form a coherent account of the music, so I let the program continue.
+The first song-identification experiments produced a positive result: measurements from the composed sections appeared to distinguish one song from another across live performances. That suggested the composed parts preserved much of a song's identity while the improvised parts accounted for much of the variation between performances. So the program started asking what those same measurements could tell us about the improvisation. Its reports arrived quickly and appeared to form a coherent account of the music, so I let it continue. That detour became Notebook 1.
 
 ## Notebook 1
 
@@ -40,7 +38,7 @@ That audit rejected this detector. It did not provide a clean test of the entire
 
 ## Notebook 2
 
-Notebook 2 began on April 30 with a written methodology intended to prevent the first notebook's failures. It assigned each song permanently to one of three uses: trying methods, choosing among them, or one final test that was supposed to remain unopened until the method was finished. It also rejected the blanket ninety-second division in favor of boundaries chosen for each song from the music itself.
+Notebook 2 continued the improvisation work under a written methodology intended to prevent the first notebook's failures. It began on April 30 and assigned each song permanently to one of three uses: trying methods, choosing among them, or one final test that was supposed to remain unopened until the method was finished. It also rejected the blanket ninety-second division in favor of boundaries chosen for each song from the music itself.
 
 The code didn't follow those rules. The first implementation again set the opening and closing regions to ninety seconds. Later analyses reused measurements cut at those boundaries. The method had warned against the assumption, but nothing compared the running code with the method and stopped the work.
 
@@ -62,4 +60,4 @@ Those checks belong inside the autonomous process. My job is to define and appro
 
 A natural-language instruction can describe a safeguard. It cannot enforce one.
 
-After Notebook 2, I returned the program to SetScope's original Goose song-identification problem. A new live show offered evidence that no earlier notebook could have seen. But each show could be new only once. Once the program used that show to decide what to do next, was it still independent evidence or had it become part of development? That's the question in Part 3. Part 4 returns to the separate problem exposed by the ninety-second detector: whether a consistent measurement actually represents the music named in the claim.
+After Notebook 2, I set the improvisation work aside and returned the program to SetScope's original Goose song-identification problem. A new live show offered evidence that no earlier notebook could have seen. But each show could be new only once. Once the program used that show to decide what to do next, was it still independent evidence or had it become part of development? That's the question in Part 3. Part 4 returns to the separate problem exposed by the ninety-second detector: whether a consistent measurement actually represents the music named in the claim.
