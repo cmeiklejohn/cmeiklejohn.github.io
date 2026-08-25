@@ -154,6 +154,8 @@ That is the symbolic version of the plain-language claim above.
 
 The Lean selector is called `capCards`; its supporting-card phase admits the reserved cards first, then adds section diversity and fills any remaining positions by rank. The structural Hero is checked separately.
 
+The proof intentionally leaves the filler identities open. After admitting the reservations, the selector first tries to represent a section not already present, then fills any remaining slots with the highest-scoring cards. A card's score considers its section, deadline urgency, show-night and tour context, preferred time, viewing frequency and recency, and fixed priority within its section. A special morning bonus also applies to the two **On This Day** memories. Those signals choose the filler cards, but cannot displace a reservation. The server applies the fixed display hierarchy afterward.
+
 The remaining obligation was a concrete product schedule that met the nine-card bound. Each supporting card has exactly one reservation, balanced as:
 
 ```text
@@ -176,7 +178,9 @@ That settled the generic law and one concrete product schedule. It did not yet s
 
 ### Making Go answer to the model
 
-The proof so far is about Lean. The production selector, `lotCapCards`, is a separate Go function. Connecting the proof to what a person sees takes three more steps:
+The proof so far is about Lean. Its generic theorem receives an eligible catalog and ranking signals; it does not build those inputs for a particular person. On a live request, Go does that work: it determines which cards are eligible, calculates recency and frequency from the person's impression history, supplies the event and tour context, and runs the separate `lotCapCards` selector.
+
+The executable Lean selector mirrors the scoring and capping logic so that we can compare it with Go. Connecting the proof to what a person sees takes three more steps:
 
 1. Lean executes its selector on concrete catalogs and ranking inputs.
 2. Go runs `lotCapCards` on the same inputs, and a differential test compares the two outputs.
