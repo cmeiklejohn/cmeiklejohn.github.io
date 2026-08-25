@@ -184,7 +184,9 @@ The proof so far is about Lean. The production selector, `lotCapCards`, is a sep
 
 This follows the same broad shape used by [Cedar](https://docs.cedarpolicy.com/other/security.html), the open-source authorization language developed at AWS: prove properties of a model, implement a separate production engine, and use [differential testing](https://en.wikipedia.org/wiki/Differential_testing) to look for disagreement. Our boundary is much smaller, but the separation is the same.
 
-The comparison is a bounded regression test, not another universal proof. It uses the complete 45-card catalog plus 63 deterministically generated subsets. Each runs once with every card unseen and once with every card recently seen, producing 128 five-visit comparisons.
+The number 128 has no mathematical significance. It is simply the fixed number of comparison cases we currently run: the complete 45-card catalog plus 63 generated subsets makes 64 catalogs, and each runs once with every card unseen and once with every card recently seen. That makes 128 five-visit comparisons.
+
+This covers only a tiny fraction of the possible inputs. Each of the 45 cards can be eligible or ineligible, creating roughly 35 trillion possible subsets before considering mixed viewing histories or other ranking inputs. Adding more cases would improve the chance of catching a disagreement between Lean and Go, but it would not strengthen the universal Lean theorem. This comparison is a bounded implementation check, not another proof.
 
 Regenerating those cases exposed a mismatch on one filler card. Go allowed a card to prefer several times of day; the executable Lean version allowed only one. We corrected the reference implementation without changing the generic coverage theorem.
 
