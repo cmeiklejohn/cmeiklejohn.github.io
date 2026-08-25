@@ -177,6 +177,11 @@ The main coverage theorem does not fail because it cannot be applied to that wal
 
 For the actual **Last Night** flow, that boundary is acceptable. If a person had already RSVP'd to the previous night's show, the card is eligible by morning and its guarantee applies. The counterexample corresponds to someone adding the RSVP retroactively after the show, perhaps the next afternoon. In that case, not receiving a same-day prompt to write a review is acceptable product behavior. The specification deliberately admits that failure rather than complicating the scheduler and theorem to guarantee a case I do not need.
 
+<figure style="max-width: 688px; margin: 2rem auto;">
+  <img src="/img/zabriskie-every-card-will-show-last-night.jpg" alt="The Last Night card in dark mode, showing prompts to choose the jam of the night, rate the show, revisit the discussion, and post a recap" loading="lazy" style="width: 100%; height: auto; border-radius: 24px;">
+  <figcaption>The Last Night card rendered with its deterministic test fixture: the morning-after prompts for a jam of the night, rating, and recap.</figcaption>
+</figure>
+
 ## Algorithms are hard
 
 Before the final decomposition, the agents had already produced an implementation, unit tests, end-to-end tests, documentation, multiple code audits, numerical arguments, and accepted formal proofs. Those earlier passing artifacts said the requirement had been implemented correctly. It had not.
