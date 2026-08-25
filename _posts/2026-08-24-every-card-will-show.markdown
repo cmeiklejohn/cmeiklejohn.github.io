@@ -200,15 +200,15 @@ Together, these checks connect the proved model to Go, but they do not prove eve
 
 ### What the theorem does not cover
 
-The coverage theorem accepts any eligible subset, including the crowded full catalog, but it assumes that the subset stays the same during all five visits. It does not promise to rescue a card that becomes eligible only after its reserved visit has passed.
+The fixed-eligibility assumption was not a limitation I had thought about when I asked for no starvation. It became visible when we tried to generalize the Lean model so that the eligible set could change between visits. The stronger guarantee was false. Lean helped us find a concrete counterexample using **Last Night**, a prompt to review the previous evening's show.
 
-Lean contains a counterexample using **Last Night**, a prompt to review the previous evening's show. Its reserved program is morning:
+**Last Night** has a morning reservation:
 
 1. During the morning visit, **Last Night** is not eligible, so the selector cannot show it.
 2. It becomes eligible at midday, after its reservation has passed.
 3. For the rest of the day it can appear only as filler. But every later program's reservations already fill its capacity, so no filler position is available and **Last Night** remains unseen.
 
-This does not contradict the coverage theorem. The theorem starts with one fixed eligible catalog; the counterexample changes that catalog between visits. Lean checks this changing-eligibility case separately and confirms that **Last Night** is the card left unseen.
+That exact walk is now checked in Lean, which reports **Last Night** as the only unseen card. It does not contradict the coverage theorem: the theorem starts with one fixed eligible catalog, while the counterexample changes that catalog between visits.
 
 For the actual **Last Night** flow, that boundary is acceptable. If a person had already RSVP'd to the previous night's show, the card is eligible by morning and its guarantee applies. The counterexample corresponds to someone adding the RSVP retroactively after the show, perhaps the next afternoon. In that case, not receiving a same-day prompt to write a review is acceptable product behavior. The specification deliberately admits that failure rather than complicating the scheduler and theorem to guarantee a case I do not need.
 
