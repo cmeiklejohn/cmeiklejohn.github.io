@@ -58,7 +58,7 @@ The checks hadn't lied. They answered weaker questions and the agent presented t
 
 ## What Lean made explicit
 
-Lean is both a programming language and a proof assistant. It lets us describe a system precisely and then mechanically checks what follows from that description. I had the agent build a Lean model beside Zabriskie's production server, which is written in [Go](https://go.dev/). Lean does not run when somebody opens The Lot, and it does not read or prove the Go source.
+Lean is both a programming language and a proof assistant. It lets us describe a system precisely and then mechanically checks what follows from that description. This was my first time using Lean. I had the agent build a Lean model beside Zabriskie's production server, which is written in [Go](https://go.dev/). Lean does not run when somebody opens The Lot, and it does not read or prove the Go source.
 
 By the end, the formal work needed to answer three separate questions:
 
