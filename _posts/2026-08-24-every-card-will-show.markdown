@@ -60,9 +60,17 @@ The checks hadn't lied. They answered weaker questions and the agent presented t
 
 Lean is both a programming language and a proof assistant. It lets us describe a system precisely and then mechanically checks what follows from that description. I had the agent build a Lean model beside Zabriskie's production server, which is written in [Go](https://go.dev/). Lean does not run when somebody opens The Lot, and it does not read or prove the Go source.
 
+By the end, the formal work needed to answer three separate questions:
+
+1. What is the smallest per-visit card limit that could possibly cover the catalog?
+2. Given a schedule that fits that limit, can ranking or capping still push out a card that was promised a place?
+3. Does the separately written Go selector behave like the Lean selector we proved things about?
+
+These are different claims. A lower bound does not prove that a working schedule reaches it. A proof about a Lean function does not prove that Go matches it. Keeping those boundaries visible made the rest of the argument easier to audit. We reached that decomposition only after proving two incomplete statements.
+
 ### Lean proved the wrong day
 
-The first Lean selector model failed too, but it represented only a subset of the inventory and could not establish the full claim. The agent's next model expanded the inventory and passed by treating weekday morning, workday, evening, late night, and weekend daytime as five consecutive visits. No calendar day is both a weekday and a weekend.
+The first Lean version of the card-selection logic failed its coverage check, but it represented only part of the inventory and could not answer the full question. The agent's next model expanded the inventory and passed by treating weekday morning, workday, evening, late night, and weekend daytime as five consecutive visits. No calendar day is both a weekday and a weekend.
 
 Lean correctly proved coverage for an itinerary no person could take. The theorem was valid. The agent's claim that it represented my day was not.
 
@@ -70,7 +78,7 @@ That proof entered the main source code and became a required continuous-integra
 
 ### Coverage was still only half the problem
 
-After the calendar was repaired, the assignment-table coverage question became one set equality:
+After the calendar was repaired, the basic coverage question became one set equality. Read this theorem as: combine the cards assigned to all five programs, and the result is the complete modeled catalog.
 
 ```lean
 theorem union_of_five_programs_is_all_modeled_cards :
@@ -78,13 +86,13 @@ theorem union_of_five_programs_is_all_modeled_cards :
   native_decide
 ```
 
-That says every modeled card is either the structural Hero or assigned to at least one of the five programs. It was easier to inspect than the earlier state-heavy model, but it still omitted part of the product requirement.
+It was easier to inspect than the earlier model, but it still omitted part of the product requirement.
 
 The original problem was a 29-card, 15,000-pixel page. A theorem saying the five programs cover the catalog accepts the stupidest possible implementation: show every card on every visit. Coverage is a constraint. The objective is to make each visit as small as possible while satisfying that constraint.
 
-The inventory changed during the repairs. The optimized model discussed from here forward contains 45 code-defined identities, not the earlier incident inventory. One is the structural Hero, which does not consume a supporting-card slot. That leaves 44 supporting cards. The agent-generated repair assigned those cards 54 times across the day, including duplicates, and allowed 10, 13, 11, 10, and 10 supporting cards across the five visits.
+The inventory changed during the repairs. From this point forward, the model contains 45 distinct cards, not the earlier incident inventory. One is the structural Hero, leaving 44 supporting cards.
 
-The proof was correct, but it had certified a padded schedule. It still had not stated the height objective: minimize the largest supporting-card count across the five visits. The model had only shown that coverage was possible with enough space.
+Because some supporting cards were assigned to more than one program, the agent-generated repair reserved 54 positions across the day: 10, 13, 11, 10, and 10. The proof certified coverage, but only by padding the schedule. It still had not stated the size objective: minimize the largest supporting-card count across the five visits.
 
 This is where Lean helped me understand what I was actually trying to do. It did not recover the product intent. Reading the theorem literally and challenging every input and unexplained capacity made the requirement inspectable enough for me to see what the agent had left out.
 
@@ -92,7 +100,7 @@ This is where Lean helped me understand what I was actually trying to do. It did
 
 Once stated correctly, the lower bound is simple. There are 44 supporting cards and five visits. If every visit showed at most eight supporting cards, the entire day would contain at most 40 positions. Four cards could not appear. Therefore any covering schedule must allow at least nine supporting cards on one visit.
 
-That counting argument became a general Lean theorem. It takes a catalog with no repeated card identities and the cards shown on each visit. If those visits cover the catalog and no visit contains more than `max` cards, then the catalog cannot contain more than the number of visits multiplied by `max`:
+That counting argument became a general Lean theorem. The names beginning with `h` are assumptions supplied to the proof: the catalog has no duplicates, the visits cover it, and each visit contains at most `max` cards. The line after the colon is what Lean proves from those assumptions:
 
 ```lean
 theorem covering_schedule_capacity_lower_bound
@@ -105,15 +113,22 @@ theorem covering_schedule_capacity_lower_bound
     catalog.length ≤ keeps.length * max
 ```
 
-The proof flattens the visit outputs and counts their positions. A 44-card catalog and five visits turn the result into `44 ≤ 5 × max`, so `max` must be at least nine.
+The conclusion, `catalog.length ≤ keeps.length * max`, is just the counting argument in symbols. A 44-card catalog and five visits turn it into `44 ≤ 5 × max`, so `max` must be at least nine.
 
-### Separating the algorithm from the product schedule
+### Proving that ranking cannot break the schedule
 
-The formal statement now separates two things. Whether ranking and the cap preserve any fitting assignment is an algorithm question. Whether **Connections** belongs at midday is a product decision. Moving a card should require checking the new table, not rewriting the scheduler proof.
+The lower bound only says that nine slots are necessary. It does not say the real selector will use those slots correctly.
 
-The generic theorem runs the selector once for each item in `visits`, then takes the union of those outputs. `visits` does not choose cards; it names the executions whose combined coverage we are proving.
+Within the supporting-card phase, cards play two roles: reservations and filler. The product gives each supporting card a guaranteed visit, which I call its reservation. The selector computes one ranked order, admits every fitting reservation first, then uses that order for section diversity and filler. The property we need is that ranking can change the filler, but it cannot evict a reservation that fits within the visit's cap.
 
-Each execution still needs the inputs used by the real ranker. `staleness` is a per-visit table from card name to score bonus, so it can change which unassigned filler cards survive. The theorem accepts every possible value for that table, whether an event leads the page, and whether the person is on tour. It asks only whether every supporting card has an assigned visit and whether the cards assigned to each visit fit:
+In plain language, the theorem says:
+
+> For any cards, visits, capacities, and ranking inputs: if every supporting card has a reserved visit, and the reservations for each visit fit its cap, then the union of the final ranked-and-capped outputs contains every supporting card.
+
+The exact Lean statement is longer because it names all of those inputs. Everything before the colon describes the cards, visits, ranking inputs, and two assumptions. Everything after the colon is the coverage claim.
+
+<details markdown="1">
+<summary>Show the exact Lean theorem</summary>
 
 ```lean
 theorem capped_selector_covers_any_fitting_schedule
@@ -133,11 +148,13 @@ theorem capped_selector_covers_any_fitting_schedule
       (supportingNames units) = true
 ```
 
-`hassigned` says the product has given every supporting card a guaranteed visit. `hfits` says no visit has been assigned more guaranteed cards than it can show. Given those facts, Lean proves that the final ranked-and-capped outputs cover every supporting card. The theorem does not name **Connections**, morning, late, 44 cards, or five visits.
+</details>
 
-Ranking decides which unassigned fillers survive once the cap binds. The theorem proves the narrower invariant we need: ranking cannot dislodge an assigned card when all assignments fit. The final selectors are called `capCards` in Lean and `lotCapCards` in Go. The theorem follows the supporting-card path inside `capCards`: it admits the assigned cards first, then adds section diversity and fills any remaining positions by rank. The structural Hero is checked separately.
+That is the symbolic version of the plain-language claim above.
 
-A lower bound alone does not show that nine is achievable. The product still needs a schedule that reaches it. Each supporting card owns exactly one guaranteed program, balanced as:
+The Lean selector is called `capCards`; its supporting-card phase admits the reserved cards first, then adds section diversity and fills any remaining positions by rank. The structural Hero is checked separately.
+
+The remaining obligation was a concrete product schedule that met the nine-card bound. Each supporting card has exactly one reservation, balanced as:
 
 ```text
 morning     9
@@ -147,33 +164,45 @@ evening     9
 late        8
 ```
 
-Those 44 positions contain the 44 supporting cards exactly once. A card can still prefer several times of day for ranking, but preference does not create another guaranteed assignment.
+Those 44 positions contain the 44 supporting cards exactly once. A card can still prefer several times of day for ranking, but a ranking preference does not create a second reservation.
 
-A separate Lean check applies the generic theorem to this product table. It shows that the capped selector covers all 44 supporting cards while returning at most nine on each visit. Combined with the lower bound, that establishes card-count optimality for this fixed supporting catalog: nine is necessary, and this schedule attains nine.
+The algorithm and the product table therefore remain separate. Moving **Connections** to a different program requires checking that the new reservations still fit, but it does not require rewriting the proof that the selector preserves any fitting schedule.
 
-Within the selector, each output contains the structural Hero plus at most nine modeled supporting cards. The rendered page may also contain **Live Now**, a separate lead, and other modules outside this theorem.
+A separate Lean check applies the generic theorem to this product table. It establishes both halves of the result: the selector covers all 44 supporting cards, and it returns at most nine of them on each visit. Nine is necessary, and this schedule reaches nine.
+
+Within the selector, each output contains the structural Hero plus at most nine modeled supporting cards. The rendered page may also contain **Live Now**, a separate module for a show currently playing, and other modules outside this theorem.
 
 That settled the generic law and one concrete product schedule. It did not yet show that the separately written Go selector made the same choices.
 
 ### Making Go answer to the model
 
-The production function is written separately in Go. Lean cannot prove that source directly, so the repository also keeps an executable Lean version of the selector. Unlike the generic theorem, this reference implementation reads the current product table because a comparison needs concrete outputs. Lean generates walks and Go replays them through `lotCapCards`.
+The proof so far is about Lean. The production selector, `lotCapCards`, is a separate Go function. Connecting the proof to what a person sees takes three more steps:
 
-This follows the general shape used by [Cedar](https://docs.cedarpolicy.com/other/security.html), the open-source authorization language developed at AWS: prove properties of a Lean model, implement a separate production engine, and use [differential testing](https://en.wikipedia.org/wiki/Differential_testing) to compare their outputs. Our boundary is much smaller, but the idea is the same.
+1. Lean executes its selector on concrete catalogs and ranking inputs.
+2. Go runs `lotCapCards` on the same inputs, and a differential test compares the two outputs.
+3. The server sends Go's final allow-list and order to the browser, which renders that order without running another scheduler.
 
-The comparison uses 64 as a small deterministic regression budget, not a mathematically significant sample size: the complete 45-card catalog and 63 fixed pseudorandom subsets. Each runs twice, once with every card unseen and once with every card recently seen, producing 128 five-visit walks.
+This follows the same broad shape used by [Cedar](https://docs.cedarpolicy.com/other/security.html), the open-source authorization language developed at AWS: prove properties of a model, implement a separate production engine, and use [differential testing](https://en.wikipedia.org/wiki/Differential_testing) to look for disagreement. Our boundary is much smaller, but the separation is the same.
 
-When the cases were regenerated for the minimal schedule, the Lean-to-Go comparison failed on a filler card. Go allowed a card to prefer several times of day; the executable Lean version allowed only one. The reference implementation was corrected and the generic starvation theorem did not change. The selected-card sets then agreed on all 128 walks. A separate Go unit test constructed the 45 modeled identities and covered them across five visits under two initial histories and all four combinations of event-lead and tour status.
+The comparison is a bounded regression test, not another universal proof. It uses the complete 45-card catalog plus 63 deterministically generated subsets. Each runs once with every card unseen and once with every card recently seen, producing 128 five-visit comparisons.
 
-Together, these checks connect the proof to Go. They still do not cover every possible Go input. For current scheduled responses, the server includes the selected cards in a complete `moduleOrder`, which the browser treats as its allow-list and order instead of running another scheduler. Ordinary Go and React tests cover that handoff; no five-visit browser test covers the entire path.
+Regenerating those cases exposed a mismatch on one filler card. Go allowed a card to prefer several times of day; the executable Lean version allowed only one. We corrected the reference implementation without changing the generic coverage theorem.
 
-### The fixed-eligibility boundary
+After that correction, the selected-card sets agreed on all 128 walks. A separate Go unit test exercised the 45 modeled cards from both history starting points and under all four combinations of whether an event led the page and whether the person was on tour.
 
-For the current 45-card model, the product-instance theorem accepts any fixed eligible subset, including the crowded full catalog. It assumes that the set does not change during the five visits.
+Together, these checks connect the proved model to Go, but they do not prove every possible Go execution. Ordinary Go and React tests cover the final server-to-browser handoff in step three. There is still no browser test that performs all five visits and covers the entire path in one run.
 
-That assumption matters. Lean contains a counterexample using **Last Night**, whose guaranteed program is morning. The card is absent from the eligible set during the morning visit, then becomes eligible at midday. By then its guaranteed visit has passed. During midday, afternoon, evening, and late night it can appear only as an unassigned filler, and other cards fill those positions. After all five visits, **Last Night** remains unseen.
+### What the theorem does not cover
 
-The main coverage theorem does not fail because it cannot be applied to that walk. It takes one eligible catalog and reuses it for every visit; the counterexample supplies a different catalog at each visit. Lean checks the failure separately and proves that the missing-card list is exactly **Last Night**.
+The coverage theorem accepts any eligible subset, including the crowded full catalog, but it assumes that the subset stays the same during all five visits. It does not promise to rescue a card that becomes eligible only after its reserved visit has passed.
+
+Lean contains a counterexample using **Last Night**, a prompt to review the previous evening's show. Its reserved program is morning:
+
+1. During the morning visit, **Last Night** is not eligible, so the selector cannot show it.
+2. It becomes eligible at midday, after its reservation has passed.
+3. For the rest of the day it can appear only as filler. But every later program's reservations already fill its capacity, so no filler position is available and **Last Night** remains unseen.
+
+This does not contradict the coverage theorem. The theorem starts with one fixed eligible catalog; the counterexample changes that catalog between visits. Lean checks this changing-eligibility case separately and confirms that **Last Night** is the card left unseen.
 
 For the actual **Last Night** flow, that boundary is acceptable. If a person had already RSVP'd to the previous night's show, the card is eligible by morning and its guarantee applies. The counterexample corresponds to someone adding the RSVP retroactively after the show, perhaps the next afternoon. In that case, not receiving a same-day prompt to write a review is acceptable product behavior. The specification deliberately admits that failure rather than complicating the scheduler and theorem to guarantee a case I do not need.
 
