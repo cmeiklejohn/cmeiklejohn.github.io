@@ -1006,6 +1006,13 @@ main > #post {
   font-family: var(--font-mono);
   font-size: 0.88em;
   line-height: 1.5;
+  margin-bottom: 1.5em;
+}
+
+/* Paragraph margins are bottom-only, so fenced-code wrappers need the same
+   rhythm below or the next paragraph sits flush against the block. */
+#post div.highlighter-rouge {
+  margin-bottom: 1.5em;
 }
 
 /* Rouge wraps fenced code in .highlighter-rouge. Preserve the post's
