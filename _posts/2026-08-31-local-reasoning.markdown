@@ -21,13 +21,29 @@ I want to be careful about the lesson here, because "the AI wrote bad code" isn'
 
 ## What was actually wrong
 
-Shipping a fix that night was its own adventure. The merge gate wanted a CI check that wouldn't pass, the automation didn't have permission to re-run it, and Railway was having an unrelated incident of its own and couldn't start a deploy. I ended up disabling branch protection from my phone, in my seat, at 02:19 UTC.
+Every request has to borrow one of those twenty-five connections before it can touch the database, and it gives the connection back when its queries finish. The code the agents had written borrowed a connection to loop over a list of results, and inside that loop borrowed a second connection for each item, while still holding the first. Condensed, the pattern was:
 
-What was the fix actually fixing? Every request has to borrow one of those twenty-five connections before it can do anything at all. The code the agents had written would borrow a connection, hold it while walking through a list of results, and borrow a second one for each item on the list. One request doing that is rude but harmless. Twenty-five at once is gridlock: every request holding a connection while waiting for another, and nobody able to move. All of that waiting happened inside my own app, before anything reached the database, which is why the database looked innocent all night. The health check stayed green for an even better reason. It doesn't touch the database at all, it returns a string formatted once at startup. Cheap, fast, and useless.
+```go
+rows, _ := db.QueryContext(ctx, listShowsSQL) // borrows connection #1
+defer rows.Close()                            // #1 stays borrowed until the loop ends
 
-The gridlock code had been in production since February. What arrived that night was the crowd. The pool didn't help either: nobody chose twenty-five connections for this workload. An agent picked the number at scaffold time, before the app had users, and nobody ever went back. Go's pool will even tell you when it's starving, two counters, `WaitCount` and `WaitDuration`, would have named this failure immediately, and we had never logged them. Almost no query carried a timeout. The facts that mattered most were the ones nobody had asked the system to emit.
+for rows.Next() {
+    var show Show
+    rows.Scan(&show.ID, &show.Date)
 
-The fix rewrote the worst read paths to stop holding a connection while borrowing another, resized the pool, and gave the app the first pool telemetry it has ever had. The honest end of the war story is that I don't know the moment the app came back. The fix was merged while the band was still playing, and it couldn't reach production until Railway recovered.
+    // loadSetlist runs its own query: it borrows connection #2
+    // while #1 is still held.
+    show.Setlist = loadSetlist(ctx, db, show.ID)
+}
+```
+
+One request running this holds two connections at once. That's fine while the pool has spare connections. That night it didn't: twenty-five requests were in loops like this at the same time, each holding one connection and waiting for a second one, and a connection only comes back when one of those requests finishes. None of them could finish. That's the gridlock. Requests queued behind it until they timed out.
+
+The waiting happened inside my app, before any query reached the database. That's why Postgres looked fine all night: the queries that did get a connection ran fast. The health check stayed green because it doesn't run a query. It returns a string formatted once at startup.
+
+The code had been in production since February. August 28 was the first night with enough traffic to fill the pool. The pool size didn't help: nobody chose twenty-five connections for this workload. An agent picked the number at scaffold time, before the app had users, and nobody went back to it. Go's pool tracks exactly this failure, `WaitCount` and `WaitDuration`, how many times a query waited for a connection and for how long. We had never logged them. Almost no query had a timeout. None of the numbers that would have explained the outage were being recorded.
+
+The fix rewrote the worst read paths to stop holding one connection while borrowing another, resized the pool, and started logging the wait counters. Deploying it was its own problem. The merge gate wanted a CI check that wouldn't pass, the automation didn't have permission to re-run it, and Railway, where the app runs, was having an unrelated incident and couldn't start a deploy. I disabled branch protection from my phone, in my seat, at 02:19 UTC. I don't know the exact moment the app came back. The fix merged while the band was still playing, and it couldn't reach production until Railway recovered.
 
 ## The remediation was excellent, which is the problem
 
