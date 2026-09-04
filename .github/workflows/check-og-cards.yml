@@ -1,0 +1,22 @@
+name: Open Graph cards
+
+# A post whose /og/{slug}.png is missing ships a bare link preview, and
+# LinkedIn caches that failure against the post's og:url in a way its Post
+# Inspector cannot clear. Renaming a post is the usual cause: the slug moves
+# and the card does not follow. Catch it before it is published.
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Every post has an Open Graph card
+        run: ./scripts/check-og-cards.sh
