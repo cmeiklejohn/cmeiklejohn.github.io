@@ -9,9 +9,9 @@ Zabriskie is a social app I'm building for people who go to shows and care about
 
 The Lot is your home base: what's happening tonight, what people are listening to, and things you might have missed. You can log the shows you've attended, share what you're watching or reading, explore setlists, and coordinate a run with your tour crew.
 
-During a live show, the phone app brings together the setlist and conversation from people in the room and people watching from home. The Apple Watch app puts the current song, reactions, and chat on your wrist.
+During a live show, the iPhone and iPad app brings together the setlist and conversation from people in the room and people watching from home. The Apple Watch app puts the current song, reactions, and chat on your wrist.
 
-[Open Zabriskie](https://zabriskie.app/) · [Get the iPhone and Apple Watch app](https://apps.apple.com/us/app/zabriskie/id6759236563)
+[Open Zabriskie](https://zabriskie.app/) · [Get Zabriskie on the App Store](https://apps.apple.com/us/app/zabriskie/id6759236563)
 
 <div style="display:flex; gap:1.25rem; align-items:flex-start; flex-wrap:wrap; margin:2rem 0;">
   <figure style="flex:1 1 200px; max-width:300px; margin:0;">
@@ -23,6 +23,11 @@ During a live show, the phone app brings together the setlist and conversation f
     <figcaption>Exploring Goose.</figcaption>
   </figure>
 </div>
+
+<figure style="max-width:540px; margin:2rem 0;">
+  <a href="/images/zabriskie/ipad-lot.png"><img src="/images/zabriskie/ipad-lot.png" alt="The Lot on iPad, showing the community jam bracket, upcoming shows, and a bookmarked film" width="2064" height="2752" style="width:100%; height:auto; border-radius:16px;" /></a>
+  <figcaption>The Lot on iPad.</figcaption>
+</figure>
 
 <div style="display:flex; gap:1.25rem; align-items:flex-start; flex-wrap:wrap; margin:2rem 0;">
   <figure style="flex:1 1 180px; max-width:240px; margin:0;">
