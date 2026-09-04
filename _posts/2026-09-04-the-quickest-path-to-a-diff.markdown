@@ -2,7 +2,7 @@
 layout: post
 title:  "The Quickest Path to a Diff"
 subtitle: "The app died at Red Rocks while its health checks stayed green. Every line of code was fine. The sum was nobody's job."
-date:   2026-08-31 02:00:00 -0400
+date:   2026-09-04 14:30:00 -0400
 group: ai
 categories: ai zabriskie agents reliability performance distributed
 ---
