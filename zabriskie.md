@@ -31,16 +31,16 @@ During a live show, the iPhone and iPad app brings together the setlist and conv
 
 <div style="display:flex; gap:1.25rem; align-items:flex-start; flex-wrap:wrap; margin:2rem 0;">
   <figure style="flex:1 1 180px; max-width:240px; margin:0;">
-    <img src="/images/zabriskie/watch-now-playing.webp" alt="Zabriskie on Apple Watch showing the current song and reaction buttons during a demo show" style="width:100%; height:auto; border-radius:24px;" />
+    <img src="/images/zabriskie/watch-now-playing.png" alt="Zabriskie on Apple Watch showing the current song and reaction buttons during a demo show" style="width:100%; height:auto; border-radius:24px;" />
     <figcaption>Now playing on Apple Watch.</figcaption>
   </figure>
   <figure style="flex:1 1 180px; max-width:240px; margin:0;">
-    <img src="/images/zabriskie/watch-chat.webp" alt="Live show chat in the Zabriskie Apple Watch app" style="width:100%; height:auto; border-radius:24px;" />
+    <img src="/images/zabriskie/watch-chat.png" alt="Live show chat in the Zabriskie Apple Watch app" style="width:100%; height:auto; border-radius:24px;" />
     <figcaption>Show chat on your wrist.</figcaption>
   </figure>
 </div>
 
-The Watch screenshots show a demo performance from the App Store listing.
+The Watch screenshots show a demo performance.
 
 Zabriskie also powers the film timing and recent-airing history in my [Criterion 24/7 companion app](/criterion-247/).
 
