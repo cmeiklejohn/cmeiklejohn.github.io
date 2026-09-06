@@ -22,3 +22,10 @@
 .app-detail-header .app-icon { flex-shrink: 0; }
 .app-detail-header .post-title { margin: 0; }
 @media (max-width: 420px) { .app-detail-header { gap: 1rem; } .app-detail-header .app-icon { width: 72px; height: 72px; } .app-detail-header .post-title { font-size: 2rem; } }
+
+.app-screenshot { margin: 2rem auto; max-width: 340px; }
+.app-screenshot img { display: block; width: 100%; height: auto; border-radius: 20px; border: 1px solid var(--border); }
+.app-screenshot figcaption { margin-top: .8rem; font-size: .85rem; line-height: 1.5; color: var(--fg-muted); }
+.app-walkthrough { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2rem; align-items: start; }
+.app-walkthrough .app-screenshot { width: 100%; margin-top: 1rem; }
+@media (max-width: 540px) { .app-walkthrough { grid-template-columns: 1fr; } }
