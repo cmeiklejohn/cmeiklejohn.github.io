@@ -1,0 +1,24 @@
+.apps-intro { margin: 2rem 0 2.5rem; max-width: 40rem; }
+.apps-eyebrow, .app-platform { font: 600 .75rem var(--font-ui); letter-spacing: .1em; text-transform: uppercase; color: var(--fg-muted); }
+.apps-intro h1 { margin: .3rem 0 1rem; font-size: clamp(2.8rem, 7vw, 4.8rem); letter-spacing: -.04em; }
+.apps-intro p:last-child { font-size: 1.2rem; line-height: 1.65; }
+.apps-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; }
+.app-card { display: flex; flex-direction: column; align-items: flex-start; gap: .9rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: 1.25rem; background: var(--bg-elevated); color: var(--fg); text-decoration: none; transition: border-color .2s, transform .2s; }
+.app-card:visited { color: var(--fg); }
+.app-card:hover { border-color: var(--link); transform: translateY(-3px); text-decoration: none; }
+.app-card:focus-visible { outline: 3px solid var(--link); outline-offset: 4px; }
+.app-icon { display: block; width: 96px; height: 96px; border-radius: 22%; object-fit: cover; }
+.app-card .app-icon { margin-bottom: .5rem; }
+.app-card h2 { font: 500 1.55rem/1.2 var(--font-ui); margin: 0; color: var(--fg-heading); }
+.app-card p { margin: 0 0 1rem; font-size: 1rem; line-height: 1.65; }
+.app-card-link { margin-top: auto; font: 500 .86rem/1.5 var(--font-ui); color: var(--link); }
+.app-card-link span { margin-left: .25rem; }
+.apps-footer { margin: 2rem 0; color: var(--fg-muted); font-size: .95rem; }
+@media (max-width: 700px) { .apps-grid { grid-template-columns: 1fr; } .app-card { padding: 1.5rem; } .apps-intro { margin-top: 1rem; } }
+@media (prefers-reduced-motion: reduce) { .app-card { transition: none; } .app-card:hover { transform: none; } }
+
+.app-back { display: inline-block; margin-bottom: 1.5rem; font: 500 .9rem var(--font-ui); }
+.app-detail-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
+.app-detail-header .app-icon { flex-shrink: 0; }
+.app-detail-header .post-title { margin: 0; }
+@media (max-width: 420px) { .app-detail-header { gap: 1rem; } .app-detail-header .app-icon { width: 72px; height: 72px; } .app-detail-header .post-title { font-size: 2rem; } }

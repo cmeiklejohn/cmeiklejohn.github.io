@@ -1396,7 +1396,7 @@ html {
 
   .site-nav {
     justify-content: flex-start;
-    gap: 0.4rem 0.65rem;
+    gap: 0.4rem 0.4rem;
     font-size: 0.8rem;
     line-height: 1.3;
   }

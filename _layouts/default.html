@@ -36,6 +36,10 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/css/main.css?v={{ site.time | date: '%s' }}">
 
+        {% if page.app_page %}
+        <link rel="stylesheet" href="/css/apps.css?v={{ site.time | date: '%s' }}">
+        {% endif %}
+
         {% if page.series %}
         <link rel="stylesheet" href="/css/mas-series.css?v={{ site.time | date: '%s' }}">
         {% endif %}
@@ -66,6 +70,7 @@
               </div>
               <nav class="site-nav" aria-label="Primary">
                 <a href="/archive.html">archive</a>
+                <a href="/apps/">apps</a>
                 <a href="/research.html">research</a>
                 <a href="/teaching.html">teaching</a>
                 <a href="/publications.html">publications</a>

@@ -1,5 +1,7 @@
 ---
-layout: page
+layout: app
+app_page: true
+app_icon: zabriskie
 title: Zabriskie
 permalink: /apps/zabriskie/
 description: A social app for live music, cultural discoveries, and the people you share them with.
