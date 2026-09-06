@@ -1,5 +1,7 @@
 ---
-layout: page
+layout: app
+app_page: true
+app_icon: criterion-247
 title: Criterion 24/7
 permalink: /criterion-247/
 description: An independent iPhone and iPad companion for the Criterion Channel's 24/7 stream.
