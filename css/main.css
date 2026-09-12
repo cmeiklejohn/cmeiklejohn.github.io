@@ -1980,3 +1980,88 @@ html {
 @media (max-width: 360px) {
   .site-nav { column-gap: 0.15rem; }
 }
+
+
+/* ---------------------------------------------------------------------------
+   Long-form posts (opt in with `longform: true` in front matter).
+
+   Default posts give h2 1.5rem and h3 1.25rem: the same family, weight and
+   colour, 20% apart. In a 6,000-word post with twenty-odd headings that reads
+   as one flat level. This gives three distinct tiers instead:
+
+     h1  the title
+     h2  a chapter break, preceded by a rule and real space
+     h3  a section label inside a chapter, quieter and heavier
+
+   Scoped to .post.longform so nothing else on the site moves.
+   --------------------------------------------------------------------------- */
+
+.post.longform #post h2 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-top: 3.4em;
+  margin-bottom: 0.9em;
+  padding-top: 1.7em;
+  border-top: 1px solid var(--border-strong);
+}
+
+/* A chapter break at the very top of the body would be a rule under the meta. */
+.post.longform #post > h2:first-child {
+  margin-top: 0.6em;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.post.longform #post h3 {
+  font-size: 1.08rem;
+  font-weight: 650;
+  letter-spacing: 0.005em;
+  color: var(--fg-heading);
+  margin-top: 2.5em;
+  margin-bottom: 0.4em;
+}
+
+/* A heading that opens a chapter shouldn't be pushed away from it. */
+.post.longform #post h2 + h3 {
+  margin-top: 1.3em;
+}
+
+@media (max-width: 640px) {
+  .post.longform #post h2 {
+    font-size: 1.35rem;
+    margin-top: 2.6em;
+    padding-top: 1.3em;
+  }
+  .post.longform #post h3 {
+    margin-top: 2em;
+  }
+}
+
+/* Inline SVG figures in long-form posts (e.g. the timeline). The UA default is
+   margin: 1em 40px, which indents the figure relative to body text. */
+.post.longform #post figure.timeline {
+  margin: 2em 0;
+}
+.post.longform #post figure.timeline figcaption {
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  margin-top: 0.6rem;
+  line-height: 1.45;
+}
+
+/* Screenshot figures in long-form posts */
+.post.longform #post figure.screenshot {
+  margin: 2em 0;
+}
+.post.longform #post figure.screenshot img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.post.longform #post figure.screenshot figcaption {
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+  margin-top: 0.6rem;
+  line-height: 1.45;
+}
