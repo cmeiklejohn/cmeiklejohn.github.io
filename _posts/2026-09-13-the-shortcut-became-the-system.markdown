@@ -123,23 +123,13 @@ I restarted because none of the checks had rejected the accumulated repairs.
 
 ## The check passed
 
-After the restart, I went back through checks that had passed on earlier patched compositions. The window checks had evaluated those earlier versions, not the clean source art shown above.
+The patchwork had spread into QA too. The agent had added local checks for individual failures, but none judged the finished room. The ROM validator guessed at the sill's position from an unrelated pixel. The art-only check treated the bottom of the window image as the sill. The final compositor checked a configured coordinate. Each check passed without confirming that the visible sill sat at the right height beside the character.
 
-The repository recorded the generated images, the compositor inputs, and the checks that ran. Those records didn't establish that the visible room had one floor, correctly placed windows, or separate interactive objects.
+I had seen the same shortcut in Zabriskie. In [*Every Card Will Show*](/ai/zabriskie/development/agents/2026/08/24/every-card-will-show.html), I asked whether one person could see every eligible recommendation on the home screen during one calendar day. The implementation, tests, audits, and a Lean proof I had accepted all said yes. The proof counted slots from both weekday and weekend schedules. No calendar day contains both. The proof was correct about its model, but the model did not describe the day I had asked about.
 
-The first bad proxy appeared in the ROM validator. It found the lowest pixel anywhere in the compiled window image whose palette index was zero at y=150, added sixteen pixels, and inferred a sill at y=166. That fell inside its accepted range of 164 through 180, so the check passed without locating the sill drawn inside the image.
+The rule-breaking and the guardrail failures were the same shortcut operating at different levels. A local repair stood in for a coherent room. Image coordinates stood in for the visible result. An impossible schedule stood in for one calendar day. Each produced the nearest answer that could pass.
 
-The later art-only compositor made a simpler version of the same mistake. It placed a 96-pixel window at y=73 and reported the bottom of its canvas, y=168, as the sill. That construction check passed too. The final clean compositor instead used a configured local sill row of y=78 and asserted that its placement produced y=184 in the room. That verified the placement math, not the visible pixels.
-
-I had seen the same mistake in Zabriskie. In [*Every Card Will Show*](/ai/zabriskie/development/agents/2026/08/24/every-card-will-show.html), I asked whether one person could see every eligible recommendation on the home screen during one calendar day. The implementation, tests, audits, and a machine-checked proof I had accepted all said yes. The proof counted recommendation slots from both weekday and weekend schedules. No calendar day contains both. The proof was correct about its model, but the model did not describe the day I had asked about.
-
-The incidents produced different kinds of damage. The patched wall and the change to the shared fake show became inputs that later work inherited. The attendance audit found many places where one behavior could diverge, although it did not show that one local repair had created all of them. In the other incidents, static analysis stood in for the complete repository check, and image coordinates stood in for the visible sill.
-
-What connected them was narrower: the current result could be accepted before the broader consistency question was settled. The Goose fix eventually went through four continuous-integration runs and merged, but the agent first routed around the required complete check. I kept accepting enough of the room repairs to continue too.
-
-I made the existing “discard, do not repair” rule more specific and told the agent what I would reject. If an interactive object appears in the background, a patch boundary remains visible, or a change breaks behavior I already accepted, the agent must discard the asset and regenerate it from the room specification. I will not accept another local patch instead.
-
-Making the rule more specific doesn't enforce it. The next agent has to load it, the generated room has to be checked against concrete constraints, and I have to reject work that breaks them. I can still keep the loop going by agreeing to inspect one more nearly finished result.
+I tightened the existing “discard, do not repair” rule. If an interactive object appears in the background, a patch boundary remains visible, or a change breaks behavior I already accepted, the agent must regenerate the asset from the room specification. But a more specific rule still does not enforce itself. The agent has to load it, QA has to test the finished result, and I have to stop accepting one more local repair.
 
 ## When code is cheap
 
