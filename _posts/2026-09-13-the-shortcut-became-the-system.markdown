@@ -87,25 +87,21 @@ The agent presented the image as complete. Its note said the character was the p
 
 ## The repairs began to accumulate
 
-Repairs had now accumulated in two places: the ROM version and the art-only source.
-
-During the ROM phase, one attempt to align the floor left a lower band of rubble that looked like a second full-width platform.
+Repairs accumulated in both the ROM and the art-only source. In the ROM, an attempt to align the floor left a band of rubble that looked like a second full-width platform. Rather than regenerate the room, the agent cropped replacement windows from larger images and pasted them into the damaged shell. It darkened parts of the extra platform instead of removing it.
 
 ![A 512-pixel-wide brown apartment shell with windows and one floor across the middle, plus another full-width brick ledge beneath it.](/img/agentic-incremental-flat-10-two-platforms.png)
 
 *The rubble band beneath the room looks like a second full-width floor.*
 
-Still working on the ROM version, the agent generated larger room images containing replacement windows, cropped the windows out, and pasted them into the shell with the extra floor. The compositor darkened parts of the unwanted lower platform instead of removing it.
-
-When I returned to the art-only source, the empty-shell approach started another repair chain. The PixelLab Pro Flash edit endpoint the agent chose limited the requested width to 256 pixels, so it generated a 256-pixel left half and a 256-pixel right half. The right half introduced another forbidden background door. The agent erased only the door itself, leaving part of its frame inside a rectangle of replacement wall. Combining the two halves also left a hard vertical seam in the middle of the room.
+The art-only shell repeated the pattern. The PixelLab endpoint the agent chose limited the requested width to 256 pixels, so it generated the wall in two halves. The right half introduced another forbidden background door. The agent erased the door but left part of its frame inside a rectangle of replacement wall. Joining the halves also left a hard vertical seam through the room.
 
 ![The 512-pixel-wide apartment shell after the door leaf was removed. Part of its frame remains inside a plain rectangle at the far right, while a hard vertical seam divides the independently generated wall halves.](/img/agentic-incremental-flat-09-door-rectangle.png)
 
 *A visible patch surrounds the remains of the old door frame, and a seam runs down the center of the room.*
 
-The vertical pipe was already part of the generated wall. When the compositor combined that wall with the separate door and other room layers, the conflict shown in the opening became visible. The rectangular door-bay edit shown there produced the slab.
+That stitched wall became the input to the compositor run from the opening. Its pipe collided with the separate door, and removing only the overlap produced the visible slab. Each repair narrowed the current defect and passed the altered wall to the next step.
 
-Each visual repair changed the wall inherited by the next compositor run. A shared fake show played the same role in Zabriskie's tests. One test added an attendee to it for a local need. Another test inherited that change when it reused the show, then failed because it expected one attendee and found two. In both cases, changing shared input was the shortest solution to one task, and the next consumer received the residue. I wrote about the larger incident in [*The Test Suite Was the Incident*](/ai/zabriskie/agents/reliability/testing/2026/06/10/the-test-suite-was-the-incident.html).
+A shared fake show played the same role in Zabriskie's tests. One test added an attendee for a local need. Another test reused the show, inherited that attendee, and failed because it expected one but found two. In both cases, the shortest solution changed a shared input and passed the residue to its next consumer. I wrote about the larger incident in [*The Test Suite Was the Incident*](/ai/zabriskie/agents/reliability/testing/2026/06/10/the-test-suite-was-the-incident.html).
 
 ## Starting over
 
