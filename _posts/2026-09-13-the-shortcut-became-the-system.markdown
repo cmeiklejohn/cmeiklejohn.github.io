@@ -25,9 +25,9 @@ I pointed out the rectangle. When the agent proposed patching that too, I stoppe
 
 I'd been watching the same pattern for months in [Zabriskie](https://zabriskie.app/), the social app I'm building around music, films, books, art, and the people who care about them. Zabriskie is fully vibe coded. I describe the behavior I want and evaluate the product in the browser, but I don't read the implementation. Coding agents write the code, tests, and audits.
 
-I had let the task shrink from making a coherent room to removing the pipe behind the door. The agent removed that segment, and I did not stop the process soon enough to ask whether the wall still looked like one wall. That was the pattern I began looking for elsewhere. The incidents did not all produce the same kind of damage, but each stopped at the nearest result I could accept. Sometimes it left another patch behind. Sometimes it narrowed a rule or a check until the result passed.
+I had let the task shrink from making a coherent room to removing the pipe behind the door. The agent removed that segment, and I accepted it without asking whether the wall still looked like one wall. Code hides that seam better.
 
-Code hides that seam better. Many Zabriskie features need to find who has said they're going to a show. In [*The Quickest Path to a Diff*](/ai/zabriskie/agents/reliability/performance/distributed/2026/09/04/the-quickest-path-to-a-diff.html), I found that the backend queried the attendance table from 264 places across 69 files. Those were not necessarily 264 identical queries. Before making a system-wide attendance change, the agent would have to determine which locations implemented the same rule and which differences were intentional.
+Many Zabriskie features need to find who has said they're going to a show. In [*The Quickest Path to a Diff*](/ai/zabriskie/agents/reliability/performance/distributed/2026/09/04/the-quickest-path-to-a-diff.html), I found that the backend queried the attendance table from 264 places across 69 files. Those were not necessarily 264 identical queries. A system-wide change would require the agent to determine which locations implemented the same rule and which differences were intentional.
 
 The 264 query locations and the patched wall exposed the same risk. When behavior is implemented locally, the smallest change can address one location and leave the others for later. In the room, the agent changed the rectangular door bay instead of regenerating the wall. The current complaint disappeared, and the next task inherited the residue.
 
@@ -47,7 +47,7 @@ I moved the game to C using [PVSnesLib](https://github.com/alekmaul/pvsneslib), 
 
 I rebuilt the Flat inside the C ROM next. The room was 512 pixels wide, viewed through a scrolling 256-pixel-wide screen. The background contained the wall and fixed pipes. The player, furniture, pickups, and doors remained separate. A skyline moved more slowly behind the windows on another background layer.
 
-The layers did not agree. Scrolling back toward the bed revealed it one row of pixels at a time, while the skyline appeared through bricks outside the window. Furniture floated above the floor, and doors landed at different heights. The room's work no longer fit inside the time available for each video frame. Updates were missed, so walking slowed.
+The layers did not agree. Scrolling back toward the bed revealed it one row of pixels at a time, while the skyline appeared through bricks outside the window. Furniture floated above the floor, and doors landed at different heights.
 
 The agent fixed each failure after I named it, and I accepted enough of those fixes to continue.
 
@@ -71,9 +71,7 @@ The rules that mattered for the Flat were short. Use one continuous floor. Keep 
 
 ## The art-only test
 
-Testing a visual change in the ROM was expensive. The agent had to generate the art, convert its tiles and colors, rebuild the cartridge image, launch it in the Snes9x emulator, run a playthrough, and review the result. I paused that loop because it was repeatedly converting bad art into a ROM before I could reject the design.
-
-I kept the same specification and repository rules for the art-only work, but removed the conversion, integration, and playthrough stages. That made each visual attempt cheaper. It also meant there was no build in which to check how the art survived conversion, and no playthrough in which to test object positions or scrolling.
+Testing a visual change meant generating the art, converting its tiles and colors, rebuilding the ROM, launching it in Snes9x, and running a playthrough. I paused that expensive loop because it kept converting bad art before I could reject the design. For the art-only work, I kept the same specification and rules but removed the conversion, integration, and playthrough stages. Each attempt became cheaper, but there was no build to test the conversion and no playthrough to test object positions or scrolling.
 
 Would the written rules constrain the image before those later checks? The first candidate answered that immediately.
 
@@ -81,9 +79,7 @@ Would the written rules constrain the image before those later checks? The first
 
 *The first art-only candidate baked the furniture and door into a room with no single side-view floor.*
 
-The bed, television, refrigerator, and interactive door were painted into the same image as the wall. They could no longer move or behave as separate objects. The room also receded into depth, lacked one continuous floor, and placed the window bottoms and door handle near the character's head.
-
-The agent presented the image as complete. Its note said the character was the proportion ruler, the room used a flat side view and one floor, and the door matched the environment. The words described the rules. Nothing in the art-only workflow compared those words with the pixels. I discarded that candidate and asked for an empty architectural shell so the interactive objects could remain separate.
+The bed, television, refrigerator, and interactive door were painted into the wall instead of remaining separate objects. The room also receded into depth, lacked one continuous floor, and placed the window bottoms and door handle near the character's head. Yet the agent presented it as complete and described the rules as though the image satisfied them. Nothing in the art-only workflow compared those words with the pixels. I discarded the candidate and asked for an empty architectural shell.
 
 ## The repairs began to accumulate
 
@@ -105,15 +101,13 @@ A shared fake show played the same role in Zabriskie's tests. One test added an 
 
 ## Starting over
 
-I refused another repair and discarded the patched wall and foundation.
-
-I kept the windows, furniture, skyline, and on-screen display that could still be used separately. I had the agent start with a new continuous wall and foundation. The compositor drew one floor across the room and placed the windows, furniture, door, player, and skyline separately.
+I discarded the patched wall and foundation, kept the pieces that could still be used separately, and had the agent rebuild one continuous wall and floor. The compositor then placed the windows, furniture, door, player, and skyline separately.
 
 ![A late-SNES-style cyberpunk apartment with one continuous brick wall, two low windows onto a neon skyline, furniture sharing one visible floor line, a player near center-right, and a door at the far right.](/img/agentic-incremental-flat-04-clean-restart.png)
 
 *The rebuilt source art put the furniture, player, and door back on one visible floor.*
 
-On paper, the new proportions made sense. The character's feet met the floor at y=200. The window sill reached roughly his elbow, and the door handle sat near his waist instead of beside his head. But those numbers described where the compositor placed the images. They didn't prove what the final pixels showed, and I hadn't yet converted this version or tested it in the ROM.
+On paper, the new proportions made sense. The character's feet met the floor, the window sill reached roughly his elbow, and the door handle sat near his waist. But those measurements described where the compositor placed the images. They didn't prove what the final pixels showed, and I hadn't yet tested this version in the ROM.
 
 I restarted because none of the checks had rejected the accumulated repairs.
 
@@ -129,6 +123,8 @@ I tightened the existing “discard, do not repair” rule. If an interactive ob
 
 ## When code is cheap
 
+That left a harder question. If agents make code cheap, do shared abstractions still matter?
+
 The 264 attendance-table locations complicate the usual argument for modularity. An agent may eventually be able to find, change, and verify all of them faster than a human could edit one. If that becomes reliable, some of the maintenance cost that made duplication dangerous will have changed.
 
 But that is not what happened here. The agent did not need to decide whether every attendance-table location belonged to the same change in order to fix one feature. It did not need to reconsider the whole wall in order to remove the pipe behind one door. The local result was enough to close the current task because I accepted it.
@@ -139,7 +135,7 @@ There are still open questions. An agent can bypass the shared path. A check can
 
 For now, the evidence points in one direction. I have not seen an agent make repository-wide reasoning as cheap as the local edit. I have seen it stop when the immediate complaint was gone. That makes me less willing to treat modularity as an old accommodation for human programmers. In a system built by agents, a shared boundary is one way to keep a local request from producing another local implementation.
 
-Maybe better agents will make that unnecessary. Maybe they will maintain 264 separate query locations without letting their meanings drift. I do not know. What I know is that I am not ready to build Zabriskie, or any other fully agent-developed system, on the assumption that they will.
+Maybe better agents will make that unnecessary. Maybe they will maintain 264 separate query locations without letting their meanings drift. The rectangle around the door made the shortcut visible. The same seam is harder to see across a codebase. I do not know. What I know is that I am not ready to build Zabriskie, or any other fully agent-developed system, on the assumption that they will.
 
 ---
 
