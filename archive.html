@@ -16,6 +16,15 @@ title: Blog archive — Christopher Meiklejohn
     </ul>
   </section>
 
+  <section class="archive-section" id="cat-fiction">
+    <h2 class="home-section-title archive-section-heading">Fiction</h2>
+    <ul class="posts">
+      {% for post in site.categories.fiction %}
+        <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+
   <section class="archive-section" id="cat-ai">
     <h2 class="home-section-title archive-section-heading"><a href="/zabriskie/">Zabriskie</a> &amp; <a href="/agents/">AI Agents</a></h2>
     <p class="archive-section-intro">Building <a href="/zabriskie/">Zabriskie</a>, writing about AI tools, workflows, and building with large language models. Dedicated topic pages: <a href="/zabriskie/">Zabriskie →</a> · <a href="/agents/">AI Agents →</a></p>
@@ -188,7 +197,9 @@ title: Blog archive — Christopher Meiklejohn
     <ul class="posts">
       {% for post in site.posts %}
         {% if post.group == nil %}
+        {% unless post.categories contains "fiction" %}
         <li><span class="home-post-date">{{ post.date | date_to_string }}</span> <a class="home-post-link" href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endunless %}
         {% endif %}
       {% endfor %}
     </ul>

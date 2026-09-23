@@ -8,7 +8,7 @@ description: "Christopher Meiklejohn — Ph.D., Software Engineering (CMU). Note
   <h1 class="sr-only">Christopher Meiklejohn — home</h1>
 
   <p class="home-lead">
-    Recent posts. Topic pages: <a href="/zabriskie/">Zabriskie</a> · <a href="/agents/">AI Agents</a> · <a href="/distributed-systems/">Distributed Systems</a>. Or the full <a href="/archive.html">archive</a>.
+    Recent posts. Topic pages: <a href="/zabriskie/">Zabriskie</a> · <a href="/agents/">AI Agents</a> · <a href="/distributed-systems/">Distributed Systems</a> · <a href="/archive.html#cat-fiction">Fiction</a>. Or the full <a href="/archive.html">archive</a>.
   </p>
 
   <div class="home-series-callout" aria-label="Blog series">
@@ -36,7 +36,9 @@ description: "Christopher Meiklejohn — Ph.D., Software Engineering (CMU). Note
         <li>
           <span class="home-post-date">{{ post.date | date_to_string }}</span>
           <span class="home-post-entry">
-            {% if series_meta %}
+            {% if post.categories contains "fiction" %}
+              <a class="home-post-series" href="/archive.html#cat-fiction">Fiction:</a>
+            {% elsif series_meta %}
               {% assign series_data_key = post.series | append: "_series" %}
               {% assign series_posts = site.data[series_data_key] %}
               {% assign series_entry = series_posts | where: "url", post.url | first %}
