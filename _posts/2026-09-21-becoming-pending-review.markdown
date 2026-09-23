@@ -5,7 +5,7 @@ date: 2026-09-21 06:40:08 -0400
 categories: fiction
 ---
 
-*A short work of fiction.*
+*A short story about AI and life in a changing world.*
 
 ### 1
 
@@ -33,9 +33,9 @@ He looked into retraining as an electrician, but contractors were losing mainten
 
 An advertisement kept showing the restaurant full of people. The diners had been generated for it. He saw it while eating at home, where he could still afford lunch. The services carrying those advertisements began asking him to pay; their notices said advertising no longer covered the cost. He let a video subscription go. When his university computing allocation ended, he could still read other groups' results, but he couldn't run their experiments.
 
-He kept checking the price of computing time as more efficient processors and cheaper renewable power brought it down. He could run an experiment again when the public network accepted his old university account; later it stopped asking for one. Disputes over who could use the machines outlasted the university. Eventually he could keep the apartment, eat, and get medical care without another job. For more than a decade, the statements had listed what he used and nothing to pay.
+He kept checking the price of computing time as more efficient processors and cheaper renewable power brought it down. When the public network accepted his old university account, he went back to a paper he’d saved and ran the experiment he’d only been able to read about. Later the network stopped asking for an account. Disputes over who could use the machines outlasted the university. Eventually he could keep the apartment, eat, and get medical care without another job. For more than a decade, the statements had listed what he used and nothing to pay.
 
-Ruth sent a recording from rehearsal. Someone counted them in twice. At the end she could be heard arguing that the second attempt took longer. He sent her the times. It hadn't. She wrote back, “Wonderful. Now listen to what we're playing.”
+That morning, Ruth sent a recording from rehearsal. Someone counted them in twice. At the end she could be heard arguing that the second attempt took longer. He sent her the times. It hadn't. She wrote back, “Wonderful. Now listen to what we're playing.”
 
 She also reminded him about the book he'd offered to lend her. He said he'd bring it that evening.
 
@@ -63,7 +63,7 @@ They had reached the same number through different calculations. When he changed
 
 He sat down to write an explanation, crossed out half of it, and began again with the two separate lines. Now he could see where the missing information belonged; putting it elsewhere had made the design difficult to follow even though he was the one who'd drawn it. He wanted to get it down before he lost the shape of it.
 
-The kettle had switched itself off some time ago. He made tea, brought it back, and cleared a space for the cup among the sheets. The extra records had used up most of the memory he'd saved. He brought the group's measurements up beside his own, then opened their design again. It took him a while to match the names he'd chosen to theirs. They had put the information in the same place.
+The kettle had switched itself off some time ago. He made tea, brought it back, and cleared a space for the cup among the sheets. The extra records had used up most of the memory he'd saved. He brought the group's measurements up beside his own, then opened their corrected version of the approach he'd been testing. It took him a while to match the names he'd chosen to theirs. They had put the information in the same place.
 
 He wrote a question below the last diagram. Before going back to the paper, he tried answering it on the other side of the sheet.
 
@@ -111,7 +111,7 @@ He started to explain about the lunch place across the street. Mara remembered g
 
 After the call he went through the album from the beginning, this time reading the accounts beneath the photographs. His work occupied one paragraph. He tried adding his explanation, but by the end he was years ahead of the next photograph. He took it out.
 
-In his reply he typed, “The work made a difference even if nobody remembers who did it.” Reading it back, he sounded as though he were arguing with her, although she hadn't disputed any of it.
+In his reply he typed, “The work made a difference even if nobody remembers who did it.” Reading it back, he sounded as though he were arguing with her.
 
 Before the university closed, meetings had started disappearing from his calendar because someone had got an experiment running without him. There were still results to discuss for a while, and even after those conversations stopped he kept the afternoons free. He used to plan his walk home around where he might find somebody still working. By then the offices were dark whichever way he went.
 
@@ -125,11 +125,11 @@ In the new file, he wrote about the covered half of the lunch menu. He began wit
 
 There was his old lab, working late, and the restaurant where he could always find someone he knew. He wrote that his work had helped empty the building, then went looking for the references. A simulation package used by an early AI research group cited a method built on theirs. There were papers between them he had never read, by people he had never met. He cut the sentence about closing the offices. He kept the paragraph tracing the references.
 
-The months when he had waited for requests became the next part. He put his unanswered offers of help beside the dark windows across the street. In Mara's album, those were the months when the housemates had finally found a table small enough to carry up the stairs.
+The months when he had waited for requests became the next part. He put his unanswered offers of help beside the dark windows across the street.
 
 Across the street, a woman came out to water the plants on her balcony. He'd watched her add pots all summer. At first there had been room for a chair. Now she had to turn sideways to get to the ones at the back. He tried to place the old offices behind her.
 
-Ruth called to arrange where they would meet before the concert they were going to hear. He suggested they walk there through the old university grounds.
+Ruth called to arrange where they would meet before the concert. She wanted to get there early enough to choose their seats; last time she’d spent the evening looking around a pillar. He suggested they walk there through the old university grounds.
 
 “Are you bringing the book?”
 

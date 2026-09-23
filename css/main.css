@@ -724,9 +724,17 @@ code {
 }
 
 .page-header {
-  margin-bottom: 1.35rem;
-  padding-bottom: 0.15rem;
-  border-bottom: 1px solid var(--border);
+  margin: 2rem 0 1.5rem;
+}
+
+.page-header .post-title {
+  margin: 0.3rem 0 0;
+  font-family: var(--font-text);
+  font-size: clamp(2.8rem, 7vw, 4.8rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
 }
 
 .page #post {
@@ -1078,6 +1086,7 @@ main > #post {
 
 /* Link row(s): preprint, ACM, slides, etc. */
 .page #post ul.publications-list > li > p > span.pub-links {
+  hanging-punctuation: none;
   margin-left: 0;
   padding-left: 0;
   margin-top: 0.15rem;
@@ -1414,6 +1423,10 @@ html {
     line-height: 1.4;
   }
 
+  .page-header {
+    margin-top: 1rem;
+  }
+
   #post pre {
     font-size: 0.82em;
     padding: 0.5em 0.55em;
@@ -1421,6 +1434,13 @@ html {
 
   #post code {
     font-size: 0.82em;
+  }
+
+  /* Keep punctuation inside the article's mobile scroll boundary. */
+  #post p,
+  #post li,
+  #refs.references > div p {
+    hanging-punctuation: none;
   }
 
   /* Let wide code / tables scroll instead of stretching the viewport */
