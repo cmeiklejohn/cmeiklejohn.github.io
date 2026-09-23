@@ -995,7 +995,7 @@ main > #post {
 
 #post p,
 #post li {
-  hanging-punctuation: first last;
+  hanging-punctuation: none;
   line-height: 1.65;
 }
 
@@ -1253,7 +1253,7 @@ main > #post {
   font-size: 0.93rem;
   line-height: 1.62;
   color: var(--fg-muted);
-  hanging-punctuation: first last;
+  hanging-punctuation: none;
 }
 
 #refs.references > div p em {
