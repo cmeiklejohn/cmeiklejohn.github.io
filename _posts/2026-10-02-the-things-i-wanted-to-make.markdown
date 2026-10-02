@@ -7,7 +7,7 @@ group: ai
 categories: ai personal phish software
 ---
 
-*This essay was originally commissioned but ultimately wasn't accepted for publication. I'm sharing an edited version here.*
+*This essay expands on [Rift]({% post_url 2026-05-03-rift %}), which I published in May, and follows what’s happened since. It was originally commissioned but ultimately wasn’t accepted for publication. I’m sharing an edited version here.*
 
 When I was a teenager, my family took a weekend road trip from Warwick, Rhode Island to Mystic, Connecticut. It was on that trip that I purchased [Billy Breathes](https://phish.com/release/billy-breathes/), the 1996 album by the band [Phish](https://phish.com/), from a head shop in Mystic Village – I often wonder if the shop is still there. From that moment on, I was hooked, and not a single day has gone by that I haven't listened to Phish.
 
