@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Every Card Will Show"
+summary: "A recommendation scheduler passed tests and Lean proofs while solving a different problem."
 subtitle: "The earlier implementation, tests, audits, and accepted proofs said the algorithm was correct. None of them stated the whole problem."
 date: 2026-08-24 00:00:00 -0400
 group: ai

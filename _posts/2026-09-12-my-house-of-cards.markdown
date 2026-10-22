@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "My Front of House of Cards"
+summary: "Green tests hid a broken live room, and skipped checks delayed its two-line repair."
 subtitle: "The show ended at 10:12. The fix merged at 10:17."
 date:   2026-09-12 01:30:00 -0400
 group: ai

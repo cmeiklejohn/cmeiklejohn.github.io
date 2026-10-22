@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "The Whole Night"
+summary: "Designing Zabriskie for the plan before doors, the live show, and the morning after."
 date:   2026-08-17 19:00:00 -0400
 group: ai
 categories: ai zabriskie development

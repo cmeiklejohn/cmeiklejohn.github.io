@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Rift"
+summary: "Thirty years of programming with Phish, and the flow state that supervising agents displaced."
 subtitle: "For thirty years I programmed with Phish on, every day. In 2026, the music is out of phase with the work."
 date:   2026-05-03 02:00:00 -0700
 group: ai

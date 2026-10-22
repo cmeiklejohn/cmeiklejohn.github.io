@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "The Hard Call Is the Whole Job"
+summary: "A cancelled flight, failed automation, and the person who took responsibility."
 subtitle: "A cancelled flight, three confident machines, and the woman on the Hilton Diamond line who refused to stop."
 date:   2026-07-08 12:00:00 -0700
 group: ai

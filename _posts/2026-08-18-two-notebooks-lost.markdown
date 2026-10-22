@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The Safeguards Have to Run"
+summary: "Two abandoned research notebooks showed why written rules need controls that actually run."
 subtitle: "Two abandoned notebooks showed me the difference between a research rule and a working control."
 date: 2026-08-18 08:00:00 -0400
 group: ai

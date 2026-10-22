@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "The Quickest Path to a Diff"
+summary: "A Red Rocks outage showed how local changes can exhaust a shared database pool."
 subtitle: "The app died at Red Rocks while its health checks stayed green. Every line of code was fine. The sum was nobody's job."
 date:   2026-09-04 14:30:00 -0400
 group: ai

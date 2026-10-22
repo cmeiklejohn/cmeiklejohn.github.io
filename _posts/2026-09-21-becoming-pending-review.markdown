@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Becoming, Pending Review"
+summary: "A researcher revisits his work and friendships in a world transformed by AI."
 date: 2026-09-21 06:40:08 -0400
 categories: fiction
 ---

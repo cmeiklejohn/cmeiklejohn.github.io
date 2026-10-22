@@ -472,6 +472,15 @@ ul.posts li:last-child {
   min-width: 0;
 }
 
+.home-post-summary {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--font-text);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--fg-muted);
+}
+
 .home-post-series {
   font-family: var(--font-ui);
   font-size: 0.82rem;
