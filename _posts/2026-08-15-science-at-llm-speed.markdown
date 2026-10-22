@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Science at LLM Speed"
+summary: "What building a live song recognizer taught me about evidence in autonomous AI research."
 subtitle: "Research-like output is cheap. A valid claim still needs evidence that can show it is wrong."
 date: 2026-08-15 14:00:00 -0400
 group: ai

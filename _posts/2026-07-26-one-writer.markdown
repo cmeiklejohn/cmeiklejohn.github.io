@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "One Writer"
+summary: "Parallel agents exposed the single-writer assumptions in Git, tests, and migrations."
 subtitle: "Our tools assume one writer, and assume that writer is a human.  Nothing computes what a change reads and writes at runtime, so the only known fix is brute force priced for organizations."
 date:   2026-07-26 22:00:00 -0400
 group: ai

@@ -33,6 +33,8 @@ description: "Christopher Meiklejohn — Ph.D., Software Engineering (CMU). Note
         {% assign series_meta = site.data.series[post.series] %}
         {% assign display_title = post.title %}
         {% assign series_title_prefix = "" %}
+        {% comment %}Use a short plain-text summary in post front matter, or an existing description; never auto-excerpt the body.{% endcomment %}
+        {% assign post_summary = post.summary | default: post.description | strip %}
         <li>
           <span class="home-post-date">{{ post.date | date_to_string }}</span>
           <span class="home-post-entry">
@@ -51,6 +53,9 @@ description: "Christopher Meiklejohn — Ph.D., Software Engineering (CMU). Note
               <a class="home-post-series" href="{{ series_meta.landing_url }}">{{ series_meta.title }}:</a>
             {% endif %}
             <a class="home-post-link" href="{{ post.url }}">{{ display_title }}</a>
+            {% if post_summary != "" %}
+              <span class="home-post-summary">{{ post_summary | strip_html | escape }}</span>
+            {% endif %}
           </span>
         </li>
       {% endfor %}

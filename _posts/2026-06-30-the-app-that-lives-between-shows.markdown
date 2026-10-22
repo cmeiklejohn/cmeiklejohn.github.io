@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "The App That Lives Between Shows"
+summary: "Making Zabriskie worth opening between tours, and measuring whether people stayed."
 date:   2026-06-30 12:00:00 -0700
 group: ai
 categories: ai zabriskie development

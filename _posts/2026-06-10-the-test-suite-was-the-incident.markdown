@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "The Test Suite Was the Incident"
+summary: "Shared test data turned a night of routine pull requests into an expensive CI incident."
 subtitle: "A night of brittle fixtures, 49 failed CI runs, and an expensive lesson about what happens when AI agents write the test suite and nobody owns the test data."
 date:   2026-06-10 00:00:00 -0000
 group: ai

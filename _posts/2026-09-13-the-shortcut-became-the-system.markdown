@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "The Shortcut Became the System"
+summary: "A patched SNES room made the case for modularity in software built by agents."
 subtitle: "A pipe disappeared. The rectangle around the door remained."
 date:   2026-09-14 00:00:00 -0000
 group: ai

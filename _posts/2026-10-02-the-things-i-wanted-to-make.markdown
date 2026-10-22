@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "The Things I Wanted to Make"
+summary: "Building Zabriskie with AI, chasing engagement, and returning to the reasons I built it."
 author: Christopher Meiklejohn
 date: 2026-10-02 00:00:00 -0400
 group: ai
