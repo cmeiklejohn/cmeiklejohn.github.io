@@ -20,8 +20,8 @@
         {% endif %}
         <meta name="color-scheme" content="light dark">
         <meta name="darkreader-lock">
-        <meta name="theme-color" content="#f7f7f4" media="(prefers-color-scheme: light)">
-        <meta name="theme-color" content="#18181c" media="(prefers-color-scheme: dark)">
+        <meta name="theme-color" content="#faf7ee" media="(prefers-color-scheme: light)">
+        <meta name="theme-color" content="#080b21" media="(prefers-color-scheme: dark)">
 
         <!-- Self-hosted fonts (declarations in main.css) -->
 
@@ -49,6 +49,8 @@
         <link rel="stylesheet" href="/css/mas-series.css?v={{ site.time | date: '%s' }}">
         {% endif %}
 
+        <link rel="stylesheet" href="/css/site-theme.css?v={{ site.time | date: '%s' }}">
+
         <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.url }}/feed.xml">
 
         {% if page.math %}
@@ -63,7 +65,8 @@
         <script src="https://tikzjax.com/v1/tikzjax.js"></script>
         {% endif %}
     </head>
-    <body{% if page.homepage %} class="pitch-site"{% endif %}>
+    <body class="{% if page.homepage %}pitch-site{% else %}reading-site{% endif %}">
+        <canvas class="pitch-network" aria-hidden="true"></canvas>
 
         <a class="skip-link" href="#main-content">Skip to content</a>
 
@@ -80,7 +83,7 @@
                 <a href="/research.html">research</a>
                 <a href="/teaching.html">teaching</a>
                 <a href="/publications.html">publications</a>
-                <a class="site-nav-icon" href="/meiklejohn-cv.pdf?v=435cc20e4ae3" aria-label="CV (PDF)" title="CV (PDF)">
+                <a class="site-nav-icon" href="/meiklejohn-cv.pdf?v=2acdd3c00536" aria-label="CV (PDF)" title="CV (PDF)">
                   <svg class="site-nav-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 12h6M9 16h6"/></svg>
                 </a>
                 {% if site.social.github %}
@@ -95,6 +98,8 @@
                 {% endif %}
               </nav>
             </header>
+
+            <div class="pitch-motion-tools"><button type="button" id="pitch-motion" aria-pressed="false">Pause background</button></div>
 
             <main class="site-main" id="main-content">
                 {{ content }}
@@ -181,6 +186,7 @@
             applyFromStored();
           })();
         </script>
+        <script src="/assets/home/network.js?v={{ site.time | date: '%s' }}" defer></script>
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
