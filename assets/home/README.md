@@ -15,3 +15,12 @@ Artwork remains original to this homepage; no Storybook background is reused.
 
 The network canvas and its motion control live in the shared default layout.
 Content stays on opaque backgrounds; animation is a quiet detail in the margins.
+
+## Presentation rule
+
+Prefer graphics that carry the explanation. Research journeys show authorship,
+implementation, adoption, and feedback into new research; industry drawings
+show the kind of system or engineering contribution. Keep claims and sources
+in real text beside each drawing. Drawings are explanatory illustrations, not
+benchmarks, official company logos, or claims of a completed formal proof.
+Keep these sections open, without enclosing cards or large boxes.
