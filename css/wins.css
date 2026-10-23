@@ -1,6 +1,6 @@
-/* Evidence as open diagrams and illustrated rows, never enclosing cards. */
+/* Each complete research or industry case sits over its own scene. */
 .win-definitions { position:absolute; width:0; height:0; overflow:hidden; }
-.win-project { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,2.6fr); gap:48px; padding:40px 0; border-top:1px solid var(--border); background:var(--bg); }
+.win-project { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,2.6fr); gap:36px; padding:36px; margin:0 0 28px; }
 .win-project-heading .pitch-label { color:var(--link); margin:0 0 14px; }
 .win-project-heading h3 { font-size:30px; line-height:1.2; max-width:19ch; margin-bottom:20px; }
 .win-project-heading>p:not(.pitch-label) { font-size:14px; line-height:1.8; color:var(--fg-muted); margin-bottom:0; }
@@ -38,37 +38,32 @@
 .win-project .pitch-detail { margin-top:14px; }
 .win-project .pitch-detail p { font-size:14px; color:var(--fg-muted); }
 .win-industry { background:var(--bg); }
-.win-industry-list { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; column-gap:48px; }
-.win-industry-list>li { display:grid; grid-template-columns:110px minmax(0,1fr); gap:24px; padding:30px 0; border-top:1px solid var(--border); scroll-margin-top:28px; }
-.win-industry-list .win-art { height:90px; margin-top:20px; }
+.win-industry-list { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.win-industry-list>li { padding:30px; min-height:310px; scroll-margin-top:28px; }
+.win-industry-list>li>div { position:relative; z-index:1; max-width:37ch; width:85%; }
+
 .pitch-page .win-employer { font:600 14px/1.5 var(--font-ui); color:var(--fg); margin:0 0 14px; }
 .win-employer span { display:block; font-size:11px; font-weight:normal; color:var(--fg-muted); margin-top:5px; }
 .win-industry-list h3 { font-size:23px; line-height:1.3; letter-spacing:-.02em; margin-bottom:12px; }
 .pitch-page .win-industry-detail { font-size:14px; line-height:1.8; color:var(--fg-muted); margin:0; }
 .win-industry-list .pitch-links { font-size:12px; margin-top:14px; }
 @media(max-width:1000px){
- .win-project { grid-template-columns:1fr 2.6fr; gap:28px; }
- .win-project-heading h3 { font-size:27px; }
  .win-path { gap:24px; }
  .win-path>li:not(:last-child)::after { right:-21px; }
  .win-path h4 { font-size:21px; }
- .win-industry-list { column-gap:32px; }
- .win-industry-list>li { grid-template-columns:75px minmax(0,1fr); gap:18px; }
+ .win-industry-list { gap:24px; }
+
  .win-related { display:block; }
  .win-related p { margin-top:12px; }
-}
-@media(max-width:1000px){
- .win-project { grid-template-columns:1fr; gap:24px; padding:28px 0 36px; }
+ .win-project { grid-template-columns:1fr; gap:28px; padding:30px; }
  .win-project-heading h3 { max-width:27ch; font-size:30px; }
  .win-project-heading h3 br { display:none; }
  .win-project-heading>p:not(.pitch-label) { max-width:55ch; }
  .win-recognition { display:flex; align-items:center; gap:14px; }
  .win-recognition>span { display:inline; margin:0; font-size:32px; }
- .win-industry-list { grid-template-columns:1fr; }
- .win-industry-list>li { grid-template-columns:100px minmax(0,1fr); gap:24px; }
- .win-industry-list .win-art { height:85px; }
+
 }
-@media(max-width:520px){
+@media(max-width:580px){
  .win-path { display:block; }
  .win-path>li { display:grid; grid-template-columns:100px minmax(0,1fr); column-gap:22px; padding:0 0 30px; }
  .win-path>li:last-child { padding-bottom:0; }
@@ -82,17 +77,15 @@
  .win-measures small { display:block; font-size:16px; margin-top:3px; }
  .win-measures span { font-size:11px; }
  .win-related { margin-top:24px; }
- .win-industry-list>li { grid-template-columns:72px minmax(0,1fr); gap:18px; padding:26px 0; }
- .win-industry-list .win-art { height:70px; }
+
  .win-industry-list h3 { font-size:24px; }
  .win-industry-list .win-industry-detail { font-size:14px; }
 }
-@media(max-width:360px){.win-path>li{grid-template-columns:80px minmax(0,1fr);gap:16px}.win-path>li:not(:last-child)::after{left:40px}.win-industry-list>li{grid-template-columns:54px minmax(0,1fr);gap:14px}.win-measures strong{font-size:27px}}
 
 /* The second edge is the feedback from industrial use into new research. */
 .win-path-feedback>li:nth-child(2)::after { color:var(--accent-warm); }
 .win-path-feedback>li:nth-child(2)::before { content:'feedback'; position:absolute; right:-40px; top:70px; width:56px; text-align:center; color:var(--accent-warm); font:10px/1.5 var(--font-ui); }
-@media(max-width:520px){
+@media(max-width:580px){
  .win-path-feedback>li:nth-child(2)::after { border-color:var(--accent-warm); }
  .win-path-feedback>li:nth-child(2)::before { right:auto; left:59px; top:auto; bottom:7px; width:auto; text-align:left; }
 }
@@ -100,38 +93,52 @@
 
 .win-path>li:last-child .win-stage-label,.win-path>li:last-child .win-art { color:var(--accent-warm); }
 
-@media(max-width:520px){
- .win-art { stroke-width:2.3; }
- .win-industry-list>li { row-gap:0; }
- .win-industry-list>li>div { display:contents; }
- .win-industry-list>li>.win-art { grid-column:1; grid-row:1 / span 2; align-self:center; margin:0; }
- .win-industry-list .win-employer { grid-column:2; grid-row:1; }
- .win-industry-list h3 { grid-column:2; grid-row:2; }
- .win-industry-list .win-industry-detail { grid-column:1 / -1; margin-top:4px; }
- .win-industry-list .pitch-links { grid-column:1 / -1; margin-top:14px; }
-}
+@media(max-width:580px){.win-art{stroke-width:2.3}}
 
-/* Each case gets its own little world. Only the illustration is enclosed. */
-.win-scene { margin:0 0 22px; overflow:hidden; border-radius:12px; background:#080b21; aspect-ratio:16/9; isolation:isolate; }
-.win-scene img { display:block; width:100%; height:100%; object-fit:cover; margin:0; border:0; border-radius:0; }
-.win-project-heading .win-scene { width:100%; }
-.win-industry-list>li { grid-template-columns:170px minmax(0,1fr); gap:24px; }
-.win-industry-list .win-scene { width:100%; margin:4px 0 0; align-self:start; }
-@media(max-width:1000px){
- .win-project-heading { display:grid; grid-template-columns:1fr 260px; column-gap:32px; align-content:start; }
- .win-project-heading>.pitch-label,.win-project-heading>h3,.win-project-heading>p { grid-column:1; }
- .win-project-heading .win-scene { grid-column:2; grid-row:1 / span 4; align-self:center; margin:0; }
- .win-industry-list>li { grid-template-columns:135px minmax(0,1fr);gap:20px; }
+/* The frame encloses the whole case; artwork fills it behind the real text. */
+.win-project,.win-industry-list>li {
+ position:relative; isolation:isolate; overflow:hidden; border:1px solid #6de0f62b;
+ border-radius:22px; background:#080b21; color:#e1e3ef;
+ --bg:#080b21; --bg-elevated:#141a34; --fg:#e1e3ef; --fg-heading:#faf7ee;
+ --fg-muted:#d0d6e8; --link:#6de0f6; --link-hover:#b8f1f4;
+ --border:#98a8d13b; --border-strong:#8191b7; --accent-warm:#f29783;
 }
-@media(max-width:760px){.win-industry-list>li{grid-template-columns:210px minmax(0,1fr)}}
-@media(max-width:580px){
+.win-project>.win-project-heading,.win-project>.win-project-evidence { position:relative; z-index:1; }
+.win-scene { position:absolute; inset:0; z-index:0; margin:0; pointer-events:none; }
+.win-scene img { display:block; width:100%; height:100%; object-fit:cover; object-position:center; margin:0; border:0; border-radius:0; }
+.win-scene::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,#080b21f5 0%,#080b21db 30%,#080b21b0 65%,#080b216b 100%),linear-gradient(0deg,#080b21f0, #080b2160 65%,#080b2100); }
+.win-project-heading h3 { margin-top:32px; }
+.win-industry-list .win-scene::after { background:linear-gradient(100deg,#080b21f2 0%,#080b21d9 45%,#080b2159 100%),linear-gradient(0deg,#080b21eb,#080b2100 90%); }
+.win-industry-list .win-scene img { object-position:70% center; }
+@media(max-width:1000px){
  .win-project-heading { display:block; }
- .win-project-heading .win-scene { width:100%; max-height:205px; margin:0 0 22px; }
- .win-industry-list>li { grid-template-columns:1fr; }
- .win-industry-list>li>.win-scene { grid-column:1 / -1; grid-row:1; width:100%; margin:0 0 22px; max-height:195px; }
- .win-industry-list>li>div { display:contents; }
- .win-industry-list .win-employer { grid-column:1 / -1; grid-row:2; }
- .win-industry-list h3 { grid-column:1 / -1; grid-row:3; }
- .win-industry-list .win-industry-detail { grid-column:1 / -1;grid-row:4; }
- .win-industry-list .pitch-links { grid-column:1 / -1;grid-row:5; }
+ .win-project-heading h3 { margin-top:0; max-width:30ch; }
+ .win-project-heading>p:not(.pitch-label) { max-width:55ch; }
+ .win-industry-list { grid-template-columns:1fr 1fr; }
+ .win-industry-list>li { padding:26px; }
+ .win-industry-list>li>div { width:100%; }
+}
+@media(max-width:760px){.win-industry-list{grid-template-columns:1fr}.win-industry-list>li{min-height:270px}.win-industry-list>li>div{max-width:42ch;width:85%}}
+@media(max-width:580px){
+ .win-project { padding:26px 22px; border-radius:18px; margin-bottom:24px; }
+ .win-project-heading h3 { font-size:29px; }
+ .win-path>li { grid-template-columns:72px minmax(0,1fr); column-gap:18px; }
+ .win-path>li:not(:last-child)::after { left:36px; }
+ .win-path .win-art { height:75px; }
+ .win-path h4 { font-size:22px; }
+ .win-recognition { font-size:12px!important; }
+ .win-recognition>span { font-size:30px; }
+ .win-industry-list>li { padding:26px 22px; border-radius:18px; }
+ .win-industry-list>li>div { display:block; width:100%; }
+ .win-project .win-scene::after { background:linear-gradient(90deg,#080b21dd,#080b219e),linear-gradient(0deg,#080b21ee,#080b2133); }
+ .win-project .win-scene img { object-position:65% center; }
+ .win-industry-list .win-scene::after { background:linear-gradient(100deg,#080b21eb,#080b21b3 60%,#080b2180),linear-gradient(0deg,#080b21e6,#080b2100); }
+}
+@media(max-width:380px){
+ .win-project,.win-industry-list>li { padding:24px 18px; }
+ .win-path>li { grid-template-columns:1fr; padding-bottom:36px; }
+ .win-path .win-art { grid-row:auto; width:86px; height:65px; margin-bottom:12px; }
+ .win-path>li:not(:last-child)::after { left:43px; height:22px; }
+ .win-path-feedback>li:nth-child(2)::before { left:54px; bottom:5px; }
+ .win-related-route { font-size:13px; }
 }
