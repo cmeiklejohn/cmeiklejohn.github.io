@@ -4,8 +4,6 @@ title: "Christopher Meiklejohn — Research into Practice"
 description: "Distributed systems researcher and technical lead. Staff Engineer at DoorDash, adjunct faculty at CMU. From award-winning research to Azure, AWS, and production Erlang systems."
 homepage: true
 ---
-<canvas class="pitch-network" aria-hidden="true"></canvas>
-<div class="pitch-motion-tools"><button type="button" id="pitch-motion" aria-pressed="false">Pause background</button></div>
 <div class="pitch-page">
   <section class="pitch-hero" aria-labelledby="pitch-title">
     <div class="pitch-hero-copy">
@@ -14,7 +12,7 @@ homepage: true
       <p class="pitch-qualification">Ph.D. in Software Engineering · Carnegie Mellon, 2024</p>
       <p class="pitch-intro">I created Filibuster, co-created Lasp, and built Partisan, adopted by LeapSight for LoJack LATAM’s vehicle-recovery platform. At Microsoft Research, I co-developed the model behind Azure Durable Entities.</p>
       <div class="pitch-actions">
-        <a class="pitch-button" href="/meiklejohn-cv.pdf?v=435cc20e4ae3">Read my full CV <span>PDF ↗</span></a>
+        <a class="pitch-button" href="/meiklejohn-cv.pdf?v=2acdd3c00536">Read my full CV <span>PDF ↗</span></a>
         <a class="pitch-text-link" href="mailto:christopher.meiklejohn@gmail.com">Let’s talk <span aria-hidden="true">↗</span></a>
       </div>
     </div>
@@ -48,15 +46,17 @@ homepage: true
     <div class="pitch-case-pair">
       <article class="pitch-case">
         <span class="pitch-case-number">02</span><p class="pitch-label">Microsoft Research → Azure</p><h3>The research behind Azure Durable Entities.</h3>
+        <div class="pitch-flow" aria-label="Research to production"><div><b>MSR research</b>Programming model</div><span aria-hidden="true">→</span><div><b>Azure</b>Durable Entities</div></div>
         <p>With Sebastian Burckhardt, I co-developed the programming model and ReactiveMachine prototype behind <strong>Azure Durable Entities</strong>. In an earlier Microsoft Research internship, I co-implemented transactions that shipped in <strong>Orleans</strong>.</p>
-        <p>I co-authored <em>Durable Functions</em> and both <em>Netherite</em> papers. <a href="https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html">AWS Lambda also now offers durable execution</a>.</p>
-        <div class="pitch-links"><a href="https://doi.org/10.1145/3485510">OOPSLA ’21 ↗</a><a href="https://doi.org/10.14778/3529337.3529344">PVLDB ’22 ↗</a><a href="https://doi.org/10.1007/s00778-024-00898-1">VLDB Journal ’25 ↗</a></div>
+        <p class="pitch-authorship">Co-author of <em>Durable Functions</em> and both <em>Netherite</em> papers.</p><details class="pitch-detail"><summary>Durable execution today</summary><p><a href="https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html">AWS Lambda also now offers durable execution</a>.</p></details>
+        <div class="pitch-links"><a href="https://doi.org/10.1145/3485510">OOPSLA ’21 ↗</a><a href="https://doi.org/10.14778/3529337.3529344">PVLDB ’22 ↗</a><a href="https://doi.org/10.1007/s00778-024-00898-1">VLDB Journal ’25 ↗</a><a href="/serverless/2019/05/23/stateful-serverless-database-example.html">Building with Durable Entities →</a></div>
       </article>
       <article class="pitch-case">
         <span class="pitch-case-number">03</span><p class="pitch-label">Filibuster → DoorDash → further research</p><h3>Resilience testing shaped by real services.</h3>
+        <div class="pitch-flow" aria-label="Research and industry feedback"><div><b>Filibuster</b>Systematic testing</div><span aria-hidden="true">→</span><div><b>DoorDash</b>Real services</div><span aria-hidden="true">→</span><div><b>Research</b>New algorithms</div></div>
         <p>I created <strong>Filibuster</strong> to systematically test how microservices handle failure. During my DoorDash internship, I adapted the algorithms for Kotlin/gRPC concurrency and built instrumentation that didn’t require application changes. I then tested DashPass as a contractor.</p>
         <p>The industrial constraints fed back into the research: circuit breakers, distributed execution indexing, and database-resilience testing with students I mentored.</p>
-        <div class="pitch-links"><a href="https://doi.org/10.1145/3472883.3487005">SoCC ’21 ↗</a><a href="https://doi.org/10.1145/3542929.3563466">SoCC ’22 ↗</a><a href="https://arxiv.org/abs/2209.08740">Execution indexing ↗</a><a href="https://doi.org/10.1145/3639478.3640021">ICSE Companion ’24 ↗</a><a href="https://careersatdoordash.com/blog/using-fault-injection-testing-to-improve-doordash-reliability/">DoorDash engineering ↗</a></div>
+        <div class="pitch-links"><a href="https://doi.org/10.1145/3472883.3487005">SoCC ’21 ↗</a><a href="https://doi.org/10.1145/3542929.3563466">SoCC ’22 ↗</a><a href="https://arxiv.org/abs/2209.08740">Execution indexing ↗</a><a href="https://doi.org/10.1145/3639478.3640021">ICSE Companion ’24 ↗</a><a href="https://careersatdoordash.com/blog/using-fault-injection-testing-to-improve-doordash-reliability/">DoorDash engineering ↗</a><a href="/filibuster/2023/08/30/filibuster-2.0-building-developer-tools.html">Building Filibuster 2.0 →</a></div>
       </article>
     </div>
   </section>
@@ -104,12 +104,8 @@ homepage: true
       <a href="{% post_url 2026-04-01-software-engineering-is-becoming-civil-engineering %}"><span>3,567 views</span><strong>Software Engineering Is Becoming Civil Engineering</strong><p>A conversation after a CMU lecture, and what changes when design separates from construction.</p></a>
       <a href="{% post_url 2026-05-03-rift %}"><span>12,094 views</span><strong>Rift</strong><p>Thirty years of programming with Phish on, and a change in how the work feels.</p></a>
     </div>
-    <h3 class="pitch-selected-heading">Behind the research</h3>
-    <div class="pitch-reading"><a href="/erlang/partisan/2022/06/13/handing-off-partisan.html"><span>Research into practice</span><strong>Handing off maintenance of Partisan</strong><span>The runtime I built became someone else’s production infrastructure. →</span></a><a href="/serverless/2019/05/23/stateful-serverless-database-example.html"><span>Stateful serverless</span><strong>Building with Azure Durable Entities</strong><span>A key-value database using the programming model that grew out of our MSR research. →</span></a><a href="/filibuster/2023/08/30/filibuster-2.0-building-developer-tools.html"><span>Developer tools</span><strong>Filibuster 2.0: a childhood dream</strong><span>The Ph.D. took a few detours. The integrated developer tools finally started coming together. →</span></a></div>
-    <p class="pitch-publications-link"><a href="/publications.html">Full publication record →</a> &nbsp; <a href="/blog/">Blog &amp; archive →</a></p>
+    <p class="pitch-publications-link"><a href="/publications.html">Full publication record →</a><a href="/blog/">Blog &amp; archive →</a></p>
   </section>
 
-  <section class="pitch-contact" aria-labelledby="contact-title"><p class="pitch-eyebrow">Research &amp; engineering</p><h2 id="contact-title">Let’s talk about the systems<br>you’re trying to build.</h2><p>I’m interested in roles where I can develop the research and help turn it into something people can use. If that’s the problem you’re hiring for, I’d like to talk.</p><div class="pitch-actions"><a class="pitch-button" href="mailto:christopher.meiklejohn@gmail.com">Get in touch <span aria-hidden="true">↗</span></a><a class="pitch-text-link" href="/meiklejohn-cv.pdf?v=435cc20e4ae3">Full CV · highlights + complete chronology ↗</a></div></section>
+  <section class="pitch-contact" aria-labelledby="contact-title"><p class="pitch-eyebrow">Research &amp; engineering</p><h2 id="contact-title">Let’s talk about the systems<br> you’re trying to build.</h2><p>I’m interested in roles where I can develop the research and help turn it into something people can use. If that’s the problem you’re hiring for, I’d like to talk.</p><div class="pitch-actions"><a class="pitch-button" href="mailto:christopher.meiklejohn@gmail.com">Get in touch <span aria-hidden="true">↗</span></a><a class="pitch-text-link" href="/meiklejohn-cv.pdf?v=2acdd3c00536">Full CV · highlights + complete chronology ↗</a></div></section>
 </div>
-
-<script src="/assets/home/network.js?v={{ site.time | date: '%s' }}" defer></script>
