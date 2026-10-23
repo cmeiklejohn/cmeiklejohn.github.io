@@ -1,8 +1,8 @@
 # Scenario illustration provenance
 
-Generated with Canva on 23 October 2026. These are conceptual illustrations, not photographs or evidence of production architecture. They supplement the real contribution text and its original source links. No prior Storybook artwork was reused.
+Generated with Canva on 23 October 2026. These are conceptual illustrations, not photographs or evidence of production architecture. Each scene fills the background of its complete rounded research or industry section. Navy gradients protect the real contribution text, explanatory diagrams, and original source links. No prior Storybook artwork was reused.
 
-Shared prompt direction: Original sophisticated pixel-art scene for a small rounded research-portfolio inset. Cohesive night-time storybook world; midnight navy #080b21, cyan #6de0f6 paths, violet #505493 structures, warm cream/coral #f29783 lighting. Rich miniature inhabited environments, crisp pixel clusters, wide composition. No text, logos, interface, or border. Explain the engineering scenario visually.
+Shared prompt direction: Original sophisticated pixel-art scene for a research-portfolio scenario. Cohesive night-time storybook world; midnight navy #080b21, cyan #6de0f6 paths, violet #505493 structures, warm cream/coral #f29783 lighting. Rich miniature inhabited environments, crisp pixel clusters, wide composition. No text, logos, interface, or border. Explain the engineering scenario visually.
 
 ## lojack
 

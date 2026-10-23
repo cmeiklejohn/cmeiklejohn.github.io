@@ -23,9 +23,8 @@ implementation, adoption, and feedback into new research; industry drawings
 show the kind of system or engineering contribution. Keep claims and sources
 in real text beside each drawing. Drawings are explanatory illustrations, not
 benchmarks, official company logos, or claims of a completed formal proof.
-Keep these sections open, without enclosing cards or large boxes.
-
-Small rounded scenario illustration insets are explicitly requested. Each of
-the three research cases and six industry examples has a unique Canva-generated
-pixel-art background in `scenes/`; text and source links stay outside the
-illustration. See `scenes/README.md` for prompts, provenance and Canva originals.
+Each complete research case and industry example belongs in a rounded frame,
+with its unique Canva scene covering the entire section behind the text and
+explanatory diagrams. Use directional navy gradients to protect readability;
+do not turn the scene into a separate thumbnail. Keep all claims and source
+links visible in real text. See `scenes/README.md` for prompts and provenance.
