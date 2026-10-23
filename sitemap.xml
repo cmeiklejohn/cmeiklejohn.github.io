@@ -10,6 +10,11 @@ permalink: /sitemap.xml
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>{{ site.url }}/blog/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>{{ site.url }}/archive.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
