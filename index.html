@@ -1,65 +1,115 @@
 ---
 layout: default
-title: Christopher Meiklejohn
-description: "Christopher Meiklejohn — Ph.D., Software Engineering (CMU). Notes on multi-agent systems, distributed computing, fault injection, and the engineering practice of shipping research."
+title: "Christopher Meiklejohn — Research into Practice"
+description: "Distributed systems researcher and technical lead. Staff Engineer at DoorDash, adjunct faculty at CMU. From award-winning research to Azure, AWS, and production Erlang systems."
+homepage: true
 ---
-
-<div id="home">
-  <h1 class="sr-only">Christopher Meiklejohn — home</h1>
-
-  <p class="home-lead">
-    Recent posts. Topic pages: <a href="/zabriskie/">Zabriskie</a> · <a href="/agents/">AI Agents</a> · <a href="/distributed-systems/">Distributed Systems</a> · <a href="/archive.html#cat-fiction">Fiction</a>. Or the full <a href="/archive.html">archive</a>.
-  </p>
-
-  <div class="home-series-callout" aria-label="Blog series">
-    <span class="home-series-callout-label">Series</span>
-    <span class="home-series-callout-entry">
-      <a class="home-series-callout-title" href="/series/the-machine-in-the-lab/">The Machine in the Lab</a>
-      <span class="home-series-callout-sep" aria-hidden="true">·</span>
-      <a class="home-series-callout-overview" href="/series/the-machine-in-the-lab/">7-part series →</a>
-    </span>
-    <span class="home-series-callout-entry">
-      <a class="home-series-callout-title" href="/series/multi-agent-systems/">Getting Up to Speed on Multi-Agent Systems</a>
-      <span class="home-series-callout-sep" aria-hidden="true">·</span>
-      <a class="home-series-callout-overview" href="/series/multi-agent-systems/">8-part overview →</a>
-    </span>
-  </div>
-
-  <section class="archive-section home-recent-section" aria-labelledby="home-recent-heading">
-    <h2 id="home-recent-heading" class="home-section-title archive-section-heading">Recent</h2>
-    <p class="archive-section-intro">The latest writing on the site. Open the archive for full lists by topic.</p>
-    <ul class="posts">
-      {% for post in site.posts limit:15 %}
-        {% assign series_meta = site.data.series[post.series] %}
-        {% assign display_title = post.title %}
-        {% assign series_title_prefix = "" %}
-        <li>
-          <span class="home-post-date">{{ post.date | date_to_string }}</span>
-          <span class="home-post-entry">
-            {% if post.categories contains "fiction" %}
-              <a class="home-post-series" href="/archive.html#cat-fiction">Fiction:</a>
-            {% elsif series_meta %}
-              {% assign series_data_key = post.series | append: "_series" %}
-              {% assign series_posts = site.data[series_data_key] %}
-              {% assign series_entry = series_posts | where: "url", post.url | first %}
-              {% if series_entry %}
-                {% assign display_title = series_entry.title %}
-              {% else %}
-                {% capture series_title_prefix %}{{ series_meta.title }}, {% endcapture %}
-                {% assign display_title = post.title | remove_first: series_title_prefix %}
-              {% endif %}
-              <a class="home-post-series" href="{{ series_meta.landing_url }}">{{ series_meta.title }}:</a>
-            {% endif %}
-            <a class="home-post-link" href="{{ post.url }}">{{ display_title }}</a>
-          </span>
-        </li>
-      {% endfor %}
-    </ul>
+<canvas class="pitch-network" aria-hidden="true"></canvas>
+<div class="pitch-motion-tools"><button type="button" id="pitch-motion" aria-pressed="false">Pause background</button></div>
+<div class="pitch-page">
+  <section class="pitch-hero" aria-labelledby="pitch-title">
+    <div class="pitch-hero-copy">
+      <p class="pitch-eyebrow">Staff Software Engineer · DoorDash &nbsp; / &nbsp; Adjunct Faculty · CMU</p>
+      <h1 id="pitch-title">I take distributed systems from <em>research to production.</em></h1>
+      <p class="pitch-qualification">Ph.D. in Software Engineering · Carnegie Mellon, 2024</p>
+      <p class="pitch-intro">I created Filibuster, co-created Lasp, and built Partisan, adopted by LeapSight for LoJack LATAM’s vehicle-recovery platform. At Microsoft Research, I co-developed the model behind Azure Durable Entities.</p>
+      <div class="pitch-actions">
+        <a class="pitch-button" href="/meiklejohn-cv.pdf?v=435cc20e4ae3">Read my full CV <span>PDF ↗</span></a>
+        <a class="pitch-text-link" href="mailto:christopher.meiklejohn@gmail.com">Let’s talk <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <a class="pitch-world" href="#research-in-practice" aria-label="Read how the research reached production systems"><img src="/assets/home/research-to-production.webp" alt="" width="1776" height="896" fetchpriority="high"><span class="pitch-world-caption">From the workshop to the world ↓</span></a>
+    <div class="pitch-now">
+      <div><span class="pitch-label">Building now</span><strong>Staff Software Engineer · DoorDash</strong><p>Technical lead and co-designer of the unified ordering platform for DoorDash, Wolt, and Deliveroo, targeting multi-region, active-active operation.</p></div>
+      <div><span class="pitch-label">Teaching now</span><strong>Adjunct Faculty · Carnegie Mellon</strong><p>Software and Societal Systems. Teaching guest lectures on deploying safely, microservice resilience, and AI-assisted development.</p></div>
+    </div>
   </section>
 
-  <p class="home-archive-cta">
-    <a href="/archive.html">Full archive by topic →</a>
-  </p>
+  <div class="pitch-proof-strip" aria-label="Selected results">
+    <a href="/erlang/partisan/2022/06/13/handing-off-partisan.html"><strong>300,000 vehicles</strong><span>LoJack LATAM adopted Partisan. Its platform handled 30M+ GPS transmissions/day (2022).</span></a>
+    <a href="https://ppdp25.github.io/site/program/"><strong>10 years of influence</strong><span>Lasp received PPDP’s 2025 Ten Year Most Influential Paper Award.</span></a>
+    <a href="#aws-monitoring"><strong>Still used across AWS</strong><span>PObserve grew from my internship research. My mentor reports bugs found beyond testing.</span></a>
+  </div>
 
-  {% include subscribe.html %}
+  <nav class="pitch-jump" aria-label="On this page"><a href="#research-in-practice">Selected research</a><a href="#industry-work">Industry work</a><a href="#collaboration">Collaboration &amp; teaching</a><a href="#writing">Latest writing</a></nav>
+
+  <section class="pitch-section" id="research-in-practice" aria-labelledby="practice-title">
+    <div class="pitch-section-heading"><div><p class="pitch-eyebrow">Selected work</p><h2 id="practice-title">What happened after the paper.</h2></div><p>The idea, the implementation,<br>and where someone used it.</p></div>
+
+    <article class="pitch-case pitch-case-featured">
+      <div class="pitch-case-heading"><span class="pitch-case-number">01</span><p class="pitch-label">Lasp → Partisan → LoJack</p><h3>From Lasp to LoJack’s vehicle-recovery platform.</h3><span class="pitch-award">PPDP 2025 · 10 Year Most Influential Paper Award</span><div class="pitch-lineage" aria-label="Research lineage: Lasp programming model to Partisan runtime to LoJack production use"><div><b>Lasp</b><small>Model</small></div><span aria-hidden="true">→</span><div><b>Partisan</b><small>Runtime</small></div><span aria-hidden="true">→</span><div><b>LoJack</b><small>Production</small></div></div></div>
+      <div class="pitch-case-body">
+        <p>I co-created Lasp with Peter Van Roy: a model for distributed programs that converge without coordinating every update. I implemented the Erlang prototype and scaled it to <strong>1,024 Erlang nodes on AWS</strong> while contracting at Mesosphere.</p>
+        <p>To scale Lasp, I built the communication layer that became <strong>Partisan</strong>. LeapSight adopted it in LoJack LATAM’s vehicle-recovery platform, reported in 2022 at <strong>300,000 vehicles and more than 30 million GPS transmissions a day</strong>. BarrelDB adopted it too. I also ported Riak Core to Partisan while consulting for LeapSight.</p>
+        <div class="pitch-links"><a href="https://doi.org/10.1145/2790449.2790525">Lasp paper ↗</a><a href="https://www.usenix.org/conference/atc19/presentation/meiklejohn">Partisan · ATC ’19 ↗</a><a href="/erlang/partisan/2022/06/13/handing-off-partisan.html">The production handoff →</a></div>
+      </div>
+    </article>
+
+    <div class="pitch-case-pair">
+      <article class="pitch-case">
+        <span class="pitch-case-number">02</span><p class="pitch-label">Microsoft Research → Azure</p><h3>The research behind Azure Durable Entities.</h3>
+        <p>With Sebastian Burckhardt, I co-developed the programming model and ReactiveMachine prototype behind <strong>Azure Durable Entities</strong>. In an earlier Microsoft Research internship, I co-implemented transactions that shipped in <strong>Orleans</strong>.</p>
+        <p>I co-authored <em>Durable Functions</em> and both <em>Netherite</em> papers. <a href="https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html">AWS Lambda also now offers durable execution</a>.</p>
+        <div class="pitch-links"><a href="https://doi.org/10.1145/3485510">OOPSLA ’21 ↗</a><a href="https://doi.org/10.14778/3529337.3529344">PVLDB ’22 ↗</a><a href="https://doi.org/10.1007/s00778-024-00898-1">VLDB Journal ’25 ↗</a></div>
+      </article>
+      <article class="pitch-case">
+        <span class="pitch-case-number">03</span><p class="pitch-label">Filibuster → DoorDash → further research</p><h3>Resilience testing shaped by real services.</h3>
+        <p>I created <strong>Filibuster</strong> to systematically test how microservices handle failure. During my DoorDash internship, I adapted the algorithms for Kotlin/gRPC concurrency and built instrumentation that didn’t require application changes. I then tested DashPass as a contractor.</p>
+        <p>The industrial constraints fed back into the research: circuit breakers, distributed execution indexing, and database-resilience testing with students I mentored.</p>
+        <div class="pitch-links"><a href="https://doi.org/10.1145/3472883.3487005">SoCC ’21 ↗</a><a href="https://doi.org/10.1145/3542929.3563466">SoCC ’22 ↗</a><a href="https://arxiv.org/abs/2209.08740">Execution indexing ↗</a><a href="https://doi.org/10.1145/3639478.3640021">ICSE Companion ’24 ↗</a><a href="https://careersatdoordash.com/blog/using-fault-injection-testing-to-improve-doordash-reliability/">DoorDash engineering ↗</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="pitch-section pitch-practice" id="industry-work" aria-labelledby="more-practice-title">
+    <div class="pitch-section-heading"><div><p class="pitch-eyebrow">More research in practice</p><h2 id="more-practice-title">Other systems I’ve helped build.</h2></div></div>
+    <dl class="pitch-track-record">
+      <div id="aws-monitoring"><dt>Amazon Web Services<span>PObserve · 2020 internship</span></dt><dd>Developed the foundation of a distributed-systems runtime monitor. My mentor Ankush Desai reports that it remains in use across AWS, detecting bugs that testing missed. <a href="https://www.linkedin.com/posts/ankush-desai_%F0%9D%97%A3%F0%9D%97%BF%F0%9D%97%BC%F0%9D%98%82%F0%9D%97%B1-%F0%9D%97%BA%F0%9D%97%BC%F0%9D%97%BA%F0%9D%97%B2%F0%9D%97%BB%F0%9D%98%81-100-conversion-activity-7440298093109207040-WgUH">Ankush Desai on PObserve at AWS ↗</a></dd></div>
+      <div><dt>Basho / Riak<span>Replication, CRDTs, operations</span></dt><dd>Co-authored <a href="https://doi.org/10.1145/2596631.2596633">Riak DT Map</a>, maintained replication and CRDT internals, and supported Riot Games’ League of Legends in production. Built QuickCheck models under John Hughes.</dd></div>
+      <div><dt>National Health Service<span>Riak consulting · 2018–2019</span></dt><dd>Returned to Riak as a consultant for the NHS: updated OTP 20 compatibility and release tooling, and addressed deprecation warnings.</dd></div>
+      <div><dt>Machine Zone<span>Replication and verification</span></dt><dd>Designed and co-implemented a chain replication protocol in Erlang; analyzed its correctness with Maurice Herlihy using formal verification.</dd></div>
+      <div><dt>Macrometa<span>Consulting Scientist · C8DB</span></dt><dd>Analyzed geo-replication and transaction semantics, documented CRDT merging and garbage collection, and built property-based failover tests. Presented the joint database work at <a href="https://hpts.ws/papers/2019/macromedia.pdf">HPTS 2019</a>.</dd></div>
+      <div><dt>Veritas<span>Research applied to database infrastructure</span></dt><dd>Built a communication layer for a distributed database from my Ph.D. research. Developed property-based tests for network partitions and quorum reads and writes.</dd></div>
+    </dl>
+  </section>
+
+  <section class="pitch-section pitch-academic" id="collaboration" aria-labelledby="academic-title">
+    <div><p class="pitch-eyebrow">Collaboration &amp; teaching</p><h2 id="academic-title">Industry collaborations and teaching.</h2>
+      <p>My SyncFree research connected academic groups with <strong>Basho, Trifork, Rovio, and Erlang Solutions</strong>. I contributed to the successful <strong>€3.57M LightKone consortium proposal</strong> for edge computing.</p>
+      <p>At CMU, I teach how to deploy safely and reason about microservice failures. I mentored Lydia Stark’s circuit-breaker research, published at SoCC 2022, and Michael Issac Assad’s database-resilience and developer-tooling research, published as an ICSE 2024 tool demonstration. Earlier, I co-mentored a Google Summer of Code project that led to an AGERE 2016 paper.</p>
+      <div class="pitch-links"><a href="https://cordis.europa.eu/project/id/732505">LightKone ↗</a><a href="/teaching.html">Teaching &amp; lectures →</a></div>
+    </div>
+    <aside class="pitch-dissertation" aria-labelledby="dissertation-title"><span class="pitch-small-mark" aria-hidden="true">λ</span><p class="pitch-label">Carnegie Mellon University · Ph.D. 2024</p><h3 id="dissertation-title">Resilient Microservice Applications, by Design, and without the Chaos</h3><p>Advisor: Heather Miller</p><p>Systematic testing and fault injection to expose microservice resilience bugs before production.</p><a href="https://doi.org/10.1184/R1/25901422">Read my dissertation ↗</a></aside>
+  </section>
+
+  <section class="pitch-section pitch-writing" id="writing" aria-labelledby="writing-title">
+    <div class="pitch-section-heading"><div><p class="pitch-eyebrow">From the blog</p><h2 id="writing-title">Latest writing</h2></div><a href="/blog/">All posts →</a></div>
+    <ol class="pitch-latest">
+    {% for post in site.posts limit:3 %}
+      {% assign series_meta = site.data.series[post.series] %}
+      {% assign display_title = post.title %}
+      {% if series_meta %}
+        {% assign series_data_key = post.series | append: "_series" %}
+        {% assign series_entry = site.data[series_data_key] | where: "url", post.url | first %}
+        {% if series_entry %}{% assign display_title = series_entry.title %}{% endif %}
+      {% endif %}
+      <li><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%b %-d, %Y" }}</time><div>{% if series_meta %}<span>{{ series_meta.title }}</span>{% endif %}<a href="{{ post.url }}">{{ display_title | xml_escape }} <span aria-hidden="true">→</span></a></div></li>
+    {% endfor %}
+    </ol>
+    <h3 class="pitch-selected-heading">Some of the most-read posts</h3>
+    <p class="pitch-readership-note">By recorded page views, January 2023–October 2026.</p>
+    <div class="pitch-popular">
+      <a href="{% post_url 2013-07-12-readings-in-distributed-systems %}"><span>9,570 views</span><strong>Readings in distributed systems</strong><p>A reading list organized around how ideas in distributed computing developed.</p></a>
+      <a href="{% post_url 2026-03-22-teaching-claude-to-qa-a-mobile-app %}"><span>7,601 views</span><strong>Teaching Claude to QA a Mobile App</strong><p>Getting automated testing across the awkward boundary between web and native apps.</p></a>
+      <a href="{% post_url 2026-04-01-software-engineering-is-becoming-civil-engineering %}"><span>3,567 views</span><strong>Software Engineering Is Becoming Civil Engineering</strong><p>A conversation after a CMU lecture, and what changes when design separates from construction.</p></a>
+      <a href="{% post_url 2026-05-03-rift %}"><span>12,094 views</span><strong>Rift</strong><p>Thirty years of programming with Phish on, and a change in how the work feels.</p></a>
+    </div>
+    <h3 class="pitch-selected-heading">Behind the research</h3>
+    <div class="pitch-reading"><a href="/erlang/partisan/2022/06/13/handing-off-partisan.html"><span>Research into practice</span><strong>Handing off maintenance of Partisan</strong><span>The runtime I built became someone else’s production infrastructure. →</span></a><a href="/serverless/2019/05/23/stateful-serverless-database-example.html"><span>Stateful serverless</span><strong>Building with Azure Durable Entities</strong><span>A key-value database using the programming model that grew out of our MSR research. →</span></a><a href="/filibuster/2023/08/30/filibuster-2.0-building-developer-tools.html"><span>Developer tools</span><strong>Filibuster 2.0: a childhood dream</strong><span>The Ph.D. took a few detours. The integrated developer tools finally started coming together. →</span></a></div>
+    <p class="pitch-publications-link"><a href="/publications.html">Full publication record →</a> &nbsp; <a href="/blog/">Blog &amp; archive →</a></p>
+  </section>
+
+  <section class="pitch-contact" aria-labelledby="contact-title"><p class="pitch-eyebrow">Research &amp; engineering</p><h2 id="contact-title">Let’s talk about the systems<br>you’re trying to build.</h2><p>I’m interested in roles where I can develop the research and help turn it into something people can use. If that’s the problem you’re hiring for, I’d like to talk.</p><div class="pitch-actions"><a class="pitch-button" href="mailto:christopher.meiklejohn@gmail.com">Get in touch <span aria-hidden="true">↗</span></a><a class="pitch-text-link" href="/meiklejohn-cv.pdf?v=435cc20e4ae3">Full CV · highlights + complete chronology ↗</a></div></section>
 </div>
+
+<script src="/assets/home/network.js?v={{ site.time | date: '%s' }}" defer></script>

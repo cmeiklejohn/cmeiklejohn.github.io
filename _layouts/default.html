@@ -36,6 +36,11 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="/css/main.css?v={{ site.time | date: '%s' }}">
 
+        {% if page.homepage %}
+        <link rel="stylesheet" href="/css/home.css?v={{ site.time | date: '%s' }}">
+        <link rel="preload" as="image" href="/assets/home/research-to-production.webp">
+        {% endif %}
+
         {% if page.app_page %}
         <link rel="stylesheet" href="/css/apps.css?v={{ site.time | date: '%s' }}">
         {% endif %}
@@ -58,7 +63,7 @@
         <script src="https://tikzjax.com/v1/tikzjax.js"></script>
         {% endif %}
     </head>
-    <body>
+    <body{% if page.homepage %} class="pitch-site"{% endif %}>
 
         <a class="skip-link" href="#main-content">Skip to content</a>
 
@@ -69,12 +74,13 @@
                 <a href="/" class="site-brand-link">{{ site.name }}</a>
               </div>
               <nav class="site-nav" aria-label="Primary">
+                <a href="/blog/">blog</a>
                 <a href="/archive.html">archive</a>
                 <a href="/apps/">apps</a>
                 <a href="/research.html">research</a>
                 <a href="/teaching.html">teaching</a>
                 <a href="/publications.html">publications</a>
-                <a class="site-nav-icon" href="/meiklejohn-cv.pdf" aria-label="CV (PDF)" title="CV (PDF)">
+                <a class="site-nav-icon" href="/meiklejohn-cv.pdf?v=435cc20e4ae3" aria-label="CV (PDF)" title="CV (PDF)">
                   <svg class="site-nav-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 12h6M9 16h6"/></svg>
                 </a>
                 {% if site.social.github %}
