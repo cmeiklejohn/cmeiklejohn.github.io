@@ -106,9 +106,11 @@
 .win-project>.win-project-heading,.win-project>.win-project-evidence { position:relative; z-index:1; }
 .win-scene { position:absolute; inset:0; z-index:0; margin:0; pointer-events:none; }
 .win-scene img { display:block; width:100%; height:100%; object-fit:cover; object-position:center; margin:0; border:0; border-radius:0; }
-.win-scene::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,#080b21f5 0%,#080b21db 30%,#080b21b0 65%,#080b216b 100%),linear-gradient(0deg,#080b21f0, #080b2160 65%,#080b2100); }
+.win-scene::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,#080b21b8 0%,#080b2194 30%,#080b2161 65%,#080b212e 100%),linear-gradient(0deg,#080b21b3,#080b2100 80%); }
+/* Local ink shadows protect text without dimming the entire illustration. */
+.win-project-heading,.win-project-evidence,.win-industry-list>li>div { text-shadow:0 1px 2px #080b21,0 0 8px #080b21,0 0 16px #080b21; }
 .win-project-heading h3 { margin-top:32px; }
-.win-industry-list .win-scene::after { background:linear-gradient(100deg,#080b21f2 0%,#080b21d9 45%,#080b2159 100%),linear-gradient(0deg,#080b21eb,#080b2100 90%); }
+.win-industry-list .win-scene::after { background:linear-gradient(100deg,#080b21cc 0%,#080b21a3 45%,#080b211f 100%),linear-gradient(0deg,#080b21b3,#080b2100 80%); }
 .win-industry-list .win-scene img { object-position:70% center; }
 @media(max-width:1000px){
  .win-project-heading { display:block; }
@@ -130,9 +132,9 @@
  .win-recognition>span { font-size:30px; }
  .win-industry-list>li { padding:26px 22px; border-radius:18px; }
  .win-industry-list>li>div { display:block; width:100%; }
- .win-project .win-scene::after { background:linear-gradient(90deg,#080b21dd,#080b219e),linear-gradient(0deg,#080b21ee,#080b2133); }
+ .win-project .win-scene::after { background:linear-gradient(90deg,#080b219e,#080b2161),linear-gradient(0deg,#080b2199,#080b2100); }
  .win-project .win-scene img { object-position:65% center; }
- .win-industry-list .win-scene::after { background:linear-gradient(100deg,#080b21eb,#080b21b3 60%,#080b2180),linear-gradient(0deg,#080b21e6,#080b2100); }
+ .win-industry-list .win-scene::after { background:linear-gradient(100deg,#080b21b8,#080b2180 60%,#080b2140),linear-gradient(0deg,#080b2199,#080b2100); }
 }
 @media(max-width:380px){
  .win-project,.win-industry-list>li { padding:24px 18px; }
