@@ -24,3 +24,8 @@ show the kind of system or engineering contribution. Keep claims and sources
 in real text beside each drawing. Drawings are explanatory illustrations, not
 benchmarks, official company logos, or claims of a completed formal proof.
 Keep these sections open, without enclosing cards or large boxes.
+
+Small rounded scenario illustration insets are explicitly requested. Each of
+the three research cases and six industry examples has a unique Canva-generated
+pixel-art background in `scenes/`; text and source links stay outside the
+illustration. See `scenes/README.md` for prompts, provenance and Canva originals.
