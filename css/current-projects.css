@@ -31,3 +31,6 @@
 .projects-person[hidden]{display:none}
 @media(max-width:600px){.projects-section{padding-top:25px;margin-top:52px}.projects-heading{gap:8px;margin-bottom:24px;min-height:110px}.projects-heading h2{font-size:32px}.projects-heading p{font-size:15px}.projects-person{width:100px}.projects-person>img{width:96px;height:96px;margin:-8px auto -3px}.projects-person figcaption{font-size:9px}.projects-list{grid-template-columns:1fr;gap:22px}.projects-card{padding-bottom:20px}.pitch-page .projects-card h3{font-size:26px}.projects-copy{padding-top:0}.projects-card p{font-size:16px}.projects-section .projects-card{grid-template-columns:98px 1fr;gap:15px;align-items:start}.projects-section .projects-art{aspect-ratio:1;}.projects-section .projects-kind{font-size:10px}.pitch-page .projects-section h3{font-size:23px}.projects-section .projects-card p{font-size:14px}.projects-section .projects-tulpel-brand{font-size:20px;flex-direction:column}.projects-section .projects-tulpel-brand img{width:25px;height:25px}.projects-section .projects-tulpel-line{display:none}}
 @media(prefers-reduced-motion:reduce){.projects-art>img{transition:none}}
+
+.projects-art--zabriskie{background:#20222b}
+.projects-art--zabriskie>img{object-fit:contain;padding:6px}
