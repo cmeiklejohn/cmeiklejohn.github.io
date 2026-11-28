@@ -138,3 +138,16 @@ Part 4 shows how a reviewed experiment can pass every check and still misinterpr
 Part 6 describes the constraints we built around the research loop. Part 7 returns after Goose's August run with the versions that actually ran, their guesses, their failures, and the repairs made between shows.
 
 Next: two notebooks that contained weeks of analysis and almost no result I could still defend.
+
+## Addendum: November 28, 2026
+
+This morning I got a Google Scholar alert for a [preprint about Resilience4j](https://arxiv.org/html/2611.32015v1#bib.bib3). My name appeared twice in the references. One entry had the right title, [*Method Overloading the Circuit*](https://doi.org/10.1145/3542929.3563466), but none of my four coauthors were listed. The other put my name on a paper I didn’t write. I couldn’t find a publication that matched the reference as given.
+
+<figure>
+  <a href="/img/science-at-llm-speed-resilience4j-references.png"><img src="/img/science-at-llm-speed-resilience4j-references.png" alt="References from the Resilience4j preprint. Entry 2 attributes a service-mesh paper to Meiklejohn; entry 3 lists Padhye and Sevitsky alongside Meiklejohn on Method Overloading the Circuit." width="916" height="439" loading="lazy"></a>
+  <figcaption>References [2] and [3] as they appeared in the first version of the preprint.</figcaption>
+</figure>
+
+I asked an AI assistant what the authors had said about my work. It told me they’d cited two of my papers, taking the bibliography at its word. It even expanded one of the incorrect author initials into a full name the preprint never gave. I only got a correction after I asked why it was naming people I hadn’t written those papers with.
+
+I don’t know how the preprint’s references were produced. I do know how the error reached me: the assistant read the citation but didn’t check it against the paper. I happened to know who wrote this one.
